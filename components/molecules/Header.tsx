@@ -36,7 +36,7 @@ export function Header({ onGetEarlyAccess }: HeaderProps) {
         >
           <div className="relative h-10 w-10 sm:h-12 sm:w-12 flex-shrink-0">
             <Image
-              src="/tajirpoint-logo.png"
+              src="/tajirpoint-logo.webp"
               alt="TajirPoint Logo"
               fill
               className="object-contain"

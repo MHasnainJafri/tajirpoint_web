@@ -91,7 +91,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         { url: '/favicon.ico', sizes: 'any' },
         { url: '/icon.svg', type: 'image/svg+xml' },
         { url: '/icon-light-32x32.png', sizes: '32x32', type: 'image/png' },
-        { url: '/tajirpoint-logo.png', sizes: '192x192', type: 'image/png' },
+        { url: '/tajirpoint-logo.webp', sizes: '192x192', type: 'image/webp' },
       ],
       apple: [
         { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },

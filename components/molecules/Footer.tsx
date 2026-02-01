@@ -18,7 +18,6 @@ export function Footer() {
     ],
     [t('company')]: [
       { label: t('about'), href: '/about' },
-      { label: t('blog'), href: '/blog' },
       { label: t('contact'), href: '/contact' },
     ],
     [t('legal')]: [
@@ -42,7 +41,7 @@ export function Footer() {
           <div className="space-y-4">
             <a href="/" className="flex items-center space-x-2">
               <Image
-                src="/tajirpoint-logo.png"
+                src="/tajirpoint-logo.webp"
                 alt="TajirPoint"
                 width={32}
                 height={32}
