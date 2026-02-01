@@ -1,0 +1,27 @@
+{
+  "name": "TajirPoint - Cloud POS Solution",
+  "short_name": "TajirPoint",
+  "description": "All-in-one cloud-based POS software with inventory management, offline mode, and multi-language support.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#714B67",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/tajirpoint-logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/tajirpoint-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "utilities"],
+  "lang": "en",
+  "dir": "ltr"
+}
