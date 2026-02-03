@@ -238,6 +238,35 @@
       "description": "Read the terms and conditions for using TajirPoint services."
     }
   },
+  "featureShowcase": {
+    "title": "Streamline Your Business Operations",
+    "description": "TajirPoint is an all-in-one POS platform designed for modern businesses. From inventory tracking to customer management, handle everything from one powerful dashboard.",
+    "features": {
+      "inventory": {
+        "title": "Real-Time Inventory Management",
+        "description": "Track your <bold>stock levels automatically</bold> with smart alerts for low inventory. Manage multiple warehouses and sync across all your locations in real-time."
+      },
+      "analytics": {
+        "title": "Powerful Sales Analytics",
+        "description": "Get <bold>actionable insights</bold> with detailed reports on sales trends, best-selling products, and peak business hours. Make data-driven decisions effortlessly."
+      },
+      "customers": {
+        "title": "Customer Relationship Management",
+        "description": "Build lasting relationships with <bold>integrated CRM features</bold>. Track purchase history, manage loyalty programs, and send targeted promotions to boost repeat sales."
+      }
+    },
+    "cta": "START FREE TRIAL",
+    "ctaSubtext": "No obligations, no contracts, cancel at any time",
+    "screenshots": {
+      "dashboard": "Manage your entire business from one powerful dashboard",
+      "todaySales": "Today's Sales",
+      "orders": "Orders",
+      "quickSale": "Quick Sale",
+      "total": "Total",
+      "mobileApp": "Mobile App",
+      "salesGrowth": "Sales Growth"
+    }
+  },
   "waitlist": {
     "title": "Join the Waitlist",
     "successTitle": "You're on the List!",

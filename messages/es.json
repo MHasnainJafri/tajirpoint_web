@@ -228,6 +228,35 @@
       "description": "Lea los términos y condiciones para usar los servicios de TajirPoint."
     }
   },
+  "featureShowcase": {
+    "title": "Optimice las Operaciones de su Negocio",
+    "description": "TajirPoint es una plataforma POS todo en uno diseñada para negocios modernos. Desde seguimiento de inventario hasta gestión de clientes, maneje todo desde un potente panel de control.",
+    "features": {
+      "inventory": {
+        "title": "Gestión de Inventario en Tiempo Real",
+        "description": "Rastree sus <bold>niveles de stock automáticamente</bold> con alertas inteligentes para bajo inventario. Gestione múltiples almacenes y sincronice en todas sus ubicaciones en tiempo real."
+      },
+      "analytics": {
+        "title": "Análisis de Ventas Potente",
+        "description": "Obtenga <bold>información procesable</bold> con informes detallados sobre tendencias de ventas, productos más vendidos y horas pico. Tome decisiones basadas en datos sin esfuerzo."
+      },
+      "customers": {
+        "title": "Gestión de Relaciones con Clientes",
+        "description": "Construya relaciones duraderas con <bold>funciones CRM integradas</bold>. Rastree historial de compras, gestione programas de lealtad y envíe promociones dirigidas para impulsar ventas recurrentes."
+      }
+    },
+    "cta": "INICIAR PRUEBA GRATUITA",
+    "ctaSubtext": "Sin obligaciones, sin contratos, cancele en cualquier momento",
+    "screenshots": {
+      "dashboard": "Gestione todo su negocio desde un potente panel de control",
+      "todaySales": "Ventas de Hoy",
+      "orders": "Pedidos",
+      "quickSale": "Venta Rápida",
+      "total": "Total",
+      "mobileApp": "App Móvil",
+      "salesGrowth": "Crecimiento de Ventas"
+    }
+  },
   "waitlist": {
     "title": "Únase a la Lista de Espera",
     "successTitle": "¡Está en la Lista!",

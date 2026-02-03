@@ -6,6 +6,7 @@ import { HeroSection } from '@/components/sections/HeroSection';
 import { TrustBar } from '@/components/sections/TrustBar';
 import { VideoDemo } from '@/components/sections/VideoDemo';
 import { FeaturesSection } from '@/components/sections/FeaturesSection';
+import { FeatureShowcase } from '@/components/sections/FeatureShowcase';
 import { IndustryCategorySection } from '@/components/sections/IndustryCategorySection';
 import { Integrations } from '@/components/sections/Integrations';
 import { PricingSection } from '@/components/sections/PricingSection';
@@ -26,6 +27,7 @@ export default function Home() {
       <TrustBar />
       <VideoDemo />
       <FeaturesSection />
+      <FeatureShowcase />
       {/* <Integrations /> Hidden - no integrations yet */}
       <PricingSection onGetEarlyAccess={() => setIsModalOpen(true)} />
       <Testimonials />

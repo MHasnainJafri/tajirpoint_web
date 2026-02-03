@@ -228,6 +228,35 @@
       "description": "Lees de algemene voorwaarden voor het gebruik van TajirPoint diensten."
     }
   },
+  "featureShowcase": {
+    "title": "Stroomlijn Uw Bedrijfsprocessen",
+    "description": "TajirPoint is een alles-in-één POS-platform ontworpen voor moderne bedrijven. Van voorraadbeheer tot klantenbeheer, handel alles af vanuit één krachtig dashboard.",
+    "features": {
+      "inventory": {
+        "title": "Realtime Voorraadbeheer",
+        "description": "Volg uw <bold>voorraadniveaus automatisch</bold> met slimme waarschuwingen voor lage voorraad. Beheer meerdere magazijnen en synchroniseer over al uw locaties in realtime."
+      },
+      "analytics": {
+        "title": "Krachtige Verkoopanalyse",
+        "description": "Krijg <bold>bruikbare inzichten</bold> met gedetailleerde rapporten over verkooptrends, bestverkopende producten en piekuren. Neem moeiteloos datagestuurde beslissingen."
+      },
+      "customers": {
+        "title": "Klantrelatiebeheer",
+        "description": "Bouw duurzame relaties met <bold>geïntegreerde CRM-functies</bold>. Volg aankoopgeschiedenis, beheer loyaliteitsprogramma's en stuur gerichte promoties om herhalingsverkopen te stimuleren."
+      }
+    },
+    "cta": "START GRATIS PROEFPERIODE",
+    "ctaSubtext": "Geen verplichtingen, geen contracten, op elk moment opzeggen",
+    "screenshots": {
+      "dashboard": "Beheer uw hele bedrijf vanuit één krachtig dashboard",
+      "todaySales": "Verkoop Vandaag",
+      "orders": "Bestellingen",
+      "quickSale": "Snelle Verkoop",
+      "total": "Totaal",
+      "mobileApp": "Mobiele App",
+      "salesGrowth": "Verkoopgroei"
+    }
+  },
   "waitlist": {
     "title": "Schrijf je in voor de Wachtlijst",
     "successTitle": "Je staat op de Lijst!",
