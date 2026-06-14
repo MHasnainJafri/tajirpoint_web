@@ -15,7 +15,10 @@ export function Storefront() {
               get a website too.
             </h2>
             <p className="lead mt-8">
-              Every shop on Tajir gets a branded site at <b className="text-[var(--color-ink)] font-semibold">{"{shop}.tajirpoint.com"}</b> or your own domain. Block-built pages, themes, currency switcher, and a checkout that posts straight to your POS.
+              Every shop on Tajir gets a branded site at{" "}
+              <b className="text-[var(--color-ink)] font-semibold">{"{shop}.tajirpoint.com"}</b> or
+              your own domain. Block-built pages, themes, currency switcher, and a checkout that
+              posts straight to your POS.
             </p>
             <div className="flex flex-wrap gap-2 mt-6">
               {[
@@ -56,7 +59,7 @@ export function Storefront() {
               </div>
             </div>
             <div className="px-7 py-5 flex items-center gap-5 border-b border-[var(--color-line)]">
-              <span className="text-[15px] font-bold tracking-[-0.02em]">Aslam &amp; Sons</span>
+              <span className="text-[15px] font-bold tracking-[-0.02em]">Noor General Store</span>
               <div className="flex gap-5 ms-auto text-[13px] text-[var(--color-ink-3)] font-medium">
                 <span>Shop</span>
                 <span>About</span>
@@ -97,7 +100,9 @@ export function Storefront() {
                       }}
                     />
                     <div className="relative text-[12px] font-semibold">3-PC Suit</div>
-                    <div className="relative font-mono text-[11px] text-[var(--color-muted)]">Rs 6,890</div>
+                    <div className="relative font-mono text-[11px] text-[var(--color-muted)]">
+                      Rs 6,890
+                    </div>
                   </div>
                 ))}
               </div>

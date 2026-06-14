@@ -86,13 +86,13 @@ export async function Hero() {
             aria-label="Customer logos"
           >
             {[
-              { name: "Aslam & Sons" },
-              { name: "Karachi Sweets", italic: true },
-              { name: "SAPPHIRE LAWN" },
-              { name: "Hassan Traders" },
-              { name: "Cafe Aylanto", italic: true },
-              { name: "Al-Madina Mart" },
-              { name: "Dubai Gold Co." },
+              { name: "Noor General Store" },
+              { name: "Mehran Cash & Carry", italic: true },
+              { name: "City Mart" },
+              { name: "Khan Traders" },
+              { name: "Gulberg Grocers", italic: true },
+              { name: "Sunrise Mini Mart" },
+              { name: "Frontier Cash & Carry" },
             ].map((logo) => (
               <li
                 key={logo.name}

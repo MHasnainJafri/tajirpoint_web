@@ -6,11 +6,36 @@ import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils/cn";
 
 const queue = [
-  { icon: "↑", name: "Sale #A-2486", small: "Rs 2,059.20 · 3 line items", status: "QUEUED" as const },
-  { icon: "↑", name: "Khata payment · Hassan Traders", small: "Rs 8,000 advance", status: "QUEUED" as const },
-  { icon: "↕", name: "Stock transfer · Liaquat → Saddar", small: "14 SKUs in transit", status: "QUEUED" as const },
-  { icon: "✓", name: "Shift opened · Bilal A.", small: "Float Rs 5,000 · 09:14", status: "SYNCED" as const },
-  { icon: "✓", name: "GRN #G-1192 · Aslam & Sons", small: "32 cartons received", status: "SYNCED" as const },
+  {
+    icon: "↑",
+    name: "Sale #A-2486",
+    small: "Rs 2,059.20 · 3 line items",
+    status: "QUEUED" as const,
+  },
+  {
+    icon: "↑",
+    name: "Khata payment · Khan Traders",
+    small: "Rs 8,000 advance",
+    status: "QUEUED" as const,
+  },
+  {
+    icon: "↕",
+    name: "Stock transfer · Liaquat → Saddar",
+    small: "14 SKUs in transit",
+    status: "QUEUED" as const,
+  },
+  {
+    icon: "✓",
+    name: "Shift opened · Bilal A.",
+    small: "Float Rs 5,000 · 09:14",
+    status: "SYNCED" as const,
+  },
+  {
+    icon: "✓",
+    name: "GRN #G-1192 · Noor General Store",
+    small: "32 cartons received",
+    status: "SYNCED" as const,
+  },
 ];
 
 export function Offline() {
@@ -26,9 +51,9 @@ export function Offline() {
               internet. Always.
             </h2>
             <p className="lead mt-8">
-              When the cable drops, the cashier doesn&apos;t notice. Sales, inventory, customer ledgers,
-              receipts — all keep working. The moment you&apos;re back online, every change merges
-              perfectly. No duplicates. No lost sales. No conflicts to clean up.
+              When the cable drops, the cashier doesn&apos;t notice. Sales, inventory, customer
+              ledgers, receipts — all keep working. The moment you&apos;re back online, every change
+              merges perfectly. No duplicates. No lost sales. No conflicts to clean up.
             </p>
             <div className="flex flex-wrap gap-12 mt-10">
               <Stat title="Zero downtime" sub="at the counter, ever" />
@@ -95,7 +120,9 @@ export function Offline() {
 function Stat({ title, sub }: { title: string; sub: string }) {
   return (
     <div>
-      <b className="text-[42px] font-extrabold tracking-[-0.03em] text-white block leading-none">{title}</b>
+      <b className="text-[42px] font-extrabold tracking-[-0.03em] text-white block leading-none">
+        {title}
+      </b>
       <span className="text-[13px] text-white/55 mt-2 block">{sub}</span>
     </div>
   );

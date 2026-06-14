@@ -6,28 +6,69 @@ import { cn } from "@/lib/utils/cn";
 const features = [
   {
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="7" r="4"/><path d="M2 21a10 10 0 0120 0"/></svg>
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
+        <circle cx="12" cy="7" r="4" />
+        <path d="M2 21a10 10 0 0120 0" />
+      </svg>
     ),
     title: "Customer ledgers",
     body: "Every customer's running balance updates instantly. Always exact, always live, never out of sync.",
   },
   {
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <path d="M8 12h8M12 8v8" />
+      </svg>
     ),
     title: "Credit limits",
     body: "Warn or block at sale time. Advances allocate cleanly against open invoices.",
   },
   {
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 3v18h18"/><path d="M7 14l3-3 4 4 5-7"/></svg>
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
+        <path d="M3 3v18h18" />
+        <path d="M7 14l3-3 4 4 5-7" />
+      </svg>
     ),
     title: "Aging reports",
     body: "0–30 / 31–60 / 61–90 / 90+ buckets. Statements printable in three languages.",
   },
   {
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="6" cy="17" r="3"/><circle cx="17" cy="17" r="3"/><path d="M2 5h11l3 12M14 8h6l1 5"/></svg>
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
+        <circle cx="6" cy="17" r="3" />
+        <circle cx="17" cy="17" r="3" />
+        <path d="M2 5h11l3 12M14 8h6l1 5" />
+      </svg>
     ),
     title: "Supplier ledger",
     body: "PO → GRN → invoice → payment. Returns, advances, allocations — one trail.",
@@ -35,10 +76,34 @@ const features = [
 ];
 
 const ledgerRows = [
-  { date: "2026-05-08", desc: "Invoice INV-4421", ref: "Sale · 14 SKUs · GST", debit: "28,400.00", credit: "" },
-  { date: "2026-05-04", desc: "Payment received", ref: "Cash · alloc INV-4380", debit: "", credit: "15,000.00" },
-  { date: "2026-04-29", desc: "Sale return SR-118", ref: "Credit note issued", debit: "", credit: "2,200.00" },
-  { date: "2026-04-22", desc: "Invoice INV-4380", ref: "Sale · 21 SKUs · GST", debit: "42,600.00", credit: "" },
+  {
+    date: "2026-05-08",
+    desc: "Invoice INV-4421",
+    ref: "Sale · 14 SKUs · GST",
+    debit: "28,400.00",
+    credit: "",
+  },
+  {
+    date: "2026-05-04",
+    desc: "Payment received",
+    ref: "Cash · alloc INV-4380",
+    debit: "",
+    credit: "15,000.00",
+  },
+  {
+    date: "2026-04-29",
+    desc: "Sale return SR-118",
+    ref: "Credit note issued",
+    debit: "",
+    credit: "2,200.00",
+  },
+  {
+    date: "2026-04-22",
+    desc: "Invoice INV-4380",
+    ref: "Sale · 21 SKUs · GST",
+    debit: "42,600.00",
+    credit: "",
+  },
 ];
 
 export function Khata() {
@@ -83,11 +148,16 @@ export function Khata() {
           >
             <div className="px-7 py-6 border-b border-[var(--color-line)] flex items-center justify-between">
               <div className="flex items-center gap-3.5">
-                <div className="w-[42px] h-[42px] rounded-xl text-white font-bold text-[16px] flex items-center justify-center" style={{ background: "linear-gradient(135deg, var(--color-mint), var(--color-forest))" }}>
+                <div
+                  className="w-[42px] h-[42px] rounded-xl text-white font-bold text-[16px] flex items-center justify-center"
+                  style={{
+                    background: "linear-gradient(135deg, var(--color-mint), var(--color-forest))",
+                  }}
+                >
                   HT
                 </div>
                 <div>
-                  <h5 className="text-[15.5px] font-semibold">Hassan Traders</h5>
+                  <h5 className="text-[15.5px] font-semibold">Khan Traders</h5>
                   <small className="text-[12.5px] text-[var(--color-muted-2)] block mt-0.5">
                     Customer · Liaquat Road · since Mar 2024
                   </small>
@@ -103,7 +173,9 @@ export function Khata() {
               </div>
               <div className="text-[46px] font-extrabold tracking-[-0.035em] mt-2 flex items-baseline gap-2">
                 Rs 142,800.00
-                <small className="text-[14px] text-[var(--color-muted-2)] font-medium font-mono">· PKR</small>
+                <small className="text-[14px] text-[var(--color-muted-2)] font-medium font-mono">
+                  · PKR
+                </small>
               </div>
               <div className="inline-flex gap-1.5 px-2.5 py-1 rounded-full bg-[#fee2e2] text-[#b91c1c] text-[12px] font-semibold mt-2.5">
                 ▾ 31–60 days · 7 invoices open
@@ -133,7 +205,9 @@ export function Khata() {
                     </td>
                     <td className="py-3.5 px-7 border-b border-[var(--color-line)] align-top">
                       <div className="font-semibold text-[13.5px]">{r.desc}</div>
-                      <div className="font-mono text-[11.5px] text-[var(--color-muted-2)] mt-0.5">{r.ref}</div>
+                      <div className="font-mono text-[11.5px] text-[var(--color-muted-2)] mt-0.5">
+                        {r.ref}
+                      </div>
                     </td>
                     <td className="py-3.5 px-7 border-b border-[var(--color-line)] align-top text-right font-mono font-semibold text-[#b91c1c]">
                       {r.debit}
@@ -159,4 +233,3 @@ export function Khata() {
     </Section>
   );
 }
-

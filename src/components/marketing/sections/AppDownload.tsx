@@ -153,9 +153,9 @@ function PhoneStack() {
             <div className="text-[12px] text-white/55 mt-1">Karachi · Saddar route</div>
             <div className="mt-5 flex flex-col gap-2">
               {[
-                { name: "Aslam & Sons", st: "Delivered · 11:14", icon: "✓", done: true },
-                { name: "Hassan Traders", st: "In progress", icon: "↑", active: true },
-                { name: "Karachi Sweets", st: "", icon: "3", muted: true },
+                { name: "Noor General Store", st: "Delivered · 11:14", icon: "✓", done: true },
+                { name: "Khan Traders", st: "In progress", icon: "↑", active: true },
+                { name: "City Mart", st: "", icon: "3", muted: true },
               ].map((row, i) => (
                 <div
                   key={i}
