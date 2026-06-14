@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "solutions": "Solutions",
+    "platform": "Platform",
+    "hardware": "Hardware",
+    "extensions": "Extensions",
+    "pricing": "Pricing",
+    "signIn": "Sign in",
+    "bookDemo": "Book a demo"
+  },
+  "hero": {
+    "eyebrow": "The merchant operating system",
+    "headline": "Your whole business.",
+    "highlight": "One platform.",
+    "subhead": "POS, inventory, khata ledger, and storefront — all in one place. For merchants in Pakistan, UAE, and Saudi Arabia. Three languages, every device.",
+    "startFree": "Start free",
+    "bookDemo": "Book a demo",
+    "stats": {
+      "madeForLabel": "Made for",
+      "madeForValue": "Pakistan, UAE, KSA",
+      "languagesLabel": "Languages",
+      "languagesValue": "EN · UR · AR",
+      "offlineLabel": "Works without",
+      "offlineValue": "internet too",
+      "appsLabel": "Apps",
+      "appsValue": "iOS · Android · Desktop"
+    },
+    "trustedBy": "Trusted by independent merchants across Pakistan and the Gulf"
+  },
+  "footer": {
+    "tagline": "The all-in-one business platform for merchants in South Asia and the Gulf. Tri-lingual, built for your market.",
+    "madeIn": "Made in Karachi · Lahore · Dubai."
+  },
+  "common": {
+    "skipToContent": "Skip to main content"
+  }
+}

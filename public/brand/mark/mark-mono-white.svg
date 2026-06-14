@@ -1,0 +1,14 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Tajir">
+  <circle cx="78" cy="42" r="6" fill="#FFFFFF"></circle>
+  <circle cx="98" cy="42" r="6" fill="#FFFFFF"></circle>
+  <path d="M158 62 L158 110" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" fill="none"></path>
+  <path d="M158 62 L42 62" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" fill="none"></path>
+  <path d="M42 62 Q 22 62 22 96" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" fill="none"></path>
+  <path d="M30 80 Q 30 132 80 134 L130 134 Q 168 132 168 96" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+  <path d="M48 100 L150 100" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.35"></path>
+  <path d="M58 116 L142 116" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.35"></path>
+  <circle cx="62" cy="160" r="14" fill="#FFFFFF"></circle>
+  <circle cx="62" cy="160" r="5" fill="#FFFFFF"></circle>
+  <circle cx="138" cy="160" r="14" fill="#FFFFFF"></circle>
+  <circle cx="138" cy="160" r="5" fill="#FFFFFF"></circle>
+</svg>

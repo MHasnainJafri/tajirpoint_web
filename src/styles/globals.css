@@ -1,0 +1,181 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@source "../**/*.{js,ts,jsx,tsx,mdx}";
+
+/* =====================================================================
+   Tajir Point — Design tokens
+   Mirrors the design source 1:1. Components reference tokens, never raw hex.
+   ===================================================================== */
+
+@theme {
+  /* ── Fonts ─────────────────────────────────────────────────────── */
+  --font-sans: var(--font-geist), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-arabic: var(--font-reem-kufi), system-ui, sans-serif;
+
+  /* ── Radii ─────────────────────────────────────────────────────── */
+  --radius-sm: 14px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-2xl: 40px;
+
+  /* ── Container ─────────────────────────────────────────────────── */
+  --container-wrap: 1320px;
+  --container-tight: 1140px;
+
+  /* ── Breakpoints (aligned with design) ─────────────────────────── */
+  --breakpoint-md: 720px;
+  --breakpoint-lg: 1101px;
+
+  /* ── Animations ────────────────────────────────────────────────── */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-rev: float 7s ease-in-out infinite reverse;
+  --animate-float-3: float3 8s ease-in-out -2s infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  @keyframes float3 {
+    0%, 100% { transform: translateY(-50%); }
+    50% { transform: translateY(calc(-50% - 14px)); }
+  }
+}
+
+/* ── Color tokens — source-of-truth values from design ──────────── */
+:root {
+  /* Neutrals */
+  --color-bg: #ffffff;
+  --color-bg-2: #fafafa;
+  --color-bg-3: #f4f4f3;
+  --color-line: #ebebea;
+  --color-line-2: #e0e0df;
+
+  /* Ink */
+  --color-ink: #0a0a0a;
+  --color-ink-2: #1a1a1a;
+  --color-ink-3: #262626;
+  --color-muted: #525252;
+  --color-muted-2: #737373;
+  --color-muted-3: #a3a3a3;
+
+  /* Brand greens */
+  --color-forest: #0e3b2c;
+  --color-forest-2: #0a2a20;
+  --color-emerald: #1f8a5b;
+
+  /* Mint accent */
+  --color-mint: #00d27a;
+  --color-mint-soft: #e7faf0;
+  --color-mint-hover: #00b86a;
+
+  /* Hot accents */
+  --color-amber: #f59e0b;
+  --color-berry: #dc2626;
+}
+
+/* ── Base ──────────────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+  line-height: 1.5;
+  font-feature-settings: "ss01", "cv11";
+}
+
+@layer base {
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    margin: 0;
+    color: var(--color-ink);
+    text-wrap: balance;
+  }
+
+  p { margin: 0; text-wrap: pretty; }
+}
+
+/* ── Display type scale ────────────────────────────────────────── */
+.display-1 {
+  font-size: clamp(48px, 8.4vw, 124px);
+  line-height: 0.94;
+  letter-spacing: -0.045em;
+  font-weight: 800;
+}
+.display-2 {
+  font-size: clamp(40px, 6vw, 88px);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+}
+.display-3 {
+  font-size: clamp(32px, 4.4vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+}
+.lead {
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--color-muted);
+  max-width: 640px;
+}
+
+/* On dark sections, the H1-H4 colour switches to white via the .section-dark wrapper */
+.section-dark .lead { color: rgba(255, 255, 255, 0.68); }
+.section-dark h1,
+.section-dark h2,
+.section-dark h3,
+.section-dark h4 { color: #fff; }
+
+/* ── Skip link ─────────────────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  width: auto;
+  height: auto;
+  padding: 12px 18px;
+  background: var(--color-ink);
+  color: #fff;
+  border-radius: 999px;
+  z-index: 100;
+}
+
+/* ── Visible focus rings (override browser default) ────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-mint);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ── Reduced motion ────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
