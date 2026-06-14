@@ -8,6 +8,14 @@ const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
   globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts", "node_modules/**"]),
+  {
+    rules: {
+      // Apostrophes / quotes in marketing copy render correctly in JSX; this
+      // rule is pure noise on a content-heavy site. Turning it off so lint
+      // surfaces real problems instead of 26 false positives.
+      "react/no-unescaped-entities": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;
