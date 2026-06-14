@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 import { Container } from "@/components/shared/Container";
 import { Lockup } from "@/components/brand/Lockup";
+import { NewsletterForm } from "@/components/marketing/NewsletterForm";
 import { siteConfig } from "@/lib/config/site";
 
 const SOCIAL = [
@@ -89,20 +90,7 @@ export async function Footer() {
               <p className="text-[13px] font-semibold text-white mb-3">
                 Product updates straight to your inbox
               </p>
-              <form action="mailto:hello@tajirpoint.com" method="GET" className="flex gap-2">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="you@business.com"
-                  className="flex-1 h-[42px] px-4 rounded-full bg-white/[0.06] border border-white/[0.1] text-[13.5px] text-white placeholder:text-white/30 focus:outline-none focus:border-[var(--color-mint)] transition"
-                />
-                <button
-                  type="submit"
-                  className="h-[42px] px-5 rounded-full bg-[var(--color-mint)] text-[var(--color-ink)] text-[13px] font-semibold hover:opacity-90 transition-opacity whitespace-nowrap"
-                >
-                  Subscribe
-                </button>
-              </form>
+              <NewsletterForm />
               <p className="mt-2 text-[11.5px] text-white/30">No spam. Unsubscribe any time.</p>
             </div>
           </div>
@@ -120,7 +108,10 @@ export async function Footer() {
               <ul className="flex flex-col gap-3" role="list">
                 {group.links.map((link) => (
                   <li key={link.label} className="text-[13.5px]">
-                    <Link href={link.href} className="text-white/50 hover:text-white transition-colors">
+                    <Link
+                      href={link.href}
+                      className="text-white/50 hover:text-white transition-colors"
+                    >
                       {link.label}
                     </Link>
                   </li>
@@ -136,7 +127,9 @@ export async function Footer() {
         <Container>
           <div className="py-6 flex flex-wrap items-center justify-between gap-3 text-[12.5px] text-white/30">
             <div className="flex items-center gap-3">
-              <span>© {new Date().getFullYear()} {siteConfig.name}.</span>
+              <span>
+                © {new Date().getFullYear()} {siteConfig.name}.
+              </span>
               <span className="hidden sm:inline">{t("madeIn")}</span>
               <span className="hidden sm:inline text-white/15">·</span>
               <a
@@ -146,12 +139,16 @@ export async function Footer() {
                 className="hidden sm:inline-flex items-center gap-1.5 hover:text-white transition-colors"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-mint)] inline-block" />
-                All systems operational
+                System status
               </a>
             </div>
             <div className="flex gap-5">
               {siteConfig.nav.legal.map((link) => (
-                <Link key={link.label} href={link.href} className="hover:text-white transition-colors">
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="hover:text-white transition-colors"
+                >
                   {link.label}
                 </Link>
               ))}
