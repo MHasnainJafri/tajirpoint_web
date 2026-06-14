@@ -8,60 +8,39 @@ export const metadata: Metadata = buildMetadata({
   path: "/extensions",
 });
 
-const AVAILABLE = [
-  {
-    id: "jazzcash",
-    name: "JazzCash",
-    category: "Payments",
-    status: "live" as const,
-    tagline: "Mobile wallet payments at the counter and on your Storefront",
-    body: "Accept QR-based JazzCash payments instantly. Every transaction auto-reconciles to your daily till — no manual matching.",
-    features: ["QR code at POS", "Storefront checkout", "Auto-reconciliation", "Real-time confirmation"],
-    iconBg: "#dc2127",
-    iconFg: "#fff",
-    iconText: "JC",
-    badgeColor: "#dc2127",
-  },
-  {
-    id: "fbr",
-    name: "FBR Submission",
-    category: "Compliance",
-    status: "live" as const,
-    tagline: "Real-time Federal Board of Revenue e-invoicing for Pakistan",
-    body: "Every sale is transmitted to FBR in real time. POS-IRN generation, e-invoicing, Annex-C export, and full audit trail — all automatic.",
-    features: ["POS-IRN generation", "Real-time transmission", "Annex-C export", "Audit trail"],
-    iconBg: "var(--color-ink)",
-    iconFg: "var(--color-mint)",
-    iconText: "FBR",
-    badgeColor: "var(--color-ink)",
-  },
-  {
-    id: "bulk-importer",
-    name: "Bulk Importer",
-    category: "Migration",
-    status: "live" as const,
-    tagline: "Import your entire product catalog and customer list in minutes",
-    body: "Upload a CSV or Excel file with your products, prices, stock levels, and customer accounts. Tajir Point maps the columns and imports everything in one step.",
-    features: ["CSV & Excel support", "Products & inventory", "Customer accounts", "Khata balances"],
-    iconBg: "var(--color-bg-3)",
-    iconFg: "var(--color-ink)",
-    iconText: "↓",
-    badgeColor: "var(--color-ink)",
-  },
-  {
-    id: "whatsapp",
-    name: "WhatsApp & Twilio",
-    category: "Messaging",
-    status: "live" as const,
-    tagline: "Send receipts, payment reminders, and order updates via WhatsApp",
-    body: "Connect Twilio to send branded WhatsApp messages. Customers get digital receipts the moment they pay — and automatic reminders when khata dues are overdue.",
-    features: ["Digital receipts", "Due reminders", "Order updates", "Branded templates"],
-    iconBg: "#25d366",
-    iconFg: "#fff",
-    iconText: "WA",
-    badgeColor: "#25d366",
-  },
-];
+// Server-side so the bundle stays clean and there's no CORS.
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://api.tajirpoint.com";
+
+type Extension = {
+  slug: string;
+  name: string;
+  category: string;
+  category_label: string;
+  tagline: string;
+  description: string;
+  icon_url: string;
+  is_free: boolean;
+  features: string[];
+};
+
+// Live catalog from the backend — only extensions enabled in the product show
+// up here, so toggling one off in the DB removes it from this page too.
+async function getExtensions(): Promise<Extension[]> {
+  try {
+    const res = await fetch(`${API_BASE}/api/v1/public/extensions/`, {
+      next: { revalidate: 300 },
+    });
+    if (!res.ok) return [];
+    const data = await res.json();
+    return (data.results ?? []) as Extension[];
+  } catch {
+    return [];
+  }
+}
+
+function initials(name: string): string {
+  return name.replace(/[^A-Za-z]/g, "").slice(0, 2).toUpperCase() || "EX";
+}
 
 const COMING_SOON_PAYMENTS = [
   { name: "Stripe", sub: "Card-present & online" },
@@ -81,12 +60,9 @@ const INTEGRATIONS = [
   { name: "Zapier", sub: "No-code automation", icon: "Z" },
 ];
 
-const STATUS_BADGE: Record<"live" | "soon", { label: string; classes: string }> = {
-  live:  { label: "Live",        classes: "bg-[var(--color-mint)]/15 text-[#009955]" },
-  soon:  { label: "Coming soon", classes: "bg-gray-100 text-gray-500" },
-};
+export default async function ExtensionsPage() {
+  const extensions = await getExtensions();
 
-export default function ExtensionsPage() {
   return (
     <main id="main-content" className="min-h-screen bg-[var(--color-bg)]">
       {/* Hero */}
@@ -107,52 +83,56 @@ export default function ExtensionsPage() {
         </div>
       </section>
 
-      {/* Available extensions */}
+      {/* Available extensions — live from the backend catalog */}
       <section className="pb-20 lg:pb-28">
         <div className="mx-auto max-w-[1320px] px-7 lg:px-10">
           <h2 className="text-[13px] font-bold tracking-[0.08em] uppercase text-[var(--color-muted-2)] mb-8">
             Available now
           </h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            {AVAILABLE.map((ext) => {
-              const badge = STATUS_BADGE[ext.status];
-              return (
+          {extensions.length === 0 ? (
+            <p className="text-[15px] text-[var(--color-muted)]">
+              Our extension catalog is loading — please check back shortly.
+            </p>
+          ) : (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+              {extensions.map((ext) => (
                 <article
-                  key={ext.id}
+                  key={ext.slug}
                   className="rounded-[24px] border border-[var(--color-line)] bg-[var(--color-bg-2)] p-7 lg:p-8 flex flex-col hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-200"
                 >
                   <div className="flex items-start justify-between mb-6">
                     <div className="flex items-center gap-3">
-                      <div
-                        className="w-11 h-11 rounded-[12px] flex items-center justify-center text-[12px] font-extrabold shrink-0"
-                        style={{ background: ext.iconBg, color: ext.iconFg }}
-                      >
-                        {ext.iconText}
+                      <div className="w-11 h-11 rounded-[12px] flex items-center justify-center text-[12px] font-extrabold shrink-0 bg-[var(--color-ink)] text-[var(--color-mint)]">
+                        {initials(ext.name)}
                       </div>
                       <div>
                         <div className="font-extrabold text-[17px] text-[var(--color-ink)]">{ext.name}</div>
-                        <div className="text-[12px] text-[var(--color-muted)]">{ext.category}</div>
+                        <div className="text-[12px] text-[var(--color-muted)]">{ext.category_label}</div>
                       </div>
                     </div>
-                    <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full ${badge.classes}`}>
-                      {badge.label}
+                    <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-[var(--color-mint)]/15 text-[#009955]">
+                      Live
                     </span>
                   </div>
 
-                  <p className="text-[14.5px] font-semibold text-[var(--color-ink)] mb-2 leading-[1.4]">{ext.tagline}</p>
-                  <p className="text-[14px] text-[var(--color-muted)] leading-[1.65] flex-1">{ext.body}</p>
+                  {ext.tagline && (
+                    <p className="text-[14.5px] font-semibold text-[var(--color-ink)] mb-2 leading-[1.4]">{ext.tagline}</p>
+                  )}
+                  <p className="text-[14px] text-[var(--color-muted)] leading-[1.65] flex-1">{ext.description}</p>
 
-                  <div className="mt-5 pt-5 border-t border-[var(--color-line)] flex flex-wrap gap-1.5">
-                    {ext.features.map((f) => (
-                      <span
-                        key={f}
-                        className="flex items-center gap-1.5 text-[12px] font-medium text-[var(--color-ink-3)]"
-                      >
-                        <span className="w-3.5 h-3.5 rounded-full bg-[var(--color-mint)]/15 flex items-center justify-center text-[var(--color-mint)] text-[8px] font-bold shrink-0">✓</span>
-                        {f}
-                      </span>
-                    ))}
-                  </div>
+                  {ext.features?.length > 0 && (
+                    <div className="mt-5 pt-5 border-t border-[var(--color-line)] flex flex-wrap gap-1.5">
+                      {ext.features.map((f) => (
+                        <span
+                          key={f}
+                          className="flex items-center gap-1.5 text-[12px] font-medium text-[var(--color-ink-3)]"
+                        >
+                          <span className="w-3.5 h-3.5 rounded-full bg-[var(--color-mint)]/15 flex items-center justify-center text-[var(--color-mint)] text-[8px] font-bold shrink-0">✓</span>
+                          {f}
+                        </span>
+                      ))}
+                    </div>
+                  )}
 
                   <div className="mt-5">
                     <a
@@ -165,9 +145,9 @@ export default function ExtensionsPage() {
                     </a>
                   </div>
                 </article>
-              );
-            })}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

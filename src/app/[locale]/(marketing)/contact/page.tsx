@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { ContactForm } from "./ContactForm";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contact Tajir Point — Talk to Our Team",
@@ -115,75 +116,7 @@ export default function ContactPage() {
               <h2 className="text-[28px] lg:text-[36px] font-extrabold tracking-[-0.035em] text-[var(--color-ink)] mb-8">
                 Send us a message
               </h2>
-              <form className="flex flex-col gap-5" action="mailto:hello@tajirpoint.com" method="GET">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="name" className="text-[13.5px] font-semibold text-[var(--color-ink)]">Name</label>
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      required
-                      placeholder="Your full name"
-                      className="h-[48px] px-4 rounded-[12px] border border-[var(--color-line)] bg-white text-[14.5px] text-[var(--color-ink)] placeholder:text-[var(--color-muted-2)] focus:outline-none focus:border-[var(--color-mint)] focus:ring-2 focus:ring-[var(--color-mint)]/20 transition"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="email" className="text-[13.5px] font-semibold text-[var(--color-ink)]">Email</label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      placeholder="you@example.com"
-                      className="h-[48px] px-4 rounded-[12px] border border-[var(--color-line)] bg-white text-[14.5px] text-[var(--color-ink)] placeholder:text-[var(--color-muted-2)] focus:outline-none focus:border-[var(--color-mint)] focus:ring-2 focus:ring-[var(--color-mint)]/20 transition"
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="business" className="text-[13.5px] font-semibold text-[var(--color-ink)]">Business type</label>
-                  <select
-                    id="business"
-                    name="business"
-                    className="h-[48px] px-4 rounded-[12px] border border-[var(--color-line)] bg-white text-[14.5px] text-[var(--color-ink)] focus:outline-none focus:border-[var(--color-mint)] focus:ring-2 focus:ring-[var(--color-mint)]/20 transition"
-                  >
-                    <option value="">Select your business type</option>
-                    <option>General retail / Kiryana</option>
-                    <option>Restaurant / Food</option>
-                    <option>Electronics / Mobile</option>
-                    <option>Services / Salon</option>
-                    <option>Distributor / Wholesale</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="subject" className="text-[13.5px] font-semibold text-[var(--color-ink)]">Subject</label>
-                  <input
-                    id="subject"
-                    name="subject"
-                    type="text"
-                    placeholder="How can we help?"
-                    className="h-[48px] px-4 rounded-[12px] border border-[var(--color-line)] bg-white text-[14.5px] text-[var(--color-ink)] placeholder:text-[var(--color-muted-2)] focus:outline-none focus:border-[var(--color-mint)] focus:ring-2 focus:ring-[var(--color-mint)]/20 transition"
-                  />
-                </div>
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="message" className="text-[13.5px] font-semibold text-[var(--color-ink)]">Message</label>
-                  <textarea
-                    id="message"
-                    name="body"
-                    rows={5}
-                    required
-                    placeholder="Tell us more about your business and how we can help..."
-                    className="px-4 py-3 rounded-[12px] border border-[var(--color-line)] bg-white text-[14.5px] text-[var(--color-ink)] placeholder:text-[var(--color-muted-2)] focus:outline-none focus:border-[var(--color-mint)] focus:ring-2 focus:ring-[var(--color-mint)]/20 transition resize-none"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="self-start inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[var(--color-ink)] text-white text-[15px] font-semibold hover:opacity-90 transition-opacity"
-                >
-                  Send message →
-                </button>
-              </form>
+              <ContactForm />
             </div>
 
             {/* Offices */}
