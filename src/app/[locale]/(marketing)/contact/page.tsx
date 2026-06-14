@@ -1,20 +1,31 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { ContactForm } from "./ContactForm";
 
 export const metadata: Metadata = buildMetadata({
   title: "Contact Tajir Point — Talk to Our Team",
-  description: "Get in touch with the Tajir Point team. Book a demo, ask about pricing, or get support. We're here to help merchants in Pakistan, UAE, and Saudi Arabia.",
+  description:
+    "Get in touch with the Tajir Point team. Book a demo, ask about pricing, or get support. We're here to help merchants in Pakistan, UAE, and Saudi Arabia.",
   path: "/contact",
 });
 
 const CONTACT_OPTIONS = [
   {
     icon: (
-      <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+      <svg
+        width="22"
+        height="22"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+        />
       </svg>
     ),
     title: "Email us",
@@ -24,8 +35,19 @@ const CONTACT_OPTIONS = [
   },
   {
     icon: (
-      <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z" />
+      <svg
+        width="22"
+        height="22"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z"
+        />
       </svg>
     ),
     title: "Live chat",
@@ -35,8 +57,19 @@ const CONTACT_OPTIONS = [
   },
   {
     icon: (
-      <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+      <svg
+        width="22"
+        height="22"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
+        />
       </svg>
     ),
     title: "Book a demo",
@@ -46,8 +79,19 @@ const CONTACT_OPTIONS = [
   },
   {
     icon: (
-      <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+      <svg
+        width="22"
+        height="22"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth="1.8"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
+        />
       </svg>
     ),
     title: "Documentation",
@@ -58,7 +102,12 @@ const CONTACT_OPTIONS = [
 ];
 
 const OFFICES = [
-  { city: "Karachi", country: "Pakistan", flag: "🇵🇰", address: "Shaheed-e-Millat Road, PECHS, Karachi 75400" },
+  {
+    city: "Karachi",
+    country: "Pakistan",
+    flag: "🇵🇰",
+    address: "Shaheed-e-Millat Road, PECHS, Karachi 75400",
+  },
   { city: "Dubai", country: "UAE", flag: "🇦🇪", address: "Dubai Silicon Oasis, Dubai, UAE" },
 ];
 
@@ -73,12 +122,13 @@ export default function ContactPage() {
             Get in touch
           </span>
           <h1 className="text-[44px] lg:text-[64px] font-extrabold tracking-[-0.04em] leading-[1.05] text-[var(--color-ink)]">
-            We'd love to hear
+            We&apos;d love to hear
             <br />
             from you.
           </h1>
           <p className="mt-5 text-[17px] text-[var(--color-muted)] leading-[1.65] max-w-[500px]">
-            Whether you have a question about features, pricing, need a demo, or just want to say hello — we're ready.
+            Whether you have a question about features, pricing, need a demo, or just want to say
+            hello — we&apos;re ready.
           </p>
         </div>
       </section>
@@ -99,8 +149,12 @@ export default function ContactPage() {
                   {opt.icon}
                 </div>
                 <div>
-                  <div className="font-bold text-[15px] text-[var(--color-ink)] mb-1">{opt.title}</div>
-                  <div className="text-[13.5px] text-[var(--color-muted)] leading-[1.5]">{opt.desc}</div>
+                  <div className="font-bold text-[15px] text-[var(--color-ink)] mb-1">
+                    {opt.title}
+                  </div>
+                  <div className="text-[13.5px] text-[var(--color-muted)] leading-[1.5]">
+                    {opt.desc}
+                  </div>
                 </div>
                 <div className="mt-auto text-[13.5px] font-semibold text-[var(--color-mint)] group-hover:underline underline-offset-2">
                   {opt.action}
@@ -121,7 +175,9 @@ export default function ContactPage() {
 
             {/* Offices */}
             <div className="lg:pt-2">
-              <h2 className="text-[20px] font-bold tracking-[-0.02em] text-[var(--color-ink)] mb-6">Our offices</h2>
+              <h2 className="text-[20px] font-bold tracking-[-0.02em] text-[var(--color-ink)] mb-6">
+                Our offices
+              </h2>
               <div className="flex flex-col gap-4 mb-10">
                 {OFFICES.map((o) => (
                   <div
@@ -130,20 +186,37 @@ export default function ContactPage() {
                   >
                     <div className="flex items-center gap-2.5 mb-2">
                       <span className="text-xl">{o.flag}</span>
-                      <span className="font-bold text-[15px] text-[var(--color-ink)]">{o.city}</span>
-                      <span className="text-[12px] text-[var(--color-muted)] border border-[var(--color-line)] rounded-full px-2.5 py-0.5">{o.country}</span>
+                      <span className="font-bold text-[15px] text-[var(--color-ink)]">
+                        {o.city}
+                      </span>
+                      <span className="text-[12px] text-[var(--color-muted)] border border-[var(--color-line)] rounded-full px-2.5 py-0.5">
+                        {o.country}
+                      </span>
                     </div>
-                    <p className="text-[13.5px] text-[var(--color-muted)] leading-[1.5]">{o.address}</p>
+                    <p className="text-[13.5px] text-[var(--color-muted)] leading-[1.5]">
+                      {o.address}
+                    </p>
                   </div>
                 ))}
               </div>
 
               <div className="rounded-[16px] border border-[var(--color-line)] bg-[var(--color-bg-2)] p-5">
-                <h3 className="font-bold text-[15px] text-[var(--color-ink)] mb-2">Support hours</h3>
+                <h3 className="font-bold text-[15px] text-[var(--color-ink)] mb-2">
+                  Support hours
+                </h3>
                 <ul className="flex flex-col gap-1.5 text-[13.5px] text-[var(--color-muted)]">
-                  <li className="flex justify-between"><span>Pakistan (PKT)</span><span className="font-medium text-[var(--color-ink)]">9am – 6pm, Mon–Sat</span></li>
-                  <li className="flex justify-between"><span>UAE (GST)</span><span className="font-medium text-[var(--color-ink)]">9am – 6pm, Mon–Fri</span></li>
-                  <li className="flex justify-between"><span>Email</span><span className="font-medium text-[var(--color-ink)]">24h response SLA</span></li>
+                  <li className="flex justify-between">
+                    <span>Pakistan (PKT)</span>
+                    <span className="font-medium text-[var(--color-ink)]">9am – 6pm, Mon–Sat</span>
+                  </li>
+                  <li className="flex justify-between">
+                    <span>UAE (GST)</span>
+                    <span className="font-medium text-[var(--color-ink)]">9am – 6pm, Mon–Fri</span>
+                  </li>
+                  <li className="flex justify-between">
+                    <span>Email</span>
+                    <span className="font-medium text-[var(--color-ink)]">24h response SLA</span>
+                  </li>
                 </ul>
               </div>
 
