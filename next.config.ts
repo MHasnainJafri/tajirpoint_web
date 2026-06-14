@@ -20,12 +20,6 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
   },
-  // ESLint is advisory here (run it in CI), not a deploy gate — otherwise a
-  // single unescaped apostrophe in marketing copy blocks the whole build.
-  // TypeScript still gates the build (typescript.ignoreBuildErrors stays off).
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   async headers() {
     return [
       {
