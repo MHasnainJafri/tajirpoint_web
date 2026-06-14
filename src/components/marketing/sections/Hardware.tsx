@@ -1,35 +1,30 @@
+import { Printer, ScanBarcode, Tablet, Wallet } from "lucide-react";
 import { Section } from "@/components/shared/Section";
 import { Container } from "@/components/shared/Container";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Eyebrow } from "@/components/shared/Eyebrow";
 
-const I = (path: React.ReactNode) => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    {path}
-  </svg>
-);
-
 const items = [
   {
-    icon: I(<><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 6v12M11 6v12M15 6v12"/></>),
+    icon: <ScanBarcode size={22} />,
     name: "Barcode scanners",
     desc: "1D / 2D, USB or BLE. We test and stock the dependable ones — no surprises at the counter.",
     protocol: "USB · HID · BLE",
   },
   {
-    icon: I(<><path d="M6 9V4h12v5"/><rect x="2" y="9" width="20" height="9" rx="2"/><rect x="6" y="14" width="12" height="8"/></>),
+    icon: <Printer size={22} />,
     name: "Thermal printers",
     desc: "80mm and 58mm receipts, kitchen printers, label printers — auto-detected, native print.",
     protocol: "ESC/POS · USB · LAN",
   },
   {
-    icon: I(<><rect x="2" y="7" width="20" height="11" rx="1"/><path d="M2 11h20M7 14h2"/></>),
+    icon: <Wallet size={22} />,
     name: "Cash drawers",
     desc: "Kick-out from the receipt printer. Multi-tray support. Clean reconciliation at shift close.",
     protocol: "RJ-11 kick · USB",
   },
   {
-    icon: I(<><rect x="3" y="5" width="18" height="11" rx="2"/><path d="M8 20h8M12 16v4"/></>),
+    icon: <Tablet size={22} />,
     name: "Customer displays",
     desc: "Show running total, scan-in items, payment confirmation. Display-2 series + custom branding.",
     protocol: "Display-2 · Serial · USB",
@@ -63,7 +58,9 @@ export function Hardware() {
               </div>
               <h5 className="text-[17px] font-semibold tracking-[-0.015em]">{it.name}</h5>
               <p className="text-[13.5px] text-[var(--color-muted)] leading-[1.5]">{it.desc}</p>
-              <div className="font-mono text-[11px] text-[var(--color-muted-2)] mt-auto">{it.protocol}</div>
+              <div className="font-mono text-[11px] text-[var(--color-muted-2)] mt-auto">
+                {it.protocol}
+              </div>
             </div>
           ))}
         </div>

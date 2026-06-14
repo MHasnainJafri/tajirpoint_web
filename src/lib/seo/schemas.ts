@@ -2,10 +2,8 @@ import type {
   Organization,
   WebSite,
   SoftwareApplication,
-  Article,
   BreadcrumbList,
   FAQPage,
-  ItemList,
   WithContext,
 } from "schema-dts";
 import { siteConfig } from "@/lib/config/site";
@@ -21,13 +19,15 @@ export function organizationSchema(): WithContext<Organization> {
     description: siteConfig.description,
     logo: {
       "@type": "ImageObject",
-      url: `${siteConfig.url}/logo.png`,
+      url: `${siteConfig.url}/brand/mark/mark-on-white.svg`,
     } as any,
     sameAs: Object.values(siteConfig.social),
     contactPoint: [
       {
         "@type": "ContactPoint",
         contactType: "sales",
+        telephone: "+923446800893",
+        email: "hello@tajirpoint.com",
         url: `${siteConfig.url}/contact`,
         availableLanguage: ["English", "Urdu", "Arabic"],
       },
@@ -82,43 +82,18 @@ export function softwareApplicationSchema(): WithContext<SoftwareApplication> {
         name: "Growth",
         price: "12000",
         priceCurrency: "PKR",
-        description: "Up to 5 branches, 15 users — full feature set including KDS, custom domain, and advanced reports",
+        description:
+          "Up to 5 branches, 15 users — full feature set including KDS, custom domain, and advanced reports",
         url: `${siteConfig.url}/pricing`,
       },
       {
         "@type": "Offer",
         name: "Enterprise",
-        description: "Unlimited branches, SSO, dedicated success manager, custom SLA — contact for pricing",
+        description:
+          "Unlimited branches, SSO, dedicated success manager, custom SLA — contact for pricing",
         url: `${siteConfig.url}/contact`,
       },
     ] as any,
-  };
-}
-
-export function articleSchema(opts: {
-  title: string;
-  description: string;
-  publishedAt: string;
-  updatedAt?: string;
-  authorName: string;
-  url: string;
-  imageUrl?: string;
-}): WithContext<Article> {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: opts.title,
-    description: opts.description,
-    datePublished: opts.publishedAt,
-    dateModified: opts.updatedAt ?? opts.publishedAt,
-    author: { "@type": "Person", name: opts.authorName },
-    publisher: {
-      "@type": "Organization",
-      name: siteConfig.name,
-      logo: { "@type": "ImageObject", url: `${siteConfig.url}/logo.png` },
-    },
-    url: opts.url,
-    ...(opts.imageUrl && { image: opts.imageUrl }),
   };
 }
 
@@ -147,24 +122,6 @@ export function faqSchema(
       "@type": "Question",
       name: q.question,
       acceptedAnswer: { "@type": "Answer", text: q.answer },
-    })),
-  };
-}
-
-export function blogListingSchema(
-  posts: Array<{ title: string; url: string; description: string }>
-): WithContext<ItemList> {
-  return {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: `${siteConfig.name} Blog`,
-    description: "Insights, product updates, and merchant stories from the Tajir Point team.",
-    url: `${siteConfig.url}/blog`,
-    itemListElement: posts.map((post, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      url: post.url,
-      name: post.title,
     })),
   };
 }

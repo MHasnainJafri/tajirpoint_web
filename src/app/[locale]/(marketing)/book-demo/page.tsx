@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Check } from "lucide-react";
 import { siteConfig } from "@/lib/config/site";
 
 export const metadata: Metadata = {
@@ -36,15 +37,7 @@ export default function BookDemoPage() {
               ].map(([title, desc]) => (
                 <li key={title} className="flex items-start gap-3.5">
                   <span className="mt-0.5 shrink-0 w-5 h-5 rounded-full bg-[var(--color-mint)]/15 flex items-center justify-center">
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                      <path
-                        d="M1.5 5l2.5 2.5 4.5-5"
-                        stroke="var(--color-mint)"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                    <Check size={12} color="var(--color-mint)" strokeWidth={2.5} />
                   </span>
                   <div>
                     <span className="text-[15px] font-semibold text-[var(--color-ink)]">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CakeSlice, CalendarClock, Smartphone, Store, Truck, UtensilsCrossed } from "lucide-react";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildMetadata({
@@ -17,21 +18,7 @@ const VERTICALS = [
     body: "Fast checkout, barcode scanning, multi-unit pricing, and a built-in digital ledger for credit customers. Works on any Android device, even with no internet.",
     tags: ["Barcode scanner", "Credit khata", "FBR e-invoice", "Multi-unit pricing", "Offline POS"],
     href: "/solutions/general-retail",
-    icon: (
-      <svg
-        width="28"
-        height="28"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M3 8l1.5-4h15L21 8M3 8h18v12H3z" />
-        <path d="M9 13h6" />
-      </svg>
-    ),
+    icon: <Store size={28} strokeWidth={1.8} />,
     accentColor: "var(--color-mint)",
   },
   {
@@ -41,21 +28,7 @@ const VERTICALS = [
     body: "Table management, Kitchen Display System, modifier groups, split bills, and driver dispatch — from a single counter to a multi-branch chain.",
     tags: ["Table management", "KDS", "Modifiers", "Split bill", "Delivery dispatch"],
     href: "/solutions/restaurants",
-    icon: (
-      <svg
-        width="28"
-        height="28"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M3 11h18l-2 9H5l-2-9z" />
-        <path d="M8 11V6a4 4 0 018 0v5" />
-      </svg>
-    ),
+    icon: <UtensilsCrossed size={28} strokeWidth={1.8} />,
     accentColor: "#f97316",
   },
   {
@@ -71,21 +44,7 @@ const VERTICALS = [
       "Supplier ledger",
     ],
     href: "/solutions/electronics",
-    icon: (
-      <svg
-        width="28"
-        height="28"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <rect x="6" y="2" width="12" height="20" rx="2" />
-        <path d="M11 19h2" />
-      </svg>
-    ),
+    icon: <Smartphone size={28} strokeWidth={1.8} />,
     accentColor: "#6366f1",
   },
   {
@@ -101,21 +60,7 @@ const VERTICALS = [
       "Customer history",
     ],
     href: "/solutions/services",
-    icon: (
-      <svg
-        width="28"
-        height="28"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <circle cx="12" cy="12" r="9" />
-        <path d="M12 7v5l3 2" />
-      </svg>
-    ),
+    icon: <CalendarClock size={28} strokeWidth={1.8} />,
     accentColor: "#0ea5e9",
   },
   {
@@ -125,21 +70,7 @@ const VERTICALS = [
     body: "Production recipes, batch tracking, modifier add-ons, daily production planning, and waste monitoring — for shops where every ingredient counts.",
     tags: ["Production recipes", "Batch tracking", "Modifiers", "Daily planning", "Waste log"],
     href: "/solutions/restaurants",
-    icon: (
-      <svg
-        width="28"
-        height="28"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M3 3l3 18h12l3-18" />
-        <path d="M5 8h14" />
-      </svg>
-    ),
+    icon: <CakeSlice size={28} strokeWidth={1.8} />,
     accentColor: "#ec4899",
   },
   {
@@ -149,22 +80,7 @@ const VERTICALS = [
     body: "Route planning, driver dispatch, proof-of-delivery, purchase orders, supplier payables, and multi-warehouse inventory across branches.",
     tags: ["Route planning", "Driver dispatch", "Purchase orders", "Multi-warehouse", "Payables"],
     href: "/solutions/distributors",
-    icon: (
-      <svg
-        width="28"
-        height="28"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <circle cx="6" cy="18" r="3" />
-        <circle cx="18" cy="18" r="3" />
-        <path d="M2 4h3l3 11h11l3-9H7" />
-      </svg>
-    ),
+    icon: <Truck size={28} strokeWidth={1.8} />,
     accentColor: "#14b8a6",
   },
 ];
@@ -381,7 +297,7 @@ export default function SolutionsPage() {
             <span className="text-2xl">🌍</span>
             <div>
               <span className="font-semibold text-[14px] text-[var(--color-ink)]">
-                Bangladesh coming Q3 2025
+                Bangladesh — coming soon
               </span>
               <span className="text-[13.5px] text-[var(--color-muted)] ms-2">
                 with NBR compliance and bKash payments.

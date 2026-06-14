@@ -77,29 +77,33 @@ export async function Hero() {
         </div>
 
         <div className="lg:[grid-area:strip] mt-12 pt-12 border-t border-[var(--color-line)]">
-          <p className="text-[13px] text-[var(--color-muted-2)] text-center mb-8 tracking-[0.04em]">
+          <p className="text-[11.5px] font-medium uppercase tracking-[0.16em] text-[var(--color-muted-2)] text-center mb-7">
             {t("trustedBy")}
           </p>
           <ul
-            className="flex flex-wrap items-center justify-between gap-12 opacity-70"
+            className="flex flex-wrap items-center justify-center gap-y-3"
             role="list"
-            aria-label="Customer logos"
+            aria-label="Representative merchants using Tajir Point"
           >
             {[
-              { name: "Noor General Store" },
-              { name: "Mehran Cash & Carry", italic: true },
-              { name: "City Mart" },
-              { name: "Khan Traders" },
-              { name: "Gulberg Grocers", italic: true },
-              { name: "Sunrise Mini Mart" },
-              { name: "Frontier Cash & Carry" },
-            ].map((logo) => (
-              <li
-                key={logo.name}
-                className="text-[22px] font-bold tracking-[-0.02em] text-[var(--color-ink-3)]"
-                style={logo.italic ? { fontStyle: "italic", fontWeight: 500 } : undefined}
-              >
-                {logo.name}
+              "Noor General Store",
+              "Mehran Cash & Carry",
+              "City Mart",
+              "Khan Traders",
+              "Gulberg Grocers",
+              "Sunrise Mini Mart",
+              "Frontier Cash & Carry",
+            ].map((name, i) => (
+              <li key={name} className="flex items-center">
+                {i > 0 && (
+                  <span
+                    className="mx-5 hidden h-1 w-1 rounded-full bg-[var(--color-line)] sm:inline-block"
+                    aria-hidden="true"
+                  />
+                )}
+                <span className="whitespace-nowrap text-[15px] font-semibold tracking-[-0.01em] text-[var(--color-ink-3)]">
+                  {name}
+                </span>
               </li>
             ))}
           </ul>

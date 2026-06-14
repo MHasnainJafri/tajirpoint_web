@@ -7,7 +7,7 @@ export const siteConfig = {
   tagline: "Run your shop. Everywhere.",
   locale: "en",
 
-  ogImage: "/og-default.png",
+  ogImage: "/og.png",
   twitterHandle: "@tajirpoint",
 
   // External links
@@ -38,7 +38,6 @@ export const siteConfig = {
         heading: "Company",
         links: [
           { label: "About", href: "/about" },
-          { label: "Blog", href: "/blog" },
           { label: "Contact", href: "/contact" },
         ],
       },
@@ -53,7 +52,7 @@ export const siteConfig = {
 
   social: {
     youtube: "https://youtube.com/@tajirpoint",
-    whatsapp: "https://wa.me/923001234567",
+    whatsapp: "https://wa.me/923446800893",
     facebook: "https://facebook.com/tajirpoint",
     instagram: "https://instagram.com/tajirpoint",
     tiktok: "https://tiktok.com/@tajirpoint",

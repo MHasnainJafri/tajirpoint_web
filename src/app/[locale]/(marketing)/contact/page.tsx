@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BookOpen, CalendarDays, Mail, MessageCircle } from "lucide-react";
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { ContactForm } from "./ContactForm";
@@ -12,88 +13,28 @@ export const metadata: Metadata = buildMetadata({
 
 const CONTACT_OPTIONS = [
   {
-    icon: (
-      <svg
-        width="22"
-        height="22"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth="1.8"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
-        />
-      </svg>
-    ),
+    icon: <Mail size={22} strokeWidth={1.8} />,
     title: "Email us",
     desc: "We reply within 24 hours on business days",
     action: "hello@tajirpoint.com",
     href: "mailto:hello@tajirpoint.com",
   },
   {
-    icon: (
-      <svg
-        width="22"
-        height="22"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth="1.8"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.923 1.785A5.969 5.969 0 006 21c1.282 0 2.47-.402 3.445-1.087.81.22 1.668.337 2.555.337z"
-        />
-      </svg>
-    ),
+    icon: <MessageCircle size={22} strokeWidth={1.8} />,
     title: "Live chat",
     desc: "Chat with our team right from the dashboard",
     action: "Open chat →",
     href: siteConfig.dashboardUrl,
   },
   {
-    icon: (
-      <svg
-        width="22"
-        height="22"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth="1.8"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
-        />
-      </svg>
-    ),
+    icon: <CalendarDays size={22} strokeWidth={1.8} />,
     title: "Book a demo",
     desc: "30-minute live walkthrough with our team",
     action: "Schedule a call →",
     href: "/book-demo",
   },
   {
-    icon: (
-      <svg
-        width="22"
-        height="22"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth="1.8"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
-        />
-      </svg>
-    ),
+    icon: <BookOpen size={22} strokeWidth={1.8} />,
     title: "Documentation",
     desc: "Self-serve guides, API reference, and tutorials",
     action: "Browse docs →",
@@ -224,9 +165,10 @@ export default function ContactPage() {
                 <p className="text-[13px] text-[var(--color-muted)] mb-3">Follow us</p>
                 <div className="flex gap-3">
                   {[
-                    { label: "Twitter", href: "https://twitter.com/tajirpoint" },
-                    { label: "LinkedIn", href: "https://linkedin.com/company/tajirpoint" },
-                    { label: "GitHub", href: "https://github.com/tajirpoint" },
+                    { label: "YouTube", href: siteConfig.social.youtube },
+                    { label: "Facebook", href: siteConfig.social.facebook },
+                    { label: "Instagram", href: siteConfig.social.instagram },
+                    { label: "TikTok", href: siteConfig.social.tiktok },
                   ].map((s) => (
                     <a
                       key={s.label}

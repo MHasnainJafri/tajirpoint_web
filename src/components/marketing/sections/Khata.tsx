@@ -1,3 +1,4 @@
+import { BarChart3, BookUser, CircleDollarSign, Truck } from "lucide-react";
 import { Section } from "@/components/shared/Section";
 import { Container } from "@/components/shared/Container";
 import { Eyebrow } from "@/components/shared/Eyebrow";
@@ -5,71 +6,22 @@ import { cn } from "@/lib/utils/cn";
 
 const features = [
   {
-    icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-      >
-        <circle cx="12" cy="7" r="4" />
-        <path d="M2 21a10 10 0 0120 0" />
-      </svg>
-    ),
+    icon: <BookUser size={20} />,
     title: "Customer ledgers",
     body: "Every customer's running balance updates instantly. Always exact, always live, never out of sync.",
   },
   {
-    icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M8 12h8M12 8v8" />
-      </svg>
-    ),
+    icon: <CircleDollarSign size={20} />,
     title: "Credit limits",
     body: "Warn or block at sale time. Advances allocate cleanly against open invoices.",
   },
   {
-    icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-      >
-        <path d="M3 3v18h18" />
-        <path d="M7 14l3-3 4 4 5-7" />
-      </svg>
-    ),
+    icon: <BarChart3 size={20} />,
     title: "Aging reports",
     body: "0–30 / 31–60 / 61–90 / 90+ buckets. Statements printable in three languages.",
   },
   {
-    icon: (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-      >
-        <circle cx="6" cy="17" r="3" />
-        <circle cx="17" cy="17" r="3" />
-        <path d="M2 5h11l3 12M14 8h6l1 5" />
-      </svg>
-    ),
+    icon: <Truck size={20} />,
     title: "Supplier ledger",
     body: "PO → GRN → invoice → payment. Returns, advances, allocations — one trail.",
   },

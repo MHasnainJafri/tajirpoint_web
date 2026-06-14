@@ -32,11 +32,11 @@ const VALUES = [
   },
 ];
 
-const STATS = [
-  { value: "12,000+", label: "Active merchants" },
-  { value: "3", label: "Countries" },
-  { value: "3", label: "Languages" },
-  { value: "99.9%", label: "Uptime SLA" },
+const HIGHLIGHTS = [
+  { value: "Pakistan · UAE · Saudi Arabia", label: "Built for the region" },
+  { value: "English · اردو · العربية", label: "Tri-lingual by default" },
+  { value: "Works offline", label: "No internet required" },
+  { value: "One price", label: "Every module included" },
 ];
 
 export default function AboutPage() {
@@ -60,9 +60,9 @@ export default function AboutPage() {
             compliance needs.
           </p>
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-white/[0.08]">
-            {STATS.map((s) => (
+            {HIGHLIGHTS.map((s) => (
               <div key={s.label}>
-                <div className="text-[42px] font-extrabold tracking-[-0.04em] text-white leading-none">
+                <div className="text-[20px] font-extrabold tracking-[-0.02em] text-white leading-tight">
                   {s.value}
                 </div>
                 <div className="mt-1.5 text-[14px] text-white/55">{s.label}</div>

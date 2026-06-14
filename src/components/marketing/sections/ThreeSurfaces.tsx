@@ -1,3 +1,4 @@
+import { Search, ShieldCheck, ShoppingBag } from "lucide-react";
 import { Section } from "@/components/shared/Section";
 import { Container } from "@/components/shared/Container";
 import { SectionHeader } from "@/components/shared/SectionHeader";
@@ -8,9 +9,7 @@ export function ThreeSurfaces() {
   return (
     <Section id="platform">
       <Container>
-        <SectionHeader
-          right="Tajir isn't three tools wired together. It's one system with three faces — POS, ERP, and a public storefront — sharing one inventory, one ledger, one customer record."
-        >
+        <SectionHeader right="Tajir isn't three tools wired together. It's one system with three faces — POS, ERP, and a public storefront — sharing one inventory, one ledger, one customer record.">
           <Eyebrow>One platform · three surfaces</Eyebrow>
           <h2 className="display-2">
             Counter, kitchen,
@@ -47,14 +46,14 @@ export function ThreeSurfaces() {
             badge="Tajir Cloud"
             title="Bank-grade data, all yours."
             body="Your business data is private, encrypted, and isolated — even across multiple stores or branches. We carry the security so you carry the receipts."
-            pills={["Encrypted", "Daily backups", "99.95% uptime"]}
+            pills={["Encrypted", "Daily backups", "99.9% uptime"]}
             visual={
               <div className="flex flex-col items-center justify-center gap-3.5 h-full">
-                <div className="w-16 h-16 rounded-[18px] flex items-center justify-center" style={{ background: "rgba(0,210,122,0.14)" }}>
-                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#00d27a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 2 4 6v6c0 5 3.5 9.4 8 10 4.5-.6 8-5 8-10V6l-8-4z" />
-                    <path d="m9 12 2 2 4-4" />
-                  </svg>
+                <div
+                  className="w-16 h-16 rounded-[18px] flex items-center justify-center"
+                  style={{ background: "rgba(0,210,122,0.14)" }}
+                >
+                  <ShieldCheck size={30} color="#00d27a" />
                 </div>
                 <div className="flex gap-6 text-[11.5px] text-white/70 font-medium">
                   <span>· Private per shop</span>
@@ -82,32 +81,64 @@ export function ThreeSurfaces() {
                 <div className="flex-1 bg-white flex flex-col overflow-hidden">
                   {/* Store nav */}
                   <div className="flex items-center justify-between px-3 py-2 border-b border-[var(--color-line)]">
-                    <span className="font-bold text-[12px] tracking-tight text-[var(--color-ink)]">Al‑Madina Store</span>
+                    <span className="font-bold text-[12px] tracking-tight text-[var(--color-ink)]">
+                      Al‑Madina Store
+                    </span>
                     <div className="flex gap-2 text-[var(--color-muted-2)]">
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"><circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" /></svg>
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" /><line x1="3" y1="6" x2="21" y2="6" /><path d="M16 10a4 4 0 01-8 0" /></svg>
+                      <Search size={13} strokeWidth={2.2} />
+                      <ShoppingBag size={13} strokeWidth={2.2} />
                     </div>
                   </div>
                   {/* Hero banner */}
-                  <div className="mx-2.5 mt-2 rounded-[8px] px-3 py-2.5 flex items-center justify-between" style={{ background: "rgba(0,210,122,0.10)" }}>
+                  <div
+                    className="mx-2.5 mt-2 rounded-[8px] px-3 py-2.5 flex items-center justify-between"
+                    style={{ background: "rgba(0,210,122,0.10)" }}
+                  >
                     <div>
-                      <div className="text-[10.5px] font-bold text-[var(--color-ink)] leading-none">Eid Sale — 20% off</div>
-                      <div className="text-[9px] text-[var(--color-muted)] mt-0.5">All beverages & snacks</div>
+                      <div className="text-[10.5px] font-bold text-[var(--color-ink)] leading-none">
+                        Eid Sale — 20% off
+                      </div>
+                      <div className="text-[9px] text-[var(--color-muted)] mt-0.5">
+                        All beverages & snacks
+                      </div>
                     </div>
-                    <div className="px-2 py-1 rounded-full bg-[var(--color-ink)] text-white text-[8px] font-bold">Shop now</div>
+                    <div className="px-2 py-1 rounded-full bg-[var(--color-ink)] text-white text-[8px] font-bold">
+                      Shop now
+                    </div>
                   </div>
                   {/* Product grid */}
                   <div className="grid grid-cols-3 gap-1.5 px-2.5 mt-2 flex-1">
                     {[
-                      { name: "Pepsi 1.5L",   price: "Rs 100", bg: "#f0f9ff" },
-                      { name: "Lays BBQ",      price: "Rs 40",  bg: "var(--color-mint-soft)", accent: true },
-                      { name: "Tropicana",     price: "Rs 150", bg: "#fef9ee" },
+                      { name: "Pepsi 1.5L", price: "Rs 100", bg: "#f0f9ff" },
+                      {
+                        name: "Lays BBQ",
+                        price: "Rs 40",
+                        bg: "var(--color-mint-soft)",
+                        accent: true,
+                      },
+                      { name: "Tropicana", price: "Rs 150", bg: "#fef9ee" },
                     ].map((prod) => (
-                      <div key={prod.name} className="rounded-[8px] overflow-hidden" style={{ background: prod.bg }}>
-                        <div className="aspect-square w-full" style={{ background: prod.accent ? "rgba(0,210,122,0.18)" : "rgba(0,0,0,0.04)" }} />
+                      <div
+                        key={prod.name}
+                        className="rounded-[8px] overflow-hidden"
+                        style={{ background: prod.bg }}
+                      >
+                        <div
+                          className="aspect-square w-full"
+                          style={{
+                            background: prod.accent ? "rgba(0,210,122,0.18)" : "rgba(0,0,0,0.04)",
+                          }}
+                        />
                         <div className="px-1.5 py-1">
-                          <div className="text-[8.5px] font-semibold text-[var(--color-ink)] truncate leading-tight">{prod.name}</div>
-                          <div className="text-[8px] font-bold mt-px" style={{ color: "var(--color-mint)" }}>{prod.price}</div>
+                          <div className="text-[8.5px] font-semibold text-[var(--color-ink)] truncate leading-tight">
+                            {prod.name}
+                          </div>
+                          <div
+                            className="text-[8px] font-bold mt-px"
+                            style={{ color: "var(--color-mint)" }}
+                          >
+                            {prod.price}
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -147,10 +178,20 @@ function SurfCard({ badge, title, body, pills, visual, featured }: SurfCardProps
       >
         {badge}
       </div>
-      <h3 className={cn("text-[30px] tracking-[-0.03em] mb-3 leading-[1.05]", featured && "text-white")}>
+      <h3
+        className={cn(
+          "text-[30px] tracking-[-0.03em] mb-3 leading-[1.05]",
+          featured && "text-white"
+        )}
+      >
         {title}
       </h3>
-      <p className={cn("text-[15.5px] leading-[1.55] max-w-[300px]", featured ? "text-white/65" : "text-[var(--color-muted)]")}>
+      <p
+        className={cn(
+          "text-[15.5px] leading-[1.55] max-w-[300px]",
+          featured ? "text-white/65" : "text-[var(--color-muted)]"
+        )}
+      >
         {body}
       </p>
       <div className="mt-auto pt-9">
@@ -160,7 +201,9 @@ function SurfCard({ badge, title, body, pills, visual, featured }: SurfCardProps
               key={p}
               className={cn(
                 "inline-flex px-2.5 py-1 rounded-full text-[11px] font-semibold",
-                featured ? "bg-white/[0.08] text-white" : "bg-[var(--color-bg-3)] text-[var(--color-ink)]"
+                featured
+                  ? "bg-white/[0.08] text-white"
+                  : "bg-[var(--color-bg-3)] text-[var(--color-ink)]"
               )}
             >
               {p}
