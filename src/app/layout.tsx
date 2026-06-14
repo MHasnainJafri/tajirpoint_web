@@ -64,15 +64,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     .join(" ");
 
   return (
-    <html
-      lang={locale}
-      dir={dir}
-      className={fontClasses}
-      suppressHydrationWarning
-    >
+    <html lang={locale} dir={dir} className={fontClasses} suppressHydrationWarning>
       <head>
         {/* Warm up connections to external domains hit on first meaningful interaction */}
-        <link rel="preconnect" href="https://dashboard.tajirpoint.com" />
+        <link rel="preconnect" href="https://app.tajirpoint.com" />
         <link rel="preconnect" href="https://calendly.com" />
         <link rel="dns-prefetch" href="https://calendly.com" />
         <JsonLd schema={[organizationSchema(), websiteSchema()]} />
@@ -81,9 +76,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        <NextIntlClientProvider messages={messages}>
-          {children}
-        </NextIntlClientProvider>
+        <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
       </body>
     </html>
   );

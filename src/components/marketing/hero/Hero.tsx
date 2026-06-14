@@ -35,10 +35,7 @@ export async function Hero() {
       >
         <div className="lg:[grid-area:headline]">
           <Eyebrow withDot>{t("eyebrow")}</Eyebrow>
-          <h1
-            id="hero-heading"
-            className="display-1 mt-6 lg:!text-[clamp(60px,6.4vw,108px)]"
-          >
+          <h1 id="hero-heading" className="display-1 mt-6 lg:!text-[clamp(60px,6.4vw,108px)]">
             {t("headline")}
             <br />
             <span className="relative inline-block">
@@ -57,7 +54,7 @@ export async function Hero() {
           </p>
           <div className="flex flex-wrap gap-3">
             <Button asChild variant="primary">
-              <a href="https://dashboard.tajirpoint.com/signup" target="_blank" rel="noopener noreferrer">
+              <a href="https://app.tajirpoint.com/signup" target="_blank" rel="noopener noreferrer">
                 {t("startFree")} <span className="arrow">→</span>
               </a>
             </Button>
@@ -115,7 +112,9 @@ export async function Hero() {
 function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex flex-col gap-1">
-      <b className="text-[14px] font-semibold text-[var(--color-ink)] tracking-[-0.01em]">{value}</b>
+      <b className="text-[14px] font-semibold text-[var(--color-ink)] tracking-[-0.01em]">
+        {value}
+      </b>
       <span className="text-[13px] text-[var(--color-muted-2)]">{label}</span>
     </div>
   );

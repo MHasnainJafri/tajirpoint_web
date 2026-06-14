@@ -11,52 +11,52 @@ export const siteConfig = {
   twitterHandle: "@tajirpoint",
 
   // External links
-  dashboardUrl: "https://dashboard.tajirpoint.com",
-  signupUrl:    "https://dashboard.tajirpoint.com/signup",
-  calendlyUrl:  "https://calendly.com/tajirpoint/demo",
-  docsUrl:      "https://docs.tajirpoint.com",
-  statusUrl:    "https://status.tajirpoint.com",
+  dashboardUrl: "https://app.tajirpoint.com",
+  signupUrl: "https://app.tajirpoint.com/signup",
+  calendlyUrl: "https://calendly.com/mhasnainjafri/tajir-point",
+  docsUrl: "https://docs.tajirpoint.com",
+  statusUrl: "https://status.tajirpoint.com",
 
   nav: {
     main: [
-      { label: "Solutions",  href: "/solutions",  mega: "business"   },
+      { label: "Solutions", href: "/solutions", mega: "business" },
       { label: "Extensions", href: "/extensions", mega: "extensions" },
-      { label: "Pricing",    href: "/pricing"                        },
+      { label: "Pricing", href: "/pricing" },
     ],
     footer: [
       {
         heading: "Solutions",
         links: [
           { label: "General Retail", href: "/solutions/general-retail" },
-          { label: "Restaurants",    href: "/solutions/restaurants"    },
-          { label: "Electronics",    href: "/solutions/electronics"    },
-          { label: "Services",       href: "/solutions/services"       },
-          { label: "Distributors",   href: "/solutions/distributors"   },
+          { label: "Restaurants", href: "/solutions/restaurants" },
+          { label: "Electronics", href: "/solutions/electronics" },
+          { label: "Services", href: "/solutions/services" },
+          { label: "Distributors", href: "/solutions/distributors" },
         ],
       },
       {
         heading: "Company",
         links: [
-          { label: "About",   href: "/about"   },
-          { label: "Blog",    href: "/blog"    },
+          { label: "About", href: "/about" },
+          { label: "Blog", href: "/blog" },
           { label: "Contact", href: "/contact" },
         ],
       },
     ],
     legal: [
-      { label: "Privacy",       href: "/privacy"       },
-      { label: "Terms",         href: "/terms"         },
-      { label: "Data Privacy",  href: "/data-privacy"  },
+      { label: "Privacy", href: "/privacy" },
+      { label: "Terms", href: "/terms" },
+      { label: "Data Privacy", href: "/data-privacy" },
       { label: "Data Security", href: "/data-security" },
     ],
   },
 
   social: {
-    youtube:   "https://youtube.com/@tajirpoint",
-    whatsapp:  "https://wa.me/923001234567",
-    facebook:  "https://facebook.com/tajirpoint",
+    youtube: "https://youtube.com/@tajirpoint",
+    whatsapp: "https://wa.me/923001234567",
+    facebook: "https://facebook.com/tajirpoint",
     instagram: "https://instagram.com/tajirpoint",
-    tiktok:    "https://tiktok.com/@tajirpoint",
+    tiktok: "https://tiktok.com/@tajirpoint",
   },
 } as const;
 

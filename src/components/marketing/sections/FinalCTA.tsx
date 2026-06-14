@@ -38,7 +38,7 @@ export function FinalCTA() {
       </p>
       <div className="flex gap-3 mt-10 flex-wrap relative z-[2]">
         <Button asChild variant="mint">
-          <a href="https://dashboard.tajirpoint.com/signup" target="_blank" rel="noopener noreferrer">
+          <a href="https://app.tajirpoint.com/signup" target="_blank" rel="noopener noreferrer">
             Start free <span className="arrow">→</span>
           </a>
         </Button>

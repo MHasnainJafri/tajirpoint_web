@@ -30,7 +30,7 @@ const tiers: Tier[] = [
       "FBR submission",
       "Email support",
     ],
-    cta: { label: "Start free", href: "https://dashboard.tajirpoint.com/signup", variant: "soft" },
+    cta: { label: "Start free", href: "https://app.tajirpoint.com/signup", variant: "soft" },
   },
   {
     name: "Growth",
@@ -45,7 +45,7 @@ const tiers: Tier[] = [
       "Custom domain",
       "Priority chat support",
     ],
-    cta: { label: "Start free", href: "https://dashboard.tajirpoint.com/signup", variant: "mint" },
+    cta: { label: "Start free", href: "https://app.tajirpoint.com/signup", variant: "mint" },
     featured: true,
     ribbon: "Most popular",
   },
@@ -84,7 +84,9 @@ export function Pricing() {
               key={t.name}
               className={cn(
                 "p-9 px-9 rounded-[32px] flex flex-col relative transition-[background,transform] duration-200 hover:-translate-y-1",
-                t.featured ? "bg-[var(--color-ink)] text-white/[0.78] hover:bg-[#0f0f0f]" : "bg-[var(--color-bg-2)]"
+                t.featured
+                  ? "bg-[var(--color-ink)] text-white/[0.78] hover:bg-[#0f0f0f]"
+                  : "bg-[var(--color-bg-2)]"
               )}
             >
               {t.ribbon && (
@@ -92,10 +94,20 @@ export function Pricing() {
                   {t.ribbon}
                 </span>
               )}
-              <div className={cn("text-[24px] font-bold tracking-[-0.025em]", t.featured && "text-white")}>
+              <div
+                className={cn(
+                  "text-[24px] font-bold tracking-[-0.025em]",
+                  t.featured && "text-white"
+                )}
+              >
                 {t.name}
               </div>
-              <div className={cn("mt-2 text-[14px]", t.featured ? "text-white/65" : "text-[var(--color-muted-2)]")}>
+              <div
+                className={cn(
+                  "mt-2 text-[14px]",
+                  t.featured ? "text-white/65" : "text-[var(--color-muted-2)]"
+                )}
+              >
                 {t.desc}
               </div>
               <div className="mt-8 flex items-baseline gap-2">
@@ -108,7 +120,12 @@ export function Pricing() {
                   {t.price}
                 </span>
                 {t.per && (
-                  <span className={cn("text-[13.5px]", t.featured ? "text-white/65" : "text-[var(--color-muted-2)]")}>
+                  <span
+                    className={cn(
+                      "text-[13.5px]",
+                      t.featured ? "text-white/65" : "text-[var(--color-muted-2)]"
+                    )}
+                  >
                     {t.per}
                   </span>
                 )}
@@ -132,7 +149,10 @@ export function Pricing() {
                   </li>
                 ))}
               </ul>
-              <Button asChild variant={t.cta.variant === "ghost" && t.featured ? "dark-ghost" : t.cta.variant}>
+              <Button
+                asChild
+                variant={t.cta.variant === "ghost" && t.featured ? "dark-ghost" : t.cta.variant}
+              >
                 <Link href={t.cta.href}>
                   {t.cta.label}
                   {t.cta.variant === "mint" && <span className="arrow">→</span>}

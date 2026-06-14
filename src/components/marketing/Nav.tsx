@@ -32,9 +32,9 @@ export function Nav() {
 
   // Desktop nav items — mega items also have href for click navigation
   const navItems: Array<{ label: string; mega?: MegaKey; href: string }> = [
-    { label: t("solutions"),  mega: "business",    href: "/solutions"  },
-    { label: t("extensions"), mega: "extensions",  href: "/extensions" },
-    { label: t("pricing"),                         href: "/pricing"    },
+    { label: t("solutions"), mega: "business", href: "/solutions" },
+    { label: t("extensions"), mega: "extensions", href: "/extensions" },
+    { label: t("pricing"), href: "/pricing" },
   ];
 
   const open = (id: MegaKey) => {
@@ -150,7 +150,13 @@ export function Nav() {
                 {currentLang.label[0]}
               </span>
               {currentLang.label}
-              <span className={cn("text-[9px] opacity-45 transition-transform", langOpen && "rotate-180")} aria-hidden="true">
+              <span
+                className={cn(
+                  "text-[9px] opacity-45 transition-transform",
+                  langOpen && "rotate-180"
+                )}
+                aria-hidden="true"
+              >
                 ▾
               </span>
             </button>
@@ -173,10 +179,15 @@ export function Nav() {
                           : "text-[var(--color-muted)] hover:bg-[var(--color-bg-3)] hover:text-[var(--color-ink)]"
                       )}
                     >
-                      <span className="w-5 text-center font-mono text-[11px] opacity-60">{l.label}</span>
+                      <span className="w-5 text-center font-mono text-[11px] opacity-60">
+                        {l.label}
+                      </span>
                       <span>{l.native}</span>
                       {l.code === locale && (
-                        <span className="ms-auto w-1.5 h-1.5 rounded-full bg-[var(--color-mint)]" aria-hidden="true" />
+                        <span
+                          className="ms-auto w-1.5 h-1.5 rounded-full bg-[var(--color-mint)]"
+                          aria-hidden="true"
+                        />
                       )}
                     </button>
                   </li>
@@ -186,7 +197,7 @@ export function Nav() {
           </div>
 
           <Button asChild variant="soft" size="sm" className="hidden sm:inline-flex">
-            <a href="https://dashboard.tajirpoint.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://app.tajirpoint.com" target="_blank" rel="noopener noreferrer">
               {t("signIn")}
             </a>
           </Button>
@@ -202,7 +213,14 @@ export function Nav() {
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
               {mobileOpen ? (
                 <path d="M6 6l12 12M6 18L18 6" strokeLinecap="round" />
               ) : (
@@ -215,10 +233,20 @@ export function Nav() {
 
       {/* Mega panels — desktop only */}
       <div className="hidden lg:block">
-        <MegaPanel id="business" open={openMega === "business"} onEnter={cancelClose} onLeave={close}>
+        <MegaPanel
+          id="business"
+          open={openMega === "business"}
+          onEnter={cancelClose}
+          onLeave={close}
+        >
           <MegaSolutions />
         </MegaPanel>
-        <MegaPanel id="extensions" open={openMega === "extensions"} onEnter={cancelClose} onLeave={close}>
+        <MegaPanel
+          id="extensions"
+          open={openMega === "extensions"}
+          onEnter={cancelClose}
+          onLeave={close}
+        >
           <MegaExtensions />
         </MegaPanel>
       </div>
@@ -235,9 +263,7 @@ export function Nav() {
                   onClick={() => setMobileOpen(false)}
                 >
                   <span>{item.label}</span>
-                  {item.mega && (
-                    <span className="text-[13px] text-[var(--color-muted)]">→</span>
-                  )}
+                  {item.mega && <span className="text-[13px] text-[var(--color-muted)]">→</span>}
                 </Link>
               </li>
             ))}
@@ -249,7 +275,10 @@ export function Nav() {
               <button
                 key={l.code}
                 type="button"
-                onClick={() => { switchLocale(l.code); setMobileOpen(false); }}
+                onClick={() => {
+                  switchLocale(l.code);
+                  setMobileOpen(false);
+                }}
                 className={cn(
                   "px-3 py-1.5 rounded-full text-[12px] font-medium transition-colors",
                   l.code === locale
@@ -264,7 +293,7 @@ export function Nav() {
 
           <div className="mt-4 flex flex-col gap-2">
             <Button asChild variant="soft" size="sm">
-              <a href="https://dashboard.tajirpoint.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://app.tajirpoint.com" target="_blank" rel="noopener noreferrer">
                 {t("signIn")}
               </a>
             </Button>
@@ -302,7 +331,9 @@ function MegaPanel({
         "absolute left-0 right-0 top-[74px] bg-white border-b border-[var(--color-line)] z-[46]",
         "shadow-[0_16px_48px_rgba(0,0,0,0.14)]",
         "transition-[opacity,transform] duration-150 ease-out",
-        open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-1.5 pointer-events-none"
+        open
+          ? "opacity-100 translate-y-0 pointer-events-auto"
+          : "opacity-0 -translate-y-1.5 pointer-events-none"
       )}
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}

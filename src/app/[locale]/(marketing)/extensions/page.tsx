@@ -4,7 +4,8 @@ import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildMetadata({
   title: "Extensions — Payments, Integrations & More",
-  description: "Extend Tajir Point with JazzCash, FBR e-invoicing, WhatsApp receipts, QuickBooks, and more. One-click integrations for merchants in Pakistan, UAE, and Saudi Arabia.",
+  description:
+    "Extend Tajir Point with JazzCash, FBR e-invoicing, WhatsApp receipts, QuickBooks, and more. One-click integrations for merchants in Pakistan, UAE, and Saudi Arabia.",
   path: "/extensions",
 });
 
@@ -39,7 +40,12 @@ async function getExtensions(): Promise<Extension[]> {
 }
 
 function initials(name: string): string {
-  return name.replace(/[^A-Za-z]/g, "").slice(0, 2).toUpperCase() || "EX";
+  return (
+    name
+      .replace(/[^A-Za-z]/g, "")
+      .slice(0, 2)
+      .toUpperCase() || "EX"
+  );
 }
 
 const COMING_SOON_PAYMENTS = [
@@ -78,7 +84,8 @@ export default async function ExtensionsPage() {
             your business needs.
           </h1>
           <p className="mt-5 text-[17px] text-[var(--color-muted)] leading-[1.65] max-w-[520px]">
-            Payments, compliance, messaging, and third-party integrations — install in one click, no developer needed.
+            Payments, compliance, messaging, and third-party integrations — install in one click, no
+            developer needed.
           </p>
         </div>
       </section>
@@ -106,8 +113,12 @@ export default async function ExtensionsPage() {
                         {initials(ext.name)}
                       </div>
                       <div>
-                        <div className="font-extrabold text-[17px] text-[var(--color-ink)]">{ext.name}</div>
-                        <div className="text-[12px] text-[var(--color-muted)]">{ext.category_label}</div>
+                        <div className="font-extrabold text-[17px] text-[var(--color-ink)]">
+                          {ext.name}
+                        </div>
+                        <div className="text-[12px] text-[var(--color-muted)]">
+                          {ext.category_label}
+                        </div>
                       </div>
                     </div>
                     <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-[var(--color-mint)]/15 text-[#009955]">
@@ -116,9 +127,13 @@ export default async function ExtensionsPage() {
                   </div>
 
                   {ext.tagline && (
-                    <p className="text-[14.5px] font-semibold text-[var(--color-ink)] mb-2 leading-[1.4]">{ext.tagline}</p>
+                    <p className="text-[14.5px] font-semibold text-[var(--color-ink)] mb-2 leading-[1.4]">
+                      {ext.tagline}
+                    </p>
                   )}
-                  <p className="text-[14px] text-[var(--color-muted)] leading-[1.65] flex-1">{ext.description}</p>
+                  <p className="text-[14px] text-[var(--color-muted)] leading-[1.65] flex-1">
+                    {ext.description}
+                  </p>
 
                   {ext.features?.length > 0 && (
                     <div className="mt-5 pt-5 border-t border-[var(--color-line)] flex flex-wrap gap-1.5">
@@ -127,7 +142,9 @@ export default async function ExtensionsPage() {
                           key={f}
                           className="flex items-center gap-1.5 text-[12px] font-medium text-[var(--color-ink-3)]"
                         >
-                          <span className="w-3.5 h-3.5 rounded-full bg-[var(--color-mint)]/15 flex items-center justify-center text-[var(--color-mint)] text-[8px] font-bold shrink-0">✓</span>
+                          <span className="w-3.5 h-3.5 rounded-full bg-[var(--color-mint)]/15 flex items-center justify-center text-[var(--color-mint)] text-[8px] font-bold shrink-0">
+                            ✓
+                          </span>
                           {f}
                         </span>
                       ))}
@@ -136,7 +153,7 @@ export default async function ExtensionsPage() {
 
                   <div className="mt-5">
                     <a
-                      href="https://dashboard.tajirpoint.com/signup"
+                      href="https://app.tajirpoint.com/signup"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-[var(--color-mint)] hover:underline underline-offset-2"
@@ -170,7 +187,9 @@ export default async function ExtensionsPage() {
               >
                 <div className="text-[14px] font-bold text-[var(--color-ink)]">{p.name}</div>
                 <div className="text-[12px] text-[var(--color-muted)]">{p.sub}</div>
-                <div className="mt-1 text-[11px] font-medium text-[var(--color-muted-2)] border border-[var(--color-line)] rounded-full px-2 py-0.5 self-start">Soon</div>
+                <div className="mt-1 text-[11px] font-medium text-[var(--color-muted-2)] border border-[var(--color-line)] rounded-full px-2 py-0.5 self-start">
+                  Soon
+                </div>
               </div>
             ))}
           </div>
@@ -196,7 +215,8 @@ export default async function ExtensionsPage() {
                 existing tools.
               </h2>
               <p className="mt-4 text-[15.5px] text-[var(--color-muted)] leading-[1.65] max-w-[420px]">
-                Tajir Point integrates with the tools you already use — from accounting software to e-commerce platforms. Data flows automatically, no manual exports.
+                Tajir Point integrates with the tools you already use — from accounting software to
+                e-commerce platforms. Data flows automatically, no manual exports.
               </p>
               <Link
                 href="/contact"
@@ -214,7 +234,9 @@ export default async function ExtensionsPage() {
                   <div className="w-9 h-9 rounded-[10px] bg-[var(--color-bg-3)] flex items-center justify-center text-[13px] font-extrabold text-[var(--color-ink)]">
                     {int.icon}
                   </div>
-                  <div className="text-[13.5px] font-bold text-[var(--color-ink)] leading-tight">{int.name}</div>
+                  <div className="text-[13.5px] font-bold text-[var(--color-ink)] leading-tight">
+                    {int.name}
+                  </div>
                   <div className="text-[12px] text-[var(--color-muted)]">{int.sub}</div>
                 </div>
               ))}

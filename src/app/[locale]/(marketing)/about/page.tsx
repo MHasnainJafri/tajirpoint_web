@@ -4,7 +4,8 @@ import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildMetadata({
   title: "About Tajir Point — Built for Merchants Who Work Hard",
-  description: "Learn how Tajir Point gives every merchant in Pakistan, UAE, and Saudi Arabia enterprise-grade POS, inventory, and khata tools — in their language, built for their market, compliant out of the box.",
+  description:
+    "Learn how Tajir Point gives every merchant in Pakistan, UAE, and Saudi Arabia enterprise-grade POS, inventory, and khata tools — in their language, built for their market, compliant out of the box.",
   path: "/about",
 });
 
@@ -33,9 +34,9 @@ const VALUES = [
 
 const STATS = [
   { value: "12,000+", label: "Active merchants" },
-  { value: "3",       label: "Countries" },
-  { value: "3",       label: "Languages" },
-  { value: "99.9%",   label: "Uptime SLA" },
+  { value: "3", label: "Countries" },
+  { value: "3", label: "Languages" },
+  { value: "99.9%", label: "Uptime SLA" },
 ];
 
 export default function AboutPage() {
@@ -54,12 +55,16 @@ export default function AboutPage() {
             who work hard.
           </h1>
           <p className="mt-6 text-[18px] text-white/65 leading-[1.65] max-w-[540px]">
-            We started Tajir Point because the tools available to merchants in South Asia and the Gulf were either too expensive, too complex, or simply not built for local languages and compliance needs.
+            We started Tajir Point because the tools available to merchants in South Asia and the
+            Gulf were either too expensive, too complex, or simply not built for local languages and
+            compliance needs.
           </p>
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-white/[0.08]">
             {STATS.map((s) => (
               <div key={s.label}>
-                <div className="text-[42px] font-extrabold tracking-[-0.04em] text-white leading-none">{s.value}</div>
+                <div className="text-[42px] font-extrabold tracking-[-0.04em] text-white leading-none">
+                  {s.value}
+                </div>
                 <div className="mt-1.5 text-[14px] text-white/55">{s.label}</div>
               </div>
             ))}
@@ -72,17 +77,22 @@ export default function AboutPage() {
         <div className="mx-auto max-w-[1320px] px-7 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
             <div>
-              <span className="text-[11px] font-bold tracking-[0.08em] text-[var(--color-mint)] uppercase block mb-4">Mission</span>
+              <span className="text-[11px] font-bold tracking-[0.08em] text-[var(--color-mint)] uppercase block mb-4">
+                Mission
+              </span>
               <h2 className="text-[36px] lg:text-[48px] font-extrabold tracking-[-0.035em] leading-[1.08]">
                 Every merchant deserves
                 <br />
                 enterprise-grade tools.
               </h2>
               <p className="mt-5 text-[17px] text-[var(--color-muted)] leading-[1.65]">
-                A kiryana in Lahore, a restaurant in Dubai, an electronics shop in Riyadh — they all have the same operational needs as a chain store. We built one platform that serves all of them.
+                A kiryana in Lahore, a restaurant in Dubai, an electronics shop in Riyadh — they all
+                have the same operational needs as a chain store. We built one platform that serves
+                all of them.
               </p>
               <p className="mt-4 text-[17px] text-[var(--color-muted)] leading-[1.65]">
-                Tajir Point works on any Android device — even without internet — prints to any Bluetooth printer, and speaks your language right out of the box.
+                Tajir Point works on any Android device — even without internet — prints to any
+                Bluetooth printer, and speaks your language right out of the box.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
@@ -104,9 +114,12 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="py-20 bg-[var(--color-bg-2)] border-t border-[var(--color-line)]">
         <div className="mx-auto max-w-[1320px] px-7 lg:px-10 text-center">
-          <h2 className="text-[36px] lg:text-[48px] font-extrabold tracking-[-0.035em]">Ready to see it live?</h2>
+          <h2 className="text-[36px] lg:text-[48px] font-extrabold tracking-[-0.035em]">
+            Ready to see it live?
+          </h2>
           <p className="mt-4 text-[17px] text-[var(--color-muted)] max-w-[480px] mx-auto">
-            Book a free 30-minute demo and we'll walk you through Tajir Point for your specific business type.
+            Book a free 30-minute demo and we'll walk you through Tajir Point for your specific
+            business type.
           </p>
           <div className="mt-8 flex flex-wrap gap-3 justify-center">
             <Link
@@ -116,7 +129,7 @@ export default function AboutPage() {
               Book a demo →
             </Link>
             <a
-              href="https://dashboard.tajirpoint.com/signup"
+              href="https://app.tajirpoint.com/signup"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-[var(--color-line)] text-[15px] font-semibold text-[var(--color-ink)] hover:bg-white transition-colors"

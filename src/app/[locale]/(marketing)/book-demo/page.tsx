@@ -23,24 +23,33 @@ export default function BookDemoPage() {
               in action.
             </h1>
             <p className="mt-5 text-[17px] text-[var(--color-muted)] leading-[1.65] max-w-[440px]">
-              One of our product specialists will walk you through a live demo tailored to your business type — retail, restaurant, electronics, or services.
+              One of our product specialists will walk you through a live demo tailored to your
+              business type — retail, restaurant, electronics, or services.
             </p>
 
             <ul className="mt-10 flex flex-col gap-4">
               {[
                 ["30 minutes", "No commitment, just a focused walkthrough"],
                 ["Your vertical", "We customise the demo to your shop type"],
-                ["Live Q&A",    "Ask anything — pricing, integrations, migration"],
+                ["Live Q&A", "Ask anything — pricing, integrations, migration"],
                 ["In your language", "English, اردو, or العربية"],
               ].map(([title, desc]) => (
                 <li key={title} className="flex items-start gap-3.5">
                   <span className="mt-0.5 shrink-0 w-5 h-5 rounded-full bg-[var(--color-mint)]/15 flex items-center justify-center">
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                      <path d="M1.5 5l2.5 2.5 4.5-5" stroke="var(--color-mint)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path
+                        d="M1.5 5l2.5 2.5 4.5-5"
+                        stroke="var(--color-mint)"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
                     </svg>
                   </span>
                   <div>
-                    <span className="text-[15px] font-semibold text-[var(--color-ink)]">{title}</span>
+                    <span className="text-[15px] font-semibold text-[var(--color-ink)]">
+                      {title}
+                    </span>
                     <span className="text-[14px] text-[var(--color-muted)] ms-2">{desc}</span>
                   </div>
                 </li>
@@ -51,7 +60,7 @@ export default function BookDemoPage() {
               <p className="text-[13px] text-[var(--color-muted)]">
                 Prefer to just explore?{" "}
                 <a
-                  href="https://dashboard.tajirpoint.com/signup"
+                  href="https://app.tajirpoint.com/signup"
                   className="text-[var(--color-ink)] font-semibold underline underline-offset-2 hover:text-[var(--color-mint)]"
                   target="_blank"
                   rel="noopener noreferrer"
