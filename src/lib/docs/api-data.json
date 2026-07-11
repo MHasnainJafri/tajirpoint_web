@@ -1,0 +1,5781 @@
+[
+  {
+    "slug": "products",
+    "title": "Products",
+    "group": "Catalog",
+    "intro": "Everything you sell. A product owns one or more variants; a variant is the thing that carries a SKU, a barcode and a stock level.",
+    "operations": [
+      {
+        "method": "GET",
+        "path": "/catalog/products/",
+        "operationId": "v1_catalog_products_list",
+        "description": "Base viewset that injects shop on create and applies tenant permissions.\n\nSupports both role-based and permission-based access control:\n- Role-based (legacy): required_roles, write_roles\n- Permission-based (new): required_permissions, write_permissions, action_permissions",
+        "isList": true,
+        "query": [
+          "category",
+          "brand",
+          "product_type",
+          "status",
+          "is_serialized",
+          "is_batch_tracked",
+          "barcode",
+          "include_inactive",
+          "search",
+          "created_after",
+          "updated_since"
+        ],
+        "requestFields": [],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "name_ur",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": "Urdu translation of the product name. Shown bilingually on receipts and POS."
+          },
+          {
+            "name": "sku_root",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "description_ur",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": "Urdu translation of the product description."
+          },
+          {
+            "name": "product_type",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "category",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "category_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "brand",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "brand_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "base_unit",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "base_unit_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "is_serialized",
+            "type": "boolean",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "is_batch_tracked",
+            "type": "boolean",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "valuation_method",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "tax",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "tax_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "tax_group",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "is_tax_inclusive",
+            "type": "boolean",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "tax_rate",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "hs_code",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "image_url",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "drug_schedule",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": "Dispensing class. Only rendered when the pharmacy-pack extension is installed.\n\n* `` - \u2014\n* `otc` - Over-the-counter\n* `rx` - Prescription\n* `controlled` - Controlled substance"
+          },
+          {
+            "name": "generic_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": "Generic (international non-proprietary) name."
+          },
+          {
+            "name": "molecule",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": "Active molecule / salt \u2014 powers the 'low stock by molecule' view."
+          },
+          {
+            "name": "variants_count",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "default_variant_id",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "retail_price",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "wholesale_price",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "stock_quantity",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "reorder_level",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          }
+        ],
+        "requestSchema": null,
+        "responseSchema": "ProductList"
+      },
+      {
+        "method": "POST",
+        "path": "/catalog/products/",
+        "operationId": "v1_catalog_products_create",
+        "description": "Base viewset that injects shop on create and applies tenant permissions.\n\nSupports both role-based and permission-based access control:\n- Role-based (legacy): required_roles, write_roles\n- Permission-based (new): required_permissions, write_permissions, action_permissions",
+        "isList": false,
+        "query": [],
+        "requestFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "name_ur",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Urdu translation of the product name. Shown bilingually on receipts and POS."
+          },
+          {
+            "name": "sku_root",
+            "type": "string",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "description_ur",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Urdu translation of the product description."
+          },
+          {
+            "name": "product_type",
+            "type": "enum(simple, variant, service, bundle, deal)",
+            "required": false,
+            "readOnly": false,
+            "description": "* `simple` - Simple\n* `variant` - Variant\n* `service` - Service\n* `bundle` - Bundle\n* `deal` - Deal"
+          },
+          {
+            "name": "category",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "brand",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "base_unit",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "is_serialized",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "is_batch_tracked",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "valuation_method",
+            "type": "enum(moving_avg, fifo, actual)",
+            "required": false,
+            "readOnly": false,
+            "description": "* `moving_avg` - Moving Average\n* `fifo` - FIFO\n* `actual` - Actual"
+          },
+          {
+            "name": "tax",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "tax_group",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "is_tax_inclusive",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "hs_code",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "image_url",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "status",
+            "type": "enum(active, discontinued, draft)",
+            "required": false,
+            "readOnly": false,
+            "description": "* `active` - Active\n* `discontinued` - Discontinued\n* `draft` - Draft"
+          },
+          {
+            "name": "drug_schedule",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Dispensing class. Only rendered when the pharmacy-pack extension is installed.\n\n* `` - \u2014\n* `otc` - Over-the-counter\n* `rx` - Prescription\n* `controlled` - Controlled substance"
+          },
+          {
+            "name": "generic_name",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Generic (international non-proprietary) name."
+          },
+          {
+            "name": "molecule",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Active molecule / salt \u2014 powers the 'low stock by molecule' view."
+          },
+          {
+            "name": "cold_chain",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": "True for products requiring temperature-controlled storage/transport (vaccines, insulin, frozen goods). Surfaces warnings at dispense."
+          },
+          {
+            "name": "security_deposit",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": "Refundable deposit for returnable container (e.g. water bottle, gas cylinder). Added to sale total separately from product price."
+          },
+          {
+            "name": "variants",
+            "type": "array of object",
+            "required": false,
+            "readOnly": false,
+            "description": "Inline variants to create with the product"
+          },
+          {
+            "name": "bundle_items",
+            "type": "array of object",
+            "required": false,
+            "readOnly": false,
+            "description": "List of {\"child_variant\": <id>, \"quantity\": <decimal>}"
+          },
+          {
+            "name": "opening_stock",
+            "type": "array of object",
+            "required": false,
+            "readOnly": false,
+            "description": "List of {\"variant_sku\": \"...\", \"warehouse\": <id>, \"quantity\": <decimal>, \"unit_cost\": <decimal>}"
+          },
+          {
+            "name": "uom_conversions",
+            "type": "array of object",
+            "required": false,
+            "readOnly": false,
+            "description": "List of {\"from_unit\": <uuid>, \"to_unit\": <uuid>, \"factor\": <decimal>}"
+          },
+          {
+            "name": "product_uoms",
+            "type": "array of object",
+            "required": false,
+            "readOnly": false,
+            "description": "List of {\"unit\": <uuid>, \"conversion_to_base\": \"12\", \"barcode\": \"\", \"is_sales_unit\": true, \"is_purchase_unit\": true, \"price\": null}"
+          }
+        ],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "name_ur",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Urdu translation of the product name. Shown bilingually on receipts and POS."
+          },
+          {
+            "name": "sku_root",
+            "type": "string",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "description_ur",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Urdu translation of the product description."
+          },
+          {
+            "name": "product_type",
+            "type": "enum(simple, variant, service, bundle, deal)",
+            "required": false,
+            "readOnly": false,
+            "description": "* `simple` - Simple\n* `variant` - Variant\n* `service` - Service\n* `bundle` - Bundle\n* `deal` - Deal"
+          },
+          {
+            "name": "category",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "brand",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "base_unit",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "is_serialized",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "is_batch_tracked",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "valuation_method",
+            "type": "enum(moving_avg, fifo, actual)",
+            "required": false,
+            "readOnly": false,
+            "description": "* `moving_avg` - Moving Average\n* `fifo` - FIFO\n* `actual` - Actual"
+          },
+          {
+            "name": "tax",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "tax_group",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "is_tax_inclusive",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "hs_code",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "image_url",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "status",
+            "type": "enum(active, discontinued, draft)",
+            "required": false,
+            "readOnly": false,
+            "description": "* `active` - Active\n* `discontinued` - Discontinued\n* `draft` - Draft"
+          },
+          {
+            "name": "drug_schedule",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Dispensing class. Only rendered when the pharmacy-pack extension is installed.\n\n* `` - \u2014\n* `otc` - Over-the-counter\n* `rx` - Prescription\n* `controlled` - Controlled substance"
+          },
+          {
+            "name": "generic_name",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Generic (international non-proprietary) name."
+          },
+          {
+            "name": "molecule",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Active molecule / salt \u2014 powers the 'low stock by molecule' view."
+          },
+          {
+            "name": "cold_chain",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": "True for products requiring temperature-controlled storage/transport (vaccines, insulin, frozen goods). Surfaces warnings at dispense."
+          },
+          {
+            "name": "security_deposit",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": "Refundable deposit for returnable container (e.g. water bottle, gas cylinder). Added to sale total separately from product price."
+          },
+          {
+            "name": "variants",
+            "type": "array of object",
+            "required": false,
+            "readOnly": false,
+            "description": "Inline variants to create with the product"
+          },
+          {
+            "name": "bundle_items",
+            "type": "array of object",
+            "required": false,
+            "readOnly": false,
+            "description": "List of {\"child_variant\": <id>, \"quantity\": <decimal>}"
+          },
+          {
+            "name": "opening_stock",
+            "type": "array of object",
+            "required": false,
+            "readOnly": false,
+            "description": "List of {\"variant_sku\": \"...\", \"warehouse\": <id>, \"quantity\": <decimal>, \"unit_cost\": <decimal>}"
+          },
+          {
+            "name": "uom_conversions",
+            "type": "array of object",
+            "required": false,
+            "readOnly": false,
+            "description": "List of {\"from_unit\": <uuid>, \"to_unit\": <uuid>, \"factor\": <decimal>}"
+          },
+          {
+            "name": "product_uoms",
+            "type": "array of object",
+            "required": false,
+            "readOnly": false,
+            "description": "List of {\"unit\": <uuid>, \"conversion_to_base\": \"12\", \"barcode\": \"\", \"is_sales_unit\": true, \"is_purchase_unit\": true, \"price\": null}"
+          }
+        ],
+        "requestSchema": "ProductWrite",
+        "responseSchema": "ProductWrite"
+      },
+      {
+        "method": "GET",
+        "path": "/catalog/products/{id}/",
+        "operationId": "v1_catalog_products_retrieve",
+        "description": "Base viewset that injects shop on create and applies tenant permissions.\n\nSupports both role-based and permission-based access control:\n- Role-based (legacy): required_roles, write_roles\n- Permission-based (new): required_permissions, write_permissions, action_permissions",
+        "isList": false,
+        "query": [],
+        "requestFields": [],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "name_ur",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": "Urdu translation of the product name. Shown bilingually on receipts and POS."
+          },
+          {
+            "name": "sku_root",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "description_ur",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": "Urdu translation of the product description."
+          },
+          {
+            "name": "product_type",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "category",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "category_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "brand",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "brand_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "base_unit",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "base_unit_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "is_serialized",
+            "type": "boolean",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "is_batch_tracked",
+            "type": "boolean",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "valuation_method",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "tax",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "tax_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "tax_group",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "is_tax_inclusive",
+            "type": "boolean",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "tax_rate",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "hs_code",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "image_url",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "drug_schedule",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": "Dispensing class. Only rendered when the pharmacy-pack extension is installed.\n\n* `` - \u2014\n* `otc` - Over-the-counter\n* `rx` - Prescription\n* `controlled` - Controlled substance"
+          },
+          {
+            "name": "generic_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": "Generic (international non-proprietary) name."
+          },
+          {
+            "name": "molecule",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": "Active molecule / salt \u2014 powers the 'low stock by molecule' view."
+          },
+          {
+            "name": "variants_count",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "default_variant_id",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "retail_price",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "wholesale_price",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "stock_quantity",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "reorder_level",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "cold_chain",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": "True for products requiring temperature-controlled storage/transport (vaccines, insulin, frozen goods). Surfaces warnings at dispense."
+          },
+          {
+            "name": "security_deposit",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": "Refundable deposit for returnable container (e.g. water bottle, gas cylinder). Added to sale total separately from product price."
+          },
+          {
+            "name": "variants",
+            "type": "array of object",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "bundle_items",
+            "type": "array of object",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "uom_conversions",
+            "type": "array of object",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "product_uoms",
+            "type": "array of object",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "deal_choice_groups",
+            "type": "array of object",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          }
+        ],
+        "requestSchema": null,
+        "responseSchema": "ProductDetail"
+      },
+      {
+        "method": "PATCH",
+        "path": "/catalog/products/{id}/",
+        "operationId": "v1_catalog_products_partial_update",
+        "description": "Base viewset that injects shop on create and applies tenant permissions.\n\nSupports both role-based and permission-based access control:\n- Role-based (legacy): required_roles, write_roles\n- Permission-based (new): required_permissions, write_permissions, action_permissions",
+        "isList": false,
+        "query": [],
+        "requestFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": false,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "name_ur",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Urdu translation of the product name. Shown bilingually on receipts and POS."
+          },
+          {
+            "name": "sku_root",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "description_ur",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Urdu translation of the product description."
+          },
+          {
+            "name": "product_type",
+            "type": "enum(simple, variant, service, bundle, deal)",
+            "required": false,
+            "readOnly": false,
+            "description": "* `simple` - Simple\n* `variant` - Variant\n* `service` - Service\n* `bundle` - Bundle\n* `deal` - Deal"
+          },
+          {
+            "name": "category",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "brand",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "base_unit",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "is_serialized",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "is_batch_tracked",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "valuation_method",
+            "type": "enum(moving_avg, fifo, actual)",
+            "required": false,
+            "readOnly": false,
+            "description": "* `moving_avg` - Moving Average\n* `fifo` - FIFO\n* `actual` - Actual"
+          },
+          {
+            "name": "tax",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "tax_group",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "is_tax_inclusive",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "hs_code",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "image_url",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "status",
+            "type": "enum(active, discontinued, draft)",
+            "required": false,
+            "readOnly": false,
+            "description": "* `active` - Active\n* `discontinued` - Discontinued\n* `draft` - Draft"
+          },
+          {
+            "name": "drug_schedule",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Dispensing class. Only rendered when the pharmacy-pack extension is installed.\n\n* `` - \u2014\n* `otc` - Over-the-counter\n* `rx` - Prescription\n* `controlled` - Controlled substance"
+          },
+          {
+            "name": "generic_name",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Generic (international non-proprietary) name."
+          },
+          {
+            "name": "molecule",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Active molecule / salt \u2014 powers the 'low stock by molecule' view."
+          },
+          {
+            "name": "cold_chain",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": "True for products requiring temperature-controlled storage/transport (vaccines, insulin, frozen goods). Surfaces warnings at dispense."
+          },
+          {
+            "name": "security_deposit",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": "Refundable deposit for returnable container (e.g. water bottle, gas cylinder). Added to sale total separately from product price."
+          },
+          {
+            "name": "variants",
+            "type": "array of object",
+            "required": false,
+            "readOnly": false,
+            "description": "Inline variants to create with the product"
+          },
+          {
+            "name": "bundle_items",
+            "type": "array of object",
+            "required": false,
+            "readOnly": false,
+            "description": "List of {\"child_variant\": <id>, \"quantity\": <decimal>}"
+          },
+          {
+            "name": "opening_stock",
+            "type": "array of object",
+            "required": false,
+            "readOnly": false,
+            "description": "List of {\"variant_sku\": \"...\", \"warehouse\": <id>, \"quantity\": <decimal>, \"unit_cost\": <decimal>}"
+          },
+          {
+            "name": "uom_conversions",
+            "type": "array of object",
+            "required": false,
+            "readOnly": false,
+            "description": "List of {\"from_unit\": <uuid>, \"to_unit\": <uuid>, \"factor\": <decimal>}"
+          },
+          {
+            "name": "product_uoms",
+            "type": "array of object",
+            "required": false,
+            "readOnly": false,
+            "description": "List of {\"unit\": <uuid>, \"conversion_to_base\": \"12\", \"barcode\": \"\", \"is_sales_unit\": true, \"is_purchase_unit\": true, \"price\": null}"
+          }
+        ],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "name_ur",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Urdu translation of the product name. Shown bilingually on receipts and POS."
+          },
+          {
+            "name": "sku_root",
+            "type": "string",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "description_ur",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Urdu translation of the product description."
+          },
+          {
+            "name": "product_type",
+            "type": "enum(simple, variant, service, bundle, deal)",
+            "required": false,
+            "readOnly": false,
+            "description": "* `simple` - Simple\n* `variant` - Variant\n* `service` - Service\n* `bundle` - Bundle\n* `deal` - Deal"
+          },
+          {
+            "name": "category",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "brand",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "base_unit",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "is_serialized",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "is_batch_tracked",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "valuation_method",
+            "type": "enum(moving_avg, fifo, actual)",
+            "required": false,
+            "readOnly": false,
+            "description": "* `moving_avg` - Moving Average\n* `fifo` - FIFO\n* `actual` - Actual"
+          },
+          {
+            "name": "tax",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "tax_group",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "is_tax_inclusive",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "hs_code",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "image_url",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "status",
+            "type": "enum(active, discontinued, draft)",
+            "required": false,
+            "readOnly": false,
+            "description": "* `active` - Active\n* `discontinued` - Discontinued\n* `draft` - Draft"
+          },
+          {
+            "name": "drug_schedule",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Dispensing class. Only rendered when the pharmacy-pack extension is installed.\n\n* `` - \u2014\n* `otc` - Over-the-counter\n* `rx` - Prescription\n* `controlled` - Controlled substance"
+          },
+          {
+            "name": "generic_name",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Generic (international non-proprietary) name."
+          },
+          {
+            "name": "molecule",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Active molecule / salt \u2014 powers the 'low stock by molecule' view."
+          },
+          {
+            "name": "cold_chain",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": "True for products requiring temperature-controlled storage/transport (vaccines, insulin, frozen goods). Surfaces warnings at dispense."
+          },
+          {
+            "name": "security_deposit",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": "Refundable deposit for returnable container (e.g. water bottle, gas cylinder). Added to sale total separately from product price."
+          },
+          {
+            "name": "variants",
+            "type": "array of object",
+            "required": false,
+            "readOnly": false,
+            "description": "Inline variants to create with the product"
+          },
+          {
+            "name": "bundle_items",
+            "type": "array of object",
+            "required": false,
+            "readOnly": false,
+            "description": "List of {\"child_variant\": <id>, \"quantity\": <decimal>}"
+          },
+          {
+            "name": "opening_stock",
+            "type": "array of object",
+            "required": false,
+            "readOnly": false,
+            "description": "List of {\"variant_sku\": \"...\", \"warehouse\": <id>, \"quantity\": <decimal>, \"unit_cost\": <decimal>}"
+          },
+          {
+            "name": "uom_conversions",
+            "type": "array of object",
+            "required": false,
+            "readOnly": false,
+            "description": "List of {\"from_unit\": <uuid>, \"to_unit\": <uuid>, \"factor\": <decimal>}"
+          },
+          {
+            "name": "product_uoms",
+            "type": "array of object",
+            "required": false,
+            "readOnly": false,
+            "description": "List of {\"unit\": <uuid>, \"conversion_to_base\": \"12\", \"barcode\": \"\", \"is_sales_unit\": true, \"is_purchase_unit\": true, \"price\": null}"
+          }
+        ],
+        "requestSchema": "PatchedProductWrite",
+        "responseSchema": "ProductWrite"
+      },
+      {
+        "method": "DELETE",
+        "path": "/catalog/products/{id}/",
+        "operationId": "v1_catalog_products_destroy",
+        "description": "Base viewset that injects shop on create and applies tenant permissions.\n\nSupports both role-based and permission-based access control:\n- Role-based (legacy): required_roles, write_roles\n- Permission-based (new): required_permissions, write_permissions, action_permissions",
+        "isList": false,
+        "query": [],
+        "requestFields": [],
+        "responseFields": [],
+        "requestSchema": null,
+        "responseSchema": null
+      }
+    ]
+  },
+  {
+    "slug": "categories",
+    "title": "Categories & brands",
+    "group": "Catalog",
+    "intro": "How products are organised. Categories nest; brands do not.",
+    "operations": [
+      {
+        "method": "GET",
+        "path": "/catalog/categories/",
+        "operationId": "v1_catalog_categories_list",
+        "description": "Base viewset that injects shop on create and applies tenant permissions.\n\nSupports both role-based and permission-based access control:\n- Role-based (legacy): required_roles, write_roles\n- Permission-based (new): required_permissions, write_permissions, action_permissions",
+        "isList": true,
+        "query": ["parent", "is_active", "search"],
+        "requestFields": [],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "slug",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "parent",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "sort_order",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "image_url",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "is_active",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "children_count",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "products_count",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          }
+        ],
+        "requestSchema": null,
+        "responseSchema": "Category"
+      },
+      {
+        "method": "POST",
+        "path": "/catalog/categories/",
+        "operationId": "v1_catalog_categories_create",
+        "description": "Base viewset that injects shop on create and applies tenant permissions.\n\nSupports both role-based and permission-based access control:\n- Role-based (legacy): required_roles, write_roles\n- Permission-based (new): required_permissions, write_permissions, action_permissions",
+        "isList": false,
+        "query": [],
+        "requestFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "slug",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "parent",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "sort_order",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "image_url",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "is_active",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "children_count",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "products_count",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          }
+        ],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "slug",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "parent",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "sort_order",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "image_url",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "is_active",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "children_count",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "products_count",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          }
+        ],
+        "requestSchema": "Category",
+        "responseSchema": "Category"
+      },
+      {
+        "method": "GET",
+        "path": "/catalog/brands/",
+        "operationId": "v1_catalog_brands_list",
+        "description": "Base viewset that injects shop on create and applies tenant permissions.\n\nSupports both role-based and permission-based access control:\n- Role-based (legacy): required_roles, write_roles\n- Permission-based (new): required_permissions, write_permissions, action_permissions",
+        "isList": true,
+        "query": ["parent", "is_active", "search"],
+        "requestFields": [],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "slug",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "logo_url",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "is_active",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "products_count",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          }
+        ],
+        "requestSchema": null,
+        "responseSchema": "Brand"
+      },
+      {
+        "method": "POST",
+        "path": "/catalog/brands/",
+        "operationId": "v1_catalog_brands_create",
+        "description": "Base viewset that injects shop on create and applies tenant permissions.\n\nSupports both role-based and permission-based access control:\n- Role-based (legacy): required_roles, write_roles\n- Permission-based (new): required_permissions, write_permissions, action_permissions",
+        "isList": false,
+        "query": [],
+        "requestFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "slug",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "logo_url",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "is_active",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "products_count",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          }
+        ],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "slug",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "logo_url",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "is_active",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "products_count",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          }
+        ],
+        "requestSchema": "Brand",
+        "responseSchema": "Brand"
+      }
+    ]
+  },
+  {
+    "slug": "stock",
+    "title": "Stock levels",
+    "group": "Inventory",
+    "intro": "What you have, where. Stock is held per variant per warehouse and is never written directly \u2014 it moves.",
+    "operations": [
+      {
+        "method": "GET",
+        "path": "/inventory/stock-levels/",
+        "operationId": "v1_inventory_stock_levels_list",
+        "description": "Base viewset with tenant permissions. Supports role and permission-based access.",
+        "isList": true,
+        "query": ["warehouse", "variant", "product", "low_stock"],
+        "requestFields": [],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "variant",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "variant_sku",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "variant_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "product",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "warehouse",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "warehouse_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "quantity_on_hand",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "quantity_reserved",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "available",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "quantity_available",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "current_avg_cost",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "unit_cost",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "reorder_point",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "last_counted_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          }
+        ],
+        "requestSchema": null,
+        "responseSchema": "StockLevel"
+      },
+      {
+        "method": "GET",
+        "path": "/inventory/stock-movements/",
+        "operationId": "v1_inventory_stock_movements_list",
+        "description": "",
+        "isList": true,
+        "query": ["warehouse", "variant", "product", "low_stock"],
+        "requestFields": [],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "variant",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "variant_sku",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "warehouse",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "warehouse_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "movement_type",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "quantity",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "unit_cost",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "reference_type",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "reference_id",
+            "type": "uuid",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_by",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_by_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          }
+        ],
+        "requestSchema": null,
+        "responseSchema": "StockMovement"
+      }
+    ]
+  },
+  {
+    "slug": "adjustments",
+    "title": "Adjustments & transfers",
+    "group": "Inventory",
+    "intro": "The two legitimate ways to change stock outside a sale or a purchase.",
+    "operations": [
+      {
+        "method": "GET",
+        "path": "/inventory/adjustments/",
+        "operationId": "v1_inventory_adjustments_list",
+        "description": "Base viewset with tenant permissions. Supports role and permission-based access.",
+        "isList": true,
+        "query": ["status", "warehouse"],
+        "requestFields": [],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "warehouse",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "warehouse_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "reason",
+            "type": "string",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "status",
+            "type": "enum(draft, approved, rejected)",
+            "required": false,
+            "readOnly": false,
+            "description": "* `draft` - Draft\n* `approved` - Approved\n* `rejected` - Rejected"
+          },
+          {
+            "name": "created_by",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "created_by_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "approved_by",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "approved_by_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "items",
+            "type": "array of object",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          }
+        ],
+        "requestSchema": null,
+        "responseSchema": "Adjustment"
+      },
+      {
+        "method": "POST",
+        "path": "/inventory/adjustments/",
+        "operationId": "v1_inventory_adjustments_create",
+        "description": "Base viewset with tenant permissions. Supports role and permission-based access.",
+        "isList": false,
+        "query": [],
+        "requestFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "warehouse",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "reason",
+            "type": "string",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "items",
+            "type": "array of object",
+            "required": true,
+            "readOnly": false,
+            "description": "List of {\"variant\": <id>, \"quantity_change\": <decimal>, \"reason\": \"...\"}"
+          }
+        ],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "warehouse",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "reason",
+            "type": "string",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "items",
+            "type": "array of object",
+            "required": true,
+            "readOnly": false,
+            "description": "List of {\"variant\": <id>, \"quantity_change\": <decimal>, \"reason\": \"...\"}"
+          }
+        ],
+        "requestSchema": "AdjustmentWrite",
+        "responseSchema": "AdjustmentWrite"
+      },
+      {
+        "method": "GET",
+        "path": "/inventory/transfers/",
+        "operationId": "v1_inventory_transfers_list",
+        "description": "Base viewset with tenant permissions. Supports role and permission-based access.",
+        "isList": true,
+        "query": ["status", "warehouse"],
+        "requestFields": [],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "from_warehouse",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "from_warehouse_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "to_warehouse",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "to_warehouse_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "status",
+            "type": "enum(draft, in_transit, completed, cancelled)",
+            "required": false,
+            "readOnly": false,
+            "description": "* `draft` - Draft\n* `in_transit` - In Transit\n* `completed` - Completed\n* `cancelled` - Cancelled"
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "items",
+            "type": "array of object",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          }
+        ],
+        "requestSchema": null,
+        "responseSchema": "Transfer"
+      },
+      {
+        "method": "POST",
+        "path": "/inventory/transfers/",
+        "operationId": "v1_inventory_transfers_create",
+        "description": "Base viewset with tenant permissions. Supports role and permission-based access.",
+        "isList": false,
+        "query": [],
+        "requestFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "from_warehouse",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "to_warehouse",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "items",
+            "type": "array of object",
+            "required": true,
+            "readOnly": false,
+            "description": "List of {\"variant\": <id>, \"quantity\": <decimal>}"
+          }
+        ],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "from_warehouse",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "to_warehouse",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "items",
+            "type": "array of object",
+            "required": true,
+            "readOnly": false,
+            "description": "List of {\"variant\": <id>, \"quantity\": <decimal>}"
+          }
+        ],
+        "requestSchema": "TransferWrite",
+        "responseSchema": "TransferWrite"
+      }
+    ]
+  },
+  {
+    "slug": "sales",
+    "title": "Sales",
+    "group": "Sales",
+    "intro": "An invoice. Creating one decrements stock, books revenue and tax, and settles or credits the customer \u2014 in one transaction.",
+    "operations": [
+      {
+        "method": "GET",
+        "path": "/sales/sales/",
+        "operationId": "v1_sales_sales_list",
+        "description": "Base viewset that injects shop on create and applies tenant permissions.\n\nSupports both role-based and permission-based access control:\n- Role-based (legacy): required_roles, write_roles\n- Permission-based (new): required_permissions, write_permissions, action_permissions",
+        "isList": true,
+        "query": [
+          "customer",
+          "product",
+          "sale_type",
+          "payment_status",
+          "date_from",
+          "date_to",
+          "register",
+          "session",
+          "cashier",
+          "amount_min",
+          "amount_max",
+          "has_balance",
+          "search"
+        ],
+        "requestFields": [],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "invoice_no",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "warehouse",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "warehouse_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "customer",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "customer_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "customer_phone",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "sale_date",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "sale_type",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "price_list",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "currency_code",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "exchange_rate",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "subtotal",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "discount_type",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "discount_value",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "discount_amount",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "discount_approved_by",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "tax_amount",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "is_tax_inclusive",
+            "type": "boolean",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "shipping_amount",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "pos_service_fee",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "round_off_amount",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "total_amount",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "paid_amount",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "balance_due",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "payment_status",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "fulfillment_status",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "cashier",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "cashier_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "register",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "session",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "quotation",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "client_uuid",
+            "type": "uuid",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "offline_ref",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": "Device-namespaced number an offline sale was rung under (e.g. OFF-3FA9-000123). Stored for traceability so a printed offline receipt can be reconciled to its canonical invoice_no."
+          },
+          {
+            "name": "sync_status",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "fbr_invoice_number",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "fbr_status",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "wht_amount",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          }
+        ],
+        "requestSchema": null,
+        "responseSchema": "SaleList"
+      },
+      {
+        "method": "POST",
+        "path": "/sales/sales/",
+        "operationId": "v1_sales_sales_create",
+        "description": "Base viewset that injects shop on create and applies tenant permissions.\n\nSupports both role-based and permission-based access control:\n- Role-based (legacy): required_roles, write_roles\n- Permission-based (new): required_permissions, write_permissions, action_permissions",
+        "isList": false,
+        "query": [],
+        "requestFields": [
+          {
+            "name": "warehouse",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": "Warehouse ID."
+          },
+          {
+            "name": "customer",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": "Party ID of the customer."
+          },
+          {
+            "name": "sale_type",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "items",
+            "type": "array of object",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "price_list",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "discount_type",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Order-level discount kind. Must be 'percentage' or 'fixed' (or empty for no order discount). Combines with each item.discount (line-level)."
+          },
+          {
+            "name": "discount_value",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": "The percentage (e.g. '10' = 10% off cart subtotal) or fixed amount (e.g. '50' = \u20a850 off cart subtotal), depending on discount_type."
+          },
+          {
+            "name": "discount_approved_by",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": "User ID who approved the discount."
+          },
+          {
+            "name": "is_tax_inclusive",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": "If true, item.unit_price is treated as already including tax. Tax itself is computed server-side from each variant's configured tax rate \u2014 there is NO order-level tax override field. Set tax on the Product / Variant in the catalog."
+          },
+          {
+            "name": "shipping_amount",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "pos_service_fee",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "round_off_amount",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "register",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "session",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "session_client_uuid",
+            "type": "uuid",
+            "required": false,
+            "readOnly": false,
+            "description": "client_uuid of an offline-opened session. Used to link a queued sale to its session once both have synced, when no integer session id is available yet."
+          },
+          {
+            "name": "client_uuid",
+            "type": "uuid",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "offline_ref",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Device-namespaced number an offline sale was rung under (e.g. OFF-3FA9-000123). Stored on the Sale for traceability; the canonical number is still the server-assigned invoice_no."
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "coupon_code",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Optional coupon code. Validated + redeemed server-side; the associated Discount overrides discount_type/discount_value when the caller hasn't already set them. Invalid/expired/used-up codes raise 400."
+          },
+          {
+            "name": "payments",
+            "type": "array of object",
+            "required": false,
+            "readOnly": false,
+            "description": "List of {\"amount\": <decimal>, \"method\": <str|optional>}"
+          },
+          {
+            "name": "currency_code",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "ISO 4217 currency code stored on the Sale. Default PKR."
+          },
+          {
+            "name": "exchange_rate",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": "Exchange rate to shop's base currency at the time of sale."
+          }
+        ],
+        "responseFields": [
+          {
+            "name": "warehouse",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": "Warehouse ID."
+          },
+          {
+            "name": "customer",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": "Party ID of the customer."
+          },
+          {
+            "name": "sale_type",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "items",
+            "type": "array of object",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "price_list",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "discount_type",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Order-level discount kind. Must be 'percentage' or 'fixed' (or empty for no order discount). Combines with each item.discount (line-level)."
+          },
+          {
+            "name": "discount_value",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": "The percentage (e.g. '10' = 10% off cart subtotal) or fixed amount (e.g. '50' = \u20a850 off cart subtotal), depending on discount_type."
+          },
+          {
+            "name": "discount_approved_by",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": "User ID who approved the discount."
+          },
+          {
+            "name": "is_tax_inclusive",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": "If true, item.unit_price is treated as already including tax. Tax itself is computed server-side from each variant's configured tax rate \u2014 there is NO order-level tax override field. Set tax on the Product / Variant in the catalog."
+          },
+          {
+            "name": "shipping_amount",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "pos_service_fee",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "round_off_amount",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "register",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "session",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "session_client_uuid",
+            "type": "uuid",
+            "required": false,
+            "readOnly": false,
+            "description": "client_uuid of an offline-opened session. Used to link a queued sale to its session once both have synced, when no integer session id is available yet."
+          },
+          {
+            "name": "client_uuid",
+            "type": "uuid",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "offline_ref",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Device-namespaced number an offline sale was rung under (e.g. OFF-3FA9-000123). Stored on the Sale for traceability; the canonical number is still the server-assigned invoice_no."
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "coupon_code",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Optional coupon code. Validated + redeemed server-side; the associated Discount overrides discount_type/discount_value when the caller hasn't already set them. Invalid/expired/used-up codes raise 400."
+          },
+          {
+            "name": "payments",
+            "type": "array of object",
+            "required": false,
+            "readOnly": false,
+            "description": "List of {\"amount\": <decimal>, \"method\": <str|optional>}"
+          },
+          {
+            "name": "currency_code",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "ISO 4217 currency code stored on the Sale. Default PKR."
+          },
+          {
+            "name": "exchange_rate",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": "Exchange rate to shop's base currency at the time of sale."
+          }
+        ],
+        "requestSchema": "SaleWrite",
+        "responseSchema": "SaleWrite"
+      },
+      {
+        "method": "GET",
+        "path": "/sales/sales/{id}/",
+        "operationId": "v1_sales_sales_retrieve",
+        "description": "Base viewset that injects shop on create and applies tenant permissions.\n\nSupports both role-based and permission-based access control:\n- Role-based (legacy): required_roles, write_roles\n- Permission-based (new): required_permissions, write_permissions, action_permissions",
+        "isList": false,
+        "query": [],
+        "requestFields": [],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "invoice_no",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "warehouse",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "warehouse_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "customer",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "customer_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "customer_phone",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "sale_date",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "sale_type",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "price_list",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "currency_code",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "exchange_rate",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "subtotal",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "discount_type",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "discount_value",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "discount_amount",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "discount_approved_by",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "tax_amount",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "is_tax_inclusive",
+            "type": "boolean",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "shipping_amount",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "pos_service_fee",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "round_off_amount",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "total_amount",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "paid_amount",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "balance_due",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "payment_status",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "fulfillment_status",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "overpayment_amount",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "overpayment_warning",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "cashier",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "cashier_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "register",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "session",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "quotation",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "client_uuid",
+            "type": "uuid",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "offline_ref",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": "Device-namespaced number an offline sale was rung under (e.g. OFF-3FA9-000123). Stored for traceability so a printed offline receipt can be reconciled to its canonical invoice_no."
+          },
+          {
+            "name": "sync_status",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "fbr_invoice_number",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "fbr_status",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "fbr_qr_code",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "fbr_submitted_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "wht_amount",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "items",
+            "type": "array of object",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "payments",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "returned_amount",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "net_amount",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "return_status",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          }
+        ],
+        "requestSchema": null,
+        "responseSchema": "SaleDetail"
+      }
+    ]
+  },
+  {
+    "slug": "returns",
+    "title": "Returns",
+    "group": "Sales",
+    "intro": "Reverses a sale at the original cost, not today's cost.",
+    "operations": [
+      {
+        "method": "GET",
+        "path": "/sales/returns/",
+        "operationId": "v1_sales_returns_list",
+        "description": "Base viewset that injects shop on create and applies tenant permissions.\n\nSupports both role-based and permission-based access control:\n- Role-based (legacy): required_roles, write_roles\n- Permission-based (new): required_permissions, write_permissions, action_permissions",
+        "isList": true,
+        "query": ["sale", "session", "status", "date_from", "date_to"],
+        "requestFields": [],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "sale",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "sale_invoice_no",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "customer_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "return_no",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "return_date",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "reason",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "refund_amount",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "approved_by",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "approved_by_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_by",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_by_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          }
+        ],
+        "requestSchema": null,
+        "responseSchema": "SaleReturnList"
+      },
+      {
+        "method": "POST",
+        "path": "/sales/returns/",
+        "operationId": "v1_sales_returns_create",
+        "description": "Base viewset that injects shop on create and applies tenant permissions.\n\nSupports both role-based and permission-based access control:\n- Role-based (legacy): required_roles, write_roles\n- Permission-based (new): required_permissions, write_permissions, action_permissions",
+        "isList": false,
+        "query": [],
+        "requestFields": [
+          {
+            "name": "sale",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": "Sale ID to return against."
+          },
+          {
+            "name": "items",
+            "type": "array of object",
+            "required": true,
+            "readOnly": false,
+            "description": "List of {\"sale_item_id\": <int>, \"quantity\": <decimal>, \"return_condition\": <str|optional>, \"serial_numbers\": [<int>, ...] (optional)}"
+          },
+          {
+            "name": "reason",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          }
+        ],
+        "responseFields": [
+          {
+            "name": "sale",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": "Sale ID to return against."
+          },
+          {
+            "name": "items",
+            "type": "array of object",
+            "required": true,
+            "readOnly": false,
+            "description": "List of {\"sale_item_id\": <int>, \"quantity\": <decimal>, \"return_condition\": <str|optional>, \"serial_numbers\": [<int>, ...] (optional)}"
+          },
+          {
+            "name": "reason",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          }
+        ],
+        "requestSchema": "SaleReturnWrite",
+        "responseSchema": "SaleReturnWrite"
+      }
+    ]
+  },
+  {
+    "slug": "customers",
+    "title": "Customers & suppliers",
+    "group": "Parties",
+    "intro": "One model for both. `party_type` decides which.",
+    "operations": [
+      {
+        "method": "GET",
+        "path": "/parties/parties/",
+        "operationId": "v1_parties_parties_list",
+        "description": "Base viewset that injects shop on create and applies tenant permissions.\n\nHasRole is required for any per-viewset ``action_permissions`` /\n``write_permissions`` / ``required_roles`` mapping to actually gate\naccess. Without it, the parties domain silently let every shop\nmember through, exposing the LedgerEntry list to cashiers\n(QA bug BUG-027) \u2014 even after `parties.ledger` was added to the\nviewset's action_permissions.",
+        "isList": true,
+        "query": ["include_internal", "party_type", "status", "search", "has_balance", "city"],
+        "requestFields": [],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "party_type",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "phone",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "email",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "cnic",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "city",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "current_balance",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "credit_limit",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "loyalty_points",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "group",
+            "type": "uuid",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "group_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          }
+        ],
+        "requestSchema": null,
+        "responseSchema": "PartyList"
+      },
+      {
+        "method": "POST",
+        "path": "/parties/parties/",
+        "operationId": "v1_parties_parties_create",
+        "description": "Base viewset that injects shop on create and applies tenant permissions.\n\nHasRole is required for any per-viewset ``action_permissions`` /\n``write_permissions`` / ``required_roles`` mapping to actually gate\naccess. Without it, the parties domain silently let every shop\nmember through, exposing the LedgerEntry list to cashiers\n(QA bug BUG-027) \u2014 even after `parties.ledger` was added to the\nviewset's action_permissions.",
+        "isList": false,
+        "query": [],
+        "requestFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "party_type",
+            "type": "enum(customer, supplier, both)",
+            "required": false,
+            "readOnly": false,
+            "description": "* `customer` - Customer\n* `supplier` - Supplier\n* `both` - Both"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "phone",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "email",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "cnic",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "ntn",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "address",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "city",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "credit_limit",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "wht_rate",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": "Withholding-tax % to auto-apply on this party's sales (0 = off)."
+          },
+          {
+            "name": "opening_balance",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "default_price_list",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "group",
+            "type": "uuid",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "date_of_birth",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Customer birthday \u2014 used for loyalty birthday bonus."
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "status",
+            "type": "enum(active, inactive, blacklisted)",
+            "required": false,
+            "readOnly": false,
+            "description": "* `active` - Active\n* `inactive` - Inactive\n* `blacklisted` - Blacklisted"
+          }
+        ],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "party_type",
+            "type": "enum(customer, supplier, both)",
+            "required": false,
+            "readOnly": false,
+            "description": "* `customer` - Customer\n* `supplier` - Supplier\n* `both` - Both"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "phone",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "email",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "cnic",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "ntn",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "address",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "city",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "credit_limit",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "wht_rate",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": "Withholding-tax % to auto-apply on this party's sales (0 = off)."
+          },
+          {
+            "name": "opening_balance",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "default_price_list",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "group",
+            "type": "uuid",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "date_of_birth",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Customer birthday \u2014 used for loyalty birthday bonus."
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "status",
+            "type": "enum(active, inactive, blacklisted)",
+            "required": false,
+            "readOnly": false,
+            "description": "* `active` - Active\n* `inactive` - Inactive\n* `blacklisted` - Blacklisted"
+          }
+        ],
+        "requestSchema": "PartyWrite",
+        "responseSchema": "PartyWrite"
+      },
+      {
+        "method": "GET",
+        "path": "/parties/parties/{id}/",
+        "operationId": "v1_parties_parties_retrieve",
+        "description": "Base viewset that injects shop on create and applies tenant permissions.\n\nHasRole is required for any per-viewset ``action_permissions`` /\n``write_permissions`` / ``required_roles`` mapping to actually gate\naccess. Without it, the parties domain silently let every shop\nmember through, exposing the LedgerEntry list to cashiers\n(QA bug BUG-027) \u2014 even after `parties.ledger` was added to the\nviewset's action_permissions.",
+        "isList": false,
+        "query": [],
+        "requestFields": [],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "party_type",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "phone",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "email",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "cnic",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "ntn",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "address",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "city",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "credit_limit",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "wht_rate",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": "Withholding-tax % to auto-apply on this party's sales (0 = off)."
+          },
+          {
+            "name": "opening_balance",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "current_balance",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "default_price_list",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "loyalty_points",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "loyalty_tier",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "date_of_birth",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": "Customer birthday \u2014 used for loyalty birthday bonus."
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "credit_limit_record",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "recent_ledger_entries",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          }
+        ],
+        "requestSchema": null,
+        "responseSchema": "PartyDetail"
+      },
+      {
+        "method": "PATCH",
+        "path": "/parties/parties/{id}/",
+        "operationId": "v1_parties_parties_partial_update",
+        "description": "Base viewset that injects shop on create and applies tenant permissions.\n\nHasRole is required for any per-viewset ``action_permissions`` /\n``write_permissions`` / ``required_roles`` mapping to actually gate\naccess. Without it, the parties domain silently let every shop\nmember through, exposing the LedgerEntry list to cashiers\n(QA bug BUG-027) \u2014 even after `parties.ledger` was added to the\nviewset's action_permissions.",
+        "isList": false,
+        "query": [],
+        "requestFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": false,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "party_type",
+            "type": "enum(customer, supplier, both)",
+            "required": false,
+            "readOnly": false,
+            "description": "* `customer` - Customer\n* `supplier` - Supplier\n* `both` - Both"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "phone",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "email",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "cnic",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "ntn",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "address",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "city",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "credit_limit",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "wht_rate",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": "Withholding-tax % to auto-apply on this party's sales (0 = off)."
+          },
+          {
+            "name": "opening_balance",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "default_price_list",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "group",
+            "type": "uuid",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "date_of_birth",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Customer birthday \u2014 used for loyalty birthday bonus."
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "status",
+            "type": "enum(active, inactive, blacklisted)",
+            "required": false,
+            "readOnly": false,
+            "description": "* `active` - Active\n* `inactive` - Inactive\n* `blacklisted` - Blacklisted"
+          }
+        ],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "party_type",
+            "type": "enum(customer, supplier, both)",
+            "required": false,
+            "readOnly": false,
+            "description": "* `customer` - Customer\n* `supplier` - Supplier\n* `both` - Both"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "phone",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "email",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "cnic",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "ntn",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "address",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "city",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "credit_limit",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "wht_rate",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": "Withholding-tax % to auto-apply on this party's sales (0 = off)."
+          },
+          {
+            "name": "opening_balance",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "default_price_list",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "group",
+            "type": "uuid",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "date_of_birth",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": "Customer birthday \u2014 used for loyalty birthday bonus."
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "status",
+            "type": "enum(active, inactive, blacklisted)",
+            "required": false,
+            "readOnly": false,
+            "description": "* `active` - Active\n* `inactive` - Inactive\n* `blacklisted` - Blacklisted"
+          }
+        ],
+        "requestSchema": "PatchedPartyWrite",
+        "responseSchema": "PartyWrite"
+      }
+    ]
+  },
+  {
+    "slug": "khata",
+    "title": "Khata (ledger)",
+    "group": "Parties",
+    "intro": "The running credit ledger. Every entry carries the balance after it, so you never have to sum the history yourself.",
+    "operations": [
+      {
+        "method": "GET",
+        "path": "/parties/ledger-entries/",
+        "operationId": "v1_parties_ledger_entries_list",
+        "description": "Read-only list of ledger entries plus manual adjustment creation.\n\nParty-balance and ledger data is financially sensitive \u2014 list/retrieve\nrequires `parties.ledger` permission; manual adjustments require\n`payments.allocate`. Previously every authenticated shop member could\nread the entire AR/AP history (QA bug BUG-027 \u2014 leaks who-owes-whom).",
+        "isList": true,
+        "query": [
+          "party",
+          "party_type",
+          "include_internal",
+          "reference_type",
+          "date_from",
+          "date_to",
+          "created_by",
+          "user_id",
+          "cashier_id"
+        ],
+        "requestFields": [],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "uuid",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "party",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "party_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "entry_no",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "entry_date",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "debit",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "credit",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "running_balance",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "reference_type",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "reference_id",
+            "type": "uuid",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_by",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_by_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          }
+        ],
+        "requestSchema": null,
+        "responseSchema": "LedgerEntry"
+      }
+    ]
+  },
+  {
+    "slug": "payments",
+    "title": "Payments",
+    "group": "Payments",
+    "intro": "Money in or out, against a party. Always send an Idempotency-Key.",
+    "operations": [
+      {
+        "method": "GET",
+        "path": "/payments/payments/",
+        "operationId": "v1_payments_payments_list",
+        "description": "Base viewset that injects shop on create and applies tenant permissions.\n\n``HasRole`` MUST be in ``permission_classes`` for the per-viewset\n``action_permissions`` maps below to actually gate access. Without it the\nmaps are inert and every shop member (cashier, readonly) can POST\npayments/refunds/cheque actions \u2014 the same BUG-027 the parties domain\nalready fixed (`domains/parties/api/viewsets.py`).",
+        "isList": true,
+        "query": [
+          "direction",
+          "status",
+          "party",
+          "payment_method",
+          "session",
+          "cheque_status",
+          "date_from",
+          "date_to",
+          "search"
+        ],
+        "requestFields": [],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "payment_no",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "payment_direction",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "party",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "party_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "payment_method",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "method_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "amount",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "currency_code",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "payment_date",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "cheque_status",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "reference_no",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          }
+        ],
+        "requestSchema": null,
+        "responseSchema": "PaymentList"
+      },
+      {
+        "method": "POST",
+        "path": "/payments/payments/",
+        "operationId": "v1_payments_payments_create",
+        "description": "Base viewset that injects shop on create and applies tenant permissions.\n\n``HasRole`` MUST be in ``permission_classes`` for the per-viewset\n``action_permissions`` maps below to actually gate access. Without it the\nmaps are inert and every shop member (cashier, readonly) can POST\npayments/refunds/cheque actions \u2014 the same BUG-027 the parties domain\nalready fixed (`domains/parties/api/viewsets.py`).",
+        "isList": false,
+        "query": [],
+        "requestFields": [
+          {
+            "name": "party",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "payment_method",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "amount",
+            "type": "decimal",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "payment_direction",
+            "type": "enum(in, out)",
+            "required": true,
+            "readOnly": false,
+            "description": "* `in` - Inbound\n* `out` - Outbound"
+          },
+          {
+            "name": "payment_date",
+            "type": "datetime",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "reference_no",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "cheque_no",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "cheque_bank",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "cheque_issue_date",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "gateway_transaction_id",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "gateway_payment_intent_id",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "wht_amount",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "wht_certificate_no",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "currency_code",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "exchange_rate",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "session",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": "POS session this payment was collected during (required for distribution-register reconciliation)."
+          },
+          {
+            "name": "purchase",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": "Optional Purchase ID \u2014 when set, the payment is allocated to that purchase and updates its paid_amount / balance_due / payment_status."
+          },
+          {
+            "name": "sale",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": "Optional Sale ID \u2014 when set, the payment is allocated to that sale and updates its paid_amount / balance_due / payment_status."
+          },
+          {
+            "name": "allocations",
+            "type": "array of object",
+            "required": false,
+            "readOnly": false,
+            "description": "Optional list of explicit allocations to settle multiple documents from this single payment. Each item must reference a `sale` OR `purchase` id (belonging to this shop) plus an `amount`. When supplied, PaymentAllocation rows are created and each target document's paid_amount / balance_due / payment_status is advanced. References to nonexistent or foreign documents are rejected with 400."
+          }
+        ],
+        "responseFields": [
+          {
+            "name": "party",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "payment_method",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "amount",
+            "type": "decimal",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "payment_direction",
+            "type": "enum(in, out)",
+            "required": true,
+            "readOnly": false,
+            "description": "* `in` - Inbound\n* `out` - Outbound"
+          },
+          {
+            "name": "payment_date",
+            "type": "datetime",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "reference_no",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "cheque_no",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "cheque_bank",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "cheque_issue_date",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "gateway_transaction_id",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "gateway_payment_intent_id",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "wht_amount",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "wht_certificate_no",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "currency_code",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "exchange_rate",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "session",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": "POS session this payment was collected during (required for distribution-register reconciliation)."
+          },
+          {
+            "name": "purchase",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": "Optional Purchase ID \u2014 when set, the payment is allocated to that purchase and updates its paid_amount / balance_due / payment_status."
+          },
+          {
+            "name": "sale",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": "Optional Sale ID \u2014 when set, the payment is allocated to that sale and updates its paid_amount / balance_due / payment_status."
+          },
+          {
+            "name": "allocations",
+            "type": "array of object",
+            "required": false,
+            "readOnly": false,
+            "description": "Optional list of explicit allocations to settle multiple documents from this single payment. Each item must reference a `sale` OR `purchase` id (belonging to this shop) plus an `amount`. When supplied, PaymentAllocation rows are created and each target document's paid_amount / balance_due / payment_status is advanced. References to nonexistent or foreign documents are rejected with 400."
+          }
+        ],
+        "requestSchema": "PaymentWrite",
+        "responseSchema": "PaymentWrite"
+      },
+      {
+        "method": "GET",
+        "path": "/payments/methods/",
+        "operationId": "v1_payments_methods_list",
+        "description": "Base viewset that injects shop on create and applies tenant permissions.\n\n``HasRole`` MUST be in ``permission_classes`` for the per-viewset\n``action_permissions`` maps below to actually gate access. Without it the\nmaps are inert and every shop member (cashier, readonly) can POST\npayments/refunds/cheque actions \u2014 the same BUG-027 the parties domain\nalready fixed (`domains/parties/api/viewsets.py`).",
+        "isList": true,
+        "query": [
+          "direction",
+          "status",
+          "party",
+          "payment_method",
+          "session",
+          "cheque_status",
+          "date_from",
+          "date_to",
+          "search"
+        ],
+        "requestFields": [],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "method_type",
+            "type": "enum(cash, card, wallet, bank, online_gateway, cheque)",
+            "required": true,
+            "readOnly": false,
+            "description": "* `cash` - Cash\n* `card` - Card\n* `wallet` - Wallet\n* `bank` - Bank\n* `online_gateway` - Online Gateway\n* `cheque` - Cheque"
+          },
+          {
+            "name": "gateway_provider",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "config",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "is_active",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "requires_reference",
+            "type": "boolean",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "sort_order",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          }
+        ],
+        "requestSchema": null,
+        "responseSchema": "PaymentMethod"
+      }
+    ]
+  },
+  {
+    "slug": "purchases",
+    "title": "Purchases",
+    "group": "Purchases",
+    "intro": "Goods received from a supplier. Receiving a GRN creates cost layers, which is what returns later reverse against.",
+    "operations": [
+      {
+        "method": "GET",
+        "path": "/purchases/orders/",
+        "operationId": "v1_purchases_orders_list",
+        "description": "Base viewset that injects shop on create and applies tenant permissions.\n\nSupports both role-based and permission-based access control:\n- Role-based (legacy): required_roles, write_roles\n- Permission-based (new): required_permissions, write_permissions, action_permissions",
+        "isList": true,
+        "query": ["supplier", "status", "payment_status", "date_from", "date_to", "po", "search"],
+        "requestFields": [],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "po_no",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "supplier",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "supplier_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "warehouse",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "warehouse_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "order_date",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "expected_date",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "subtotal",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "tax",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "total",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_by",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          }
+        ],
+        "requestSchema": null,
+        "responseSchema": "PurchaseOrderList"
+      },
+      {
+        "method": "POST",
+        "path": "/purchases/orders/",
+        "operationId": "v1_purchases_orders_create",
+        "description": "Use Write serializer for input, Detail serializer for output.\n\nLetting DRF re-serialize the saved PurchaseOrder back through\nthe Write serializer crashed with `int(Party instance)` because\nthe Write serializer declares supplier/warehouse as IntegerField\n(QA bug BUG-043).",
+        "isList": false,
+        "query": [],
+        "requestFields": [
+          {
+            "name": "supplier",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "warehouse",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "order_date",
+            "type": "string",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "expected_date",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "items",
+            "type": "array of object",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          }
+        ],
+        "responseFields": [
+          {
+            "name": "supplier",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "warehouse",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "order_date",
+            "type": "string",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "expected_date",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "items",
+            "type": "array of object",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          }
+        ],
+        "requestSchema": "PurchaseOrderWrite",
+        "responseSchema": "PurchaseOrderWrite"
+      },
+      {
+        "method": "GET",
+        "path": "/purchases/purchases/",
+        "operationId": "v1_purchases_purchases_list",
+        "description": "Base viewset that injects shop on create and applies tenant permissions.\n\nSupports both role-based and permission-based access control:\n- Role-based (legacy): required_roles, write_roles\n- Permission-based (new): required_permissions, write_permissions, action_permissions",
+        "isList": true,
+        "query": ["supplier", "status", "payment_status", "date_from", "date_to", "po", "search"],
+        "requestFields": [],
+        "responseFields": [
+          {
+            "name": "id",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "purchase_no",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "received_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "po",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "po_no",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "supplier",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "supplier_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "warehouse",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "warehouse_name",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "purchase_date",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "supplier_invoice_no",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "currency_code",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "exchange_rate",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "subtotal",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "tax",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "discount",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "shipping",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "total",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "paid_amount",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "balance_due",
+            "type": "decimal",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "payment_status",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_by",
+            "type": "integer",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "datetime",
+            "required": true,
+            "readOnly": true,
+            "description": ""
+          }
+        ],
+        "requestSchema": null,
+        "responseSchema": "PurchaseList"
+      },
+      {
+        "method": "POST",
+        "path": "/purchases/purchases/",
+        "operationId": "v1_purchases_purchases_create",
+        "description": "Base viewset that injects shop on create and applies tenant permissions.\n\nSupports both role-based and permission-based access control:\n- Role-based (legacy): required_roles, write_roles\n- Permission-based (new): required_permissions, write_permissions, action_permissions",
+        "isList": false,
+        "query": [],
+        "requestFields": [
+          {
+            "name": "po",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "supplier",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "warehouse",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "purchase_date",
+            "type": "string",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "supplier_invoice_no",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "currency_code",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "exchange_rate",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "subtotal",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "tax",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "discount",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "shipping",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "total",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "paid_amount",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "items",
+            "type": "array of object",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          }
+        ],
+        "responseFields": [
+          {
+            "name": "po",
+            "type": "integer",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "supplier",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "warehouse",
+            "type": "integer",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "purchase_date",
+            "type": "string",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "supplier_invoice_no",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "currency_code",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "exchange_rate",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "subtotal",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "tax",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "discount",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "shipping",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "total",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "paid_amount",
+            "type": "decimal",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "notes",
+            "type": "string",
+            "required": false,
+            "readOnly": false,
+            "description": ""
+          },
+          {
+            "name": "items",
+            "type": "array of object",
+            "required": true,
+            "readOnly": false,
+            "description": ""
+          }
+        ],
+        "requestSchema": "PurchaseWrite",
+        "responseSchema": "PurchaseWrite"
+      }
+    ]
+  }
+]

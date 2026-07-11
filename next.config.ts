@@ -43,6 +43,15 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      // /developers was a single marketing page; the reference now lives under
+      // /docs. Keep the old URL working — it is linked from the app, the
+      // footer, and whatever anyone has already bookmarked.
+      { source: "/developers", destination: "/docs", permanent: true },
+      { source: "/developers/:path*", destination: "/docs/:path*", permanent: true },
+    ];
+  },
 };
 
 export default withBundleAnalyzer(withNextIntl(nextConfig));
