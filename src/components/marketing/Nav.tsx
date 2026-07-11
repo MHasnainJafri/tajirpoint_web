@@ -36,6 +36,7 @@ export function Nav() {
     { label: t("solutions"), mega: "business", href: "/solutions" },
     { label: t("extensions"), mega: "extensions", href: "/extensions" },
     { label: t("pricing"), href: "/pricing" },
+    { label: t("developers"), href: "/developers" },
   ];
 
   const open = (id: MegaKey) => {

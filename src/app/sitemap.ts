@@ -15,6 +15,7 @@ const PAGES: Array<{
   { path: "/solutions/services", priority: 0.8, changeFrequency: "monthly" },
   { path: "/solutions/distributors", priority: 0.8, changeFrequency: "monthly" },
   { path: "/extensions", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/developers", priority: 0.8, changeFrequency: "monthly" },
   { path: "/about", priority: 0.7, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.7, changeFrequency: "monthly" },
   { path: "/book-demo", priority: 0.6, changeFrequency: "monthly" },

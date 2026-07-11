@@ -41,6 +41,10 @@ export const siteConfig = {
           { label: "Contact", href: "/contact" },
         ],
       },
+      {
+        heading: "Developers",
+        links: [{ label: "API Documentation", href: "/developers" }],
+      },
     ],
     legal: [
       { label: "Privacy", href: "/privacy" },

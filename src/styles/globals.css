@@ -34,12 +34,22 @@
   --animate-float-3: float3 8s ease-in-out -2s infinite;
 
   @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
   }
   @keyframes float3 {
-    0%, 100% { transform: translateY(-50%); }
-    50% { transform: translateY(calc(-50% - 14px)); }
+    0%,
+    100% {
+      transform: translateY(-50%);
+    }
+    50% {
+      transform: translateY(calc(-50% - 14px));
+    }
   }
 }
 
@@ -80,7 +90,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   background: var(--color-bg);
@@ -94,10 +105,21 @@ html, body {
 }
 
 @layer base {
-  a { color: inherit; text-decoration: none; }
-  img { max-width: 100%; display: block; }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  img {
+    max-width: 100%;
+    display: block;
+  }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-sans);
     font-weight: 700;
     letter-spacing: -0.035em;
@@ -106,7 +128,10 @@ html, body {
     text-wrap: balance;
   }
 
-  p { margin: 0; text-wrap: pretty; }
+  p {
+    margin: 0;
+    text-wrap: pretty;
+  }
 }
 
 /* ── Display type scale ────────────────────────────────────────── */
@@ -135,12 +160,27 @@ html, body {
   max-width: 640px;
 }
 
+/* ── Inline code (developer docs) ──────────────────────────────── */
+.doc-code {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+  padding: 0.12em 0.4em;
+  border-radius: 6px;
+  background: var(--color-bg-3);
+  color: var(--color-ink-2);
+  white-space: nowrap;
+}
+
 /* On dark sections, the H1-H4 colour switches to white via the .section-dark wrapper */
-.section-dark .lead { color: rgba(255, 255, 255, 0.68); }
+.section-dark .lead {
+  color: rgba(255, 255, 255, 0.68);
+}
 .section-dark h1,
 .section-dark h2,
 .section-dark h3,
-.section-dark h4 { color: #fff; }
+.section-dark h4 {
+  color: #fff;
+}
 
 /* ── Skip link ─────────────────────────────────────────────────── */
 .skip-link {
@@ -173,7 +213,9 @@ html, body {
 
 /* ── Reduced motion ────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
