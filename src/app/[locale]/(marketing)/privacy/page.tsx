@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PillBadge } from "@/components/design/primitives";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildMetadata({
@@ -13,21 +14,27 @@ const LAST_UPDATED = "1 May 2025";
 
 export default function PrivacyPage() {
   return (
-    <main id="main-content" className="min-h-screen bg-[var(--color-bg)]">
-      <div className="mx-auto max-w-[800px] px-7 lg:px-10 py-20 lg:py-28">
-        <span className="text-[13px] font-semibold text-[var(--color-mint)]">
-          Last updated: {LAST_UPDATED}
-        </span>
-        <h1 className="mt-4 text-[40px] lg:text-[56px] font-extrabold tracking-[-0.04em] leading-[1.05] text-[var(--color-ink)]">
+    <div className="relative min-h-screen overflow-hidden bg-[var(--color-bg)]">
+      <div
+        className="pointer-events-none absolute left-1/2 top-[-320px] h-[640px] w-[1100px] -translate-x-1/2"
+        style={{
+          background: "radial-gradient(ellipse at center,rgba(0,210,122,.13),transparent 60%)",
+        }}
+      />
+
+      <div className="relative mx-auto max-w-[800px] px-7 pb-24 pt-[150px] lg:px-10 lg:pb-32">
+        <PillBadge>Last updated: {LAST_UPDATED}</PillBadge>
+
+        <h1 className="mt-6 text-[clamp(36px,5.4vw,64px)] font-extrabold leading-[1.04] tracking-[-0.035em] text-[var(--color-ink)]">
           Privacy Policy
         </h1>
-        <p className="mt-5 text-[17px] text-[var(--color-muted)] leading-[1.7]">
+        <p className="mt-5 max-w-[620px] text-[17.5px] leading-[1.65] text-[var(--color-muted)]">
           Tajir Point (&ldquo;we&rdquo;, &ldquo;our&rdquo;, &ldquo;us&rdquo;) is committed to
           protecting the privacy of our merchants and their customers. This policy explains what
           data we collect, why we collect it, and how we use it.
         </p>
 
-        <div className="mt-14 flex flex-col gap-12 prose-content">
+        <div className="mt-14 flex flex-col gap-6">
           <LegalSection title="1. Information we collect">
             <p>We collect information you provide directly when you:</p>
             <ul>
@@ -125,13 +132,8 @@ export default function PrivacyPage() {
             </ul>
             <p>
               To exercise any of these rights, email{" "}
-              <a
-                href="mailto:privacy@tajirpoint.com"
-                className="text-[var(--color-mint)] hover:underline"
-              >
-                privacy@tajirpoint.com
-              </a>
-              . We will respond within 30 days.
+              <a href="mailto:privacy@tajirpoint.com">privacy@tajirpoint.com</a>. We will respond
+              within 30 days.
             </p>
           </LegalSection>
 
@@ -163,37 +165,26 @@ export default function PrivacyPage() {
             <p>For privacy-related questions or requests, contact our Privacy Team:</p>
             <ul>
               <li>
-                Email:{" "}
-                <a
-                  href="mailto:privacy@tajirpoint.com"
-                  className="text-[var(--color-mint)] hover:underline"
-                >
-                  privacy@tajirpoint.com
-                </a>
+                Email: <a href="mailto:privacy@tajirpoint.com">privacy@tajirpoint.com</a>
               </li>
               <li>Address: Shaheed-e-Millat Road, PECHS, Karachi 75400, Pakistan</li>
             </ul>
           </LegalSection>
         </div>
       </div>
-
-      <style>{`
-        .prose-content p { font-size: 15.5px; color: var(--color-muted); line-height: 1.7; margin-bottom: 14px; }
-        .prose-content ul { margin: 10px 0 14px 1.4rem; list-style: disc; }
-        .prose-content li { font-size: 15px; color: var(--color-muted); line-height: 1.65; margin-bottom: 6px; }
-        .prose-content strong { color: var(--color-ink); font-weight: 600; }
-      `}</style>
-    </main>
+    </div>
   );
 }
 
 function LegalSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div>
-      <h2 className="text-[20px] font-bold tracking-[-0.02em] text-[var(--color-ink)] mb-4 pb-3 border-b border-[var(--color-line)]">
+    <section className="rounded-[20px] border border-[var(--color-line)] bg-white/[0.025] p-7 lg:p-8">
+      <h2 className="mb-5 border-b border-[var(--color-line)] pb-4 text-[20px] font-bold tracking-[-0.02em] text-[var(--color-ink)]">
         {title}
       </h2>
-      <div>{children}</div>
-    </div>
+      <div className="prose prose-tajir max-w-none prose-p:text-[15.5px] prose-p:leading-[1.7] prose-li:text-[15px] prose-li:leading-[1.65] prose-a:font-semibold prose-a:no-underline hover:prose-a:underline">
+        {children}
+      </div>
+    </section>
   );
 }

@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import "@/styles/globals.css";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { organizationSchema, websiteSchema } from "@/lib/seo/schemas";
 import { siteConfig } from "@/lib/config/site";
 
@@ -77,7 +78,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+        <ThemeProvider>
+          <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

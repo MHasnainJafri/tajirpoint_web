@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-
+import { Link } from "@/i18n/navigation";
+import { PillBadge, MintButton, GhostButton, CtaPanel } from "@/components/design/primitives";
+import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildMetadata({
@@ -55,93 +56,92 @@ const FEATURES = [
 
 export default function DistributorsPage() {
   return (
-    <main id="main-content" className="min-h-screen bg-[var(--color-bg)]">
-      <section className="pt-20 pb-16 lg:pt-28 lg:pb-20">
-        <div className="mx-auto max-w-[1320px] px-7 lg:px-10">
+    <>
+      {/* ── Header ──────────────────────────────────────────────────── */}
+      <section className="relative overflow-hidden px-5 pb-14 pt-[140px] md:px-10">
+        <div
+          className="pointer-events-none absolute left-1/2 top-[-320px] h-[640px] w-[1100px] -translate-x-1/2"
+          style={{
+            background: "radial-gradient(ellipse at center,rgba(0,210,122,.13),transparent 62%)",
+          }}
+        />
+
+        <div className="relative mx-auto max-w-[1140px]">
           <Link
             href="/solutions"
-            className="inline-flex items-center gap-2 text-[13px] font-semibold text-[var(--color-muted)] hover:text-[var(--color-ink)] mb-8 transition-colors"
+            className="mb-7 inline-flex items-center gap-2 font-mono text-[12px] tracking-[1.5px] text-[var(--color-muted-2)] transition-colors hover:text-[var(--color-mint-2)]"
           >
             ← All solutions
           </Link>
-          <div className="inline-flex items-center gap-2 text-[13px] font-semibold mb-4 px-3 py-1.5 rounded-full border border-teal-200 text-teal-600 bg-teal-50">
-            Distributors & Wholesale
+
+          <div>
+            <PillBadge>Distributors &amp; Wholesale</PillBadge>
           </div>
-          <h1 className="text-[44px] lg:text-[68px] font-extrabold tracking-[-0.04em] leading-[1.04] text-[var(--color-ink)] max-w-[800px]">
+
+          <h1 className="mt-6 max-w-[820px] animate-[tpFadeUp_.8s_.15s_cubic-bezier(.22,1,.36,1)_both] text-[clamp(36px,5.2vw,68px)] font-extrabold leading-[1.04] tracking-[-0.035em]">
             From warehouse
             <br />
             to last-mile delivery.
           </h1>
-          <p className="mt-3 text-[14px] text-[var(--color-muted)]">
+
+          <p className="mt-4 animate-[tpFadeUp_.8s_.22s_cubic-bezier(.22,1,.36,1)_both] font-mono text-[12px] tracking-[2px] text-[var(--color-muted-3)]">
             FMCG · Pharma · Electronics · Bulk Supply
           </p>
-          <p className="mt-5 text-[17px] text-[var(--color-muted)] leading-[1.65] max-w-[520px]">
+
+          <p className="mt-5 max-w-[560px] animate-[tpFadeUp_.8s_.28s_cubic-bezier(.22,1,.36,1)_both] text-[17.5px] leading-[1.65] text-[rgba(242,247,244,.64)]">
             Route planning, driver dispatch, proof of delivery, purchase orders, and multi-warehouse
             inventory — built for businesses that move stock at scale.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a
-              href="https://app.tajirpoint.com/signup"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[var(--color-ink)] text-white text-[15px] font-semibold hover:opacity-90 transition-opacity"
-            >
-              Start free trial →
-            </a>
-            <Link
-              href="/book-demo"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-[var(--color-line)] text-[15px] font-semibold text-[var(--color-ink)] hover:bg-[var(--color-bg-2)] transition-colors"
-            >
-              Book a demo
-            </Link>
+
+          <div className="mt-9 flex animate-[tpFadeUp_.8s_.36s_cubic-bezier(.22,1,.36,1)_both] flex-wrap gap-[14px]">
+            <MintButton href={siteConfig.signupUrl} external>
+              Start free trial <span>→</span>
+            </MintButton>
+            <GhostButton href="/book-demo">Book a demo</GhostButton>
           </div>
         </div>
       </section>
 
-      <section className="pb-24 lg:pb-32">
-        <div className="mx-auto max-w-[1320px] px-7 lg:px-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {FEATURES.map((f) => (
-              <div
-                key={f.title}
-                className="rounded-[20px] border border-[var(--color-line)] bg-[var(--color-bg-2)] p-6"
-              >
-                <div className="text-3xl mb-3">{f.icon}</div>
-                <h3 className="text-[15px] font-bold text-[var(--color-ink)] mb-2">{f.title}</h3>
-                <p className="text-[13.5px] text-[var(--color-muted)] leading-[1.6]">{f.body}</p>
-              </div>
-            ))}
-          </div>
+      {/* ── Features ────────────────────────────────────────────────── */}
+      <section className="border-t border-[var(--color-line-soft)] px-5 py-[90px] md:px-10">
+        <div className="mx-auto grid max-w-[1140px] grid-cols-1 gap-[16px] sm:grid-cols-2 lg:grid-cols-4">
+          {FEATURES.map((f, i) => (
+            <div
+              key={f.title}
+              data-reveal
+              data-reveal-delay={(i % 4) * 80}
+              className="rounded-[18px] border border-[var(--color-line)] bg-white/[0.025] p-6 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-[rgba(0,210,122,.5)] hover:shadow-[0_18px_50px_rgba(0,0,0,.4)]"
+            >
+              <span className="mb-4 flex h-[46px] w-[46px] items-center justify-center rounded-[12px] border border-[rgba(0,210,122,.22)] bg-[rgba(0,210,122,.12)] text-[20px]">
+                {f.icon}
+              </span>
+              <h3 className="text-[16px] font-bold tracking-[-0.01em]">{f.title}</h3>
+              <p className="mt-2 text-[13.5px] leading-[1.6] text-[rgba(242,247,244,.58)]">
+                {f.body}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 
-      <section className="py-16 bg-[var(--color-ink)]">
-        <div className="mx-auto max-w-[1320px] px-7 lg:px-10 text-center">
-          <h2 className="text-[32px] lg:text-[44px] font-extrabold tracking-[-0.035em] text-white">
+      {/* ── CTA ─────────────────────────────────────────────────────── */}
+      <section className="px-5 pb-[110px] pt-5 md:px-10">
+        <CtaPanel>
+          <h2 className="relative text-[clamp(28px,3.6vw,46px)] font-extrabold tracking-[-0.03em]">
             14-day free trial. No card needed.
           </h2>
-          <p className="mt-4 text-[16px] text-white/55 max-w-[400px] mx-auto">
+          <p className="relative mx-auto mt-4 max-w-[440px] text-[16px] leading-[1.6] text-[rgba(242,247,244,.64)]">
             We'll demo the full dispatch flow — route creation, driver app, and proof of delivery —
             in your call.
           </p>
-          <div className="mt-7 flex flex-wrap gap-3 justify-center">
-            <a
-              href="https://app.tajirpoint.com/signup"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[var(--color-mint)] text-[var(--color-ink)] text-[15px] font-semibold hover:opacity-90 transition-opacity"
-            >
-              Start free — Distributors →
-            </a>
-            <Link
-              href="/pricing"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-white/20 text-white text-[15px] font-semibold hover:bg-white/10 transition-colors"
-            >
-              See pricing
-            </Link>
+          <div className="relative mt-8 flex flex-wrap justify-center gap-[14px]">
+            <MintButton href={siteConfig.signupUrl} external>
+              Start free — Distributors <span>→</span>
+            </MintButton>
+            <GhostButton href="/pricing">See pricing</GhostButton>
           </div>
-        </div>
+        </CtaPanel>
       </section>
-    </main>
+    </>
   );
 }

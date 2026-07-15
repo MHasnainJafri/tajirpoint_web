@@ -53,11 +53,11 @@ export default function DocsIndexPage() {
           resource URLs, JSON in and out, cursor pagination, idempotent writes, and signed webhooks
           so you can react to events instead of polling for them.
         </p>
-        <div className="mt-1 inline-flex w-fit items-center gap-3 rounded-[12px] border border-[var(--color-line)] bg-[var(--color-bg-2)] px-4 py-2.5">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[var(--color-muted)]">
+        <div className="mt-1 inline-flex w-fit items-center gap-3 rounded-[12px] border border-[var(--color-line)] bg-white/[0.03] px-4 py-2.5">
+          <span className="font-mono text-[11px] uppercase tracking-[1.6px] text-[var(--color-muted-3)]">
             Base URL
           </span>
-          <code className="font-mono text-[13.5px] text-[var(--color-ink)]">{API_BASE}</code>
+          <code className="font-mono text-[13.5px] text-[var(--color-mint-2)]">{API_BASE}</code>
         </div>
       </header>
 
@@ -91,9 +91,9 @@ export default function DocsIndexPage() {
           <Link
             key={c.href}
             href={c.href}
-            className="group rounded-[14px] border border-[var(--color-line)] bg-[var(--color-bg-2)] p-5 transition-colors hover:border-[var(--color-mint)]/40"
+            className="group rounded-[18px] border border-[var(--color-line)] bg-white/[0.025] p-5 transition-colors hover:border-[var(--color-mint-line)] hover:bg-white/[0.05]"
           >
-            <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-[9px] bg-[var(--color-mint)]/10 text-[var(--color-mint)]">
+            <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-[10px] border border-[var(--color-mint-line)] bg-[var(--color-mint-soft)] text-[var(--color-mint-2)]">
               {c.icon}
             </div>
             <h3 className="mb-1 text-[14.5px] font-bold text-[var(--color-ink)]">{c.title}</h3>
@@ -116,17 +116,27 @@ export default function DocsIndexPage() {
         <h2 className="text-[24px] font-extrabold tracking-[-0.03em] text-[var(--color-ink)]">
           Request headers
         </h2>
-        <div className="overflow-hidden rounded-[14px] border border-[var(--color-line)]">
+        <div className="overflow-hidden rounded-[14px] border border-[var(--color-line)] bg-white/[0.015]">
+          <div className="hidden gap-4 border-b border-[var(--color-line)] bg-white/[0.04] px-4 py-2 sm:flex">
+            <span className="w-[180px] shrink-0 font-mono text-[10px] uppercase tracking-[1.6px] text-[var(--color-muted-3)]">
+              Header
+            </span>
+            <span className="font-mono text-[10px] uppercase tracking-[1.6px] text-[var(--color-muted-3)]">
+              What it is for
+            </span>
+          </div>
           {HEADERS.map((h, i) => (
             <div
               key={h.name}
-              className={`flex flex-col gap-1 px-4 py-3.5 sm:flex-row sm:gap-4 ${
+              className={`flex flex-col gap-1 px-4 py-3.5 transition-colors hover:bg-white/[0.02] sm:flex-row sm:gap-4 ${
                 i > 0 ? "border-t border-[var(--color-line)]" : ""
               }`}
             >
               <div className="shrink-0 sm:w-[180px]">
                 <code className="doc-code whitespace-nowrap">{h.name}</code>
-                <p className="mt-1 text-[12px] font-medium text-[var(--color-ink)]">{h.when}</p>
+                <p className="mt-1 font-mono text-[11px] uppercase tracking-[1.2px] text-[var(--color-mint-2)]">
+                  {h.when}
+                </p>
               </div>
               <p className="text-[13.5px] leading-[1.6] text-[var(--color-muted)]">{h.desc}</p>
             </div>

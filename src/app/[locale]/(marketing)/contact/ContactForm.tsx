@@ -12,20 +12,26 @@ const BUSINESS_TYPES = [
   "Other",
 ];
 
-const inputCls =
-  "h-[48px] px-4 rounded-[12px] border border-[var(--color-line)] bg-white text-[14.5px] text-[var(--color-ink)] placeholder:text-[var(--color-muted-2)] focus:outline-none focus:border-[var(--color-mint)] focus:ring-2 focus:ring-[var(--color-mint)]/20 transition";
+const fieldCls =
+  "rounded-[12px] border border-[var(--color-line-2)] bg-white/[0.04] text-[14.5px] text-[var(--color-ink)] placeholder:text-[var(--color-muted-3)] transition-[border-color,box-shadow,background-color] duration-200 hover:border-[rgba(0,210,122,.35)] focus:border-[var(--color-mint)] focus:bg-white/[0.06] focus:outline-none focus:ring-2 focus:ring-[rgba(0,210,122,.2)]";
+
+const inputCls = `h-[48px] px-4 ${fieldCls}`;
+
+const selectCls = `${inputCls} [&>option]:bg-[var(--color-panel)] [&>option]:text-[var(--color-ink)]`;
+
+const labelCls = "text-[13.5px] font-semibold text-[var(--color-ink)]";
 
 export function ContactForm() {
   const [state, action, pending] = useActionState<ContactState | undefined, FormData>(
     submitContact,
-    undefined,
+    undefined
   );
 
   if (state?.ok) {
     return (
-      <div className="rounded-[16px] border border-[var(--color-line)] bg-[var(--color-bg-2)] p-8">
-        <p className="font-extrabold text-[18px] text-[var(--color-ink)]">Message sent ✓</p>
-        <p className="mt-2 text-[14px] text-[var(--color-muted)] leading-[1.6]">
+      <div className="rounded-[18px] border border-[var(--color-mint-line)] bg-[rgba(0,210,122,.06)] p-8">
+        <p className="text-[18px] font-extrabold text-[var(--color-mint-2)]">Message sent ✓</p>
+        <p className="mt-2 text-[14px] leading-[1.6] text-[var(--color-muted)]">
           Thanks for reaching out — we&apos;ll reply within one business day.
         </p>
       </div>
@@ -34,20 +40,40 @@ export function ContactForm() {
 
   return (
     <form action={action} className="flex flex-col gap-5">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div className="flex flex-col gap-2">
-          <label htmlFor="name" className="text-[13.5px] font-semibold text-[var(--color-ink)]">Name</label>
-          <input id="name" name="name" type="text" required placeholder="Your full name" className={inputCls} />
+          <label htmlFor="name" className={labelCls}>
+            Name
+          </label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            required
+            placeholder="Your full name"
+            className={inputCls}
+          />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="email" className="text-[13.5px] font-semibold text-[var(--color-ink)]">Email</label>
-          <input id="email" name="email" type="email" required placeholder="you@example.com" className={inputCls} />
+          <label htmlFor="email" className={labelCls}>
+            Email
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            placeholder="you@example.com"
+            className={inputCls}
+          />
         </div>
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="business" className="text-[13.5px] font-semibold text-[var(--color-ink)]">Business type</label>
-        <select id="business" name="business" className={inputCls} defaultValue="">
+        <label htmlFor="business" className={labelCls}>
+          Business type
+        </label>
+        <select id="business" name="business" className={selectCls} defaultValue="">
           <option value="">Select your business type</option>
           {BUSINESS_TYPES.map((b) => (
             <option key={b}>{b}</option>
@@ -56,19 +82,29 @@ export function ContactForm() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="subject" className="text-[13.5px] font-semibold text-[var(--color-ink)]">Subject</label>
-        <input id="subject" name="subject" type="text" placeholder="How can we help?" className={inputCls} />
+        <label htmlFor="subject" className={labelCls}>
+          Subject
+        </label>
+        <input
+          id="subject"
+          name="subject"
+          type="text"
+          placeholder="How can we help?"
+          className={inputCls}
+        />
       </div>
 
       <div className="flex flex-col gap-2">
-        <label htmlFor="message" className="text-[13.5px] font-semibold text-[var(--color-ink)]">Message</label>
+        <label htmlFor="message" className={labelCls}>
+          Message
+        </label>
         <textarea
           id="message"
           name="message"
           rows={5}
           required
           placeholder="Tell us more about your business and how we can help..."
-          className="px-4 py-3 rounded-[12px] border border-[var(--color-line)] bg-white text-[14.5px] text-[var(--color-ink)] placeholder:text-[var(--color-muted-2)] focus:outline-none focus:border-[var(--color-mint)] focus:ring-2 focus:ring-[var(--color-mint)]/20 transition resize-none"
+          className={`resize-none px-4 py-3 ${fieldCls}`}
         />
       </div>
 
@@ -83,7 +119,10 @@ export function ContactForm() {
       />
 
       {state?.error && (
-        <p className="text-[13.5px] text-[var(--color-destructive,#dc2626)]" role="alert">
+        <p
+          className="rounded-[12px] border border-[rgba(255,122,107,.35)] bg-[rgba(255,122,107,.08)] px-4 py-3 text-[13.5px] text-[var(--color-berry)]"
+          role="alert"
+        >
           {state.error}
         </p>
       )}
@@ -91,7 +130,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={pending}
-        className="self-start inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[var(--color-ink)] text-white text-[15px] font-semibold hover:opacity-90 transition-opacity disabled:opacity-60"
+        className="inline-flex select-none items-center gap-[10px] self-start whitespace-nowrap rounded-full bg-[var(--color-mint)] px-7 py-[14px] text-[15px] font-bold text-[var(--color-mint-ink)] transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(0,210,122,.45)] disabled:translate-y-0 disabled:opacity-60 disabled:shadow-none"
       >
         {pending ? "Sending…" : "Send message →"}
       </button>

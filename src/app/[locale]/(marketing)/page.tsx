@@ -1,43 +1,44 @@
 import type { Metadata } from "next";
-import { Hero } from "@/components/marketing/hero/Hero";
-import { ThreeSurfaces } from "@/components/marketing/sections/ThreeSurfaces";
-import { Offline } from "@/components/marketing/sections/Offline";
-import { Khata } from "@/components/marketing/sections/Khata";
-import { FeatureGrid } from "@/components/marketing/sections/FeatureGrid";
-import { Verticals } from "@/components/marketing/sections/Verticals";
-import { Storefront } from "@/components/marketing/sections/Storefront";
-import { TriLingual } from "@/components/marketing/sections/TriLingual";
-import { Hardware } from "@/components/marketing/sections/Hardware";
-import { AppDownload } from "@/components/marketing/sections/AppDownload";
-import { Pricing } from "@/components/marketing/sections/Pricing";
-import { FinalCTA } from "@/components/marketing/sections/FinalCTA";
+import { getTranslations } from "next-intl/server";
+import { Hero } from "@/components/marketing/landing/Hero";
+import { Marquee } from "@/components/marketing/landing/Marquee";
+import { Platform } from "@/components/marketing/landing/Platform";
+import { Bento } from "@/components/marketing/landing/Bento";
+import { Ledger } from "@/components/marketing/landing/Ledger";
+import { InTheBox } from "@/components/marketing/landing/InTheBox";
+import { Devices } from "@/components/marketing/landing/Devices";
+import { ExtensionsRail } from "@/components/marketing/landing/ExtensionsRail";
+import { HowItWorks } from "@/components/marketing/landing/HowItWorks";
+import { VerticalsGrid } from "@/components/marketing/landing/VerticalsGrid";
+import { Pricing } from "@/components/marketing/landing/Pricing";
+import { Faq } from "@/components/marketing/landing/Faq";
+import { FinalCta } from "@/components/marketing/landing/FinalCta";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { softwareApplicationSchema } from "@/lib/seo/schemas";
 import { buildMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Tajir Point — POS, Inventory & Khata for Merchants in PK, UAE & KSA",
-  description:
-    "POS, inventory, khata ledger, and storefront in one platform — for merchants in Pakistan, UAE, and Saudi Arabia. Three languages, every device.",
-  path: "/",
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("landing.meta");
+  return buildMetadata({ title: t("title"), description: t("description"), path: "/" });
+}
 
 export default function HomePage() {
   return (
     <>
       <JsonLd schema={softwareApplicationSchema()} />
       <Hero />
-      <ThreeSurfaces />
-      <Offline />
-      <Khata />
-      <FeatureGrid />
-      <Verticals />
-      <Storefront />
-      <TriLingual />
-      <Hardware />
-      <AppDownload />
+      <Marquee />
+      <Platform />
+      <Bento />
+      <Ledger />
+      <InTheBox />
+      <Devices />
+      <ExtensionsRail />
+      <HowItWorks />
+      <VerticalsGrid />
       <Pricing />
-      <FinalCTA />
+      <Faq />
+      <FinalCta />
     </>
   );
 }

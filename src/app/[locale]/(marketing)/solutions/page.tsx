@@ -1,406 +1,164 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { CakeSlice, CalendarClock, Smartphone, Store, Truck, UtensilsCrossed } from "lucide-react";
+import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { Icon } from "@/components/design/Icon";
+import { PillBadge, CtaPanel } from "@/components/design/primitives";
+import { VERTICALS } from "@/lib/design/catalog";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { siteConfig } from "@/lib/config/site";
 
-export const metadata: Metadata = buildMetadata({
-  title: "POS Solutions for Every Merchant — Retail, Restaurants & More",
-  description:
-    "Tajir Point POS adapts to retail, restaurants, electronics, services, bakeries, and distributors in Pakistan, UAE, and Saudi Arabia. Start free in 90 seconds.",
-  path: "/solutions",
-});
-
-const VERTICALS = [
-  {
-    num: "01",
-    title: "General Retail",
-    subtitle: "Kiryana · Apparel · Hardware · Grocery",
-    body: "Fast checkout, barcode scanning, multi-unit pricing, and a built-in digital ledger for credit customers. Works on any Android device, even with no internet.",
-    tags: ["Barcode scanner", "Credit khata", "FBR e-invoice", "Multi-unit pricing", "Offline POS"],
-    href: "/solutions/general-retail",
-    icon: <Store size={28} strokeWidth={1.8} />,
-    accentColor: "var(--color-mint)",
-  },
-  {
-    num: "02",
-    title: "Restaurants & Cafés",
-    subtitle: "Dine-in · Takeaway · Delivery · Cloud Kitchen",
-    body: "Table management, Kitchen Display System, modifier groups, split bills, and driver dispatch — from a single counter to a multi-branch chain.",
-    tags: ["Table management", "KDS", "Modifiers", "Split bill", "Delivery dispatch"],
-    href: "/solutions/restaurants",
-    icon: <UtensilsCrossed size={28} strokeWidth={1.8} />,
-    accentColor: "#f97316",
-  },
-  {
-    num: "03",
-    title: "Electronics & Mobile",
-    subtitle: "Mobile Phones · Accessories · Computers · Repair",
-    body: "Serial number tracking, IMEI management, warranty registers, and repair job cards. Never lose track of a unit from purchase to sale.",
-    tags: [
-      "IMEI tracking",
-      "Serial numbers",
-      "Warranty register",
-      "Repair jobs",
-      "Supplier ledger",
-    ],
-    href: "/solutions/electronics",
-    icon: <Smartphone size={28} strokeWidth={1.8} />,
-    accentColor: "#6366f1",
-  },
-  {
-    num: "04",
-    title: "Digital Services",
-    subtitle: "Salons · Clinics · Gyms · Tutors · Car Wash",
-    body: "Appointment scheduling, staff commission tracking, package deals, and recurring billing. Sell your time as efficiently as a product.",
-    tags: [
-      "Appointments",
-      "Staff commissions",
-      "Packages",
-      "Recurring billing",
-      "Customer history",
-    ],
-    href: "/solutions/services",
-    icon: <CalendarClock size={28} strokeWidth={1.8} />,
-    accentColor: "#0ea5e9",
-  },
-  {
-    num: "05",
-    title: "Bakeries & Sweets",
-    subtitle: "Bakeries · Sweets · Juices · Snacks",
-    body: "Production recipes, batch tracking, modifier add-ons, daily production planning, and waste monitoring — for shops where every ingredient counts.",
-    tags: ["Production recipes", "Batch tracking", "Modifiers", "Daily planning", "Waste log"],
-    href: "/solutions/restaurants",
-    icon: <CakeSlice size={28} strokeWidth={1.8} />,
-    accentColor: "#ec4899",
-  },
-  {
-    num: "06",
-    title: "Distributors & Wholesale",
-    subtitle: "FMCG · Pharma · Electronics · Bulk Supply",
-    body: "Route planning, driver dispatch, proof-of-delivery, purchase orders, supplier payables, and multi-warehouse inventory across branches.",
-    tags: ["Route planning", "Driver dispatch", "Purchase orders", "Multi-warehouse", "Payables"],
-    href: "/solutions/distributors",
-    icon: <Truck size={28} strokeWidth={1.8} />,
-    accentColor: "#14b8a6",
-  },
-];
-
-const REGIONS = [
-  {
-    flag: "🇵🇰",
-    country: "Pakistan",
-    code: "PK",
-    compliance: [
-      "FBR e-invoicing (Tier-1 POS)",
-      "POS-IRN generation",
-      "Real-time FBR transmission",
-      "FBR Annex-C export",
-    ],
-    payments: ["JazzCash QR", "Easypaisa", "1Link debit", "Cash"],
-    currency: "PKR",
-  },
-  {
-    flag: "🇦🇪",
-    country: "UAE",
-    code: "AE",
-    compliance: [
-      "5% VAT invoicing",
-      "Multi-rate VAT (0%, 5%, exempt)",
-      "VAT return export",
-      "FTA-ready reports",
-    ],
-    payments: ["Card (Visa/MC)", "Apple Pay", "Cash", "Bank transfer"],
-    currency: "AED",
-  },
-  {
-    flag: "🇸🇦",
-    country: "Saudi Arabia",
-    code: "SA",
-    compliance: [
-      "ZATCA Phase 2 clearance",
-      "CSID & cryptographic stamp",
-      "Arabic e-invoice (XML)",
-      "ZATCA QR code",
-    ],
-    payments: ["STC Pay", "mada", "Card", "Cash"],
-    currency: "SAR",
-  },
-];
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("solutions.meta");
+  return buildMetadata({
+    title: t("title"),
+    description: t("description"),
+    path: "/solutions",
+  });
+}
 
 export default function SolutionsPage() {
+  const t = useTranslations("solutions");
+  const tInd = useTranslations("solutions.industries");
+
   return (
-    <main id="main-content" className="min-h-screen bg-[var(--color-bg)]">
-      {/* Hero */}
-      <section className="pt-20 pb-16 lg:pt-28 lg:pb-20">
-        <div className="mx-auto max-w-[1320px] px-7 lg:px-10">
-          <span className="inline-flex items-center gap-2 text-[13px] font-semibold text-[var(--color-mint)] mb-6">
-            <span className="inline-block w-4 h-px bg-[var(--color-mint)]" />
-            Solutions
+    <>
+      {/* ── Header ──────────────────────────────────────────────────── */}
+      <section className="relative overflow-hidden px-5 pb-10 pt-[150px] text-center md:px-10">
+        <div
+          className="pointer-events-none absolute left-1/2 top-[-300px] h-[640px] w-[1100px] -translate-x-1/2"
+          style={{
+            background: "radial-gradient(ellipse at center,rgba(0,210,122,.15),transparent 60%)",
+          }}
+        />
+
+        <PillBadge>{t("badge")}</PillBadge>
+
+        <h1 className="relative mt-6 animate-[tpFadeUp_.8s_.15s_cubic-bezier(.22,1,.36,1)_both] text-[clamp(36px,5.4vw,72px)] font-extrabold leading-[1.04] tracking-[-0.035em]">
+          {t("headline")}{" "}
+          <span className="text-[var(--color-mint)] [text-shadow:0_0_40px_rgba(0,210,122,.4)]">
+            {t("headlineAccent")}
           </span>
-          <h1 className="text-[44px] lg:text-[72px] font-extrabold tracking-[-0.04em] leading-[1.04] text-[var(--color-ink)] max-w-[860px]">
-            POS & business software
-            <br />
-            for every merchant.
-          </h1>
-          <p className="mt-5 text-[17px] text-[var(--color-muted)] leading-[1.65] max-w-[540px]">
-            One platform, six business types, three countries. Tajir Point adapts to your vertical,
-            your language, and your compliance requirements — right out of the box.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+        </h1>
+
+        <p className="relative mx-auto mt-[22px] max-w-[560px] animate-[tpFadeUp_.8s_.28s_cubic-bezier(.22,1,.36,1)_both] text-[18px] leading-[1.6] text-[var(--color-muted)]">
+          {t("sub")}
+        </p>
+
+        {/* Jump nav */}
+        <div className="relative mt-[34px] flex animate-[tpFadeUp_.8s_.4s_cubic-bezier(.22,1,.36,1)_both] flex-wrap justify-center gap-2">
+          {VERTICALS.map((v) => (
             <a
-              href="https://app.tajirpoint.com/signup"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[var(--color-ink)] text-white text-[15px] font-semibold hover:opacity-90 transition-opacity"
+              key={v.id}
+              href={`#${v.id}`}
+              className="inline-flex items-center gap-2 rounded-full border border-[var(--color-line-2)] bg-[var(--surface-2)] px-[18px] py-[9px] text-[13.5px] font-semibold text-[var(--color-muted)] transition-colors duration-[250ms] hover:border-[rgba(0,210,122,.5)] hover:text-[var(--color-ink-2)]"
             >
-              Start free trial →
+              <span className="inline-flex text-[var(--color-mint-2)]">
+                <Icon name={v.icon} size={15} />
+              </span>
+              {tInd(`${v.id}.name`)}
             </a>
-            <Link
-              href="/book-demo"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-[var(--color-line)] text-[15px] font-semibold text-[var(--color-ink)] hover:bg-[var(--color-bg-2)] transition-colors"
-            >
-              Book a demo
-            </Link>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* Business type cards */}
-      <section className="pb-20 lg:pb-28">
-        <div className="mx-auto max-w-[1320px] px-7 lg:px-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {VERTICALS.map((v) => (
-              <Link
-                key={v.num}
-                href={v.href}
-                className="group rounded-[24px] border border-[var(--color-line)] bg-[var(--color-bg-2)] p-7 lg:p-8 flex flex-col hover:shadow-[0_8px_40px_rgba(0,0,0,0.07)] hover:-translate-y-1 hover:border-[var(--color-mint)] transition-all duration-200"
-              >
-                {/* Header */}
-                <div className="flex items-start justify-between mb-6">
-                  <div
-                    className="w-12 h-12 rounded-[14px] flex items-center justify-center"
-                    style={{ background: `${v.accentColor}18`, color: v.accentColor }}
-                  >
-                    {v.icon}
-                  </div>
-                  <span className="text-[12px] font-mono font-bold text-[var(--color-muted-2)]">
-                    {v.num}
-                  </span>
+      {/* ── One section per industry, alternating side ───────────────── */}
+      {VERTICALS.map((v, i) => {
+        const chips = tInd.raw(`${v.id}.chips`) as string[];
+        const feats = tInd.raw(`${v.id}.feats`) as { t: string; d: string }[];
+        const flip = i % 2 === 1;
+
+        return (
+          <section
+            key={v.id}
+            id={v.id}
+            className="scroll-mt-20 border-t border-[var(--color-line-soft)] px-5 py-[90px] md:px-10"
+          >
+            <div className="mx-auto grid max-w-[1160px] items-center gap-[70px] lg:grid-cols-[1fr_1.1fr]">
+              <div data-reveal className={flip ? "lg:order-2" : ""}>
+                <div className="inline-flex h-14 w-14 items-center justify-center rounded-[15px] border border-[rgba(0,210,122,.3)] bg-[rgba(0,210,122,.12)] text-[var(--color-mint-2)]">
+                  <Icon name={v.icon} size={25} />
                 </div>
 
-                {/* Title */}
-                <h2 className="text-[20px] font-extrabold tracking-[-0.025em] text-[var(--color-ink)] mb-1 group-hover:text-[var(--color-mint)] transition-colors">
-                  {v.title}
+                <div className="mt-5 font-mono text-[11px] tracking-[2.5px] text-[var(--color-mint-2)]">
+                  {tInd(`${v.id}.tag`)}
+                </div>
+
+                <h2 className="mt-3 text-[clamp(28px,3.4vw,44px)] font-extrabold leading-[1.08] tracking-[-0.03em]">
+                  {tInd(`${v.id}.headline`)}
                 </h2>
-                <p className="text-[12.5px] text-[var(--color-muted)] mb-4">{v.subtitle}</p>
-                <p className="text-[14px] text-[var(--color-muted)] leading-[1.65] flex-1">
-                  {v.body}
+
+                <p className="mt-[18px] max-w-[460px] text-[16px] leading-[1.65] text-[var(--color-muted)]">
+                  {tInd(`${v.id}.body`)}
                 </p>
 
-                {/* Tags */}
-                <div className="mt-5 pt-5 border-t border-[var(--color-line)] flex flex-wrap gap-1.5 items-center justify-between">
-                  <div className="flex flex-wrap gap-1.5">
-                    {v.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[12px] font-medium px-2.5 py-1 rounded-full border border-[var(--color-line)] bg-white text-[var(--color-ink-3)]"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <span className="text-[13px] text-[var(--color-muted)] group-hover:text-[var(--color-mint)] transition-colors shrink-0">
-                    →
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* By region */}
-      <section className="py-20 lg:py-28 bg-[var(--color-bg-2)] border-t border-[var(--color-line)]">
-        <div className="mx-auto max-w-[1320px] px-7 lg:px-10">
-          <div className="mb-12">
-            <span className="text-[11px] font-bold tracking-[0.08em] text-[var(--color-mint)] uppercase block mb-4">
-              Available markets
-            </span>
-            <h2 className="text-[32px] lg:text-[44px] font-extrabold tracking-[-0.035em] leading-[1.1] text-[var(--color-ink)]">
-              Compliant from day one,
-              <br />
-              in every market.
-            </h2>
-            <p className="mt-4 text-[16px] text-[var(--color-muted)] max-w-[500px] leading-[1.65]">
-              Tax compliance, payment rails, and local language support are built in — not bolt-on
-              integrations you have to configure yourself.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {REGIONS.map((r) => (
-              <div
-                key={r.country}
-                className="rounded-[24px] border border-[var(--color-line)] bg-white p-7"
-              >
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="text-3xl">{r.flag}</span>
-                  <div>
-                    <div className="font-extrabold text-[18px] text-[var(--color-ink)]">
-                      {r.country}
-                    </div>
-                    <div className="text-[12px] text-[var(--color-muted)]">
-                      Currency: {r.currency}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mb-5">
-                  <p className="text-[11px] font-bold tracking-[0.1em] uppercase text-[var(--color-muted-2)] mb-3">
-                    Compliance
-                  </p>
-                  <ul className="flex flex-col gap-2">
-                    {r.compliance.map((c) => (
-                      <li
-                        key={c}
-                        className="flex items-start gap-2 text-[13.5px] text-[var(--color-ink-3)]"
-                      >
-                        <span className="mt-0.5 shrink-0 w-4 h-4 rounded-full bg-[var(--color-mint)]/15 flex items-center justify-center text-[var(--color-mint)] text-[9px] font-bold">
-                          ✓
-                        </span>
-                        {c}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div>
-                  <p className="text-[11px] font-bold tracking-[0.1em] uppercase text-[var(--color-muted-2)] mb-3">
-                    Accepted payments
-                  </p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {r.payments.map((p) => (
-                      <span
-                        key={p}
-                        className="text-[12px] px-2.5 py-1 rounded-full border border-[var(--color-line)] text-[var(--color-ink-3)]"
-                      >
-                        {p}
-                      </span>
-                    ))}
-                  </div>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {chips.map((chip) => (
+                    <span
+                      key={chip}
+                      className="rounded-full border border-[var(--color-mint-line)] bg-[rgba(0,210,122,.06)] px-[13px] py-[6px] text-[12.5px] font-semibold text-[var(--color-mint-2)]"
+                    >
+                      {chip}
+                    </span>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
 
-          <div className="mt-6 rounded-[16px] border border-[var(--color-line)] bg-white p-5 flex items-center gap-4">
-            <span className="text-2xl">🌍</span>
-            <div>
-              <span className="font-semibold text-[14px] text-[var(--color-ink)]">
-                Bangladesh — coming soon
-              </span>
-              <span className="text-[13.5px] text-[var(--color-muted)] ms-2">
-                with NBR compliance and bKash payments.
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* By size */}
-      <section className="py-20 lg:py-24">
-        <div className="mx-auto max-w-[1320px] px-7 lg:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div>
-              <span className="text-[11px] font-bold tracking-[0.08em] text-[var(--color-mint)] uppercase block mb-4">
-                By size
-              </span>
-              <h2 className="text-[32px] lg:text-[44px] font-extrabold tracking-[-0.035em] leading-[1.1] text-[var(--color-ink)]">
-                Starts small.
-                <br />
-                Scales far.
-              </h2>
-              <p className="mt-4 text-[16px] text-[var(--color-muted)] leading-[1.65]">
-                Start on Starter with one branch and two users. Grow into Growth with five branches.
-                Move to Enterprise when you're running a chain or franchise.
-              </p>
-              <Link
-                href="/pricing"
-                className="mt-6 inline-flex items-center gap-2 text-[14px] font-semibold text-[var(--color-mint)] hover:underline underline-offset-2"
+              <div
+                data-reveal
+                data-reveal-delay={120}
+                className={`rounded-[18px] border border-[var(--color-line-2)] bg-[var(--color-panel)] p-[26px] shadow-[0_30px_80px_rgba(0,0,0,.45)] ${
+                  flip ? "lg:order-1" : ""
+                }`}
               >
-                See all plans & pricing →
-              </Link>
-            </div>
-            <div className="grid grid-cols-1 gap-3">
-              {[
-                {
-                  label: "Single shop",
-                  desc: "1 branch, 1–2 staff. Get started in under 5 minutes.",
-                },
-                {
-                  label: "2–10 branches",
-                  desc: "Centralised inventory, branch-level reporting, multi-user access.",
-                },
-                {
-                  label: "Franchise & chains",
-                  desc: "Standardised menu/catalog, franchise-level analytics, SSO.",
-                },
-                {
-                  label: "Enterprise",
-                  desc: "Unlimited branches, custom integrations, dedicated success manager, custom SLA.",
-                },
-                {
-                  label: "Migrating from another POS",
-                  desc: "Free CSV migration assistance. Your data, moved in days.",
-                },
-              ].map((s, i) => (
-                <div
-                  key={s.label}
-                  className="flex items-start gap-4 rounded-[16px] border border-[var(--color-line)] bg-[var(--color-bg-2)] p-5"
-                >
-                  <span className="shrink-0 w-7 h-7 rounded-full bg-[var(--color-mint)]/15 flex items-center justify-center text-[var(--color-mint)] text-[11px] font-bold">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <div>
-                    <div className="font-bold text-[14.5px] text-[var(--color-ink)] mb-0.5">
-                      {s.label}
-                    </div>
-                    <div className="text-[13.5px] text-[var(--color-muted)]">{s.desc}</div>
-                  </div>
+                <div className="mb-[18px] font-mono text-[10.5px] tracking-[2px] text-[var(--color-muted-3)]">
+                  {tInd(`${v.id}.panelTitle`)}
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* CTA */}
-      <section className="py-16 bg-[var(--color-ink)]">
-        <div className="mx-auto max-w-[1320px] px-7 lg:px-10 text-center">
-          <h2 className="text-[32px] lg:text-[48px] font-extrabold tracking-[-0.035em] text-white">
-            Start your 14-day free trial.
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {feats.map((f) => (
+                    <div
+                      key={f.t}
+                      className="rounded-xl border border-[var(--color-line)] bg-[var(--surface-2)] p-4 transition-[border-color,background] duration-[250ms] hover:border-[rgba(0,210,122,.45)] hover:bg-[rgba(0,210,122,.05)]"
+                    >
+                      <div className="text-[14px] font-bold">{f.t}</div>
+                      <div className="mt-[5px] text-[12.5px] leading-[1.45] text-[var(--color-muted-2)]">
+                        {f.d}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      })}
+
+      {/* ── CTA ─────────────────────────────────────────────────────── */}
+      <section className="border-t border-[var(--color-line-soft)] px-5 pb-[110px] pt-10 md:px-10">
+        <CtaPanel className="mt-15">
+          <h2 className="relative text-[clamp(28px,3.6vw,46px)] font-extrabold tracking-[-0.03em]">
+            {t("cta.headline")}
           </h2>
-          <p className="mt-4 text-[17px] text-white/60 max-w-[440px] mx-auto">
-            No credit card. No contract. Just your business, running better.
+          <p className="relative mx-auto mt-4 max-w-[440px] text-[16px] leading-[1.6] text-[var(--color-muted)]">
+            {t("cta.body")}
           </p>
-          <div className="mt-8 flex flex-wrap gap-3 justify-center">
+          <div className="relative mt-8 flex flex-wrap justify-center gap-[14px]">
             <a
-              href="https://app.tajirpoint.com/signup"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[var(--color-mint)] text-[var(--color-ink)] text-[15px] font-semibold hover:opacity-90 transition-opacity"
+              href={siteConfig.signupUrl}
+              className="inline-flex items-center gap-[10px] whitespace-nowrap rounded-full bg-[var(--color-mint)] px-8 py-[15px] text-[16px] font-bold text-[var(--color-mint-ink)] transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(0,210,122,.45)]"
             >
-              Start free →
+              {t("cta.primary")} <span>→</span>
             </a>
             <Link
-              href="/book-demo"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-white/20 text-white text-[15px] font-semibold hover:bg-white/10 transition-colors"
+              href="/extensions"
+              className="inline-flex items-center whitespace-nowrap rounded-full border border-[var(--color-line-2)] bg-[var(--surface-3)] px-7 py-[15px] text-[16px] font-semibold text-[var(--color-ink)] transition-colors duration-200 hover:bg-[var(--surface-strong)] hover:text-[var(--color-ink-2)]"
             >
-              Book a demo
+              {t("cta.secondary")}
             </Link>
           </div>
-        </div>
+        </CtaPanel>
       </section>
-    </main>
+    </>
   );
 }

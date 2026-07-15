@@ -89,7 +89,7 @@ export default function WebhooksPage() {
   return (
     <div className="flex max-w-[860px] flex-col gap-10">
       <header className="flex flex-col gap-3">
-        <span className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[var(--color-mint)]">
+        <span className="font-mono text-[12px] uppercase tracking-[2.5px] text-[var(--color-mint-2)]">
           Getting started
         </span>
         <h1 className="text-[36px] font-extrabold tracking-[-0.035em] text-[var(--color-ink)]">
@@ -102,7 +102,7 @@ export default function WebhooksPage() {
             href={WEBHOOKS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-semibold text-[var(--color-mint)] hover:underline"
+            className="font-semibold text-[var(--color-mint-2)] underline decoration-[var(--color-mint-line)] underline-offset-4 transition-colors hover:decoration-[var(--color-mint)]"
           >
             Settings → Webhooks
           </a>
@@ -114,15 +114,25 @@ export default function WebhooksPage() {
         <h2 className="text-[22px] font-extrabold tracking-[-0.03em] text-[var(--color-ink)]">
           Events
         </h2>
-        <div className="overflow-hidden rounded-[14px] border border-[var(--color-line)]">
+        <div className="overflow-hidden rounded-[14px] border border-[var(--color-line)] bg-white/[0.015]">
+          <div className="hidden gap-5 border-b border-[var(--color-line)] bg-white/[0.04] px-4 py-2 sm:flex">
+            <span className="w-[190px] shrink-0 font-mono text-[10px] uppercase tracking-[1.6px] text-[var(--color-muted-3)]">
+              Event
+            </span>
+            <span className="font-mono text-[10px] uppercase tracking-[1.6px] text-[var(--color-muted-3)]">
+              Fired when
+            </span>
+          </div>
           {EVENTS.map((e, i) => (
             <div
               key={e.event}
-              className={`flex flex-col gap-1 px-4 py-3 sm:flex-row sm:gap-5 ${
+              className={`flex flex-col gap-1 px-4 py-3 transition-colors hover:bg-white/[0.02] sm:flex-row sm:gap-5 ${
                 i > 0 ? "border-t border-[var(--color-line)]" : ""
               }`}
             >
-              <code className="doc-code shrink-0 sm:w-[190px]">{e.event}</code>
+              <code className="shrink-0 font-mono text-[12.5px] font-semibold text-[var(--color-mint-2)] sm:w-[190px]">
+                {e.event}
+              </code>
               <span className="text-[13.5px] leading-[1.55] text-[var(--color-muted)]">
                 {e.when}
               </span>
@@ -140,11 +150,19 @@ export default function WebhooksPage() {
           <code className="doc-code">data</code>.
         </p>
         <CodeBlock label="JSON — request body we POST" code={PAYLOAD} />
-        <div className="overflow-hidden rounded-[14px] border border-[var(--color-line)]">
+        <div className="overflow-hidden rounded-[14px] border border-[var(--color-line)] bg-white/[0.015]">
+          <div className="hidden gap-5 border-b border-[var(--color-line)] bg-white/[0.04] px-4 py-2 sm:flex">
+            <span className="w-[190px] shrink-0 font-mono text-[10px] uppercase tracking-[1.6px] text-[var(--color-muted-3)]">
+              Header
+            </span>
+            <span className="font-mono text-[10px] uppercase tracking-[1.6px] text-[var(--color-muted-3)]">
+              What it carries
+            </span>
+          </div>
           {HEADERS.map((h, i) => (
             <div
               key={h.name}
-              className={`flex flex-col gap-1 px-4 py-3 sm:flex-row sm:gap-5 ${
+              className={`flex flex-col gap-1 px-4 py-3 transition-colors hover:bg-white/[0.02] sm:flex-row sm:gap-5 ${
                 i > 0 ? "border-t border-[var(--color-line)]" : ""
               }`}
             >
@@ -175,8 +193,8 @@ export default function WebhooksPage() {
         <h2 className="text-[22px] font-extrabold tracking-[-0.03em] text-[var(--color-ink)]">
           Retries
         </h2>
-        <div className="flex items-start gap-3 rounded-[14px] border border-[var(--color-line)] bg-[var(--color-bg-2)] p-5">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[8px] bg-[var(--color-mint)]/10 text-[var(--color-mint)]">
+        <div className="flex items-start gap-3 rounded-[18px] border border-[var(--color-line)] bg-white/[0.025] p-5">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[9px] border border-[var(--color-mint-line)] bg-[var(--color-mint-soft)] text-[var(--color-mint-2)]">
             <RefreshCw size={16} aria-hidden="true" />
           </div>
           <div className="flex flex-col gap-2 text-[13.5px] leading-[1.65] text-[var(--color-muted)]">
@@ -206,8 +224,8 @@ export default function WebhooksPage() {
         </div>
       </section>
 
-      <div className="flex items-start gap-3 rounded-[14px] border border-[var(--color-amber)]/30 bg-[var(--color-amber)]/[0.06] p-5">
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[8px] bg-[var(--color-amber)]/15 text-[var(--color-amber)]">
+      <div className="flex items-start gap-3 rounded-[18px] border border-[var(--color-amber)]/25 bg-[var(--color-amber)]/[0.07] p-5">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[9px] border border-[var(--color-amber)]/25 bg-[var(--color-amber)]/12 text-[var(--color-amber)]">
           <AlertTriangle size={16} aria-hidden="true" />
         </div>
         <p className="text-[13.5px] leading-[1.65] text-[var(--color-muted)]">

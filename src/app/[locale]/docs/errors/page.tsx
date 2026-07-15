@@ -85,7 +85,7 @@ export default function ErrorsPage() {
   return (
     <div className="flex max-w-[860px] flex-col gap-10">
       <header className="flex flex-col gap-3">
-        <span className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[var(--color-mint)]">
+        <span className="font-mono text-[12px] uppercase tracking-[2.5px] text-[var(--color-mint-2)]">
           Getting started
         </span>
         <h1 className="text-[36px] font-extrabold tracking-[-0.035em] text-[var(--color-ink)]">
@@ -105,23 +105,39 @@ export default function ErrorsPage() {
         <h2 className="text-[22px] font-extrabold tracking-[-0.03em] text-[var(--color-ink)]">
           Status codes
         </h2>
-        <div className="overflow-hidden rounded-[14px] border border-[var(--color-line)]">
+        <div className="overflow-hidden rounded-[14px] border border-[var(--color-line)] bg-white/[0.015]">
+          <div className="hidden gap-5 border-b border-[var(--color-line)] bg-white/[0.04] px-4 py-2 sm:flex">
+            <span className="w-[110px] shrink-0 font-mono text-[10px] uppercase tracking-[1.6px] text-[var(--color-muted-3)]">
+              Status
+            </span>
+            <span className="font-mono text-[10px] uppercase tracking-[1.6px] text-[var(--color-muted-3)]">
+              What it means · what to do
+            </span>
+          </div>
           {CODES.map((c, i) => (
             <div
               key={c.code}
-              className={`flex flex-col gap-1.5 px-4 py-4 sm:flex-row sm:gap-5 ${
+              className={`flex flex-col gap-1.5 px-4 py-4 transition-colors hover:bg-white/[0.02] sm:flex-row sm:gap-5 ${
                 i > 0 ? "border-t border-[var(--color-line)]" : ""
               }`}
             >
               <div className="shrink-0 sm:w-[110px]">
-                <code className="doc-code">{c.code}</code>
+                <code
+                  className={`font-mono text-[13px] font-bold ${
+                    c.code.startsWith("5")
+                      ? "text-[var(--color-berry)]"
+                      : "text-[var(--color-amber)]"
+                  }`}
+                >
+                  {c.code}
+                </code>
                 <p className="mt-1 text-[12.5px] font-semibold text-[var(--color-ink)]">
                   {c.title}
                 </p>
               </div>
               <div className="flex min-w-0 flex-col gap-1">
                 <p className="text-[13.5px] leading-[1.6] text-[var(--color-muted)]">{c.body}</p>
-                <p className="text-[12.5px] font-medium text-[var(--color-ink)]">{c.retry}</p>
+                <p className="text-[12.5px] font-medium text-[var(--color-ink-3)]">{c.retry}</p>
               </div>
             </div>
           ))}

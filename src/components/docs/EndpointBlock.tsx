@@ -34,7 +34,7 @@ export function EndpointBlock({ op }: { op: ApiOperation }) {
           <div className="flex flex-col gap-2.5">
             <div className="flex flex-wrap items-center gap-2.5" dir="ltr">
               <MethodBadge method={op.method} />
-              <code className="break-all font-mono text-[14px] font-semibold text-[var(--color-ink)]">
+              <code className="break-all rounded-[8px] border border-[var(--color-line)] bg-white/[0.04] px-2.5 py-1 font-mono text-[13.5px] font-semibold text-[var(--color-ink)]">
                 {op.path}
               </code>
             </div>

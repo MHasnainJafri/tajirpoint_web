@@ -39,7 +39,7 @@ export default function PaginationPage() {
   return (
     <div className="flex max-w-[860px] flex-col gap-10">
       <header className="flex flex-col gap-3">
-        <span className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[var(--color-mint)]">
+        <span className="font-mono text-[12px] uppercase tracking-[2.5px] text-[var(--color-mint-2)]">
           Getting started
         </span>
         <h1 className="text-[36px] font-extrabold tracking-[-0.035em] text-[var(--color-ink)]">

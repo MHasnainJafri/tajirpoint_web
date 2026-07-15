@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Icon } from "@/components/design/Icon";
+import { PillBadge, Eyebrow, CtaPanel, MintButton } from "@/components/design/primitives";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildMetadata({
@@ -13,22 +14,22 @@ const VALUES = [
   {
     title: "Works without internet",
     body: "Your shop doesn't close when the internet does. Every feature works without a connection and syncs the moment you're back online.",
-    icon: "⚡",
+    icon: "cloud",
   },
   {
     title: "Tri-lingual by default",
     body: "English, اردو, and العربية are first-class citizens — not afterthoughts. Every screen, receipt, and report renders in the merchant's language.",
-    icon: "🌐",
+    icon: "globe",
   },
   {
     title: "Built for the region",
     body: "FBR, ZATCA, 1Link, JazzCash — the compliance and payment rails that matter in PK, AE, and SA are built in, not bolted on.",
-    icon: "🗺️",
+    icon: "shield",
   },
   {
     title: "One price, every module",
     body: "No per-module fees. No transaction percentages. Pay per branch, get everything. We grow when you grow.",
-    icon: "💚",
+    icon: "wallet",
   },
 ];
 
@@ -41,104 +42,128 @@ const HIGHLIGHTS = [
 
 export default function AboutPage() {
   return (
-    <main id="main-content">
-      {/* Hero */}
-      <section className="pt-20 pb-16 lg:pt-28 lg:pb-24 bg-[var(--color-ink)] text-white">
-        <div className="mx-auto max-w-[1320px] px-7 lg:px-10">
-          <span className="inline-flex items-center gap-2 text-[13px] font-semibold text-[var(--color-mint)] mb-6">
-            <span className="inline-block w-4 h-px bg-[var(--color-mint)]" />
-            Our story
-          </span>
-          <h1 className="text-[44px] lg:text-[72px] font-extrabold tracking-[-0.04em] leading-[1.04] max-w-[800px]">
-            Built for merchants
-            <br />
+    <>
+      {/* ── Header ──────────────────────────────────────────────────── */}
+      <section className="relative overflow-hidden px-5 pb-16 pt-[150px] text-center md:px-10">
+        <div
+          className="pointer-events-none absolute left-1/2 top-[-300px] h-[640px] w-[1100px] -translate-x-1/2"
+          style={{
+            background: "radial-gradient(ellipse at center,rgba(0,210,122,.15),transparent 60%)",
+          }}
+        />
+
+        <PillBadge>Our story</PillBadge>
+
+        <h1 className="relative mt-6 animate-[tpFadeUp_.8s_.15s_cubic-bezier(.22,1,.36,1)_both] text-[clamp(36px,5.4vw,72px)] font-extrabold leading-[1.04] tracking-[-0.035em]">
+          Built for merchants
+          <br />
+          <span className="text-[var(--color-mint)] [text-shadow:0_0_40px_rgba(0,210,122,.4)]">
             who work hard.
-          </h1>
-          <p className="mt-6 text-[18px] text-white/65 leading-[1.65] max-w-[540px]">
-            We started Tajir Point because the tools available to merchants in South Asia and the
-            Gulf were either too expensive, too complex, or simply not built for local languages and
-            compliance needs.
-          </p>
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 pt-12 border-t border-white/[0.08]">
-            {HIGHLIGHTS.map((s) => (
-              <div key={s.label}>
-                <div className="text-[20px] font-extrabold tracking-[-0.02em] text-white leading-tight">
-                  {s.value}
-                </div>
-                <div className="mt-1.5 text-[14px] text-white/55">{s.label}</div>
+          </span>
+        </h1>
+
+        <p className="relative mx-auto mt-[22px] max-w-[580px] animate-[tpFadeUp_.8s_.28s_cubic-bezier(.22,1,.36,1)_both] text-[18px] leading-[1.6] text-[rgba(242,247,244,.64)]">
+          We started Tajir Point because the tools available to merchants in South Asia and the Gulf
+          were either too expensive, too complex, or simply not built for local languages and
+          compliance needs.
+        </p>
+
+        <div className="relative mx-auto mt-[60px] grid max-w-[1120px] grid-cols-2 gap-[14px] md:grid-cols-4">
+          {HIGHLIGHTS.map((s, i) => (
+            <div
+              key={s.label}
+              data-reveal
+              data-reveal-delay={i * 70}
+              className="rounded-[18px] border border-[var(--color-line)] bg-white/[0.025] p-6 text-start transition-[border-color,transform] duration-300 hover:-translate-y-1 hover:border-[rgba(0,210,122,.5)]"
+            >
+              <div className="text-[19px] font-extrabold leading-tight tracking-[-0.02em]">
+                {s.value}
+              </div>
+              <div className="mt-2 font-mono text-[11px] tracking-[2px] text-[var(--color-muted-3)]">
+                {s.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Mission ─────────────────────────────────────────────────── */}
+      <section className="border-t border-[var(--color-line-soft)] px-5 py-[120px] md:px-10">
+        <div className="mx-auto grid max-w-[1200px] items-center gap-14 lg:grid-cols-2 lg:gap-20">
+          <div>
+            <Eyebrow>MISSION</Eyebrow>
+            <h2
+              data-reveal
+              className="mt-[18px] text-[clamp(32px,4.2vw,48px)] font-extrabold leading-[1.08] tracking-[-0.035em]"
+            >
+              Every merchant deserves
+              <br />
+              enterprise-grade tools.
+            </h2>
+            <p
+              data-reveal
+              className="mt-5 max-w-[460px] text-[16.5px] leading-[1.65] text-[var(--color-muted)]"
+            >
+              A kiryana in Lahore, a restaurant in Dubai, an electronics shop in Riyadh — they all
+              have the same operational needs as a chain store. We built one platform that serves
+              all of them.
+            </p>
+            <p
+              data-reveal
+              data-reveal-delay={70}
+              className="mt-4 max-w-[460px] text-[16.5px] leading-[1.65] text-[var(--color-muted)]"
+            >
+              Tajir Point works on any Android device — even without internet — prints to any
+              Bluetooth printer, and speaks your language right out of the box.
+            </p>
+          </div>
+
+          <div className="grid gap-[14px] sm:grid-cols-2">
+            {VALUES.map((v, i) => (
+              <div
+                key={v.title}
+                data-reveal
+                data-reveal-delay={(i % 2) * 70}
+                className="rounded-[18px] border border-[var(--color-line)] bg-white/[0.025] p-[26px] transition-[border-color,transform] duration-300 hover:-translate-y-1 hover:border-[rgba(0,210,122,.5)]"
+              >
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[rgba(0,210,122,.25)] bg-[rgba(0,210,122,.1)] text-[var(--color-mint-2)]">
+                  <Icon name={v.icon} size={21} />
+                </span>
+                <h3 className="mt-4 text-[16px] font-bold tracking-[-0.01em]">{v.title}</h3>
+                <p className="mt-[10px] text-[13.5px] leading-[1.6] text-[rgba(242,247,244,.58)]">
+                  {v.body}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Mission */}
-      <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-[1320px] px-7 lg:px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
-            <div>
-              <span className="text-[11px] font-bold tracking-[0.08em] text-[var(--color-mint)] uppercase block mb-4">
-                Mission
-              </span>
-              <h2 className="text-[36px] lg:text-[48px] font-extrabold tracking-[-0.035em] leading-[1.08]">
-                Every merchant deserves
-                <br />
-                enterprise-grade tools.
-              </h2>
-              <p className="mt-5 text-[17px] text-[var(--color-muted)] leading-[1.65]">
-                A kiryana in Lahore, a restaurant in Dubai, an electronics shop in Riyadh — they all
-                have the same operational needs as a chain store. We built one platform that serves
-                all of them.
-              </p>
-              <p className="mt-4 text-[17px] text-[var(--color-muted)] leading-[1.65]">
-                Tajir Point works on any Android device — even without internet — prints to any
-                Bluetooth printer, and speaks your language right out of the box.
-              </p>
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              {VALUES.map((v) => (
-                <div
-                  key={v.title}
-                  className="rounded-[20px] border border-[var(--color-line)] bg-[var(--color-bg-2)] p-6"
-                >
-                  <div className="text-3xl mb-3">{v.icon}</div>
-                  <h3 className="text-[15px] font-bold text-[var(--color-ink)] mb-2">{v.title}</h3>
-                  <p className="text-[13.5px] text-[var(--color-muted)] leading-[1.6]">{v.body}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 bg-[var(--color-bg-2)] border-t border-[var(--color-line)]">
-        <div className="mx-auto max-w-[1320px] px-7 lg:px-10 text-center">
-          <h2 className="text-[36px] lg:text-[48px] font-extrabold tracking-[-0.035em]">
+      {/* ── CTA ─────────────────────────────────────────────────────── */}
+      <section className="px-5 pb-[110px] pt-5 md:px-10">
+        <CtaPanel>
+          <h2 className="relative text-[clamp(28px,3.6vw,46px)] font-extrabold tracking-[-0.03em]">
             Ready to see it live?
           </h2>
-          <p className="mt-4 text-[17px] text-[var(--color-muted)] max-w-[480px] mx-auto">
-            Book a free 30-minute demo and we'll walk you through Tajir Point for your specific
+          <p className="relative mx-auto mt-4 max-w-[480px] text-[16px] leading-[1.6] text-[rgba(242,247,244,.64)]">
+            Book a free 30-minute demo and we&apos;ll walk you through Tajir Point for your specific
             business type.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3 justify-center">
-            <Link
-              href="/book-demo"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[var(--color-ink)] text-white text-[15px] font-semibold hover:opacity-90 transition-opacity"
-            >
-              Book a demo →
-            </Link>
+          <div className="relative mt-8 flex flex-wrap justify-center gap-[14px]">
+            <MintButton href="/book-demo">
+              Book a demo <span>→</span>
+            </MintButton>
             <a
               href="https://app.tajirpoint.com/signup"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-[var(--color-line)] text-[15px] font-semibold text-[var(--color-ink)] hover:bg-white transition-colors"
+              className="inline-flex items-center gap-[10px] whitespace-nowrap rounded-full border border-[var(--color-line-2)] bg-white/[0.07] px-7 py-[15px] text-[16px] font-semibold text-[var(--color-ink)] transition-colors duration-200 hover:bg-white/[0.12] hover:text-white"
             >
               Start free trial
             </a>
           </div>
-        </div>
+        </CtaPanel>
       </section>
-    </main>
+    </>
   );
 }

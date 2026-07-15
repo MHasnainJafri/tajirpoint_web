@@ -16,7 +16,7 @@ function NavList({ onNavigate }: { onNavigate?: () => void }) {
       <div className="flex flex-col gap-7">
         {DOCS_NAV.map((group) => (
           <div key={group.title}>
-            <p className="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--color-muted)]">
+            <p className="mb-2.5 font-mono text-[11px] uppercase tracking-[1.8px] text-[var(--color-muted-3)]">
               {group.title}
             </p>
             <ul className="flex flex-col gap-0.5">
@@ -29,10 +29,10 @@ function NavList({ onNavigate }: { onNavigate?: () => void }) {
                       onClick={onNavigate}
                       aria-current={active ? "page" : undefined}
                       className={cn(
-                        "block rounded-[7px] px-2.5 py-[7px] text-[13.5px] transition-colors",
+                        "block rounded-[8px] px-2.5 py-[7px] text-[13.5px] transition-colors",
                         active
-                          ? "bg-[var(--color-mint)]/10 font-semibold text-[var(--color-mint)]"
-                          : "text-[var(--color-muted)] hover:bg-[var(--color-bg-3)] hover:text-[var(--color-ink)]"
+                          ? "bg-[var(--color-mint)]/10 font-semibold text-[var(--color-mint-2)]"
+                          : "text-[var(--color-muted)] hover:bg-white/[0.04] hover:text-[var(--color-ink)]"
                       )}
                     >
                       {item.label}
@@ -58,7 +58,7 @@ export function DocsSidebar() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 rounded-full bg-[var(--color-ink)] px-5 py-3 text-[14px] font-semibold text-white shadow-lg lg:hidden"
+        className="fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 rounded-full bg-[var(--color-mint)] px-5 py-3 text-[14px] font-bold text-[var(--color-mint-ink)] shadow-[0_12px_40px_rgba(0,210,122,.35)] lg:hidden"
       >
         <Menu size={16} aria-hidden="true" />
         Docs menu
@@ -67,18 +67,18 @@ export function DocsSidebar() {
       {open && (
         <div className="fixed inset-0 z-50 lg:hidden">
           <div
-            className="absolute inset-0 bg-black/40"
+            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
             onClick={() => setOpen(false)}
             role="presentation"
           />
-          <div className="absolute inset-y-0 left-0 w-[290px] overflow-y-auto bg-[var(--color-bg)] p-6">
+          <div className="absolute inset-y-0 left-0 w-[290px] overflow-y-auto border-r border-[var(--color-line)] bg-[var(--color-bg-2)] p-6">
             <div className="mb-6 flex items-center justify-between">
               <span className="text-[14px] font-bold text-[var(--color-ink)]">Documentation</span>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Close menu"
-                className="text-[var(--color-muted)] hover:text-[var(--color-ink)]"
+                className="text-[var(--color-muted)] transition-colors hover:text-[var(--color-ink)]"
               >
                 <X size={18} />
               </button>
@@ -88,7 +88,7 @@ export function DocsSidebar() {
         </div>
       )}
 
-      <aside className="hidden lg:block">
+      <aside className="hidden lg:block lg:border-r lg:border-[var(--color-line)]">
         <div className="sticky top-[92px] max-h-[calc(100vh-120px)] overflow-y-auto pb-10 pr-4">
           <NavList />
         </div>

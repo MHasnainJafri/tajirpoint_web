@@ -37,7 +37,7 @@ export default async function ResourcePage({ params }: { params: Promise<{ resou
   return (
     <div className="flex max-w-[1080px] flex-col gap-10">
       <header className="flex flex-col gap-3">
-        <span className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[var(--color-mint)]">
+        <span className="font-mono text-[12px] uppercase tracking-[2.5px] text-[var(--color-mint-2)]">
           {r.group}
         </span>
         <h1 className="text-[36px] font-extrabold tracking-[-0.035em] text-[var(--color-ink)]">
@@ -49,17 +49,19 @@ export default async function ResourcePage({ params }: { params: Promise<{ resou
       </header>
 
       {/* Endpoint index — so you can see the whole surface at a glance. */}
-      <div className="overflow-hidden rounded-[14px] border border-[var(--color-line)]">
+      <div className="overflow-hidden rounded-[18px] border border-[var(--color-line)] bg-white/[0.025]">
         {r.operations.map((op, i) => (
           <a
             key={`${op.method}${op.path}`}
             href={`#${anchorFor(op.method, op.path)}`}
-            className={`flex items-center gap-3 px-4 py-2.5 transition-colors hover:bg-[var(--color-bg-2)] ${
+            className={`group flex items-center gap-3 px-4 py-2.5 transition-colors hover:bg-white/[0.04] ${
               i > 0 ? "border-t border-[var(--color-line)]" : ""
             }`}
           >
             <MethodBadge method={op.method} />
-            <code className="font-mono text-[12.5px] text-[var(--color-ink)]">{op.path}</code>
+            <code className="font-mono text-[12.5px] text-[var(--color-muted)] transition-colors group-hover:text-[var(--color-ink)]">
+              {op.path}
+            </code>
           </a>
         ))}
       </div>

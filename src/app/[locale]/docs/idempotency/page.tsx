@@ -31,7 +31,7 @@ export default function IdempotencyPage() {
   return (
     <div className="flex max-w-[860px] flex-col gap-10">
       <header className="flex flex-col gap-3">
-        <span className="text-[12px] font-semibold uppercase tracking-[0.14em] text-[var(--color-mint)]">
+        <span className="font-mono text-[12px] uppercase tracking-[2.5px] text-[var(--color-mint-2)]">
           Getting started
         </span>
         <h1 className="text-[36px] font-extrabold tracking-[-0.035em] text-[var(--color-ink)]">
@@ -81,8 +81,8 @@ export default function IdempotencyPage() {
         </ul>
       </section>
 
-      <div className="flex items-start gap-3 rounded-[14px] border border-[var(--color-amber)]/30 bg-[var(--color-amber)]/[0.06] p-5">
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[8px] bg-[var(--color-amber)]/15 text-[var(--color-amber)]">
+      <div className="flex items-start gap-3 rounded-[18px] border border-[var(--color-amber)]/25 bg-[var(--color-amber)]/[0.07] p-5">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[9px] border border-[var(--color-amber)]/25 bg-[var(--color-amber)]/12 text-[var(--color-amber)]">
           <AlertTriangle size={16} aria-hidden="true" />
         </div>
         <p className="text-[13.5px] leading-[1.65] text-[var(--color-muted)]">

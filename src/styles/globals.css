@@ -2,9 +2,14 @@
 @plugin "@tailwindcss/typography";
 @source "../**/*.{js,ts,jsx,tsx,mdx}";
 
+/* Drive Tailwind's `dark:` variant off the `.dark` class that next-themes
+   toggles on <html>, instead of the OS media query. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* =====================================================================
-   Tajir Point — Design tokens
-   Mirrors the design source 1:1. Components reference tokens, never raw hex.
+   TajirPoint — Design tokens
+   Mirrors the "TajirPoint product overview" design source 1:1.
+   Dark "Merchant OS" theme. Components reference tokens, never raw hex.
    ===================================================================== */
 
 @theme {
@@ -14,80 +19,223 @@
   --font-arabic: var(--font-reem-kufi), system-ui, sans-serif;
 
   /* ── Radii ─────────────────────────────────────────────────────── */
-  --radius-sm: 14px;
-  --radius-md: 18px;
-  --radius-lg: 24px;
-  --radius-xl: 32px;
-  --radius-2xl: 40px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-2xl: 26px;
 
   /* ── Container ─────────────────────────────────────────────────── */
-  --container-wrap: 1320px;
-  --container-tight: 1140px;
+  --container-wrap: 1200px;
+  --container-tight: 1120px;
 
-  /* ── Breakpoints (aligned with design) ─────────────────────────── */
+  /* ── Breakpoints ───────────────────────────────────────────────── */
   --breakpoint-md: 720px;
   --breakpoint-lg: 1101px;
 
-  /* ── Animations ────────────────────────────────────────────────── */
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-float-rev: float 7s ease-in-out infinite reverse;
-  --animate-float-3: float3 8s ease-in-out -2s infinite;
+  /* ── Motion (design keyframes) ─────────────────────────────────── */
+  --animate-fade-up: tpFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-menu-in: tpMenuIn 0.25s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-pulse-dot: tpPulse 2s infinite;
+  --animate-float: tpFloat 6s ease-in-out infinite;
 
-  @keyframes float {
+  @keyframes tpFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes tpMenuIn {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes tpMarquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes tpPulse {
+    0%,
+    100% {
+      opacity: 0.55;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @keyframes tpFloat {
     0%,
     100% {
       transform: translateY(0);
     }
     50% {
-      transform: translateY(-12px);
+      transform: translateY(-10px);
     }
   }
-  @keyframes float3 {
-    0%,
-    100% {
-      transform: translateY(-50%);
-    }
-    50% {
-      transform: translateY(calc(-50% - 14px));
+  @keyframes tpDash {
+    to {
+      stroke-dashoffset: 0;
     }
   }
 }
 
-/* ── Color tokens — source-of-truth values from design ──────────── */
+/* ═══════════════════════════════════════════════════════════════════
+   Colour tokens. Two themes share the same names so components reference
+   `var(--color-*)` and adapt automatically.
+
+   `:root`  = LIGHT (default — matches OS light + the no-JS fallback)
+   `.dark`  = DARK  (the original "Merchant OS" design values, unchanged)
+
+   next-themes (attribute="class", defaultTheme="system") toggles `.dark`
+   on <html> before paint, so there is no flash.
+
+   Constants that must NOT flip (brand mint button, accents that live inside
+   the always-dark showcase mocks) are declared once and never overridden.
+   ═══════════════════════════════════════════════════════════════════ */
+
 :root {
-  /* Neutrals */
-  --color-bg: #ffffff;
-  --color-bg-2: #fafafa;
-  --color-bg-3: #f4f4f3;
-  --color-line: #ebebea;
-  --color-line-2: #e0e0df;
+  color-scheme: light;
+
+  /* Surfaces — a faint green-tinted white, not pure #fff */
+  --color-bg: #f6faf8;
+  --color-bg-2: #ffffff;
+  --color-bg-3: #eef3f0;
+  --color-panel: #ffffff;
+  --color-panel-2: #f3f7f4;
+  --color-panel-3: #eef3f0;
+
+  /* Hairlines — dark ink at low alpha */
+  --color-line: rgba(6, 26, 17, 0.1);
+  --color-line-2: rgba(6, 26, 17, 0.16);
+  --color-line-soft: rgba(6, 26, 17, 0.07);
 
   /* Ink */
-  --color-ink: #0a0a0a;
-  --color-ink-2: #1a1a1a;
-  --color-ink-3: #262626;
-  --color-muted: #525252;
-  --color-muted-2: #737373;
-  --color-muted-3: #a3a3a3;
-
-  /* Brand greens */
-  --color-forest: #0e3b2c;
-  --color-forest-2: #0a2a20;
-  --color-emerald: #1f8a5b;
+  --color-ink: #08150e;
+  --color-ink-2: #04130b;
+  --color-ink-3: rgba(8, 21, 14, 0.86);
+  --color-muted: rgba(8, 21, 14, 0.6);
+  --color-muted-2: rgba(8, 21, 14, 0.48);
+  --color-muted-3: rgba(8, 21, 14, 0.42);
 
   /* Mint accent */
-  --color-mint: #00d27a;
-  --color-mint-soft: #e7faf0;
+  --color-mint: #00d27a; /* button fill — brand constant across themes */
+  --color-mint-2: #0a9d5f; /* accent TEXT — deepened so it reads on white */
   --color-mint-hover: #00b86a;
+  --color-mint-ink: #04130b; /* text on the mint button — stays dark */
+  --color-mint-soft: rgba(0, 210, 122, 0.12);
+  --color-mint-line: rgba(0, 210, 122, 0.4);
 
-  /* Hot accents */
-  --color-amber: #f59e0b;
-  --color-berry: #dc2626;
+  /* Semantic surfaces / glass — see .dark for the dark values */
+  --surface-1: #ffffff;
+  --surface-2: rgba(6, 26, 17, 0.045);
+  --surface-3: rgba(6, 26, 17, 0.05);
+  --surface-strong: rgba(6, 26, 17, 0.09);
+  --glass-nav: rgba(246, 250, 248, 0.82);
+  --glass-panel: rgba(255, 255, 255, 0.94);
+  --glass-filter: rgba(246, 250, 248, 0.82);
+  --code-bg: rgba(6, 26, 17, 0.05);
+  --grid-line: rgba(6, 26, 17, 0.045);
+
+  /* Brand greens (deep — used by the always-dark CTA gradient) */
+  --color-forest: #0b2419;
+  --color-forest-2: #071510;
+  --color-emerald: #1f8a5b;
+
+  /* Hot accents — kept bright in both themes; they mostly live on the
+     always-dark mock surfaces where a darker value would wash out. */
+  --color-amber: #f5a524;
+  --color-berry: #ff7a6b;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --color-bg: #060d0a;
+  --color-bg-2: #0a130e;
+  --color-bg-3: #0c1712;
+  --color-panel: #0c1712;
+  --color-panel-2: #0a130e;
+  --color-panel-3: #0a1710;
+
+  --color-line: rgba(255, 255, 255, 0.09);
+  --color-line-2: rgba(255, 255, 255, 0.14);
+  --color-line-soft: rgba(255, 255, 255, 0.06);
+
+  --color-ink: #f2f7f4;
+  --color-ink-2: #ffffff;
+  --color-ink-3: rgba(242, 247, 244, 0.85);
+  --color-muted: rgba(242, 247, 244, 0.62);
+  --color-muted-2: rgba(242, 247, 244, 0.5);
+  --color-muted-3: rgba(242, 247, 244, 0.38);
+
+  --color-mint: #00d27a;
+  --color-mint-2: #3be698;
+  --color-mint-hover: #3be698;
+  --color-mint-ink: #04130b;
+  --color-mint-soft: rgba(0, 210, 122, 0.08);
+  --color-mint-line: rgba(0, 210, 122, 0.3);
+
+  --surface-1: rgba(255, 255, 255, 0.025);
+  --surface-2: rgba(255, 255, 255, 0.05);
+  --surface-3: rgba(255, 255, 255, 0.07);
+  --surface-strong: rgba(255, 255, 255, 0.12);
+  --glass-nav: rgba(6, 13, 10, 0.9);
+  --glass-panel: rgba(8, 17, 13, 0.97);
+  --glass-filter: rgba(6, 13, 10, 0.82);
+  --code-bg: rgba(255, 255, 255, 0.06);
+  --grid-line: rgba(255, 255, 255, 0.028);
+}
+
+/* Force a dark-token context regardless of the page theme. Wrap the always-dark
+   "showcase" surfaces (CTA gradient panels, the hero browser bezel, device and
+   ledger mockups) in `.on-dark` so their token-based children render dark even
+   when the page around them is light. */
+.on-dark {
+  --color-bg: #060d0a;
+  --color-panel: #0c1712;
+  --color-panel-2: #0a130e;
+  --color-panel-3: #0a1710;
+
+  --color-line: rgba(255, 255, 255, 0.09);
+  --color-line-2: rgba(255, 255, 255, 0.14);
+  --color-line-soft: rgba(255, 255, 255, 0.06);
+
+  --color-ink: #f2f7f4;
+  --color-ink-2: #ffffff;
+  --color-ink-3: rgba(242, 247, 244, 0.85);
+  --color-muted: rgba(242, 247, 244, 0.62);
+  --color-muted-2: rgba(242, 247, 244, 0.5);
+  --color-muted-3: rgba(242, 247, 244, 0.38);
+
+  --color-mint-2: #3be698;
+
+  --surface-1: rgba(255, 255, 255, 0.025);
+  --surface-2: rgba(255, 255, 255, 0.05);
+  --surface-3: rgba(255, 255, 255, 0.07);
+  --surface-strong: rgba(255, 255, 255, 0.12);
+  --grid-line: rgba(255, 255, 255, 0.03);
 }
 
 /* ── Base ──────────────────────────────────────────────────────── */
 * {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 html,
@@ -101,7 +249,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
   line-height: 1.5;
-  font-feature-settings: "ss01", "cv11";
+  overflow-x: hidden;
 }
 
 @layer base {
@@ -121,8 +269,8 @@ body {
   h5,
   h6 {
     font-family: var(--font-sans);
-    font-weight: 700;
-    letter-spacing: -0.035em;
+    font-weight: 800;
+    letter-spacing: -0.03em;
     margin: 0;
     color: var(--color-ink);
     text-wrap: balance;
@@ -134,30 +282,70 @@ body {
   }
 }
 
-/* ── Display type scale ────────────────────────────────────────── */
+::selection {
+  background: var(--color-mint);
+  color: #06120c;
+}
+
+/* ── Display type scale (matches design clamps) ─────────────────── */
 .display-1 {
-  font-size: clamp(48px, 8.4vw, 124px);
-  line-height: 0.94;
-  letter-spacing: -0.045em;
+  font-size: clamp(48px, 6.4vw, 88px);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
   font-weight: 800;
 }
 .display-2 {
-  font-size: clamp(40px, 6vw, 88px);
-  line-height: 0.98;
-  letter-spacing: -0.04em;
+  font-size: clamp(36px, 4.2vw, 58px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
   font-weight: 800;
 }
 .display-3 {
-  font-size: clamp(32px, 4.4vw, 64px);
-  line-height: 1.02;
-  letter-spacing: -0.035em;
-  font-weight: 700;
+  font-size: clamp(30px, 3.4vw, 44px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-weight: 800;
 }
 .lead {
-  font-size: 20px;
-  line-height: 1.5;
+  font-size: 17.5px;
+  line-height: 1.65;
   color: var(--color-muted);
   max-width: 640px;
+}
+
+/* Monospace eyebrow — used on every section label in the design */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  color: var(--color-mint-2);
+}
+
+/* ── Marquee rails ─────────────────────────────────────────────── */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: tpMarquee 36s linear infinite;
+}
+.marquee-track-slow {
+  animation-duration: 44s;
+}
+.marquee-track-rev {
+  animation-direction: reverse;
+}
+
+/* ── Scroll reveal (driven by useReveal) ───────────────────────── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+[data-reveal].is-revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ── Inline code (developer docs) ──────────────────────────────── */
@@ -166,20 +354,29 @@ body {
   font-size: 0.86em;
   padding: 0.12em 0.4em;
   border-radius: 6px;
-  background: var(--color-bg-3);
-  color: var(--color-ink-2);
+  background: var(--code-bg);
+  color: var(--color-ink);
   white-space: nowrap;
 }
 
-/* On dark sections, the H1-H4 colour switches to white via the .section-dark wrapper */
-.section-dark .lead {
-  color: rgba(255, 255, 255, 0.68);
-}
-.section-dark h1,
-.section-dark h2,
-.section-dark h3,
-.section-dark h4 {
-  color: #fff;
+/* ── Prose (docs / legal) on the dark canvas ───────────────────── */
+.prose-tajir {
+  --tw-prose-body: var(--color-muted);
+  --tw-prose-headings: var(--color-ink);
+  --tw-prose-lead: var(--color-muted);
+  --tw-prose-links: var(--color-mint-2);
+  --tw-prose-bold: var(--color-ink);
+  --tw-prose-counters: var(--color-muted-2);
+  --tw-prose-bullets: var(--color-mint-line);
+  --tw-prose-hr: var(--color-line);
+  --tw-prose-quotes: var(--color-ink);
+  --tw-prose-quote-borders: var(--color-mint-line);
+  --tw-prose-captions: var(--color-muted-2);
+  --tw-prose-code: var(--color-ink);
+  --tw-prose-pre-code: var(--color-ink);
+  --tw-prose-pre-bg: var(--color-panel);
+  --tw-prose-th-borders: var(--color-line-2);
+  --tw-prose-td-borders: var(--color-line);
 }
 
 /* ── Skip link ─────────────────────────────────────────────────── */
@@ -198,13 +395,14 @@ body {
   width: auto;
   height: auto;
   padding: 12px 18px;
-  background: var(--color-ink);
-  color: #fff;
+  background: var(--color-mint);
+  color: var(--color-mint-ink);
   border-radius: 999px;
+  font-weight: 700;
   z-index: 100;
 }
 
-/* ── Visible focus rings (override browser default) ────────────── */
+/* ── Visible focus rings ───────────────────────────────────────── */
 :focus-visible {
   outline: 2px solid var(--color-mint);
   outline-offset: 3px;
@@ -219,5 +417,9 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
   }
 }

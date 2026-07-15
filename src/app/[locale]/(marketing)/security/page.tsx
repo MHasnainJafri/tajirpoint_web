@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Database, Globe, Lock, ShieldCheck, TriangleAlert, Users } from "lucide-react";
-import { siteConfig } from "@/lib/config/site";
+import { PillBadge } from "@/components/design/primitives";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildMetadata({
@@ -46,20 +45,23 @@ const MEASURES = [
 
 export default function SecurityPage() {
   return (
-    <main id="main-content" className="min-h-screen bg-[var(--color-bg)]">
+    <div className="min-h-screen bg-[var(--color-bg)]">
       {/* Hero */}
-      <section className="pt-20 pb-16 lg:pt-28 lg:pb-20">
-        <div className="mx-auto max-w-[1320px] px-7 lg:px-10">
-          <span className="inline-flex items-center gap-2 text-[13px] font-semibold text-[var(--color-mint)] mb-6">
-            <span className="inline-block w-4 h-px bg-[var(--color-mint)]" />
-            Security
-          </span>
-          <h1 className="text-[44px] lg:text-[64px] font-extrabold tracking-[-0.04em] leading-[1.05] text-[var(--color-ink)] max-w-[700px]">
+      <section className="relative overflow-hidden pb-16 pt-[150px] lg:pb-20">
+        <div
+          className="pointer-events-none absolute left-1/2 top-[-320px] h-[640px] w-[1100px] -translate-x-1/2"
+          style={{
+            background: "radial-gradient(ellipse at center,rgba(0,210,122,.15),transparent 60%)",
+          }}
+        />
+        <div className="relative mx-auto max-w-[1320px] px-7 lg:px-10">
+          <PillBadge>Security</PillBadge>
+          <h1 className="mt-6 max-w-[700px] text-[clamp(40px,5.4vw,64px)] font-extrabold leading-[1.04] tracking-[-0.035em] text-[var(--color-ink)]">
             Your data is safe
             <br />
             with us.
           </h1>
-          <p className="mt-5 text-[17px] text-[var(--color-muted)] leading-[1.65] max-w-[520px]">
+          <p className="mt-5 max-w-[520px] text-[17.5px] leading-[1.65] text-[var(--color-muted)]">
             Security isn't a feature — it's foundational. Here's how we protect your business data,
             your customers, and your transactions.
           </p>
@@ -69,17 +71,17 @@ export default function SecurityPage() {
       {/* Measures */}
       <section className="pb-20 lg:pb-28">
         <div className="mx-auto max-w-[1320px] px-7 lg:px-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {MEASURES.map((m) => (
               <div
                 key={m.title}
-                className="rounded-[20px] border border-[var(--color-line)] bg-[var(--color-bg-2)] p-7"
+                className="rounded-[20px] border border-[var(--color-line)] bg-white/[0.025] p-7 transition-colors hover:border-[var(--color-line-2)] hover:bg-white/[0.04]"
               >
-                <div className="w-10 h-10 rounded-[10px] bg-[var(--color-mint)]/10 flex items-center justify-center text-[var(--color-mint)] mb-4">
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-[10px] bg-[var(--color-mint-soft)] text-[var(--color-mint)] ring-1 ring-[var(--color-mint-line)]">
                   {m.icon}
                 </div>
-                <h3 className="text-[15px] font-bold text-[var(--color-ink)] mb-2">{m.title}</h3>
-                <p className="text-[13.5px] text-[var(--color-muted)] leading-[1.6]">{m.body}</p>
+                <h3 className="mb-2 text-[15px] font-bold text-[var(--color-ink)]">{m.title}</h3>
+                <p className="text-[13.5px] leading-[1.6] text-[var(--color-muted)]">{m.body}</p>
               </div>
             ))}
           </div>
@@ -87,25 +89,25 @@ export default function SecurityPage() {
       </section>
 
       {/* Report vulnerability */}
-      <section className="py-16 bg-[var(--color-bg-2)] border-t border-[var(--color-line)]">
+      <section className="border-t border-[var(--color-line)] bg-[var(--color-bg-2)] py-16">
         <div className="mx-auto max-w-[1320px] px-7 lg:px-10">
           <div className="max-w-[640px]">
-            <h2 className="text-[24px] font-extrabold tracking-[-0.025em] text-[var(--color-ink)] mb-4">
+            <h2 className="mb-4 text-[24px] font-extrabold tracking-[-0.025em] text-[var(--color-ink)]">
               Found a vulnerability?
             </h2>
-            <p className="text-[15.5px] text-[var(--color-muted)] leading-[1.65] mb-6">
+            <p className="mb-6 text-[15.5px] leading-[1.65] text-[var(--color-muted)]">
               We take security reports seriously. If you've found a potential vulnerability, please
               disclose it responsibly — email us at{" "}
               <a
                 href="mailto:security@tajirpoint.com"
-                className="text-[var(--color-mint)] hover:underline font-semibold"
+                className="font-semibold text-[var(--color-mint-2)] underline-offset-4 hover:underline"
               >
                 security@tajirpoint.com
               </a>
               . We'll acknowledge within 24 hours and keep you informed throughout the resolution
               process.
             </p>
-            <p className="text-[13.5px] text-[var(--color-muted)]">
+            <p className="text-[13.5px] leading-[1.6] text-[var(--color-muted-2)]">
               Please do not disclose vulnerabilities publicly until we've had a reasonable
               opportunity to address them. We do not pursue legal action against good-faith security
               researchers.
@@ -113,6 +115,6 @@ export default function SecurityPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

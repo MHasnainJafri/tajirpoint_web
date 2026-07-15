@@ -16,13 +16,17 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: "bg-[var(--color-ink)] text-white hover:bg-black",
-        mint: "bg-[var(--color-mint)] text-[var(--color-ink)] hover:bg-[var(--color-mint-hover)]",
+        // Mint is the primary action across the dark canvas.
+        primary:
+          "bg-[var(--color-mint)] text-[var(--color-mint-ink)] hover:shadow-[0_12px_40px_rgba(0,210,122,.45)]",
+        mint: "bg-[var(--color-mint)] text-[var(--color-mint-ink)] hover:shadow-[0_12px_40px_rgba(0,210,122,.45)]",
         ghost:
-          "bg-transparent text-[var(--color-ink)] shadow-[inset_0_0_0_1.5px_var(--color-ink)] hover:bg-[var(--color-ink)] hover:text-white",
-        soft: "bg-[var(--color-bg-3)] text-[var(--color-ink)] hover:bg-[var(--color-line)]",
+          "bg-[var(--surface-3)] text-[var(--color-ink)] shadow-[inset_0_0_0_1px_var(--color-line-2)] hover:bg-[var(--surface-strong)] hover:text-[var(--color-ink-2)]",
+        soft: "bg-[var(--surface-2)] text-[var(--color-ink)] shadow-[inset_0_0_0_1px_var(--color-line)] hover:bg-[var(--surface-strong)]",
         "dark-ghost":
-          "bg-transparent text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.22)] hover:bg-white/[0.06]",
+          "bg-transparent text-[var(--color-ink)] shadow-[inset_0_0_0_1px_var(--color-line-2)] hover:bg-[var(--surface-3)]",
+        outline:
+          "bg-transparent text-[var(--color-mint-2)] shadow-[inset_0_0_0_1px_rgba(0,210,122,.5)] hover:bg-[rgba(0,210,122,.1)]",
       },
       size: {
         md: "px-[26px] py-4 text-[15px] min-h-[48px]",
@@ -34,8 +38,7 @@ const buttonVariants = cva(
 );
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
 

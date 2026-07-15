@@ -8,15 +8,15 @@ export function SectionHeader({ right, className, children, ...props }: SectionH
   return (
     <div
       className={cn(
-        "flex flex-col gap-6 mb-[60px] md:mb-[80px]",
+        "mb-[60px] flex flex-col gap-6 md:mb-[80px]",
         right && "md:flex-row md:items-end md:justify-between md:gap-16",
         className
       )}
       {...props}
     >
-      <div>{children}</div>
+      <div className="text-[var(--color-ink)]">{children}</div>
       {right && (
-        <p className="text-[17px] leading-[1.55] text-[var(--color-muted)] max-w-[420px] [.section-dark_&]:text-white/[0.65]">
+        <p className="max-w-[420px] text-[17px] leading-[1.55] text-[var(--color-muted)]">
           {right}
         </p>
       )}

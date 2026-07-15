@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { BookOpen, CalendarDays, Mail, MessageCircle } from "lucide-react";
+import { PillBadge } from "@/components/design/primitives";
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { ContactForm } from "./ContactForm";
@@ -54,116 +55,125 @@ const OFFICES = [
 
 export default function ContactPage() {
   return (
-    <main id="main-content" className="min-h-screen bg-[var(--color-bg)]">
-      {/* Hero */}
-      <section className="pt-20 pb-16 lg:pt-28 lg:pb-20">
-        <div className="mx-auto max-w-[1320px] px-7 lg:px-10">
-          <span className="inline-flex items-center gap-2 text-[13px] font-semibold text-[var(--color-mint)] mb-6">
-            <span className="inline-block w-4 h-px bg-[var(--color-mint)]" />
-            Get in touch
-          </span>
-          <h1 className="text-[44px] lg:text-[64px] font-extrabold tracking-[-0.04em] leading-[1.05] text-[var(--color-ink)]">
-            We&apos;d love to hear
-            <br />
+    <>
+      {/* ── Header ──────────────────────────────────────────────────── */}
+      <section className="relative overflow-hidden px-5 pb-14 pt-[150px] text-center md:px-10">
+        <div
+          className="pointer-events-none absolute left-1/2 top-[-300px] h-[640px] w-[1100px] -translate-x-1/2"
+          style={{
+            background: "radial-gradient(ellipse at center,rgba(0,210,122,.15),transparent 60%)",
+          }}
+        />
+
+        <PillBadge>Get in touch</PillBadge>
+
+        <h1 className="relative mt-6 animate-[tpFadeUp_.8s_.15s_cubic-bezier(.22,1,.36,1)_both] text-[clamp(36px,5.4vw,64px)] font-extrabold leading-[1.05] tracking-[-0.035em]">
+          We&apos;d love to hear
+          <br />
+          <span className="text-[var(--color-mint)] [text-shadow:0_0_40px_rgba(0,210,122,.4)]">
             from you.
-          </h1>
-          <p className="mt-5 text-[17px] text-[var(--color-muted)] leading-[1.65] max-w-[500px]">
-            Whether you have a question about features, pricing, need a demo, or just want to say
-            hello — we&apos;re ready.
-          </p>
-        </div>
+          </span>
+        </h1>
+
+        <p className="relative mx-auto mt-[22px] max-w-[540px] animate-[tpFadeUp_.8s_.28s_cubic-bezier(.22,1,.36,1)_both] text-[18px] leading-[1.6] text-[rgba(242,247,244,.64)]">
+          Whether you have a question about features, pricing, need a demo, or just want to say
+          hello — we&apos;re ready.
+        </p>
       </section>
 
-      {/* Contact options */}
-      <section className="pb-20 lg:pb-28">
-        <div className="mx-auto max-w-[1320px] px-7 lg:px-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-20">
-            {CONTACT_OPTIONS.map((opt) => (
+      {/* ── Contact options ─────────────────────────────────────────── */}
+      <section className="px-5 pb-[110px] md:px-10">
+        <div className="mx-auto max-w-[1200px]">
+          <div className="grid gap-[14px] sm:grid-cols-2 lg:grid-cols-4">
+            {CONTACT_OPTIONS.map((opt, i) => (
               <a
                 key={opt.title}
                 href={opt.href}
                 target={opt.href.startsWith("http") ? "_blank" : undefined}
                 rel={opt.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="group flex flex-col gap-4 rounded-[20px] border border-[var(--color-line)] bg-[var(--color-bg-2)] p-6 hover:border-[var(--color-mint)] hover:shadow-[0_4px_24px_rgba(0,210,122,0.1)] transition-all duration-200"
+                data-reveal
+                data-reveal-delay={i * 70}
+                className="group flex flex-col gap-4 rounded-[18px] border border-[var(--color-line)] bg-white/[0.025] p-[26px] transition-[border-color,transform] duration-300 hover:-translate-y-1 hover:border-[rgba(0,210,122,.5)]"
               >
-                <div className="w-10 h-10 rounded-[10px] bg-[var(--color-mint)]/10 flex items-center justify-center text-[var(--color-mint)]">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-[rgba(0,210,122,.25)] bg-[rgba(0,210,122,.1)] text-[var(--color-mint-2)]">
                   {opt.icon}
-                </div>
+                </span>
                 <div>
-                  <div className="font-bold text-[15px] text-[var(--color-ink)] mb-1">
-                    {opt.title}
-                  </div>
-                  <div className="text-[13.5px] text-[var(--color-muted)] leading-[1.5]">
+                  <div className="text-[16px] font-bold tracking-[-0.01em]">{opt.title}</div>
+                  <div className="mt-[8px] text-[13.5px] leading-[1.6] text-[rgba(242,247,244,.58)]">
                     {opt.desc}
                   </div>
                 </div>
-                <div className="mt-auto text-[13.5px] font-semibold text-[var(--color-mint)] group-hover:underline underline-offset-2">
+                <div className="mt-auto text-[13.5px] font-semibold text-[var(--color-mint-2)] underline-offset-2 group-hover:underline">
                   {opt.action}
                 </div>
               </a>
             ))}
           </div>
 
-          {/* Two column: form + offices */}
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-14 lg:gap-20">
-            {/* Contact form */}
+          {/* ── Form + offices ────────────────────────────────────────── */}
+          <div className="mt-20 grid gap-14 lg:grid-cols-[1fr_380px] lg:gap-20">
             <div>
-              <h2 className="text-[28px] lg:text-[36px] font-extrabold tracking-[-0.035em] text-[var(--color-ink)] mb-8">
+              <h2
+                data-reveal
+                className="mb-8 text-[clamp(28px,3.4vw,36px)] font-extrabold tracking-[-0.035em]"
+              >
                 Send us a message
               </h2>
               <ContactForm />
             </div>
 
-            {/* Offices */}
             <div className="lg:pt-2">
-              <h2 className="text-[20px] font-bold tracking-[-0.02em] text-[var(--color-ink)] mb-6">
-                Our offices
-              </h2>
-              <div className="flex flex-col gap-4 mb-10">
+              <h2 className="mb-6 text-[20px] font-bold tracking-[-0.02em]">Our offices</h2>
+              <div className="mb-10 flex flex-col gap-[14px]">
                 {OFFICES.map((o) => (
                   <div
                     key={o.city}
-                    className="rounded-[16px] border border-[var(--color-line)] bg-[var(--color-bg-2)] p-5"
+                    className="rounded-[18px] border border-[var(--color-line)] bg-white/[0.025] p-5"
                   >
-                    <div className="flex items-center gap-2.5 mb-2">
+                    <div className="mb-2 flex items-center gap-2.5">
                       <span className="text-xl">{o.flag}</span>
-                      <span className="font-bold text-[15px] text-[var(--color-ink)]">
-                        {o.city}
-                      </span>
-                      <span className="text-[12px] text-[var(--color-muted)] border border-[var(--color-line)] rounded-full px-2.5 py-0.5">
+                      <span className="text-[15px] font-bold">{o.city}</span>
+                      <span className="rounded-full border border-[var(--color-line-2)] bg-white/[0.03] px-2.5 py-0.5 text-[11.5px] font-semibold text-[var(--color-muted-2)]">
                         {o.country}
                       </span>
                     </div>
-                    <p className="text-[13.5px] text-[var(--color-muted)] leading-[1.5]">
+                    <p className="text-[13.5px] leading-[1.55] text-[var(--color-muted)]">
                       {o.address}
                     </p>
                   </div>
                 ))}
               </div>
 
-              <div className="rounded-[16px] border border-[var(--color-line)] bg-[var(--color-bg-2)] p-5">
-                <h3 className="font-bold text-[15px] text-[var(--color-ink)] mb-2">
+              <div className="rounded-[18px] border border-[var(--color-line)] bg-white/[0.025] p-5">
+                <h3 className="mb-3 font-mono text-[12px] tracking-[2.5px] text-[var(--color-mint-2)]">
                   Support hours
                 </h3>
-                <ul className="flex flex-col gap-1.5 text-[13.5px] text-[var(--color-muted)]">
-                  <li className="flex justify-between">
+                <ul className="flex flex-col gap-2 text-[13.5px] text-[var(--color-muted)]">
+                  <li className="flex justify-between gap-3">
                     <span>Pakistan (PKT)</span>
-                    <span className="font-medium text-[var(--color-ink)]">9am – 6pm, Mon–Sat</span>
+                    <span className="font-semibold text-[var(--color-ink)]">
+                      9am – 6pm, Mon–Sat
+                    </span>
                   </li>
-                  <li className="flex justify-between">
+                  <li className="flex justify-between gap-3">
                     <span>UAE (GST)</span>
-                    <span className="font-medium text-[var(--color-ink)]">9am – 6pm, Mon–Fri</span>
+                    <span className="font-semibold text-[var(--color-ink)]">
+                      9am – 6pm, Mon–Fri
+                    </span>
                   </li>
-                  <li className="flex justify-between">
+                  <li className="flex justify-between gap-3">
                     <span>Email</span>
-                    <span className="font-medium text-[var(--color-ink)]">24h response SLA</span>
+                    <span className="font-semibold text-[var(--color-ink)]">24h response SLA</span>
                   </li>
                 </ul>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-[var(--color-line)]">
-                <p className="text-[13px] text-[var(--color-muted)] mb-3">Follow us</p>
-                <div className="flex gap-3">
+              <div className="mt-8 border-t border-[var(--color-line-soft)] pt-6">
+                <p className="mb-3 font-mono text-[11px] tracking-[2px] text-[var(--color-muted-3)]">
+                  Follow us
+                </p>
+                <div className="flex flex-wrap gap-2">
                   {[
                     { label: "YouTube", href: siteConfig.social.youtube },
                     { label: "Facebook", href: siteConfig.social.facebook },
@@ -175,7 +185,7 @@ export default function ContactPage() {
                       href={s.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[13px] font-medium text-[var(--color-muted)] hover:text-[var(--color-ink)] transition-colors border border-[var(--color-line)] rounded-full px-3.5 py-1.5"
+                      className="rounded-full border border-[var(--color-line-2)] bg-white/[0.03] px-3.5 py-1.5 text-[12.5px] font-semibold text-[var(--color-muted)] transition-colors duration-200 hover:border-[rgba(0,210,122,.5)] hover:text-[var(--color-ink-2)]"
                     >
                       {s.label}
                     </a>
@@ -186,6 +196,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-    </main>
+    </>
   );
 }
