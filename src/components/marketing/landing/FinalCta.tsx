@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
 import { siteConfig } from "@/lib/config/site";
 
 export function FinalCta() {
@@ -57,12 +56,12 @@ export function FinalCta() {
           >
             {t("primary")} <span>→</span>
           </a>
-          <Link
-            href="/book-demo"
+          <a
+            href={siteConfig.calendlyUrl}
             className="inline-flex items-center whitespace-nowrap rounded-full border border-[var(--color-line-2)] bg-white/[0.07] px-7 py-[15px] text-[16px] font-semibold text-[var(--color-ink)] transition-colors duration-200 hover:bg-white/[0.12] hover:text-white"
           >
             {t("secondary")}
-          </Link>
+          </a>
         </div>
       </div>
     </section>

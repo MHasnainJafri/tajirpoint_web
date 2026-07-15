@@ -32,7 +32,7 @@ const CONTACT_OPTIONS = [
     title: "Book a demo",
     desc: "30-minute live walkthrough with our team",
     action: "Schedule a call →",
-    href: "/book-demo",
+    href: siteConfig.calendlyUrl,
   },
   {
     icon: <BookOpen size={22} strokeWidth={1.8} />,

@@ -97,7 +97,9 @@ export default function DistributorsPage() {
             <MintButton href={siteConfig.signupUrl} external>
               Start free trial <span>→</span>
             </MintButton>
-            <GhostButton href="/book-demo">Book a demo</GhostButton>
+            <GhostButton href={siteConfig.calendlyUrl} external>
+              Book a demo
+            </GhostButton>
           </div>
         </div>
       </section>

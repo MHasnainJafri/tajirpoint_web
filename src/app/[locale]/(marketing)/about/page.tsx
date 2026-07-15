@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Icon } from "@/components/design/Icon";
 import { PillBadge, Eyebrow, CtaPanel, MintButton } from "@/components/design/primitives";
+import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildMetadata({
@@ -150,7 +151,7 @@ export default function AboutPage() {
             business type.
           </p>
           <div className="relative mt-8 flex flex-wrap justify-center gap-[14px]">
-            <MintButton href="/book-demo">
+            <MintButton href={siteConfig.calendlyUrl} external>
               Book a demo <span>→</span>
             </MintButton>
             <a
