@@ -155,7 +155,7 @@ export function Nav() {
           </a>
 
           <Link
-            href="/#cta"
+            href="/book-demo"
             className="inline-flex items-center gap-[9px] whitespace-nowrap rounded-full bg-[var(--color-mint)] px-5 py-[10px] text-[14px] font-bold text-[var(--color-mint-ink)] transition-[transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-[0_6px_24px_rgba(0,210,122,.35)]"
           >
             {t("bookDemo")} <span className="text-[15px]">→</span>

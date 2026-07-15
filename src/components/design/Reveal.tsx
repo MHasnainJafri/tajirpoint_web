@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "@/i18n/navigation";
 
 /**
  * Drives the three scroll-triggered effects the design relies on. Mounted once
@@ -12,8 +13,15 @@ import { useEffect } from "react";
  *  - `[data-draw]`        stroke-draw the "how it works" connector line
  *
  * The observers are one-shot: each element is unobserved once it has played.
+ *
+ * This lives in the persistent marketing layout, so it re-scans on every route
+ * change — otherwise a client-side navigation would leave the new page's
+ * `[data-reveal]` content stuck at opacity:0 (the observers only ever saw the
+ * first page's elements).
  */
 export function Reveal() {
+  const pathname = usePathname();
+
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -89,7 +97,7 @@ export function Reveal() {
       countIo.disconnect();
       drawIo.disconnect();
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }
