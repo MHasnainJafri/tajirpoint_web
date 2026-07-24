@@ -9,6 +9,7 @@ import { Icon } from "@/components/design/Icon";
 import { ThemeToggle } from "@/components/design/ThemeToggle";
 import {
   VERTICALS,
+  FEATURES,
   MEGA_EXT_VERTICALS,
   MEGA_EXT_PAYMENTS,
   MEGA_EXT_INTEGRATIONS,
@@ -17,7 +18,7 @@ import {
 import { siteConfig } from "@/lib/config/site";
 import type { Locale } from "@/i18n/routing";
 
-type MegaKey = "solutions" | "extensions";
+type MegaKey = "solutions" | "extensions" | "features";
 
 type LocaleEntry = { code: Locale; label: string; dot: string };
 
@@ -36,6 +37,7 @@ export function Nav() {
   const t = useTranslations("nav");
   const tExt = useTranslations("extensions.items");
   const tSol = useTranslations("solutions.industries");
+  const tFeat = useTranslations("nav.megaFeatures.items");
   const locale = useLocale() as Locale;
   const router = useRouter();
   const pathname = usePathname();
@@ -112,6 +114,11 @@ export function Nav() {
           </Link>
 
           <MegaTrigger
+            label={t("features")}
+            open={mega === "features"}
+            onOpen={() => setMega("features")}
+          />
+          <MegaTrigger
             label={t("solutions")}
             open={mega === "solutions"}
             onOpen={() => setMega("solutions")}
@@ -172,6 +179,45 @@ export function Nav() {
           </button>
         </div>
       </div>
+
+      {/* ── Features mega ───────────────────────────────────────────── */}
+      {mega === "features" && (
+        <MegaPanel onNavigate={closeAll}>
+          <div className="grid grid-cols-[300px_1fr_1fr] gap-9">
+            {/* No /features index exists, so the promo card leads with the
+                offline story — the differentiator the tagline is built on. */}
+            <MegaFeature
+              href="/features/offline"
+              badge={t("megaFeatures.badge")}
+              title={t("megaFeatures.title")}
+              desc={t("megaFeatures.desc")}
+              cta={t("megaFeatures.cta")}
+            />
+            <MegaColumn heading={t("megaFeatures.groupMoney")}>
+              {FEATURES.filter((f) => f.group === "money").map((f) => (
+                <MegaFeatureLink
+                  key={f.id}
+                  href={f.href}
+                  icon={f.icon}
+                  name={tFeat(`${f.id}.name`)}
+                  desc={tFeat(`${f.id}.desc`)}
+                />
+              ))}
+            </MegaColumn>
+            <MegaColumn heading={t("megaFeatures.groupOps")}>
+              {FEATURES.filter((f) => f.group === "ops").map((f) => (
+                <MegaFeatureLink
+                  key={f.id}
+                  href={f.href}
+                  icon={f.icon}
+                  name={tFeat(`${f.id}.name`)}
+                  desc={tFeat(`${f.id}.desc`)}
+                />
+              ))}
+            </MegaColumn>
+          </div>
+        </MegaPanel>
+      )}
 
       {/* ── Solutions mega ──────────────────────────────────────────── */}
       {mega === "solutions" && (
@@ -266,6 +312,11 @@ export function Nav() {
         >
           <nav className="flex flex-col gap-1">
             <MobileLink href="/#platform">{t("platform")}</MobileLink>
+            {FEATURES.map((f) => (
+              <MobileLink key={f.id} href={f.href}>
+                {tFeat(`${f.id}.name`)}
+              </MobileLink>
+            ))}
             <MobileLink href="/solutions">{t("solutions")}</MobileLink>
             <MobileLink href="/extensions">{t("extensions")}</MobileLink>
             <MobileLink href="/#pricing">{t("pricing")}</MobileLink>
@@ -403,6 +454,36 @@ function MegaColumn({
       </div>
       <div className={`flex flex-col ${tight ? "gap-[2px]" : "gap-1"}`}>{children}</div>
     </div>
+  );
+}
+
+/** Same row as MegaVertical, but for links that aren't `/solutions#<id>`. */
+function MegaFeatureLink({
+  href,
+  icon,
+  name,
+  desc,
+}: {
+  href: string;
+  icon: string;
+  name: string;
+  desc: string;
+}) {
+  return (
+    <Link
+      href={href}
+      className="flex items-start gap-[14px] rounded-xl p-3 transition-colors hover:bg-[var(--surface-2)]"
+    >
+      <span className="flex h-[38px] w-[38px] flex-none items-center justify-center rounded-[10px] border border-[rgba(0,210,122,.22)] bg-[rgba(0,210,122,.1)] text-[var(--color-mint-2)]">
+        <Icon name={icon} size={18} />
+      </span>
+      <span>
+        <span className="block text-[14px] font-bold text-[var(--color-ink)]">{name}</span>
+        <span className="mt-[3px] block text-[12.5px] leading-[1.45] text-[var(--color-muted-2)]">
+          {desc}
+        </span>
+      </span>
+    </Link>
   );
 }
 

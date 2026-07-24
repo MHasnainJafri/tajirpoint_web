@@ -2,13 +2,16 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { siteConfig } from "@/lib/config/site";
+import { FEATURES } from "@/lib/design/catalog";
 
 export function Footer() {
   const t = useTranslations("footer");
+  // Feature names are shared with the nav mega-menu rather than duplicated.
+  const tFeat = useTranslations("nav.megaFeatures.items");
 
   return (
     <footer className="border-t border-[var(--color-line-soft)] px-5 pb-10 pt-[70px] md:px-10">
-      <div className="mx-auto grid max-w-[1200px] gap-10 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-[1200px] gap-10 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr_1fr]">
         <div>
           <Image
             src="/brand/lockup/lockup-on-white.svg"
@@ -33,6 +36,14 @@ export function Footer() {
           <FooterLink href="/#platform">{t("links.platform")}</FooterLink>
           <FooterLink href="/extensions">{t("links.extensions")}</FooterLink>
           <FooterLink href="/#pricing">{t("links.pricing")}</FooterLink>
+        </FooterColumn>
+
+        <FooterColumn heading={t("features")}>
+          {FEATURES.map((f) => (
+            <FooterLink key={f.id} href={f.href}>
+              {tFeat(`${f.id}.name`)}
+            </FooterLink>
+          ))}
         </FooterColumn>
 
         <FooterColumn heading={t("industries")}>

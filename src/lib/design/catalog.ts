@@ -21,6 +21,23 @@ export const VERTICALS = [
 
 export type VerticalId = (typeof VERTICALS)[number]["id"];
 
+/* ── Feature deep-dives ───────────────────────────────────────────── */
+
+/**
+ * The five `/features/*` pages, split the way the nav mega-menu groups them.
+ * `id` keys the `nav.megaFeatures.items.*` and `footer.links.*` translations,
+ * so renaming one here means renaming it in all three message files.
+ */
+export const FEATURES = [
+  { id: "khata", icon: "ledgerbook", href: "/features/khata", group: "money" },
+  { id: "accounting", icon: "calculator", href: "/features/accounting", group: "money" },
+  { id: "eInvoicing", icon: "receipt", href: "/features/e-invoicing", group: "money" },
+  { id: "offline", icon: "refresh", href: "/features/offline", group: "ops" },
+  { id: "vanSales", icon: "truck", href: "/features/van-sales", group: "ops" },
+] as const;
+
+export type FeatureId = (typeof FEATURES)[number]["id"];
+
 /** Each industry section names its feature-grid entries by index. */
 export const VERTICAL_FEATURE_COUNT = 6;
 export const VERTICAL_CHIP_COUNT = 4;

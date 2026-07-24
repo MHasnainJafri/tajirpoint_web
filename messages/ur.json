@@ -1,6 +1,7 @@
 {
   "nav": {
     "platform": "Platform",
+    "features": "Features",
     "solutions": "Solutions",
     "extensions": "Extensions",
     "pricing": "Pricing",
@@ -16,6 +17,36 @@
       "cta": "See all industries",
       "groupA": "SELL PRODUCTS",
       "groupB": "SERVE & DISTRIBUTE"
+    },
+    "megaFeatures": {
+      "badge": "FIVE DEEP DIVES",
+      "title": "The parts merchants ask about first",
+      "desc": "Khata, offline selling, books, van routes and fiscal invoicing — each one explained end to end.",
+      "cta": "Start with offline POS",
+      "groupMoney": "MONEY & LEDGER",
+      "groupOps": "OPERATIONS",
+      "items": {
+        "khata": {
+          "name": "Digital Khata",
+          "desc": "Real-time customer credit ledger"
+        },
+        "accounting": {
+          "name": "Accounting",
+          "desc": "Double-entry books, automatic"
+        },
+        "eInvoicing": {
+          "name": "E-Invoicing",
+          "desc": "Fiscal compliance built in"
+        },
+        "offline": {
+          "name": "Offline POS",
+          "desc": "Keep selling through outages"
+        },
+        "vanSales": {
+          "name": "Van Sales",
+          "desc": "Route selling & reconciliation"
+        }
+      }
     },
     "megaExtensions": {
       "badge": "MARKETPLACE",
@@ -38,7 +69,6 @@
       }
     }
   },
-
   "landing": {
     "meta": {
       "title": "TajirPoint — The point of sale that runs the entire business",
@@ -66,7 +96,6 @@
       "reports": "EXPORTABLE REPORTS"
     },
     "marqueeTitle": "CONNECTS WITH THE TOOLS MERCHANTS ALREADY USE",
-
     "platform": {
       "eyebrow": "WHY TAJIRPOINT",
       "headline": "One platform instead of",
@@ -95,7 +124,6 @@
         }
       }
     },
-
     "bento": {
       "offline": {
         "tag": "DIFFERENTIATOR · OFFLINE-FIRST",
@@ -132,7 +160,6 @@
         "body": "Owner, manager, cashier, driver — each sees only their screens. 2FA, API keys and a full audit log."
       }
     },
-
     "ledger": {
       "eyebrow": "THE HEART OF THE PLATFORM",
       "headline": "A credit book, with a real ledger underneath",
@@ -161,7 +188,6 @@
         }
       }
     },
-
     "box": {
       "eyebrow": "NATIVE CAPABILITIES · DAY ONE",
       "headlineA": "In the box.",
@@ -206,7 +232,6 @@
         }
       }
     },
-
     "devices": {
       "eyebrow": "APPS · WEB · ANDROID · DESKTOP",
       "headlineA": "Counter, pocket,",
@@ -228,7 +253,6 @@
       "driverStops": "8 stops left",
       "driverRoute": "Route 4 · North sector"
     },
-
     "extensions": {
       "eyebrow": "EXTENSION MARKETPLACE",
       "headline": "Start lean.",
@@ -236,7 +260,6 @@
       "body": "The core does the common work. 31 installable extensions switch on what your business needs — restaurant floor plans, payment gateways, courier booking, e-commerce sync — and the interface only shows what's turned on.",
       "cta": "Browse all 31 extensions"
     },
-
     "how": {
       "eyebrow": "HOW IT WORKS",
       "headline": "Live in an afternoon",
@@ -263,13 +286,11 @@
         }
       }
     },
-
     "verticals": {
       "eyebrow": "BUILT FOR YOUR COUNTER",
       "headline": "Six industries. One system that fits each.",
       "cta": "See all industries"
     },
-
     "pricing": {
       "eyebrow": "PRICING",
       "headline": "One price. Every module.",
@@ -321,7 +342,6 @@
         }
       }
     },
-
     "faq": {
       "eyebrow": "FAQ",
       "headline": "Questions, answered",
@@ -352,7 +372,6 @@
         }
       }
     },
-
     "cta": {
       "headlineA": "Run the whole business",
       "headlineB": "from one counter.",
@@ -361,7 +380,6 @@
       "secondary": "Book a demo"
     }
   },
-
   "solutions": {
     "meta": {
       "title": "Solutions — Six industries, one platform",
@@ -394,10 +412,22 @@
             "t": "Tiered pricing",
             "d": "Retail, wholesale and dealer prices with quantity breaks."
           },
-          { "t": "Low-stock alerts", "d": "Reorder points and purchase suggestions." },
-          { "t": "Variant generator", "d": "Every size × colour SKU created automatically." },
-          { "t": "WhatsApp statements", "d": "Share PDF account statements in one tap." },
-          { "t": "Loyalty points", "d": "Earn, redeem, tiers and birthday bonuses." }
+          {
+            "t": "Low-stock alerts",
+            "d": "Reorder points and purchase suggestions."
+          },
+          {
+            "t": "Variant generator",
+            "d": "Every size × colour SKU created automatically."
+          },
+          {
+            "t": "WhatsApp statements",
+            "d": "Share PDF account statements in one tap."
+          },
+          {
+            "t": "Loyalty points",
+            "d": "Earn, redeem, tiers and birthday bonuses."
+          }
         ]
       },
       "restaurants": {
@@ -408,12 +438,30 @@
         "chips": ["Floor plans", "Kitchen display", "QR self-ordering", "Split bills"],
         "panelTitle": "WHAT RESTAURANTS USE MOST",
         "feats": [
-          { "t": "Modifiers & combos", "d": "Add-ons, deals and recipes per dish." },
-          { "t": "Auto 86-ing", "d": "A dish goes unavailable when an ingredient runs out." },
-          { "t": "QR ordering", "d": "Guests order from their phone — no app needed." },
-          { "t": "Aggregator inbox", "d": "Foodpanda, Talabat, Careem in one screen." },
-          { "t": "Cloud kitchen", "d": "Multiple virtual brands from one kitchen." },
-          { "t": "Reservations", "d": "Tables, waitlist and kitchen ticket printing." }
+          {
+            "t": "Modifiers & combos",
+            "d": "Add-ons, deals and recipes per dish."
+          },
+          {
+            "t": "Auto 86-ing",
+            "d": "A dish goes unavailable when an ingredient runs out."
+          },
+          {
+            "t": "QR ordering",
+            "d": "Guests order from their phone — no app needed."
+          },
+          {
+            "t": "Aggregator inbox",
+            "d": "Foodpanda, Talabat, Careem in one screen."
+          },
+          {
+            "t": "Cloud kitchen",
+            "d": "Multiple virtual brands from one kitchen."
+          },
+          {
+            "t": "Reservations",
+            "d": "Tables, waitlist and kitchen ticket printing."
+          }
         ]
       },
       "electronics": {
@@ -424,12 +472,30 @@
         "chips": ["IMEI tracking", "Warranty records", "Repair jobs", "Trade-ins"],
         "panelTitle": "WHAT ELECTRONICS SHOPS USE MOST",
         "feats": [
-          { "t": "Serial lifecycle", "d": "From GRN to sale to warranty claim." },
-          { "t": "Search by IMEI", "d": "Scan or type an IMEI straight into checkout." },
-          { "t": "Repair tickets", "d": "Track jobs, parts and labour." },
-          { "t": "Trade-in intake", "d": "Buy used stock back into inventory." },
-          { "t": "Supplier ledgers", "d": "Know what you owe each distributor." },
-          { "t": "Warranty proof", "d": "Purchase record attached to every serial." }
+          {
+            "t": "Serial lifecycle",
+            "d": "From GRN to sale to warranty claim."
+          },
+          {
+            "t": "Search by IMEI",
+            "d": "Scan or type an IMEI straight into checkout."
+          },
+          {
+            "t": "Repair tickets",
+            "d": "Track jobs, parts and labour."
+          },
+          {
+            "t": "Trade-in intake",
+            "d": "Buy used stock back into inventory."
+          },
+          {
+            "t": "Supplier ledgers",
+            "d": "Know what you owe each distributor."
+          },
+          {
+            "t": "Warranty proof",
+            "d": "Purchase record attached to every serial."
+          }
         ]
       },
       "pharmacies": {
@@ -440,12 +506,30 @@
         "chips": ["FEFO picking", "Expiry alerts", "Drug schedules", "Prescription log"],
         "panelTitle": "WHAT PHARMACIES USE MOST",
         "feats": [
-          { "t": "Batch tracking", "d": "Every unit tied to its batch and expiry date." },
-          { "t": "FEFO by default", "d": "Oldest-expiring stock sells first, automatically." },
-          { "t": "Schedule control", "d": "Drug schedules and restricted-sale rules." },
-          { "t": "Molecule tagging", "d": "Generic and molecule-level search." },
-          { "t": "Expiring-stock report", "d": "See what to move before it’s a write-off." },
-          { "t": "Prescription records", "d": "A log attached to the sale." }
+          {
+            "t": "Batch tracking",
+            "d": "Every unit tied to its batch and expiry date."
+          },
+          {
+            "t": "FEFO by default",
+            "d": "Oldest-expiring stock sells first, automatically."
+          },
+          {
+            "t": "Schedule control",
+            "d": "Drug schedules and restricted-sale rules."
+          },
+          {
+            "t": "Molecule tagging",
+            "d": "Generic and molecule-level search."
+          },
+          {
+            "t": "Expiring-stock report",
+            "d": "See what to move before it’s a write-off."
+          },
+          {
+            "t": "Prescription records",
+            "d": "A log attached to the sale."
+          }
         ]
       },
       "distribution": {
@@ -456,12 +540,30 @@
         "chips": ["Van sales", "Route planning", "Driver reconciliation", "Multi-warehouse"],
         "panelTitle": "WHAT DISTRIBUTORS USE MOST",
         "feats": [
-          { "t": "Mobile warehouse", "d": "Van stock tracked separately from the godown." },
-          { "t": "Day-end settlement", "d": "Cash + goods + fuel reconciled per trip." },
-          { "t": "Per-trip profit", "d": "Margin and outstanding credit by route." },
-          { "t": "Bulk pricing", "d": "Dealer price lists and quantity breaks." },
-          { "t": "Warehouse transfers", "d": "Move stock between branches with approval." },
-          { "t": "Proof of delivery", "d": "Confirmed at the customer’s door." }
+          {
+            "t": "Mobile warehouse",
+            "d": "Van stock tracked separately from the godown."
+          },
+          {
+            "t": "Day-end settlement",
+            "d": "Cash + goods + fuel reconciled per trip."
+          },
+          {
+            "t": "Per-trip profit",
+            "d": "Margin and outstanding credit by route."
+          },
+          {
+            "t": "Bulk pricing",
+            "d": "Dealer price lists and quantity breaks."
+          },
+          {
+            "t": "Warehouse transfers",
+            "d": "Move stock between branches with approval."
+          },
+          {
+            "t": "Proof of delivery",
+            "d": "Confirmed at the customer’s door."
+          }
         ]
       },
       "services": {
@@ -472,17 +574,34 @@
         "chips": ["Appointments", "Memberships", "Staff commissions", "Recurring billing"],
         "panelTitle": "WHAT SERVICE BUSINESSES USE MOST",
         "feats": [
-          { "t": "Subscription plans", "d": "Billing cycles with grace periods." },
-          { "t": "Auto-block defaulters", "d": "Lapsed members flagged and paused." },
-          { "t": "Commission rules", "d": "Per-staff, per-service commission tracking." },
-          { "t": "Shift scheduling", "d": "Rosters, attendance and leave approvals." },
-          { "t": "Payroll built in", "d": "Prorated by attendance, posted to the books." },
-          { "t": "Client history", "d": "Every visit and payment on one record." }
+          {
+            "t": "Subscription plans",
+            "d": "Billing cycles with grace periods."
+          },
+          {
+            "t": "Auto-block defaulters",
+            "d": "Lapsed members flagged and paused."
+          },
+          {
+            "t": "Commission rules",
+            "d": "Per-staff, per-service commission tracking."
+          },
+          {
+            "t": "Shift scheduling",
+            "d": "Rosters, attendance and leave approvals."
+          },
+          {
+            "t": "Payroll built in",
+            "d": "Prorated by attendance, posted to the books."
+          },
+          {
+            "t": "Client history",
+            "d": "Every visit and payment on one record."
+          }
         ]
       }
     }
   },
-
   "extensions": {
     "meta": {
       "title": "Extensions — The TajirPoint marketplace",
@@ -536,16 +655,34 @@
         "name": "Website Builder",
         "desc": "A public online store generated from your own products."
       },
-      "stripe": { "name": "Stripe", "desc": "Global cards, Apple Pay and Google Pay." },
+      "stripe": {
+        "name": "Stripe",
+        "desc": "Global cards, Apple Pay and Google Pay."
+      },
       "jazzcash": {
         "name": "JazzCash",
         "desc": "Mobile wallet payments at the counter and online."
       },
-      "easypaisa": { "name": "Easypaisa", "desc": "Wallet payments, in-store and online." },
-      "hblpay": { "name": "HBLPay", "desc": "Card payments via HBL." },
-      "paypal": { "name": "PayPal", "desc": "Accept PayPal for online orders." },
-      "razorpay": { "name": "Razorpay", "desc": "Cards and UPI for the Indian market." },
-      "square": { "name": "Square", "desc": "Card-present and online payments." },
+      "easypaisa": {
+        "name": "Easypaisa",
+        "desc": "Wallet payments, in-store and online."
+      },
+      "hblpay": {
+        "name": "HBLPay",
+        "desc": "Card payments via HBL."
+      },
+      "paypal": {
+        "name": "PayPal",
+        "desc": "Accept PayPal for online orders."
+      },
+      "razorpay": {
+        "name": "Razorpay",
+        "desc": "Cards and UPI for the Indian market."
+      },
+      "square": {
+        "name": "Square",
+        "desc": "Card-present and online payments."
+      },
       "accounting-gl": {
         "name": "Accounting & General Ledger",
         "desc": "Full double-entry books, auto-posted from every transaction."
@@ -566,13 +703,22 @@
         "name": "Age Verification",
         "desc": "ID checks for restricted items at checkout."
       },
-      "shopify": { "name": "Shopify", "desc": "Two-way sync of products, stock and orders." },
+      "shopify": {
+        "name": "Shopify",
+        "desc": "Two-way sync of products, stock and orders."
+      },
       "woocommerce": {
         "name": "WooCommerce",
         "desc": "Keep your WooCommerce store in sync."
       },
-      "magento": { "name": "Magento", "desc": "Sync catalog and orders with Magento." },
-      "wix": { "name": "Wix", "desc": "Connect your Wix storefront." },
+      "magento": {
+        "name": "Magento",
+        "desc": "Sync catalog and orders with Magento."
+      },
+      "wix": {
+        "name": "Wix",
+        "desc": "Connect your Wix storefront."
+      },
       "bigcommerce": {
         "name": "BigCommerce",
         "desc": "Sync products and orders both ways."
@@ -581,8 +727,14 @@
         "name": "Leopards Courier",
         "desc": "Book shipments, print labels, track deliveries."
       },
-      "tcs": { "name": "TCS Express", "desc": "Courier booking and tracking." },
-      "postex": { "name": "PostEx", "desc": "Shipment booking, labels and tracking." },
+      "tcs": {
+        "name": "TCS Express",
+        "desc": "Courier booking and tracking."
+      },
+      "postex": {
+        "name": "PostEx",
+        "desc": "Shipment booking, labels and tracking."
+      },
       "customer-portal": {
         "name": "Customer Portal",
         "desc": "Credit customers log in to view their ledger and pay online."
@@ -605,10 +757,10 @@
       }
     }
   },
-
   "footer": {
     "tagline": "The point of sale and complete operating system for modern merchants. Web, desktop and Android — in English, اردو and العربية.",
     "product": "PRODUCT",
+    "features": "FEATURES",
     "industries": "INDUSTRIES",
     "company": "COMPANY",
     "links": {
@@ -628,7 +780,6 @@
     "copyright": "© 2026 TajirPoint. All rights reserved.",
     "badge": "MERCHANT OS"
   },
-
   "common": {
     "skipToContent": "Skip to main content"
   }
