@@ -55,20 +55,19 @@ const PAGES: Page[] = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const locales = ["en", "ur", "ar"];
-  const now = new Date();
-
+  // No `alternates` and no `lastModified`, deliberately.
+  //
+  // alternates: every locale resolves to the same URL under
+  // `localePrefix: "never"`, so the hreflang cluster was self-referential and
+  // Google ignored it. See the note in lib/seo/metadata.ts.
+  //
+  // lastModified: `new Date()` is evaluated at build time, so every page
+  // claimed to have changed on every deploy. A sitemap that always cries
+  // "just updated" trains Google to stop trusting the signal — better to omit
+  // it until we have real per-page modification dates.
   return PAGES.map(({ path, priority, changeFrequency }) => ({
     url: `${siteConfig.url}${path}`,
-    lastModified: now,
     changeFrequency,
     priority,
-    // With localePrefix: "never" all locales share the same URL.
-    // Emit hreflang alternates so Google can deduplicate per language.
-    alternates: {
-      languages: Object.fromEntries(
-        [...locales, "x-default"].map((locale) => [locale, `${siteConfig.url}${path}`])
-      ),
-    },
   }));
 }

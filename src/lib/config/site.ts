@@ -1,7 +1,19 @@
+// The canonical origin. Every canonical tag, hreflang, OG url, JSON-LD `url`
+// and sitemap <loc> is built from this, so it must NEVER silently fall back to
+// localhost in a production build — that ships `<link rel="canonical"
+// href="http://localhost:3000">` on every page and tells Google the whole site
+// is a duplicate of an unreachable URL. Deploys should still set
+// NEXT_PUBLIC_SITE_URL explicitly; this is the seatbelt for when they don't.
+export const PRODUCTION_URL = "https://tajirpoint.com";
+
+const resolvedUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.NODE_ENV === "production" ? PRODUCTION_URL : "http://localhost:3000");
+
 // Single source of truth for brand, URLs, nav, and social.
 export const siteConfig = {
   name: "Tajir Point",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  url: resolvedUrl,
   description:
     "The offline-first operating system for the modern merchant — POS, ledger, storefront, in three languages, on every device.",
   tagline: "Run your shop. Everywhere.",
