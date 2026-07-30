@@ -116,10 +116,10 @@ export default function WebhooksPage() {
         </h2>
         <div className="overflow-hidden rounded-[14px] border border-[var(--color-line)] bg-white/[0.015]">
           <div className="hidden gap-5 border-b border-[var(--color-line)] bg-white/[0.04] px-4 py-2 sm:flex">
-            <span className="w-[190px] shrink-0 font-mono text-[10px] uppercase tracking-[1.6px] text-[var(--color-muted-3)]">
+            <span className="w-[190px] shrink-0 text-[12px] font-semibold text-[var(--color-muted-2)]">
               Event
             </span>
-            <span className="font-mono text-[10px] uppercase tracking-[1.6px] text-[var(--color-muted-3)]">
+            <span className="text-[12px] font-semibold text-[var(--color-muted-2)]">
               Fired when
             </span>
           </div>
@@ -152,10 +152,10 @@ export default function WebhooksPage() {
         <CodeBlock label="JSON — request body we POST" code={PAYLOAD} />
         <div className="overflow-hidden rounded-[14px] border border-[var(--color-line)] bg-white/[0.015]">
           <div className="hidden gap-5 border-b border-[var(--color-line)] bg-white/[0.04] px-4 py-2 sm:flex">
-            <span className="w-[190px] shrink-0 font-mono text-[10px] uppercase tracking-[1.6px] text-[var(--color-muted-3)]">
+            <span className="w-[190px] shrink-0 text-[12px] font-semibold text-[var(--color-muted-2)]">
               Header
             </span>
-            <span className="font-mono text-[10px] uppercase tracking-[1.6px] text-[var(--color-muted-3)]">
+            <span className="text-[12px] font-semibold text-[var(--color-muted-2)]">
               What it carries
             </span>
           </div>

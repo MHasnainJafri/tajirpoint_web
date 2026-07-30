@@ -75,31 +75,103 @@
       "description": "POS, inventory, purchasing, credit ledger, accounting, staff, delivery and an online store. One platform, one login, 31 extensions."
     },
     "hero": {
-      "badge": "MERCHANT OS · 31 EXTENSIONS",
-      "headline": "The point of sale that runs the",
-      "headlineAccent": "entire business",
-      "sub": "Selling, inventory, purchasing, credit, accounting, staff, delivery and an online store — one platform, one login. Then switch on exactly what your business needs from a marketplace of 31 extensions.",
-      "ctaPrimary": "Start free 14-day trial",
-      "ctaSecondary": "Explore extensions",
-      "note": "No card required · Every module included",
-      "browserUrl": "app.tajirpoint.com",
-      "screenshotAlt": "The TajirPoint point-of-sale running in a browser",
-      "floatOfflineLabel": "OFFLINE MODE",
-      "floatOfflineText": "Still selling · 12 sales queued",
-      "floatLedgerLabel": "LEDGER · AUTO-POSTED",
-      "floatLedgerText": "+ Rs 4,700 · Sales revenue"
+      "badge": "POS · Khata · Inventory · Accounting",
+      "headline": "The point of sale that runs the entire business",
+      "sub": "The software behind the counter for Pakistani retail, restaurants, pharmacies and wholesale. One app for selling, stock, customer credit and the books — and it keeps selling when the internet drops.",
+      "ctaPrimary": "Start free trial",
+      "ctaSecondary": "See what it replaces",
+      "note": "14 days free · No card required · Urdu, English and Arabic",
+      "modesTitle": "See how the POS works for your business",
+      "modesCta": "Learn more",
+      "modes": {
+        "retail": {
+          "label": "Retail",
+          "title": "Retail mode",
+          "body": "Barcode checkout with real stock behind it. Sell from any counter — the catalogue, the prices and the books stay in one place.",
+          "bullets": [
+            "Barcode and IMEI scanning",
+            "Stock transfers between branches",
+            "Low-stock and reorder alerts"
+          ],
+          "alt": "The TajirPoint retail checkout screen"
+        },
+        "restaurants": {
+          "label": "Restaurants",
+          "title": "Restaurant mode",
+          "body": "Run the floor and the kitchen off one screen — tables, courses and split bills, with every order landing on the kitchen display.",
+          "bullets": [
+            "Table floor plan and covers",
+            "Kitchen display screens",
+            "Split, merge and park bills"
+          ],
+          "alt": "The TajirPoint restaurant floor plan screen"
+        },
+        "electronics": {
+          "label": "Electronics",
+          "title": "Electronics mode",
+          "body": "Every unit tracked by serial or IMEI from the purchase order to the warranty claim, so you always know which piece went to which customer.",
+          "bullets": [
+            "Serial and IMEI capture",
+            "Warranty and repair jobs",
+            "Trade-in and exchange"
+          ],
+          "alt": "The TajirPoint serial and IMEI tracking screen"
+        },
+        "distribution": {
+          "label": "Distribution",
+          "title": "Distribution mode",
+          "body": "Load the van, sell on the route, settle at day end — stock, cash and khata all reconciled against the trip.",
+          "bullets": [
+            "Van stock as its own warehouse",
+            "Route and trip planning",
+            "Collect payments on delivery"
+          ],
+          "alt": "The TajirPoint van sales and route screen"
+        },
+        "all": {
+          "label": "Every business",
+          "title": "Standard mode",
+          "body": "The core everything else is built on: fast checkout, real inventory, customer credit and double-entry books that post themselves.",
+          "bullets": [
+            "Cash, card, wallet and split tenders",
+            "Khata credit ledger",
+            "Books posted automatically"
+          ],
+          "alt": "The TajirPoint checkout and payment screen"
+        }
+      }
     },
     "stats": {
-      "extensions": "EXTENSIONS",
-      "platforms": "PLATFORMS · WEB DESKTOP ANDROID",
-      "languages": "LANGUAGES · FULL RTL",
-      "reports": "EXPORTABLE REPORTS"
+      "extensions": "Installable extensions",
+      "platforms": "Platforms — web, desktop and Android",
+      "languages": "Languages, fully right-to-left",
+      "reports": "Exportable reports"
     },
-    "marqueeTitle": "CONNECTS WITH THE TOOLS MERCHANTS ALREADY USE",
+    "marqueeTitle": "Connects with the tools merchants already use",
+    "whoItsFor": {
+      "headline": "Built for the way Pakistani shops actually sell",
+      "sub": "One counter or twelve branches and a delivery fleet — it is the same system underneath, set up for the size you are today.",
+      "items": {
+        "single": {
+          "title": "A single counter",
+          "body": "Scan, ring up and take cash, card or wallet. Close the drawer at night with the day's totals already reconciled.",
+          "alt": "Shopkeeper standing at the counter of a single-branch shop"
+        },
+        "multi": {
+          "title": "Several branches",
+          "body": "One catalogue and one set of books across every branch, with stock transfers, branch-wise reporting and per-location staff permissions.",
+          "alt": "Staff serving customers inside a larger multi-branch store"
+        },
+        "mobile": {
+          "title": "On the road",
+          "body": "Van sales, delivery runs and market stalls. Load stock onto the vehicle, sell and collect on the route, settle back at the shop.",
+          "alt": "Salesman selling from a delivery van at a roadside market"
+        }
+      }
+    },
     "platform": {
-      "eyebrow": "WHY TAJIRPOINT",
-      "headline": "One platform instead of",
-      "headlineAccent": "five tools",
+      "eyebrow": "Why TajirPoint",
+      "headline": "One platform instead of five tools",
       "body": "A till here, a spreadsheet there, an accountant at month-end, orders on chat. TajirPoint replaces the patchwork — and the pieces talk to each other. One sale updates stock, the customer's balance, the ledger and the tax record in a single action.",
       "replaces": {
         "till": {
@@ -124,9 +196,23 @@
         }
       }
     },
+    "ecosystem": {
+      "headline": "Everything you need on the counter, online, and in the books",
+      "sub": "The same catalogue, the same stock and the same customer balances — whether the sale happens at the till, over WhatsApp, or on your own online store.",
+      "pills": {
+        "backOffice": "Back office",
+        "pos": "POS software",
+        "online": "Online store"
+      },
+      "shots": {
+        "backOffice": "Owner reviewing the day's reports on a laptop in the back office",
+        "counter": "Tablet POS on a shop counter with a receipt printer and cash drawer",
+        "online": "Customer ordering from the shop's online store on a phone"
+      }
+    },
     "bento": {
       "offline": {
-        "tag": "DIFFERENTIATOR · OFFLINE-FIRST",
+        "tag": "Offline-first",
         "title": "Sells straight through internet outages",
         "body": "Connectivity drops; the counter doesn't. Sales queue locally on the device and sync back safely when the network returns — no duplicates, nothing lost.",
         "panelStatus": "Connection lost",
@@ -135,33 +221,33 @@
         "panelQueuedValue": "12 sales · safe"
       },
       "accounting": {
-        "tag": "ACCOUNTING",
+        "tag": "Accounting",
         "title": "Books that do themselves",
         "body": "A real double-entry ledger, auto-posted from every sale, purchase and payroll run. Clean books, zero journal entries."
       },
       "inventory": {
-        "tag": "INVENTORY",
+        "tag": "Inventory",
         "title": "Stock that tracks itself",
         "body": "Multi-warehouse, batch & expiry, serial/IMEI, unit conversion — carton to piece — with a full audit trail."
       },
       "distribution": {
-        "tag": "DISTRIBUTION",
+        "tag": "Distribution",
         "title": "Van sales, door to door",
         "body": "Load a truck as a mobile warehouse, sell on route, reconcile cash, goods and fuel at day end."
       },
       "storefront": {
-        "tag": "ONLINE STORE",
+        "tag": "Storefront",
         "title": "A storefront, auto-generated",
         "body": "A hosted online store built from your own products — themes, your logo, your domain, online ordering."
       },
       "security": {
-        "tag": "SECURITY",
+        "tag": "Security",
         "title": "Locked down by role",
         "body": "Owner, manager, cashier, driver — each sees only their screens. 2FA, API keys and a full audit log."
       }
     },
     "ledger": {
-      "eyebrow": "THE HEART OF THE PLATFORM",
+      "eyebrow": "The heart of the platform",
       "headline": "A credit book, with a real ledger underneath",
       "body": "Most shops still track customer credit in a notebook. TajirPoint replaces it with a true double-entry ledger that still feels that simple — running balances, credit limits, statements, aging.",
       "outstanding": "OUTSTANDING BALANCE",
@@ -189,79 +275,58 @@
       }
     },
     "box": {
-      "eyebrow": "NATIVE CAPABILITIES · DAY ONE",
+      "eyebrow": "Native capabilities, day one",
       "headlineA": "In the box.",
       "headlineB": "No bolt-ons.",
       "body": "Everything below ships with every plan — not as an extension, not as a partner integration. The platform is the product.",
       "buckets": {
         "sell": {
-          "cat": "SELL ANYWHERE",
+          "cat": "Sell anywhere",
           "title": "A POS that doesn’t blink",
           "body": "Cart, barcode scan, hold orders, parked carts, shift open/close. Cash, card, cheque, wallet, split tenders.",
           "chips": ["Thermal printers", "Hold & park", "Multi-tender", "Custom receipts"]
         },
         "inventory": {
-          "cat": "INVENTORY",
+          "cat": "Inventory",
           "title": "Stock you can trust",
           "body": "Multi-warehouse with in-transit tracking. FIFO / moving average / actual cost. Unit conversions chain carton ↔ box ↔ piece.",
           "chips": ["Multi-warehouse", "Batches & serials", "GRNs", "Custom fields"]
         },
         "sales": {
-          "cat": "SALES & PROMO",
+          "cat": "Sales & pricing",
           "title": "Quote → invoice → returns",
           "body": "Quotations convert in one click. Multi-rule discount engine: time-based, customer-segment, BOGO, percentage, fixed.",
           "chips": ["Coupons", "Loyalty", "Wallet credit", "Returns"]
         },
         "purchases": {
-          "cat": "PURCHASES",
+          "cat": "Purchasing",
           "title": "PO to payment, one trail",
           "body": "POs → GRN → supplier invoice → payment. Returns with credit notes. Advances allocated against bills.",
           "chips": ["PO lifecycle", "Partial receipts", "Advances"]
         },
         "dispatch": {
-          "cat": "DISPATCH",
+          "cat": "Dispatch",
           "title": "Trip planning & POD",
           "body": "Multi-stop trips, load/unload tracking, a driver app, proof-of-delivery capture, end-of-day reconciliation.",
           "chips": ["Driver app", "POD", "Trip reconcile"]
         },
         "money": {
-          "cat": "MONEY & BOOKS",
+          "cat": "Money",
           "title": "Ledger-grade money handling",
           "body": "Cheque lifecycle with bounce reversal, drawers and petty cash with variance, bank statement import and reconciliation.",
           "chips": ["Cheques", "Petty cash", "Reconciliation", "Withholding tax"]
         }
       }
     },
-    "devices": {
-      "eyebrow": "APPS · WEB · ANDROID · DESKTOP",
-      "headlineA": "Counter, pocket,",
-      "headlineB": "or anywhere.",
-      "body": "One product, every device — browser, Windows desktop and Android, all from one codebase, all sharing one inventory and one ledger. Native receipt printing, barcode scanning and Bluetooth.",
-      "getItOn": "GET IT ON",
-      "googlePlay": "Google Play",
-      "ios": "iOS — coming soon",
-      "metaDesktop": "Desktop",
-      "metaDesktopValue": "Windows",
-      "metaWeb": "Web",
-      "metaWebValue": "any browser",
-      "metaHardware": "Hardware",
-      "metaHardwareValue": "printers, scanners, drawers",
-      "phoneToday": "TODAY",
-      "phoneAmount": "Rs 142,800",
-      "phoneDelta": "+18% vs yesterday",
-      "driverLabel": "DRIVER · TRIP 042",
-      "driverStops": "8 stops left",
-      "driverRoute": "Route 4 · North sector"
-    },
     "extensions": {
-      "eyebrow": "EXTENSION MARKETPLACE",
+      "eyebrow": "Extension marketplace",
       "headline": "Start lean.",
       "headlineAccent": "Extend infinitely.",
       "body": "The core does the common work. 31 installable extensions switch on what your business needs — restaurant floor plans, payment gateways, courier booking, e-commerce sync — and the interface only shows what's turned on.",
       "cta": "Browse all 31 extensions"
     },
     "how": {
-      "eyebrow": "HOW IT WORKS",
+      "eyebrow": "How it works",
       "headline": "Live in an afternoon",
       "steps": {
         "import": {
@@ -287,16 +352,17 @@
       }
     },
     "verticals": {
-      "eyebrow": "BUILT FOR YOUR COUNTER",
+      "eyebrow": "Built for your counter",
       "headline": "Six industries. One system that fits each.",
       "cta": "See all industries"
     },
     "pricing": {
-      "eyebrow": "PRICING",
+      "eyebrow": "Pricing",
       "headline": "One price. Every module.",
       "body": "No per-module upsells, no transaction fees. Pay per branch. Billing in PKR, AED and SAR.",
       "note": "Indicative pricing — confirmed at checkout in your billing currency.",
-      "popular": "MOST POPULAR",
+      "popular": "Most popular",
+      "perMonth": "/ month",
       "plans": {
         "starter": {
           "name": "Starter",

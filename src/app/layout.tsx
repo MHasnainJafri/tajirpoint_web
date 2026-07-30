@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Reem_Kufi } from "next/font/google";
+import { Inter, Geist_Mono, Reem_Kufi } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import "@/styles/globals.css";
@@ -8,10 +8,12 @@ import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { organizationSchema, websiteSchema } from "@/lib/seo/schemas";
 import { siteConfig } from "@/lib/config/site";
 
-const geist = Geist({
+// Inter is the closest free stand-in for Shopify Sans — same geometric
+// grotesque skeleton, and its tight tracking holds up at display sizes.
+// It is a variable font, so no `weight` array: the whole 100–900 axis ships.
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  variable: "--font-geist",
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -61,7 +63,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const rtlLocales = ["ur", "ar"];
   const dir = rtlLocales.includes(locale) ? "rtl" : "ltr";
   // Only include the Arabic font variable when it is actually needed.
-  const fontClasses = [geist.variable, geistMono.variable, locale !== "en" ? reemKufi.variable : ""]
+  const fontClasses = [inter.variable, geistMono.variable, locale !== "en" ? reemKufi.variable : ""]
     .filter(Boolean)
     .join(" ");
 

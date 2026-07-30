@@ -13,19 +13,13 @@ export function Footer() {
     <footer className="border-t border-[var(--color-line-soft)] px-5 pb-10 pt-[70px] md:px-10">
       <div className="mx-auto grid max-w-[1200px] gap-10 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr_1fr]">
         <div>
+          {/* Light-only site — see ThemeProvider. */}
           <Image
             src="/brand/lockup/lockup-on-white.svg"
             alt="TajirPoint"
             width={166}
             height={46}
-            className="h-[46px] w-auto dark:hidden"
-          />
-          <Image
-            src="/brand/lockup/lockup-on-dark.svg"
-            alt="TajirPoint"
-            width={166}
-            height={46}
-            className="hidden h-[46px] w-auto dark:block"
+            className="h-[46px] w-auto"
           />
           <p className="mt-4 max-w-[280px] text-[13.5px] leading-[1.6] text-[var(--color-muted-2)]">
             {t("tagline")}

@@ -107,10 +107,10 @@ export default function ErrorsPage() {
         </h2>
         <div className="overflow-hidden rounded-[14px] border border-[var(--color-line)] bg-white/[0.015]">
           <div className="hidden gap-5 border-b border-[var(--color-line)] bg-white/[0.04] px-4 py-2 sm:flex">
-            <span className="w-[110px] shrink-0 font-mono text-[10px] uppercase tracking-[1.6px] text-[var(--color-muted-3)]">
+            <span className="w-[110px] shrink-0 text-[12px] font-semibold text-[var(--color-muted-2)]">
               Status
             </span>
-            <span className="font-mono text-[10px] uppercase tracking-[1.6px] text-[var(--color-muted-3)]">
+            <span className="text-[12px] font-semibold text-[var(--color-muted-2)]">
               What it means · what to do
             </span>
           </div>

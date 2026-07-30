@@ -53,11 +53,13 @@ export default function DocsIndexPage() {
           resource URLs, JSON in and out, cursor pagination, idempotent writes, and signed webhooks
           so you can react to events instead of polling for them.
         </p>
-        <div className="mt-1 inline-flex w-fit items-center gap-3 rounded-[12px] border border-[var(--color-line)] bg-white/[0.03] px-4 py-2.5">
-          <span className="font-mono text-[11px] uppercase tracking-[1.6px] text-[var(--color-muted-3)]">
-            Base URL
-          </span>
-          <code className="font-mono text-[13.5px] text-[var(--color-mint-2)]">{API_BASE}</code>
+        {/* `flex-wrap` + `max-w-full`: the URL alone is 240px, which pushed
+            this chip past the viewport on a 320–360px phone. */}
+        <div className="mt-1 flex w-fit max-w-full flex-wrap items-center gap-x-3 gap-y-1 rounded-[12px] border border-[var(--color-line)] bg-[var(--surface-2)] px-4 py-2.5">
+          <span className="text-[12px] font-semibold text-[var(--color-muted-2)]">Base URL</span>
+          <code className="break-all font-mono text-[13.5px] text-[var(--color-brand)]">
+            {API_BASE}
+          </code>
         </div>
       </header>
 
@@ -118,10 +120,10 @@ export default function DocsIndexPage() {
         </h2>
         <div className="overflow-hidden rounded-[14px] border border-[var(--color-line)] bg-white/[0.015]">
           <div className="hidden gap-4 border-b border-[var(--color-line)] bg-white/[0.04] px-4 py-2 sm:flex">
-            <span className="w-[180px] shrink-0 font-mono text-[10px] uppercase tracking-[1.6px] text-[var(--color-muted-3)]">
+            <span className="w-[180px] shrink-0 text-[12px] font-semibold text-[var(--color-muted-2)]">
               Header
             </span>
-            <span className="font-mono text-[10px] uppercase tracking-[1.6px] text-[var(--color-muted-3)]">
+            <span className="text-[12px] font-semibold text-[var(--color-muted-2)]">
               What it is for
             </span>
           </div>

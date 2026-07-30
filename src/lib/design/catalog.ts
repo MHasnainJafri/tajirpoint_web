@@ -149,6 +149,30 @@ export const BUCKETS = [
 
 export const STEPS = ["import", "install", "connect", "sell"] as const;
 
+/* ── Landing: hero mode switcher ──────────────────────────────────── */
+
+/**
+ * The tabs under the hero headline. Each one swaps the copy and the screen
+ * inside the device frame, so a visitor sees their own trade in the first
+ * screenful. `href` points at the matching /solutions page — every panel is
+ * rendered (hidden ones included) so those links stay crawlable.
+ *
+ * The screen for each mode is a `<Shot>` slot named `pos-<id>`; retail falls
+ * back to the coded POS mock until a real screenshot is dropped in.
+ */
+export const HERO_MODES = [
+  { id: "retail", href: "/solutions/general-retail" },
+  { id: "restaurants", href: "/solutions/restaurants" },
+  { id: "electronics", href: "/solutions/electronics" },
+  { id: "distribution", href: "/solutions/distributors" },
+  { id: "all", href: "/solutions" },
+] as const;
+
+export type HeroModeId = (typeof HERO_MODES)[number]["id"];
+
+/** The device screens share one aspect so switching tabs never shifts layout. */
+export const HERO_SCREEN_RATIO = "1857/911";
+
 /* ── Landing: stats rail ──────────────────────────────────────────── */
 
 export const STATS = [

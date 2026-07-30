@@ -6,7 +6,6 @@ import { Menu, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, useRouter, usePathname } from "@/i18n/navigation";
 import { Icon } from "@/components/design/Icon";
-import { ThemeToggle } from "@/components/design/ThemeToggle";
 import {
   VERTICALS,
   FEATURES,
@@ -88,27 +87,20 @@ export function Nav() {
         }}
       >
         <Link href="/" className="flex items-center" onMouseEnter={() => setMega(null)}>
-          {/* Logo swaps with the theme; both ship so there is no toggle flash. */}
+          {/* Light-only site — the on-dark lockup would never render, and
+              shipping it `priority` would preload an unused asset. */}
           <Image
             src="/brand/lockup/lockup-on-white.svg"
             alt="TajirPoint"
             width={151}
             height={42}
             priority
-            className="h-[42px] w-auto dark:hidden"
-          />
-          <Image
-            src="/brand/lockup/lockup-on-dark.svg"
-            alt="TajirPoint"
-            width={151}
-            height={42}
-            priority
-            className="hidden h-[42px] w-auto dark:block"
+            className="h-[42px] w-auto"
           />
         </Link>
 
         {/* ── Desktop links ─────────────────────────────────────────── */}
-        <div className="hidden items-center gap-[6px] lg:flex">
+        <div className="hidden items-center gap-[6px] nav:flex">
           <Link href="/#platform" className={linkBase} onMouseEnter={() => setMega(null)}>
             {t("platform")}
           </Link>
@@ -139,19 +131,19 @@ export function Nav() {
 
         {/* ── Right rail ────────────────────────────────────────────── */}
         <div className="flex items-center gap-[10px]">
-          <ThemeToggle className="hidden md:inline-flex" />
-
           <button
             type="button"
             onClick={cycleLocale}
             aria-label={`Language: ${current.label}`}
             className="hidden cursor-pointer items-center gap-[7px] rounded-full border border-[var(--color-line-2)] bg-[var(--surface-2)] px-[14px] py-2 text-[13px] font-semibold text-[var(--color-ink-3)] transition-colors hover:border-[var(--color-line-2)] md:inline-flex"
           >
-            <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[rgba(0,210,122,.2)] text-[9px] font-bold text-[var(--color-mint-2)]">
+            <span className="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-[var(--color-mint-soft)] text-[11px] font-bold text-[var(--color-brand)]">
               {current.dot}
             </span>
             {current.label}
-            <span className="text-[8px] opacity-60">▼</span>
+            <span aria-hidden className="text-[11px] opacity-50">
+              ▾
+            </span>
           </button>
 
           <a
@@ -163,7 +155,7 @@ export function Nav() {
 
           <a
             href={siteConfig.calendlyUrl}
-            className="inline-flex items-center gap-[9px] whitespace-nowrap rounded-full bg-[var(--color-mint)] px-5 py-[10px] text-[14px] font-bold text-[var(--color-mint-ink)] transition-[transform,box-shadow] duration-200 hover:-translate-y-px hover:shadow-[0_6px_24px_rgba(0,210,122,.35)]"
+            className="inline-flex items-center gap-[9px] whitespace-nowrap rounded-full bg-[var(--color-brand)] px-5 py-[10px] text-[14px] font-semibold text-[var(--color-on-brand)] shadow-[var(--shadow-card)] transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-px hover:bg-[var(--color-brand-hover)] hover:shadow-[var(--shadow-lift)]"
           >
             {t("bookDemo")} <span className="text-[15px]">→</span>
           </a>
@@ -173,7 +165,7 @@ export function Nav() {
             onClick={() => setMobileOpen((v) => !v)}
             aria-label={mobileOpen ? t("closeMenu") : t("openMenu")}
             aria-expanded={mobileOpen}
-            className="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[var(--color-line-2)] bg-[var(--surface-2)] text-[var(--color-ink)] lg:hidden"
+            className="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[var(--color-line-2)] bg-[var(--surface-2)] text-[var(--color-ink)] nav:hidden"
           >
             {mobileOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
@@ -308,7 +300,7 @@ export function Nav() {
       {mobileOpen && (
         <div
           onClick={closeAll}
-          className="max-h-[calc(100dvh-66px)] overflow-y-auto border-b border-[var(--color-line)] bg-[var(--glass-panel)] px-5 py-6 backdrop-blur-xl lg:hidden"
+          className="max-h-[calc(100dvh-66px)] overflow-y-auto border-b border-[var(--color-line)] bg-[var(--glass-panel)] px-5 py-6 backdrop-blur-xl nav:hidden"
         >
           <nav className="flex flex-col gap-1">
             <MobileLink href="/#platform">{t("platform")}</MobileLink>
@@ -323,7 +315,6 @@ export function Nav() {
             <MobileLink href="/#faq">{t("faq")}</MobileLink>
           </nav>
           <div className="mt-5 flex flex-wrap items-center gap-3 border-t border-[var(--color-line)] pt-5">
-            <ThemeToggle />
             <button
               type="button"
               onClick={cycleLocale}
@@ -372,7 +363,7 @@ function MegaTrigger({
     >
       {label}
       <span
-        className="text-[9px] opacity-70 transition-transform duration-[250ms]"
+        className="text-[11px] opacity-60 transition-transform duration-[250ms]"
         style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
       >
         ▼
@@ -391,7 +382,7 @@ function MegaPanel({
   return (
     <div
       onClick={onNavigate}
-      className="hidden animate-[tpMenuIn_.25s_cubic-bezier(.22,1,.36,1)_both] border-b border-[var(--color-line)] bg-[var(--glass-panel)] shadow-[0_40px_90px_rgba(0,0,0,.35)] backdrop-blur-xl lg:block"
+      className="hidden animate-[tpMenuIn_.25s_cubic-bezier(.22,1,.36,1)_both] border-b border-[var(--color-line)] bg-[var(--glass-panel)] shadow-[0_40px_90px_rgba(0,0,0,.35)] backdrop-blur-xl nav:block"
     >
       <div className="mx-auto max-w-[1200px] px-10 py-[34px]">{children}</div>
     </div>

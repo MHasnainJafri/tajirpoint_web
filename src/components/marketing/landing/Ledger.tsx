@@ -48,7 +48,12 @@ export function Ledger() {
               background: "radial-gradient(ellipse,rgba(0,210,122,.12),transparent 65%)",
             }}
           />
-          <div className="on-dark relative overflow-hidden rounded-[18px] border border-[var(--color-line-2)] bg-[var(--color-panel)] shadow-[0_40px_100px_rgba(0,0,0,.55)]">
+          {/* A simulated screenshot with fabricated invoice numbers — hidden
+              from assistive tech, like the hero mock. */}
+          <div
+            aria-hidden="true"
+            className="on-dark relative overflow-hidden rounded-[18px] border border-[var(--color-line-2)] bg-[var(--color-panel)] shadow-[0_40px_100px_rgba(0,0,0,.55)]"
+          >
             <header className="flex flex-wrap items-center justify-between gap-3 border-b border-[rgba(255,255,255,.07)] px-[22px] py-[18px]">
               <div className="flex items-center gap-3">
                 <span className="flex h-[38px] w-[38px] items-center justify-center rounded-full bg-[var(--color-mint)] text-[13px] font-extrabold text-[var(--color-mint-ink)]">
@@ -81,9 +86,12 @@ export function Ledger() {
               </span>
             </div>
 
-            <div className="px-[22px] pb-2 pt-[14px]">
-              <div className="grid grid-cols-[60px_1fr_74px_74px] gap-[10px] border-b border-[rgba(255,255,255,.07)] pb-[10px] font-mono text-[9.5px] tracking-[1.5px] text-[var(--color-muted-3)] sm:grid-cols-[76px_1fr_90px_90px]">
-                <span>{t("colDate")}</span>
+            <div className="px-4 pb-2 pt-[14px] sm:px-[22px]">
+              {/* The date column is dropped below `sm`: four fixed columns
+                  could not shrink under ~360px and pushed the card past a
+                  320px viewport. The date moves under the description. */}
+              <div className="grid grid-cols-[1fr_66px_66px] gap-2 border-b border-[rgba(255,255,255,.07)] pb-[10px] font-mono text-[9.5px] tracking-[1.5px] text-[var(--color-muted-3)] sm:grid-cols-[76px_1fr_90px_90px] sm:gap-[10px]">
+                <span className="hidden sm:block">{t("colDate")}</span>
                 <span>{t("colDescription")}</span>
                 <span className="text-right">{t("colDebit")}</span>
                 <span className="text-right">{t("colCredit")}</span>
@@ -92,14 +100,15 @@ export function Ledger() {
               {MOCK_LEDGER.rows.map((row) => (
                 <div
                   key={row.desc}
-                  className="grid grid-cols-[60px_1fr_74px_74px] items-center gap-[10px] border-b border-white/[0.05] py-3 sm:grid-cols-[76px_1fr_90px_90px]"
+                  className="grid grid-cols-[1fr_66px_66px] items-center gap-2 border-b border-white/[0.05] py-3 sm:grid-cols-[76px_1fr_90px_90px] sm:gap-[10px]"
                 >
-                  <span className="font-mono text-[11px] text-[var(--color-muted-2)]">
+                  <span className="hidden font-mono text-[11px] text-[var(--color-muted-2)] sm:block">
                     {row.date}
                   </span>
-                  <span>
+                  <span className="min-w-0">
                     <span className="block text-[13px] font-semibold">{row.desc}</span>
                     <span className="mt-[2px] block font-mono text-[10px] text-[var(--color-muted-3)]">
+                      <span className="sm:hidden">{row.date} · </span>
                       {row.sub}
                     </span>
                   </span>

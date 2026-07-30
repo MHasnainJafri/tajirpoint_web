@@ -15,7 +15,7 @@ export function Faq() {
     >
       <div
         data-reveal
-        className="text-center font-mono text-[12px] tracking-[2.5px] text-[var(--color-mint-2)]"
+        className="text-center text-[13.5px] font-semibold text-[var(--color-brand)]"
       >
         {t("eyebrow")}
       </div>
@@ -60,7 +60,7 @@ function FaqRow({
       >
         {question}
         <span
-          className="text-[20px] font-normal text-[var(--color-mint)] transition-transform duration-300"
+          className="text-[20px] font-normal text-[var(--color-brand)] transition-transform duration-300"
           style={{ transform: open ? "rotate(45deg)" : "rotate(0deg)" }}
         >
           +

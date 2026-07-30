@@ -1,16 +1,20 @@
 import { Link } from "@/i18n/navigation";
 
-/** The mono pill with a pulsing dot that opens every page in the design. */
+/**
+ * The small pill that opens a page above the headline. Deliberately quiet —
+ * a white chip on the off-white canvas, lifted by a hairline and a diffused
+ * shadow rather than a glowing tinted border.
+ */
 export function PillBadge({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative inline-flex animate-[tpFadeUp_.7s_.05s_cubic-bezier(.22,1,.36,1)_both] items-center gap-[10px] rounded-full border border-[rgba(0,210,122,.35)] bg-[var(--color-mint-soft)] px-4 py-[7px] font-mono text-[12px] tracking-[2px] text-[var(--color-mint-2)]">
-      <span className="h-[7px] w-[7px] animate-[tpPulse_2s_infinite] rounded-full bg-[var(--color-mint)]" />
+    <div className="relative inline-flex animate-[tpFadeUp_.7s_.05s_cubic-bezier(.22,1,.36,1)_both] items-center gap-[9px] rounded-full border border-[var(--color-line)] bg-[var(--color-bg-2)] px-[15px] py-[7px] text-[13.5px] font-medium text-[var(--color-ink-3)] shadow-[var(--shadow-card)]">
+      <span className="h-[7px] w-[7px] rounded-full bg-[var(--color-mint)]" />
       {children}
     </div>
   );
 }
 
-/** Mono section label — mint, letter-spaced. */
+/** Section label — sentence case, brand green, no tracking. */
 export function Eyebrow({
   children,
   className = "",
@@ -21,7 +25,7 @@ export function Eyebrow({
   return (
     <div
       data-reveal
-      className={`font-mono text-[12px] tracking-[2.5px] text-[var(--color-mint-2)] ${className}`}
+      className={`text-[13.5px] font-semibold text-[var(--color-brand)] ${className}`}
     >
       {children}
     </div>
@@ -35,11 +39,15 @@ type ButtonProps = {
   className?: string;
 };
 
-const mintClasses =
-  "inline-flex items-center gap-[10px] whitespace-nowrap rounded-full bg-[var(--color-mint)] font-bold text-[var(--color-mint-ink)] transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(0,210,122,.45)]";
+/**
+ * Primary action. Filled with the deepened brand green (5.05:1 under white
+ * text) rather than bright mint, which only managed 3.5:1 at button sizes.
+ */
+const primaryClasses =
+  "inline-flex items-center gap-[10px] whitespace-nowrap rounded-full bg-[var(--color-brand)] font-semibold text-[var(--color-on-brand)] shadow-[var(--shadow-card)] transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-[1px] hover:bg-[var(--color-brand-hover)] hover:shadow-[var(--shadow-lift)]";
 
 export function MintButton({ href, external, children, className = "" }: ButtonProps) {
-  const cls = `${mintClasses} px-8 py-[15px] text-[16px] ${className}`;
+  const cls = `${primaryClasses} px-7 py-[14px] text-[16px] ${className}`;
   if (external) {
     return (
       <a href={href} className={cls}>
@@ -54,11 +62,12 @@ export function MintButton({ href, external, children, className = "" }: ButtonP
   );
 }
 
+/** Secondary action — a white chip, not a translucent grey wash. */
 const ghostClasses =
-  "inline-flex items-center gap-[10px] whitespace-nowrap rounded-full border border-[var(--color-line-2)] bg-[var(--surface-3)] font-semibold text-[var(--color-ink)] transition-colors duration-200 hover:bg-[var(--surface-strong)] hover:text-[var(--color-ink-2)]";
+  "inline-flex items-center gap-[10px] whitespace-nowrap rounded-full border border-[var(--color-line-2)] bg-[var(--color-bg-2)] font-semibold text-[var(--color-ink)] shadow-[var(--shadow-card)] transition-[transform,box-shadow] duration-200 hover:-translate-y-[1px] hover:shadow-[var(--shadow-lift)]";
 
 export function GhostButton({ href, external, children, className = "" }: ButtonProps) {
-  const cls = `${ghostClasses} px-7 py-[15px] text-[16px] ${className}`;
+  const cls = `${ghostClasses} px-7 py-[14px] text-[16px] ${className}`;
   if (external) {
     return (
       <a href={href} className={cls}>
@@ -87,7 +96,7 @@ export function CtaPanel({
   return (
     <div
       data-reveal
-      className={`on-dark relative mx-auto max-w-[1120px] overflow-hidden rounded-[24px] border border-[var(--color-mint-line)] px-6 py-[70px] text-center md:px-10 ${className}`}
+      className={`on-dark relative mx-auto max-w-[1120px] overflow-hidden rounded-[32px] px-6 py-[80px] text-center md:px-10 ${className}`}
       style={{ background: "linear-gradient(150deg,#0B2419,#071510 60%)" }}
     >
       <div

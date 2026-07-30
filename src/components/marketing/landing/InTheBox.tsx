@@ -46,7 +46,7 @@ export function InTheBox() {
                 }}
               >
                 <div
-                  className="font-mono text-[11px] tracking-[2px]"
+                  className="text-[13px] font-semibold"
                   style={{
                     color: b.featured ? "var(--color-mint-2)" : "var(--color-muted-3)",
                   }}

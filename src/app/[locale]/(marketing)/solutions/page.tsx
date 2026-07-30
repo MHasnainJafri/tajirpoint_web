@@ -111,7 +111,7 @@ export default function SolutionsPage() {
                   flip ? "lg:order-1" : ""
                 }`}
               >
-                <div className="mb-[18px] font-mono text-[10.5px] tracking-[2px] text-[var(--color-muted-3)]">
+                <div className="mb-[18px] text-[13px] font-semibold text-[var(--color-muted-2)]">
                   {tInd(`${v.id}.panelTitle`)}
                 </div>
 

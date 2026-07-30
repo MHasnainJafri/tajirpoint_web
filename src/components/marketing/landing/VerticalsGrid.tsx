@@ -23,7 +23,7 @@ export function VerticalsGrid() {
         <Link
           href="/solutions"
           data-reveal
-          className="inline-flex items-center gap-2 text-[15px] font-bold text-[var(--color-mint)] transition-colors hover:text-[var(--color-mint-2)]"
+          className="inline-flex items-center gap-2 text-[15px] font-semibold text-[var(--color-brand)] transition-colors hover:text-[var(--color-brand-hover)]"
         >
           {t("cta")} <span>→</span>
         </Link>
@@ -42,9 +42,7 @@ export function VerticalsGrid() {
               <span className="inline-flex h-[42px] w-[42px] items-center justify-center rounded-[11px] border border-[rgba(0,210,122,.25)] bg-[rgba(0,210,122,.1)] text-[var(--color-mint-2)]">
                 <Icon name={v.icon} />
               </span>
-              <span className="font-mono text-[10.5px] tracking-[1.5px] text-[var(--color-muted-3)]">
-                0{i + 1}
-              </span>
+              <span className="text-[12.5px] text-[var(--color-muted-2)]">0{i + 1}</span>
             </div>
             <h3 className="mt-4 text-[19px] font-bold">{tInd(`${v.id}.name`)}</h3>
             <p className="mt-2 text-[13.5px] leading-[1.5] text-[var(--color-muted-2)]">

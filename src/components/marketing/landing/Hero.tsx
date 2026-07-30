@@ -1,105 +1,134 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { PillBadge } from "@/components/design/primitives";
-import { STATS } from "@/lib/design/catalog";
-import { HeroTilt } from "./HeroTilt";
+import { GhostButton, MintButton, PillBadge } from "@/components/design/primitives";
+import { Shot } from "@/components/marketing/Shot";
+import { HERO_MODES, HERO_SCREEN_RATIO, STATS } from "@/lib/design/catalog";
+import { DeviceFrame } from "./DeviceFrame";
+import { HeroModes } from "./HeroModes";
 import { HeroMock } from "./HeroMock";
+import { ScaledMock } from "./ScaledMock";
+
+function Tick() {
+  return (
+    <svg
+      aria-hidden
+      width="17"
+      height="17"
+      viewBox="0 0 20 20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.1"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="mt-[3px] shrink-0 text-[var(--color-brand)]"
+    >
+      <path d="m4 10.5 4 4 8-9" />
+    </svg>
+  );
+}
 
 export function Hero() {
   const t = useTranslations("landing.hero");
   const tStats = useTranslations("landing.stats");
 
+  const tabs = HERO_MODES.map((mode) => ({ id: mode.id, label: t(`modes.${mode.id}.label`) }));
+
+  const copy = HERO_MODES.map((mode) => (
+    <div key={mode.id}>
+      <h2 className="text-[22px] font-semibold tracking-[-0.02em]">
+        {t(`modes.${mode.id}.title`)}
+      </h2>
+      <p className="mt-3 max-w-[460px] text-[15.5px] leading-[1.6] text-[var(--color-muted)]">
+        {t(`modes.${mode.id}.body`)}
+      </p>
+      <ul className="mt-5 flex flex-col gap-[10px]">
+        {(t.raw(`modes.${mode.id}.bullets`) as string[]).map((bullet) => (
+          <li key={bullet} className="flex gap-[10px] text-[15px] text-[var(--color-ink-3)]">
+            <Tick />
+            {bullet}
+          </li>
+        ))}
+      </ul>
+      <Link
+        href={mode.href}
+        className="mt-6 inline-flex items-center gap-2 border-b border-[var(--color-line-2)] pb-[2px] text-[15px] font-semibold text-[var(--color-ink)] transition-colors hover:border-[var(--color-brand)] hover:text-[var(--color-brand)]"
+      >
+        {t("modesCta")}
+      </Link>
+    </div>
+  ));
+
+  const devices = HERO_MODES.map((mode) => (
+    <DeviceFrame key={mode.id}>
+      <Shot
+        id={`pos-${mode.id}`}
+        alt={t(`modes.${mode.id}.alt`)}
+        ratio={HERO_SCREEN_RATIO}
+        sizes="(max-width: 1024px) 92vw, 56vw"
+        radius="0"
+        priority={mode.id === HERO_MODES[0].id}
+        // Retail ships with the coded POS mock, so the first screenful is a
+        // real interface from day one rather than an empty placeholder.
+        fallback={
+          mode.id === "retail" ? (
+            <ScaledMock>
+              <HeroMock />
+            </ScaledMock>
+          ) : undefined
+        }
+      />
+    </DeviceFrame>
+  ));
+
   return (
-    <section
-      id="top"
-      className="relative flex flex-col items-center overflow-hidden px-5 pt-[150px] text-center md:px-10"
-    >
-      {/* Mint bloom behind the headline */}
+    <section id="top" className="relative overflow-hidden px-5 pb-[70px] pt-[124px] md:px-10">
+      {/* One soft brand wash. The dark device panel supplies the contrast now,
+          so the background stays quiet. */}
       <div
-        className="pointer-events-none absolute left-1/2 top-[-320px] h-[700px] w-[1200px] -translate-x-1/2"
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-[-420px] h-[820px] w-[1400px] -translate-x-1/2"
         style={{
           background:
-            "radial-gradient(ellipse at center,rgba(0,210,122,.16) 0%,rgba(0,210,122,0) 60%)",
-        }}
-      />
-      {/* Faint grid, masked to an ellipse */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px)",
-          backgroundSize: "56px 56px",
-          maskImage: "radial-gradient(ellipse 70% 55% at 50% 32%,black,transparent)",
-          WebkitMaskImage: "radial-gradient(ellipse 70% 55% at 50% 32%,black,transparent)",
+            "radial-gradient(ellipse at center,rgba(0,210,122,.10) 0%,rgba(0,210,122,0) 62%)",
         }}
       />
 
-      <PillBadge>{t("badge")}</PillBadge>
+      <div className="relative mx-auto max-w-[1200px]">
+        <HeroModes tabs={tabs} title={t("modesTitle")} copy={copy} devices={devices}>
+          <PillBadge>{t("badge")}</PillBadge>
 
-      <h1 className="relative mt-[26px] max-w-[1060px] animate-[tpFadeUp_.8s_.15s_cubic-bezier(.22,1,.36,1)_both] text-[clamp(40px,6.4vw,88px)] font-extrabold leading-[1.02] tracking-[-0.035em]">
-        {t("headline")}{" "}
-        <span className="text-[var(--color-mint)] [text-shadow:0_0_44px_rgba(0,210,122,.45)]">
-          {t("headlineAccent")}
-        </span>
-      </h1>
+          <h1 className="mt-6 animate-[tpFadeUp_.8s_.1s_cubic-bezier(.22,1,.36,1)_both] text-[clamp(38px,4.6vw,62px)] font-bold leading-[1.05] tracking-[-0.035em]">
+            {t("headline")}
+          </h1>
 
-      <p className="relative mt-[26px] max-w-[640px] animate-[tpFadeUp_.8s_.28s_cubic-bezier(.22,1,.36,1)_both] text-[19px] leading-[1.6] text-[var(--color-muted)]">
-        {t("sub")}
-      </p>
+          <p className="mt-5 max-w-[520px] animate-[tpFadeUp_.8s_.22s_cubic-bezier(.22,1,.36,1)_both] text-[17.5px] leading-[1.6] text-[var(--color-muted)]">
+            {t("sub")}
+          </p>
 
-      <div className="relative mt-9 flex animate-[tpFadeUp_.8s_.4s_cubic-bezier(.22,1,.36,1)_both] flex-wrap justify-center gap-4">
-        <Link
-          href="/#cta"
-          className="inline-flex items-center gap-[10px] whitespace-nowrap rounded-full bg-[var(--color-mint)] px-[30px] py-[15px] text-[16px] font-bold text-[var(--color-mint-ink)] transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_36px_rgba(0,210,122,.4)]"
-        >
-          {t("ctaPrimary")} <span className="text-[18px]">→</span>
-        </Link>
-        <Link
-          href="/extensions"
-          className="inline-flex items-center gap-[10px] whitespace-nowrap rounded-full border border-[var(--color-line-2)] bg-[var(--surface-3)] px-7 py-[15px] text-[16px] font-semibold transition-colors duration-200 hover:border-[var(--color-line-2)] hover:bg-[var(--surface-strong)] hover:text-[var(--color-ink-2)]"
-        >
-          {t("ctaSecondary")}
-        </Link>
-      </div>
-
-      <div className="relative mt-4 animate-[tpFadeUp_.8s_.5s_cubic-bezier(.22,1,.36,1)_both] font-mono text-[12px] text-[var(--color-muted-3)]">
-        {t("note")}
-      </div>
-
-      {/* ── Product shot, tilting to the cursor ─────────────────────── */}
-      <HeroTilt>
-        <div className="flex items-center gap-2 border-b border-[rgba(255,255,255,.07)] bg-[var(--color-panel-2)] px-4 py-3">
-          <span className="h-[11px] w-[11px] rounded-full bg-white/[0.14]" />
-          <span className="h-[11px] w-[11px] rounded-full bg-white/[0.14]" />
-          <span className="h-[11px] w-[11px] rounded-full bg-white/[0.14]" />
-          <div className="flex flex-1 justify-center">
-            <div className="rounded-[7px] bg-[var(--surface-2)] px-6 py-1 font-mono text-[11.5px] text-[var(--color-muted-3)] sm:px-[46px]">
-              {t("browserUrl")}
-            </div>
+          <div className="mt-8 flex animate-[tpFadeUp_.8s_.32s_cubic-bezier(.22,1,.36,1)_both] flex-wrap gap-3">
+            <MintButton href="/#cta">
+              {t("ctaPrimary")} <span className="text-[18px]">→</span>
+            </MintButton>
+            <GhostButton href="/#platform">{t("ctaSecondary")}</GhostButton>
           </div>
+
+          <p className="mt-[18px] text-[13.5px] text-[var(--color-muted-2)]">{t("note")}</p>
+        </HeroModes>
+
+        {/* ── Stats rail ────────────────────────────────────────────── */}
+        <div className="mt-[70px] flex flex-wrap justify-center gap-y-6 border-t border-[var(--color-line-soft)] pt-9">
+          {STATS.map((stat) => (
+            <div key={stat.id} className="min-w-[170px] flex-1 px-5 text-center">
+              <div className="text-[32px] font-bold tracking-[-0.03em]">
+                <span data-count={stat.n}>0</span>
+                {stat.suffix}
+              </div>
+              <div className="mt-[6px] text-[13.5px] leading-snug text-[var(--color-muted-2)]">
+                {tStats(stat.id)}
+              </div>
+            </div>
+          ))}
         </div>
-        <HeroMock />
-        <span className="absolute h-px w-px overflow-hidden [clip:rect(0,0,0,0)]">
-          {t("screenshotAlt")}
-        </span>
-      </HeroTilt>
-
-      {/* ── Stats rail ──────────────────────────────────────────────── */}
-      <div className="relative mt-[58px] flex w-[min(1120px,94vw)] flex-wrap justify-center border-t border-[var(--color-line)]">
-        {STATS.map((s) => (
-          <div
-            key={s.id}
-            className="min-w-[200px] flex-1 border-r border-[var(--color-line-soft)] px-5 py-[30px] text-center last:border-r-0"
-          >
-            <div className="text-[38px] font-extrabold tracking-[-0.02em]">
-              <span data-count={s.n}>0</span>
-              <span className="text-[var(--color-mint)]">{s.suffix}</span>
-            </div>
-            <div className="mt-[6px] font-mono text-[11.5px] tracking-[1.5px] text-[var(--color-muted-2)]">
-              {tStats(s.id)}
-            </div>
-          </div>
-        ))}
       </div>
     </section>
   );

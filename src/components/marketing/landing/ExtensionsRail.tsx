@@ -26,7 +26,7 @@ export function ExtensionsRail() {
           data-reveal
           className="mt-[18px] text-[clamp(32px,4.2vw,58px)] font-extrabold leading-[1.08] tracking-[-0.03em]"
         >
-          {t("headline")} <span className="text-[var(--color-mint)]">{t("headlineAccent")}</span>
+          {t("headline")} <span className="text-[var(--color-brand)]">{t("headlineAccent")}</span>
         </h2>
         <p
           data-reveal
@@ -52,7 +52,7 @@ export function ExtensionsRail() {
                 </span>
                 <span>
                   <span className="block text-[14.5px] font-bold">{tItems(`${ext.id}.name`)}</span>
-                  <span className="block font-mono text-[10px] uppercase tracking-[1.5px] text-[var(--color-muted-3)]">
+                  <span className="block text-[12px] text-[var(--color-muted-2)]">
                     {tFilters(ext.cat)}
                   </span>
                 </span>
@@ -65,7 +65,7 @@ export function ExtensionsRail() {
       <div data-reveal className="mt-11 text-center">
         <Link
           href="/extensions"
-          className="inline-flex items-center gap-[10px] whitespace-nowrap rounded-full border border-[rgba(0,210,122,.5)] px-7 py-[14px] text-[15.5px] font-bold text-[var(--color-mint-2)] transition-[background,transform] duration-200 hover:-translate-y-0.5 hover:bg-[rgba(0,210,122,.1)]"
+          className="inline-flex items-center gap-[10px] whitespace-nowrap rounded-full border border-[var(--color-line-2)] bg-[var(--color-bg-2)] px-7 py-[14px] text-[15.5px] font-semibold text-[var(--color-ink)] shadow-[var(--shadow-card)] transition-[transform,box-shadow] duration-200 hover:-translate-y-[1px] hover:shadow-[var(--shadow-lift)]"
         >
           {t("cta")} <span>→</span>
         </Link>

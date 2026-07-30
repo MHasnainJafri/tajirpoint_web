@@ -11,17 +11,18 @@ export function Marquee() {
       <div className="pointer-events-none absolute inset-y-0 left-0 z-[2] w-[180px] bg-[linear-gradient(90deg,var(--color-bg),transparent)]" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-[2] w-[180px] bg-[linear-gradient(-90deg,var(--color-bg),transparent)]" />
 
-      <div className="mb-[22px] text-center font-mono text-[11px] tracking-[2.5px] text-[var(--color-muted-3)]">
+      <div className="mb-[26px] text-center text-[14px] text-[var(--color-muted-2)]">
         {t("marqueeTitle")}
       </div>
 
+      {/* Plain wordmarks, spaced and muted — the bordered chips with pulsing
+          dots read as UI, where this rail should read as a logo ribbon. */}
       <div className="marquee-track">
         {track.map((brand, i) => (
           <div
             key={`${brand}-${i}`}
-            className="mx-[18px] flex items-center gap-[9px] whitespace-nowrap rounded-full border border-[var(--color-line)] bg-[var(--surface-2)] px-[22px] py-[10px] text-[14.5px] font-semibold text-[var(--color-muted)]"
+            className="mx-[30px] whitespace-nowrap text-[18px] font-semibold tracking-[-0.01em] text-[var(--color-muted-2)]"
           >
-            <span className="h-[6px] w-[6px] rounded-full bg-[var(--color-mint)] opacity-70" />
             {brand}
           </div>
         ))}

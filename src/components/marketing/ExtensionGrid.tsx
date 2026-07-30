@@ -65,7 +65,7 @@ export function ExtensionGrid() {
                 <span className="flex h-[42px] w-[42px] items-center justify-center rounded-[11px] border border-[rgba(0,210,122,.22)] bg-[rgba(0,210,122,.12)] text-[var(--color-mint-2)]">
                   <Icon name={ext.icon} size={19} />
                 </span>
-                <span className="rounded-full border border-[var(--color-mint-line)] px-[10px] py-1 font-mono text-[9.5px] uppercase tracking-[1.5px] text-[var(--color-mint-2)]">
+                <span className="rounded-full border border-[var(--color-line-2)] px-[10px] py-1 text-[12px] font-semibold text-[var(--color-brand)]">
                   {t(`filters.${ext.cat}`)}
                 </span>
               </div>
@@ -78,7 +78,7 @@ export function ExtensionGrid() {
               </p>
 
               {"note" in ext && ext.note && (
-                <div className="mt-3 inline-flex items-center gap-[6px] font-mono text-[10px] tracking-[1px] text-[var(--color-muted-3)]">
+                <div className="mt-3 inline-flex items-center gap-[6px] text-[12px] text-[var(--color-muted-2)]">
                   <span className="h-[5px] w-[5px] rounded-full bg-[rgba(245,165,36,.8)]" />
                   {t(`notes.${ext.note}`)}
                 </div>

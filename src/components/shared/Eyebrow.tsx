@@ -15,8 +15,8 @@ export function Eyebrow({
   return (
     <span
       className={cn(
-        "mb-6 inline-flex items-center gap-[10px] font-mono text-[12px] tracking-[2.5px]",
-        variant === "on-dark" ? "text-[var(--color-mint)]" : "text-[var(--color-mint-2)]",
+        "mb-6 inline-flex items-center gap-[10px] text-[13.5px] font-semibold",
+        variant === "on-dark" ? "text-[var(--color-mint)]" : "text-[var(--color-brand)]",
         className
       )}
       {...props}

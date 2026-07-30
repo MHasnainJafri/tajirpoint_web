@@ -14,24 +14,36 @@
 
 @theme {
   /* ── Fonts ─────────────────────────────────────────────────────── */
-  --font-sans: var(--font-geist), system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
   --font-arabic: var(--font-reem-kufi), system-ui, sans-serif;
 
   /* ── Radii ─────────────────────────────────────────────────────── */
   --radius-sm: 12px;
   --radius-md: 16px;
-  --radius-lg: 18px;
+  --radius-lg: 20px;
   --radius-xl: 24px;
-  --radius-2xl: 26px;
+  --radius-2xl: 32px;
+
+  /* ── Elevation ─────────────────────────────────────────────────────
+     Never a hard black drop shadow: large, diffused, low-opacity and
+     tinted with the brand's deep green so cards lift off the off-white
+     canvas without a visible edge. */
+  --shadow-card: 0 1px 2px rgba(6, 26, 17, 0.04), 0 14px 34px rgba(6, 26, 17, 0.05);
+  --shadow-lift: 0 2px 4px rgba(6, 26, 17, 0.04), 0 26px 60px rgba(6, 26, 17, 0.1);
+  --shadow-hero: 0 40px 90px rgba(6, 26, 17, 0.14), 0 4px 12px rgba(6, 26, 17, 0.05);
 
   /* ── Container ─────────────────────────────────────────────────── */
   --container-wrap: 1200px;
   --container-tight: 1120px;
 
-  /* ── Breakpoints ───────────────────────────────────────────────── */
-  --breakpoint-md: 720px;
-  --breakpoint-lg: 1101px;
+  /* ── Breakpoints ───────────────────────────────────────────────────
+     md/lg are Tailwind's defaults (768 / 1024) on purpose. `lg` used to be
+     pushed out to 1101px because the desktop nav needs 1021px of links plus
+     80px of padding — but that dragged every content grid with it, so a
+     1024px laptop got the 2-column tablet layout of a 4-column section.
+     The nav now has its own `nav:` breakpoint and nothing else is held back. */
+  --breakpoint-nav: 1101px;
 
   /* ── Motion (design keyframes) ─────────────────────────────────── */
   --animate-fade-up: tpFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -96,11 +108,13 @@
    Colour tokens. Two themes share the same names so components reference
    `var(--color-*)` and adapt automatically.
 
-   `:root`  = LIGHT (default — matches OS light + the no-JS fallback)
+   `:root`  = LIGHT (the only theme the site ships — see ThemeProvider)
    `.dark`  = DARK  (the original "Merchant OS" design values, unchanged)
 
-   next-themes (attribute="class", defaultTheme="system") toggles `.dark`
-   on <html> before paint, so there is no flash.
+   next-themes runs with forcedTheme="light", so `.dark` is never applied to
+   <html> and the OS preference is ignored. The dark block is kept dormant so
+   the theme can be switched back on by dropping `forcedTheme` and restoring
+   the nav's `<ThemeToggle />`.
 
    Constants that must NOT flip (brand mint button, accents that live inside
    the always-dark showcase mocks) are declared once and never overridden.
@@ -131,8 +145,15 @@
   --color-muted-3: rgba(8, 21, 14, 0.42);
 
   /* Mint accent */
-  --color-mint: #00d27a; /* button fill — brand constant across themes */
+  --color-mint: #00d27a; /* bright accent — dots, highlights, on-dark fills */
   --color-mint-2: #0a9d5f; /* accent TEXT — deepened so it reads on white */
+
+  /* Primary action. Bright mint under 16px bold white text only reaches
+     3.5:1; this deepened brand green hits 5.05:1, so buttons and eyebrow
+     labels use it and mint stays a decorative accent. */
+  --color-brand: #087f4f;
+  --color-brand-hover: #066a42;
+  --color-on-brand: #ffffff;
   --color-mint-hover: #00b86a;
   --color-mint-ink: #04130b; /* text on the mint button — stays dark */
   --color-mint-soft: rgba(0, 210, 122, 0.12);
@@ -188,6 +209,12 @@
   --color-mint-soft: rgba(0, 210, 122, 0.08);
   --color-mint-line: rgba(0, 210, 122, 0.3);
 
+  /* On a near-black panel the deep brand green disappears — the primary
+     action flips to bright mint with dark ink instead. */
+  --color-brand: #00d27a;
+  --color-brand-hover: #3be698;
+  --color-on-brand: #04130b;
+
   --surface-1: rgba(255, 255, 255, 0.025);
   --surface-2: rgba(255, 255, 255, 0.05);
   --surface-3: rgba(255, 255, 255, 0.07);
@@ -221,6 +248,9 @@
   --color-muted-3: rgba(242, 247, 244, 0.38);
 
   --color-mint-2: #3be698;
+  --color-brand: #00d27a;
+  --color-brand-hover: #3be698;
+  --color-on-brand: #04130b;
 
   --surface-1: rgba(255, 255, 255, 0.025);
   --surface-2: rgba(255, 255, 255, 0.05);
@@ -313,12 +343,13 @@ body {
   max-width: 640px;
 }
 
-/* Monospace eyebrow — used on every section label in the design */
+/* Section label. Sentence case in the brand green — the old wide-tracked
+   monospace read as generic dev-tool boilerplate. */
 .eyebrow {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 2.5px;
-  color: var(--color-mint-2);
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--color-brand);
 }
 
 /* ── Marquee rails ─────────────────────────────────────────────── */

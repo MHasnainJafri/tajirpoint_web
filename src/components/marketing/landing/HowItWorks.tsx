@@ -8,13 +8,13 @@ export function HowItWorks() {
     <section className="mx-auto max-w-[1200px] border-t border-[var(--color-line-soft)] px-5 py-[120px] md:px-10">
       <div
         data-reveal
-        className="text-center font-mono text-[12px] tracking-[2.5px] text-[var(--color-mint-2)]"
+        className="text-center text-[13.5px] font-semibold text-[var(--color-brand)]"
       >
         {t("eyebrow")}
       </div>
       <h2
         data-reveal
-        className="mt-[18px] text-center text-[clamp(30px,3.8vw,52px)] font-extrabold tracking-[-0.03em]"
+        className="mt-4 text-center text-[clamp(30px,3.6vw,50px)] font-bold tracking-[-0.035em]"
       >
         {t("headline")}
       </h2>
@@ -30,7 +30,7 @@ export function HowItWorks() {
           <path
             d="M150 26 C 300 26 300 26 450 26 C 600 26 600 26 750 26 C 900 26 900 26 1050 26"
             fill="none"
-            stroke="rgba(0,210,122,.45)"
+            stroke="rgba(6,26,17,.16)"
             strokeWidth="2"
             strokeDasharray="1200"
             strokeDashoffset="1200"
@@ -44,10 +44,12 @@ export function HowItWorks() {
             data-reveal-delay={i * 100}
             className="relative px-3 text-center"
           >
-            <div className="inline-flex h-[52px] w-[52px] items-center justify-center rounded-full border border-[rgba(0,210,122,.5)] bg-[var(--color-panel-3)] font-mono text-[16px] font-semibold text-[var(--color-mint-2)] shadow-[0_0_24px_rgba(0,210,122,.18)]">
+            <div className="inline-flex h-[52px] w-[52px] items-center justify-center rounded-full border border-[var(--color-line)] bg-[var(--color-bg-2)] text-[16px] font-semibold text-[var(--color-brand)] shadow-[var(--shadow-card)]">
               {t(`steps.${id}.n`)}
             </div>
-            <h3 className="mt-5 text-[19px] font-bold">{t(`steps.${id}.title`)}</h3>
+            <h3 className="mt-5 text-[19px] font-semibold tracking-[-0.02em]">
+              {t(`steps.${id}.title`)}
+            </h3>
             <p className="mt-[10px] text-[14px] leading-[1.55] text-[var(--color-muted-2)]">
               {t(`steps.${id}.body`)}
             </p>

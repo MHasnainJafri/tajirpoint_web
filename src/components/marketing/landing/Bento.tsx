@@ -8,20 +8,17 @@ export function Bento() {
   const cells = ["accounting", "inventory", "distribution", "storefront", "security"] as const;
 
   return (
-    <section className="mx-auto max-w-[1200px] px-5 pb-10 pt-[70px] md:px-10">
-      <div className="grid auto-rows-[minmax(190px,auto)] grid-cols-1 gap-[14px] md:grid-cols-2 lg:grid-cols-6">
+    <section className="mx-auto max-w-[1200px] px-5 pb-[110px] md:px-10">
+      <div className="grid auto-rows-[minmax(190px,auto)] grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-6">
         {/* ── Offline-first (featured) ──────────────────────────────── */}
         <div
           data-reveal
-          className="relative overflow-hidden rounded-[18px] border border-[rgba(0,210,122,.28)] p-6 transition-[border-color,box-shadow] duration-300 hover:border-[rgba(0,210,122,.55)] hover:shadow-[0_0_60px_rgba(0,210,122,.12)] md:col-span-2 lg:col-span-4 lg:row-span-2 lg:p-9"
-          style={{
-            background: "linear-gradient(160deg,rgba(0,210,122,.1),rgba(0,210,122,.02) 55%)",
-          }}
+          className="relative overflow-hidden rounded-[24px] border border-[var(--color-line)] bg-[var(--color-bg-2)] p-7 shadow-[var(--shadow-card)] transition-shadow duration-300 hover:shadow-[var(--shadow-lift)] md:col-span-2 lg:col-span-4 lg:row-span-2 lg:p-10"
         >
-          <div className="font-mono text-[11px] tracking-[2px] text-[var(--color-mint-2)]">
+          <div className="text-[13.5px] font-semibold text-[var(--color-brand)]">
             {t("offline.tag")}
           </div>
-          <h3 className="mt-[14px] max-w-[420px] text-[30px] font-extrabold tracking-[-0.02em]">
+          <h3 className="mt-[14px] max-w-[420px] text-[30px] font-bold tracking-[-0.03em]">
             {t("offline.title")}
           </h3>
           <p className="mt-[14px] max-w-[400px] text-[15px] leading-[1.6] text-[var(--color-muted)]">
@@ -59,12 +56,14 @@ export function Bento() {
             key={id}
             data-reveal
             data-reveal-delay={(i % 3) * 80}
-            className="relative rounded-[18px] border border-[var(--color-line)] bg-[var(--surface-1)] p-7 transition-[border-color,transform] duration-300 hover:-translate-y-1 hover:border-[rgba(0,210,122,.4)] lg:col-span-2"
+            className="relative rounded-[24px] border border-[var(--color-line)] bg-[var(--color-bg-2)] p-7 shadow-[var(--shadow-card)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)] lg:col-span-2"
           >
-            <div className="font-mono text-[11px] tracking-[2px] text-[var(--color-muted-3)]">
+            <div className="text-[13px] font-semibold text-[var(--color-muted-2)]">
               {t(`${id}.tag`)}
             </div>
-            <h3 className="mt-3 text-[20px] font-bold tracking-[-0.01em]">{t(`${id}.title`)}</h3>
+            <h3 className="mt-3 text-[20px] font-semibold tracking-[-0.02em]">
+              {t(`${id}.title`)}
+            </h3>
             <p className="mt-[10px] text-[14px] leading-[1.55] text-[var(--color-muted-2)]">
               {t(`${id}.body`)}
             </p>
