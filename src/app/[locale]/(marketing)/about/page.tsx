@@ -7,7 +7,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildMetadata({
   title: "About Tajir Point — Built for Merchants Who Work Hard",
   description:
-    "Learn how Tajir Point gives every merchant in Pakistan, UAE, and Saudi Arabia enterprise-grade POS, inventory, and khata tools — in their language, built for their market, compliant out of the box.",
+    "Learn how Tajir Point gives every merchant enterprise-grade POS, inventory, and credit-ledger tools — in their language, built for the way they sell, compliant out of the box.",
   path: "/about",
 });
 
@@ -35,7 +35,7 @@ const VALUES = [
 ];
 
 const HIGHLIGHTS = [
-  { value: "Pakistan · UAE · Saudi Arabia", label: "Built for the region" },
+  { value: "Web · Desktop · Android", label: "Runs wherever you sell" },
   { value: "English · اردو · العربية", label: "Tri-lingual by default" },
   { value: "Works offline", label: "No internet required" },
   { value: "One price", label: "Every module included" },

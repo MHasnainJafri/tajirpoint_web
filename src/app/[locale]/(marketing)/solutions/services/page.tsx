@@ -7,7 +7,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildMetadata({
   title: "POS for Service Businesses — Salons, Clinics & Gyms",
   description:
-    "Tajir Point for salons, clinics, gyms, and service businesses in Pakistan, UAE, and Saudi Arabia. Appointment scheduling, staff commissions, packages, and recurring billing.",
+    "Tajir Point for salons, clinics, gyms, and service businesses. Appointment scheduling, staff commissions, packages, and recurring billing.",
   path: "/solutions/services",
 });
 

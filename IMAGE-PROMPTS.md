@@ -1,11 +1,13 @@
 # Homepage images — slots and briefs
 
-Eleven slots, in two groups that need completely different treatment:
+Twelve slots, in three groups that need completely different treatment:
 
-- **Part 1 — five POS screens** in the hero's device frame. These are
+- **Part 0 — one hardware render** in the hero. Generated, but a product
+  render rather than a photograph.
+- **Part 1 — five POS screens** in the modes section. These are
   **screenshots of your own app**, not generated art. See the warning below.
 - **Part 2 — six photographs** further down the page. These are the ones to
-  generate.
+  generate freely.
 
 **To fill any slot:** save the file as `public/images/<slot-id>.jpg` (`.png`,
 `.webp` and `.avif` also work). The `<Shot>` component picks it up on the next
@@ -18,11 +20,40 @@ size per device.
 
 ---
 
-# Part 1 — POS screens (hero device frame)
+# Part 0 — the hero hardware render
 
-The hero has a tab per trade, and each tab shows that trade's screen inside the
-device. Retail currently falls back to the coded POS mock, so the hero looks
-finished today; the other four show placeholders.
+- **File:** `public/images/hero-terminal.jpg` (PNG with transparency is better
+  if your tool can do it — the hero background is a pale gradient)
+- **Ratio:** 3:2 · **Export:** 1600 × 1067
+- **Where:** the hero, right-hand side. Until it exists the coded POS mock
+  stands in, so the hero already looks finished.
+
+This is the single most-seen image on the site. It should read as _the product
+you can buy_, not a stock tablet.
+
+> A modern point-of-sale counter terminal, three-quarter front view, floating
+> on a clean pale background with a soft contact shadow beneath it. A large
+> screen on a slim matte dark-green stand with a weighted base. The screen is
+> on and bright but its interface is soft and not readable. Studio product
+> photography, 50mm, even diffused lighting from the upper left, gentle
+> reflection on the screen glass, crisp edges, shallow contact shadow.
+> Photorealistic industrial design, in the spirit of premium retail hardware.
+>
+> Negative: `text, letters, logos, watermark, readable UI, busy background,
+office scene, hands, people, harsh reflections, lens flare, cluttered desk`
+
+**Afterwards:** the render will have a blank base. If you want the wordmark on
+it (as in the reference), composite `public/brand/lockup/lockup-on-dark.svg`
+onto the base in an image editor rather than asking the model for text — every
+model still mangles lettering.
+
+---
+
+# Part 1 — POS screens (modes section)
+
+The "same POS, set up for your trade" section has a tab per trade, and each tab
+shows that trade's screen inside the device frame. Retail falls back to the
+coded POS mock (as does the hero), so only the other four show placeholders.
 
 **All five share one aspect — 1857 × 911 (≈ 2:1)** so switching tabs never
 shifts the layout. That is exactly a maximised browser window on a 1080p
@@ -82,14 +113,20 @@ real capture.
 ## House style — apply to every prompt
 
 The site's problem today is that it looks generic. These photos are the main
-fix, so they have to look like **real Pakistani shops**, not international
-stock photography and not obviously synthetic.
+fix, so they have to look like **real working shops**, not catalogue stock
+photography and not obviously synthetic.
+
+The site is positioned for merchants everywhere, so the set should not read as
+one specific country. Keep the settings recognisable but not badged: an
+independent shop, a busy counter, a delivery van. If you would rather target a
+home market, add the locale to each prompt — but keep it consistent across all
+six, because a mixed set looks like stock.
 
 - **Documentary/editorial, not advertising.** Natural available light, a real
   room, honest clutter. No studio seamless, no lens flare, no floating UI.
-- **Local, specifically.** Pakistani shopkeepers and customers, local clothing
-  (shalwar kameez, kurta, dupatta), local product mix, local street furniture.
-  Shot in Lahore/Karachi/Faisalabad-type settings.
+- **Independent, not corporate.** Owner-operated shops: goods stacked the way
+  a real shopkeeper stacks them, a counter that is used. Avoid chain-store
+  interiors, uniformed staff and branded fixtures.
 - **Warm neutral grade.** Slightly warm white balance, gentle contrast, no
   teal-and-orange, no heavy vignette, no HDR crunch.
 - **35–50mm look**, eye level, subject sharp, background falling off softly
@@ -106,7 +143,7 @@ stock photography and not obviously synthetic.
 **Negative prompt for every image:** `text, letters, signage, logos, watermark,
 extra fingers, deformed hands, plastic skin, oversaturated, HDR, teal and
 orange grade, studio backdrop, floating UI overlays, glowing holograms, stock
-photo smile, western supermarket`
+photo smile, chain supermarket`
 
 ---
 
@@ -114,10 +151,10 @@ photo smile, western supermarket`
 
 - **File:** `public/images/who-single.jpg`
 - **Ratio:** 4:3 · **Export:** 1600 × 1200
-- **Where:** _Built for the way Pakistani shops actually sell_, card 1
+- **Where:** _Built for the way real shops actually sell_, card 1
 - **Job:** the one-counter shop owner has to see themselves immediately.
 
-> A Pakistani shopkeeper in his forties standing behind the counter of his own
+> A shopkeeper in his forties standing behind the counter of his own
 > small neighbourhood shop, hand resting near a tablet on a counter stand and a
 > small receipt printer. Shelves of everyday goods packed tight behind him.
 > Daylight coming in from the shopfront on the left. Documentary photography,
@@ -131,7 +168,7 @@ photo smile, western supermarket`
 - **Where:** card 2
 - **Job:** visibly bigger operation — more space, more staff, more order.
 
-> Interior of a larger, well-organised Pakistani retail store — a garments or
+> Interior of a larger, well-organised independent retail store — a garments or
 > general store with wide aisles and neat shelving. Two staff members in
 > matching plain shirts, one helping a customer, one at a checkout counter with
 > a tablet and barcode scanner. Bright even ceiling light mixed with daylight
@@ -145,7 +182,7 @@ photo smile, western supermarket`
 - **Where:** card 3
 - **Job:** distribution and van sales — selling away from the shop.
 
-> A Pakistani distribution salesman standing at the open rear doors of a small
+> A distribution salesman standing at the open rear doors of a small
 > delivery van stacked with cartons, holding a rugged Android phone in one hand
 > while handing goods to a shopkeeper. Morning light, a dusty local market
 > street behind them. Documentary photography, 35mm, f/3.5, warm neutral grade,
@@ -190,8 +227,8 @@ photo smile, western supermarket`
 
 > A customer's hands holding a phone, photographed from just over their
 > shoulder, standing in a home doorway or courtyard. The phone screen is bright
-> with a soft, indistinct shopping interface — no readable text. Everyday
-> Pakistani domestic setting softly out of focus behind. Natural daylight,
+> with a soft, indistinct shopping interface — no readable text. An everyday
+> domestic setting softly out of focus behind. Natural daylight,
 > 50mm, f/2.2, warm neutral grade, portrait orientation. No text, no logos.
 
 ---

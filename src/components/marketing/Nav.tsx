@@ -87,8 +87,7 @@ export function Nav() {
         }}
       >
         <Link href="/" className="flex items-center" onMouseEnter={() => setMega(null)}>
-          {/* Light-only site — the on-dark lockup would never render, and
-              shipping it `priority` would preload an unused asset. */}
+          {/* Every page opens light, so only the on-white lockup ever renders. */}
           <Image
             src="/brand/lockup/lockup-on-white.svg"
             alt="TajirPoint"

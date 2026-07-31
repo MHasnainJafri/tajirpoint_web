@@ -75,71 +75,41 @@
       "description": "POS, inventory, purchasing, credit ledger, accounting, staff, delivery and an online store. One platform, one login, 31 extensions."
     },
     "hero": {
-      "badge": "POS · Khata · Inventory · Accounting",
-      "headline": "The point of sale that runs the entire business",
-      "sub": "The software behind the counter for Pakistani retail, restaurants, pharmacies and wholesale. One app for selling, stock, customer credit and the books — and it keeps selling when the internet drops.",
+      "badge": "POS · Inventory · Accounting",
+      "headlineBefore": "The all-in-one",
+      "accent": "POS",
+      "headlineAfter": "that powers every sale and scale.",
+      "sub": "TajirPoint is the smart point of sale and business management platform for growing retailers. Manage sales, inventory, customers and reports — in store and on the go.",
       "ctaPrimary": "Start free trial",
-      "ctaSecondary": "See what it replaces",
-      "note": "14 days free · No card required · Urdu, English and Arabic",
-      "modesTitle": "See how the POS works for your business",
-      "modesCta": "Learn more",
-      "modes": {
-        "retail": {
-          "label": "Retail",
-          "title": "Retail mode",
-          "body": "Barcode checkout with real stock behind it. Sell from any counter — the catalogue, the prices and the books stay in one place.",
-          "bullets": [
-            "Barcode and IMEI scanning",
-            "Stock transfers between branches",
-            "Low-stock and reorder alerts"
-          ],
-          "alt": "The TajirPoint retail checkout screen"
-        },
-        "restaurants": {
-          "label": "Restaurants",
-          "title": "Restaurant mode",
-          "body": "Run the floor and the kitchen off one screen — tables, courses and split bills, with every order landing on the kitchen display.",
-          "bullets": [
-            "Table floor plan and covers",
-            "Kitchen display screens",
-            "Split, merge and park bills"
-          ],
-          "alt": "The TajirPoint restaurant floor plan screen"
-        },
-        "electronics": {
-          "label": "Electronics",
-          "title": "Electronics mode",
-          "body": "Every unit tracked by serial or IMEI from the purchase order to the warranty claim, so you always know which piece went to which customer.",
-          "bullets": [
-            "Serial and IMEI capture",
-            "Warranty and repair jobs",
-            "Trade-in and exchange"
-          ],
-          "alt": "The TajirPoint serial and IMEI tracking screen"
-        },
-        "distribution": {
-          "label": "Distribution",
-          "title": "Distribution mode",
-          "body": "Load the van, sell on the route, settle at day end — stock, cash and khata all reconciled against the trip.",
-          "bullets": [
-            "Van stock as its own warehouse",
-            "Route and trip planning",
-            "Collect payments on delivery"
-          ],
-          "alt": "The TajirPoint van sales and route screen"
-        },
-        "all": {
-          "label": "Every business",
-          "title": "Standard mode",
-          "body": "The core everything else is built on: fast checkout, real inventory, customer credit and double-entry books that post themselves.",
-          "bullets": [
-            "Cash, card, wallet and split tenders",
-            "Khata credit ledger",
-            "Books posted automatically"
-          ],
-          "alt": "The TajirPoint checkout and payment screen"
-        }
+      "ctaSecondary": "See how it works",
+      "meta": ["14 days free trial", "No card required", "English, Urdu & Arabic"],
+      "screenAlt": "The TajirPoint point-of-sale running on a counter terminal"
+    },
+    "strip": {
+      "billing": {
+        "title": "Lightning fast billing",
+        "body": "Create bills in seconds with a clean, intuitive interface."
+      },
+      "inventory": {
+        "title": "Inventory that syncs",
+        "body": "Real-time stock tracking across all your outlets."
+      },
+      "reports": {
+        "title": "Powerful reports",
+        "body": "Sales, profit, taxes and more — in one place."
+      },
+      "offline": {
+        "title": "Works offline",
+        "body": "Keep selling even without the internet."
+      },
+      "multistore": {
+        "title": "Multi-store ready",
+        "body": "Manage one or many locations effortlessly."
       }
+    },
+    "trust": {
+      "headline": "Built to fit the tools you already use",
+      "sub": "Payments, accounting, couriers and online storefronts connect to the same catalogue and the same books — no double entry, no export-and-pray."
     },
     "stats": {
       "extensions": "Installable extensions",
@@ -147,9 +117,8 @@
       "languages": "Languages, fully right-to-left",
       "reports": "Exportable reports"
     },
-    "marqueeTitle": "Connects with the tools merchants already use",
     "whoItsFor": {
-      "headline": "Built for the way Pakistani shops actually sell",
+      "headline": "Built for the way real shops actually sell",
       "sub": "One counter or twelve branches and a delivery fleet — it is the same system underneath, set up for the size you are today.",
       "items": {
         "single": {
@@ -351,15 +320,73 @@
         }
       }
     },
-    "verticals": {
-      "eyebrow": "Built for your counter",
-      "headline": "Six industries. One system that fits each.",
-      "cta": "See all industries"
+    "posModes": {
+      "eyebrow": "One system, every counter",
+      "headline": "The same POS, set up for your trade",
+      "sub": "Switch on the mode that matches your shop and the interface changes with it — the same catalogue, stock and books underneath.",
+      "cta": "Learn more",
+      "items": {
+        "retail": {
+          "label": "Retail",
+          "title": "Retail mode",
+          "body": "Barcode checkout with real stock behind it. Sell from any counter — the catalogue, the prices and the books stay in one place.",
+          "bullets": [
+            "Barcode and IMEI scanning",
+            "Stock transfers between branches",
+            "Low-stock and reorder alerts"
+          ],
+          "alt": "The TajirPoint retail checkout screen"
+        },
+        "restaurants": {
+          "label": "Restaurants",
+          "title": "Restaurant mode",
+          "body": "Run the floor and the kitchen off one screen — tables, courses and split bills, with every order landing on the kitchen display.",
+          "bullets": [
+            "Table floor plan and covers",
+            "Kitchen display screens",
+            "Split, merge and park bills"
+          ],
+          "alt": "The TajirPoint restaurant floor plan screen"
+        },
+        "electronics": {
+          "label": "Electronics",
+          "title": "Electronics mode",
+          "body": "Every unit tracked by serial or IMEI from the purchase order to the warranty claim, so you always know which piece went to which customer.",
+          "bullets": [
+            "Serial and IMEI capture",
+            "Warranty and repair jobs",
+            "Trade-in and exchange"
+          ],
+          "alt": "The TajirPoint serial and IMEI tracking screen"
+        },
+        "distribution": {
+          "label": "Distribution",
+          "title": "Distribution mode",
+          "body": "Load the van, sell on the route, settle at day end — stock, cash and khata all reconciled against the trip.",
+          "bullets": [
+            "Van stock as its own warehouse",
+            "Route and trip planning",
+            "Collect payments on delivery"
+          ],
+          "alt": "The TajirPoint van sales and route screen"
+        },
+        "all": {
+          "label": "Every business",
+          "title": "Standard mode",
+          "body": "The core everything else is built on: fast checkout, real inventory, customer credit and double-entry books that post themselves.",
+          "bullets": [
+            "Cash, card, wallet and split tenders",
+            "Khata credit ledger",
+            "Books posted automatically"
+          ],
+          "alt": "The TajirPoint checkout and payment screen"
+        }
+      }
     },
     "pricing": {
       "eyebrow": "Pricing",
       "headline": "One price. Every module.",
-      "body": "No per-module upsells, no transaction fees. Pay per branch. Billing in PKR, AED and SAR.",
+      "body": "No per-module upsells, no transaction fees. Pay per branch, billed in your own currency.",
       "note": "Indicative pricing — confirmed at checkout in your billing currency.",
       "popular": "Most popular",
       "perMonth": "/ month",
@@ -426,7 +453,7 @@
         },
         "languages": {
           "q": "Which languages are supported?",
-          "a": "English, Urdu and Arabic are first-class languages with full right-to-left layout and instant in-app switching."
+          "a": "English, Urdu and Arabic are first-class languages with full right-to-left layout and instant in-app switching. More can be added."
         },
         "extensions": {
           "q": "How do extensions work?",

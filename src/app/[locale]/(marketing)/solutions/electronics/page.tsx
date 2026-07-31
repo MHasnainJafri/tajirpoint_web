@@ -7,7 +7,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildMetadata({
   title: "POS for Electronics & Mobile Shops — IMEI & Serial Tracking",
   description:
-    "Tajir Point for electronics and mobile phone shops in Pakistan, UAE, and Saudi Arabia. IMEI tracking, serial numbers, warranty management, repair job cards, and supplier ledger.",
+    "Tajir Point for electronics and mobile phone shops. IMEI tracking, serial numbers, warranty management, repair job cards, and supplier ledger.",
   path: "/solutions/electronics",
 });
 

@@ -114,7 +114,7 @@ export function GET() {
           tajirpoint.com
         </div>
         <div style={{ display: "flex", gap: "12px" }}>
-          {["Pakistan", "UAE", "Saudi Arabia"].map((region) => (
+          {["POS", "Inventory", "Accounting"].map((region) => (
             <div
               key={region}
               style={{

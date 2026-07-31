@@ -7,7 +7,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildMetadata({
   title: "Distribution & Wholesale POS — Route Planning & Dispatch",
   description:
-    "Tajir Point for distributors and wholesalers in Pakistan, UAE, and Saudi Arabia. Route planning, driver dispatch, proof of delivery, purchase orders, and multi-warehouse inventory.",
+    "Tajir Point for distributors and wholesalers. Route planning, driver dispatch, proof of delivery, purchase orders, and multi-warehouse inventory.",
   path: "/solutions/distributors",
 });
 

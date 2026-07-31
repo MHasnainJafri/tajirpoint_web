@@ -7,7 +7,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildMetadata({
   title: "Restaurant POS — Table Management, KDS & Delivery",
   description:
-    "Tajir Point for restaurants, cafés, and cloud kitchens in Pakistan, UAE, and Saudi Arabia. Table management, Kitchen Display System, modifiers, split bills, and delivery dispatch.",
+    "Tajir Point for restaurants, cafés, and cloud kitchens. Table management, Kitchen Display System, modifiers, split bills, and delivery dispatch.",
   path: "/solutions/restaurants",
 });
 

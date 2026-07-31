@@ -38,11 +38,9 @@ export function organizationSchema(): WithContext<Organization> {
         availableLanguage: ["English", "Urdu"],
       },
     ] as any,
-    areaServed: [
-      { "@type": "Country", name: "Pakistan" },
-      { "@type": "Country", name: "Saudi Arabia" },
-      { "@type": "Country", name: "United Arab Emirates" },
-    ] as any,
+    // The product is sold generally; naming three countries told search
+    // engines it was unavailable everywhere else.
+    areaServed: { "@type": "Place", name: "Worldwide" } as any,
     foundingDate: "2022",
   };
 }

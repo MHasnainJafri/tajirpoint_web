@@ -149,6 +149,17 @@ export const BUCKETS = [
 
 export const STEPS = ["import", "install", "connect", "sell"] as const;
 
+/* ── Landing: the strip under the hero ────────────────────────────── */
+
+/** Five capabilities, stated plainly, immediately under the fold. */
+export const HERO_STRIP = [
+  { id: "billing", icon: "barcode" },
+  { id: "inventory", icon: "package" },
+  { id: "reports", icon: "chart" },
+  { id: "offline", icon: "refresh" },
+  { id: "multistore", icon: "store" },
+] as const;
+
 /* ── Landing: hero mode switcher ──────────────────────────────────── */
 
 /**

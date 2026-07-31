@@ -20,20 +20,20 @@ function body(): string {
   return `# Tajir Point
 
 > Tajir Point is an offline-first point-of-sale and business operating system for
-> small and medium retail, restaurant, electronics and distribution businesses in
-> Pakistan and the Gulf. One platform and one login covers POS, inventory,
+> small and medium retail, restaurant, electronics and distribution businesses.
+> One platform and one login covers POS, inventory,
 > purchasing, the khata (running credit ledger), double-entry accounting, staff,
 > delivery and an online storefront, extended by 31 optional extensions.
 
 Tajir Point is built for merchants who cannot depend on a stable internet
 connection: the POS keeps selling while offline and reconciles when the
-connection returns. It handles Pakistani FBR sales-tax e-invoicing and Saudi
-ZATCA compliance, and runs on web, desktop, Android and iOS.
+connection returns. Tax e-invoicing is supported per regime — FBR in Pakistan
+and ZATCA in Saudi Arabia today — and it runs on web, desktop, Android and iOS.
 
 ## Core pages
 
 ${link("Home", "/", "Product overview — what Tajir Point does and who it is for")}
-${link("Pricing", "/pricing", "Starter, Growth and Enterprise plans in PKR")}
+${link("Pricing", "/pricing", "Starter, Growth and Enterprise plans")}
 ${link("Solutions", "/solutions", "Index of the industry-specific configurations")}
 ${link("Extensions", "/extensions", "The 31 optional extensions that bolt onto the core platform")}
 ${link("About", "/about", "Who builds Tajir Point")}
@@ -42,7 +42,7 @@ ${link("Book a demo", "/book-demo", "Schedule a live walkthrough")}
 
 ## Features
 
-${link("Khata (credit ledger)", "/features/khata", "Running customer and supplier credit balances, the way Pakistani shops actually track debt")}
+${link("Khata (credit ledger)", "/features/khata", "Running customer and supplier credit balances, the way shops actually track debt")}
 ${link("Offline mode", "/features/offline", "How the POS keeps selling with no internet and reconciles afterwards")}
 ${link("Accounting", "/features/accounting", "Double-entry general ledger driven automatically by POS activity")}
 ${link("Van sales", "/features/van-sales", "Mobile selling and stock reconciliation for distribution routes")}

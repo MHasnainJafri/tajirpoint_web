@@ -12,7 +12,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildMetadata({
   title: "Pricing — One Price, Every Module",
   description:
-    "Transparent POS pricing for merchants in Pakistan, UAE, and Saudi Arabia. One flat rate per branch — POS, inventory, khata, storefront, and compliance included. 14-day free trial, no card needed.",
+    "Transparent POS pricing for merchants of every size. One flat rate per branch — POS, inventory, khata, storefront, and compliance included. 14-day free trial, no card needed.",
   path: "/pricing",
 });
 

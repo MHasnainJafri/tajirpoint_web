@@ -60,6 +60,8 @@ export interface ShotProps {
    * Tailwind radius class would leave the bezel showing through the corners.
    */
   radius?: string;
+  /** Box fill behind the image. Inline for the same reason as `radius`. */
+  background?: string;
   priority?: boolean;
   className?: string;
 }
@@ -72,6 +74,7 @@ export function Shot({
   label,
   fallback,
   radius = "20px",
+  background = "var(--color-bg-3)",
   priority = false,
   className = "",
 }: ShotProps) {
@@ -79,8 +82,8 @@ export function Shot({
 
   return (
     <div
-      className={`relative overflow-hidden bg-[var(--color-bg-3)] ${className}`}
-      style={{ aspectRatio: ratio, borderRadius: radius }}
+      className={`relative overflow-hidden ${className}`}
+      style={{ aspectRatio: ratio, borderRadius: radius, background }}
     >
       {src ? (
         <Image

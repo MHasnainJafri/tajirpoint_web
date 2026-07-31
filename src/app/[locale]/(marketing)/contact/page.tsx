@@ -8,7 +8,7 @@ import { ContactForm } from "./ContactForm";
 export const metadata: Metadata = buildMetadata({
   title: "Contact Tajir Point — Talk to Our Team",
   description:
-    "Get in touch with the Tajir Point team. Book a demo, ask about pricing, or get support. We're here to help merchants in Pakistan, UAE, and Saudi Arabia.",
+    "Get in touch with the Tajir Point team. Book a demo, ask about pricing, or get support. We're here to help merchants everywhere they sell.",
   path: "/contact",
 });
 

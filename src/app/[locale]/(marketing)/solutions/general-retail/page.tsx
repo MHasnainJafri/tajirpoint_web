@@ -7,7 +7,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildMetadata({
   title: "POS for General Retail — Kiryana, Apparel & Hardware",
   description:
-    "Tajir Point POS for kiryana stores, apparel shops, and hardware stores in Pakistan, UAE, and Saudi Arabia. Khata ledger, barcode scanning, works without internet, and FBR/ZATCA compliance.",
+    "Tajir Point POS for kiryana stores, apparel shops, and hardware stores. Khata ledger, barcode scanning, works without internet, and FBR/ZATCA compliance.",
   path: "/solutions/general-retail",
 });
 

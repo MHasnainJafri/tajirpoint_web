@@ -7,7 +7,7 @@ export type ContactState = { ok?: boolean; error?: string };
 
 export async function submitContact(
   _prev: ContactState | undefined,
-  formData: FormData,
+  formData: FormData
 ): Promise<ContactState> {
   const payload = {
     name: String(formData.get("name") || ""),

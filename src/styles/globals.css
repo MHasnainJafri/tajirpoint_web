@@ -231,7 +231,16 @@
    ledger mockups) in `.on-dark` so their token-based children render dark even
    when the page around them is light. */
 .on-dark {
+  /* Inheritance passes the *computed* colour, not the variable, so text that
+     never sets `color` explicitly kept the light theme's near-black ink even
+     inside a dark surface. Re-stating it here makes the whole subtree light. */
+  color: var(--color-ink);
+
   --color-bg: #060d0a;
+  /* Card/chip fills. Without these the light values leaked through and a
+     secondary button rendered light ink on a white pill — invisible. */
+  --color-bg-2: #0e1a14;
+  --color-bg-3: #12211a;
   --color-panel: #0c1712;
   --color-panel-2: #0a130e;
   --color-panel-3: #0a1710;
