@@ -105,9 +105,8 @@ export default function AboutPage() {
               data-reveal
               className="mt-5 max-w-[460px] text-[16.5px] leading-[1.65] text-[var(--color-muted)]"
             >
-              A kiryana in Lahore, a restaurant in Dubai, an electronics shop in Riyadh — they all
-              have the same operational needs as a chain store. We built one platform that serves
-              all of them.
+              A corner shop, a restaurant, an electronics counter — they all have the same
+              operational needs as a chain store. We built one platform that serves all of them.
             </p>
             <p
               data-reveal

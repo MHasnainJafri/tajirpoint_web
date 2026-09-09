@@ -27,7 +27,7 @@ function body(): string {
 
 Tajir Point is built for merchants who cannot depend on a stable internet
 connection: the POS keeps selling while offline and reconciles when the
-connection returns. Tax e-invoicing is supported per regime — FBR in Pakistan
+connection returns. Tax e-invoicing is supported per regime — FBR
 and ZATCA in Saudi Arabia today — and it runs on web, desktop, Android and iOS.
 
 ## Core pages
@@ -46,7 +46,7 @@ ${link("Khata (credit ledger)", "/features/khata", "Running customer and supplie
 ${link("Offline mode", "/features/offline", "How the POS keeps selling with no internet and reconciles afterwards")}
 ${link("Accounting", "/features/accounting", "Double-entry general ledger driven automatically by POS activity")}
 ${link("Van sales", "/features/van-sales", "Mobile selling and stock reconciliation for distribution routes")}
-${link("E-invoicing", "/features/e-invoicing", "FBR (Pakistan) and ZATCA (Saudi Arabia) tax e-invoicing compliance")}
+${link("E-invoicing", "/features/e-invoicing", "Tax e-invoicing compliance per regime, including FBR and ZATCA")}
 
 ## Industries
 

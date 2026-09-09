@@ -141,7 +141,7 @@ export default function EInvoicingFeaturePage() {
 
                 {[
                   { label: "Status", value: "Reported", tone: "text-[var(--color-mint-2)]" },
-                  { label: "VAT", value: "Rs 3,980", tone: "text-[var(--color-ink)]" },
+                  { label: "VAT", value: "$39.80", tone: "text-[var(--color-ink)]" },
                   { label: "QR receipt", value: "Printed", tone: "text-[var(--color-mint-2)]" },
                 ].map((row) => (
                   <div

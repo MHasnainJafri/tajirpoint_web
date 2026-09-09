@@ -1,57 +1,65 @@
 import type { Metadata } from "next";
 import { Link } from "@/i18n/navigation";
 import { PillBadge, MintButton, GhostButton, CtaPanel } from "@/components/design/primitives";
+import { Icon } from "@/components/design/Icon";
+import { VerticalScreenMock } from "@/components/marketing/landing/VerticalScreenMock";
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildMetadata({
   title: "POS for General Retail — Kiryana, Apparel & Hardware",
   description:
-    "Tajir Point POS for kiryana stores, apparel shops, and hardware stores. Khata ledger, barcode scanning, works without internet, and FBR/ZATCA compliance.",
+    "Tajir Point POS for grocery, convenience, apparel and hardware stores. Credit ledger, barcode scanning, works without internet, and tax e-invoicing per country.",
   path: "/solutions/general-retail",
 });
 
 const FEATURES = [
   {
-    icon: "/icons/offline.png",
+    icon: "refresh",
     title: "Works without internet",
     body: "Sell even when the internet goes down. Every sale, return, and discount is saved locally and syncs the moment you're back online.",
   },
   {
-    icon: "/icons/inventory.png",
+    icon: "goods",
     title: "Inventory management",
     body: "Track stock by unit, carton, or kilogram. Get low-stock alerts before you run out. Set re-order levels per product.",
   },
   {
-    icon: "/icons/accounting.png",
+    icon: "ledgerbook",
     title: "Khata ledger",
     body: "Record credit sales and track what every customer owes. Send WhatsApp reminders when payments are due.",
   },
   {
-    icon: "/icons/fbr.png",
+    icon: "brand-fbr",
     title: "FBR compliance (PK)",
     body: "Every sale transmits to FBR in real time. POS-IRN generation, e-invoicing, and Annex-C export — fully automatic.",
   },
   {
-    icon: "/icons/barcode.png",
+    icon: "barcode",
     title: "Barcode & label printing",
     body: "Scan barcodes at checkout or print your own shelf labels for any product. Supports USB, Bluetooth, and network scanners.",
   },
   {
-    icon: "/icons/report.png",
+    icon: "chart",
     title: "Daily & monthly reports",
     body: "Z-report at shift end, daily sales summary, top-selling products, and profit margin per item.",
   },
   {
-    icon: "👥",
+    icon: "users",
     title: "Multi-user access",
     body: "Cashier, supervisor, and owner roles. Cashiers can't see cost prices or delete sales without manager approval.",
   },
   {
-    icon: "/icons/printer.png",
+    icon: "pos",
     title: "Thermal receipt printing",
     body: "Print to any 58mm or 80mm Bluetooth or USB thermal printer. Customize your receipt header, footer, and logo.",
   },
+];
+
+const MOCK_ROWS = [
+  { a: "Rice 5 kg", b: "1 case = 20 × 5 kg · sells by kg", c: "$3.40 / kg" },
+  { a: "Meridian Traders", b: "Credit balance · reminder sent by WhatsApp", c: "$426.00 due" },
+  { a: "Z-report · Register 1", b: "Cash counted $1,842.00 · zero variance", c: "Closed 10:14 pm" },
 ];
 
 export default function GeneralRetailPage() {
@@ -66,9 +74,12 @@ export default function GeneralRetailPage() {
           the neighbourhood shop.
         </>
       }
-      description="From a small kiryana in Lahore to a multi-branch grocery chain in Dubai — Tajir Point handles your counter, your stock, and your credit customers in one place."
+      description="From a single corner shop to a multi-branch grocery chain — Tajir Point handles your counter, your stock, and your credit customers in one place."
       features={FEATURES}
       ctaLabel="Start free — General Retail"
+      screenMockId="retail"
+      screenTitle="Counter · Northgate Market"
+      screenRows={MOCK_ROWS}
     />
   );
 }
@@ -80,6 +91,9 @@ function SolutionPage({
   description,
   features,
   ctaLabel,
+  screenMockId,
+  screenTitle,
+  screenRows,
 }: {
   vertical: string;
   subtitle: string;
@@ -87,6 +101,9 @@ function SolutionPage({
   description: string;
   features: { icon: string; title: string; body: string }[];
   ctaLabel: string;
+  screenMockId: string;
+  screenTitle: string;
+  screenRows: ReadonlyArray<{ a: string; b: string; c: string }>;
 }) {
   return (
     <>
@@ -99,37 +116,43 @@ function SolutionPage({
           }}
         />
 
-        <div className="relative mx-auto max-w-[1140px]">
-          <Link
-            href="/solutions"
-            className="mb-7 inline-flex items-center gap-2 font-mono text-[12px] tracking-[1.5px] text-[var(--color-muted-2)] transition-colors hover:text-[var(--color-mint-2)]"
-          >
-            ← All solutions
-          </Link>
-
+        <div className="relative mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
-            <PillBadge>{vertical}</PillBadge>
+            <Link
+              href="/solutions"
+              className="mb-7 inline-flex items-center gap-2 font-mono text-[12px] tracking-[1.5px] text-[var(--color-muted-2)] transition-colors hover:text-[var(--color-mint-2)]"
+            >
+              ← All solutions
+            </Link>
+
+            <div>
+              <PillBadge>{vertical}</PillBadge>
+            </div>
+
+            <h1 className="mt-6 max-w-[820px] animate-[tpFadeUp_.8s_.15s_cubic-bezier(.22,1,.36,1)_both] text-[clamp(34px,4.8vw,64px)] font-extrabold leading-[1.04] tracking-[-0.035em]">
+              {headline}
+            </h1>
+
+            <p className="mt-4 animate-[tpFadeUp_.8s_.22s_cubic-bezier(.22,1,.36,1)_both] font-mono text-[12px] tracking-[2px] text-[var(--color-muted-3)]">
+              {subtitle}
+            </p>
+
+            <p className="mt-5 max-w-[560px] animate-[tpFadeUp_.8s_.28s_cubic-bezier(.22,1,.36,1)_both] text-[17px] leading-[1.65] text-[rgba(242,247,244,.64)]">
+              {description}
+            </p>
+
+            <div className="mt-9 flex animate-[tpFadeUp_.8s_.36s_cubic-bezier(.22,1,.36,1)_both] flex-wrap gap-[14px]">
+              <MintButton href={siteConfig.signupUrl} external>
+                Start free trial <span>→</span>
+              </MintButton>
+              <GhostButton href={siteConfig.calendlyUrl} external>
+                Book a demo
+              </GhostButton>
+            </div>
           </div>
 
-          <h1 className="mt-6 max-w-[820px] animate-[tpFadeUp_.8s_.15s_cubic-bezier(.22,1,.36,1)_both] text-[clamp(36px,5.2vw,68px)] font-extrabold leading-[1.04] tracking-[-0.035em]">
-            {headline}
-          </h1>
-
-          <p className="mt-4 animate-[tpFadeUp_.8s_.22s_cubic-bezier(.22,1,.36,1)_both] font-mono text-[12px] tracking-[2px] text-[var(--color-muted-3)]">
-            {subtitle}
-          </p>
-
-          <p className="mt-5 max-w-[560px] animate-[tpFadeUp_.8s_.28s_cubic-bezier(.22,1,.36,1)_both] text-[17.5px] leading-[1.65] text-[rgba(242,247,244,.64)]">
-            {description}
-          </p>
-
-          <div className="mt-9 flex animate-[tpFadeUp_.8s_.36s_cubic-bezier(.22,1,.36,1)_both] flex-wrap gap-[14px]">
-            <MintButton href={siteConfig.signupUrl} external>
-              Start free trial <span>→</span>
-            </MintButton>
-            <GhostButton href={siteConfig.calendlyUrl} external>
-              Book a demo
-            </GhostButton>
+          <div className="mt-4 lg:mt-0">
+            <VerticalScreenMock id={screenMockId} screenTitle={screenTitle} rows={screenRows} />
           </div>
         </div>
       </section>
@@ -145,18 +168,7 @@ function SolutionPage({
               className="rounded-[18px] border border-[var(--color-line)] bg-white/[0.025] p-6 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-[rgba(0,210,122,.5)] hover:shadow-[0_18px_50px_rgba(0,0,0,.4)]"
             >
               <span className="mb-4 flex h-[46px] w-[46px] items-center justify-center rounded-[12px] border border-[rgba(0,210,122,.22)] bg-[rgba(0,210,122,.12)]">
-                {f.icon.startsWith("/") ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={f.icon}
-                    alt=""
-                    width={30}
-                    height={30}
-                    className="h-[30px] w-[30px] object-contain"
-                  />
-                ) : (
-                  <span className="text-[20px]">{f.icon}</span>
-                )}
+                <Icon name={f.icon} size={22} />
               </span>
               <h3 className="text-[16px] font-bold tracking-[-0.01em]">{f.title}</h3>
               <p className="mt-2 text-[13.5px] leading-[1.6] text-[rgba(242,247,244,.58)]">

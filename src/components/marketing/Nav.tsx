@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import Image from "next/image";
 import { Menu, X } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
-import { Link, useRouter, usePathname } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 import { Icon } from "@/components/design/Icon";
+import { Wordmark } from "@/components/brand/Wordmark";
+import { LocaleMenu } from "@/components/marketing/LocaleMenu";
 import {
   VERTICALS,
   FEATURES,
@@ -15,99 +16,71 @@ import {
   EXTENSIONS,
 } from "@/lib/design/catalog";
 import { siteConfig } from "@/lib/config/site";
-import type { Locale } from "@/i18n/routing";
 
-type MegaKey = "solutions" | "extensions" | "features";
+type MegaKey = "solutions" | "extensions" | "product" | "resources";
 
-type LocaleEntry = { code: Locale; label: string; dot: string };
-
-const DEFAULT_LOCALE: LocaleEntry = { code: "en", label: "EN", dot: "E" };
-
-const LOCALE_CYCLE: LocaleEntry[] = [
-  DEFAULT_LOCALE,
-  { code: "ur", label: "اردو", dot: "ا" },
-  { code: "ar", label: "العربية", dot: "ع" },
-];
+/** Pages that actually exist — the design's Resources panel, minus the ones we
+ *  haven't built (help centre, migration guide, blog) so nothing 404s. */
+const RESOURCES = [
+  { id: "docs", href: "/docs" },
+  { id: "demo", href: "/book-demo" },
+  { id: "security", href: "/security" },
+  { id: "about", href: "/about" },
+  { id: "contact", href: "/contact" },
+] as const;
 
 const linkBase =
-  "rounded-full px-[14px] py-[9px] text-[14.5px] font-medium text-[var(--color-muted)] transition-colors hover:text-[var(--color-ink-2)]";
+  "inline-flex items-center gap-[5px] whitespace-nowrap rounded-full px-[14px] py-[9px] text-[13.5px] font-semibold text-[var(--color-ink)] transition-colors duration-200 hover:bg-[var(--color-surface)]";
 
+/**
+ * The header is `sticky`, not `fixed` — it occupies layout space, which is what
+ * the design assumes and what lets the page start directly underneath it
+ * without every page having to reserve a gap.
+ */
 export function Nav() {
   const t = useTranslations("nav");
   const tExt = useTranslations("extensions.items");
   const tSol = useTranslations("solutions.industries");
   const tFeat = useTranslations("nav.megaFeatures.items");
-  const locale = useLocale() as Locale;
-  const router = useRouter();
-  const pathname = usePathname();
+  const tRes = useTranslations("nav.megaResources.items");
 
   const [mega, setMega] = useState<MegaKey | null>(null);
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  // Navigating away must never leave a mega menu or the drawer hanging open.
-  // Handled on click (the panels below delegate to this) rather than in an
-  // effect on `pathname`, which would cascade an extra render on every route.
   const closeAll = useCallback(() => {
     setMega(null);
     setMobileOpen(false);
   }, []);
 
   useEffect(() => {
-    if (!mobileOpen) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMobileOpen(false);
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && closeAll();
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [mobileOpen]);
-
-  const cycleLocale = useCallback(() => {
-    const i = LOCALE_CYCLE.findIndex((l) => l.code === locale);
-    const next = LOCALE_CYCLE[(i + 1) % LOCALE_CYCLE.length] ?? DEFAULT_LOCALE;
-    router.replace(pathname, { locale: next.code });
-  }, [locale, pathname, router]);
-
-  const current = LOCALE_CYCLE.find((l) => l.code === locale) ?? DEFAULT_LOCALE;
-  const solid = scrolled || mega !== null;
+  }, [closeAll]);
 
   return (
-    <div onMouseLeave={() => setMega(null)} className="fixed inset-x-0 top-0 z-[90]">
-      <div
-        className="flex items-center justify-between px-5 py-3 transition-[background-color,border-color,backdrop-filter] duration-[400ms] md:px-10"
-        style={{
-          background: solid ? "var(--glass-nav)" : "transparent",
-          backdropFilter: solid ? "blur(16px)" : "blur(0px)",
-          borderBottom: `1px solid ${solid ? "var(--color-line)" : "transparent"}`,
-        }}
-      >
-        <Link href="/" className="flex items-center" onMouseEnter={() => setMega(null)}>
-          {/* Every page opens light, so only the on-white lockup ever renders. */}
-          <Image
-            src="/brand/lockup/lockup-on-white.svg"
-            alt="TajirPoint"
-            width={151}
-            height={42}
-            priority
-            className="h-[42px] w-auto"
-          />
+    <header
+      onMouseLeave={() => setMega(null)}
+      className="sticky top-0 z-[60] border-b border-[var(--color-line)] bg-[var(--glass-nav)] backdrop-blur-[16px]"
+    >
+      <div className="mx-auto flex h-[66px] max-w-[1240px] items-center justify-between gap-4 px-[clamp(14px,3vw,24px)]">
+        <Link
+          href="/"
+          className="flex items-center gap-2 text-[var(--color-ink)]"
+          onMouseEnter={() => setMega(null)}
+        >
+          <Wordmark />
+          <span className="hidden whitespace-nowrap rounded-[6px] bg-[var(--color-surface)] px-[9px] py-1 font-[family-name:var(--font-mono)] text-[9.5px] font-semibold uppercase tracking-[0.12em] text-[var(--color-muted)] tabs:inline">
+            {t("chip")}
+          </span>
         </Link>
 
         {/* ── Desktop links ─────────────────────────────────────────── */}
-        <div className="hidden items-center gap-[6px] nav:flex">
-          <Link href="/#platform" className={linkBase} onMouseEnter={() => setMega(null)}>
-            {t("platform")}
-          </Link>
-
+        <nav className="hidden items-center gap-[2px] nav:flex">
           <MegaTrigger
-            label={t("features")}
-            open={mega === "features"}
-            onOpen={() => setMega("features")}
+            label={t("product")}
+            open={mega === "product"}
+            onOpen={() => setMega("product")}
           />
           <MegaTrigger
             label={t("solutions")}
@@ -119,93 +92,101 @@ export function Nav() {
             open={mega === "extensions"}
             onOpen={() => setMega("extensions")}
           />
-
-          <Link href="/#pricing" className={linkBase} onMouseEnter={() => setMega(null)}>
+          <Link href="/pricing" className={linkBase} onMouseEnter={() => setMega(null)}>
             {t("pricing")}
           </Link>
-          <Link href="/#faq" className={linkBase} onMouseEnter={() => setMega(null)}>
-            {t("faq")}
-          </Link>
-        </div>
+          <MegaTrigger
+            label={t("resources")}
+            open={mega === "resources"}
+            onOpen={() => setMega("resources")}
+          />
+        </nav>
 
         {/* ── Right rail ────────────────────────────────────────────── */}
-        <div className="flex items-center gap-[10px]">
-          <button
-            type="button"
-            onClick={cycleLocale}
-            aria-label={`Language: ${current.label}`}
-            className="hidden cursor-pointer items-center gap-[7px] rounded-full border border-[var(--color-line-2)] bg-[var(--surface-2)] px-[14px] py-2 text-[13px] font-semibold text-[var(--color-ink-3)] transition-colors hover:border-[var(--color-line-2)] md:inline-flex"
-          >
-            <span className="inline-flex h-[18px] w-[18px] items-center justify-center rounded-full bg-[var(--color-mint-soft)] text-[11px] font-bold text-[var(--color-brand)]">
-              {current.dot}
-            </span>
-            {current.label}
-            <span aria-hidden className="text-[11px] opacity-50">
-              ▾
-            </span>
-          </button>
+        <div className="flex items-center gap-2">
+          <div className="hidden md:block">
+            <LocaleMenu />
+          </div>
 
           <a
             href={siteConfig.dashboardUrl}
-            className="hidden whitespace-nowrap rounded-full border border-[var(--color-line-2)] bg-[var(--surface-2)] px-4 py-[9px] text-[14px] font-semibold text-[var(--color-ink-3)] transition-colors hover:border-[var(--color-line-2)] hover:text-[var(--color-ink-2)] sm:inline-flex"
+            className="hidden whitespace-nowrap rounded-full px-4 py-[9px] text-[13.5px] font-semibold text-[var(--color-ink)] transition-colors hover:bg-[var(--color-surface)] nav:inline-flex"
           >
             {t("signIn")}
           </a>
 
-          <a
-            href={siteConfig.calendlyUrl}
-            className="inline-flex items-center gap-[9px] whitespace-nowrap rounded-full bg-[var(--color-brand)] px-5 py-[10px] text-[14px] font-semibold text-[var(--color-on-brand)] shadow-[var(--shadow-card)] transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-px hover:bg-[var(--color-brand-hover)] hover:shadow-[var(--shadow-lift)]"
+          {/* The design shortens this to "Free trial" in compact mode. It has to:
+              at 320px the full label pushes the burger past the right edge. */}
+          <Link
+            href="/pricing"
+            className="whitespace-nowrap rounded-full bg-[var(--color-mint)] px-[14px] py-[9px] text-[13px] font-bold text-[#0A0A0A] transition-[transform,box-shadow] duration-[250ms] hover:-translate-y-px hover:shadow-[0_10px_22px_rgba(0,210,122,.35)] nav:hidden"
           >
-            {t("bookDemo")} <span className="text-[15px]">→</span>
-          </a>
+            {t("freeTrial")}
+          </Link>
+          <Link
+            href="/pricing"
+            className="hidden whitespace-nowrap rounded-full bg-[var(--color-mint)] px-[18px] py-[10px] text-[13.5px] font-bold text-[#0A0A0A] transition-[transform,box-shadow] duration-[250ms] hover:-translate-y-px hover:shadow-[0_10px_22px_rgba(0,210,122,.35)] nav:inline-flex"
+          >
+            {t("startTrial")}
+          </Link>
 
           <button
             type="button"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label={mobileOpen ? t("closeMenu") : t("openMenu")}
             aria-expanded={mobileOpen}
-            className="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[var(--color-line-2)] bg-[var(--surface-2)] text-[var(--color-ink)] nav:hidden"
+            className="inline-flex h-[42px] w-[42px] cursor-pointer items-center justify-center rounded-[12px] border border-[var(--color-line-2)] bg-white text-[var(--color-ink)] nav:hidden"
           >
-            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </div>
 
-      {/* ── Features mega ───────────────────────────────────────────── */}
-      {mega === "features" && (
+      {/* ── Product mega ────────────────────────────────────────────── */}
+      {mega === "product" && (
         <MegaPanel onNavigate={closeAll}>
-          <div className="grid grid-cols-[300px_1fr_1fr] gap-9">
-            {/* No /features index exists, so the promo card leads with the
-                offline story — the differentiator the tagline is built on. */}
-            <MegaFeature
-              href="/features/offline"
-              badge={t("megaFeatures.badge")}
-              title={t("megaFeatures.title")}
-              desc={t("megaFeatures.desc")}
-              cta={t("megaFeatures.cta")}
-            />
+          <div className="grid grid-cols-[repeat(2,minmax(0,1fr))_250px] gap-7">
             <MegaColumn heading={t("megaFeatures.groupMoney")}>
               {FEATURES.filter((f) => f.group === "money").map((f) => (
-                <MegaFeatureLink
+                <MegaLink
                   key={f.id}
                   href={f.href}
-                  icon={f.icon}
-                  name={tFeat(`${f.id}.name`)}
-                  desc={tFeat(`${f.id}.desc`)}
+                  title={tFeat(`${f.id}.name`)}
+                  sub={tFeat(`${f.id}.desc`)}
                 />
               ))}
             </MegaColumn>
             <MegaColumn heading={t("megaFeatures.groupOps")}>
               {FEATURES.filter((f) => f.group === "ops").map((f) => (
-                <MegaFeatureLink
+                <MegaLink
                   key={f.id}
                   href={f.href}
-                  icon={f.icon}
-                  name={tFeat(`${f.id}.name`)}
-                  desc={tFeat(`${f.id}.desc`)}
+                  title={tFeat(`${f.id}.name`)}
+                  sub={tFeat(`${f.id}.desc`)}
                 />
               ))}
             </MegaColumn>
+
+            {/* The signature feature gets a card of its own, as in the design. */}
+            <Link
+              href="/features/khata"
+              className="flex min-h-[220px] flex-col justify-between gap-5 rounded-[16px] bg-[#0A0A0A] p-5 text-white transition-transform duration-[250ms] hover:-translate-y-[3px]"
+            >
+              <span className="font-[family-name:var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--color-mint)]">
+                {t("megaFeatures.badge")}
+              </span>
+              <div>
+                <div className="text-[21px] font-bold leading-[1.15] tracking-[-0.03em]">
+                  {t("megaFeatures.title")}
+                </div>
+                <p className="mt-2 text-[12.5px] leading-[1.55] text-[#B5B9C2]">
+                  {t("megaFeatures.desc")}
+                </p>
+              </div>
+              <span className="text-[12.5px] font-semibold text-[var(--color-mint)]">
+                {t("megaFeatures.cta")} →
+              </span>
+            </Link>
           </div>
         </MegaPanel>
       )}
@@ -213,36 +194,30 @@ export function Nav() {
       {/* ── Solutions mega ──────────────────────────────────────────── */}
       {mega === "solutions" && (
         <MegaPanel onNavigate={closeAll}>
-          <div className="grid grid-cols-[300px_1fr_1fr] gap-9">
-            <MegaFeature
-              href="/solutions"
-              badge={t("megaSolutions.badge")}
-              title={t("megaSolutions.title")}
-              desc={t("megaSolutions.desc")}
-              cta={t("megaSolutions.cta")}
-            />
-            <MegaColumn heading={t("megaSolutions.groupA")}>
-              {VERTICALS.slice(0, 3).map((v) => (
-                <MegaVertical
-                  key={v.id}
-                  id={v.id}
-                  icon={v.icon}
-                  name={tSol(`${v.id}.name`)}
-                  desc={tSol(`${v.id}.tag`)}
-                />
-              ))}
-            </MegaColumn>
-            <MegaColumn heading={t("megaSolutions.groupB")}>
-              {VERTICALS.slice(3).map((v) => (
-                <MegaVertical
-                  key={v.id}
-                  id={v.id}
-                  icon={v.icon}
-                  name={tSol(`${v.id}.name`)}
-                  desc={tSol(`${v.id}.tag`)}
-                />
-              ))}
-            </MegaColumn>
+          <div className="grid grid-cols-[repeat(3,minmax(0,1fr))] gap-[10px]">
+            {VERTICALS.map((v) => (
+              <Link
+                key={v.id}
+                href={`/solutions#${v.id}`}
+                className="flex gap-3 rounded-[14px] border border-[var(--color-line)] p-[14px] transition-colors duration-200 hover:bg-[var(--color-surface)]"
+              >
+                <span className="grid h-9 w-9 flex-none place-items-center rounded-[10px] bg-[var(--color-mint-soft)] text-[var(--color-ink)]">
+                  <Icon name={v.icon} size={19} />
+                </span>
+                <span>
+                  <span className="block text-[14px] font-bold">{tSol(`${v.id}.name`)}</span>
+                  <span className="mt-[2px] block text-[12px] text-[var(--color-muted)]">
+                    {tSol(`${v.id}.tag`)}
+                  </span>
+                </span>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-[14px] flex flex-wrap justify-between gap-3 text-[12.5px] text-[var(--color-muted)]">
+            <span>{t("megaSolutions.desc")}</span>
+            <Link href="/contact" className="font-semibold text-[var(--color-ink)]">
+              {t("megaSolutions.cta")} →
+            </Link>
           </div>
         </MegaPanel>
       )}
@@ -250,59 +225,85 @@ export function Nav() {
       {/* ── Extensions mega ─────────────────────────────────────────── */}
       {mega === "extensions" && (
         <MegaPanel onNavigate={closeAll}>
-          <div className="grid grid-cols-[300px_1fr_1fr_1fr] gap-9">
-            <MegaFeature
-              href="/extensions"
-              badge={t("megaExtensions.badge")}
-              badgeDot
-              title={t("megaExtensions.title")}
-              desc={t("megaExtensions.desc")}
-              cta={t("megaExtensions.cta")}
-            />
+          <div className="grid grid-cols-[1.2fr_1fr] gap-8">
+            <div>
+              <div className="mb-[10px] font-[family-name:var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--color-muted-2)]">
+                {t("megaExtensions.groupPacks")}
+              </div>
+              <div className="grid grid-cols-[repeat(2,minmax(0,1fr))] gap-x-5 gap-y-[2px]">
+                {[...MEGA_EXT_VERTICALS, ...MEGA_EXT_PAYMENTS.map((p) => p.id)].map((id) => {
+                  const ext = EXTENSIONS.find((e) => e.id === id);
+                  if (!ext) return null;
+                  return (
+                    <Link
+                      key={id}
+                      href="/extensions"
+                      className="-mx-[10px] flex items-center gap-[10px] rounded-[10px] px-[10px] py-[9px] text-[13.5px] font-semibold transition-colors duration-200 hover:bg-[var(--color-surface)]"
+                    >
+                      <span className="inline-flex text-[var(--color-mint-2)]">
+                        <Icon name={ext.icon} size={16} />
+                      </span>
+                      {tExt(`${id}.name`)}
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
 
-            <MegaColumn heading={t("megaExtensions.groupPacks")} tight>
-              {MEGA_EXT_VERTICALS.map((id) => {
-                const ext = EXTENSIONS.find((e) => e.id === id)!;
-                return (
-                  <MegaRow key={id} icon={ext.icon}>
-                    {tExt(`${id}.name`)}
-                  </MegaRow>
-                );
-              })}
-            </MegaColumn>
-
-            <MegaColumn heading={t("megaExtensions.groupPayments")} tight>
-              {MEGA_EXT_PAYMENTS.map((p) => (
-                <MegaRow
-                  key={p.id}
-                  icon={p.icon}
-                  tag={p.live ? t("megaExtensions.live") : t("megaExtensions.soon")}
-                  tagColor={p.live ? "var(--color-mint-2)" : "rgba(245,165,36,.9)"}
-                >
-                  {tExt(`${p.id}.name`)}
-                </MegaRow>
-              ))}
-            </MegaColumn>
-
-            <MegaColumn heading={t("megaExtensions.groupIntegrations")} tight>
-              {MEGA_EXT_INTEGRATIONS.map((m) => (
-                <MegaRow key={m.id} icon={m.icon}>
-                  {t(`megaExtensions.integrations.${m.id}`)}
-                </MegaRow>
-              ))}
-            </MegaColumn>
+            <div className="flex flex-col justify-between gap-4 rounded-[16px] bg-[var(--color-surface)] p-5">
+              <div>
+                <div className="text-[16px] font-bold tracking-[-0.02em]">
+                  {t("megaExtensions.title")}
+                </div>
+                <p className="mt-[6px] text-[12.5px] leading-[1.55] text-[var(--color-muted)]">
+                  {t("megaExtensions.desc")}
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-[6px]">
+                {MEGA_EXT_INTEGRATIONS.map((m) => (
+                  <span
+                    key={m.id}
+                    className="rounded-full bg-white px-[11px] py-[6px] text-[12px] font-semibold"
+                  >
+                    {t(`megaExtensions.integrations.${m.id}`)}
+                  </span>
+                ))}
+              </div>
+              <Link href="/extensions" className="text-[12.5px] font-semibold">
+                {t("megaExtensions.cta")} →
+              </Link>
+            </div>
           </div>
         </MegaPanel>
       )}
 
-      {/* ── Mobile drawer (not in the desktop design — same language) ─ */}
+      {/* ── Resources mega ──────────────────────────────────────────── */}
+      {mega === "resources" && (
+        <MegaPanel onNavigate={closeAll}>
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-[10px]">
+            {RESOURCES.map((r) => (
+              <Link
+                key={r.id}
+                href={r.href}
+                className="rounded-[14px] border border-[var(--color-line)] p-[14px] transition-colors duration-200 hover:bg-[var(--color-surface)]"
+              >
+                <div className="text-[14px] font-bold">{tRes(`${r.id}.title`)}</div>
+                <div className="mt-[3px] text-[12px] leading-[1.5] text-[var(--color-muted)]">
+                  {tRes(`${r.id}.sub`)}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </MegaPanel>
+      )}
+
+      {/* ── Mobile drawer ───────────────────────────────────────────── */}
       {mobileOpen && (
         <div
           onClick={closeAll}
-          className="max-h-[calc(100dvh-66px)] overflow-y-auto border-b border-[var(--color-line)] bg-[var(--glass-panel)] px-5 py-6 backdrop-blur-xl nav:hidden"
+          className="absolute inset-x-0 top-full max-h-[calc(100dvh-66px)] animate-[tpMenuIn_.22s_ease_both] overflow-y-auto border-b border-[var(--color-line)] bg-white px-[clamp(14px,3vw,24px)] py-4 shadow-[0_30px_60px_rgba(10,10,10,.14)] nav:hidden"
         >
-          <nav className="flex flex-col gap-1">
-            <MobileLink href="/#platform">{t("platform")}</MobileLink>
+          <nav className="flex flex-col">
             {FEATURES.map((f) => (
               <MobileLink key={f.id} href={f.href}>
                 {tFeat(`${f.id}.name`)}
@@ -310,30 +311,25 @@ export function Nav() {
             ))}
             <MobileLink href="/solutions">{t("solutions")}</MobileLink>
             <MobileLink href="/extensions">{t("extensions")}</MobileLink>
-            <MobileLink href="/#pricing">{t("pricing")}</MobileLink>
-            <MobileLink href="/#faq">{t("faq")}</MobileLink>
+            <MobileLink href="/pricing">{t("pricing")}</MobileLink>
+            <MobileLink href="/docs">{tRes("docs.title")}</MobileLink>
+            <MobileLink href="/contact">{tRes("contact.title")}</MobileLink>
           </nav>
-          <div className="mt-5 flex flex-wrap items-center gap-3 border-t border-[var(--color-line)] pt-5">
-            <button
-              type="button"
-              onClick={cycleLocale}
-              className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-[var(--color-line-2)] bg-[var(--surface-2)] px-4 py-2 text-[13px] font-semibold"
-            >
-              <span className="inline-flex h-4 w-4 items-center justify-center rounded-full bg-[rgba(0,210,122,.2)] text-[9px] font-bold text-[var(--color-mint-2)]">
-                {current.dot}
-              </span>
-              {current.label}
-            </button>
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="mt-4 flex flex-wrap items-center gap-[10px] border-t border-[var(--color-line)] pt-4"
+          >
+            <LocaleMenu compact />
             <a
               href={siteConfig.dashboardUrl}
-              className="rounded-full border border-[var(--color-line-2)] bg-[var(--surface-2)] px-4 py-2 text-[14px] font-semibold"
+              className="shrink grow basis-[140px] rounded-full border border-[var(--color-line-2)] px-[18px] py-3 text-center text-[14px] font-semibold"
             >
               {t("signIn")}
             </a>
           </div>
         </div>
       )}
-    </div>
+    </header>
   );
 }
 
@@ -354,19 +350,24 @@ function MegaTrigger({
       onMouseEnter={onOpen}
       onClick={onOpen}
       aria-expanded={open}
-      className="inline-flex cursor-pointer items-center gap-[6px] whitespace-nowrap rounded-full px-[14px] py-[9px] text-[14.5px] font-medium transition-colors"
-      style={{
-        background: open ? "var(--surface-strong)" : "transparent",
-        color: open ? "var(--color-ink-2)" : "var(--color-muted)",
-      }}
+      className={`inline-flex cursor-pointer items-center gap-[5px] whitespace-nowrap rounded-full px-[14px] py-[9px] text-[13.5px] font-semibold text-[var(--color-ink)] transition-colors duration-200 ${
+        open ? "bg-[var(--color-surface)]" : "hover:bg-[var(--color-surface)]"
+      }`}
     >
       {label}
-      <span
-        className="text-[11px] opacity-60 transition-transform duration-[250ms]"
-        style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
+      <svg
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-[14px] w-[14px] transition-transform duration-[250ms]"
+        style={{ transform: open ? "rotate(180deg)" : undefined }}
       >
-        ▼
-      </span>
+        <path d="M6 9l6 6 6-6" />
+      </svg>
     </button>
   );
 }
@@ -381,158 +382,34 @@ function MegaPanel({
   return (
     <div
       onClick={onNavigate}
-      className="hidden animate-[tpMenuIn_.25s_cubic-bezier(.22,1,.36,1)_both] border-b border-[var(--color-line)] bg-[var(--glass-panel)] shadow-[0_40px_90px_rgba(0,0,0,.35)] backdrop-blur-xl nav:block"
+      className="absolute inset-x-0 top-full hidden animate-[tpMenuIn_.22s_ease_both] border-b border-[var(--color-line)] bg-white shadow-[0_30px_60px_rgba(10,10,10,.12)] nav:block"
     >
-      <div className="mx-auto max-w-[1200px] px-10 py-[34px]">{children}</div>
+      <div className="mx-auto max-w-[1240px] px-[clamp(14px,3vw,24px)] pb-[30px] pt-[26px]">
+        {children}
+      </div>
     </div>
   );
 }
 
-function MegaFeature({
-  href,
-  badge,
-  badgeDot,
-  title,
-  desc,
-  cta,
-}: {
-  href: string;
-  badge: string;
-  badgeDot?: boolean;
-  title: string;
-  desc: string;
-  cta: string;
-}) {
-  return (
-    <Link
-      href={href}
-      className="flex flex-col justify-between rounded-2xl border border-[var(--color-mint-line)] p-6 transition-colors hover:border-[rgba(0,210,122,.6)]"
-      style={{
-        background: "linear-gradient(160deg,rgba(0,210,122,.14),rgba(0,210,122,.03) 65%)",
-      }}
-    >
-      <div>
-        <span className="inline-flex items-center gap-[7px] rounded-full bg-[var(--color-mint)] px-3 py-[5px] font-mono text-[10px] font-semibold tracking-[1.5px] text-[var(--color-mint-ink)]">
-          {badgeDot && <span className="h-[6px] w-[6px] rounded-full bg-[var(--color-mint-ink)]" />}
-          {badge}
-        </span>
-        <div className="mt-4 text-[21px] font-extrabold leading-[1.15] tracking-[-0.02em]">
-          {title}
-        </div>
-        <div className="mt-[10px] text-[13.5px] leading-[1.55] text-[var(--color-muted)]">
-          {desc}
-        </div>
-      </div>
-      <div className="mt-[22px] text-[14px] font-bold text-[var(--color-mint-2)]">{cta} →</div>
-    </Link>
-  );
-}
-
-function MegaColumn({
-  heading,
-  tight,
-  children,
-}: {
-  heading: string;
-  tight?: boolean;
-  children: React.ReactNode;
-}) {
+function MegaColumn({ heading, children }: { heading: string; children: React.ReactNode }) {
   return (
     <div>
-      <div className="px-3 pb-[10px] font-mono text-[10.5px] tracking-[2px] text-[var(--color-muted-3)]">
+      <div className="mb-[10px] font-[family-name:var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--color-muted-2)]">
         {heading}
       </div>
-      <div className={`flex flex-col ${tight ? "gap-[2px]" : "gap-1"}`}>{children}</div>
+      <div className="flex flex-col gap-[2px]">{children}</div>
     </div>
   );
 }
 
-/** Same row as MegaVertical, but for links that aren't `/solutions#<id>`. */
-function MegaFeatureLink({
-  href,
-  icon,
-  name,
-  desc,
-}: {
-  href: string;
-  icon: string;
-  name: string;
-  desc: string;
-}) {
+function MegaLink({ href, title, sub }: { href: string; title: string; sub: string }) {
   return (
     <Link
       href={href}
-      className="flex items-start gap-[14px] rounded-xl p-3 transition-colors hover:bg-[var(--surface-2)]"
+      className="-mx-[10px] block rounded-[10px] px-[10px] py-2 transition-colors duration-200 hover:bg-[var(--color-surface)]"
     >
-      <span className="flex h-[38px] w-[38px] flex-none items-center justify-center rounded-[10px] border border-[rgba(0,210,122,.22)] bg-[rgba(0,210,122,.1)] text-[var(--color-mint-2)]">
-        <Icon name={icon} size={18} />
-      </span>
-      <span>
-        <span className="block text-[14px] font-bold text-[var(--color-ink)]">{name}</span>
-        <span className="mt-[3px] block text-[12.5px] leading-[1.45] text-[var(--color-muted-2)]">
-          {desc}
-        </span>
-      </span>
-    </Link>
-  );
-}
-
-function MegaVertical({
-  id,
-  icon,
-  name,
-  desc,
-}: {
-  id: string;
-  icon: string;
-  name: string;
-  desc: string;
-}) {
-  return (
-    <Link
-      href={`/solutions#${id}`}
-      className="flex items-start gap-[14px] rounded-xl p-3 transition-colors hover:bg-[var(--surface-2)]"
-    >
-      <span className="flex h-[38px] w-[38px] flex-none items-center justify-center rounded-[10px] border border-[rgba(0,210,122,.22)] bg-[rgba(0,210,122,.1)] text-[var(--color-mint-2)]">
-        <Icon name={icon} size={18} />
-      </span>
-      <span>
-        <span className="block text-[14.5px] font-bold">{name}</span>
-        <span className="mt-[3px] block text-[12.5px] leading-[1.4] text-[var(--color-muted-2)]">
-          {desc}
-        </span>
-      </span>
-    </Link>
-  );
-}
-
-function MegaRow({
-  icon,
-  tag,
-  tagColor,
-  children,
-}: {
-  icon: string;
-  tag?: string;
-  tagColor?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link
-      href="/extensions"
-      className="flex items-center justify-between gap-[11px] rounded-[10px] px-3 py-[9px] text-[14px] font-semibold text-[var(--color-ink-3)] transition-colors hover:bg-[var(--surface-2)] hover:text-[var(--color-ink-2)]"
-    >
-      <span className="flex items-center gap-[11px]">
-        <span className="inline-flex text-[var(--color-mint-2)] opacity-85">
-          <Icon name={icon} size={16} />
-        </span>
-        {children}
-      </span>
-      {tag && (
-        <span className="font-mono text-[9px] tracking-[1px]" style={{ color: tagColor }}>
-          {tag}
-        </span>
-      )}
+      <div className="text-[13.5px] font-semibold">{title}</div>
+      <div className="mt-px text-[12px] text-[var(--color-muted)]">{sub}</div>
     </Link>
   );
 }
@@ -541,7 +418,7 @@ function MobileLink({ href, children }: { href: string; children: React.ReactNod
   return (
     <Link
       href={href}
-      className="rounded-xl px-3 py-3 text-[16px] font-semibold text-[var(--color-ink)] transition-colors hover:bg-[var(--surface-2)]"
+      className="border-b border-[var(--color-line)] py-[14px] text-[15px] font-semibold text-[var(--color-ink)]"
     >
       {children}
     </Link>

@@ -1,58 +1,55 @@
 import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
-import { PillBadge } from "@/components/design/primitives";
 import { Pricing } from "@/components/marketing/landing/Pricing";
 import { Faq } from "@/components/marketing/landing/Faq";
 import { FinalCta } from "@/components/marketing/landing/FinalCta";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { FAQS } from "@/lib/design/catalog";
+import { FAQ_TABS, TRIAL_MONTHS } from "@/lib/design/landing";
 import { faqSchema } from "@/lib/seo/schemas";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Pricing — One Price, Every Module",
+  title: "Pricing — Free for your first 3 months",
   description:
-    "Transparent POS pricing for merchants of every size. One flat rate per branch — POS, inventory, khata, storefront, and compliance included. 14-day free trial, no card needed.",
+    "Every module, every industry pack and every device, free for three months. No card, no per-module upsells, no transaction fees. Talk to us about anything bigger.",
   path: "/pricing",
 });
 
 export default function PricingPage() {
-  const t = useTranslations("landing.faq");
+  const t = useTranslations("landing.pricing");
+  const tFaq = useTranslations("landing.faq");
+
+  // Flattened from the grouped FAQ so the structured data always matches what
+  // the page actually renders — it drifted once already when the shape changed.
+  const questions = FAQ_TABS.flatMap((tab) =>
+    Array.from({ length: tab.count }, (_, i) => ({
+      question: tFaq(`groups.${tab.id}.items.${i}.q`),
+      answer: tFaq(`groups.${tab.id}.items.${i}.a`),
+    }))
+  );
 
   return (
     <>
-      <JsonLd
-        schema={faqSchema(
-          FAQS.map((id) => ({ question: t(`items.${id}.q`), answer: t(`items.${id}.a`) }))
-        )}
-      />
+      <JsonLd schema={faqSchema(questions)} />
 
-      {/* ── Header ──────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden px-5 pb-10 pt-[150px] text-center md:px-10">
-        <div
-          className="pointer-events-none absolute left-1/2 top-[-300px] h-[640px] w-[1100px] -translate-x-1/2"
-          style={{
-            background: "radial-gradient(ellipse at center,rgba(0,210,122,.15),transparent 60%)",
-          }}
-        />
+      <div
+        className="mx-auto max-w-[1240px] px-[clamp(14px,3vw,24px)] pt-4"
+        style={{ overflowX: "clip" }}
+      >
+        <section className="pt-[clamp(40px,7vw,80px)] text-center">
+          <div className="eyebrow justify-center">{t("eyebrow")}</div>
+          <h1 className="mx-auto mt-4 max-w-[18ch] animate-[tpRise_.7s_cubic-bezier(.22,.9,.3,1)_both] text-[clamp(34px,5vw,64px)] font-extrabold leading-[1.05] tracking-[-0.04em] text-balance">
+            {t("headline", { months: TRIAL_MONTHS })}
+          </h1>
+          <p className="mx-auto mt-5 max-w-[58ch] animate-[tpRise_.7s_.12s_cubic-bezier(.22,.9,.3,1)_both] text-[15.5px] leading-[1.65] text-[var(--color-body)]">
+            {t("sub", { months: TRIAL_MONTHS })}
+          </p>
+        </section>
 
-        <PillBadge>14-day free trial · No card needed</PillBadge>
+        <Pricing />
+        <Faq />
+      </div>
 
-        <h1 className="relative mt-6 animate-[tpFadeUp_.8s_.15s_cubic-bezier(.22,1,.36,1)_both] text-[clamp(36px,5.4vw,72px)] font-extrabold leading-[1.04] tracking-[-0.035em]">
-          Pay per branch.{" "}
-          <span className="text-[var(--color-mint)] [text-shadow:0_0_40px_rgba(0,210,122,.4)]">
-            Nothing else.
-          </span>
-        </h1>
-
-        <p className="relative mx-auto mt-[22px] max-w-[560px] animate-[tpFadeUp_.8s_.28s_cubic-bezier(.22,1,.36,1)_both] text-[18px] leading-[1.6] text-[rgba(242,247,244,.64)]">
-          No per-module up-sells. No transaction fees. Every plan includes POS, inventory, khata,
-          storefront, and compliance.
-        </p>
-      </section>
-
-      <Pricing />
-      <Faq />
       <FinalCta />
     </>
   );

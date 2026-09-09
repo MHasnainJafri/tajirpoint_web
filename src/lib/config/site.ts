@@ -27,6 +27,7 @@ export const siteConfig = {
   signupUrl: "https://app.tajirpoint.com/signup",
   calendlyUrl: "https://calendly.com/mhasnainjafri/tajir-point",
   docsUrl: "https://docs.tajirpoint.com",
+  contactEmail: "hello@tajirpoint.com",
   statusUrl: "https://status.tajirpoint.com",
 
   nav: {

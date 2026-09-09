@@ -1,131 +1,138 @@
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { PLANS } from "@/lib/design/catalog";
-import { getPlans, type MarketingPlan } from "@/lib/api/plans";
+import { Stroke, Tick } from "./Stroke";
+import { TRIAL_INCLUDES, TRIAL_MONTHS } from "@/lib/design/landing";
+import { siteConfig } from "@/lib/config/site";
 
 /**
- * Plans come from the backend (`/api/v1/public/plans/`) so pricing can be
- * edited in Django admin without a deploy, and so the advertised price is the
- * same row Stripe bills from.
+ * One free trial, not a tier table.
  *
- * If the API is unreachable the section falls back to the copy in
- * messages/*.json — a marketing page must never render an empty price table.
+ * There is deliberately no call to `getPlans()` here any more: the backend's
+ * published plans are real paid tiers, and rendering them alongside "free for
+ * three months" would advertise two different prices for the same product. If
+ * paid tiers come back, this section reads the API again — `lib/api/plans.ts`
+ * is still there.
+ *
+ * Everything past the trial is a conversation, so the second card offers the
+ * two channels that actually exist: a booked call and email.
  */
-
-type Translator = Awaited<ReturnType<typeof getTranslations>>;
-
-function fallbackPlans(t: Translator): MarketingPlan[] {
-  return PLANS.map((plan) => ({
-    id: plan.id,
-    name: t(`plans.${plan.id}.name`),
-    tagline: t(`plans.${plan.id}.who`),
-    price: t(`plans.${plan.id}.price`),
-    is_priced: Boolean(t(`plans.${plan.id}.per`)),
-    bullets: t.raw(`plans.${plan.id}.feats`) as string[],
-    cta: t(`plans.${plan.id}.cta`),
-    highlighted: plan.popular,
-  }));
-}
-
-export async function Pricing() {
-  const t = await getTranslations("landing.pricing");
-  const plans = (await getPlans()) ?? fallbackPlans(t);
+export function Pricing() {
+  const t = useTranslations("landing.pricing");
 
   return (
-    <section
-      id="pricing"
-      className="relative overflow-hidden border-y border-[var(--color-line-soft)] bg-[var(--color-bg-3)] px-5 py-[120px] md:px-10"
-    >
-      <div className="relative mx-auto max-w-[1140px]">
-        <div className="text-center">
-          <div data-reveal className="text-[13.5px] font-semibold text-[var(--color-brand)]">
-            {t("eyebrow")}
-          </div>
-          <h2
-            data-reveal
-            className="mt-[18px] text-[clamp(30px,3.8vw,52px)] font-extrabold tracking-[-0.03em]"
-          >
-            {t("headline")}
-          </h2>
-          <p
-            data-reveal
-            className="mx-auto mt-[18px] max-w-[520px] text-[16.5px] leading-[1.6] text-[var(--color-muted)]"
-          >
-            {t("body")}
-          </p>
-        </div>
+    <section id="pricing" className="mt-[clamp(64px,9vw,120px)] scroll-mt-[86px]">
+      <div data-reveal className="text-center">
+        <div className="eyebrow">{t("eyebrow")}</div>
+        <h2 className="mx-auto mt-3 max-w-[18ch] text-[clamp(28px,3.6vw,44px)] font-bold leading-[1.12] tracking-[-0.035em] text-balance">
+          {t("headline", { months: TRIAL_MONTHS })}
+        </h2>
+        <p className="mx-auto mt-3 max-w-[56ch] text-[14.5px] leading-[1.65] text-[var(--color-body)]">
+          {t("sub", { months: TRIAL_MONTHS })}
+        </p>
+      </div>
 
-        {/* Three plan cards need ~300px each to stay readable; below `lg`
-            they stack rather than squeezing to 214px on a tablet. */}
-        <div className="mt-15 grid items-stretch gap-[18px] lg:grid-cols-3">
-          {plans.map((plan, i) => (
-            <div
-              key={plan.id}
-              data-reveal
-              data-reveal-delay={i * 100}
-              className="relative flex flex-col rounded-[24px] border bg-[var(--color-bg-2)] px-[30px] py-[34px] shadow-[var(--shadow-card)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1.5 hover:shadow-[var(--shadow-lift)]"
-              style={{
-                borderColor: plan.highlighted ? "var(--color-brand)" : "var(--color-line)",
-              }}
-            >
-              {plan.highlighted && (
-                <div className="absolute -top-[14px] left-1/2 -translate-x-1/2 rounded-full bg-[var(--color-brand)] px-[14px] py-[6px] text-[12.5px] font-semibold text-[var(--color-on-brand)] shadow-[var(--shadow-card)]">
-                  {t("popular")}
-                </div>
-              )}
+      <div className="mt-[34px] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] items-stretch gap-[14px] lg:grid-cols-[1.55fr_1fr]">
+        {/* ── The trial ───────────────────────────────────────────── */}
+        <div
+          data-reveal
+          className="on-dark relative flex flex-col gap-[22px] overflow-hidden rounded-[24px] bg-[#0A0A0A] p-[clamp(22px,3vw,38px)] text-white"
+        >
+          <div className="pointer-events-none absolute -right-[90px] -top-[90px] h-[300px] w-[300px] rounded-full border border-[rgba(0,210,122,.2)]" />
+          <div className="pointer-events-none absolute -bottom-[160px] -left-[120px] h-[380px] w-[380px] rounded-full border border-white/[0.06]" />
 
-              <div className="text-[17px] font-bold">{plan.name}</div>
-
-              <div className="mt-4 flex items-baseline gap-[6px]">
-                <span className="text-[40px] font-extrabold tracking-[-0.02em]">{plan.price}</span>
-                {plan.is_priced && (
-                  <span className="text-[13.5px] text-[var(--color-muted-2)]">{t("perMonth")}</span>
-                )}
-              </div>
-
-              <div className="mt-[6px] text-[13.5px] text-[var(--color-muted-2)]">
-                {plan.tagline}
-              </div>
-
-              <div className="my-[22px] h-px bg-[var(--color-line-2)]" />
-
-              <div className="flex flex-1 flex-col gap-[11px]">
-                {plan.bullets.map((bullet) => (
-                  <div
-                    key={bullet}
-                    className="flex gap-[10px] text-[14px] leading-[1.45] text-[var(--color-muted)]"
-                  >
-                    <span className="font-bold text-[var(--color-brand)]">✓</span>
-                    {bullet}
-                  </div>
-                ))}
-              </div>
-
-              <Link
-                href="/#cta"
-                className="mt-[26px] block rounded-full border py-[13px] text-center text-[15px] font-semibold transition-transform duration-200 hover:-translate-y-0.5"
-                style={
-                  plan.highlighted
-                    ? {
-                        background: "var(--color-brand)",
-                        color: "var(--color-on-brand)",
-                        borderColor: "var(--color-brand)",
-                      }
-                    : {
-                        background: "var(--color-bg-2)",
-                        color: "var(--color-ink)",
-                        borderColor: "var(--color-line-2)",
-                      }
-                }
-              >
-                {plan.cta}
-              </Link>
+          <div className="relative flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <div className="text-[15px] font-bold">{t("trial.name")}</div>
+              <div className="mt-[3px] text-[12.5px] text-[#B5B9C2]">{t("trial.who")}</div>
             </div>
-          ))}
+            <span className="whitespace-nowrap rounded-full bg-[var(--color-mint)] px-[10px] py-[5px] text-[11px] font-bold text-[#0A0A0A]">
+              {t("trial.badge")}
+            </span>
+          </div>
+
+          <div className="relative flex flex-wrap items-baseline gap-x-[10px] gap-y-1">
+            <span className="text-[clamp(44px,5.4vw,64px)] font-extrabold leading-none tracking-[-0.045em]">
+              {t("trial.price")}
+            </span>
+            <span className="text-[15px] font-semibold text-[var(--color-mint)]">
+              {t("trial.period", { months: TRIAL_MONTHS })}
+            </span>
+          </div>
+          <p className="relative -mt-3 max-w-[46ch] text-[13.5px] leading-[1.6] text-[#B5B9C2]">
+            {t("trial.note")}
+          </p>
+
+          <Link
+            href="/pricing"
+            className="relative inline-flex items-center justify-center gap-[10px] self-start rounded-full bg-[var(--color-mint)] py-3 pl-6 pr-3 text-[14px] font-bold text-[#0A0A0A] transition-[transform,box-shadow] duration-[250ms] hover:-translate-y-[2px] hover:shadow-[0_14px_30px_rgba(0,210,122,.35)]"
+          >
+            {t("trial.cta")}
+            <span className="grid h-[26px] w-[26px] place-items-center rounded-full bg-[#0A0A0A] text-[var(--color-mint)]">
+              <Stroke name="arrowRight" size={14} width={2.2} />
+            </span>
+          </Link>
+
+          <div className="relative">
+            <div className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.14em] text-[#8A8F98]">
+              {t("trial.includesLabel")}
+            </div>
+            <div className="mt-3 grid grid-cols-[repeat(auto-fit,minmax(190px,1fr))] gap-x-5 gap-y-[10px] text-[13.5px]">
+              {TRIAL_INCLUDES.map((id) => (
+                <div key={id} className="flex items-start gap-[9px]">
+                  <span className="text-[var(--color-mint)]">
+                    <Tick size={17} />
+                  </span>
+                  {t(`trial.includes.${id}`)}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
-        <div data-reveal className="mt-6 text-center text-[13px] text-[var(--color-muted-3)]">
-          {t("note")}
+        {/* ── Anything else: talk to us ───────────────────────────── */}
+        <div
+          data-reveal
+          className="flex flex-col gap-[18px] rounded-[24px] border border-[var(--color-line-2)] p-[clamp(22px,3vw,38px)]"
+        >
+          <div>
+            <div className="text-[15px] font-bold">{t("custom.name")}</div>
+            <div className="mt-[3px] text-[12.5px] text-[var(--color-muted)]">
+              {t("custom.who")}
+            </div>
+          </div>
+
+          <p className="text-[14px] leading-[1.7] text-[var(--color-body)]">{t("custom.body")}</p>
+
+          <div className="flex flex-col gap-[9px] text-[13.5px]">
+            {["chains", "migration", "integrations", "onprem"].map((id) => (
+              <div key={id} className="flex items-start gap-[9px]">
+                <span className="text-[var(--color-mint-2)]">
+                  <Tick size={17} />
+                </span>
+                {t(`custom.points.${id}`)}
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-auto flex flex-col gap-[10px] pt-2">
+            <Link
+              href="/book-demo"
+              className="flex items-center justify-center gap-2 rounded-full bg-[#0A0A0A] px-5 py-3 text-[13.5px] font-semibold text-white transition-transform duration-200 hover:-translate-y-[2px]"
+            >
+              <Stroke name="calendar" size={16} />
+              {t("custom.ctaMeeting")}
+            </Link>
+            <a
+              href={`mailto:${siteConfig.contactEmail}`}
+              className="flex items-center justify-center gap-2 rounded-full border border-[var(--color-line-3)] px-5 py-3 text-[13.5px] font-semibold transition-colors duration-200 hover:bg-[var(--color-surface)]"
+            >
+              <Stroke name="mail" size={16} />
+              {t("custom.ctaEmail")}
+            </a>
+            <div className="text-center text-[12px] text-[var(--color-muted-2)]">
+              {siteConfig.contactEmail}
+            </div>
+          </div>
         </div>
       </div>
     </section>

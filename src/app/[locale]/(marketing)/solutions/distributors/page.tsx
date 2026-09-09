@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Link } from "@/i18n/navigation";
 import { PillBadge, MintButton, GhostButton, CtaPanel } from "@/components/design/primitives";
+import { Icon } from "@/components/design/Icon";
+import { VerticalScreenMock } from "@/components/marketing/landing/VerticalScreenMock";
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 
@@ -13,45 +15,51 @@ export const metadata: Metadata = buildMetadata({
 
 const FEATURES = [
   {
-    icon: "🗺️",
+    icon: "route",
     title: "Route planning",
     body: "Create delivery routes by area, assign stops to drivers, and optimize the order to minimize travel time.",
   },
   {
-    icon: "🛵",
+    icon: "truck",
     title: "Driver dispatch app",
     body: "Drivers get their route on their phone. Each stop shows items to deliver, quantities, and the customer's address.",
   },
   {
-    icon: "📸",
+    icon: "shield",
     title: "Proof of delivery",
     body: "Drivers capture a signature or photo at each stop. Returns and partial deliveries are logged immediately.",
   },
   {
-    icon: "📋",
+    icon: "ledgerbook",
     title: "Purchase orders",
     body: "Create POs for suppliers, receive goods against the PO, and auto-update stock. Track what's ordered vs received.",
   },
   {
-    icon: "🏭",
+    icon: "warehouse",
     title: "Multi-warehouse",
     body: "Stock across multiple warehouses or branches. Transfer stock between locations and track each warehouse separately.",
   },
   {
-    icon: "💳",
+    icon: "bank",
     title: "Supplier payables",
     body: "Track what you owe each supplier, log advance payments, and see outstanding balances at a glance.",
   },
   {
-    icon: "📦",
+    icon: "goods",
     title: "Bulk order management",
     body: "Handle carton, pallet, and unit-level inventory. Sell in bulk to retailers and track each customer's order history.",
   },
   {
-    icon: "📊",
+    icon: "chart",
     title: "Distribution reports",
     body: "Daily dispatch summary, driver performance, per-route revenue, and slow-moving stock alerts.",
   },
+];
+
+const MOCK_ROWS = [
+  { a: "Route Midtown → Riverside", b: "14 / 18 stops · 3 credit sales", c: "$842.00 cash" },
+  { a: "Load · 240 cartons", b: "186 sold · 4 returned damaged", c: "50 on van" },
+  { a: "Day-end reconciliation", b: "Cash, goods & fuel matched", c: "Variance $0.00" },
 ];
 
 export default function DistributorsPage() {
@@ -66,40 +74,50 @@ export default function DistributorsPage() {
           }}
         />
 
-        <div className="relative mx-auto max-w-[1140px]">
-          <Link
-            href="/solutions"
-            className="mb-7 inline-flex items-center gap-2 font-mono text-[12px] tracking-[1.5px] text-[var(--color-muted-2)] transition-colors hover:text-[var(--color-mint-2)]"
-          >
-            ← All solutions
-          </Link>
-
+        <div className="relative mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
-            <PillBadge>Distributors &amp; Wholesale</PillBadge>
+            <Link
+              href="/solutions"
+              className="mb-7 inline-flex items-center gap-2 font-mono text-[12px] tracking-[1.5px] text-[var(--color-muted-2)] transition-colors hover:text-[var(--color-mint-2)]"
+            >
+              ← All solutions
+            </Link>
+
+            <div>
+              <PillBadge>Distributors &amp; Wholesale</PillBadge>
+            </div>
+
+            <h1 className="mt-6 max-w-[820px] animate-[tpFadeUp_.8s_.15s_cubic-bezier(.22,1,.36,1)_both] text-[clamp(34px,4.8vw,64px)] font-extrabold leading-[1.04] tracking-[-0.035em]">
+              From warehouse
+              <br />
+              to last-mile delivery.
+            </h1>
+
+            <p className="mt-4 animate-[tpFadeUp_.8s_.22s_cubic-bezier(.22,1,.36,1)_both] font-mono text-[12px] tracking-[2px] text-[var(--color-muted-3)]">
+              FMCG · Pharma · Electronics · Bulk Supply
+            </p>
+
+            <p className="mt-5 max-w-[560px] animate-[tpFadeUp_.8s_.28s_cubic-bezier(.22,1,.36,1)_both] text-[17px] leading-[1.65] text-[rgba(242,247,244,.64)]">
+              Route planning, driver dispatch, proof of delivery, purchase orders, and
+              multi-warehouse inventory — built for businesses that move stock at scale.
+            </p>
+
+            <div className="mt-9 flex animate-[tpFadeUp_.8s_.36s_cubic-bezier(.22,1,.36,1)_both] flex-wrap gap-[14px]">
+              <MintButton href={siteConfig.signupUrl} external>
+                Start free trial <span>→</span>
+              </MintButton>
+              <GhostButton href={siteConfig.calendlyUrl} external>
+                Book a demo
+              </GhostButton>
+            </div>
           </div>
 
-          <h1 className="mt-6 max-w-[820px] animate-[tpFadeUp_.8s_.15s_cubic-bezier(.22,1,.36,1)_both] text-[clamp(36px,5.2vw,68px)] font-extrabold leading-[1.04] tracking-[-0.035em]">
-            From warehouse
-            <br />
-            to last-mile delivery.
-          </h1>
-
-          <p className="mt-4 animate-[tpFadeUp_.8s_.22s_cubic-bezier(.22,1,.36,1)_both] font-mono text-[12px] tracking-[2px] text-[var(--color-muted-3)]">
-            FMCG · Pharma · Electronics · Bulk Supply
-          </p>
-
-          <p className="mt-5 max-w-[560px] animate-[tpFadeUp_.8s_.28s_cubic-bezier(.22,1,.36,1)_both] text-[17.5px] leading-[1.65] text-[rgba(242,247,244,.64)]">
-            Route planning, driver dispatch, proof of delivery, purchase orders, and multi-warehouse
-            inventory — built for businesses that move stock at scale.
-          </p>
-
-          <div className="mt-9 flex animate-[tpFadeUp_.8s_.36s_cubic-bezier(.22,1,.36,1)_both] flex-wrap gap-[14px]">
-            <MintButton href={siteConfig.signupUrl} external>
-              Start free trial <span>→</span>
-            </MintButton>
-            <GhostButton href={siteConfig.calendlyUrl} external>
-              Book a demo
-            </GhostButton>
+          <div className="mt-4 lg:mt-0">
+            <VerticalScreenMock
+              id="distribution"
+              screenTitle="Trip TRP-0418 · VAN-4471"
+              rows={MOCK_ROWS}
+            />
           </div>
         </div>
       </section>
@@ -114,8 +132,8 @@ export default function DistributorsPage() {
               data-reveal-delay={(i % 4) * 80}
               className="rounded-[18px] border border-[var(--color-line)] bg-white/[0.025] p-6 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-[rgba(0,210,122,.5)] hover:shadow-[0_18px_50px_rgba(0,0,0,.4)]"
             >
-              <span className="mb-4 flex h-[46px] w-[46px] items-center justify-center rounded-[12px] border border-[rgba(0,210,122,.22)] bg-[rgba(0,210,122,.12)] text-[20px]">
-                {f.icon}
+              <span className="mb-4 flex h-[46px] w-[46px] items-center justify-center rounded-[12px] border border-[rgba(0,210,122,.22)] bg-[rgba(0,210,122,.12)]">
+                <Icon name={f.icon} size={22} />
               </span>
               <h3 className="text-[16px] font-bold tracking-[-0.01em]">{f.title}</h3>
               <p className="mt-2 text-[13.5px] leading-[1.6] text-[rgba(242,247,244,.58)]">

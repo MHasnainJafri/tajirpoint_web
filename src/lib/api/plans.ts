@@ -18,7 +18,7 @@ const PlanSchema = z.object({
   id: z.string(),
   name: z.string(),
   tagline: z.string(),
-  /** Already formatted for display: "$19", "Rs 4,500", or "Custom". */
+  /** Already formatted for display: "$19", "€24", or "Custom". */
   price: z.string(),
   /** False for contact-sales plans — the "/ month" suffix is hidden. */
   is_priced: z.boolean(),

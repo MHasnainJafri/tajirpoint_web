@@ -136,13 +136,13 @@ export default function VanSalesFeaturePage() {
 
                 {[
                   // Sold − collected = owed; keep the three in step if edited.
-                  { label: "Sold", value: "Rs 1,154,000", tone: "text-[var(--color-mint-2)]" },
+                  { label: "Sold", value: "$11,540", tone: "text-[var(--color-mint-2)]" },
                   {
                     label: "Cash collected",
-                    value: "Rs 1,092,000",
+                    value: "$10,920",
                     tone: "text-[var(--color-ink)]",
                   },
-                  { label: "Driver owes", value: "Rs 62,000", tone: "text-[var(--color-amber)]" },
+                  { label: "Driver owes", value: "$620.00", tone: "text-[var(--color-amber)]" },
                 ].map((row) => (
                   <div
                     key={row.label}

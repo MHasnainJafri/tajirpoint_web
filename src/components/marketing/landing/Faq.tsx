@@ -1,83 +1,39 @@
-"use client";
-
-import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { FAQS } from "@/lib/design/catalog";
+import { FAQ_TABS } from "@/lib/design/landing";
+import { FaqPanel, type FaqGroup } from "./FaqPanel";
 
+/**
+ * The questions merchants actually ask, grouped. Server component so every
+ * answer is in the HTML — this section is the page's richest source of
+ * long-tail queries, and hiding it behind a click would waste that.
+ */
 export function Faq() {
   const t = useTranslations("landing.faq");
-  const [open, setOpen] = useState<number>(0);
+
+  const groups: FaqGroup[] = FAQ_TABS.map((tab) => ({
+    id: tab.id,
+    label: t(`groups.${tab.id}.label`),
+    items: Array.from({ length: tab.count }, (_, i) => ({
+      q: t(`groups.${tab.id}.items.${i}.q`),
+      a: t(`groups.${tab.id}.items.${i}.a`),
+    })),
+  }));
 
   return (
     <section
       id="faq"
-      className="mx-auto max-w-[840px] border-t border-[var(--color-line-soft)] px-5 py-[110px] md:px-10"
+      className="mt-[clamp(64px,9vw,110px)] scroll-mt-[86px] rounded-[26px] bg-[var(--color-surface)] p-[clamp(20px,4vw,52px)]"
     >
-      <div
-        data-reveal
-        className="text-center text-[13.5px] font-semibold text-[var(--color-brand)]"
-      >
-        {t("eyebrow")}
+      <div data-reveal className="flex flex-wrap items-start justify-between gap-5">
+        <h2 className="max-w-[12ch] text-[clamp(26px,3.4vw,40px)] font-bold leading-[1.12] tracking-[-0.035em]">
+          {t("headline")}
+        </h2>
+        <p className="max-w-[38ch] text-[14px] leading-[1.65] text-[var(--color-body)]">
+          {t("sub")}
+        </p>
       </div>
-      <h2
-        data-reveal
-        className="mb-11 mt-[18px] text-center text-[clamp(28px,3.4vw,44px)] font-extrabold tracking-[-0.03em]"
-      >
-        {t("headline")}
-      </h2>
 
-      {FAQS.map((id, i) => (
-        <FaqRow
-          key={id}
-          question={t(`items.${id}.q`)}
-          answer={t(`items.${id}.a`)}
-          open={open === i}
-          onToggle={() => setOpen(open === i ? -1 : i)}
-        />
-      ))}
+      <FaqPanel groups={groups} />
     </section>
-  );
-}
-
-function FaqRow({
-  question,
-  answer,
-  open,
-  onToggle,
-}: {
-  question: string;
-  answer: string;
-  open: boolean;
-  onToggle: () => void;
-}) {
-  return (
-    <div data-reveal className="border-b border-[var(--color-line)]">
-      <button
-        type="button"
-        onClick={onToggle}
-        aria-expanded={open}
-        className="flex w-full cursor-pointer items-center justify-between gap-5 px-1 py-[22px] text-left text-[16.5px] font-semibold text-[var(--color-ink)]"
-      >
-        {question}
-        <span
-          className="text-[20px] font-normal text-[var(--color-brand)] transition-transform duration-300"
-          style={{ transform: open ? "rotate(45deg)" : "rotate(0deg)" }}
-        >
-          +
-        </span>
-      </button>
-
-      {/* 0fr → 1fr animates to the answer's real height, so nothing is clipped. */}
-      <div
-        className="grid transition-[grid-template-rows,opacity] duration-[450ms] ease-[cubic-bezier(.22,1,.36,1)]"
-        style={{ gridTemplateRows: open ? "1fr" : "0fr", opacity: open ? 1 : 0 }}
-      >
-        <div className="overflow-hidden">
-          <p className="max-w-[680px] px-1 pb-6 text-[15px] leading-[1.65] text-[var(--color-muted)]">
-            {answer}
-          </p>
-        </div>
-      </div>
-    </div>
   );
 }

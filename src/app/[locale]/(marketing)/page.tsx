@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { Hero } from "@/components/marketing/landing/Hero";
-import { FeatureStrip } from "@/components/marketing/landing/FeatureStrip";
-import { TrustBand } from "@/components/marketing/landing/TrustBand";
+import { Replaces } from "@/components/marketing/landing/Replaces";
 import { WhoItsFor } from "@/components/marketing/landing/WhoItsFor";
-import { Platform } from "@/components/marketing/landing/Platform";
+import { Signature } from "@/components/marketing/landing/Signature";
+import { Solutions } from "@/components/marketing/landing/Solutions";
 import { Ecosystem } from "@/components/marketing/landing/Ecosystem";
-import { Bento } from "@/components/marketing/landing/Bento";
-import { Ledger } from "@/components/marketing/landing/Ledger";
-import { InTheBox } from "@/components/marketing/landing/InTheBox";
-import { ExtensionsRail } from "@/components/marketing/landing/ExtensionsRail";
-import { HowItWorks } from "@/components/marketing/landing/HowItWorks";
-import { PosModes } from "@/components/marketing/landing/PosModes";
+import { Pillars } from "@/components/marketing/landing/Pillars";
+import { Platforms } from "@/components/marketing/landing/Platforms";
+import { Extensions } from "@/components/marketing/landing/Extensions";
 import { Pricing } from "@/components/marketing/landing/Pricing";
 import { Faq } from "@/components/marketing/landing/Faq";
 import { FinalCta } from "@/components/marketing/landing/FinalCta";
@@ -28,25 +25,34 @@ export default function HomePage() {
   return (
     <>
       <JsonLd schema={softwareApplicationSchema()} />
-      {/* Narrative order: hook → who it's for → what it replaces → how the
-          pieces connect → proof → price → objections.
-          `Devices` was dropped (Ecosystem makes the same point), and
-          `VerticalsGrid` gave way to `PosModes` — it shows the product per
-          trade instead of listing six icons, and links to the same pages. */}
-      <Hero />
-      <FeatureStrip />
-      <TrustBand />
-      <WhoItsFor />
-      <Platform />
-      <Ecosystem />
-      <Bento />
-      <Ledger />
-      <InTheBox />
-      <PosModes />
-      <ExtensionsRail />
-      <HowItWorks />
-      <Pricing />
-      <Faq />
+
+      {/* Narrative order: the pitch and today's numbers → what it replaces →
+          who it's for (real shop photography) → the five things it does differently →
+          vertical trade screens → unified surfaces (counter, back office, online) →
+          the full back office → where it runs → extensions marketplace → price → FAQ.
+
+          `overflow-x: clip` (not hidden) contains the hero's decorative circles
+          without creating a scroll container, so `position: sticky` on the nav
+          still works. */}
+      <div
+        id="top"
+        className="mx-auto max-w-[1240px] px-[clamp(14px,3vw,24px)] pt-4"
+        style={{ overflowX: "clip" }}
+      >
+        <Hero />
+        <Replaces />
+        <WhoItsFor />
+        <Signature />
+        <Solutions />
+        <Ecosystem />
+        <Pillars />
+        <Platforms />
+        <Extensions />
+        <Pricing />
+        <Faq />
+      </div>
+
+      {/* Wider than the page grid on purpose — see FinalCta. */}
       <FinalCta />
     </>
   );
