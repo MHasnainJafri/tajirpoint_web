@@ -1,16 +1,25 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import { AlertTriangle } from "lucide-react";
 
 import { CodeBlock } from "@/components/marketing/CodeBlock";
 import { API_BASE } from "@/lib/docs/examples";
 import { buildMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Idempotency — Tajir Point API",
-  description:
-    "Send an Idempotency-Key on sales and payments so a retried request cannot create a duplicate. Keys are held for 24 hours.",
-  path: "/docs/idempotency",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    title: "Idempotency — Tajir Point API",
+    description:
+      "Send an Idempotency-Key on sales and payments so a retried request cannot create a duplicate. Keys are held for 24 hours.",
+    path: "/docs/idempotency",
+    locale,
+  });
+}
 
 const SNIPPET = `curl -X POST ${API_BASE}/sales/sales/ \\
   -H "Authorization: Bearer $TAJIR_TOKEN" \\
@@ -27,7 +36,10 @@ const SNIPPET = `curl -X POST ${API_BASE}/sales/sales/ \\
     ]
   }'`;
 
-export default function IdempotencyPage() {
+export default async function IdempotencyPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <div className="flex max-w-[860px] flex-col gap-10">
       <header className="flex flex-col gap-3">

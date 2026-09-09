@@ -1,24 +1,31 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 import { EndpointBlock } from "@/components/docs/EndpointBlock";
 import { MethodBadge } from "@/components/docs/ParamTable";
-import { getResource } from "@/lib/docs/nav";
+import { getResource, RESOURCES } from "@/lib/docs/nav";
 import { buildMetadata } from "@/lib/seo/metadata";
+
+/** Every documented resource, in every locale, prerendered at build time. */
+export function generateStaticParams() {
+  return RESOURCES.map((r) => ({ resource: r.slug }));
+}
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ resource: string }>;
+  params: Promise<{ locale: string; resource: string }>;
 }): Promise<Metadata> {
-  const { resource } = await params;
+  const { locale, resource } = await params;
   const r = getResource(resource);
-  if (!r) return buildMetadata({ title: "Not found", path: "/docs" });
+  if (!r) return buildMetadata({ title: "Not found", path: "/docs", locale });
 
   return buildMetadata({
     title: `${r.title} — Tajir Point API`,
     description: r.intro,
     path: `/docs/${r.slug}`,
+    locale,
   });
 }
 
@@ -29,8 +36,14 @@ function anchorFor(method: string, path: string) {
     .replace(/^-|-$/g, "");
 }
 
-export default async function ResourcePage({ params }: { params: Promise<{ resource: string }> }) {
-  const { resource } = await params;
+export default async function ResourcePage({
+  params,
+}: {
+  params: Promise<{ locale: string; resource: string }>;
+}) {
+  const { locale, resource } = await params;
+  setRequestLocale(locale);
+
   const r = getResource(resource);
   if (!r) notFound();
 

@@ -1,23 +1,31 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
-import { useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { PillBadge, CtaPanel } from "@/components/design/primitives";
 import { ExtensionGrid } from "@/components/marketing/ExtensionGrid";
 import { EXTENSION_COUNT } from "@/lib/design/catalog";
 import { buildMetadata } from "@/lib/seo/metadata";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("extensions.meta");
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "extensions.meta" });
   return buildMetadata({
     title: t("title"),
     description: t("description"),
     path: "/extensions",
+    locale,
   });
 }
 
-export default function ExtensionsPage() {
-  const t = useTranslations("extensions");
+export default async function ExtensionsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  const t = await getTranslations("extensions");
 
   return (
     <>

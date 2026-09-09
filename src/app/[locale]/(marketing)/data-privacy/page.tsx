@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 import { PillBadge } from "@/components/design/primitives";
 import { buildMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Data Privacy — Your Data Belongs to You",
-  description:
-    "How Tajir Point handles your business data — merchant ownership, per-merchant isolation, regional data residency (AWS ap-south-1, me-south-1), and your right to deletion.",
-  path: "/data-privacy",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    title: "Data Privacy — Your Data Belongs to You",
+    description:
+      "How Tajir Point handles your business data: merchant ownership, per-merchant isolation, regional data residency, and your right to deletion.",
+    path: "/data-privacy",
+    locale,
+  });
+}
 
 const PRINCIPLES = [
   {
@@ -79,7 +88,10 @@ const DATA_TYPES = [
 const TH_CLASS =
   "text-start py-4 px-5 font-mono text-[11px] font-normal uppercase tracking-[1.5px] text-[var(--color-muted-3)]";
 
-export default function DataPrivacyPage() {
+export default async function DataPrivacyPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
       {/* Hero */}

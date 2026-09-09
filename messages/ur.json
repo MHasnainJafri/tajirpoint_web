@@ -1,792 +1,792 @@
 {
   "nav": {
-    "platform": "Platform",
-    "features": "Features",
-    "solutions": "Solutions",
-    "extensions": "Extensions",
-    "pricing": "Pricing",
-    "faq": "FAQ",
-    "signIn": "Sign in",
-    "bookDemo": "Book a demo",
-    "openMenu": "Open menu",
-    "closeMenu": "Close menu",
+    "platform": "پلیٹ فارم",
+    "features": "خصوصیات",
+    "solutions": "حل",
+    "extensions": "ایکسٹینشنز",
+    "pricing": "قیمتیں",
+    "faq": "عام سوالات",
+    "signIn": "سائن اِن",
+    "bookDemo": "ڈیمو بک کریں",
+    "openMenu": "مینو کھولیں",
+    "closeMenu": "مینو بند کریں",
     "megaSolutions": {
-      "badge": "SIX INDUSTRIES",
-      "title": "One platform, shaped around your counter",
-      "desc": "Each vertical only sees its own screens — a grocery store never meets a kitchen display.",
-      "cta": "Not sure which fits? Talk to us",
-      "groupA": "SELL PRODUCTS",
-      "groupB": "SERVE & DISTRIBUTE"
+      "badge": "چھ صنعتیں",
+      "title": "ایک پلیٹ فارم، آپ کے کاؤنٹر کے مطابق",
+      "desc": "ہر شعبہ صرف اپنی اسکرینیں دیکھتا ہے — کریانہ اسٹور کو کچن ڈسپلے کبھی نہیں ملتا۔",
+      "cta": "معلوم نہیں کون سا مناسب ہے؟ ہم سے بات کریں",
+      "groupA": "مصنوعات فروخت کریں",
+      "groupB": "خدمات اور تقسیم"
     },
     "megaFeatures": {
-      "badge": "Signature feature",
-      "title": "Digital credit ledger",
-      "desc": "The credit notebook every shop keeps — real-time, shareable on WhatsApp, impossible to fudge.",
-      "cta": "See how it works",
-      "groupMoney": "Money",
-      "groupOps": "Run & grow",
+      "badge": "نمایاں خصوصیت",
+      "title": "ڈیجیٹل اُدھار کھاتہ",
+      "desc": "وہ اُدھار کی کاپی جو ہر دکان رکھتی ہے — فوری، واٹس ایپ پر شیئر کے قابل، اور بدلنا ناممکن۔",
+      "cta": "دیکھیں یہ کیسے کام کرتا ہے",
+      "groupMoney": "پیسہ",
+      "groupOps": "چلائیں اور بڑھائیں",
       "items": {
         "khata": {
-          "name": "Digital Khata",
-          "desc": "Real-time customer credit ledger"
+          "name": "ڈیجیٹل کھاتہ",
+          "desc": "گاہک کا فوری اُدھار کھاتہ"
         },
         "accounting": {
-          "name": "Accounting",
-          "desc": "Double-entry books, automatic"
+          "name": "اکاؤنٹنگ",
+          "desc": "دوہرے اندراج کے کھاتے، خودکار"
         },
         "eInvoicing": {
-          "name": "E-Invoicing",
-          "desc": "Fiscal compliance built in"
+          "name": "ای-انوائسنگ",
+          "desc": "ٹیکس تعمیل شامل"
         },
         "offline": {
-          "name": "Offline POS",
-          "desc": "Keep selling through outages"
+          "name": "آف لائن پی او ایس",
+          "desc": "بندش میں بھی فروخت جاری"
         },
         "vanSales": {
-          "name": "Van Sales",
-          "desc": "Route selling & reconciliation"
+          "name": "وین سیلز",
+          "desc": "روٹ سیلنگ اور حساب کتاب"
         }
       }
     },
     "megaExtensions": {
-      "badge": "MARKETPLACE",
-      "title": "31 extensions, installed per shop",
-      "desc": "The interface only shows what you switch on. Most are free; a few are priced per month.",
-      "cta": "Browse all 31",
-      "groupPacks": "Popular extensions",
-      "groupPayments": "PAYMENTS",
-      "groupIntegrations": "INTEGRATIONS",
-      "live": "LIVE",
-      "soon": "SOON",
+      "badge": "مارکیٹ پلیس",
+      "title": "31 ایکسٹینشنز، ہر دکان کے لیے الگ",
+      "desc": "انٹرفیس صرف وہی دکھاتا ہے جو آپ آن کریں۔ زیادہ تر مفت ہیں؛ چند ماہانہ قیمت پر۔",
+      "cta": "تمام 31 دیکھیں",
+      "groupPacks": "مقبول ایکسٹینشنز",
+      "groupPayments": "ادائیگیاں",
+      "groupIntegrations": "انٹیگریشنز",
+      "live": "فعال",
+      "soon": "جلد",
       "integrations": {
         "quickbooks": "QuickBooks Online",
         "shopify": "Shopify",
         "woocommerce": "WooCommerce",
-        "couriers": "Courier & shipping",
-        "delivery-aggregator": "Delivery Aggregator",
-        "whatsapp-ai": "WhatsApp AI",
-        "fbr": "Tax e-invoicing"
+        "couriers": "کورئیر اور شپنگ",
+        "delivery-aggregator": "ڈیلیوری ایگریگیٹر",
+        "whatsapp-ai": "واٹس ایپ AI",
+        "fbr": "ٹیکس ای-انوائسنگ"
       }
     },
-    "product": "Product",
-    "resources": "Resources",
-    "startTrial": "Start free trial",
-    "chip": "Point of sale",
+    "product": "پروڈکٹ",
+    "resources": "وسائل",
+    "startTrial": "مفت ٹرائل شروع کریں",
+    "chip": "پوائنٹ آف سیل",
     "megaResources": {
       "items": {
         "docs": {
-          "title": "API docs & webhooks",
-          "sub": "Public REST API, signed webhooks, API keys."
+          "title": "API دستاویزات اور ویب ہکس",
+          "sub": "پبلک REST API، دستخط شدہ ویب ہکس، API کیز۔"
         },
         "demo": {
-          "title": "Book a demo",
-          "sub": "Twenty minutes, in your language, on your own data."
+          "title": "ڈیمو بک کریں",
+          "sub": "بیس منٹ، آپ کی زبان میں، آپ کے اپنے ڈیٹا پر۔"
         },
         "security": {
-          "title": "Security",
-          "sub": "Isolation, roles, two-factor and the audit log."
+          "title": "سیکیورٹی",
+          "sub": "علیحدگی، کردار، ٹو-فیکٹر اور آڈٹ لاگ۔"
         },
         "about": {
-          "title": "About us",
-          "sub": "Who builds TajirPoint, and why."
+          "title": "ہمارے بارے میں",
+          "sub": "TajirPoint کون بناتا ہے، اور کیوں۔"
         },
         "contact": {
-          "title": "Contact sales",
-          "sub": "WhatsApp, call, or send us a question."
+          "title": "سیلز سے رابطہ",
+          "sub": "واٹس ایپ، کال، یا سوال بھیجیں۔"
         }
       }
     },
-    "freeTrial": "Free trial"
+    "freeTrial": "مفت ٹرائل"
   },
   "landing": {
     "meta": {
-      "title": "TajirPoint — The point of sale that runs the entire business",
-      "description": "POS, inventory, purchasing, credit ledger, accounting, staff, delivery and an online store. One platform, one login, 31 extensions."
+      "title": "TajirPoint — وہ پی او ایس جو پورا کاروبار چلائے",
+      "description": "پی او ایس، انوینٹری، خریداری، اُدھار کھاتہ، اکاؤنٹنگ، عملہ، ڈیلیوری اور آن لائن اسٹور۔ ایک پلیٹ فارم، ایک لاگ اِن، 31 ایکسٹینشنز۔"
     },
     "hero": {
-      "badge": "Point of sale & back office · Built for local markets worldwide",
-      "headline": "The point of sale that runs",
-      "headlineAccent": "your whole business.",
-      "sub": "TajirPoint is a complete point-of-sale system — and everything behind it. The counter, stock, customer credit, accounting, staff, delivery and your online store — one login, in your language and currency. And it keeps selling when the internet drops.",
-      "ctaPrimary": "Start 14-day free trial",
-      "ctaSecondary": "See how it works",
-      "note": "No card required · Every module included · Cancel anytime",
+      "badge": "پوائنٹ آف سیل اور بیک آفس — دنیا بھر کی مقامی منڈیوں کے لیے",
+      "headline": "وہ پوائنٹ آف سیل جو چلائے",
+      "headlineAccent": "آپ کا پورا کاروبار۔",
+      "sub": "TajirPoint ایک مکمل پوائنٹ آف سیل سسٹم ہے — اور اس کے پیچھے کی ہر چیز۔ کاؤنٹر، اسٹاک، گاہک کا اُدھار، اکاؤنٹنگ، عملہ، ڈیلیوری اور آپ کا آن لائن اسٹور — ایک لاگ اِن، آپ کی زبان اور کرنسی میں۔ اور انٹرنیٹ بند ہونے پر بھی فروخت جاری رہتی ہے۔",
+      "ctaPrimary": "14 دن کا مفت ٹرائل شروع کریں",
+      "ctaSecondary": "دیکھیں یہ کیسے کام کرتا ہے",
+      "note": "کارڈ کی ضرورت نہیں — ہر ماڈیول شامل — جب چاہیں منسوخ کریں",
       "cards": {
         "sales": {
-          "title": "Sales today",
-          "branches": "3 branches"
+          "title": "آج کی فروخت",
+          "branches": "3 برانچز"
         },
         "credit": {
-          "title": "Customer credit",
-          "owed": "owed by 38 customers",
-          "reminders": "6 reminders sent today"
+          "title": "گاہک کا اُدھار",
+          "owed": "38 گاہکوں کے ذمے",
+          "reminders": "آج 6 یاد دہانیاں بھیجی گئیں"
         },
         "offline": {
-          "title": "Offline",
-          "queued": "queued since 11:42 — still selling",
-          "syncs": "Syncs when back online"
+          "title": "آف لائن",
+          "queued": "11:42 سے قطار میں — فروخت جاری ہے",
+          "syncs": "آن لائن آتے ہی سنک ہو جائے گا"
         },
         "lang": {
-          "title": "Your language, your currency",
+          "title": "آپ کی زبان، آپ کی کرنسی",
           "chipEnglish": "English",
-          "chipLocal": "+ local languages",
-          "chipCurrency": "Multi-currency",
-          "body": "Languages, tax rules and payment methods follow your country. Right-to-left layouts included."
+          "chipLocal": "+ مقامی زبانیں",
+          "chipCurrency": "متعدد کرنسیاں",
+          "body": "زبانیں، ٹیکس قواعد اور ادائیگی کے طریقے آپ کے ملک کے مطابق چلتے ہیں۔ دائیں سے بائیں لے آؤٹ بھی شامل ہے۔"
         }
       }
     },
     "replaces": {
-      "eyebrow": "One platform instead of five",
+      "eyebrow": "پانچ کے بجائے ایک پلیٹ فارم",
       "items": {
-        "till": "POS till",
-        "notebook": "Paper credit notebook",
-        "excel": "Excel stock sheet",
-        "ledger": "Accountant's ledger",
-        "whatsapp": "WhatsApp order chaos"
+        "till": "پی او ایس ٹِل",
+        "notebook": "اُدھار کی کاغذی کاپی",
+        "excel": "ایکسل اسٹاک شیٹ",
+        "ledger": "اکاؤنٹنٹ کا لیجر",
+        "whatsapp": "واٹس ایپ آرڈرز کی افراتفری"
       },
-      "body": "One sale updates stock, the customer's credit balance, the accounting ledger and the tax record in a single action — no re-typing, no month-end surprises."
+      "body": "ایک فروخت ہی اسٹاک، گاہک کا اُدھار بیلنس، اکاؤنٹنگ لیجر اور ٹیکس ریکارڈ ایک ساتھ اپ ڈیٹ کر دیتی ہے — نہ دوبارہ ٹائپنگ، نہ مہینے کے آخر میں حیرانی۔"
     },
     "signature": {
-      "eyebrow": "Signature features",
-      "headline": "Five things most POS systems get wrong",
-      "sub": "Built for how shops actually run — credit, outages, local taxes and the truck that leaves at 7 am.",
+      "eyebrow": "نمایاں خصوصیات",
+      "headline": "پانچ چیزیں جو زیادہ تر پی او ایس سسٹم غلط کرتے ہیں",
+      "sub": "اس طرح بنایا گیا جیسے دکانیں واقعی چلتی ہیں — اُدھار، بندشیں، مقامی ٹیکس اور وہ ٹرک جو صبح 7 بجے نکلتا ہے۔",
       "khata": {
-        "label": "01 · Digital credit ledger",
-        "title": "The credit notebook, made tamper-proof",
-        "body": "Every sale, payment and adjustment posts automatically with a running balance the shopkeeper can't accidentally fudge and the customer can't dispute. Share a PDF statement over WhatsApp in one tap.",
+        "label": "01 — ڈیجیٹل اُدھار کھاتہ",
+        "title": "اُدھار کی کاپی، جس میں ردوبدل ناممکن",
+        "body": "ہر فروخت، ادائیگی اور ایڈجسٹمنٹ خودکار طور پر چلتے بیلنس کے ساتھ درج ہوتی ہے — جسے دکاندار غلطی سے بدل نہیں سکتا اور گاہک جھٹلا نہیں سکتا۔ ایک ٹیپ میں واٹس ایپ پر PDF اسٹیٹمنٹ بھیجیں۔",
         "bullets": {
-          "0": "Credit limits with approaching-limit alerts",
-          "1": "30 / 60 / 90-day aging",
-          "2": "Supplier credit and advances too",
-          "3": "WhatsApp statements & reminders"
+          "0": "اُدھار کی حد اور حد کے قریب پہنچنے پر الرٹ",
+          "1": "30 / 60 / 90 دن کی ایجنگ",
+          "2": "سپلائر کا اُدھار اور ایڈوانس بھی",
+          "3": "واٹس ایپ اسٹیٹمنٹ اور یاد دہانیاں"
         },
         "card": {
-          "ledgerOf": "Credit ledger · Northgate General Store",
-          "balanceDue": "Balance due",
-          "date": "Date",
-          "detail": "Detail",
-          "drcr": "Dr / Cr",
-          "balance": "Balance",
-          "limit": "Credit limit {amount}",
-          "used": "{percent}% used",
-          "share": "Share statement on WhatsApp",
-          "remind": "Send reminder"
+          "ledgerOf": "اُدھار کھاتہ — نارتھ گیٹ جنرل اسٹور",
+          "balanceDue": "واجب الادا بیلنس",
+          "date": "تاریخ",
+          "detail": "تفصیل",
+          "drcr": "ڈیبٹ / کریڈٹ",
+          "balance": "بیلنس",
+          "limit": "اُدھار کی حد {amount}",
+          "used": "{percent}% استعمال ہوا",
+          "share": "واٹس ایپ پر اسٹیٹمنٹ بھیجیں",
+          "remind": "یاد دہانی بھیجیں"
         }
       },
       "accounting": {
-        "label": "02 · Accounting on autopilot",
-        "title": "Books that write themselves",
-        "body": "A real double-entry general ledger posts from every sale, purchase, payment, expense and payroll run. You never touch a journal entry; your accountant opens clean books.",
+        "label": "02 — اکاؤنٹنگ خودکار",
+        "title": "کھاتے جو خود لکھتے ہیں",
+        "body": "ایک حقیقی دوہرے اندراج والا جنرل لیجر ہر فروخت، خریداری، ادائیگی، خرچ اور پے رول سے خود درج ہوتا ہے۔ آپ کبھی جرنل انٹری کو ہاتھ نہیں لگاتے؛ آپ کا اکاؤنٹنٹ صاف کھاتے کھولتا ہے۔",
         "bullets": {
-          "0": "Bank statement import & reconciliation",
-          "1": "Cash drawers, safes & petty cash",
-          "2": "Accounting periods & close",
-          "3": "QuickBooks Online sync"
+          "0": "بینک اسٹیٹمنٹ درآمد اور مصالحت",
+          "1": "کیش دراز، تجوریاں اور پیٹی کیش",
+          "2": "اکاؤنٹنگ ادوار اور کلوزنگ",
+          "3": "QuickBooks Online سنک"
         },
         "card": {
-          "posted": "Posted automatically",
-          "account": "Account",
-          "debit": "Debit",
-          "credit": "Credit",
-          "balanced": "Balanced"
+          "posted": "خودکار طور پر درج",
+          "account": "اکاؤنٹ",
+          "debit": "ڈیبٹ",
+          "credit": "کریڈٹ",
+          "balanced": "متوازن"
         }
       },
       "van": {
-        "label": "03 · Van sales & distribution",
-        "title": "Load the truck. Sell the route. Reconcile by evening.",
-        "body": "Treat a vehicle as a mobile warehouse: load stock, sell and collect cash door-to-door — credit sales included — then match cash, goods and fuel at day end, with any shortfall on the driver's account.",
+        "label": "03 — وین سیلز اور تقسیم",
+        "title": "ٹرک لوڈ کریں۔ روٹ پر بیچیں۔ شام تک حساب برابر۔",
+        "body": "گاڑی کو چلتا پھرتا گودام سمجھیں: اسٹاک لادیں، گھر گھر بیچیں اور نقد وصول کریں — اُدھار فروخت سمیت — پھر دن کے آخر میں نقدی، مال اور ایندھن ملائیں، اور کوئی کمی ڈرائیور کے کھاتے میں۔",
         "bullets": {
-          "0": "Route & stop planning",
-          "1": "Driver cash reconciliation",
-          "2": "Fuel & mileage with anomaly flags",
-          "3": "Per-trip profit report"
+          "0": "روٹ اور اسٹاپ کی منصوبہ بندی",
+          "1": "ڈرائیور کی نقدی کی مصالحت",
+          "2": "ایندھن اور مائلیج، غیر معمولی نشان دہی کے ساتھ",
+          "3": "فی ٹرپ منافع رپورٹ"
         },
         "card": {
-          "progress": "In progress · 14 / 18 stops",
-          "cash": "Cash collected",
-          "credit": "Credit sales",
-          "variance": "Variance"
+          "progress": "جاری — 14 / 18 اسٹاپ",
+          "cash": "وصول شدہ نقدی",
+          "credit": "اُدھار فروخت",
+          "variance": "فرق"
         }
       },
       "offline": {
-        "label": "04 · Works offline",
-        "title": "A dropped connection isn't a reason to stop selling",
-        "body": "When the internet drops, the till keeps ringing sales and syncs everything back safely when it returns — no duplicates, no lost transactions.",
+        "label": "04 — آف لائن کام کرتا ہے",
+        "title": "کنکشن ٹوٹنا فروخت روکنے کی وجہ نہیں",
+        "body": "جب انٹرنیٹ بند ہو، ٹِل فروخت درج کرتا رہتا ہے اور واپسی پر سب کچھ محفوظ طریقے سے سنک کر دیتا ہے — نہ نقل، نہ کوئی لین دین ضائع۔",
         "steps": {
-          "drop": "Internet drops. Till switches to offline mode.",
-          "queue": "14 sales rung and receipted, queued locally.",
-          "sync": "Back online. Synced — 0 duplicates, 0 lost."
+          "drop": "انٹرنیٹ بند۔ ٹِل آف لائن موڈ میں چلا گیا۔",
+          "queue": "14 فروختیں درج اور رسیدیں جاری، مقامی طور پر قطار میں۔",
+          "sync": "دوبارہ آن لائن۔ سنک مکمل — 0 نقل، 0 ضائع۔"
         }
       },
       "tax": {
-        "label": "05 · Local tax compliance",
-        "title": "Local tax rules built in, not bolted on",
-        "body": "Real-time e-invoicing where regulators require it, with a QR code on every receipt. Withholding tax, regional structures and multi-currency billing handled per country.",
+        "label": "05 — مقامی ٹیکس تعمیل",
+        "title": "مقامی ٹیکس قواعد شامل، بعد میں جوڑے نہیں گئے",
+        "body": "جہاں ریگولیٹر تقاضا کرے وہاں فوری ای-انوائسنگ، ہر رسید پر QR کوڈ کے ساتھ۔ ود ہولڈنگ ٹیکس، علاقائی ڈھانچے اور متعدد کرنسیوں میں بلنگ ہر ملک کے مطابق۔",
         "chips": {
-          "inclusive": "Tax inclusive / exclusive",
-          "withholding": "Withholding certificates",
-          "age": "Age verification",
-          "audit": "Audit log"
+          "inclusive": "ٹیکس شامل / علیحدہ",
+          "withholding": "ود ہولڈنگ سرٹیفکیٹ",
+          "age": "عمر کی تصدیق",
+          "audit": "آڈٹ لاگ"
         }
       }
     },
     "solutions": {
-      "eyebrow": "Solutions",
-      "headline": "Made for your kind of shop",
-      "sub": "Six verticals, each with its own screens. Switch on what you need — a grocery store never sees a kitchen display.",
-      "tablistLabel": "Choose your trade",
-      "ctaTrial": "Start free trial",
-      "ctaExtensions": "See extensions",
+      "eyebrow": "حل",
+      "headline": "آپ کی دکان کے مطابق بنایا گیا",
+      "sub": "چھ شعبے، ہر ایک کی اپنی اسکرینیں۔ جو چاہیے وہی آن کریں — کریانہ اسٹور کو کچن ڈسپلے کبھی نظر نہیں آتا۔",
+      "tablistLabel": "اپنا کاروبار منتخب کریں",
+      "ctaTrial": "مفت ٹرائل شروع کریں",
+      "ctaExtensions": "ایکسٹینشنز دیکھیں",
       "items": {
         "retail": {
-          "name": "General retail",
-          "who": "Grocery, convenience, apparel, hardware",
-          "blurb": "Barcode-fast selling, customer credit that keeps itself, and stock you can count in cartons, kilos or pieces.",
+          "name": "جنرل ریٹیل",
+          "who": "کریانہ، کنوینینس، ملبوسات، ہارڈ ویئر",
+          "blurb": "بارکوڈ سے تیز فروخت، گاہک کا اُدھار جو خود سنبھلتا ہے، اور اسٹاک جو کارٹن، کلو یا عدد میں گنیں۔",
           "bullets": {
-            "0": "Fast barcode checkout",
-            "1": "Customer credit with WhatsApp reminders",
-            "2": "Sell by carton, kg or piece",
-            "3": "Label printing & Z-reports"
+            "0": "تیز بارکوڈ چیک آؤٹ",
+            "1": "واٹس ایپ یاد دہانی کے ساتھ گاہک کا اُدھار",
+            "2": "کارٹن، کلو یا عدد میں فروخت",
+            "3": "لیبل پرنٹنگ اور Z-رپورٹس"
           }
         },
         "restaurants": {
-          "name": "Restaurants & cafés",
-          "who": "Dine-in, takeaway, delivery, cloud kitchens",
-          "blurb": "Floor plans, a kitchen display that times every ticket, and every delivery app in one inbox.",
+          "name": "ریسٹورنٹس اور کیفے",
+          "who": "ڈائن اِن، ٹیک اوے، ڈیلیوری، کلاؤڈ کچن",
+          "blurb": "فلور پلان، کچن ڈسپلے جو ہر ٹکٹ کا وقت رکھے، اور ہر ڈیلیوری ایپ ایک اِن باکس میں۔",
           "bullets": {
-            "0": "Floor plan & tables",
-            "1": "Kitchen display (KDS)",
-            "2": "Modifiers, combos, split bills",
-            "3": "QR self-ordering & delivery inbox"
+            "0": "فلور پلان اور میزیں",
+            "1": "کچن ڈسپلے (KDS)",
+            "2": "موڈیفائرز، کومبوز، بل تقسیم",
+            "3": "QR سیلف آرڈرنگ اور ڈیلیوری اِن باکس"
           }
         },
         "electronics": {
-          "name": "Electronics & mobile",
-          "who": "Phone shops, computer stores, repair counters",
-          "blurb": "Every handset by IMEI from purchase to warranty claim, with repair jobs and trade-ins in the same till.",
+          "name": "الیکٹرانکس اور موبائل",
+          "who": "موبائل شاپس، کمپیوٹر اسٹورز، مرمت کاؤنٹر",
+          "blurb": "ہر ہینڈ سیٹ IMEI کے ذریعے خریداری سے وارنٹی کلیم تک، اور مرمت و ایکسچینج اسی ٹِل میں۔",
           "bullets": {
-            "0": "IMEI / serial per handset",
-            "1": "Warranty records",
-            "2": "Repair job cards",
-            "3": "Trade-ins & exchanges"
+            "0": "فی ہینڈ سیٹ IMEI / سیریل",
+            "1": "وارنٹی ریکارڈ",
+            "2": "مرمت جاب کارڈ",
+            "3": "ٹریڈ اِن اور تبادلہ"
           }
         },
         "pharmacies": {
-          "name": "Pharmacies",
-          "who": "Medical stores & chemists",
-          "blurb": "Batches and expiries tracked to the strip. The till sells oldest-expiring first and refuses expired stock.",
+          "name": "فارمیسیز",
+          "who": "میڈیکل اسٹورز اور کیمسٹ",
+          "blurb": "بیچ اور میعاد ہر پتّے تک ٹریک۔ ٹِل پہلے وہ بیچتا ہے جس کی میعاد پہلے ختم ہو، اور ایکسپائر اسٹاک لینے سے انکار کرتا ہے۔",
           "bullets": {
-            "0": "Batch & expiry (FEFO)",
-            "1": "Drug schedules & molecules",
-            "2": "90/60/30-day expiry alerts",
-            "3": "Prescription log"
+            "0": "بیچ اور میعاد (FEFO)",
+            "1": "ڈرگ شیڈول اور مالیکیول",
+            "2": "90/60/30 دن کے ایکسپائری الرٹ",
+            "3": "نسخہ لاگ"
           }
         },
         "distribution": {
-          "name": "Distributors & wholesale",
-          "who": "FMCG distribution, wholesalers, mills",
-          "blurb": "Vans as mobile warehouses, routes with cash and credit collection, and reconciliation the driver can't argue with.",
+          "name": "ڈسٹری بیوٹرز اور ہول سیل",
+          "who": "FMCG تقسیم، ہول سیلرز، ملز",
+          "blurb": "وین چلتے پھرتے گودام، روٹس جن پر نقد اور اُدھار وصولی، اور ایسی مصالحت جس پر ڈرائیور بحث نہ کر سکے۔",
           "bullets": {
-            "0": "Van sales & route planning",
-            "1": "Driver cash reconciliation",
-            "2": "Multi-warehouse stock",
-            "3": "Bulk & tier pricing"
+            "0": "وین سیلز اور روٹ پلاننگ",
+            "1": "ڈرائیور کی نقدی کی مصالحت",
+            "2": "متعدد گوداموں کا اسٹاک",
+            "3": "بلک اور ٹائر پرائسنگ"
           }
         },
         "services": {
-          "name": "Services",
-          "who": "Salons, clinics, gyms, tutors",
-          "blurb": "Appointments, staff commissions and memberships that bill themselves every month.",
+          "name": "خدمات",
+          "who": "سیلون، کلینک، جم، ٹیوٹر",
+          "blurb": "اپائنٹمنٹس، عملے کے کمیشن اور ممبرشپس جو ہر مہینے خود بل کرتی ہیں۔",
           "bullets": {
-            "0": "Appointments & scheduling",
-            "1": "Staff commissions",
-            "2": "Memberships & packages",
-            "3": "Recurring billing"
+            "0": "اپائنٹمنٹ اور شیڈولنگ",
+            "1": "عملے کے کمیشن",
+            "2": "ممبرشپ اور پیکجز",
+            "3": "بار بار بلنگ"
           }
         }
       }
     },
     "pillars": {
-      "eyebrow": "The whole back office",
-      "headline": "Everything behind the counter, on one login",
-      "sub": "More than any single shop needs. The interface only shows what you switch on.",
+      "eyebrow": "پورا بیک آفس",
+      "headline": "کاؤنٹر کے پیچھے کی ہر چیز، ایک لاگ اِن پر",
+      "sub": "کسی ایک دکان کی ضرورت سے کہیں زیادہ۔ انٹرفیس صرف وہی دکھاتا ہے جو آپ آن کریں۔",
       "items": {
         "sell": {
-          "title": "Sell",
-          "body": "POS checkout, split payments, quotations, returns, registers & shifts."
+          "title": "بیچیں",
+          "body": "پی او ایس چیک آؤٹ، تقسیم شدہ ادائیگیاں، کوٹیشن، واپسی، رجسٹر اور شفٹس۔"
         },
         "stock": {
-          "title": "Stock",
-          "body": "Multi-warehouse, batch & expiry (FEFO), serials, three costing methods."
+          "title": "اسٹاک",
+          "body": "متعدد گودام، بیچ اور میعاد (FEFO)، سیریلز، تین لاگت کے طریقے۔"
         },
         "buy": {
-          "title": "Buy",
-          "body": "Purchase orders, goods receipt (GRN), returns, supplier ledgers."
+          "title": "خریدیں",
+          "body": "پرچیز آرڈر، گڈز ریسیٹ (GRN)، واپسی، سپلائر کھاتے۔"
         },
         "getPaid": {
-          "title": "Get paid",
-          "body": "Cash, card, cheque, wallets; 7 gateways; allocate across invoices."
+          "title": "ادائیگی وصول کریں",
+          "body": "نقد، کارڈ، چیک، والٹ؛ 7 گیٹ ویز؛ انوائسز پر تقسیم۔"
         },
         "credit": {
-          "title": "Credit",
-          "body": "Customer & supplier credit, limits, statements, reminders."
+          "title": "اُدھار",
+          "body": "گاہک اور سپلائر کا اُدھار، حدود، اسٹیٹمنٹ، یاد دہانیاں۔"
         },
         "account": {
-          "title": "Account",
-          "body": "Double-entry GL, trial balance, P&L, balance sheet, cash flow."
+          "title": "حساب",
+          "body": "دوہرے اندراج کا GL، ٹرائل بیلنس، P&L، بیلنس شیٹ، کیش فلو۔"
         },
         "comply": {
-          "title": "Comply",
-          "body": "E-invoicing, withholding tax, age checks, audit logs."
+          "title": "تعمیل",
+          "body": "ای-انوائسنگ، ود ہولڈنگ ٹیکس، عمر کی جانچ، آڈٹ لاگ۔"
         },
         "grow": {
-          "title": "Grow",
-          "body": "Loyalty, promotions & coupons, customer portal, online store."
+          "title": "بڑھیں",
+          "body": "لائلٹی، پروموشنز اور کوپن، کسٹمر پورٹل، آن لائن اسٹور۔"
         },
         "deliver": {
-          "title": "Deliver",
-          "body": "Van sales, 3PL couriers, delivery-aggregator inbox."
+          "title": "پہنچائیں",
+          "body": "وین سیلز، 3PL کورئیر، ڈیلیوری ایگریگیٹر اِن باکس۔"
         },
         "people": {
-          "title": "Run people",
-          "body": "Staff records, attendance, leave, payroll."
+          "title": "عملہ چلائیں",
+          "body": "عملے کے ریکارڈ، حاضری، چھٹی، پے رول۔"
         },
         "specialise": {
-          "title": "Specialise",
-          "body": "Restaurant & KDS, cloud kitchen, pharmacy pack."
+          "title": "خصوصی بنائیں",
+          "body": "ریسٹورنٹ اور KDS، کلاؤڈ کچن، فارمیسی پیک۔"
         },
         "integrate": {
-          "title": "Integrate",
-          "body": "Shopify, WooCommerce, QuickBooks, public API & webhooks."
+          "title": "جوڑیں",
+          "body": "Shopify، WooCommerce، QuickBooks، پبلک API اور ویب ہکس۔"
         }
       }
     },
     "platforms": {
-      "eyebrow": "Languages & devices",
-      "headline": "Speaks your team's language. Runs on what you own.",
-      "sub": "Languages, currencies, tax rules and payment methods are set per country — and right-to-left layouts are built in. One codebase across web, desktop and Android, so every feature lands everywhere at once.",
+      "eyebrow": "زبانیں اور ڈیوائسز",
+      "headline": "آپ کی ٹیم کی زبان بولتا ہے۔ آپ کے اپنے آلات پر چلتا ہے۔",
+      "sub": "زبانیں، کرنسیاں، ٹیکس قواعد اور ادائیگی کے طریقے ہر ملک کے مطابق طے ہوتے ہیں — اور دائیں سے بائیں لے آؤٹ شامل ہے۔ ویب، ڈیسک ٹاپ اور اینڈرائیڈ پر ایک ہی کوڈ بیس، اس لیے ہر خصوصیت ہر جگہ ایک ساتھ پہنچتی ہے۔",
       "devices": {
         "web": {
-          "name": "Web",
-          "sub": "Any browser, nothing to install"
+          "name": "ویب",
+          "sub": "کوئی بھی براؤزر، کچھ انسٹال نہیں کرنا"
         },
         "desktop": {
-          "name": "Desktop",
-          "sub": "Windows · macOS · Linux; printers & drawers"
+          "name": "ڈیسک ٹاپ",
+          "sub": "Windows — macOS — Linux؛ پرنٹر اور دراز"
         },
         "android": {
-          "name": "Android",
-          "sub": "Camera scanning, Bluetooth receipts"
+          "name": "اینڈرائیڈ",
+          "sub": "کیمرے سے اسکیننگ، بلوٹوتھ رسیدیں"
         },
         "ios": {
           "name": "iOS",
-          "sub": "Coming soon"
+          "sub": "جلد آ رہا ہے"
         }
       },
       "app": {
-        "getItOn": "GET IT ON",
+        "getItOn": "حاصل کریں",
         "googlePlay": "Google Play",
-        "note": "Scan, print and sell from a phone or tablet."
+        "note": "فون یا ٹیبلٹ سے اسکین، پرنٹ اور فروخت کریں۔"
       },
-      "hardware": "Works with thermal receipt printers, barcode scanners and cash drawers.",
-      "receiptCaption": "Receipts, screens and kitchen tickets follow the chosen language — layout flips right-to-left automatically.",
-      "receiptTablistLabel": "Preview receipt language"
+      "hardware": "تھرمل ریسیٹ پرنٹرز، بارکوڈ اسکینرز اور کیش درازوں کے ساتھ کام کرتا ہے۔",
+      "receiptCaption": "رسیدیں، اسکرینیں اور کچن ٹکٹ منتخب زبان کے مطابق چلتے ہیں — لے آؤٹ خودکار طور پر دائیں سے بائیں ہو جاتا ہے۔",
+      "receiptTablistLabel": "رسید کی زبان کا پیش منظر"
     },
     "extensions": {
-      "eyebrow": "Extension marketplace",
-      "headline": "Switch on only what you need",
-      "sub": "{count} add-ons, installed per shop. A small store never sees payroll or kitchen screens.",
-      "all": "All {count}",
+      "eyebrow": "ایکسٹینشن مارکیٹ پلیس",
+      "headline": "صرف وہی آن کریں جو آپ کو چاہیے",
+      "sub": "{count} ایڈ آنز، ہر دکان کے لیے الگ۔ ایک چھوٹی دکان کو پے رول یا کچن اسکرینیں کبھی نظر نہیں آتیں۔",
+      "all": "تمام {count}",
       "cats": {
-        "verticals": "Business verticals",
-        "payments": "Payment gateways",
-        "accounting": "Accounting",
-        "compliance": "Tax & compliance",
-        "ecommerce": "E-commerce sync",
-        "shipping": "Shipping",
-        "customer": "Sales & customer tools"
+        "verticals": "کاروباری شعبے",
+        "payments": "پیمنٹ گیٹ ویز",
+        "accounting": "اکاؤنٹنگ",
+        "compliance": "ٹیکس اور تعمیل",
+        "ecommerce": "ای-کامرس سنک",
+        "shipping": "شپنگ",
+        "customer": "سیلز اور کسٹمر ٹولز"
       },
       "status": {
-        "live": "Live",
-        "beta": "Beta",
-        "ready": "Ready"
+        "live": "فعال",
+        "beta": "بیٹا",
+        "ready": "تیار"
       },
-      "legend": "Live — in production use. Beta — built, final validation in progress. Ready — built, goes live with your credentials."
+      "legend": "فعال — پروڈکشن میں استعمال ہو رہا ہے۔ بیٹا — بن چکا، حتمی جانچ جاری ہے۔ تیار — بن چکا، آپ کی اسناد کے ساتھ فعال ہو گا۔"
     },
     "pricing": {
-      "eyebrow": "Pricing",
-      "headline": "Free for your first {months} months.",
-      "sub": "Every module, every industry pack, every device — switched on from day one. No card, no per-module upsells, no transaction fees. After {months} months we agree a price that fits the size of your business.",
+      "eyebrow": "قیمتیں",
+      "headline": "پہلے {months} مہینے مفت۔",
+      "sub": "ہر ماڈیول، ہر صنعتی پیک، ہر ڈیوائس — پہلے دن سے آن۔ نہ کارڈ، نہ فی ماڈیول اضافی فروخت، نہ ٹرانزیکشن فیس۔ {months} مہینوں کے بعد ہم آپ کے کاروبار کے حجم کے مطابق قیمت طے کرتے ہیں۔",
       "trial": {
-        "name": "Full product trial",
-        "who": "One shop or fifty — nothing is held back",
-        "badge": "No card required",
-        "price": "Free",
-        "period": "for {months} months",
-        "note": "Not a limited edition. The restaurant pack, van sales, accounting, the online store and all 31 extensions are available for the whole trial.",
-        "cta": "Start free trial",
-        "includesLabel": "Everything included",
+        "name": "مکمل پروڈکٹ ٹرائل",
+        "who": "ایک دکان ہو یا پچاس — کچھ بھی روکا نہیں جاتا",
+        "badge": "کارڈ کی ضرورت نہیں",
+        "price": "مفت",
+        "period": "{months} مہینوں کے لیے",
+        "note": "یہ محدود ایڈیشن نہیں۔ ریسٹورنٹ پیک، وین سیلز، اکاؤنٹنگ، آن لائن اسٹور اور تمام 31 ایکسٹینشنز پورے ٹرائل کے دوران دستیاب ہیں۔",
+        "cta": "مفت ٹرائل شروع کریں",
+        "includesLabel": "سب کچھ شامل",
         "includes": {
-          "pos": "POS, registers & shifts",
-          "inventory": "Inventory, batches & serials",
-          "credit": "Customer & supplier credit",
-          "accounting": "Double-entry accounting",
-          "restaurant": "Restaurant, tables & kitchen display",
-          "vansales": "Van sales, routes & delivery",
-          "store": "Online store & customer portal",
-          "staff": "Staff, attendance & payroll",
-          "offline": "Works offline",
-          "tax": "Local tax & e-invoicing",
-          "extensions": "All 31 extensions",
-          "support": "Onboarding & support"
+          "pos": "پی او ایس، رجسٹر اور شفٹس",
+          "inventory": "انوینٹری، بیچ اور سیریلز",
+          "credit": "گاہک اور سپلائر کا اُدھار",
+          "accounting": "دوہرے اندراج کی اکاؤنٹنگ",
+          "restaurant": "ریسٹورنٹ، میزیں اور کچن ڈسپلے",
+          "vansales": "وین سیلز، روٹس اور ڈیلیوری",
+          "store": "آن لائن اسٹور اور کسٹمر پورٹل",
+          "staff": "عملہ، حاضری اور پے رول",
+          "offline": "آف لائن کام کرتا ہے",
+          "tax": "مقامی ٹیکس اور ای-انوائسنگ",
+          "extensions": "تمام 31 ایکسٹینشنز",
+          "support": "آن بورڈنگ اور سپورٹ"
         }
       },
       "custom": {
-        "name": "Something bigger?",
-        "who": "Chains, franchises and custom work",
-        "body": "If you run many branches, need a migration handled for you, or want the product wired into systems you already have — talk to us and we will quote it properly.",
+        "name": "کچھ اس سے بڑا؟",
+        "who": "چینز، فرنچائز اور اپنی مرضی کا کام",
+        "body": "اگر آپ کی کئی برانچز ہیں، آپ چاہتے ہیں کہ مائیگریشن ہم سنبھالیں، یا پروڈکٹ کو اپنے موجودہ سسٹمز سے جوڑنا چاہتے ہیں — ہم سے بات کریں، ہم درست تخمینہ دیں گے۔",
         "points": {
-          "chains": "Unlimited branches and users",
-          "migration": "Migration done for you",
-          "integrations": "Custom integrations & SLA",
-          "onprem": "On-premise and single sign-on"
+          "chains": "لامحدود برانچز اور صارفین",
+          "migration": "مائیگریشن ہم کریں گے",
+          "integrations": "اپنی مرضی کے انٹیگریشن اور SLA",
+          "onprem": "آن پریمائز اور سنگل سائن آن"
         },
-        "ctaMeeting": "Book a 20-minute call",
-        "ctaEmail": "Email us"
+        "ctaMeeting": "20 منٹ کی کال بک کریں",
+        "ctaEmail": "ہمیں ای میل کریں"
       }
     },
     "faq": {
-      "headline": "Questions merchants ask us",
-      "sub": "Still unsure? Write to us on WhatsApp or book a 20-minute demo.",
+      "headline": "سوالات جو تاجر ہم سے پوچھتے ہیں",
+      "sub": "اب بھی شک ہے؟ واٹس ایپ پر لکھیں یا 20 منٹ کا ڈیمو بک کریں۔",
       "groups": {
         "general": {
-          "label": "General",
+          "label": "عمومی",
           "items": {
             "0": {
-              "q": "What is TajirPoint?",
-              "a": "A point-of-sale and complete back office for small and medium businesses: selling, stock, purchasing, customer credit, accounting, staff, delivery and an online store on one login — localised for how shops run in your country."
+              "q": "TajirPoint کیا ہے؟",
+              "a": "چھوٹے اور درمیانے کاروبار کے لیے پوائنٹ آف سیل اور مکمل بیک آفس: فروخت، اسٹاک، خریداری، گاہک کا اُدھار، اکاؤنٹنگ، عملہ، ڈیلیوری اور آن لائن اسٹور ایک لاگ اِن پر — آپ کے ملک میں دکانیں جیسے چلتی ہیں اسی کے مطابق ڈھالا گیا۔"
             },
             "1": {
-              "q": "Which devices does it run on?",
-              "a": "Any browser, a Windows desktop app (macOS and Linux too), and Android phones and tablets. iOS is coming soon. Thermal receipt printers, barcode scanners and cash drawers are supported."
+              "q": "یہ کن ڈیوائسز پر چلتا ہے؟",
+              "a": "کوئی بھی براؤزر، Windows ڈیسک ٹاپ ایپ (macOS اور Linux بھی)، اور اینڈرائیڈ فون اور ٹیبلٹ۔ iOS جلد آ رہا ہے۔ تھرمل ریسیٹ پرنٹر، بارکوڈ اسکینر اور کیش دراز سپورٹڈ ہیں۔"
             },
             "2": {
-              "q": "Which languages are supported?",
-              "a": "English everywhere, plus local languages that switch on by country — with full right-to-left layout and instant switching inside the app."
+              "q": "کون سی زبانیں سپورٹڈ ہیں؟",
+              "a": "انگریزی ہر جگہ، اور مقامی زبانیں جو ملک کے مطابق آن ہوتی ہیں — مکمل دائیں سے بائیں لے آؤٹ اور ایپ کے اندر فوری تبدیلی کے ساتھ۔"
             },
             "3": {
-              "q": "Can I bring my existing products?",
-              "a": "Import from CSV or Excel. Shopify and WooCommerce exports are detected automatically, so migration takes an afternoon."
+              "q": "کیا میں اپنی موجودہ مصنوعات لا سکتا ہوں؟",
+              "a": "CSV یا ایکسل سے درآمد کریں۔ Shopify اور WooCommerce ایکسپورٹ خودکار طور پر پہچانے جاتے ہیں، اس لیے مائیگریشن ایک دوپہر میں ہو جاتی ہے۔"
             }
           }
         },
         "credit": {
-          "label": "Customer credit",
+          "label": "گاہک کا اُدھار",
           "items": {
             "0": {
-              "q": "What is the digital credit ledger?",
-              "a": "Your running credit ledger, kept automatically. Every sale, payment and adjustment posts with a running balance that can't be quietly edited — and a PDF statement you can share on WhatsApp."
+              "q": "ڈیجیٹل اُدھار کھاتہ کیا ہے؟",
+              "a": "آپ کا چلتا ہوا اُدھار کھاتہ، خودکار طریقے سے۔ ہر فروخت، ادائیگی اور ایڈجسٹمنٹ چلتے بیلنس کے ساتھ درج ہوتی ہے جسے خاموشی سے بدلا نہیں جا سکتا — اور PDF اسٹیٹمنٹ جو آپ واٹس ایپ پر بھیج سکتے ہیں۔"
             },
             "1": {
-              "q": "Can customers see their own balance?",
-              "a": "With the Customer Portal extension, credit customers log in to see their ledger and invoices and pay online."
+              "q": "کیا گاہک اپنا بیلنس خود دیکھ سکتے ہیں؟",
+              "a": "کسٹمر پورٹل ایکسٹینشن کے ساتھ، اُدھار والے گاہک لاگ اِن کر کے اپنا کھاتہ اور انوائسز دیکھ سکتے ہیں اور آن لائن ادائیگی کر سکتے ہیں۔"
             },
             "2": {
-              "q": "Does it handle supplier credit too?",
-              "a": "Yes. Suppliers get the same running ledger, with aging, advances and payment allocation across invoices."
+              "q": "کیا یہ سپلائر کا اُدھار بھی سنبھالتا ہے؟",
+              "a": "جی ہاں۔ سپلائرز کو وہی چلتا کھاتہ ملتا ہے، ایجنگ، ایڈوانس اور انوائسز پر ادائیگی کی تقسیم کے ساتھ۔"
             },
             "3": {
-              "q": "Can I set credit limits?",
-              "a": "Per customer, enforced at the till, with alerts as a customer approaches the limit."
+              "q": "کیا میں اُدھار کی حد مقرر کر سکتا ہوں؟",
+              "a": "ہر گاہک کے لیے، ٹِل پر نافذ، اور گاہک کے حد کے قریب پہنچنے پر الرٹ کے ساتھ۔"
             }
           }
         },
         "offline": {
-          "label": "Offline & data",
+          "label": "آف لائن اور ڈیٹا",
           "items": {
             "0": {
-              "q": "What happens when the internet drops?",
-              "a": "You keep selling. Sales queue on the device and sync back when the connection returns — no duplicates, no lost transactions."
+              "q": "انٹرنیٹ بند ہونے پر کیا ہوتا ہے؟",
+              "a": "آپ بیچتے رہتے ہیں۔ فروختیں ڈیوائس پر قطار میں آتی ہیں اور کنکشن واپس آنے پر سنک ہو جاتی ہیں — نہ نقل، نہ کوئی لین دین ضائع۔"
             },
             "1": {
-              "q": "Is my data safe?",
-              "a": "Each business's data is isolated at the database level, access is role-based, and two-factor authentication and a full audit log are included."
+              "q": "کیا میرا ڈیٹا محفوظ ہے؟",
+              "a": "ہر کاروبار کا ڈیٹا ڈیٹابیس کی سطح پر الگ ہے، رسائی کردار کے مطابق ہے، اور ٹو-فیکٹر تصدیق اور مکمل آڈٹ لاگ شامل ہیں۔"
             },
             "2": {
-              "q": "Can my accountant use it?",
-              "a": "The general ledger posts itself from daily activity; your accountant gets clean double-entry books, statements and Excel exports."
+              "q": "کیا میرا اکاؤنٹنٹ اسے استعمال کر سکتا ہے؟",
+              "a": "جنرل لیجر روزمرہ سرگرمی سے خود درج ہوتا ہے؛ آپ کے اکاؤنٹنٹ کو صاف دوہرے اندراج کے کھاتے، اسٹیٹمنٹ اور ایکسل ایکسپورٹ ملتے ہیں۔"
             }
           }
         },
         "pricing": {
-          "label": "Pricing",
+          "label": "قیمتیں",
           "items": {
             "0": {
-              "q": "Is there a free trial?",
-              "a": "Three months, every module, no card required. Nothing is switched off during it — the restaurant pack, van sales, accounting and all 31 extensions are included."
+              "q": "کیا مفت ٹرائل ہے؟",
+              "a": "تین مہینے، ہر ماڈیول، کارڈ کی ضرورت نہیں۔ اس دوران کچھ بھی بند نہیں کیا جاتا — ریسٹورنٹ پیک، وین سیلز، اکاؤنٹنگ اور تمام 31 ایکسٹینشنز شامل ہیں۔"
             },
             "1": {
-              "q": "What happens after the trial?",
-              "a": "We agree a price that fits the size of your business. There are no published tiers to grow out of, and no per-module upsells or transaction fees — payment-gateway processing fees are set by the gateway, not by us."
+              "q": "ٹرائل کے بعد کیا ہوتا ہے؟",
+              "a": "ہم آپ کے کاروبار کے حجم کے مطابق قیمت طے کرتے ہیں۔ کوئی شائع شدہ درجے نہیں جن سے آپ بڑھ جائیں، اور نہ فی ماڈیول اضافی فروخت یا ٹرانزیکشن فیس — پیمنٹ گیٹ وے کی پروسیسنگ فیس گیٹ وے طے کرتا ہے، ہم نہیں۔"
             },
             "2": {
-              "q": "Which currencies can I pay in?",
-              "a": "Your local currency. Billing, tax rules and payment methods follow the country the shop is registered in."
+              "q": "میں کن کرنسیوں میں ادائیگی کر سکتا ہوں؟",
+              "a": "اپنی مقامی کرنسی میں۔ بلنگ، ٹیکس قواعد اور ادائیگی کے طریقے اس ملک کے مطابق ہوتے ہیں جہاں دکان رجسٹرڈ ہے۔"
             },
             "3": {
-              "q": "Do I need a card to start?",
-              "a": "No. Start the trial, and talk to us when you are ready — by email or on a 20-minute call."
+              "q": "کیا شروع کرنے کے لیے کارڈ چاہیے؟",
+              "a": "نہیں۔ ٹرائل شروع کریں، اور جب تیار ہوں ہم سے بات کریں — ای میل پر یا 20 منٹ کی کال پر۔"
             }
           }
         }
       }
     },
     "cta": {
-      "headline": "Start selling in an afternoon.",
-      "sub": "Import your products from Excel, Shopify or WooCommerce, connect a printer, and ring your first sale. Fourteen days free, every module, no card.",
-      "ctaPrimary": "Start free trial",
-      "ctaSecondary": "Book a demo",
+      "headline": "ایک دوپہر میں فروخت شروع کریں۔",
+      "sub": "اپنی مصنوعات ایکسل، Shopify یا WooCommerce سے درآمد کریں، پرنٹر جوڑیں، اور پہلی فروخت درج کریں۔ چودہ دن مفت، ہر ماڈیول، کارڈ نہیں۔",
+      "ctaPrimary": "مفت ٹرائل شروع کریں",
+      "ctaSecondary": "ڈیمو بک کریں",
       "steps": {
         "import": {
-          "title": "Import your products",
-          "sub": "Excel, CSV, Shopify or WooCommerce export",
-          "time": "20 min"
+          "title": "اپنی مصنوعات درآمد کریں",
+          "sub": "ایکسل، CSV، Shopify یا WooCommerce ایکسپورٹ",
+          "time": "20 منٹ"
         },
         "connect": {
-          "title": "Connect a printer & scanner",
-          "sub": "Thermal receipt printer, cash drawer, barcode gun",
-          "time": "10 min"
+          "title": "پرنٹر اور اسکینر جوڑیں",
+          "sub": "تھرمل ریسیٹ پرنٹر، کیش دراز، بارکوڈ گن",
+          "time": "10 منٹ"
         },
         "staff": {
-          "title": "Add staff and set limits",
-          "sub": "Cashier, manager, accountant roles",
-          "time": "5 min"
+          "title": "عملہ شامل کریں اور حدود مقرر کریں",
+          "sub": "کیشیئر، مینیجر، اکاؤنٹنٹ کے کردار",
+          "time": "5 منٹ"
         },
         "sell": {
-          "title": "Ring your first sale",
-          "sub": "Stock, credit and books update together",
-          "time": "Now"
+          "title": "اپنی پہلی فروخت درج کریں",
+          "sub": "اسٹاک، اُدھار اور کھاتے ایک ساتھ اپ ڈیٹ ہوتے ہیں",
+          "time": "ابھی"
         }
       }
     }
   },
   "solutions": {
     "meta": {
-      "title": "Solutions — Six industries, one platform",
-      "description": "Retail, restaurants, electronics, pharmacies, distribution and services. Extensions shape TajirPoint around your counter."
+      "title": "حل — چھ صنعتیں، ایک پلیٹ فارم",
+      "description": "ریٹیل، ریسٹورنٹس، الیکٹرانکس، فارمیسیز، تقسیم کاری اور خدمات۔ ایکسٹینشنز TajirPoint کو آپ کے کاؤنٹر کے مطابق ڈھالتی ہیں۔"
     },
-    "badge": "SIX INDUSTRIES · ONE PLATFORM",
-    "headline": "Made for",
-    "headlineAccent": "your counter",
-    "sub": "Every industry runs differently. Extensions shape TajirPoint around yours — nothing more on screen than your business needs.",
+    "badge": "چھ صنعتیں — ایک پلیٹ فارم",
+    "headline": "بنایا گیا",
+    "headlineAccent": "آپ کے کاؤنٹر کے لیے",
+    "sub": "ہر صنعت مختلف انداز سے چلتی ہے۔ ایکسٹینشنز TajirPoint کو آپ کی صنعت کے مطابق ڈھالتی ہیں — اسکرین پر آپ کے کاروبار کی ضرورت سے زیادہ کچھ نہیں۔",
     "cta": {
-      "headline": "See it shaped around your business",
-      "body": "14 days free, every module included. No card required.",
-      "primary": "Start free trial",
-      "secondary": "Browse extensions"
+      "headline": "اسے اپنے کاروبار کے مطابق دیکھیں",
+      "body": "14 دن مفت، ہر ماڈیول شامل۔ کارڈ کی ضرورت نہیں۔",
+      "primary": "مفت ٹرائل شروع کریں",
+      "secondary": "ایکسٹینشنز دیکھیں"
     },
     "industries": {
       "retail": {
-        "name": "General retail",
-        "tag": "GROCERY · APPAREL · HARDWARE",
-        "headline": "Barcode-fast selling with credit built in",
-        "body": "Ring up a queue in seconds, sell by carton, kg or piece with automatic unit conversion, and keep every customer’s running credit balance without a paper register.",
-        "chips": ["Barcode checkout", "Credit ledger", "Unit conversion", "Label printing"],
-        "panelTitle": "WHAT RETAILERS USE MOST",
+        "name": "جنرل ریٹیل",
+        "tag": "کریانہ — ملبوسات — ہارڈ ویئر",
+        "headline": "بارکوڈ سے تیز فروخت، اُدھار شامل",
+        "body": "سیکنڈوں میں قطار نمٹائیں، کارٹن، کلو یا عدد میں بیچیں — یونٹ خودکار تبدیل ہو جاتا ہے — اور ہر گاہک کا چلتا اُدھار بیلنس کاغذی رجسٹر کے بغیر رکھیں۔",
+        "chips": ["بارکوڈ چیک آؤٹ", "اُدھار کھاتہ", "یونٹ تبدیلی", "لیبل پرنٹنگ"],
+        "panelTitle": "ریٹیلرز سب سے زیادہ کیا استعمال کرتے ہیں",
         "feats": [
           {
-            "t": "Split & partial payments",
-            "d": "Part cash, part card — rest on the customer’s account."
+            "t": "تقسیم شدہ اور جزوی ادائیگیاں",
+            "d": "کچھ نقد، کچھ کارڈ — باقی گاہک کے کھاتے میں۔"
           },
           {
-            "t": "Tiered pricing",
-            "d": "Retail, wholesale and dealer prices with quantity breaks."
+            "t": "درجہ بندی والی قیمتیں",
+            "d": "ریٹیل، ہول سیل اور ڈیلر قیمتیں، مقدار کی رعایت کے ساتھ۔"
           },
           {
-            "t": "Low-stock alerts",
-            "d": "Reorder points and purchase suggestions."
+            "t": "کم اسٹاک الرٹ",
+            "d": "دوبارہ آرڈر کی حد اور خریداری کی تجاویز۔"
           },
           {
-            "t": "Variant generator",
-            "d": "Every size × colour SKU created automatically."
+            "t": "ویریئنٹ جنریٹر",
+            "d": "ہر سائز × رنگ کا SKU خودکار بنتا ہے۔"
           },
           {
-            "t": "WhatsApp statements",
-            "d": "Share PDF account statements in one tap."
+            "t": "واٹس ایپ اسٹیٹمنٹ",
+            "d": "ایک ٹیپ میں PDF کھاتہ اسٹیٹمنٹ بھیجیں۔"
           },
           {
-            "t": "Loyalty points",
-            "d": "Earn, redeem, tiers and birthday bonuses."
+            "t": "لائلٹی پوائنٹس",
+            "d": "کمائیں، استعمال کریں، درجے اور سالگرہ بونس۔"
           }
         ]
       },
       "restaurants": {
-        "name": "Restaurants & cafés",
-        "tag": "DINE-IN · TAKEAWAY · DELIVERY",
-        "headline": "From table to kitchen to bill, in sync",
-        "body": "Floor plans and table service at the front, timed orders on kitchen screens at the back, and delivery-app orders flowing into the same queue.",
-        "chips": ["Floor plans", "Kitchen display", "QR self-ordering", "Split bills"],
-        "panelTitle": "WHAT RESTAURANTS USE MOST",
+        "name": "ریسٹورنٹس اور کیفے",
+        "tag": "ڈائن اِن — ٹیک اوے — ڈیلیوری",
+        "headline": "میز سے کچن تک بل تک، سب ہم آہنگ",
+        "body": "سامنے فلور پلان اور ٹیبل سروس، پیچھے کچن اسکرینوں پر وقت کے ساتھ آرڈرز، اور ڈیلیوری ایپ کے آرڈرز اسی قطار میں آتے ہوئے۔",
+        "chips": ["فلور پلان", "کچن ڈسپلے", "QR سیلف آرڈرنگ", "بل تقسیم"],
+        "panelTitle": "ریسٹورنٹس سب سے زیادہ کیا استعمال کرتے ہیں",
         "feats": [
           {
-            "t": "Modifiers & combos",
-            "d": "Add-ons, deals and recipes per dish."
+            "t": "موڈیفائرز اور کومبوز",
+            "d": "فی ڈش ایڈ آنز، ڈیلز اور ترکیبیں۔"
           },
           {
-            "t": "Auto 86-ing",
-            "d": "A dish goes unavailable when an ingredient runs out."
+            "t": "خودکار 86-اِنگ",
+            "d": "جزو ختم ہوتے ہی ڈش دستیاب نہیں رہتی۔"
           },
           {
-            "t": "QR ordering",
-            "d": "Guests order from their phone — no app needed."
+            "t": "QR آرڈرنگ",
+            "d": "مہمان اپنے فون سے آرڈر کریں — ایپ کی ضرورت نہیں۔"
           },
           {
-            "t": "Aggregator inbox",
-            "d": "Foodpanda, Talabat, Careem in one screen."
+            "t": "ایگریگیٹر اِن باکس",
+            "d": "Foodpanda، Talabat، Careem ایک ہی اسکرین میں۔"
           },
           {
-            "t": "Cloud kitchen",
-            "d": "Multiple virtual brands from one kitchen."
+            "t": "کلاؤڈ کچن",
+            "d": "ایک کچن سے کئی ورچوئل برانڈز۔"
           },
           {
-            "t": "Reservations",
-            "d": "Tables, waitlist and kitchen ticket printing."
+            "t": "ریزرویشن",
+            "d": "میزیں، ویٹ لسٹ اور کچن ٹکٹ پرنٹنگ۔"
           }
         ]
       },
       "electronics": {
-        "name": "Electronics & mobile",
-        "tag": "HANDSETS · ACCESSORIES · REPAIRS",
-        "headline": "Every handset tracked, serial by serial",
-        "body": "IMEI and serial tracking across the full lifecycle — purchase, sale, warranty, repair, trade-in — so you always know exactly which unit went where.",
-        "chips": ["IMEI tracking", "Warranty records", "Repair jobs", "Trade-ins"],
-        "panelTitle": "WHAT ELECTRONICS SHOPS USE MOST",
+        "name": "الیکٹرانکس اور موبائل",
+        "tag": "ہینڈ سیٹ — لوازمات — مرمت",
+        "headline": "ہر ہینڈ سیٹ کی، سیریل بہ سیریل نگرانی",
+        "body": "پورے دورانیے میں IMEI اور سیریل ٹریکنگ — خریداری، فروخت، وارنٹی، مرمت، ٹریڈ اِن — تاکہ آپ کو ہمیشہ معلوم ہو کون سا یونٹ کہاں گیا۔",
+        "chips": ["IMEI ٹریکنگ", "وارنٹی ریکارڈ", "مرمت جابز", "ٹریڈ اِن"],
+        "panelTitle": "الیکٹرانکس کی دکانیں سب سے زیادہ کیا استعمال کرتی ہیں",
         "feats": [
           {
-            "t": "Serial lifecycle",
-            "d": "From GRN to sale to warranty claim."
+            "t": "سیریل کا مکمل سفر",
+            "d": "GRN سے فروخت تک اور وارنٹی کلیم تک۔"
           },
           {
-            "t": "Search by IMEI",
-            "d": "Scan or type an IMEI straight into checkout."
+            "t": "IMEI سے تلاش",
+            "d": "IMEI اسکین کریں یا ٹائپ کریں، سیدھا چیک آؤٹ میں۔"
           },
           {
-            "t": "Repair tickets",
-            "d": "Track jobs, parts and labour."
+            "t": "مرمت ٹکٹ",
+            "d": "جابز، پرزے اور مزدوری ٹریک کریں۔"
           },
           {
-            "t": "Trade-in intake",
-            "d": "Buy used stock back into inventory."
+            "t": "ٹریڈ اِن وصولی",
+            "d": "استعمال شدہ اسٹاک واپس انوینٹری میں خریدیں۔"
           },
           {
-            "t": "Supplier ledgers",
-            "d": "Know what you owe each distributor."
+            "t": "سپلائر کھاتے",
+            "d": "جانیں ہر ڈسٹری بیوٹر کو کتنا دینا ہے۔"
           },
           {
-            "t": "Warranty proof",
-            "d": "Purchase record attached to every serial."
+            "t": "وارنٹی ثبوت",
+            "d": "ہر سیریل کے ساتھ خریداری کا ریکارڈ منسلک۔"
           }
         ]
       },
       "pharmacies": {
-        "name": "Pharmacies",
-        "tag": "BATCH · EXPIRY · PRESCRIPTIONS",
-        "headline": "Sell safe. Never sell expired.",
-        "body": "Batch and expiry tracking with first-expiry-first-out picking, expiry alerts before stock dies on the shelf, and expired stock automatically excluded from sale.",
-        "chips": ["FEFO picking", "Expiry alerts", "Drug schedules", "Prescription log"],
-        "panelTitle": "WHAT PHARMACIES USE MOST",
+        "name": "فارمیسیز",
+        "tag": "بیچ — میعاد — نسخے",
+        "headline": "محفوظ بیچیں۔ ایکسپائر کبھی نہیں۔",
+        "body": "بیچ اور میعاد کی نگرانی، پہلے ختم ہونے والا پہلے نکالنے کے اصول کے ساتھ، شیلف پر اسٹاک مرنے سے پہلے الرٹ، اور ایکسپائر اسٹاک خودکار طور پر فروخت سے خارج۔",
+        "chips": ["FEFO پکنگ", "میعاد کے الرٹ", "ڈرگ شیڈول", "نسخہ لاگ"],
+        "panelTitle": "فارمیسیز سب سے زیادہ کیا استعمال کرتی ہیں",
         "feats": [
           {
-            "t": "Batch tracking",
-            "d": "Every unit tied to its batch and expiry date."
+            "t": "بیچ ٹریکنگ",
+            "d": "ہر یونٹ اپنے بیچ اور میعاد سے جڑا ہوا۔"
           },
           {
-            "t": "FEFO by default",
-            "d": "Oldest-expiring stock sells first, automatically."
+            "t": "بطور ڈیفالٹ FEFO",
+            "d": "پہلے ختم ہونے والا اسٹاک خودکار طور پر پہلے بکتا ہے۔"
           },
           {
-            "t": "Schedule control",
-            "d": "Drug schedules and restricted-sale rules."
+            "t": "شیڈول کنٹرول",
+            "d": "ڈرگ شیڈول اور محدود فروخت کے قواعد۔"
           },
           {
-            "t": "Molecule tagging",
-            "d": "Generic and molecule-level search."
+            "t": "مالیکیول ٹیگنگ",
+            "d": "جنرک اور مالیکیول کی سطح پر تلاش۔"
           },
           {
-            "t": "Expiring-stock report",
-            "d": "See what to move before it’s a write-off."
+            "t": "قریب المیعاد اسٹاک رپورٹ",
+            "d": "دیکھیں کیا نکالنا ہے اس سے پہلے کہ نقصان ہو۔"
           },
           {
-            "t": "Prescription records",
-            "d": "A log attached to the sale."
+            "t": "نسخہ ریکارڈ",
+            "d": "فروخت کے ساتھ منسلک لاگ۔"
           }
         ]
       },
       "distribution": {
-        "name": "Distributors & wholesale",
-        "tag": "VAN SALES · ROUTES · WAREHOUSES",
-        "headline": "The truck is a warehouse. Treat it like one.",
-        "body": "Load a van in the morning, sell and collect door-to-door on a route, then reconcile cash, goods and fuel at day end — including what the driver still owes.",
-        "chips": ["Van sales", "Route planning", "Driver reconciliation", "Multi-warehouse"],
-        "panelTitle": "WHAT DISTRIBUTORS USE MOST",
+        "name": "ڈسٹری بیوٹرز اور ہول سیل",
+        "tag": "وین سیلز — روٹس — گودام",
+        "headline": "ٹرک ایک گودام ہے۔ اسے ویسا ہی سمجھیں۔",
+        "body": "صبح وین لوڈ کریں، روٹ پر گھر گھر بیچیں اور وصول کریں، پھر دن کے آخر میں نقدی، مال اور ایندھن کا حساب برابر کریں — بشمول وہ جو ڈرائیور کے ذمے باقی ہے۔",
+        "chips": ["وین سیلز", "روٹ پلاننگ", "ڈرائیور مصالحت", "متعدد گودام"],
+        "panelTitle": "ڈسٹری بیوٹرز سب سے زیادہ کیا استعمال کرتے ہیں",
         "feats": [
           {
-            "t": "Mobile warehouse",
-            "d": "Van stock tracked separately from the godown."
+            "t": "چلتا پھرتا گودام",
+            "d": "وین کا اسٹاک گودام سے الگ ٹریک ہوتا ہے۔"
           },
           {
-            "t": "Day-end settlement",
-            "d": "Cash + goods + fuel reconciled per trip."
+            "t": "دن کے آخر کی تصفیہ",
+            "d": "فی ٹرپ نقدی + مال + ایندھن کا حساب۔"
           },
           {
-            "t": "Per-trip profit",
-            "d": "Margin and outstanding credit by route."
+            "t": "فی ٹرپ منافع",
+            "d": "روٹ کے حساب سے مارجن اور بقایا اُدھار۔"
           },
           {
-            "t": "Bulk pricing",
-            "d": "Dealer price lists and quantity breaks."
+            "t": "بلک پرائسنگ",
+            "d": "ڈیلر پرائس لسٹ اور مقدار کی رعایت۔"
           },
           {
-            "t": "Warehouse transfers",
-            "d": "Move stock between branches with approval."
+            "t": "گودام کے درمیان منتقلی",
+            "d": "منظوری کے ساتھ برانچوں میں اسٹاک منتقل کریں۔"
           },
           {
-            "t": "Proof of delivery",
-            "d": "Confirmed at the customer’s door."
+            "t": "ڈیلیوری کا ثبوت",
+            "d": "گاہک کے دروازے پر تصدیق شدہ۔"
           }
         ]
       },
       "services": {
-        "name": "Services",
-        "tag": "SALONS · CLINICS · GYMS · TUTORS",
-        "headline": "Appointments, memberships, commissions",
-        "body": "Book appointments, bill memberships on a cycle, and pay staff commissions that post straight into the accounts — recurring revenue without the spreadsheet.",
-        "chips": ["Appointments", "Memberships", "Staff commissions", "Recurring billing"],
-        "panelTitle": "WHAT SERVICE BUSINESSES USE MOST",
+        "name": "خدمات",
+        "tag": "سیلون — کلینک — جم — ٹیوٹر",
+        "headline": "اپائنٹمنٹس، ممبرشپس، کمیشن",
+        "body": "اپائنٹمنٹ بک کریں، ممبرشپ کو دورانیے کے حساب سے بل کریں، اور عملے کے کمیشن ادا کریں جو سیدھے کھاتوں میں درج ہوتے ہیں — اسپریڈ شیٹ کے بغیر مسلسل آمدنی۔",
+        "chips": ["اپائنٹمنٹس", "ممبرشپس", "عملے کے کمیشن", "بار بار بلنگ"],
+        "panelTitle": "خدماتی کاروبار سب سے زیادہ کیا استعمال کرتے ہیں",
         "feats": [
           {
-            "t": "Subscription plans",
-            "d": "Billing cycles with grace periods."
+            "t": "سبسکرپشن پلانز",
+            "d": "بلنگ سائیکل، رعایتی مدت کے ساتھ۔"
           },
           {
-            "t": "Auto-block defaulters",
-            "d": "Lapsed members flagged and paused."
+            "t": "نادہندگان خودکار بلاک",
+            "d": "میعاد ختم شدہ ممبران نشان زد اور معطل۔"
           },
           {
-            "t": "Commission rules",
-            "d": "Per-staff, per-service commission tracking."
+            "t": "کمیشن کے قواعد",
+            "d": "فی ملازم، فی سروس کمیشن کی نگرانی۔"
           },
           {
-            "t": "Shift scheduling",
-            "d": "Rosters, attendance and leave approvals."
+            "t": "شفٹ شیڈولنگ",
+            "d": "روسٹر، حاضری اور چھٹی کی منظوری۔"
           },
           {
-            "t": "Payroll built in",
-            "d": "Prorated by attendance, posted to the books."
+            "t": "پے رول شامل",
+            "d": "حاضری کے تناسب سے، کھاتوں میں درج۔"
           },
           {
-            "t": "Client history",
-            "d": "Every visit and payment on one record."
+            "t": "کلائنٹ ہسٹری",
+            "d": "ہر وزٹ اور ادائیگی ایک ہی ریکارڈ پر۔"
           }
         ]
       }
@@ -794,195 +794,195 @@
   },
   "extensions": {
     "meta": {
-      "title": "Extensions — The TajirPoint marketplace",
-      "description": "31 extensions installed per shop: verticals, payments, accounting, compliance, e-commerce, shipping and customer tools."
+      "title": "ایکسٹینشنز — TajirPoint مارکیٹ پلیس",
+      "description": "ہر دکان کے لیے 31 ایکسٹینشنز: شعبے، ادائیگیاں، اکاؤنٹنگ، تعمیل، ای-کامرس، شپنگ اور کسٹمر ٹولز۔"
     },
-    "badge": "MARKETPLACE · {count} EXTENSIONS",
-    "headline": "The extension",
-    "headlineAccent": "marketplace",
-    "sub": "Install what your business needs, per shop. The interface only shows what's switched on — a small store never sees restaurant or payroll screens.",
-    "filterAll": "All",
+    "badge": "مارکیٹ پلیس — {count} ایکسٹینشنز",
+    "headline": "ایکسٹینشن",
+    "headlineAccent": "مارکیٹ پلیس",
+    "sub": "جو آپ کے کاروبار کو چاہیے وہی انسٹال کریں، ہر دکان کے لیے الگ۔ انٹرفیس صرف وہی دکھاتا ہے جو آن ہو — چھوٹی دکان کو ریسٹورنٹ یا پے رول اسکرینیں کبھی نظر نہیں آتیں۔",
+    "filterAll": "تمام",
     "filters": {
-      "verticals": "Verticals",
-      "payments": "Payments",
-      "accounting": "Accounting",
-      "compliance": "Compliance",
-      "ecommerce": "E-commerce",
-      "shipping": "Shipping",
-      "customer": "Customer tools"
+      "verticals": "شعبے",
+      "payments": "ادائیگیاں",
+      "accounting": "اکاؤنٹنگ",
+      "compliance": "تعمیل",
+      "ecommerce": "ای-کامرس",
+      "shipping": "شپنگ",
+      "customer": "کسٹمر ٹولز"
     },
     "notes": {
-      "validating": "In final validation",
-      "newer": "Newer integration"
+      "validating": "حتمی جانچ میں",
+      "newer": "نیا انٹیگریشن"
     },
     "cta": {
-      "headline": "Every extension. One price.",
-      "body": "No per-module upsells. Install and uninstall freely during your 14-day trial.",
-      "primary": "See pricing"
+      "headline": "ہر ایکسٹینشن۔ ایک قیمت۔",
+      "body": "فی ماڈیول کوئی اضافی فروخت نہیں۔ اپنے 14 دن کے ٹرائل میں آزادانہ انسٹال اور اَن انسٹال کریں۔",
+      "primary": "قیمتیں دیکھیں"
     },
     "items": {
       "restaurant": {
-        "name": "Restaurant",
-        "desc": "Tables, floor plan, kitchen display, modifiers, split bills, QR ordering."
+        "name": "ریسٹورنٹ",
+        "desc": "میزیں، فلور پلان، کچن ڈسپلے، موڈیفائرز، بل تقسیم، QR آرڈرنگ۔"
       },
       "route-dispatch": {
-        "name": "Route Dispatch & Delivery",
-        "desc": "Van sales, routes, driver cash reconciliation, proof of delivery."
+        "name": "روٹ ڈسپیچ اور ڈیلیوری",
+        "desc": "وین سیلز، روٹس، ڈرائیور نقدی مصالحت، ڈیلیوری کا ثبوت۔"
       },
       "pharmacy": {
-        "name": "Pharmacy Pack",
-        "desc": "Drug schedules, molecule tracking, expiry alerts, prescription log."
+        "name": "فارمیسی پیک",
+        "desc": "ڈرگ شیڈول، مالیکیول ٹریکنگ، میعاد کے الرٹ، نسخہ لاگ۔"
       },
       "hr-payroll": {
-        "name": "HR & Payroll",
-        "desc": "Employees, attendance, leave and payroll posted to the books."
+        "name": "ایچ آر اور پے رول",
+        "desc": "ملازمین، حاضری، چھٹی اور پے رول جو کھاتوں میں درج ہوتا ہے۔"
       },
       "cloud-kitchen": {
-        "name": "Cloud Kitchen Pack",
-        "desc": "Multiple virtual brands from one shared kitchen."
+        "name": "کلاؤڈ کچن پیک",
+        "desc": "ایک مشترکہ کچن سے کئی ورچوئل برانڈز۔"
       },
       "website-builder": {
-        "name": "Website Builder",
-        "desc": "A public online store generated from your products."
+        "name": "ویب سائٹ بلڈر",
+        "desc": "آپ کی مصنوعات سے بنایا گیا عوامی آن لائن اسٹور۔"
       },
       "stripe": {
         "name": "Stripe",
-        "desc": "Global cards, Apple Pay and Google Pay."
+        "desc": "عالمی کارڈز، Apple Pay اور Google Pay۔"
       },
       "jazzcash": {
         "name": "JazzCash",
-        "desc": "Mobile wallet payments at the till and online."
+        "desc": "ٹِل پر اور آن لائن موبائل والٹ ادائیگیاں۔"
       },
       "easypaisa": {
         "name": "Easypaisa",
-        "desc": "Mobile wallet payments at the till and online."
+        "desc": "ٹِل پر اور آن لائن موبائل والٹ ادائیگیاں۔"
       },
       "hblpay": {
         "name": "HBLPay",
-        "desc": "Card payments with 3-D Secure."
+        "desc": "3-D Secure کے ساتھ کارڈ ادائیگیاں۔"
       },
       "paypal": {
         "name": "PayPal",
-        "desc": "International card and PayPal balance payments."
+        "desc": "بین الاقوامی کارڈ اور PayPal بیلنس سے ادائیگیاں۔"
       },
       "razorpay": {
         "name": "Razorpay",
-        "desc": "Cards and instant bank transfers."
+        "desc": "کارڈز اور فوری بینک ٹرانسفر۔"
       },
       "square": {
         "name": "Square",
-        "desc": "Card payments via Square."
+        "desc": "Square کے ذریعے کارڈ ادائیگیاں۔"
       },
       "accounting-gl": {
-        "name": "Accounting & General Ledger",
-        "desc": "Full double-entry books, statements and period close."
+        "name": "اکاؤنٹنگ اور جنرل لیجر",
+        "desc": "مکمل دوہرے اندراج کے کھاتے، اسٹیٹمنٹ اور مدت کی کلوزنگ۔"
       },
       "cash-management": {
-        "name": "Cash Management",
-        "desc": "Drawers, safes and petty-cash floats with variance tracking."
+        "name": "کیش مینجمنٹ",
+        "desc": "دراز، تجوریاں اور پیٹی کیش فلوٹ، فرق کی نگرانی کے ساتھ۔"
       },
       "quickbooks": {
         "name": "QuickBooks Online",
-        "desc": "Push sales, payments and expenses to QuickBooks."
+        "desc": "فروخت، ادائیگیاں اور اخراجات QuickBooks کو بھیجیں۔"
       },
       "fbr": {
-        "name": "Tax Authority E-Invoicing",
-        "desc": "Real-time e-invoicing with QR on receipts, per country."
+        "name": "ٹیکس اتھارٹی ای-انوائسنگ",
+        "desc": "ہر ملک کے مطابق، رسیدوں پر QR کے ساتھ فوری ای-انوائسنگ۔"
       },
       "age-verification": {
-        "name": "Age Verification",
-        "desc": "ID check at checkout for restricted items."
+        "name": "عمر کی تصدیق",
+        "desc": "محدود اشیاء کے لیے چیک آؤٹ پر شناخت کی جانچ۔"
       },
       "shopify": {
         "name": "Shopify",
-        "desc": "Two-way sync of products, stock and orders."
+        "desc": "مصنوعات، اسٹاک اور آرڈرز کی دو طرفہ سنک۔"
       },
       "woocommerce": {
         "name": "WooCommerce",
-        "desc": "Keep products, stock and orders in sync."
+        "desc": "مصنوعات، اسٹاک اور آرڈرز ہم آہنگ رکھیں۔"
       },
       "magento": {
         "name": "Magento",
-        "desc": "Keep products, stock and orders in sync."
+        "desc": "مصنوعات، اسٹاک اور آرڈرز ہم آہنگ رکھیں۔"
       },
       "wix": {
         "name": "Wix",
-        "desc": "Keep products, stock and orders in sync."
+        "desc": "مصنوعات، اسٹاک اور آرڈرز ہم آہنگ رکھیں۔"
       },
       "bigcommerce": {
         "name": "BigCommerce",
-        "desc": "Keep products, stock and orders in sync."
+        "desc": "مصنوعات، اسٹاک اور آرڈرز ہم آہنگ رکھیں۔"
       },
       "leopards": {
         "name": "Leopards Courier",
-        "desc": "Book shipments, print labels, track deliveries."
+        "desc": "شپمنٹ بک کریں، لیبل پرنٹ کریں، ڈیلیوری ٹریک کریں۔"
       },
       "tcs": {
         "name": "TCS Express",
-        "desc": "Book shipments, print labels, track deliveries."
+        "desc": "شپمنٹ بک کریں، لیبل پرنٹ کریں، ڈیلیوری ٹریک کریں۔"
       },
       "postex": {
         "name": "PostEx",
-        "desc": "Book shipments, print labels, track deliveries."
+        "desc": "شپمنٹ بک کریں، لیبل پرنٹ کریں، ڈیلیوری ٹریک کریں۔"
       },
       "customer-portal": {
-        "name": "Customer Portal",
-        "desc": "Credit customers view their ledger and pay online."
+        "name": "کسٹمر پورٹل",
+        "desc": "اُدھار والے گاہک اپنا کھاتہ دیکھیں اور آن لائن ادائیگی کریں۔"
       },
       "delivery-aggregator": {
-        "name": "Delivery Aggregator",
-        "desc": "Delivery-app orders from every platform in one inbox."
+        "name": "ڈیلیوری ایگریگیٹر",
+        "desc": "ہر پلیٹ فارم کے ڈیلیوری ایپ آرڈرز ایک اِن باکس میں۔"
       },
       "coupons": {
-        "name": "Coupons & Discounts",
-        "desc": "Codes that work in-store and online, with usage caps."
+        "name": "کوپن اور رعایتیں",
+        "desc": "ایسے کوڈز جو دکان اور آن لائن دونوں پر چلیں، استعمال کی حد کے ساتھ۔"
       },
       "time-promos": {
-        "name": "Time-Based Promotions",
-        "desc": "Happy hours, seasonal offers and weekend sales on a schedule."
+        "name": "وقت پر مبنی پروموشنز",
+        "desc": "ہیپی آورز، موسمی پیشکشیں اور ویک اینڈ سیلز، شیڈول کے مطابق۔"
       },
       "whatsapp-ai": {
-        "name": "WhatsApp AI",
-        "desc": "An assistant that answers customers over WhatsApp."
+        "name": "واٹس ایپ AI",
+        "desc": "ایک اسسٹنٹ جو واٹس ایپ پر گاہکوں کو جواب دیتا ہے۔"
       }
     }
   },
   "footer": {
-    "tagline": "Point of sale and complete back office for merchants everywhere — localised per country.",
-    "product": "Product",
-    "features": "FEATURES",
-    "industries": "INDUSTRIES",
-    "company": "Company",
+    "tagline": "ہر جگہ کے تاجروں کے لیے پوائنٹ آف سیل اور مکمل بیک آفس — ہر ملک کے مطابق ڈھالا گیا۔",
+    "product": "پروڈکٹ",
+    "features": "خصوصیات",
+    "industries": "صنعتیں",
+    "company": "کمپنی",
     "links": {
-      "platform": "Platform",
-      "extensions": "Extensions",
-      "pricing": "Pricing",
-      "retail": "Retail",
-      "restaurants": "Restaurants",
-      "distribution": "Distribution",
-      "contact": "Contact sales",
-      "signIn": "Sign in",
-      "developers": "API docs",
-      "about": "About",
-      "privacy": "Privacy",
-      "terms": "Terms",
-      "onlineStore": "Online store",
-      "payments": "Payment gateways",
-      "ecommerce": "E-commerce sync",
-      "couriers": "Couriers & shipping",
-      "tax": "Tax & compliance",
-      "allExtensions": "All 31 extensions",
-      "security": "Security"
+      "platform": "پلیٹ فارم",
+      "extensions": "ایکسٹینشنز",
+      "pricing": "قیمتیں",
+      "retail": "ریٹیل",
+      "restaurants": "ریسٹورنٹس",
+      "distribution": "تقسیم کاری",
+      "contact": "سیلز سے رابطہ",
+      "signIn": "سائن اِن",
+      "developers": "API دستاویزات",
+      "about": "تعارف",
+      "privacy": "پرائیویسی",
+      "terms": "شرائط",
+      "onlineStore": "آن لائن اسٹور",
+      "payments": "پیمنٹ گیٹ ویز",
+      "ecommerce": "ای-کامرس سنک",
+      "couriers": "کورئیر اور شپنگ",
+      "tax": "ٹیکس اور تعمیل",
+      "allExtensions": "تمام 31 ایکسٹینشنز",
+      "security": "سیکیورٹی"
     },
-    "copyright": "© 2026 TajirPoint · An AmalAxis product",
-    "badge": "Built for merchants everywhere.",
-    "strapline": "POINT OF SALE · MERCHANT OS",
+    "copyright": "© 2026 TajirPoint — ایک AmalAxis پروڈکٹ",
+    "badge": "ہر جگہ کے تاجروں کے لیے بنایا گیا۔",
+    "strapline": "پوائنٹ آف سیل — مرچنٹ OS",
     "chipEnglish": "English",
-    "chipLocal": "Local languages by country",
-    "solutions": "Solutions",
-    "extensions": "Extensions"
+    "chipLocal": "ملک کے مطابق مقامی زبانیں",
+    "solutions": "حل",
+    "extensions": "ایکسٹینشنز"
   },
   "common": {
-    "skipToContent": "Skip to main content"
+    "skipToContent": "مرکزی مواد پر جائیں"
   }
 }

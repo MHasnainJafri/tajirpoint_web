@@ -1,15 +1,24 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 
 import { CodeBlock } from "@/components/marketing/CodeBlock";
 import { API_BASE } from "@/lib/docs/examples";
 import { buildMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Pagination — Tajir Point API",
-  description:
-    "List endpoints are cursor-paginated: 50 items by default, 200 max. Follow the opaque next URL rather than constructing cursors.",
-  path: "/docs/pagination",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    title: "Pagination — Tajir Point API",
+    description:
+      "List endpoints are cursor-paginated: 50 items by default, 200 max. Follow the opaque next URL rather than constructing cursors.",
+    path: "/docs/pagination",
+    locale,
+  });
+}
 
 const RESPONSE = `{
   "next": "${API_BASE}/catalog/products/?cursor=cD0yMDI2LTA3LTExVDA5…",
@@ -35,7 +44,10 @@ while (url) {
   url = page.next;
 }`;
 
-export default function PaginationPage() {
+export default async function PaginationPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <div className="flex max-w-[860px] flex-col gap-10">
       <header className="flex flex-col gap-3">

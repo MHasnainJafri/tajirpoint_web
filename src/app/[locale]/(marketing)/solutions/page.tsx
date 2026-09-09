@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
-import { useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Icon } from "@/components/design/Icon";
 import { PillBadge, CtaPanel } from "@/components/design/primitives";
@@ -8,18 +7,27 @@ import { VERTICALS } from "@/lib/design/catalog";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { siteConfig } from "@/lib/config/site";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("solutions.meta");
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "solutions.meta" });
   return buildMetadata({
     title: t("title"),
     description: t("description"),
     path: "/solutions",
+    locale,
   });
 }
 
-export default function SolutionsPage() {
-  const t = useTranslations("solutions");
-  const tInd = useTranslations("solutions.industries");
+export default async function SolutionsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  const t = await getTranslations("solutions");
+  const tInd = await getTranslations("solutions.industries");
 
   return (
     <>

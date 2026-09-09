@@ -1,16 +1,25 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import { AlertTriangle, RefreshCw } from "lucide-react";
 
 import { CodeBlock } from "@/components/marketing/CodeBlock";
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Webhooks — Tajir Point API",
-  description:
-    "Register an HTTPS endpoint and get signed POSTs when a sale, refund, payment, purchase or low-stock event happens. HMAC-SHA256 signatures, 5 retries with backoff.",
-  path: "/docs/webhooks",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    title: "Webhooks — Tajir Point API",
+    description:
+      "Register an HTTPS endpoint and get signed POSTs on sale, refund, payment, purchase or low-stock events. HMAC-SHA256 signatures, 5 retries with backoff.",
+    path: "/docs/webhooks",
+    locale,
+  });
+}
 
 const WEBHOOKS_URL = `${siteConfig.dashboardUrl}/settings/webhooks`;
 
@@ -85,7 +94,10 @@ def verify(raw_body: bytes, header: str, secret: str) -> bool:
     ).hexdigest()
     return hmac.compare_digest(expected, header or "")`;
 
-export default function WebhooksPage() {
+export default async function WebhooksPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <div className="flex max-w-[860px] flex-col gap-10">
       <header className="flex flex-col gap-3">

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Pricing } from "@/components/marketing/landing/Pricing";
 import { Faq } from "@/components/marketing/landing/Faq";
 import { FinalCta } from "@/components/marketing/landing/FinalCta";
@@ -8,16 +8,27 @@ import { FAQ_TABS, TRIAL_MONTHS } from "@/lib/design/landing";
 import { faqSchema } from "@/lib/seo/schemas";
 import { buildMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Pricing — Free for your first 3 months",
-  description:
-    "Every module, every industry pack and every device, free for three months. No card, no per-module upsells, no transaction fees. Talk to us about anything bigger.",
-  path: "/pricing",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    title: "Pricing — Free for your first 3 months",
+    description:
+      "Every module, every industry pack and every device, free for three months. No card, no per-module upsells, no transaction fees.",
+    path: "/pricing",
+    locale,
+  });
+}
 
-export default function PricingPage() {
-  const t = useTranslations("landing.pricing");
-  const tFaq = useTranslations("landing.faq");
+export default async function PricingPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
+  const t = await getTranslations("landing.pricing");
+  const tFaq = await getTranslations("landing.faq");
 
   // Flattened from the grouped FAQ so the structured data always matches what
   // the page actually renders — it drifted once already when the shape changed.

@@ -1,18 +1,30 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import { PillBadge } from "@/components/design/primitives";
 import { buildMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Privacy Policy",
-  description:
-    "How Tajir Point collects, uses, and protects your personal and business data. Covers data residency, retention periods, and your rights.",
-  path: "/privacy",
-  noIndex: false,
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    title: "Privacy Policy",
+    description:
+      "How Tajir Point collects, uses, and protects your personal and business data. Covers data residency, retention periods, and your rights.",
+    path: "/privacy",
+    noIndex: false,
+    locale,
+  });
+}
 
 const LAST_UPDATED = "1 May 2025";
 
-export default function PrivacyPage() {
+export default async function PrivacyPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-[var(--color-bg)]">
       <div

@@ -1,792 +1,792 @@
 {
   "nav": {
-    "platform": "Platform",
-    "features": "Features",
-    "solutions": "Solutions",
-    "extensions": "Extensions",
-    "pricing": "Pricing",
-    "faq": "FAQ",
-    "signIn": "Sign in",
-    "bookDemo": "Book a demo",
-    "openMenu": "Open menu",
-    "closeMenu": "Close menu",
+    "platform": "المنصة",
+    "features": "المزايا",
+    "solutions": "الحلول",
+    "extensions": "الإضافات",
+    "pricing": "الأسعار",
+    "faq": "الأسئلة الشائعة",
+    "signIn": "تسجيل الدخول",
+    "bookDemo": "احجز عرضًا توضيحيًا",
+    "openMenu": "فتح القائمة",
+    "closeMenu": "إغلاق القائمة",
     "megaSolutions": {
-      "badge": "SIX INDUSTRIES",
-      "title": "One platform, shaped around your counter",
-      "desc": "Each vertical only sees its own screens — a grocery store never meets a kitchen display.",
-      "cta": "Not sure which fits? Talk to us",
-      "groupA": "SELL PRODUCTS",
-      "groupB": "SERVE & DISTRIBUTE"
+      "badge": "ست صناعات",
+      "title": "منصة واحدة، مصمّمة حول نقطة البيع لديك",
+      "desc": "كل قطاع يرى شاشاته فقط — متجر البقالة لا يرى شاشة المطبخ أبدًا.",
+      "cta": "لست متأكدًا أيها يناسبك؟ تحدث إلينا",
+      "groupA": "بيع المنتجات",
+      "groupB": "الخدمات والتوزيع"
     },
     "megaFeatures": {
-      "badge": "Signature feature",
-      "title": "Digital credit ledger",
-      "desc": "The credit notebook every shop keeps — real-time, shareable on WhatsApp, impossible to fudge.",
-      "cta": "See how it works",
-      "groupMoney": "Money",
-      "groupOps": "Run & grow",
+      "badge": "الميزة المميزة",
+      "title": "دفتر الآجل الرقمي",
+      "desc": "دفتر الديون الذي يحتفظ به كل متجر — فوري، قابل للمشاركة عبر واتساب، ويستحيل التلاعب به.",
+      "cta": "شاهد كيف يعمل",
+      "groupMoney": "المال",
+      "groupOps": "التشغيل والنمو",
       "items": {
         "khata": {
-          "name": "Digital Khata",
-          "desc": "Real-time customer credit ledger"
+          "name": "الدفتر الرقمي",
+          "desc": "سجل ائتمان العملاء الفوري"
         },
         "accounting": {
-          "name": "Accounting",
-          "desc": "Double-entry books, automatic"
+          "name": "المحاسبة",
+          "desc": "قيد مزدوج، تلقائيًا"
         },
         "eInvoicing": {
-          "name": "E-Invoicing",
-          "desc": "Fiscal compliance built in"
+          "name": "الفوترة الإلكترونية",
+          "desc": "امتثال ضريبي مدمج"
         },
         "offline": {
-          "name": "Offline POS",
-          "desc": "Keep selling through outages"
+          "name": "نقاط بيع دون إنترنت",
+          "desc": "استمر في البيع أثناء الانقطاع"
         },
         "vanSales": {
-          "name": "Van Sales",
-          "desc": "Route selling & reconciliation"
+          "name": "البيع المتنقل",
+          "desc": "البيع بالمسارات والتسوية"
         }
       }
     },
     "megaExtensions": {
-      "badge": "MARKETPLACE",
-      "title": "31 extensions, installed per shop",
-      "desc": "The interface only shows what you switch on. Most are free; a few are priced per month.",
-      "cta": "Browse all 31",
-      "groupPacks": "Popular extensions",
-      "groupPayments": "PAYMENTS",
-      "groupIntegrations": "INTEGRATIONS",
-      "live": "LIVE",
-      "soon": "SOON",
+      "badge": "المتجر",
+      "title": "31 إضافة، تُفعَّل لكل متجر",
+      "desc": "الواجهة تعرض ما تُفعّله فقط. معظمها مجاني؛ وبعضها بسعر شهري.",
+      "cta": "تصفح الـ 31 جميعها",
+      "groupPacks": "الإضافات الشائعة",
+      "groupPayments": "المدفوعات",
+      "groupIntegrations": "التكاملات",
+      "live": "متاح",
+      "soon": "قريبًا",
       "integrations": {
         "quickbooks": "QuickBooks Online",
         "shopify": "Shopify",
         "woocommerce": "WooCommerce",
-        "couriers": "Courier & shipping",
-        "delivery-aggregator": "Delivery Aggregator",
-        "whatsapp-ai": "WhatsApp AI",
-        "fbr": "Tax e-invoicing"
+        "couriers": "الشحن والتوصيل",
+        "delivery-aggregator": "منصات التوصيل",
+        "whatsapp-ai": "واتساب AI",
+        "fbr": "الفوترة الإلكترونية الضريبية"
       }
     },
-    "product": "Product",
-    "resources": "Resources",
-    "startTrial": "Start free trial",
-    "chip": "Point of sale",
+    "product": "المنتج",
+    "resources": "المصادر",
+    "startTrial": "ابدأ التجربة المجانية",
+    "chip": "نقاط البيع",
     "megaResources": {
       "items": {
         "docs": {
-          "title": "API docs & webhooks",
-          "sub": "Public REST API, signed webhooks, API keys."
+          "title": "وثائق API وWebhooks",
+          "sub": "واجهة REST عامة، وWebhooks موقّعة، ومفاتيح API."
         },
         "demo": {
-          "title": "Book a demo",
-          "sub": "Twenty minutes, in your language, on your own data."
+          "title": "احجز عرضًا توضيحيًا",
+          "sub": "عشرون دقيقة، بلغتك، وعلى بياناتك."
         },
         "security": {
-          "title": "Security",
-          "sub": "Isolation, roles, two-factor and the audit log."
+          "title": "الأمان",
+          "sub": "العزل، والأدوار، والتحقق بخطوتين، وسجل التدقيق."
         },
         "about": {
-          "title": "About us",
-          "sub": "Who builds TajirPoint, and why."
+          "title": "من نحن",
+          "sub": "من يبني TajirPoint، ولماذا."
         },
         "contact": {
-          "title": "Contact sales",
-          "sub": "WhatsApp, call, or send us a question."
+          "title": "تواصل مع المبيعات",
+          "sub": "واتساب أو اتصال أو أرسل سؤالك."
         }
       }
     },
-    "freeTrial": "Free trial"
+    "freeTrial": "تجربة مجانية"
   },
   "landing": {
     "meta": {
-      "title": "TajirPoint — The point of sale that runs the entire business",
-      "description": "POS, inventory, purchasing, credit ledger, accounting, staff, delivery and an online store. One platform, one login, 31 extensions."
+      "title": "TajirPoint — نقطة البيع التي تدير عملك بالكامل",
+      "description": "نقاط بيع، ومخزون، ومشتريات، ودفتر آجل، ومحاسبة، وموظفون، وتوصيل، ومتجر إلكتروني. منصة واحدة، وتسجيل دخول واحد، و31 إضافة."
     },
     "hero": {
-      "badge": "Point of sale & back office · Built for local markets worldwide",
-      "headline": "The point of sale that runs",
-      "headlineAccent": "your whole business.",
-      "sub": "TajirPoint is a complete point-of-sale system — and everything behind it. The counter, stock, customer credit, accounting, staff, delivery and your online store — one login, in your language and currency. And it keeps selling when the internet drops.",
-      "ctaPrimary": "Start 14-day free trial",
-      "ctaSecondary": "See how it works",
-      "note": "No card required · Every module included · Cancel anytime",
+      "badge": "نقاط بيع ومكتب خلفي — مصمّم للأسواق المحلية حول العالم",
+      "headline": "نقطة البيع التي تدير",
+      "headlineAccent": "عملك بالكامل.",
+      "sub": "‏TajirPoint نظام نقاط بيع متكامل — وكل ما خلفه. الكاشير، والمخزون، وائتمان العملاء، والمحاسبة، والموظفون، والتوصيل، ومتجرك الإلكتروني — بتسجيل دخول واحد، بلغتك وعملتك. ويستمر في البيع عند انقطاع الإنترنت.",
+      "ctaPrimary": "ابدأ تجربة مجانية 14 يومًا",
+      "ctaSecondary": "شاهد كيف يعمل",
+      "note": "لا حاجة لبطاقة — كل الوحدات مشمولة — ألغِ في أي وقت",
       "cards": {
         "sales": {
-          "title": "Sales today",
-          "branches": "3 branches"
+          "title": "مبيعات اليوم",
+          "branches": "3 فروع"
         },
         "credit": {
-          "title": "Customer credit",
-          "owed": "owed by 38 customers",
-          "reminders": "6 reminders sent today"
+          "title": "ائتمان العملاء",
+          "owed": "مستحقة على 38 عميلًا",
+          "reminders": "أُرسل 6 تذكيرات اليوم"
         },
         "offline": {
-          "title": "Offline",
-          "queued": "queued since 11:42 — still selling",
-          "syncs": "Syncs when back online"
+          "title": "دون اتصال",
+          "queued": "في الانتظار منذ 11:42 — والبيع مستمر",
+          "syncs": "تتم المزامنة عند عودة الاتصال"
         },
         "lang": {
-          "title": "Your language, your currency",
+          "title": "لغتك، وعملتك",
           "chipEnglish": "English",
-          "chipLocal": "+ local languages",
-          "chipCurrency": "Multi-currency",
-          "body": "Languages, tax rules and payment methods follow your country. Right-to-left layouts included."
+          "chipLocal": "+ لغات محلية",
+          "chipCurrency": "عملات متعددة",
+          "body": "اللغات وقواعد الضريبة وطرق الدفع تتبع دولتك. وتخطيطات من اليمين إلى اليسار مشمولة."
         }
       }
     },
     "replaces": {
-      "eyebrow": "One platform instead of five",
+      "eyebrow": "منصة واحدة بدل خمس",
       "items": {
-        "till": "POS till",
-        "notebook": "Paper credit notebook",
-        "excel": "Excel stock sheet",
-        "ledger": "Accountant's ledger",
-        "whatsapp": "WhatsApp order chaos"
+        "till": "صندوق نقاط البيع",
+        "notebook": "دفتر الديون الورقي",
+        "excel": "جدول المخزون في Excel",
+        "ledger": "دفتر المحاسب",
+        "whatsapp": "فوضى الطلبات على واتساب"
       },
-      "body": "One sale updates stock, the customer's credit balance, the accounting ledger and the tax record in a single action — no re-typing, no month-end surprises."
+      "body": "عملية بيع واحدة تُحدّث المخزون، ورصيد ائتمان العميل، ودفتر المحاسبة، والسجل الضريبي دفعة واحدة — بلا إعادة إدخال، وبلا مفاجآت في نهاية الشهر."
     },
     "signature": {
-      "eyebrow": "Signature features",
-      "headline": "Five things most POS systems get wrong",
-      "sub": "Built for how shops actually run — credit, outages, local taxes and the truck that leaves at 7 am.",
+      "eyebrow": "المزايا المميزة",
+      "headline": "خمسة أمور تخطئ فيها معظم أنظمة نقاط البيع",
+      "sub": "مبني على طريقة عمل المتاجر فعليًا — الآجل، والانقطاعات، والضرائب المحلية، والشاحنة التي تنطلق في السابعة صباحًا.",
       "khata": {
-        "label": "01 · Digital credit ledger",
-        "title": "The credit notebook, made tamper-proof",
-        "body": "Every sale, payment and adjustment posts automatically with a running balance the shopkeeper can't accidentally fudge and the customer can't dispute. Share a PDF statement over WhatsApp in one tap.",
+        "label": "01 — دفتر الآجل الرقمي",
+        "title": "دفتر الديون، بلا إمكانية تلاعب",
+        "body": "كل عملية بيع ودفع وتسوية تُقيَّد تلقائيًا برصيد جارٍ لا يستطيع البائع تغييره سهوًا ولا العميل إنكاره. شارك كشف حساب PDF عبر واتساب بضغطة واحدة.",
         "bullets": {
-          "0": "Credit limits with approaching-limit alerts",
-          "1": "30 / 60 / 90-day aging",
-          "2": "Supplier credit and advances too",
-          "3": "WhatsApp statements & reminders"
+          "0": "حدود ائتمانية مع تنبيه عند الاقتراب منها",
+          "1": "أعمار ديون 30 / 60 / 90 يومًا",
+          "2": "ائتمان الموردين والدفعات المقدمة أيضًا",
+          "3": "كشوف وتذكيرات عبر واتساب"
         },
         "card": {
-          "ledgerOf": "Credit ledger · Northgate General Store",
-          "balanceDue": "Balance due",
-          "date": "Date",
-          "detail": "Detail",
-          "drcr": "Dr / Cr",
-          "balance": "Balance",
-          "limit": "Credit limit {amount}",
-          "used": "{percent}% used",
-          "share": "Share statement on WhatsApp",
-          "remind": "Send reminder"
+          "ledgerOf": "دفتر الآجل — متجر نورث غيت العام",
+          "balanceDue": "الرصيد المستحق",
+          "date": "التاريخ",
+          "detail": "التفصيل",
+          "drcr": "مدين / دائن",
+          "balance": "الرصيد",
+          "limit": "الحد الائتماني {amount}",
+          "used": "{percent}% مستخدَم",
+          "share": "شارك الكشف عبر واتساب",
+          "remind": "أرسل تذكيرًا"
         }
       },
       "accounting": {
-        "label": "02 · Accounting on autopilot",
-        "title": "Books that write themselves",
-        "body": "A real double-entry general ledger posts from every sale, purchase, payment, expense and payroll run. You never touch a journal entry; your accountant opens clean books.",
+        "label": "02 — محاسبة تلقائية",
+        "title": "دفاتر تكتب نفسها",
+        "body": "دفتر أستاذ عام بقيد مزدوج حقيقي يُقيَّد من كل بيع وشراء ودفع ومصروف ومسيّر رواتب. لن تلمس قيد يومية أبدًا؛ ومحاسبك يفتح دفاتر نظيفة.",
         "bullets": {
-          "0": "Bank statement import & reconciliation",
-          "1": "Cash drawers, safes & petty cash",
-          "2": "Accounting periods & close",
-          "3": "QuickBooks Online sync"
+          "0": "استيراد كشف الحساب البنكي والتسوية",
+          "1": "أدراج النقد والخزائن والمصروف النثري",
+          "2": "الفترات المحاسبية والإقفال",
+          "3": "مزامنة QuickBooks Online"
         },
         "card": {
-          "posted": "Posted automatically",
-          "account": "Account",
-          "debit": "Debit",
-          "credit": "Credit",
-          "balanced": "Balanced"
+          "posted": "مُقيَّد تلقائيًا",
+          "account": "الحساب",
+          "debit": "مدين",
+          "credit": "دائن",
+          "balanced": "متوازن"
         }
       },
       "van": {
-        "label": "03 · Van sales & distribution",
-        "title": "Load the truck. Sell the route. Reconcile by evening.",
-        "body": "Treat a vehicle as a mobile warehouse: load stock, sell and collect cash door-to-door — credit sales included — then match cash, goods and fuel at day end, with any shortfall on the driver's account.",
+        "label": "03 — البيع المتنقل والتوزيع",
+        "title": "حمِّل الشاحنة. بِع المسار. وسوِّ الحساب مساءً.",
+        "body": "تعامل مع المركبة كمستودع متنقل: حمِّل البضاعة، وبِع واجمع النقد من الباب إلى الباب — بما في ذلك البيع الآجل — ثم طابق النقد والبضاعة والوقود في نهاية اليوم، وأي عجز يُقيَّد على حساب السائق.",
         "bullets": {
-          "0": "Route & stop planning",
-          "1": "Driver cash reconciliation",
-          "2": "Fuel & mileage with anomaly flags",
-          "3": "Per-trip profit report"
+          "0": "تخطيط المسارات والمحطات",
+          "1": "تسوية نقدية السائق",
+          "2": "الوقود والمسافة مع تنبيهات الشذوذ",
+          "3": "تقرير ربح لكل رحلة"
         },
         "card": {
-          "progress": "In progress · 14 / 18 stops",
-          "cash": "Cash collected",
-          "credit": "Credit sales",
-          "variance": "Variance"
+          "progress": "جارٍ — 14 / 18 محطة",
+          "cash": "النقد المُحصَّل",
+          "credit": "المبيعات الآجلة",
+          "variance": "الفرق"
         }
       },
       "offline": {
-        "label": "04 · Works offline",
-        "title": "A dropped connection isn't a reason to stop selling",
-        "body": "When the internet drops, the till keeps ringing sales and syncs everything back safely when it returns — no duplicates, no lost transactions.",
+        "label": "04 — يعمل دون إنترنت",
+        "title": "انقطاع الاتصال ليس سببًا لإيقاف البيع",
+        "body": "عند انقطاع الإنترنت يستمر الصندوق في تسجيل المبيعات، ثم يزامن كل شيء بأمان عند عودته — بلا تكرار وبلا معاملات ضائعة.",
         "steps": {
-          "drop": "Internet drops. Till switches to offline mode.",
-          "queue": "14 sales rung and receipted, queued locally.",
-          "sync": "Back online. Synced — 0 duplicates, 0 lost."
+          "drop": "انقطع الإنترنت. تحوّل الصندوق إلى وضع دون اتصال.",
+          "queue": "14 عملية بيع سُجلت وطُبعت إيصالاتها، في الانتظار محليًا.",
+          "sync": "عاد الاتصال. تمت المزامنة — 0 تكرار، 0 ضائع."
         }
       },
       "tax": {
-        "label": "05 · Local tax compliance",
-        "title": "Local tax rules built in, not bolted on",
-        "body": "Real-time e-invoicing where regulators require it, with a QR code on every receipt. Withholding tax, regional structures and multi-currency billing handled per country.",
+        "label": "05 — الامتثال الضريبي المحلي",
+        "title": "قواعد الضريبة المحلية مدمجة، لا مضافة لاحقًا",
+        "body": "فوترة إلكترونية فورية حيث تشترطها الجهات التنظيمية، مع رمز QR على كل إيصال. ضريبة الاستقطاع والهياكل الإقليمية والفوترة متعددة العملات تُعالَج حسب كل دولة.",
         "chips": {
-          "inclusive": "Tax inclusive / exclusive",
-          "withholding": "Withholding certificates",
-          "age": "Age verification",
-          "audit": "Audit log"
+          "inclusive": "شامل / غير شامل للضريبة",
+          "withholding": "شهادات الاستقطاع",
+          "age": "التحقق من العمر",
+          "audit": "سجل التدقيق"
         }
       }
     },
     "solutions": {
-      "eyebrow": "Solutions",
-      "headline": "Made for your kind of shop",
-      "sub": "Six verticals, each with its own screens. Switch on what you need — a grocery store never sees a kitchen display.",
-      "tablistLabel": "Choose your trade",
-      "ctaTrial": "Start free trial",
-      "ctaExtensions": "See extensions",
+      "eyebrow": "الحلول",
+      "headline": "مصمّم لنوع متجرك",
+      "sub": "ستة قطاعات، لكل منها شاشاته. فعِّل ما تحتاجه فقط — متجر البقالة لا يرى شاشة المطبخ أبدًا.",
+      "tablistLabel": "اختر نشاطك",
+      "ctaTrial": "ابدأ التجربة المجانية",
+      "ctaExtensions": "استعرض الإضافات",
       "items": {
         "retail": {
-          "name": "General retail",
-          "who": "Grocery, convenience, apparel, hardware",
-          "blurb": "Barcode-fast selling, customer credit that keeps itself, and stock you can count in cartons, kilos or pieces.",
+          "name": "التجزئة العامة",
+          "who": "بقالة، متاجر صغيرة، ملابس، أدوات",
+          "blurb": "بيع سريع بالباركود، وائتمان عملاء يدير نفسه، ومخزون تعدّه بالكرتون أو الكيلو أو القطعة.",
           "bullets": {
-            "0": "Fast barcode checkout",
-            "1": "Customer credit with WhatsApp reminders",
-            "2": "Sell by carton, kg or piece",
-            "3": "Label printing & Z-reports"
+            "0": "دفع سريع بالباركود",
+            "1": "ائتمان العملاء مع تذكيرات واتساب",
+            "2": "البيع بالكرتون أو الكيلو أو القطعة",
+            "3": "طباعة الملصقات وتقارير Z"
           }
         },
         "restaurants": {
-          "name": "Restaurants & cafés",
-          "who": "Dine-in, takeaway, delivery, cloud kitchens",
-          "blurb": "Floor plans, a kitchen display that times every ticket, and every delivery app in one inbox.",
+          "name": "المطاعم والمقاهي",
+          "who": "تناول بالمكان، سفري، توصيل، مطابخ سحابية",
+          "blurb": "مخططات الصالة، وشاشة مطبخ تحسب وقت كل طلب، وكل تطبيقات التوصيل في صندوق وارد واحد.",
           "bullets": {
-            "0": "Floor plan & tables",
-            "1": "Kitchen display (KDS)",
-            "2": "Modifiers, combos, split bills",
-            "3": "QR self-ordering & delivery inbox"
+            "0": "مخطط الصالة والطاولات",
+            "1": "شاشة المطبخ (KDS)",
+            "2": "الإضافات والوجبات وتقسيم الفواتير",
+            "3": "الطلب الذاتي بـ QR وصندوق التوصيل"
           }
         },
         "electronics": {
-          "name": "Electronics & mobile",
-          "who": "Phone shops, computer stores, repair counters",
-          "blurb": "Every handset by IMEI from purchase to warranty claim, with repair jobs and trade-ins in the same till.",
+          "name": "الإلكترونيات والجوالات",
+          "who": "محلات الجوالات، متاجر الحاسب، مراكز الصيانة",
+          "blurb": "كل جهاز عبر رقم IMEI من الشراء حتى مطالبة الضمان، مع أوامر الصيانة والاستبدال في الصندوق نفسه.",
           "bullets": {
-            "0": "IMEI / serial per handset",
-            "1": "Warranty records",
-            "2": "Repair job cards",
-            "3": "Trade-ins & exchanges"
+            "0": "‏IMEI / رقم تسلسلي لكل جهاز",
+            "1": "سجلات الضمان",
+            "2": "بطاقات أعمال الصيانة",
+            "3": "الاستبدال والمقايضة"
           }
         },
         "pharmacies": {
-          "name": "Pharmacies",
-          "who": "Medical stores & chemists",
-          "blurb": "Batches and expiries tracked to the strip. The till sells oldest-expiring first and refuses expired stock.",
+          "name": "الصيدليات",
+          "who": "المستودعات الطبية والصيدليات",
+          "blurb": "تتبّع التشغيلات وتواريخ الانتهاء حتى الشريط. الصندوق يبيع الأقرب انتهاءً أولًا ويرفض المنتهي.",
           "bullets": {
-            "0": "Batch & expiry (FEFO)",
-            "1": "Drug schedules & molecules",
-            "2": "90/60/30-day expiry alerts",
-            "3": "Prescription log"
+            "0": "التشغيلة وتاريخ الانتهاء (FEFO)",
+            "1": "جداول الأدوية والمركّبات",
+            "2": "تنبيهات انتهاء 90/60/30 يومًا",
+            "3": "سجل الوصفات"
           }
         },
         "distribution": {
-          "name": "Distributors & wholesale",
-          "who": "FMCG distribution, wholesalers, mills",
-          "blurb": "Vans as mobile warehouses, routes with cash and credit collection, and reconciliation the driver can't argue with.",
+          "name": "الموزعون والجملة",
+          "who": "توزيع السلع الاستهلاكية، تجار الجملة، المطاحن",
+          "blurb": "مركبات كمستودعات متنقلة، ومسارات بتحصيل نقدي وآجل، وتسوية لا يجادل فيها السائق.",
           "bullets": {
-            "0": "Van sales & route planning",
-            "1": "Driver cash reconciliation",
-            "2": "Multi-warehouse stock",
-            "3": "Bulk & tier pricing"
+            "0": "البيع المتنقل وتخطيط المسارات",
+            "1": "تسوية نقدية السائق",
+            "2": "مخزون متعدد المستودعات",
+            "3": "تسعير الجملة والشرائح"
           }
         },
         "services": {
-          "name": "Services",
-          "who": "Salons, clinics, gyms, tutors",
-          "blurb": "Appointments, staff commissions and memberships that bill themselves every month.",
+          "name": "الخدمات",
+          "who": "صالونات، عيادات، نوادٍ رياضية، معلمون",
+          "blurb": "مواعيد، وعمولات موظفين، واشتراكات تُفوتر نفسها كل شهر.",
           "bullets": {
-            "0": "Appointments & scheduling",
-            "1": "Staff commissions",
-            "2": "Memberships & packages",
-            "3": "Recurring billing"
+            "0": "المواعيد والجدولة",
+            "1": "عمولات الموظفين",
+            "2": "الاشتراكات والباقات",
+            "3": "الفوترة المتكررة"
           }
         }
       }
     },
     "pillars": {
-      "eyebrow": "The whole back office",
-      "headline": "Everything behind the counter, on one login",
-      "sub": "More than any single shop needs. The interface only shows what you switch on.",
+      "eyebrow": "المكتب الخلفي بالكامل",
+      "headline": "كل ما خلف الكاشير، بتسجيل دخول واحد",
+      "sub": "أكثر مما يحتاجه متجر واحد. الواجهة تعرض ما تُفعّله فقط.",
       "items": {
         "sell": {
-          "title": "Sell",
-          "body": "POS checkout, split payments, quotations, returns, registers & shifts."
+          "title": "البيع",
+          "body": "الدفع، والدفعات المقسّمة، وعروض الأسعار، والمرتجعات، والصناديق والورديات."
         },
         "stock": {
-          "title": "Stock",
-          "body": "Multi-warehouse, batch & expiry (FEFO), serials, three costing methods."
+          "title": "المخزون",
+          "body": "مستودعات متعددة، تشغيلات وتواريخ انتهاء (FEFO)، أرقام تسلسلية، وثلاث طرق تكلفة."
         },
         "buy": {
-          "title": "Buy",
-          "body": "Purchase orders, goods receipt (GRN), returns, supplier ledgers."
+          "title": "الشراء",
+          "body": "أوامر الشراء، وإشعار الاستلام (GRN)، والمرتجعات، ودفاتر الموردين."
         },
         "getPaid": {
-          "title": "Get paid",
-          "body": "Cash, card, cheque, wallets; 7 gateways; allocate across invoices."
+          "title": "التحصيل",
+          "body": "نقد، بطاقة، شيك، محافظ؛ 7 بوابات؛ توزيع على الفواتير."
         },
         "credit": {
-          "title": "Credit",
-          "body": "Customer & supplier credit, limits, statements, reminders."
+          "title": "الآجل",
+          "body": "ائتمان العملاء والموردين، والحدود، والكشوف، والتذكيرات."
         },
         "account": {
-          "title": "Account",
-          "body": "Double-entry GL, trial balance, P&L, balance sheet, cash flow."
+          "title": "المحاسبة",
+          "body": "دفتر أستاذ بقيد مزدوج، ميزان مراجعة، قائمة دخل، ميزانية، تدفق نقدي."
         },
         "comply": {
-          "title": "Comply",
-          "body": "E-invoicing, withholding tax, age checks, audit logs."
+          "title": "الامتثال",
+          "body": "فوترة إلكترونية، ضريبة استقطاع، تحقق من العمر، سجلات تدقيق."
         },
         "grow": {
-          "title": "Grow",
-          "body": "Loyalty, promotions & coupons, customer portal, online store."
+          "title": "النمو",
+          "body": "الولاء، والعروض والقسائم، وبوابة العملاء، والمتجر الإلكتروني."
         },
         "deliver": {
-          "title": "Deliver",
-          "body": "Van sales, 3PL couriers, delivery-aggregator inbox."
+          "title": "التوصيل",
+          "body": "البيع المتنقل، وشركات الشحن، وصندوق منصات التوصيل."
         },
         "people": {
-          "title": "Run people",
-          "body": "Staff records, attendance, leave, payroll."
+          "title": "إدارة الموظفين",
+          "body": "سجلات الموظفين، والحضور، والإجازات، والرواتب."
         },
         "specialise": {
-          "title": "Specialise",
-          "body": "Restaurant & KDS, cloud kitchen, pharmacy pack."
+          "title": "التخصص",
+          "body": "المطاعم وشاشة المطبخ، المطبخ السحابي، حزمة الصيدليات."
         },
         "integrate": {
-          "title": "Integrate",
-          "body": "Shopify, WooCommerce, QuickBooks, public API & webhooks."
+          "title": "التكامل",
+          "body": "‏Shopify، وWooCommerce، وQuickBooks، وواجهة API عامة وWebhooks."
         }
       }
     },
     "platforms": {
-      "eyebrow": "Languages & devices",
-      "headline": "Speaks your team's language. Runs on what you own.",
-      "sub": "Languages, currencies, tax rules and payment methods are set per country — and right-to-left layouts are built in. One codebase across web, desktop and Android, so every feature lands everywhere at once.",
+      "eyebrow": "اللغات والأجهزة",
+      "headline": "يتحدث لغة فريقك. ويعمل على ما تملكه.",
+      "sub": "اللغات والعملات وقواعد الضريبة وطرق الدفع تُضبط لكل دولة — وتخطيطات من اليمين إلى اليسار مدمجة. قاعدة شيفرة واحدة عبر الويب وسطح المكتب وأندرويد، فتصل كل ميزة إلى كل مكان في آن واحد.",
       "devices": {
         "web": {
-          "name": "Web",
-          "sub": "Any browser, nothing to install"
+          "name": "الويب",
+          "sub": "أي متصفح، دون تثبيت"
         },
         "desktop": {
-          "name": "Desktop",
-          "sub": "Windows · macOS · Linux; printers & drawers"
+          "name": "سطح المكتب",
+          "sub": "‏Windows — macOS — Linux؛ طابعات وأدراج"
         },
         "android": {
-          "name": "Android",
-          "sub": "Camera scanning, Bluetooth receipts"
+          "name": "أندرويد",
+          "sub": "مسح بالكاميرا، إيصالات بلوتوث"
         },
         "ios": {
           "name": "iOS",
-          "sub": "Coming soon"
+          "sub": "قريبًا"
         }
       },
       "app": {
-        "getItOn": "GET IT ON",
+        "getItOn": "احصل عليه من",
         "googlePlay": "Google Play",
-        "note": "Scan, print and sell from a phone or tablet."
+        "note": "امسح واطبع وبِع من هاتف أو جهاز لوحي."
       },
-      "hardware": "Works with thermal receipt printers, barcode scanners and cash drawers.",
-      "receiptCaption": "Receipts, screens and kitchen tickets follow the chosen language — layout flips right-to-left automatically.",
-      "receiptTablistLabel": "Preview receipt language"
+      "hardware": "يعمل مع طابعات الإيصالات الحرارية وقارئات الباركود وأدراج النقد.",
+      "receiptCaption": "الإيصالات والشاشات وطلبات المطبخ تتبع اللغة المختارة — والتخطيط ينعكس من اليمين إلى اليسار تلقائيًا.",
+      "receiptTablistLabel": "معاينة لغة الإيصال"
     },
     "extensions": {
-      "eyebrow": "Extension marketplace",
-      "headline": "Switch on only what you need",
-      "sub": "{count} add-ons, installed per shop. A small store never sees payroll or kitchen screens.",
-      "all": "All {count}",
+      "eyebrow": "متجر الإضافات",
+      "headline": "فعِّل ما تحتاجه فقط",
+      "sub": "{count} إضافة، تُفعَّل لكل متجر. المتجر الصغير لا يرى الرواتب ولا شاشات المطبخ أبدًا.",
+      "all": "الكل {count}",
       "cats": {
-        "verticals": "Business verticals",
-        "payments": "Payment gateways",
-        "accounting": "Accounting",
-        "compliance": "Tax & compliance",
-        "ecommerce": "E-commerce sync",
-        "shipping": "Shipping",
-        "customer": "Sales & customer tools"
+        "verticals": "القطاعات التجارية",
+        "payments": "بوابات الدفع",
+        "accounting": "المحاسبة",
+        "compliance": "الضرائب والامتثال",
+        "ecommerce": "مزامنة التجارة الإلكترونية",
+        "shipping": "الشحن",
+        "customer": "أدوات المبيعات والعملاء"
       },
       "status": {
-        "live": "Live",
-        "beta": "Beta",
-        "ready": "Ready"
+        "live": "متاح",
+        "beta": "تجريبي",
+        "ready": "جاهز"
       },
-      "legend": "Live — in production use. Beta — built, final validation in progress. Ready — built, goes live with your credentials."
+      "legend": "متاح — قيد الاستخدام الفعلي. تجريبي — جاهز، والتحقق النهائي جارٍ. جاهز — مبني، ويُفعَّل ببيانات اعتمادك."
     },
     "pricing": {
-      "eyebrow": "Pricing",
-      "headline": "Free for your first {months} months.",
-      "sub": "Every module, every industry pack, every device — switched on from day one. No card, no per-module upsells, no transaction fees. After {months} months we agree a price that fits the size of your business.",
+      "eyebrow": "الأسعار",
+      "headline": "مجانًا أول {months} أشهر.",
+      "sub": "كل وحدة، وكل حزمة قطاعية، وكل جهاز — مُفعَّلة من اليوم الأول. لا بطاقة، ولا بيع إضافي لكل وحدة، ولا رسوم معاملات. بعد {months} أشهر نتفق على سعر يناسب حجم عملك.",
       "trial": {
-        "name": "Full product trial",
-        "who": "One shop or fifty — nothing is held back",
-        "badge": "No card required",
-        "price": "Free",
-        "period": "for {months} months",
-        "note": "Not a limited edition. The restaurant pack, van sales, accounting, the online store and all 31 extensions are available for the whole trial.",
-        "cta": "Start free trial",
-        "includesLabel": "Everything included",
+        "name": "تجربة المنتج الكاملة",
+        "who": "متجر واحد أو خمسون — لا شيء محجوب",
+        "badge": "لا حاجة لبطاقة",
+        "price": "مجانًا",
+        "period": "لمدة {months} أشهر",
+        "note": "ليست نسخة محدودة. حزمة المطاعم والبيع المتنقل والمحاسبة والمتجر الإلكتروني وجميع الإضافات الـ 31 متاحة طوال التجربة.",
+        "cta": "ابدأ التجربة المجانية",
+        "includesLabel": "كل شيء مشمول",
         "includes": {
-          "pos": "POS, registers & shifts",
-          "inventory": "Inventory, batches & serials",
-          "credit": "Customer & supplier credit",
-          "accounting": "Double-entry accounting",
-          "restaurant": "Restaurant, tables & kitchen display",
-          "vansales": "Van sales, routes & delivery",
-          "store": "Online store & customer portal",
-          "staff": "Staff, attendance & payroll",
-          "offline": "Works offline",
-          "tax": "Local tax & e-invoicing",
-          "extensions": "All 31 extensions",
-          "support": "Onboarding & support"
+          "pos": "نقاط البيع والصناديق والورديات",
+          "inventory": "المخزون والتشغيلات والأرقام التسلسلية",
+          "credit": "ائتمان العملاء والموردين",
+          "accounting": "محاسبة بقيد مزدوج",
+          "restaurant": "المطاعم والطاولات وشاشة المطبخ",
+          "vansales": "البيع المتنقل والمسارات والتوصيل",
+          "store": "المتجر الإلكتروني وبوابة العملاء",
+          "staff": "الموظفون والحضور والرواتب",
+          "offline": "يعمل دون إنترنت",
+          "tax": "الضريبة المحلية والفوترة الإلكترونية",
+          "extensions": "جميع الإضافات الـ 31",
+          "support": "التهيئة والدعم"
         }
       },
       "custom": {
-        "name": "Something bigger?",
-        "who": "Chains, franchises and custom work",
-        "body": "If you run many branches, need a migration handled for you, or want the product wired into systems you already have — talk to us and we will quote it properly.",
+        "name": "شيء أكبر؟",
+        "who": "السلاسل والامتيازات والأعمال المخصصة",
+        "body": "إن كنت تدير فروعًا كثيرة، أو تريد أن ننقل بياناتك نيابةً عنك، أو تربط المنتج بأنظمة تملكها بالفعل — تحدث إلينا وسنقدّم عرضًا دقيقًا.",
         "points": {
-          "chains": "Unlimited branches and users",
-          "migration": "Migration done for you",
-          "integrations": "Custom integrations & SLA",
-          "onprem": "On-premise and single sign-on"
+          "chains": "فروع ومستخدمون بلا حدود",
+          "migration": "ننقل بياناتك نيابةً عنك",
+          "integrations": "تكاملات مخصصة واتفاقية مستوى خدمة",
+          "onprem": "تشغيل داخلي وتسجيل دخول موحّد"
         },
-        "ctaMeeting": "Book a 20-minute call",
-        "ctaEmail": "Email us"
+        "ctaMeeting": "احجز مكالمة 20 دقيقة",
+        "ctaEmail": "راسلنا"
       }
     },
     "faq": {
-      "headline": "Questions merchants ask us",
-      "sub": "Still unsure? Write to us on WhatsApp or book a 20-minute demo.",
+      "headline": "أسئلة يطرحها التجار علينا",
+      "sub": "ما زلت مترددًا؟ راسلنا على واتساب أو احجز عرضًا في 20 دقيقة.",
       "groups": {
         "general": {
-          "label": "General",
+          "label": "عام",
           "items": {
             "0": {
-              "q": "What is TajirPoint?",
-              "a": "A point-of-sale and complete back office for small and medium businesses: selling, stock, purchasing, customer credit, accounting, staff, delivery and an online store on one login — localised for how shops run in your country."
+              "q": "ما هو TajirPoint؟",
+              "a": "نظام نقاط بيع ومكتب خلفي متكامل للشركات الصغيرة والمتوسطة: البيع، والمخزون، والمشتريات، وائتمان العملاء، والمحاسبة، والموظفون، والتوصيل، والمتجر الإلكتروني بتسجيل دخول واحد — مخصّص لطريقة عمل المتاجر في دولتك."
             },
             "1": {
-              "q": "Which devices does it run on?",
-              "a": "Any browser, a Windows desktop app (macOS and Linux too), and Android phones and tablets. iOS is coming soon. Thermal receipt printers, barcode scanners and cash drawers are supported."
+              "q": "على أي أجهزة يعمل؟",
+              "a": "أي متصفح، وتطبيق سطح مكتب لـ Windows (وmacOS وLinux أيضًا)، وهواتف وأجهزة أندرويد اللوحية. وiOS قريبًا. وتُدعم طابعات الإيصالات الحرارية وقارئات الباركود وأدراج النقد."
             },
             "2": {
-              "q": "Which languages are supported?",
-              "a": "English everywhere, plus local languages that switch on by country — with full right-to-left layout and instant switching inside the app."
+              "q": "ما اللغات المدعومة؟",
+              "a": "الإنجليزية في كل مكان، إضافة إلى لغات محلية تُفعَّل حسب الدولة — مع تخطيط كامل من اليمين إلى اليسار وتبديل فوري داخل التطبيق."
             },
             "3": {
-              "q": "Can I bring my existing products?",
-              "a": "Import from CSV or Excel. Shopify and WooCommerce exports are detected automatically, so migration takes an afternoon."
+              "q": "هل يمكنني نقل منتجاتي الحالية؟",
+              "a": "استورد من CSV أو Excel. ويُكتشف تصدير Shopify وWooCommerce تلقائيًا، فيستغرق النقل بعد ظهيرة واحدة."
             }
           }
         },
         "credit": {
-          "label": "Customer credit",
+          "label": "ائتمان العملاء",
           "items": {
             "0": {
-              "q": "What is the digital credit ledger?",
-              "a": "Your running credit ledger, kept automatically. Every sale, payment and adjustment posts with a running balance that can't be quietly edited — and a PDF statement you can share on WhatsApp."
+              "q": "ما هو دفتر الآجل الرقمي؟",
+              "a": "دفتر الآجل الجاري لديك، محفوظ تلقائيًا. كل بيع ودفع وتسوية يُقيَّد برصيد جارٍ لا يمكن تعديله بصمت — مع كشف حساب PDF يمكنك مشاركته عبر واتساب."
             },
             "1": {
-              "q": "Can customers see their own balance?",
-              "a": "With the Customer Portal extension, credit customers log in to see their ledger and invoices and pay online."
+              "q": "هل يستطيع العملاء رؤية أرصدتهم؟",
+              "a": "مع إضافة بوابة العملاء، يسجّل عملاء الآجل الدخول لعرض دفترهم وفواتيرهم والدفع إلكترونيًا."
             },
             "2": {
-              "q": "Does it handle supplier credit too?",
-              "a": "Yes. Suppliers get the same running ledger, with aging, advances and payment allocation across invoices."
+              "q": "هل يتعامل مع ائتمان الموردين أيضًا؟",
+              "a": "نعم. يحصل الموردون على الدفتر الجاري نفسه، مع أعمار الديون والدفعات المقدمة وتوزيع الدفعات على الفواتير."
             },
             "3": {
-              "q": "Can I set credit limits?",
-              "a": "Per customer, enforced at the till, with alerts as a customer approaches the limit."
+              "q": "هل يمكنني ضبط حدود ائتمانية؟",
+              "a": "لكل عميل، ومُطبَّقة عند الصندوق، مع تنبيهات عند اقتراب العميل من الحد."
             }
           }
         },
         "offline": {
-          "label": "Offline & data",
+          "label": "العمل دون إنترنت والبيانات",
           "items": {
             "0": {
-              "q": "What happens when the internet drops?",
-              "a": "You keep selling. Sales queue on the device and sync back when the connection returns — no duplicates, no lost transactions."
+              "q": "ماذا يحدث عند انقطاع الإنترنت؟",
+              "a": "تستمر في البيع. تنتظر المبيعات على الجهاز وتتزامن عند عودة الاتصال — بلا تكرار وبلا معاملات ضائعة."
             },
             "1": {
-              "q": "Is my data safe?",
-              "a": "Each business's data is isolated at the database level, access is role-based, and two-factor authentication and a full audit log are included."
+              "q": "هل بياناتي آمنة؟",
+              "a": "بيانات كل منشأة معزولة على مستوى قاعدة البيانات، والوصول قائم على الأدوار، والتحقق بخطوتين وسجل تدقيق كامل مشمولان."
             },
             "2": {
-              "q": "Can my accountant use it?",
-              "a": "The general ledger posts itself from daily activity; your accountant gets clean double-entry books, statements and Excel exports."
+              "q": "هل يستطيع محاسبي استخدامه؟",
+              "a": "يُقيَّد دفتر الأستاذ العام تلقائيًا من النشاط اليومي؛ فيحصل محاسبك على دفاتر قيد مزدوج نظيفة وكشوف وتصدير إلى Excel."
             }
           }
         },
         "pricing": {
-          "label": "Pricing",
+          "label": "الأسعار",
           "items": {
             "0": {
-              "q": "Is there a free trial?",
-              "a": "Three months, every module, no card required. Nothing is switched off during it — the restaurant pack, van sales, accounting and all 31 extensions are included."
+              "q": "هل توجد تجربة مجانية؟",
+              "a": "ثلاثة أشهر، وكل الوحدات، دون بطاقة. ولا يُعطَّل شيء خلالها — حزمة المطاعم والبيع المتنقل والمحاسبة وجميع الإضافات الـ 31 مشمولة."
             },
             "1": {
-              "q": "What happens after the trial?",
-              "a": "We agree a price that fits the size of your business. There are no published tiers to grow out of, and no per-module upsells or transaction fees — payment-gateway processing fees are set by the gateway, not by us."
+              "q": "ماذا يحدث بعد التجربة؟",
+              "a": "نتفق على سعر يناسب حجم عملك. لا توجد باقات معلنة تتجاوزها مع النمو، ولا بيع إضافي لكل وحدة ولا رسوم معاملات — ورسوم معالجة بوابات الدفع تحددها البوابة لا نحن."
             },
             "2": {
-              "q": "Which currencies can I pay in?",
-              "a": "Your local currency. Billing, tax rules and payment methods follow the country the shop is registered in."
+              "q": "بأي عملات يمكنني الدفع؟",
+              "a": "بعملتك المحلية. الفوترة وقواعد الضريبة وطرق الدفع تتبع الدولة المسجَّل فيها المتجر."
             },
             "3": {
-              "q": "Do I need a card to start?",
-              "a": "No. Start the trial, and talk to us when you are ready — by email or on a 20-minute call."
+              "q": "هل أحتاج بطاقة للبدء؟",
+              "a": "لا. ابدأ التجربة، وتحدث إلينا عندما تكون مستعدًا — بالبريد أو في مكالمة 20 دقيقة."
             }
           }
         }
       }
     },
     "cta": {
-      "headline": "Start selling in an afternoon.",
-      "sub": "Import your products from Excel, Shopify or WooCommerce, connect a printer, and ring your first sale. Fourteen days free, every module, no card.",
-      "ctaPrimary": "Start free trial",
-      "ctaSecondary": "Book a demo",
+      "headline": "ابدأ البيع خلال بعد ظهيرة واحدة.",
+      "sub": "استورد منتجاتك من Excel أو Shopify أو WooCommerce، وصِل طابعة، وسجّل أول عملية بيع. أربعة عشر يومًا مجانًا، وكل الوحدات، دون بطاقة.",
+      "ctaPrimary": "ابدأ التجربة المجانية",
+      "ctaSecondary": "احجز عرضًا توضيحيًا",
       "steps": {
         "import": {
-          "title": "Import your products",
-          "sub": "Excel, CSV, Shopify or WooCommerce export",
-          "time": "20 min"
+          "title": "استورد منتجاتك",
+          "sub": "‏Excel أو CSV أو تصدير Shopify أو WooCommerce",
+          "time": "20 دقيقة"
         },
         "connect": {
-          "title": "Connect a printer & scanner",
-          "sub": "Thermal receipt printer, cash drawer, barcode gun",
-          "time": "10 min"
+          "title": "وصِّل طابعة وقارئ باركود",
+          "sub": "طابعة إيصالات حرارية، درج نقد، قارئ باركود",
+          "time": "10 دقائق"
         },
         "staff": {
-          "title": "Add staff and set limits",
-          "sub": "Cashier, manager, accountant roles",
-          "time": "5 min"
+          "title": "أضف الموظفين واضبط الصلاحيات",
+          "sub": "أدوار الكاشير والمدير والمحاسب",
+          "time": "5 دقائق"
         },
         "sell": {
-          "title": "Ring your first sale",
-          "sub": "Stock, credit and books update together",
-          "time": "Now"
+          "title": "سجّل أول عملية بيع",
+          "sub": "المخزون والآجل والدفاتر تتحدث معًا",
+          "time": "الآن"
         }
       }
     }
   },
   "solutions": {
     "meta": {
-      "title": "Solutions — Six industries, one platform",
-      "description": "Retail, restaurants, electronics, pharmacies, distribution and services. Extensions shape TajirPoint around your counter."
+      "title": "الحلول — ست صناعات، منصة واحدة",
+      "description": "التجزئة والمطاعم والإلكترونيات والصيدليات والتوزيع والخدمات. الإضافات تُشكّل TajirPoint حول نقطة البيع لديك."
     },
-    "badge": "SIX INDUSTRIES · ONE PLATFORM",
-    "headline": "Made for",
-    "headlineAccent": "your counter",
-    "sub": "Every industry runs differently. Extensions shape TajirPoint around yours — nothing more on screen than your business needs.",
+    "badge": "ست صناعات — منصة واحدة",
+    "headline": "مصمّم من أجل",
+    "headlineAccent": "نقطة البيع لديك",
+    "sub": "كل صناعة تعمل بطريقة مختلفة. الإضافات تُشكّل TajirPoint حول صناعتك — ولا شيء على الشاشة أكثر مما يحتاجه عملك.",
     "cta": {
-      "headline": "See it shaped around your business",
-      "body": "14 days free, every module included. No card required.",
-      "primary": "Start free trial",
-      "secondary": "Browse extensions"
+      "headline": "شاهده مصمّمًا حول عملك",
+      "body": "14 يومًا مجانًا، وكل الوحدات مشمولة. لا حاجة لبطاقة.",
+      "primary": "ابدأ التجربة المجانية",
+      "secondary": "تصفح الإضافات"
     },
     "industries": {
       "retail": {
-        "name": "General retail",
-        "tag": "GROCERY · APPAREL · HARDWARE",
-        "headline": "Barcode-fast selling with credit built in",
-        "body": "Ring up a queue in seconds, sell by carton, kg or piece with automatic unit conversion, and keep every customer’s running credit balance without a paper register.",
-        "chips": ["Barcode checkout", "Credit ledger", "Unit conversion", "Label printing"],
-        "panelTitle": "WHAT RETAILERS USE MOST",
+        "name": "التجزئة العامة",
+        "tag": "بقالة — ملابس — أدوات",
+        "headline": "بيع سريع بالباركود مع آجل مدمج",
+        "body": "أنهِ الطابور في ثوانٍ، وبِع بالكرتون أو الكيلو أو القطعة مع تحويل تلقائي للوحدات، واحتفظ برصيد الآجل الجاري لكل عميل دون سجل ورقي.",
+        "chips": ["الدفع بالباركود", "دفتر الآجل", "تحويل الوحدات", "طباعة الملصقات"],
+        "panelTitle": "أكثر ما يستخدمه تجار التجزئة",
         "feats": [
           {
-            "t": "Split & partial payments",
-            "d": "Part cash, part card — rest on the customer’s account."
+            "t": "دفعات مقسّمة وجزئية",
+            "d": "جزء نقدًا وجزء بالبطاقة — والباقي على حساب العميل."
           },
           {
-            "t": "Tiered pricing",
-            "d": "Retail, wholesale and dealer prices with quantity breaks."
+            "t": "تسعير متدرّج",
+            "d": "أسعار التجزئة والجملة والوكلاء مع خصومات الكمية."
           },
           {
-            "t": "Low-stock alerts",
-            "d": "Reorder points and purchase suggestions."
+            "t": "تنبيهات نفاد المخزون",
+            "d": "حدود إعادة الطلب واقتراحات الشراء."
           },
           {
-            "t": "Variant generator",
-            "d": "Every size × colour SKU created automatically."
+            "t": "مولّد المتغيرات",
+            "d": "إنشاء SKU لكل مقاس × لون تلقائيًا."
           },
           {
-            "t": "WhatsApp statements",
-            "d": "Share PDF account statements in one tap."
+            "t": "كشوف واتساب",
+            "d": "شارك كشوف الحساب PDF بضغطة واحدة."
           },
           {
-            "t": "Loyalty points",
-            "d": "Earn, redeem, tiers and birthday bonuses."
+            "t": "نقاط الولاء",
+            "d": "اكتساب واستبدال ومستويات ومكافآت أعياد الميلاد."
           }
         ]
       },
       "restaurants": {
-        "name": "Restaurants & cafés",
-        "tag": "DINE-IN · TAKEAWAY · DELIVERY",
-        "headline": "From table to kitchen to bill, in sync",
-        "body": "Floor plans and table service at the front, timed orders on kitchen screens at the back, and delivery-app orders flowing into the same queue.",
-        "chips": ["Floor plans", "Kitchen display", "QR self-ordering", "Split bills"],
-        "panelTitle": "WHAT RESTAURANTS USE MOST",
+        "name": "المطاعم والمقاهي",
+        "tag": "تناول بالمكان — سفري — توصيل",
+        "headline": "من الطاولة إلى المطبخ إلى الفاتورة، بتناغم",
+        "body": "مخططات الصالة وخدمة الطاولات في الأمام، وطلبات مُوقَّتة على شاشات المطبخ في الخلف، وطلبات تطبيقات التوصيل تتدفق إلى الطابور نفسه.",
+        "chips": ["مخططات الصالة", "شاشة المطبخ", "الطلب الذاتي بـ QR", "تقسيم الفواتير"],
+        "panelTitle": "أكثر ما تستخدمه المطاعم",
         "feats": [
           {
-            "t": "Modifiers & combos",
-            "d": "Add-ons, deals and recipes per dish."
+            "t": "الإضافات والوجبات",
+            "d": "إضافات وعروض ووصفات لكل طبق."
           },
           {
-            "t": "Auto 86-ing",
-            "d": "A dish goes unavailable when an ingredient runs out."
+            "t": "إيقاف تلقائي للأصناف",
+            "d": "الطبق يصبح غير متاح عند نفاد أحد مكوناته."
           },
           {
-            "t": "QR ordering",
-            "d": "Guests order from their phone — no app needed."
+            "t": "الطلب بـ QR",
+            "d": "الضيوف يطلبون من هواتفهم — دون تطبيق."
           },
           {
-            "t": "Aggregator inbox",
-            "d": "Foodpanda, Talabat, Careem in one screen."
+            "t": "صندوق المنصات",
+            "d": "‏Foodpanda وTalabat وCareem في شاشة واحدة."
           },
           {
-            "t": "Cloud kitchen",
-            "d": "Multiple virtual brands from one kitchen."
+            "t": "المطبخ السحابي",
+            "d": "عدة علامات افتراضية من مطبخ واحد."
           },
           {
-            "t": "Reservations",
-            "d": "Tables, waitlist and kitchen ticket printing."
+            "t": "الحجوزات",
+            "d": "الطاولات وقائمة الانتظار وطباعة طلبات المطبخ."
           }
         ]
       },
       "electronics": {
-        "name": "Electronics & mobile",
-        "tag": "HANDSETS · ACCESSORIES · REPAIRS",
-        "headline": "Every handset tracked, serial by serial",
-        "body": "IMEI and serial tracking across the full lifecycle — purchase, sale, warranty, repair, trade-in — so you always know exactly which unit went where.",
-        "chips": ["IMEI tracking", "Warranty records", "Repair jobs", "Trade-ins"],
-        "panelTitle": "WHAT ELECTRONICS SHOPS USE MOST",
+        "name": "الإلكترونيات والجوالات",
+        "tag": "أجهزة — ملحقات — صيانة",
+        "headline": "تتبّع كل جهاز، رقمًا تسلسليًا تلو الآخر",
+        "body": "تتبّع IMEI والأرقام التسلسلية عبر دورة الحياة كاملة — الشراء والبيع والضمان والصيانة والاستبدال — لتعرف دائمًا أي وحدة ذهبت إلى أين.",
+        "chips": ["تتبّع IMEI", "سجلات الضمان", "أعمال الصيانة", "الاستبدال"],
+        "panelTitle": "أكثر ما تستخدمه محلات الإلكترونيات",
         "feats": [
           {
-            "t": "Serial lifecycle",
-            "d": "From GRN to sale to warranty claim."
+            "t": "دورة حياة الرقم التسلسلي",
+            "d": "من الاستلام إلى البيع إلى مطالبة الضمان."
           },
           {
-            "t": "Search by IMEI",
-            "d": "Scan or type an IMEI straight into checkout."
+            "t": "البحث بـ IMEI",
+            "d": "امسح أو اكتب رقم IMEI مباشرة عند الدفع."
           },
           {
-            "t": "Repair tickets",
-            "d": "Track jobs, parts and labour."
+            "t": "تذاكر الصيانة",
+            "d": "تتبّع الأعمال وقطع الغيار والأجور."
           },
           {
-            "t": "Trade-in intake",
-            "d": "Buy used stock back into inventory."
+            "t": "استلام الاستبدال",
+            "d": "اشترِ المستعمل وأعده إلى المخزون."
           },
           {
-            "t": "Supplier ledgers",
-            "d": "Know what you owe each distributor."
+            "t": "دفاتر الموردين",
+            "d": "اعرف ما تدين به لكل موزّع."
           },
           {
-            "t": "Warranty proof",
-            "d": "Purchase record attached to every serial."
+            "t": "إثبات الضمان",
+            "d": "سجل الشراء مرفق بكل رقم تسلسلي."
           }
         ]
       },
       "pharmacies": {
-        "name": "Pharmacies",
-        "tag": "BATCH · EXPIRY · PRESCRIPTIONS",
-        "headline": "Sell safe. Never sell expired.",
-        "body": "Batch and expiry tracking with first-expiry-first-out picking, expiry alerts before stock dies on the shelf, and expired stock automatically excluded from sale.",
-        "chips": ["FEFO picking", "Expiry alerts", "Drug schedules", "Prescription log"],
-        "panelTitle": "WHAT PHARMACIES USE MOST",
+        "name": "الصيدليات",
+        "tag": "تشغيلة — انتهاء — وصفات",
+        "headline": "بِع بأمان. ولا تبِع منتهيًا أبدًا.",
+        "body": "تتبّع التشغيلات وتواريخ الانتهاء مع صرف الأقرب انتهاءً أولًا، وتنبيهات قبل أن يموت المخزون على الرف، واستبعاد تلقائي للمنتهي من البيع.",
+        "chips": ["الصرف بـ FEFO", "تنبيهات الانتهاء", "جداول الأدوية", "سجل الوصفات"],
+        "panelTitle": "أكثر ما تستخدمه الصيدليات",
         "feats": [
           {
-            "t": "Batch tracking",
-            "d": "Every unit tied to its batch and expiry date."
+            "t": "تتبّع التشغيلات",
+            "d": "كل وحدة مرتبطة بتشغيلتها وتاريخ انتهائها."
           },
           {
-            "t": "FEFO by default",
-            "d": "Oldest-expiring stock sells first, automatically."
+            "t": "‏FEFO افتراضيًا",
+            "d": "الأقرب انتهاءً يُباع أولًا، تلقائيًا."
           },
           {
-            "t": "Schedule control",
-            "d": "Drug schedules and restricted-sale rules."
+            "t": "ضبط الجداول",
+            "d": "جداول الأدوية وقواعد البيع المقيّد."
           },
           {
-            "t": "Molecule tagging",
-            "d": "Generic and molecule-level search."
+            "t": "وسم المركّبات",
+            "d": "بحث بالاسم العلمي وعلى مستوى المركّب."
           },
           {
-            "t": "Expiring-stock report",
-            "d": "See what to move before it’s a write-off."
+            "t": "تقرير المخزون المقارب",
+            "d": "اعرف ما يجب تصريفه قبل أن يصبح خسارة."
           },
           {
-            "t": "Prescription records",
-            "d": "A log attached to the sale."
+            "t": "سجلات الوصفات",
+            "d": "سجل مرفق بعملية البيع."
           }
         ]
       },
       "distribution": {
-        "name": "Distributors & wholesale",
-        "tag": "VAN SALES · ROUTES · WAREHOUSES",
-        "headline": "The truck is a warehouse. Treat it like one.",
-        "body": "Load a van in the morning, sell and collect door-to-door on a route, then reconcile cash, goods and fuel at day end — including what the driver still owes.",
-        "chips": ["Van sales", "Route planning", "Driver reconciliation", "Multi-warehouse"],
-        "panelTitle": "WHAT DISTRIBUTORS USE MOST",
+        "name": "الموزعون والجملة",
+        "tag": "بيع متنقل — مسارات — مستودعات",
+        "headline": "الشاحنة مستودع. تعامل معها كذلك.",
+        "body": "حمّل مركبة صباحًا، وبِع وحصّل من الباب إلى الباب على مسار، ثم سوِّ النقد والبضاعة والوقود في نهاية اليوم — بما في ذلك ما يبقى على السائق.",
+        "chips": ["البيع المتنقل", "تخطيط المسارات", "تسوية السائق", "مستودعات متعددة"],
+        "panelTitle": "أكثر ما يستخدمه الموزعون",
         "feats": [
           {
-            "t": "Mobile warehouse",
-            "d": "Van stock tracked separately from the godown."
+            "t": "مستودع متنقل",
+            "d": "مخزون المركبة يُتتبع بمعزل عن المستودع."
           },
           {
-            "t": "Day-end settlement",
-            "d": "Cash + goods + fuel reconciled per trip."
+            "t": "تسوية نهاية اليوم",
+            "d": "النقد + البضاعة + الوقود لكل رحلة."
           },
           {
-            "t": "Per-trip profit",
-            "d": "Margin and outstanding credit by route."
+            "t": "ربح كل رحلة",
+            "d": "الهامش والآجل المستحق حسب المسار."
           },
           {
-            "t": "Bulk pricing",
-            "d": "Dealer price lists and quantity breaks."
+            "t": "تسعير الجملة",
+            "d": "قوائم أسعار الوكلاء وخصومات الكمية."
           },
           {
-            "t": "Warehouse transfers",
-            "d": "Move stock between branches with approval."
+            "t": "التحويل بين المستودعات",
+            "d": "انقل المخزون بين الفروع باعتماد."
           },
           {
-            "t": "Proof of delivery",
-            "d": "Confirmed at the customer’s door."
+            "t": "إثبات التسليم",
+            "d": "مؤكَّد عند باب العميل."
           }
         ]
       },
       "services": {
-        "name": "Services",
-        "tag": "SALONS · CLINICS · GYMS · TUTORS",
-        "headline": "Appointments, memberships, commissions",
-        "body": "Book appointments, bill memberships on a cycle, and pay staff commissions that post straight into the accounts — recurring revenue without the spreadsheet.",
-        "chips": ["Appointments", "Memberships", "Staff commissions", "Recurring billing"],
-        "panelTitle": "WHAT SERVICE BUSINESSES USE MOST",
+        "name": "الخدمات",
+        "tag": "صالونات — عيادات — نوادٍ — معلمون",
+        "headline": "مواعيد واشتراكات وعمولات",
+        "body": "احجز المواعيد، وفوتر الاشتراكات على دورة، وادفع عمولات الموظفين التي تُقيَّد مباشرة في الحسابات — إيراد متكرر دون جداول بيانات.",
+        "chips": ["المواعيد", "الاشتراكات", "عمولات الموظفين", "الفوترة المتكررة"],
+        "panelTitle": "أكثر ما تستخدمه شركات الخدمات",
         "feats": [
           {
-            "t": "Subscription plans",
-            "d": "Billing cycles with grace periods."
+            "t": "باقات الاشتراك",
+            "d": "دورات فوترة مع فترات سماح."
           },
           {
-            "t": "Auto-block defaulters",
-            "d": "Lapsed members flagged and paused."
+            "t": "حظر المتأخرين تلقائيًا",
+            "d": "الأعضاء المنتهون يُوسَمون ويُوقَفون."
           },
           {
-            "t": "Commission rules",
-            "d": "Per-staff, per-service commission tracking."
+            "t": "قواعد العمولة",
+            "d": "تتبّع العمولة لكل موظف ولكل خدمة."
           },
           {
-            "t": "Shift scheduling",
-            "d": "Rosters, attendance and leave approvals."
+            "t": "جدولة الورديات",
+            "d": "الجداول والحضور واعتماد الإجازات."
           },
           {
-            "t": "Payroll built in",
-            "d": "Prorated by attendance, posted to the books."
+            "t": "رواتب مدمجة",
+            "d": "محسوبة بحسب الحضور، ومُقيَّدة في الدفاتر."
           },
           {
-            "t": "Client history",
-            "d": "Every visit and payment on one record."
+            "t": "سجل العميل",
+            "d": "كل زيارة ودفعة في سجل واحد."
           }
         ]
       }
@@ -794,195 +794,195 @@
   },
   "extensions": {
     "meta": {
-      "title": "Extensions — The TajirPoint marketplace",
-      "description": "31 extensions installed per shop: verticals, payments, accounting, compliance, e-commerce, shipping and customer tools."
+      "title": "الإضافات — متجر TajirPoint",
+      "description": "31 إضافة تُفعَّل لكل متجر: القطاعات والمدفوعات والمحاسبة والامتثال والتجارة الإلكترونية والشحن وأدوات العملاء."
     },
-    "badge": "MARKETPLACE · {count} EXTENSIONS",
-    "headline": "The extension",
-    "headlineAccent": "marketplace",
-    "sub": "Install what your business needs, per shop. The interface only shows what's switched on — a small store never sees restaurant or payroll screens.",
-    "filterAll": "All",
+    "badge": "المتجر — {count} إضافة",
+    "headline": "متجر",
+    "headlineAccent": "الإضافات",
+    "sub": "ثبّت ما يحتاجه عملك، لكل متجر على حدة. الواجهة تعرض ما هو مُفعَّل فقط — المتجر الصغير لا يرى شاشات المطاعم ولا الرواتب أبدًا.",
+    "filterAll": "الكل",
     "filters": {
-      "verticals": "Verticals",
-      "payments": "Payments",
-      "accounting": "Accounting",
-      "compliance": "Compliance",
-      "ecommerce": "E-commerce",
-      "shipping": "Shipping",
-      "customer": "Customer tools"
+      "verticals": "القطاعات",
+      "payments": "المدفوعات",
+      "accounting": "المحاسبة",
+      "compliance": "الامتثال",
+      "ecommerce": "التجارة الإلكترونية",
+      "shipping": "الشحن",
+      "customer": "أدوات العملاء"
     },
     "notes": {
-      "validating": "In final validation",
-      "newer": "Newer integration"
+      "validating": "في التحقق النهائي",
+      "newer": "تكامل أحدث"
     },
     "cta": {
-      "headline": "Every extension. One price.",
-      "body": "No per-module upsells. Install and uninstall freely during your 14-day trial.",
-      "primary": "See pricing"
+      "headline": "كل الإضافات. سعر واحد.",
+      "body": "لا بيع إضافي لكل وحدة. ثبّت وألغِ التثبيت بحرية خلال تجربتك لمدة 14 يومًا.",
+      "primary": "اطّلع على الأسعار"
     },
     "items": {
       "restaurant": {
-        "name": "Restaurant",
-        "desc": "Tables, floor plan, kitchen display, modifiers, split bills, QR ordering."
+        "name": "المطاعم",
+        "desc": "الطاولات ومخطط الصالة وشاشة المطبخ والإضافات وتقسيم الفواتير والطلب بـ QR."
       },
       "route-dispatch": {
-        "name": "Route Dispatch & Delivery",
-        "desc": "Van sales, routes, driver cash reconciliation, proof of delivery."
+        "name": "توجيه المسارات والتوصيل",
+        "desc": "البيع المتنقل والمسارات وتسوية نقدية السائق وإثبات التسليم."
       },
       "pharmacy": {
-        "name": "Pharmacy Pack",
-        "desc": "Drug schedules, molecule tracking, expiry alerts, prescription log."
+        "name": "حزمة الصيدليات",
+        "desc": "جداول الأدوية وتتبّع المركّبات وتنبيهات الانتهاء وسجل الوصفات."
       },
       "hr-payroll": {
-        "name": "HR & Payroll",
-        "desc": "Employees, attendance, leave and payroll posted to the books."
+        "name": "الموارد البشرية والرواتب",
+        "desc": "الموظفون والحضور والإجازات ورواتب تُقيَّد في الدفاتر."
       },
       "cloud-kitchen": {
-        "name": "Cloud Kitchen Pack",
-        "desc": "Multiple virtual brands from one shared kitchen."
+        "name": "حزمة المطبخ السحابي",
+        "desc": "عدة علامات افتراضية من مطبخ مشترك واحد."
       },
       "website-builder": {
-        "name": "Website Builder",
-        "desc": "A public online store generated from your products."
+        "name": "منشئ المواقع",
+        "desc": "متجر إلكتروني عام يُنشأ من منتجاتك."
       },
       "stripe": {
         "name": "Stripe",
-        "desc": "Global cards, Apple Pay and Google Pay."
+        "desc": "بطاقات عالمية وApple Pay وGoogle Pay."
       },
       "jazzcash": {
         "name": "JazzCash",
-        "desc": "Mobile wallet payments at the till and online."
+        "desc": "مدفوعات المحفظة عند الصندوق وعبر الإنترنت."
       },
       "easypaisa": {
         "name": "Easypaisa",
-        "desc": "Mobile wallet payments at the till and online."
+        "desc": "مدفوعات المحفظة عند الصندوق وعبر الإنترنت."
       },
       "hblpay": {
         "name": "HBLPay",
-        "desc": "Card payments with 3-D Secure."
+        "desc": "مدفوعات البطاقات مع 3-D Secure."
       },
       "paypal": {
         "name": "PayPal",
-        "desc": "International card and PayPal balance payments."
+        "desc": "مدفوعات البطاقات الدولية ورصيد PayPal."
       },
       "razorpay": {
         "name": "Razorpay",
-        "desc": "Cards and instant bank transfers."
+        "desc": "بطاقات وتحويلات بنكية فورية."
       },
       "square": {
         "name": "Square",
-        "desc": "Card payments via Square."
+        "desc": "مدفوعات البطاقات عبر Square."
       },
       "accounting-gl": {
-        "name": "Accounting & General Ledger",
-        "desc": "Full double-entry books, statements and period close."
+        "name": "المحاسبة ودفتر الأستاذ",
+        "desc": "دفاتر قيد مزدوج كاملة وكشوف وإقفال الفترات."
       },
       "cash-management": {
-        "name": "Cash Management",
-        "desc": "Drawers, safes and petty-cash floats with variance tracking."
+        "name": "إدارة النقد",
+        "desc": "الأدراج والخزائن وعُهد المصروف النثري مع تتبّع الفروق."
       },
       "quickbooks": {
         "name": "QuickBooks Online",
-        "desc": "Push sales, payments and expenses to QuickBooks."
+        "desc": "أرسل المبيعات والمدفوعات والمصروفات إلى QuickBooks."
       },
       "fbr": {
-        "name": "Tax Authority E-Invoicing",
-        "desc": "Real-time e-invoicing with QR on receipts, per country."
+        "name": "الفوترة الإلكترونية للهيئة الضريبية",
+        "desc": "فوترة إلكترونية فورية مع QR على الإيصالات، حسب كل دولة."
       },
       "age-verification": {
-        "name": "Age Verification",
-        "desc": "ID check at checkout for restricted items."
+        "name": "التحقق من العمر",
+        "desc": "فحص الهوية عند الدفع للأصناف المقيّدة."
       },
       "shopify": {
         "name": "Shopify",
-        "desc": "Two-way sync of products, stock and orders."
+        "desc": "مزامنة ثنائية الاتجاه للمنتجات والمخزون والطلبات."
       },
       "woocommerce": {
         "name": "WooCommerce",
-        "desc": "Keep products, stock and orders in sync."
+        "desc": "أبقِ المنتجات والمخزون والطلبات متزامنة."
       },
       "magento": {
         "name": "Magento",
-        "desc": "Keep products, stock and orders in sync."
+        "desc": "أبقِ المنتجات والمخزون والطلبات متزامنة."
       },
       "wix": {
         "name": "Wix",
-        "desc": "Keep products, stock and orders in sync."
+        "desc": "أبقِ المنتجات والمخزون والطلبات متزامنة."
       },
       "bigcommerce": {
         "name": "BigCommerce",
-        "desc": "Keep products, stock and orders in sync."
+        "desc": "أبقِ المنتجات والمخزون والطلبات متزامنة."
       },
       "leopards": {
         "name": "Leopards Courier",
-        "desc": "Book shipments, print labels, track deliveries."
+        "desc": "احجز الشحنات واطبع الملصقات وتتبّع التسليم."
       },
       "tcs": {
         "name": "TCS Express",
-        "desc": "Book shipments, print labels, track deliveries."
+        "desc": "احجز الشحنات واطبع الملصقات وتتبّع التسليم."
       },
       "postex": {
         "name": "PostEx",
-        "desc": "Book shipments, print labels, track deliveries."
+        "desc": "احجز الشحنات واطبع الملصقات وتتبّع التسليم."
       },
       "customer-portal": {
-        "name": "Customer Portal",
-        "desc": "Credit customers view their ledger and pay online."
+        "name": "بوابة العملاء",
+        "desc": "عملاء الآجل يطّلعون على دفترهم ويدفعون إلكترونيًا."
       },
       "delivery-aggregator": {
-        "name": "Delivery Aggregator",
-        "desc": "Delivery-app orders from every platform in one inbox."
+        "name": "منصات التوصيل",
+        "desc": "طلبات تطبيقات التوصيل من كل المنصات في صندوق واحد."
       },
       "coupons": {
-        "name": "Coupons & Discounts",
-        "desc": "Codes that work in-store and online, with usage caps."
+        "name": "القسائم والخصومات",
+        "desc": "أكواد تعمل في المتجر وعبر الإنترنت، مع حدود استخدام."
       },
       "time-promos": {
-        "name": "Time-Based Promotions",
-        "desc": "Happy hours, seasonal offers and weekend sales on a schedule."
+        "name": "عروض مرتبطة بالوقت",
+        "desc": "ساعات سعيدة وعروض موسمية وتخفيضات نهاية الأسبوع وفق جدول."
       },
       "whatsapp-ai": {
-        "name": "WhatsApp AI",
-        "desc": "An assistant that answers customers over WhatsApp."
+        "name": "واتساب AI",
+        "desc": "مساعد يجيب العملاء عبر واتساب."
       }
     }
   },
   "footer": {
-    "tagline": "Point of sale and complete back office for merchants everywhere — localised per country.",
-    "product": "Product",
-    "features": "FEATURES",
-    "industries": "INDUSTRIES",
-    "company": "Company",
+    "tagline": "نقاط بيع ومكتب خلفي متكامل للتجار في كل مكان — مخصّص لكل دولة.",
+    "product": "المنتج",
+    "features": "المزايا",
+    "industries": "الصناعات",
+    "company": "الشركة",
     "links": {
-      "platform": "Platform",
-      "extensions": "Extensions",
-      "pricing": "Pricing",
-      "retail": "Retail",
-      "restaurants": "Restaurants",
-      "distribution": "Distribution",
-      "contact": "Contact sales",
-      "signIn": "Sign in",
-      "developers": "API docs",
-      "about": "About",
-      "privacy": "Privacy",
-      "terms": "Terms",
-      "onlineStore": "Online store",
-      "payments": "Payment gateways",
-      "ecommerce": "E-commerce sync",
-      "couriers": "Couriers & shipping",
-      "tax": "Tax & compliance",
-      "allExtensions": "All 31 extensions",
-      "security": "Security"
+      "platform": "المنصة",
+      "extensions": "الإضافات",
+      "pricing": "الأسعار",
+      "retail": "التجزئة",
+      "restaurants": "المطاعم",
+      "distribution": "التوزيع",
+      "contact": "تواصل مع المبيعات",
+      "signIn": "تسجيل الدخول",
+      "developers": "وثائق API",
+      "about": "من نحن",
+      "privacy": "الخصوصية",
+      "terms": "الشروط",
+      "onlineStore": "المتجر الإلكتروني",
+      "payments": "بوابات الدفع",
+      "ecommerce": "مزامنة التجارة الإلكترونية",
+      "couriers": "الشحن والتوصيل",
+      "tax": "الضرائب والامتثال",
+      "allExtensions": "جميع الإضافات الـ 31",
+      "security": "الأمان"
     },
-    "copyright": "© 2026 TajirPoint · An AmalAxis product",
-    "badge": "Built for merchants everywhere.",
-    "strapline": "POINT OF SALE · MERCHANT OS",
+    "copyright": "© 2026 TajirPoint — منتج من AmalAxis",
+    "badge": "مصمّم للتجار في كل مكان.",
+    "strapline": "نقاط البيع — نظام التاجر",
     "chipEnglish": "English",
-    "chipLocal": "Local languages by country",
-    "solutions": "Solutions",
-    "extensions": "Extensions"
+    "chipLocal": "لغات محلية حسب الدولة",
+    "solutions": "الحلول",
+    "extensions": "الإضافات"
   },
   "common": {
-    "skipToContent": "Skip to main content"
+    "skipToContent": "تخطَّ إلى المحتوى الرئيسي"
   }
 }

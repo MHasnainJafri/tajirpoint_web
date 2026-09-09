@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import {
   ReceiptText,
   CheckCircle2,
@@ -18,12 +19,20 @@ import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { faqSchema } from "@/lib/seo/schemas";
 
-export const metadata: Metadata = buildMetadata({
-  title: "E-Invoicing & Fiscal Compliance — Built Into Checkout",
-  description:
-    "E-invoicing, VAT/GST and fiscal receipts for the regions you operate in. Tajir Point reports invoices in real time, prints QR receipts, and keeps audit-ready records for every transaction.",
-  path: "/features/e-invoicing",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    title: "E-Invoicing & Fiscal Compliance",
+    description:
+      "E-invoicing, VAT/GST and fiscal receipts for your region. Report invoices in real time, print QR receipts, and keep audit-ready records for every sale.",
+    path: "/features/e-invoicing",
+    locale,
+  });
+}
 
 /** The proof points from the design's "how Tajir Point solves it" column. */
 const SOLUTION_POINTS = [
@@ -71,7 +80,14 @@ const FAQS = [
   },
 ];
 
-export default function EInvoicingFeaturePage() {
+export default async function EInvoicingFeaturePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <>
       <JsonLd schema={faqSchema(FAQS)} />

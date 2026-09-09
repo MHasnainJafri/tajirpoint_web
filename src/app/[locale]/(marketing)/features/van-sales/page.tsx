@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import {
   Truck,
   CheckCircle2,
@@ -16,12 +17,20 @@ import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { faqSchema } from "@/lib/seo/schemas";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Van Sales & Route Dispatch — Turn Every Truck Into a Mobile Warehouse",
-  description:
-    "Van sales, route dispatch and day-end reconciliation for distributors who sell on the move. Tajir Point loads stock onto a van, collects cash door to door, and balances every route at night.",
-  path: "/features/van-sales",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    title: "Van Sales & Route Dispatch for Distributors",
+    description:
+      "Van sales, route dispatch and day-end reconciliation. Load stock onto a van, collect cash door to door, and balance every route at night.",
+    path: "/features/van-sales",
+    locale,
+  });
+}
 
 /** The proof points from the design's "how Tajir Point solves it" column. */
 const SOLUTION_POINTS = [
@@ -67,7 +76,14 @@ const FAQS = [
   },
 ];
 
-export default function VanSalesFeaturePage() {
+export default async function VanSalesFeaturePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <>
       <JsonLd schema={faqSchema(FAQS)} />

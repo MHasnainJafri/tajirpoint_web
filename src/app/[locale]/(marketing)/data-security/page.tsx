@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 import { PillBadge } from "@/components/design/primitives";
 import { buildMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Data Security — Enterprise-Grade Protection",
-  description:
-    "Tajir Point's security infrastructure — AES-256 encryption, zero-trust access controls, security practices aligned with SOC 2 and ISO 27001, and a documented incident response plan.",
-  path: "/data-security",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    title: "Data Security — Enterprise-Grade Protection",
+    description:
+      "AES-256 encryption, zero-trust access controls, practices aligned with SOC 2 and ISO 27001, and a documented incident response plan.",
+    path: "/data-security",
+    locale,
+  });
+}
 
 const CONTROLS = [
   {
@@ -80,7 +89,14 @@ const INCIDENT_STEPS = [
   },
 ];
 
-export default function DataSecurityPage() {
+export default async function DataSecurityPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
       {/* Hero */}

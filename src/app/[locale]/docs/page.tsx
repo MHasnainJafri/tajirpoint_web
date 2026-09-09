@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 import { Boxes, KeyRound, Webhook, Zap } from "lucide-react";
 
@@ -6,13 +7,21 @@ import { CodeBlock } from "@/components/marketing/CodeBlock";
 import { API_BASE } from "@/lib/docs/examples";
 import { buildMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Tajir Point API — Documentation",
-  description:
-    "REST API for products, inventory, sales, khata, and payments. JSON over HTTPS, bearer auth, cursor pagination, idempotent writes, and signed webhooks.",
-  path: "/docs",
-  keywords: ["Tajir Point API", "POS API", "REST API", "developer documentation"],
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    title: "Tajir Point API — Documentation",
+    description:
+      "REST API for products, inventory, sales, khata, and payments. JSON over HTTPS, bearer auth, cursor pagination, idempotent writes, and signed webhooks.",
+    path: "/docs",
+    keywords: ["Tajir Point API", "POS API", "REST API", "developer documentation"],
+    locale,
+  });
+}
 
 const FIRST_CALL = `curl ${API_BASE}/catalog/products/ \\
   -H "Authorization: Bearer $TAJIR_TOKEN" \\
@@ -41,7 +50,10 @@ const HEADERS = [
   },
 ];
 
-export default function DocsIndexPage() {
+export default async function DocsIndexPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <div className="flex max-w-[860px] flex-col gap-12">
       <header className="flex flex-col gap-4">

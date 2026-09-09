@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import { Database, Globe, Lock, ShieldCheck, TriangleAlert, Users } from "lucide-react";
 import { PillBadge } from "@/components/design/primitives";
 import { buildMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Security — How We Protect Your Business Data",
-  description:
-    "Tajir Point's security overview — AES-256 encryption, zero-trust access, 99.9% uptime SLA, and responsible disclosure. Enterprise-grade protection for every merchant.",
-  path: "/security",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    title: "Security — How We Protect Your Business Data",
+    description:
+      "AES-256 encryption, zero-trust access, 99.9%% uptime SLA and responsible disclosure. Enterprise-grade protection for every merchant.",
+    path: "/security",
+    locale,
+  });
+}
 
 const MEASURES = [
   {
@@ -43,7 +52,10 @@ const MEASURES = [
   },
 ];
 
-export default function SecurityPage() {
+export default async function SecurityPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <div className="min-h-screen bg-[var(--color-bg)]">
       {/* Hero */}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import {
   Calculator,
   CheckCircle2,
@@ -18,12 +19,20 @@ import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { faqSchema } from "@/lib/seo/schemas";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Accounting — Books That Keep Themselves",
-  description:
-    "A real double-entry ledger, posted automatically from everything that happens in your shop. Trial balance, P&L, balance sheet, bank reconciliation and accountant-ready exports — with no manual journal entries.",
-  path: "/features/accounting",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    title: "Accounting — Books That Keep Themselves",
+    description:
+      "A real double-entry ledger posted automatically from your shop. Trial balance, P&L, balance sheet, bank reconciliation and accountant-ready exports.",
+    path: "/features/accounting",
+    locale,
+  });
+}
 
 /** The proof points from the design's "how Tajir Point solves it" column. */
 const SOLUTION_POINTS = [
@@ -71,7 +80,14 @@ const FAQS = [
   },
 ];
 
-export default function AccountingFeaturePage() {
+export default async function AccountingFeaturePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <>
       <JsonLd schema={faqSchema(FAQS)} />

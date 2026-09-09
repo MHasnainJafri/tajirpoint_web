@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import {
   WifiOff,
   CheckCircle2,
@@ -17,12 +18,20 @@ import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { faqSchema } from "@/lib/seo/schemas";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Offline-First POS — Keep Selling When the Internet Drops",
-  description:
-    "Power cuts and dead connections should never stop a sale. Tajir Point bills offline, writes every sale to the device first, and syncs automatically — with no duplicates and no lost receipts.",
-  path: "/features/offline",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    title: "Offline-First POS — Keep Selling, Always",
+    description:
+      "Power cuts should never stop a sale. Tajir Point bills offline, writes every sale to the device first, and syncs automatically with no duplicates.",
+    path: "/features/offline",
+    locale,
+  });
+}
 
 /** The proof points from the design's "how TajirPoint solves it" column. */
 const SOLUTION_POINTS = [
@@ -70,7 +79,14 @@ const FAQS = [
   },
 ];
 
-export default function OfflineFeaturePage() {
+export default async function OfflineFeaturePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <>
       <JsonLd schema={faqSchema(FAQS)} />

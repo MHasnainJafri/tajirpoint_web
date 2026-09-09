@@ -51,24 +51,28 @@ const nextConfig: NextConfig = {
       { source: "/developers", destination: "/docs", permanent: true },
       { source: "/developers/:path*", destination: "/docs/:path*", permanent: true },
 
-      // Legacy locale-prefixed URLs. The pre-redesign site ran five locales
-      // (en, ur, ar, nl, es) with `localePrefix: "always"` and submitted every
-      // /:locale/:page combination in its sitemap, so Google still holds them.
+      // Legacy locale prefixes from the pre-redesign site, which ran five
+      // locales (en, ur, ar, nl, es) with `localePrefix: "always"` and
+      // submitted every /:locale/:page combination in its sitemap, so Google
+      // still holds them. Config redirects run at step 2 of the routing
+      // pipeline, before proxy/middleware at step 3, so these 308s pre-empt
+      // next-intl's 307 and let Google consolidate the old URLs.
       //
-      // Today `localePrefix: "never"` means next-intl answers /ar, /en/about &c
-      // with a **307 temporary** redirect, which tells Google to keep the old
-      // URL indexed and keep re-crawling it — that is the 18 "Page with
-      // redirect" rows in Search Console. The dropped nl/es prefixes are worse:
-      // they are not locales any more, so they 404 outright.
+      // **`ur` and `ar` are deliberately NOT in this list any more.** Under
+      // `localePrefix: "as-needed"` they are real, canonical, indexable URLs.
+      // Redirecting them was what broke the language switcher: next-intl
+      // navigates to /ur to change locale, and this rule 308'd it back to /
+      // before the middleware could ever see it.
       //
-      // Config redirects are evaluated at step 2 of the routing pipeline,
-      // before proxy/middleware at step 3, so these 308s pre-empt next-intl's
-      // 307 and let Google consolidate the old URLs into the canonical ones.
+      // `en` stays, because as-needed keeps English on the bare path — /en is
+      // a duplicate. `nl` and `es` stay because they are no longer locales at
+      // all and would otherwise 404.
+      //
       // Ordering matters: the bare-prefix rule must come first, otherwise
       // `:path*` (zero-or-more) swallows it.
-      { source: "/:locale(en|ur|ar|nl|es)", destination: "/", permanent: true },
+      { source: "/:locale(en|nl|es)", destination: "/", permanent: true },
       {
-        source: "/:locale(en|ur|ar|nl|es)/:path*",
+        source: "/:locale(en|nl|es)/:path*",
         destination: "/:path*",
         permanent: true,
       },

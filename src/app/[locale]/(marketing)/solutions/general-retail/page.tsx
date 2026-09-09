@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { PillBadge, MintButton, GhostButton, CtaPanel } from "@/components/design/primitives";
 import { Icon } from "@/components/design/Icon";
@@ -6,12 +7,20 @@ import { VerticalScreenMock } from "@/components/marketing/landing/VerticalScree
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = buildMetadata({
-  title: "POS for General Retail — Kiryana, Apparel & Hardware",
-  description:
-    "Tajir Point POS for grocery, convenience, apparel and hardware stores. Credit ledger, barcode scanning, works without internet, and tax e-invoicing per country.",
-  path: "/solutions/general-retail",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    title: "General Retail POS — Kiryana & Apparel",
+    description:
+      "Tajir Point POS for grocery, convenience, apparel and hardware stores. Credit ledger, barcode scanning, works without internet, and tax e-invoicing per country.",
+    path: "/solutions/general-retail",
+    locale,
+  });
+}
 
 const FEATURES = [
   {
@@ -62,7 +71,14 @@ const MOCK_ROWS = [
   { a: "Z-report · Register 1", b: "Cash counted $1,842.00 · zero variance", c: "Closed 10:14 pm" },
 ];
 
-export default function GeneralRetailPage() {
+export default async function GeneralRetailPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <SolutionPage
       vertical="General Retail"

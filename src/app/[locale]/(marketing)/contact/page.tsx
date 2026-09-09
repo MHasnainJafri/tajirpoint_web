@@ -1,16 +1,25 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import { BookOpen, CalendarDays, Mail, MessageCircle } from "lucide-react";
 import { PillBadge } from "@/components/design/primitives";
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { ContactForm } from "./ContactForm";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Contact Tajir Point — Talk to Our Team",
-  description:
-    "Get in touch with the Tajir Point team. Book a demo, ask about pricing, or get support. We're here to help merchants everywhere they sell.",
-  path: "/contact",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    title: "Contact Tajir Point — Talk to Our Team",
+    description:
+      "Get in touch with the Tajir Point team. Book a demo, ask about pricing, or get support. We're here to help merchants everywhere they sell.",
+    path: "/contact",
+    locale,
+  });
+}
 
 const CONTACT_OPTIONS = [
   {
@@ -53,7 +62,10 @@ const OFFICES = [
   { city: "Dubai", country: "UAE", flag: "🇦🇪", address: "Dubai Silicon Oasis, Dubai, UAE" },
 ];
 
-export default function ContactPage() {
+export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <>
       {/* ── Header ──────────────────────────────────────────────────── */}

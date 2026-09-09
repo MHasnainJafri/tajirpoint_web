@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { PillBadge, MintButton, GhostButton, CtaPanel } from "@/components/design/primitives";
 import { Icon } from "@/components/design/Icon";
@@ -6,12 +7,20 @@ import { VerticalScreenMock } from "@/components/marketing/landing/VerticalScree
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Restaurant POS — Table Management, KDS & Delivery",
-  description:
-    "Tajir Point for restaurants, cafés, and cloud kitchens. Table management, Kitchen Display System, modifiers, split bills, and delivery dispatch.",
-  path: "/solutions/restaurants",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    title: "Restaurant POS — Tables, KDS & Delivery",
+    description:
+      "Tajir Point for restaurants, cafés, and cloud kitchens. Table management, Kitchen Display System, modifiers, split bills, and delivery dispatch.",
+    path: "/solutions/restaurants",
+    locale,
+  });
+}
 
 const FEATURES = [
   {
@@ -66,7 +75,10 @@ const MOCK_ROWS = [
   { a: "Delivery app order #8812", b: "Auto-accepted → KDS", c: "Prep 18 min" },
 ];
 
-export default function RestaurantsPage() {
+export default async function RestaurantsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <>
       {/* ── Header ──────────────────────────────────────────────────── */}

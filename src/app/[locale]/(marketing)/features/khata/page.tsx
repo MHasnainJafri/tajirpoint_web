@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import {
   BookOpen,
   CheckCircle2,
@@ -17,12 +18,20 @@ import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { faqSchema } from "@/lib/seo/schemas";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Khata — Your Credit Book, Finally Under Control",
-  description:
-    "The paper notebook every merchant keeps, made real-time, tamper-proof and shareable. Tajir Point posts every sale and payment to a living customer ledger with limits, aging and one-tap statements.",
-  path: "/features/khata",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    title: "Khata — Your Credit Book, Under Control",
+    description:
+      "The paper notebook every merchant keeps, made real-time and tamper-proof. Every sale and payment posts to a living customer ledger with limits and aging.",
+    path: "/features/khata",
+    locale,
+  });
+}
 
 /** The proof points from the design's "how TajirPoint solves it" column. */
 const SOLUTION_POINTS = [
@@ -72,7 +81,14 @@ const FAQS = [
   },
 ];
 
-export default function KhataFeaturePage() {
+export default async function KhataFeaturePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <>
       <JsonLd schema={faqSchema(FAQS)} />

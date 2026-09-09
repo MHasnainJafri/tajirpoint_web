@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import { AlertTriangle } from "lucide-react";
 
 import { CodeBlock } from "@/components/marketing/CodeBlock";
@@ -6,12 +7,20 @@ import { siteConfig } from "@/lib/config/site";
 import { API_BASE } from "@/lib/docs/examples";
 import { buildMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Get your API key — Tajir Point API",
-  description:
-    "Authenticate against the Tajir Point API: exchange credentials for a bearer token, send X-Shop-Id, and refresh before the 30-minute expiry.",
-  path: "/docs/authentication",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    title: "Get your API key — Tajir Point API",
+    description:
+      "Authenticate against the Tajir Point API: exchange credentials for a bearer token, send X-Shop-Id, and refresh before the 30-minute expiry.",
+    path: "/docs/authentication",
+    locale,
+  });
+}
 
 const KEYS_URL = `${siteConfig.dashboardUrl}/settings/api-keys`;
 
@@ -49,7 +58,14 @@ const AUTHED = `curl ${API_BASE}/catalog/products/ \\
   -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5…" \\
   -H "X-Shop-Id: 8f1c2d3e-4b5a-6c7d-8e9f-0a1b2c3d4e5f"`;
 
-export default function AuthenticationPage() {
+export default async function AuthenticationPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <div className="flex max-w-[860px] flex-col gap-10">
       <header className="flex flex-col gap-3">

@@ -1,14 +1,28 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import { Check } from "lucide-react";
 import { PillBadge } from "@/components/design/primitives";
 import { siteConfig } from "@/lib/config/site";
+import { buildMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Book a Demo",
-  description: "See Tajir Point in action. Book a free 30-minute demo with our team.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    title: "Book a Demo",
+    description: "See Tajir Point in action. Book a free 30-minute demo with our team.",
+    path: "/book-demo",
+    locale,
+  });
+}
 
-export default function BookDemoPage() {
+export default async function BookDemoPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <section className="relative overflow-hidden px-5 pb-[110px] pt-[140px] md:px-10">
       <div

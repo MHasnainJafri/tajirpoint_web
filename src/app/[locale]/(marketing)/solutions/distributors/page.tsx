@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { PillBadge, MintButton, GhostButton, CtaPanel } from "@/components/design/primitives";
 import { Icon } from "@/components/design/Icon";
@@ -6,12 +7,20 @@ import { VerticalScreenMock } from "@/components/marketing/landing/VerticalScree
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Distribution & Wholesale POS — Route Planning & Dispatch",
-  description:
-    "Tajir Point for distributors and wholesalers. Route planning, driver dispatch, proof of delivery, purchase orders, and multi-warehouse inventory.",
-  path: "/solutions/distributors",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    title: "Distribution & Wholesale POS",
+    description:
+      "Tajir Point for distributors and wholesalers. Route planning, driver dispatch, proof of delivery, purchase orders, and multi-warehouse inventory.",
+    path: "/solutions/distributors",
+    locale,
+  });
+}
 
 const FEATURES = [
   {
@@ -62,7 +71,14 @@ const MOCK_ROWS = [
   { a: "Day-end reconciliation", b: "Cash, goods & fuel matched", c: "Variance $0.00" },
 ];
 
-export default function DistributorsPage() {
+export default async function DistributorsPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <>
       {/* ── Header ──────────────────────────────────────────────────── */}

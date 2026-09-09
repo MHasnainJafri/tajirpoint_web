@@ -55,7 +55,12 @@ export function Ecosystem() {
               alt="Checkout counter POS hardware"
               fill
               sizes="(max-width: 1024px) 100vw, 42vw"
-              priority
+              // No `priority` here. Ecosystem is the sixth section of the
+              // homepage, far below the fold, but `priority` emits a
+              // <link rel="preload" as="image"> into <head> — so the browser
+              // raced to fetch this 731KB image at highest priority, competing
+              // with the hero for bandwidth and pushing LCP out. Lazy is right
+              // for anything the visitor has to scroll to.
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <span className="absolute left-3 top-3 rounded-full bg-[var(--color-mint)] px-3 py-1 font-mono text-[10px] font-extrabold tracking-wide text-[#0A0A0A]">

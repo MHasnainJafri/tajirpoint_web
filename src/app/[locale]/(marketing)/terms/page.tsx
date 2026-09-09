@@ -1,17 +1,29 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import { PillBadge } from "@/components/design/primitives";
 import { buildMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Terms of Service",
-  description:
-    "The terms and conditions governing your use of Tajir Point products and services. Covers subscriptions, acceptable use, liability, and dispute resolution.",
-  path: "/terms",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    title: "Terms of Service",
+    description:
+      "The terms and conditions governing your use of Tajir Point products and services. Covers subscriptions, acceptable use, liability, and dispute resolution.",
+    path: "/terms",
+    locale,
+  });
+}
 
 const LAST_UPDATED = "1 May 2025";
 
-export default function TermsPage() {
+export default async function TermsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-[var(--color-bg)]">
       <div

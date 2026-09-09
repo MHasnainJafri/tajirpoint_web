@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/config/site";
+import { routing } from "@/i18n/routing";
+import { localeUrl } from "@/lib/seo/metadata";
 import { RESOURCES } from "@/lib/docs/nav";
 
 type Page = {
@@ -55,19 +56,30 @@ const PAGES: Page[] = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // No `alternates` and no `lastModified`, deliberately.
+  // One entry per page per locale, each carrying the full hreflang cluster.
   //
-  // alternates: every locale resolves to the same URL under
-  // `localePrefix: "never"`, so the hreflang cluster was self-referential and
-  // Google ignored it. See the note in lib/seo/metadata.ts.
+  // This is only possible because routing moved to `localePrefix: "as-needed"`.
+  // Under the previous `"never"` all three languages resolved to a single URL,
+  // so there was nothing to list and no valid cluster to annotate — Urdu and
+  // Arabic were entirely absent from Google.
   //
-  // lastModified: `new Date()` is evaluated at build time, so every page
-  // claimed to have changed on every deploy. A sitemap that always cries
-  // "just updated" trains Google to stop trusting the signal — better to omit
-  // it until we have real per-page modification dates.
-  return PAGES.map(({ path, priority, changeFrequency }) => ({
-    url: `${siteConfig.url}${path}`,
-    changeFrequency,
-    priority,
-  }));
+  // Still no `lastModified`, deliberately. `new Date()` is evaluated at build
+  // time, so every page would claim to have changed on every deploy; a sitemap
+  // that always cries "just updated" trains Google to stop trusting the signal.
+  // Better omitted than faked — restore it only with real per-page dates.
+  return PAGES.flatMap(({ path, priority, changeFrequency }) =>
+    routing.locales.map((locale) => ({
+      url: localeUrl(path, locale),
+      changeFrequency,
+      // Non-default locales rank slightly below their English counterpart so
+      // the English URL stays the preferred entry point of each cluster.
+      priority: locale === routing.defaultLocale ? priority : Math.max(0.1, priority - 0.1),
+      alternates: {
+        languages: Object.fromEntries([
+          ...routing.locales.map((l) => [l, localeUrl(path, l)]),
+          ["x-default", localeUrl(path, routing.defaultLocale)],
+        ]),
+      },
+    }))
+  );
 }

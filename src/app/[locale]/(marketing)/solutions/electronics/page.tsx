@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { PillBadge, MintButton, GhostButton, CtaPanel } from "@/components/design/primitives";
 import { Icon } from "@/components/design/Icon";
@@ -6,12 +7,20 @@ import { VerticalScreenMock } from "@/components/marketing/landing/VerticalScree
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = buildMetadata({
-  title: "POS for Electronics & Mobile Shops — IMEI & Serial Tracking",
-  description:
-    "Tajir Point for electronics and mobile phone shops. IMEI tracking, serial numbers, warranty management, repair job cards, and supplier ledger.",
-  path: "/solutions/electronics",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    title: "Electronics & Mobile Shop POS — IMEI Tracking",
+    description:
+      "Tajir Point for electronics and mobile phone shops. IMEI tracking, serial numbers, warranty management, repair job cards, and supplier ledger.",
+    path: "/solutions/electronics",
+    locale,
+  });
+}
 
 const FEATURES = [
   {
@@ -62,7 +71,10 @@ const MOCK_ROWS = [
   { a: "Trade-in · iPhone 11", b: "Valued $380.00 → applied to sale", c: "Accepted" },
 ];
 
-export default function ElectronicsPage() {
+export default async function ElectronicsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <>
       {/* ── Header ──────────────────────────────────────────────────── */}

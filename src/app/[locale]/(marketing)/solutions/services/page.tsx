@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { PillBadge, MintButton, GhostButton, CtaPanel } from "@/components/design/primitives";
 import { Icon } from "@/components/design/Icon";
@@ -6,12 +7,20 @@ import { VerticalScreenMock } from "@/components/marketing/landing/VerticalScree
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = buildMetadata({
-  title: "POS for Service Businesses — Salons, Clinics & Gyms",
-  description:
-    "Tajir Point for salons, clinics, gyms, and service businesses. Appointment scheduling, staff commissions, packages, and recurring billing.",
-  path: "/solutions/services",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    title: "Service Business POS — Salons & Clinics",
+    description:
+      "Tajir Point for salons, clinics, gyms, and service businesses. Appointment scheduling, staff commissions, packages, and recurring billing.",
+    path: "/solutions/services",
+    locale,
+  });
+}
 
 const FEATURES = [
   {
@@ -62,7 +71,10 @@ const MOCK_ROWS = [
   { a: "Physio package · 6 sessions", b: "3 used · next Tue", c: "$90.00" },
 ];
 
-export default function ServicesPage() {
+export default async function ServicesPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <>
       {/* ── Header ──────────────────────────────────────────────────── */}

@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
 
 import { CodeBlock } from "@/components/marketing/CodeBlock";
 import { buildMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = buildMetadata({
-  title: "Errors — Tajir Point API",
-  description:
-    "Every error uses the same envelope: a status code, a message, and a details object naming the offending fields.",
-  path: "/docs/errors",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata({
+    title: "Errors — Tajir Point API",
+    description:
+      "Every error uses the same envelope: a status code, a message, and a details object naming the offending fields.",
+    path: "/docs/errors",
+    locale,
+  });
+}
 
 const ENVELOPE = `{
   "error": {
@@ -81,7 +90,10 @@ const CODES: Array<{ code: string; title: string; body: string; retry: string }>
   },
 ];
 
-export default function ErrorsPage() {
+export default async function ErrorsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <div className="flex max-w-[860px] flex-col gap-10">
       <header className="flex flex-col gap-3">

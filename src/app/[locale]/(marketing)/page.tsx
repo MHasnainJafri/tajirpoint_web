@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Hero } from "@/components/marketing/landing/Hero";
 import { Replaces } from "@/components/marketing/landing/Replaces";
 import { WhoItsFor } from "@/components/marketing/landing/WhoItsFor";
@@ -16,12 +16,26 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { softwareApplicationSchema } from "@/lib/seo/schemas";
 import { buildMetadata } from "@/lib/seo/metadata";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations("landing.meta");
-  return buildMetadata({ title: t("title"), description: t("description"), path: "/" });
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "landing.meta" });
+  return buildMetadata({
+    title: t("title"),
+    description: t("description"),
+    path: "/",
+    locale,
+    absoluteTitle: true,
+  });
 }
 
-export default function HomePage() {
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <>
       <JsonLd schema={softwareApplicationSchema()} />
