@@ -13,18 +13,18 @@
     "megaSolutions": {
       "badge": "SIX INDUSTRIES",
       "title": "One platform, shaped around your counter",
-      "desc": "Extensions tailor the same core to each business — nothing extra on screen.",
-      "cta": "See all industries",
+      "desc": "Each vertical only sees its own screens — a grocery store never meets a kitchen display.",
+      "cta": "Not sure which fits? Talk to us",
       "groupA": "SELL PRODUCTS",
       "groupB": "SERVE & DISTRIBUTE"
     },
     "megaFeatures": {
-      "badge": "FIVE DEEP DIVES",
-      "title": "The parts merchants ask about first",
-      "desc": "Khata, offline selling, books, van routes and fiscal invoicing — each one explained end to end.",
-      "cta": "Start with offline POS",
-      "groupMoney": "MONEY & LEDGER",
-      "groupOps": "OPERATIONS",
+      "badge": "Signature feature",
+      "title": "Digital credit ledger",
+      "desc": "The credit notebook every shop keeps — real-time, shareable on WhatsApp, impossible to fudge.",
+      "cta": "See how it works",
+      "groupMoney": "Money",
+      "groupOps": "Run & grow",
       "items": {
         "khata": {
           "name": "Digital Khata",
@@ -51,9 +51,9 @@
     "megaExtensions": {
       "badge": "MARKETPLACE",
       "title": "31 extensions, installed per shop",
-      "desc": "The interface only shows what's switched on.",
-      "cta": "Browse the marketplace",
-      "groupPacks": "VERTICAL PACKS",
+      "desc": "The interface only shows what you switch on. Most are free; a few are priced per month.",
+      "cta": "Browse all 31",
+      "groupPacks": "Popular extensions",
       "groupPayments": "PAYMENTS",
       "groupIntegrations": "INTEGRATIONS",
       "live": "LIVE",
@@ -62,12 +62,41 @@
         "quickbooks": "QuickBooks Online",
         "shopify": "Shopify",
         "woocommerce": "WooCommerce",
-        "couriers": "Leopards · TCS · PostEx",
+        "couriers": "Courier & shipping",
         "delivery-aggregator": "Delivery Aggregator",
         "whatsapp-ai": "WhatsApp AI",
-        "fbr": "FBR e-invoicing"
+        "fbr": "Tax e-invoicing"
       }
-    }
+    },
+    "product": "Product",
+    "resources": "Resources",
+    "startTrial": "Start free trial",
+    "chip": "Point of sale",
+    "megaResources": {
+      "items": {
+        "docs": {
+          "title": "API docs & webhooks",
+          "sub": "Public REST API, signed webhooks, API keys."
+        },
+        "demo": {
+          "title": "Book a demo",
+          "sub": "Twenty minutes, in your language, on your own data."
+        },
+        "security": {
+          "title": "Security",
+          "sub": "Isolation, roles, two-factor and the audit log."
+        },
+        "about": {
+          "title": "About us",
+          "sub": "Who builds TajirPoint, and why."
+        },
+        "contact": {
+          "title": "Contact sales",
+          "sub": "WhatsApp, call, or send us a question."
+        }
+      }
+    },
+    "freeTrial": "Free trial"
   },
   "landing": {
     "meta": {
@@ -75,402 +104,470 @@
       "description": "POS, inventory, purchasing, credit ledger, accounting, staff, delivery and an online store. One platform, one login, 31 extensions."
     },
     "hero": {
-      "badge": "POS · Inventory · Accounting",
-      "headlineBefore": "The all-in-one",
-      "accent": "POS",
-      "headlineAfter": "that powers every sale and scale.",
-      "sub": "TajirPoint is the smart point of sale and business management platform for growing retailers. Manage sales, inventory, customers and reports — in store and on the go.",
-      "ctaPrimary": "Start free trial",
+      "badge": "Point of sale & back office · Built for local markets worldwide",
+      "headline": "The point of sale that runs",
+      "headlineAccent": "your whole business.",
+      "sub": "TajirPoint is a complete point-of-sale system — and everything behind it. The counter, stock, customer credit, accounting, staff, delivery and your online store — one login, in your language and currency. And it keeps selling when the internet drops.",
+      "ctaPrimary": "Start 14-day free trial",
       "ctaSecondary": "See how it works",
-      "meta": ["14 days free trial", "No card required", "English, Urdu & Arabic"],
-      "screenAlt": "The TajirPoint point-of-sale running on a counter terminal"
-    },
-    "strip": {
-      "billing": {
-        "title": "Lightning fast billing",
-        "body": "Create bills in seconds with a clean, intuitive interface."
-      },
-      "inventory": {
-        "title": "Inventory that syncs",
-        "body": "Real-time stock tracking across all your outlets."
-      },
-      "reports": {
-        "title": "Powerful reports",
-        "body": "Sales, profit, taxes and more — in one place."
-      },
-      "offline": {
-        "title": "Works offline",
-        "body": "Keep selling even without the internet."
-      },
-      "multistore": {
-        "title": "Multi-store ready",
-        "body": "Manage one or many locations effortlessly."
+      "note": "No card required · Every module included · Cancel anytime",
+      "cards": {
+        "sales": {
+          "title": "Sales today",
+          "branches": "3 branches"
+        },
+        "credit": {
+          "title": "Customer credit",
+          "owed": "owed by 38 customers",
+          "reminders": "6 reminders sent today"
+        },
+        "offline": {
+          "title": "Offline",
+          "queued": "queued since 11:42 — still selling",
+          "syncs": "Syncs when back online"
+        },
+        "lang": {
+          "title": "Your language, your currency",
+          "chipEnglish": "English",
+          "chipLocal": "+ local languages",
+          "chipCurrency": "Multi-currency",
+          "body": "Languages, tax rules and payment methods follow your country. Right-to-left layouts included."
+        }
       }
     },
-    "trust": {
-      "headline": "Built to fit the tools you already use",
-      "sub": "Payments, accounting, couriers and online storefronts connect to the same catalogue and the same books — no double entry, no export-and-pray."
-    },
-    "stats": {
-      "extensions": "Installable extensions",
-      "platforms": "Platforms — web, desktop and Android",
-      "languages": "Languages, fully right-to-left",
-      "reports": "Exportable reports"
-    },
-    "whoItsFor": {
-      "headline": "Built for the way real shops actually sell",
-      "sub": "One counter or twelve branches and a delivery fleet — it is the same system underneath, set up for the size you are today.",
+    "replaces": {
+      "eyebrow": "One platform instead of five",
       "items": {
-        "single": {
-          "title": "A single counter",
-          "body": "Scan, ring up and take cash, card or wallet. Close the drawer at night with the day's totals already reconciled.",
-          "alt": "Shopkeeper standing at the counter of a single-branch shop"
-        },
-        "multi": {
-          "title": "Several branches",
-          "body": "One catalogue and one set of books across every branch, with stock transfers, branch-wise reporting and per-location staff permissions.",
-          "alt": "Staff serving customers inside a larger multi-branch store"
-        },
-        "mobile": {
-          "title": "On the road",
-          "body": "Van sales, delivery runs and market stalls. Load stock onto the vehicle, sell and collect on the route, settle back at the shop.",
-          "alt": "Salesman selling from a delivery van at a roadside market"
-        }
-      }
-    },
-    "platform": {
-      "eyebrow": "Why TajirPoint",
-      "headline": "One platform instead of five tools",
-      "body": "A till here, a spreadsheet there, an accountant at month-end, orders on chat. TajirPoint replaces the patchwork — and the pieces talk to each other. One sale updates stock, the customer's balance, the ledger and the tax record in a single action.",
-      "replaces": {
-        "till": {
-          "old": "The till",
-          "now": "Fast barcode checkout, split payments, shifts"
-        },
-        "register": {
-          "old": "The credit register",
-          "now": "Tamper-proof digital ledger, shared on WhatsApp"
-        },
-        "spreadsheet": {
-          "old": "The stock spreadsheet",
-          "now": "Live inventory across every warehouse"
-        },
-        "accountant": {
-          "old": "The accountant’s backlog",
-          "now": "Double-entry books, posted automatically"
-        },
-        "chat": {
-          "old": "Orders over chat",
-          "now": "A hosted online store and order inbox"
-        }
-      }
-    },
-    "ecosystem": {
-      "headline": "Everything you need on the counter, online, and in the books",
-      "sub": "The same catalogue, the same stock and the same customer balances — whether the sale happens at the till, over WhatsApp, or on your own online store.",
-      "pills": {
-        "backOffice": "Back office",
-        "pos": "POS software",
-        "online": "Online store"
+        "till": "POS till",
+        "notebook": "Paper credit notebook",
+        "excel": "Excel stock sheet",
+        "ledger": "Accountant's ledger",
+        "whatsapp": "WhatsApp order chaos"
       },
-      "shots": {
-        "backOffice": "Owner reviewing the day's reports on a laptop in the back office",
-        "counter": "Tablet POS on a shop counter with a receipt printer and cash drawer",
-        "online": "Customer ordering from the shop's online store on a phone"
-      }
+      "body": "One sale updates stock, the customer's credit balance, the accounting ledger and the tax record in a single action — no re-typing, no month-end surprises."
     },
-    "bento": {
-      "offline": {
-        "tag": "Offline-first",
-        "title": "Sells straight through internet outages",
-        "body": "Connectivity drops; the counter doesn't. Sales queue locally on the device and sync back safely when the network returns — no duplicates, nothing lost.",
-        "panelStatus": "Connection lost",
-        "panelTime": "14:22",
-        "panelQueued": "Queued to sync",
-        "panelQueuedValue": "12 sales · safe"
+    "signature": {
+      "eyebrow": "Signature features",
+      "headline": "Five things most POS systems get wrong",
+      "sub": "Built for how shops actually run — credit, outages, local taxes and the truck that leaves at 7 am.",
+      "khata": {
+        "label": "01 · Digital credit ledger",
+        "title": "The credit notebook, made tamper-proof",
+        "body": "Every sale, payment and adjustment posts automatically with a running balance the shopkeeper can't accidentally fudge and the customer can't dispute. Share a PDF statement over WhatsApp in one tap.",
+        "bullets": {
+          "0": "Credit limits with approaching-limit alerts",
+          "1": "30 / 60 / 90-day aging",
+          "2": "Supplier credit and advances too",
+          "3": "WhatsApp statements & reminders"
+        },
+        "card": {
+          "ledgerOf": "Credit ledger · Northgate General Store",
+          "balanceDue": "Balance due",
+          "date": "Date",
+          "detail": "Detail",
+          "drcr": "Dr / Cr",
+          "balance": "Balance",
+          "limit": "Credit limit {amount}",
+          "used": "{percent}% used",
+          "share": "Share statement on WhatsApp",
+          "remind": "Send reminder"
+        }
       },
       "accounting": {
-        "tag": "Accounting",
-        "title": "Books that do themselves",
-        "body": "A real double-entry ledger, auto-posted from every sale, purchase and payroll run. Clean books, zero journal entries."
-      },
-      "inventory": {
-        "tag": "Inventory",
-        "title": "Stock that tracks itself",
-        "body": "Multi-warehouse, batch & expiry, serial/IMEI, unit conversion — carton to piece — with a full audit trail."
-      },
-      "distribution": {
-        "tag": "Distribution",
-        "title": "Van sales, door to door",
-        "body": "Load a truck as a mobile warehouse, sell on route, reconcile cash, goods and fuel at day end."
-      },
-      "storefront": {
-        "tag": "Storefront",
-        "title": "A storefront, auto-generated",
-        "body": "A hosted online store built from your own products — themes, your logo, your domain, online ordering."
-      },
-      "security": {
-        "tag": "Security",
-        "title": "Locked down by role",
-        "body": "Owner, manager, cashier, driver — each sees only their screens. 2FA, API keys and a full audit log."
-      }
-    },
-    "ledger": {
-      "eyebrow": "The heart of the platform",
-      "headline": "A credit book, with a real ledger underneath",
-      "body": "Most shops still track customer credit in a notebook. TajirPoint replaces it with a true double-entry ledger that still feels that simple — running balances, credit limits, statements, aging.",
-      "outstanding": "OUTSTANDING BALANCE",
-      "colDate": "DATE",
-      "colDescription": "DESCRIPTION",
-      "colDebit": "DEBIT",
-      "colCredit": "CREDIT",
-      "features": {
-        "customer-ledgers": {
-          "t": "Customer ledgers",
-          "d": "Every customer’s running balance updates instantly. Always exact, never out of sync."
+        "label": "02 · Accounting on autopilot",
+        "title": "Books that write themselves",
+        "body": "A real double-entry general ledger posts from every sale, purchase, payment, expense and payroll run. You never touch a journal entry; your accountant opens clean books.",
+        "bullets": {
+          "0": "Bank statement import & reconciliation",
+          "1": "Cash drawers, safes & petty cash",
+          "2": "Accounting periods & close",
+          "3": "QuickBooks Online sync"
         },
-        "credit-limits": {
-          "t": "Credit limits",
-          "d": "Warn or block at sale time. Advances allocate cleanly against open invoices."
+        "card": {
+          "posted": "Posted automatically",
+          "account": "Account",
+          "debit": "Debit",
+          "credit": "Credit",
+          "balanced": "Balanced"
+        }
+      },
+      "van": {
+        "label": "03 · Van sales & distribution",
+        "title": "Load the truck. Sell the route. Reconcile by evening.",
+        "body": "Treat a vehicle as a mobile warehouse: load stock, sell and collect cash door-to-door — credit sales included — then match cash, goods and fuel at day end, with any shortfall on the driver's account.",
+        "bullets": {
+          "0": "Route & stop planning",
+          "1": "Driver cash reconciliation",
+          "2": "Fuel & mileage with anomaly flags",
+          "3": "Per-trip profit report"
         },
-        "aging": {
-          "t": "Aging reports",
-          "d": "30 / 60 / 90+ day buckets. Statements shareable to WhatsApp in three languages."
-        },
-        "supplier-ledgers": {
-          "t": "Supplier ledgers",
-          "d": "PO → GRN → invoice → payment. Returns, advances, allocations — one trail."
+        "card": {
+          "progress": "In progress · 14 / 18 stops",
+          "cash": "Cash collected",
+          "credit": "Credit sales",
+          "variance": "Variance"
+        }
+      },
+      "offline": {
+        "label": "04 · Works offline",
+        "title": "A dropped connection isn't a reason to stop selling",
+        "body": "When the internet drops, the till keeps ringing sales and syncs everything back safely when it returns — no duplicates, no lost transactions.",
+        "steps": {
+          "drop": "Internet drops. Till switches to offline mode.",
+          "queue": "14 sales rung and receipted, queued locally.",
+          "sync": "Back online. Synced — 0 duplicates, 0 lost."
+        }
+      },
+      "tax": {
+        "label": "05 · Local tax compliance",
+        "title": "Local tax rules built in, not bolted on",
+        "body": "Real-time e-invoicing where regulators require it, with a QR code on every receipt. Withholding tax, regional structures and multi-currency billing handled per country.",
+        "chips": {
+          "inclusive": "Tax inclusive / exclusive",
+          "withholding": "Withholding certificates",
+          "age": "Age verification",
+          "audit": "Audit log"
         }
       }
     },
-    "box": {
-      "eyebrow": "Native capabilities, day one",
-      "headlineA": "In the box.",
-      "headlineB": "No bolt-ons.",
-      "body": "Everything below ships with every plan — not as an extension, not as a partner integration. The platform is the product.",
-      "buckets": {
+    "solutions": {
+      "eyebrow": "Solutions",
+      "headline": "Made for your kind of shop",
+      "sub": "Six verticals, each with its own screens. Switch on what you need — a grocery store never sees a kitchen display.",
+      "tablistLabel": "Choose your trade",
+      "ctaTrial": "Start free trial",
+      "ctaExtensions": "See extensions",
+      "items": {
+        "retail": {
+          "name": "General retail",
+          "who": "Grocery, convenience, apparel, hardware",
+          "blurb": "Barcode-fast selling, customer credit that keeps itself, and stock you can count in cartons, kilos or pieces.",
+          "bullets": {
+            "0": "Fast barcode checkout",
+            "1": "Customer credit with WhatsApp reminders",
+            "2": "Sell by carton, kg or piece",
+            "3": "Label printing & Z-reports"
+          }
+        },
+        "restaurants": {
+          "name": "Restaurants & cafés",
+          "who": "Dine-in, takeaway, delivery, cloud kitchens",
+          "blurb": "Floor plans, a kitchen display that times every ticket, and every delivery app in one inbox.",
+          "bullets": {
+            "0": "Floor plan & tables",
+            "1": "Kitchen display (KDS)",
+            "2": "Modifiers, combos, split bills",
+            "3": "QR self-ordering & delivery inbox"
+          }
+        },
+        "electronics": {
+          "name": "Electronics & mobile",
+          "who": "Phone shops, computer stores, repair counters",
+          "blurb": "Every handset by IMEI from purchase to warranty claim, with repair jobs and trade-ins in the same till.",
+          "bullets": {
+            "0": "IMEI / serial per handset",
+            "1": "Warranty records",
+            "2": "Repair job cards",
+            "3": "Trade-ins & exchanges"
+          }
+        },
+        "pharmacies": {
+          "name": "Pharmacies",
+          "who": "Medical stores & chemists",
+          "blurb": "Batches and expiries tracked to the strip. The till sells oldest-expiring first and refuses expired stock.",
+          "bullets": {
+            "0": "Batch & expiry (FEFO)",
+            "1": "Drug schedules & molecules",
+            "2": "90/60/30-day expiry alerts",
+            "3": "Prescription log"
+          }
+        },
+        "distribution": {
+          "name": "Distributors & wholesale",
+          "who": "FMCG distribution, wholesalers, mills",
+          "blurb": "Vans as mobile warehouses, routes with cash and credit collection, and reconciliation the driver can't argue with.",
+          "bullets": {
+            "0": "Van sales & route planning",
+            "1": "Driver cash reconciliation",
+            "2": "Multi-warehouse stock",
+            "3": "Bulk & tier pricing"
+          }
+        },
+        "services": {
+          "name": "Services",
+          "who": "Salons, clinics, gyms, tutors",
+          "blurb": "Appointments, staff commissions and memberships that bill themselves every month.",
+          "bullets": {
+            "0": "Appointments & scheduling",
+            "1": "Staff commissions",
+            "2": "Memberships & packages",
+            "3": "Recurring billing"
+          }
+        }
+      }
+    },
+    "pillars": {
+      "eyebrow": "The whole back office",
+      "headline": "Everything behind the counter, on one login",
+      "sub": "More than any single shop needs. The interface only shows what you switch on.",
+      "items": {
         "sell": {
-          "cat": "Sell anywhere",
-          "title": "A POS that doesn’t blink",
-          "body": "Cart, barcode scan, hold orders, parked carts, shift open/close. Cash, card, cheque, wallet, split tenders.",
-          "chips": ["Thermal printers", "Hold & park", "Multi-tender", "Custom receipts"]
+          "title": "Sell",
+          "body": "POS checkout, split payments, quotations, returns, registers & shifts."
         },
-        "inventory": {
-          "cat": "Inventory",
-          "title": "Stock you can trust",
-          "body": "Multi-warehouse with in-transit tracking. FIFO / moving average / actual cost. Unit conversions chain carton ↔ box ↔ piece.",
-          "chips": ["Multi-warehouse", "Batches & serials", "GRNs", "Custom fields"]
+        "stock": {
+          "title": "Stock",
+          "body": "Multi-warehouse, batch & expiry (FEFO), serials, three costing methods."
         },
-        "sales": {
-          "cat": "Sales & pricing",
-          "title": "Quote → invoice → returns",
-          "body": "Quotations convert in one click. Multi-rule discount engine: time-based, customer-segment, BOGO, percentage, fixed.",
-          "chips": ["Coupons", "Loyalty", "Wallet credit", "Returns"]
+        "buy": {
+          "title": "Buy",
+          "body": "Purchase orders, goods receipt (GRN), returns, supplier ledgers."
         },
-        "purchases": {
-          "cat": "Purchasing",
-          "title": "PO to payment, one trail",
-          "body": "POs → GRN → supplier invoice → payment. Returns with credit notes. Advances allocated against bills.",
-          "chips": ["PO lifecycle", "Partial receipts", "Advances"]
+        "getPaid": {
+          "title": "Get paid",
+          "body": "Cash, card, cheque, wallets; 7 gateways; allocate across invoices."
         },
-        "dispatch": {
-          "cat": "Dispatch",
-          "title": "Trip planning & POD",
-          "body": "Multi-stop trips, load/unload tracking, a driver app, proof-of-delivery capture, end-of-day reconciliation.",
-          "chips": ["Driver app", "POD", "Trip reconcile"]
+        "credit": {
+          "title": "Credit",
+          "body": "Customer & supplier credit, limits, statements, reminders."
         },
-        "money": {
-          "cat": "Money",
-          "title": "Ledger-grade money handling",
-          "body": "Cheque lifecycle with bounce reversal, drawers and petty cash with variance, bank statement import and reconciliation.",
-          "chips": ["Cheques", "Petty cash", "Reconciliation", "Withholding tax"]
+        "account": {
+          "title": "Account",
+          "body": "Double-entry GL, trial balance, P&L, balance sheet, cash flow."
+        },
+        "comply": {
+          "title": "Comply",
+          "body": "E-invoicing, withholding tax, age checks, audit logs."
+        },
+        "grow": {
+          "title": "Grow",
+          "body": "Loyalty, promotions & coupons, customer portal, online store."
+        },
+        "deliver": {
+          "title": "Deliver",
+          "body": "Van sales, 3PL couriers, delivery-aggregator inbox."
+        },
+        "people": {
+          "title": "Run people",
+          "body": "Staff records, attendance, leave, payroll."
+        },
+        "specialise": {
+          "title": "Specialise",
+          "body": "Restaurant & KDS, cloud kitchen, pharmacy pack."
+        },
+        "integrate": {
+          "title": "Integrate",
+          "body": "Shopify, WooCommerce, QuickBooks, public API & webhooks."
         }
       }
+    },
+    "platforms": {
+      "eyebrow": "Languages & devices",
+      "headline": "Speaks your team's language. Runs on what you own.",
+      "sub": "Languages, currencies, tax rules and payment methods are set per country — and right-to-left layouts are built in. One codebase across web, desktop and Android, so every feature lands everywhere at once.",
+      "devices": {
+        "web": {
+          "name": "Web",
+          "sub": "Any browser, nothing to install"
+        },
+        "desktop": {
+          "name": "Desktop",
+          "sub": "Windows · macOS · Linux; printers & drawers"
+        },
+        "android": {
+          "name": "Android",
+          "sub": "Camera scanning, Bluetooth receipts"
+        },
+        "ios": {
+          "name": "iOS",
+          "sub": "Coming soon"
+        }
+      },
+      "app": {
+        "getItOn": "GET IT ON",
+        "googlePlay": "Google Play",
+        "note": "Scan, print and sell from a phone or tablet."
+      },
+      "hardware": "Works with thermal receipt printers, barcode scanners and cash drawers.",
+      "receiptCaption": "Receipts, screens and kitchen tickets follow the chosen language — layout flips right-to-left automatically.",
+      "receiptTablistLabel": "Preview receipt language"
     },
     "extensions": {
       "eyebrow": "Extension marketplace",
-      "headline": "Start lean.",
-      "headlineAccent": "Extend infinitely.",
-      "body": "The core does the common work. 31 installable extensions switch on what your business needs — restaurant floor plans, payment gateways, courier booking, e-commerce sync — and the interface only shows what's turned on.",
-      "cta": "Browse all 31 extensions"
-    },
-    "how": {
-      "eyebrow": "How it works",
-      "headline": "Live in an afternoon",
-      "steps": {
-        "import": {
-          "n": "01",
-          "title": "Import your products",
-          "body": "Bulk import from CSV or Excel — Shopify and WooCommerce exports are detected automatically."
-        },
-        "install": {
-          "n": "02",
-          "title": "Install your extensions",
-          "body": "Pick from 31 add-ons. The interface only shows what you switch on."
-        },
-        "connect": {
-          "n": "03",
-          "title": "Connect your hardware",
-          "body": "Receipt printers, barcode scanners, cash drawers — or just a phone camera."
-        },
-        "sell": {
-          "n": "04",
-          "title": "Start selling",
-          "body": "Web, desktop or Android. Online or offline. Books post themselves."
-        }
-      }
-    },
-    "posModes": {
-      "eyebrow": "One system, every counter",
-      "headline": "The same POS, set up for your trade",
-      "sub": "Switch on the mode that matches your shop and the interface changes with it — the same catalogue, stock and books underneath.",
-      "cta": "Learn more",
-      "items": {
-        "retail": {
-          "label": "Retail",
-          "title": "Retail mode",
-          "body": "Barcode checkout with real stock behind it. Sell from any counter — the catalogue, the prices and the books stay in one place.",
-          "bullets": [
-            "Barcode and IMEI scanning",
-            "Stock transfers between branches",
-            "Low-stock and reorder alerts"
-          ],
-          "alt": "The TajirPoint retail checkout screen"
-        },
-        "restaurants": {
-          "label": "Restaurants",
-          "title": "Restaurant mode",
-          "body": "Run the floor and the kitchen off one screen — tables, courses and split bills, with every order landing on the kitchen display.",
-          "bullets": [
-            "Table floor plan and covers",
-            "Kitchen display screens",
-            "Split, merge and park bills"
-          ],
-          "alt": "The TajirPoint restaurant floor plan screen"
-        },
-        "electronics": {
-          "label": "Electronics",
-          "title": "Electronics mode",
-          "body": "Every unit tracked by serial or IMEI from the purchase order to the warranty claim, so you always know which piece went to which customer.",
-          "bullets": [
-            "Serial and IMEI capture",
-            "Warranty and repair jobs",
-            "Trade-in and exchange"
-          ],
-          "alt": "The TajirPoint serial and IMEI tracking screen"
-        },
-        "distribution": {
-          "label": "Distribution",
-          "title": "Distribution mode",
-          "body": "Load the van, sell on the route, settle at day end — stock, cash and khata all reconciled against the trip.",
-          "bullets": [
-            "Van stock as its own warehouse",
-            "Route and trip planning",
-            "Collect payments on delivery"
-          ],
-          "alt": "The TajirPoint van sales and route screen"
-        },
-        "all": {
-          "label": "Every business",
-          "title": "Standard mode",
-          "body": "The core everything else is built on: fast checkout, real inventory, customer credit and double-entry books that post themselves.",
-          "bullets": [
-            "Cash, card, wallet and split tenders",
-            "Khata credit ledger",
-            "Books posted automatically"
-          ],
-          "alt": "The TajirPoint checkout and payment screen"
-        }
-      }
+      "headline": "Switch on only what you need",
+      "sub": "{count} add-ons, installed per shop. A small store never sees payroll or kitchen screens.",
+      "all": "All {count}",
+      "cats": {
+        "verticals": "Business verticals",
+        "payments": "Payment gateways",
+        "accounting": "Accounting",
+        "compliance": "Tax & compliance",
+        "ecommerce": "E-commerce sync",
+        "shipping": "Shipping",
+        "customer": "Sales & customer tools"
+      },
+      "status": {
+        "live": "Live",
+        "beta": "Beta",
+        "ready": "Ready"
+      },
+      "legend": "Live — in production use. Beta — built, final validation in progress. Ready — built, goes live with your credentials."
     },
     "pricing": {
       "eyebrow": "Pricing",
-      "headline": "One price. Every module.",
-      "body": "No per-module upsells, no transaction fees. Pay per branch, billed in your own currency.",
-      "note": "Indicative pricing — confirmed at checkout in your billing currency.",
-      "popular": "Most popular",
-      "perMonth": "/ month",
-      "plans": {
-        "starter": {
-          "name": "Starter",
-          "price": "Rs 4,500",
-          "per": "/ month",
-          "who": "One shop, one register",
-          "cta": "Start free trial",
-          "feats": [
-            "Full POS & inventory",
-            "Digital credit ledger",
-            "Hosted online store",
-            "Tax e-invoicing",
-            "Web, desktop & Android"
-          ]
-        },
-        "growth": {
-          "name": "Growth",
-          "price": "Rs 12,000",
-          "per": "/ month",
-          "who": "Multi-branch businesses",
-          "cta": "Start free trial",
-          "feats": [
-            "Everything in Starter",
-            "Purchasing & GRN",
-            "Route dispatch & van sales",
-            "Restaurant suite & KDS",
-            "Advanced reports",
-            "Custom domain & priority support"
-          ]
-        },
-        "enterprise": {
-          "name": "Enterprise",
-          "price": "Custom",
-          "per": "",
-          "who": "Chains & franchises",
-          "cta": "Talk to sales",
-          "feats": [
-            "Unlimited branches & users",
-            "SSO & dedicated support",
-            "Custom integrations",
-            "Migration assistance"
-          ]
+      "headline": "Free for your first {months} months.",
+      "sub": "Every module, every industry pack, every device — switched on from day one. No card, no per-module upsells, no transaction fees. After {months} months we agree a price that fits the size of your business.",
+      "trial": {
+        "name": "Full product trial",
+        "who": "One shop or fifty — nothing is held back",
+        "badge": "No card required",
+        "price": "Free",
+        "period": "for {months} months",
+        "note": "Not a limited edition. The restaurant pack, van sales, accounting, the online store and all 31 extensions are available for the whole trial.",
+        "cta": "Start free trial",
+        "includesLabel": "Everything included",
+        "includes": {
+          "pos": "POS, registers & shifts",
+          "inventory": "Inventory, batches & serials",
+          "credit": "Customer & supplier credit",
+          "accounting": "Double-entry accounting",
+          "restaurant": "Restaurant, tables & kitchen display",
+          "vansales": "Van sales, routes & delivery",
+          "store": "Online store & customer portal",
+          "staff": "Staff, attendance & payroll",
+          "offline": "Works offline",
+          "tax": "Local tax & e-invoicing",
+          "extensions": "All 31 extensions",
+          "support": "Onboarding & support"
         }
+      },
+      "custom": {
+        "name": "Something bigger?",
+        "who": "Chains, franchises and custom work",
+        "body": "If you run many branches, need a migration handled for you, or want the product wired into systems you already have — talk to us and we will quote it properly.",
+        "points": {
+          "chains": "Unlimited branches and users",
+          "migration": "Migration done for you",
+          "integrations": "Custom integrations & SLA",
+          "onprem": "On-premise and single sign-on"
+        },
+        "ctaMeeting": "Book a 20-minute call",
+        "ctaEmail": "Email us"
       }
     },
     "faq": {
-      "eyebrow": "FAQ",
-      "headline": "Questions, answered",
-      "items": {
+      "headline": "Questions merchants ask us",
+      "sub": "Still unsure? Write to us on WhatsApp or book a 20-minute demo.",
+      "groups": {
+        "general": {
+          "label": "General",
+          "items": {
+            "0": {
+              "q": "What is TajirPoint?",
+              "a": "A point-of-sale and complete back office for small and medium businesses: selling, stock, purchasing, customer credit, accounting, staff, delivery and an online store on one login — localised for how shops run in your country."
+            },
+            "1": {
+              "q": "Which devices does it run on?",
+              "a": "Any browser, a Windows desktop app (macOS and Linux too), and Android phones and tablets. iOS is coming soon. Thermal receipt printers, barcode scanners and cash drawers are supported."
+            },
+            "2": {
+              "q": "Which languages are supported?",
+              "a": "English everywhere, plus local languages that switch on by country — with full right-to-left layout and instant switching inside the app."
+            },
+            "3": {
+              "q": "Can I bring my existing products?",
+              "a": "Import from CSV or Excel. Shopify and WooCommerce exports are detected automatically, so migration takes an afternoon."
+            }
+          }
+        },
+        "credit": {
+          "label": "Customer credit",
+          "items": {
+            "0": {
+              "q": "What is the digital credit ledger?",
+              "a": "Your running credit ledger, kept automatically. Every sale, payment and adjustment posts with a running balance that can't be quietly edited — and a PDF statement you can share on WhatsApp."
+            },
+            "1": {
+              "q": "Can customers see their own balance?",
+              "a": "With the Customer Portal extension, credit customers log in to see their ledger and invoices and pay online."
+            },
+            "2": {
+              "q": "Does it handle supplier credit too?",
+              "a": "Yes. Suppliers get the same running ledger, with aging, advances and payment allocation across invoices."
+            },
+            "3": {
+              "q": "Can I set credit limits?",
+              "a": "Per customer, enforced at the till, with alerts as a customer approaches the limit."
+            }
+          }
+        },
         "offline": {
-          "q": "Does it really keep selling without internet?",
-          "a": "Yes. Sales queue locally on the device and sync back safely when the connection returns — no duplicate or lost sales. Power and connectivity problems never stop the counter."
+          "label": "Offline & data",
+          "items": {
+            "0": {
+              "q": "What happens when the internet drops?",
+              "a": "You keep selling. Sales queue on the device and sync back when the connection returns — no duplicates, no lost transactions."
+            },
+            "1": {
+              "q": "Is my data safe?",
+              "a": "Each business's data is isolated at the database level, access is role-based, and two-factor authentication and a full audit log are included."
+            },
+            "2": {
+              "q": "Can my accountant use it?",
+              "a": "The general ledger posts itself from daily activity; your accountant gets clean double-entry books, statements and Excel exports."
+            }
+          }
         },
-        "accountant": {
-          "q": "Do I need an accountant to use the accounting?",
-          "a": "No. Every sale, purchase, payment, expense and payroll run posts to a real double-entry general ledger automatically. You never touch a journal entry; your accountant gets clean books."
-        },
-        "platforms": {
-          "q": "What platforms does it run on?",
-          "a": "Web (any browser), a Windows desktop app, and Android — all from one codebase, so features land everywhere at once. iOS is coming soon. Thermal printers, barcode scanners and cash drawers are supported."
-        },
-        "languages": {
-          "q": "Which languages are supported?",
-          "a": "English, Urdu and Arabic are first-class languages with full right-to-left layout and instant in-app switching. More can be added."
-        },
-        "extensions": {
-          "q": "How do extensions work?",
-          "a": "Extensions are installed per shop and switch on extra capability — restaurant tools, payment gateways, courier booking, e-commerce sync. The interface only shows what’s turned on, so a small store never sees screens it doesn’t need."
-        },
-        "migrate": {
-          "q": "Can I migrate from Shopify or WooCommerce?",
-          "a": "Yes — bulk import auto-detects Shopify and WooCommerce exports, and two-way sync extensions keep products, stock and orders aligned if you keep selling there."
+        "pricing": {
+          "label": "Pricing",
+          "items": {
+            "0": {
+              "q": "Is there a free trial?",
+              "a": "Three months, every module, no card required. Nothing is switched off during it — the restaurant pack, van sales, accounting and all 31 extensions are included."
+            },
+            "1": {
+              "q": "What happens after the trial?",
+              "a": "We agree a price that fits the size of your business. There are no published tiers to grow out of, and no per-module upsells or transaction fees — payment-gateway processing fees are set by the gateway, not by us."
+            },
+            "2": {
+              "q": "Which currencies can I pay in?",
+              "a": "Your local currency. Billing, tax rules and payment methods follow the country the shop is registered in."
+            },
+            "3": {
+              "q": "Do I need a card to start?",
+              "a": "No. Start the trial, and talk to us when you are ready — by email or on a 20-minute call."
+            }
+          }
         }
       }
     },
     "cta": {
-      "headlineA": "Run the whole business",
-      "headlineB": "from one counter.",
-      "body": "14 days free. Every module included. No card required.",
-      "primary": "Start free trial",
-      "secondary": "Book a demo"
+      "headline": "Start selling in an afternoon.",
+      "sub": "Import your products from Excel, Shopify or WooCommerce, connect a printer, and ring your first sale. Fourteen days free, every module, no card.",
+      "ctaPrimary": "Start free trial",
+      "ctaSecondary": "Book a demo",
+      "steps": {
+        "import": {
+          "title": "Import your products",
+          "sub": "Excel, CSV, Shopify or WooCommerce export",
+          "time": "20 min"
+        },
+        "connect": {
+          "title": "Connect a printer & scanner",
+          "sub": "Thermal receipt printer, cash drawer, barcode gun",
+          "time": "10 min"
+        },
+        "staff": {
+          "title": "Add staff and set limits",
+          "sub": "Cashier, manager, accountant roles",
+          "time": "5 min"
+        },
+        "sell": {
+          "title": "Ring your first sale",
+          "sub": "Stock, credit and books update together",
+          "time": "Now"
+        }
+      }
     }
   },
   "solutions": {
@@ -738,15 +835,15 @@
       },
       "hr-payroll": {
         "name": "HR & Payroll",
-        "desc": "Employees, attendance, leave and payroll posted straight into the books."
+        "desc": "Employees, attendance, leave and payroll posted to the books."
       },
       "cloud-kitchen": {
         "name": "Cloud Kitchen Pack",
-        "desc": "Run multiple virtual brands out of one shared kitchen."
+        "desc": "Multiple virtual brands from one shared kitchen."
       },
       "website-builder": {
         "name": "Website Builder",
-        "desc": "A public online store generated from your own products."
+        "desc": "A public online store generated from your products."
       },
       "stripe": {
         "name": "Stripe",
@@ -754,31 +851,31 @@
       },
       "jazzcash": {
         "name": "JazzCash",
-        "desc": "Mobile wallet payments at the counter and online."
+        "desc": "Mobile wallet payments at the till and online."
       },
       "easypaisa": {
         "name": "Easypaisa",
-        "desc": "Wallet payments, in-store and online."
+        "desc": "Mobile wallet payments at the till and online."
       },
       "hblpay": {
         "name": "HBLPay",
-        "desc": "Card payments via HBL."
+        "desc": "Card payments with 3-D Secure."
       },
       "paypal": {
         "name": "PayPal",
-        "desc": "Accept PayPal for online orders."
+        "desc": "International card and PayPal balance payments."
       },
       "razorpay": {
         "name": "Razorpay",
-        "desc": "Cards and UPI for the Indian market."
+        "desc": "Cards and instant bank transfers."
       },
       "square": {
         "name": "Square",
-        "desc": "Card-present and online payments."
+        "desc": "Card payments via Square."
       },
       "accounting-gl": {
         "name": "Accounting & General Ledger",
-        "desc": "Full double-entry books, auto-posted from every transaction."
+        "desc": "Full double-entry books, statements and period close."
       },
       "cash-management": {
         "name": "Cash Management",
@@ -786,15 +883,15 @@
       },
       "quickbooks": {
         "name": "QuickBooks Online",
-        "desc": "Two-way sync with QuickBooks Online."
+        "desc": "Push sales, payments and expenses to QuickBooks."
       },
       "fbr": {
-        "name": "FBR Integration",
-        "desc": "Real-time e-invoicing with QR codes on receipts."
+        "name": "Tax Authority E-Invoicing",
+        "desc": "Real-time e-invoicing with QR on receipts, per country."
       },
       "age-verification": {
         "name": "Age Verification",
-        "desc": "ID checks for restricted items at checkout."
+        "desc": "ID check at checkout for restricted items."
       },
       "shopify": {
         "name": "Shopify",
@@ -802,19 +899,19 @@
       },
       "woocommerce": {
         "name": "WooCommerce",
-        "desc": "Keep your WooCommerce store in sync."
+        "desc": "Keep products, stock and orders in sync."
       },
       "magento": {
         "name": "Magento",
-        "desc": "Sync catalog and orders with Magento."
+        "desc": "Keep products, stock and orders in sync."
       },
       "wix": {
         "name": "Wix",
-        "desc": "Connect your Wix storefront."
+        "desc": "Keep products, stock and orders in sync."
       },
       "bigcommerce": {
         "name": "BigCommerce",
-        "desc": "Sync products and orders both ways."
+        "desc": "Keep products, stock and orders in sync."
       },
       "leopards": {
         "name": "Leopards Courier",
@@ -822,40 +919,40 @@
       },
       "tcs": {
         "name": "TCS Express",
-        "desc": "Courier booking and tracking."
+        "desc": "Book shipments, print labels, track deliveries."
       },
       "postex": {
         "name": "PostEx",
-        "desc": "Shipment booking, labels and tracking."
+        "desc": "Book shipments, print labels, track deliveries."
       },
       "customer-portal": {
         "name": "Customer Portal",
-        "desc": "Credit customers log in to view their ledger and pay online."
+        "desc": "Credit customers view their ledger and pay online."
       },
       "delivery-aggregator": {
         "name": "Delivery Aggregator",
-        "desc": "Foodpanda, Talabat and Careem orders in one inbox."
+        "desc": "Delivery-app orders from every platform in one inbox."
       },
       "coupons": {
         "name": "Coupons & Discounts",
-        "desc": "Coupon codes usable in-store and online."
+        "desc": "Codes that work in-store and online, with usage caps."
       },
       "time-promos": {
         "name": "Time-Based Promotions",
-        "desc": "Happy hours, seasonal combos, weekend sales."
+        "desc": "Happy hours, seasonal offers and weekend sales on a schedule."
       },
       "whatsapp-ai": {
         "name": "WhatsApp AI",
-        "desc": "An AI assistant that talks to customers over WhatsApp."
+        "desc": "An assistant that answers customers over WhatsApp."
       }
     }
   },
   "footer": {
-    "tagline": "The point of sale and complete operating system for modern merchants. Web, desktop and Android — in English, اردو and العربية.",
-    "product": "PRODUCT",
+    "tagline": "Point of sale and complete back office for merchants everywhere — localised per country.",
+    "product": "Product",
     "features": "FEATURES",
     "industries": "INDUSTRIES",
-    "company": "COMPANY",
+    "company": "Company",
     "links": {
       "platform": "Platform",
       "extensions": "Extensions",
@@ -863,15 +960,27 @@
       "retail": "Retail",
       "restaurants": "Restaurants",
       "distribution": "Distribution",
-      "contact": "Contact",
+      "contact": "Contact sales",
       "signIn": "Sign in",
-      "developers": "Developers · API",
+      "developers": "API docs",
       "about": "About",
       "privacy": "Privacy",
-      "terms": "Terms"
+      "terms": "Terms",
+      "onlineStore": "Online store",
+      "payments": "Payment gateways",
+      "ecommerce": "E-commerce sync",
+      "couriers": "Couriers & shipping",
+      "tax": "Tax & compliance",
+      "allExtensions": "All 31 extensions",
+      "security": "Security"
     },
-    "copyright": "© 2026 TajirPoint. All rights reserved.",
-    "badge": "MERCHANT OS"
+    "copyright": "© 2026 TajirPoint · An AmalAxis product",
+    "badge": "Built for merchants everywhere.",
+    "strapline": "POINT OF SALE · MERCHANT OS",
+    "chipEnglish": "English",
+    "chipLocal": "Local languages by country",
+    "solutions": "Solutions",
+    "extensions": "Extensions"
   },
   "common": {
     "skipToContent": "Skip to main content"

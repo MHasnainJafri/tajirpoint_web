@@ -65,36 +65,36 @@ export const EXTENSIONS = [
   { id: "cloud-kitchen", icon: "cloud", cat: "verticals" },
   { id: "website-builder", icon: "globe", cat: "verticals" },
 
-  { id: "stripe", icon: "card", cat: "payments" },
-  { id: "jazzcash", icon: "phone", cat: "payments" },
-  { id: "easypaisa", icon: "wallet", cat: "payments", note: "validating" },
-  { id: "hblpay", icon: "bank", cat: "payments", note: "validating" },
-  { id: "paypal", icon: "card", cat: "payments", note: "validating" },
-  { id: "razorpay", icon: "card", cat: "payments", note: "validating" },
-  { id: "square", icon: "card", cat: "payments", note: "validating" },
+  { id: "stripe", icon: "brand-stripe", cat: "payments" },
+  { id: "jazzcash", icon: "brand-jazzcash", cat: "payments" },
+  { id: "easypaisa", icon: "brand-easypaisa", cat: "payments", note: "validating" },
+  { id: "hblpay", icon: "brand-hbl", cat: "payments", note: "validating" },
+  { id: "paypal", icon: "brand-paypal", cat: "payments", note: "validating" },
+  { id: "razorpay", icon: "brand-razorpay", cat: "payments", note: "validating" },
+  { id: "square", icon: "brand-square", cat: "payments", note: "validating" },
 
-  { id: "accounting-gl", icon: "book", cat: "accounting" },
-  { id: "cash-management", icon: "cash", cat: "accounting" },
-  { id: "quickbooks", icon: "refresh", cat: "accounting" },
+  { id: "accounting-gl", icon: "ledgerbook", cat: "accounting" },
+  { id: "cash-management", icon: "pettycash", cat: "accounting" },
+  { id: "quickbooks", icon: "brand-quickbooks", cat: "accounting" },
 
-  { id: "fbr", icon: "receipt", cat: "compliance" },
+  { id: "fbr", icon: "brand-fbr", cat: "compliance" },
   { id: "age-verification", icon: "idcard", cat: "compliance" },
 
-  { id: "shopify", icon: "bag", cat: "ecommerce" },
-  { id: "woocommerce", icon: "refresh", cat: "ecommerce", note: "newer" },
-  { id: "magento", icon: "refresh", cat: "ecommerce", note: "newer" },
-  { id: "wix", icon: "refresh", cat: "ecommerce", note: "newer" },
-  { id: "bigcommerce", icon: "refresh", cat: "ecommerce", note: "newer" },
+  { id: "shopify", icon: "brand-shopify", cat: "ecommerce" },
+  { id: "woocommerce", icon: "brand-woocommerce", cat: "ecommerce", note: "newer" },
+  { id: "magento", icon: "brand-magento", cat: "ecommerce", note: "newer" },
+  { id: "wix", icon: "brand-wix", cat: "ecommerce", note: "newer" },
+  { id: "bigcommerce", icon: "brand-bigcommerce", cat: "ecommerce", note: "newer" },
 
   { id: "leopards", icon: "leopard", cat: "shipping" },
   { id: "tcs", icon: "package", cat: "shipping" },
-  { id: "postex", icon: "mail", cat: "shipping" },
+  { id: "postex", icon: "parcel", cat: "shipping" },
 
   { id: "customer-portal", icon: "key", cat: "customer" },
-  { id: "delivery-aggregator", icon: "bike", cat: "customer" },
+  { id: "delivery-aggregator", icon: "scooter", cat: "customer" },
   { id: "coupons", icon: "ticket", cat: "customer" },
-  { id: "time-promos", icon: "clock", cat: "customer" },
-  { id: "whatsapp-ai", icon: "bot", cat: "customer" },
+  { id: "time-promos", icon: "alarmpct", cat: "customer" },
+  { id: "whatsapp-ai", icon: "brand-whatsapp", cat: "customer" },
 ] as const satisfies ReadonlyArray<{
   id: string;
   icon: string;
@@ -246,23 +246,23 @@ export const MEGA_EXT_VERTICALS = [
 ] as const;
 
 export const MEGA_EXT_PAYMENTS = [
-  { id: "stripe", icon: "card", live: true },
-  { id: "jazzcash", icon: "phone", live: true },
-  { id: "easypaisa", icon: "wallet", live: false },
-  { id: "hblpay", icon: "bank", live: false },
-  { id: "paypal", icon: "card", live: false },
-  { id: "razorpay", icon: "card", live: false },
-  { id: "square", icon: "card", live: false },
+  { id: "stripe", icon: "brand-stripe", live: true },
+  { id: "jazzcash", icon: "brand-jazzcash", live: true },
+  { id: "easypaisa", icon: "brand-easypaisa", live: false },
+  { id: "hblpay", icon: "brand-hbl", live: false },
+  { id: "paypal", icon: "brand-paypal", live: false },
+  { id: "razorpay", icon: "brand-razorpay", live: false },
+  { id: "square", icon: "brand-square", live: false },
 ] as const;
 
 export const MEGA_EXT_INTEGRATIONS = [
-  { id: "quickbooks", icon: "refresh" },
-  { id: "shopify", icon: "bag" },
-  { id: "woocommerce", icon: "refresh" },
+  { id: "quickbooks", icon: "brand-quickbooks" },
+  { id: "shopify", icon: "brand-shopify" },
+  { id: "woocommerce", icon: "brand-woocommerce" },
   { id: "couriers", icon: "truck" },
-  { id: "delivery-aggregator", icon: "bike" },
-  { id: "whatsapp-ai", icon: "bot" },
-  { id: "fbr", icon: "receipt" },
+  { id: "delivery-aggregator", icon: "scooter" },
+  { id: "whatsapp-ai", icon: "brand-whatsapp" },
+  { id: "fbr", icon: "brand-fbr" },
 ] as const;
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -271,17 +271,17 @@ export const MEGA_EXT_INTEGRATIONS = [
    ═══════════════════════════════════════════════════════════════════ */
 
 export const MOCK_OFFLINE_ROWS = [
-  { label: "Sale #A-2481 · cash", amount: "Rs 4,700" },
-  { label: "Sale #A-2482 · card", amount: "Rs 12,300" },
-  { label: "Sale #A-2483 · credit", amount: "Rs 2,150" },
+  { label: "Sale #A-2481 · cash", amount: "$47.00" },
+  { label: "Sale #A-2482 · card", amount: "$123.00" },
+  { label: "Sale #A-2483 · credit", amount: "$21.50" },
 ] as const;
 
 export const MOCK_LEDGER = {
   party: "Khan Traders",
   initials: "KT",
   since: "Customer · since Mar 2024",
-  creditLimit: "CR-LIMIT Rs 200,000",
-  balance: "Rs 142,800.00",
+  creditLimit: "CR-LIMIT $2,000.00",
+  balance: "$1,428.00",
   aging: "31–60 days · 7 invoices open",
   rows: [
     {
@@ -319,7 +319,7 @@ export const MOCK_LEDGER = {
 export const MOCK_PHONE_ROWS = [
   { t: "Sale #A-2486", s: "12:42 · Register 1", v: "2,059", alert: false },
   { t: "Stock low · 14", s: "Reorder pending", v: "", alert: true },
-  { t: "Credit · Hassan T.", s: "Rs 142,800 due", v: "", alert: false },
+  { t: "Credit · Meridian Traders", s: "$1,428.00 due", v: "", alert: false },
 ] as const;
 
 export const MOCK_DRIVER_ROWS = [

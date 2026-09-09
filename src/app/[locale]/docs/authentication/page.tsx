@@ -32,7 +32,7 @@ const LOGIN_RESPONSE = `{
     {
       "id": "8f1c2d3e-4b5a-6c7d-8e9f-0a1b2c3d4e5f",
       "name": "Gulberg General Store",
-      "city": "Lahore"
+      "city": "Springfield"
     }
   ],
   "tokens": {

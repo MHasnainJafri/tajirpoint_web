@@ -26,7 +26,7 @@ const BY_NAME: Record<string, unknown> = {
   entry_no: 8,
   phone: "+923001234567",
   email: "shopkeeper@example.com",
-  city: "Lahore",
+  city: "Springfield",
   address: "12 Main Boulevard, Gulberg III",
   // Money is a decimal string. Never a float.
   price: "450.00",
@@ -72,9 +72,9 @@ const BY_NAME: Record<string, unknown> = {
   shop: SHOP_ID,
   // Named companions of a foreign key. Guessing from the suffix alone gives
   // nonsense like "customer_name": "Beverages", so name the common ones.
-  customer_name: "Bilal Traders",
+  customer_name: "Meridian Traders",
   supplier_name: "Metro Cash & Carry",
-  party_name: "Bilal Traders",
+  party_name: "Meridian Traders",
   warehouse_name: "Main Store",
   category_name: "Beverages",
   brand_name: "Nescafé",

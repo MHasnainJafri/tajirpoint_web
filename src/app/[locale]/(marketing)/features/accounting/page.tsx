@@ -140,8 +140,8 @@ export default function AccountingFeaturePage() {
                 </div>
 
                 {[
-                  { label: "Revenue", value: "Rs 8,412,000", tone: "text-[var(--color-mint-2)]" },
-                  { label: "Expenses", value: "Rs 5,134,000", tone: "text-[var(--color-ink)]" },
+                  { label: "Revenue", value: "$84,120", tone: "text-[var(--color-mint-2)]" },
+                  { label: "Expenses", value: "$51,340", tone: "text-[var(--color-ink)]" },
                   { label: "Net profit", value: "+18.4%", tone: "text-[var(--color-mint-2)]" },
                 ].map((row) => (
                   <div

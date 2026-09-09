@@ -135,16 +135,16 @@ export default function KhataFeaturePage() {
                     />
                   </span>
                   <span className="text-[14px] font-extrabold text-[var(--color-ink)]">
-                    Ahmed Traders
+                    Meridian Traders
                   </span>
                 </div>
 
                 {[
-                  { label: "Balance due", value: "Rs 31,400", tone: "text-[var(--color-amber)]" },
-                  { label: "Sale · Jul 15", value: "+Rs 23,000", tone: "text-[var(--color-ink)]" },
+                  { label: "Balance due", value: "$314.00", tone: "text-[var(--color-amber)]" },
+                  { label: "Sale · Jul 15", value: "+$230.00", tone: "text-[var(--color-ink)]" },
                   {
                     label: "Payment · Jul 14",
-                    value: "−Rs 14,000",
+                    value: "−$140.00",
                     tone: "text-[var(--color-mint-2)]",
                   },
                 ].map((row) => (

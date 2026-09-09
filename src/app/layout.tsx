@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Geist_Mono, Reem_Kufi } from "next/font/google";
+import { Geist, Geist_Mono, Reem_Kufi } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import "@/styles/globals.css";
@@ -8,12 +8,12 @@ import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { organizationSchema, websiteSchema } from "@/lib/seo/schemas";
 import { siteConfig } from "@/lib/config/site";
 
-// Inter is the closest free stand-in for Shopify Sans — same geometric
-// grotesque skeleton, and its tight tracking holds up at display sizes.
-// It is a variable font, so no `weight` array: the whole 100–900 axis ships.
-const inter = Inter({
+// Geist is what the design is drawn in — it carries the tight tracking the
+// display clamps rely on. Variable font, so no `weight` array: the whole
+// 100–900 axis ships and the design's 500/600/700/800 all resolve.
+const geist = Geist({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-geist",
   display: "swap",
 });
 
@@ -63,13 +63,25 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const rtlLocales = ["ur", "ar"];
   const dir = rtlLocales.includes(locale) ? "rtl" : "ltr";
   // Only include the Arabic font variable when it is actually needed.
-  const fontClasses = [inter.variable, geistMono.variable, locale !== "en" ? reemKufi.variable : ""]
+  const fontClasses = [geist.variable, geistMono.variable, locale !== "en" ? reemKufi.variable : ""]
     .filter(Boolean)
     .join(" ");
 
   return (
-    <html lang={locale} dir={dir} className={fontClasses} suppressHydrationWarning>
+    <html
+      lang={locale}
+      dir={dir}
+      className={fontClasses}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <head>
+        {/* Marks that scripting is alive, before first paint. The scroll-reveal
+            styles are scoped to `.js`, so if this never runs the page renders
+            fully visible rather than blank. */}
+        <script
+          dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }}
+        />
         {/* Warm up connections to external domains hit on first meaningful interaction */}
         <link rel="preconnect" href="https://app.tajirpoint.com" />
         <link rel="preconnect" href="https://calendly.com" />
