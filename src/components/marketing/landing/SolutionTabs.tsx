@@ -75,15 +75,15 @@ export function SolutionTabs({
               aria-controls={`sol-panel-${tab.id}`}
               tabIndex={on ? 0 : -1}
               onClick={() => setActive(i)}
-              className={`inline-flex flex-none cursor-pointer items-center gap-2 rounded-full border py-2 pl-2 pr-[14px] text-left transition-all duration-[250ms] tabs:w-full tabs:gap-3 tabs:rounded-[14px] tabs:px-[14px] tabs:py-3 ${
+              className={`inline-flex flex-none cursor-pointer items-center gap-2 rounded-full border py-2 pl-2 pr-[14px] text-left transition-all duration-[250ms] active:scale-[0.98] tabs:w-full tabs:gap-3 tabs:rounded-[14px] tabs:px-[14px] tabs:py-3 ${
                 on
                   ? "border-[var(--color-line-2)] bg-white shadow-[0_10px_24px_rgba(10,10,10,.06)]"
-                  : "border-transparent bg-transparent"
+                  : "border-transparent bg-transparent hover:border-[var(--color-line-3)] hover:bg-white/40"
               }`}
             >
               <span
-                className={`grid h-7 w-7 flex-none place-items-center rounded-[10px] text-[#0A0A0A] transition-colors duration-[250ms] tabs:h-9 tabs:w-9 ${
-                  on ? "bg-[var(--color-mint)]" : "bg-[var(--color-surface)]"
+                className={`grid h-7 w-7 flex-none place-items-center rounded-[10px] text-[#0A0A0A] transition-all duration-[250ms] tabs:h-9 tabs:w-9 ${
+                  on ? "bg-[var(--color-mint)] shadow-xs scale-105" : "bg-[var(--color-surface)]"
                 }`}
               >
                 <svg
@@ -118,6 +118,11 @@ export function SolutionTabs({
             role="tabpanel"
             aria-labelledby={`sol-tab-${tabs[i]?.id ?? i}`}
             hidden={i !== active}
+            className={
+              i === active
+                ? "motion-safe:animate-[tpTabFade_280ms_cubic-bezier(.22,1,.36,1)_both]"
+                : undefined
+            }
           >
             {panel}
           </div>

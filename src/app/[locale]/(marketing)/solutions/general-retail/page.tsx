@@ -6,6 +6,8 @@ import { Icon } from "@/components/design/Icon";
 import { VerticalScreenMock } from "@/components/marketing/landing/VerticalScreenMock";
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { verticalSoftwareSchema } from "@/lib/seo/schemas";
 
 export async function generateMetadata({
   params,
@@ -14,11 +16,22 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "General Retail POS — Kiryana & Apparel",
+    title: "Retail POS Software — Grocery, Kiryana, Apparel & Barcode Billing",
     description:
-      "Tajir Point POS for grocery, convenience, apparel and hardware stores. Credit ledger, barcode scanning, works without internet, and tax e-invoicing per country.",
+      "All-in-one retail POS system with barcode scanning, digital Khata credit ledger, low-stock alerts, offline billing, and tax e-invoicing for grocery, apparel, and convenience shops.",
     path: "/solutions/general-retail",
     locale,
+    keywords: [
+      "Retail POS software",
+      "Grocery POS system",
+      "Kiryana store POS",
+      "Supermarket point of sale",
+      "Barcode scanner POS software",
+      "Digital Khata credit ledger",
+      "Offline retail billing software",
+      "FBR POS integration",
+      "ZATCA retail POS",
+    ],
   });
 }
 
@@ -80,23 +93,35 @@ export default async function GeneralRetailPage({
   setRequestLocale(locale);
 
   return (
-    <SolutionPage
-      vertical="General Retail"
-      subtitle="Kiryana · Apparel · Hardware · Grocery"
-      headline={
-        <>
-          The POS built for
-          <br />
-          the neighbourhood shop.
-        </>
-      }
-      description="From a single corner shop to a multi-branch grocery chain — Tajir Point handles your counter, your stock, and your credit customers in one place."
-      features={FEATURES}
-      ctaLabel="Start free — General Retail"
-      screenMockId="retail"
-      screenTitle="Counter · Northgate Market"
-      screenRows={MOCK_ROWS}
-    />
+    <>
+      <JsonLd
+        schema={verticalSoftwareSchema({
+          name: "Tajir Point for General Retail",
+          applicationSubCategory: "RetailPointOfSaleSoftware",
+          description:
+            "Retail POS system with barcode scanning, digital Khata credit ledger, multi-branch stock reconciliation, and offline billing.",
+          path: "/solutions/general-retail",
+          features: FEATURES.map((f) => f.title),
+        })}
+      />
+      <SolutionPage
+        vertical="General Retail"
+        subtitle="Kiryana · Apparel · Hardware · Grocery"
+        headline={
+          <>
+            The POS built for
+            <br />
+            the neighbourhood shop.
+          </>
+        }
+        description="From a single corner shop to a multi-branch grocery chain — Tajir Point handles your counter, your stock, and your credit customers in one place."
+        features={FEATURES}
+        ctaLabel="Start free — General Retail"
+        screenMockId="retail"
+        screenTitle="Counter · Northgate Market"
+        screenRows={MOCK_ROWS}
+      />
+    </>
   );
 }
 

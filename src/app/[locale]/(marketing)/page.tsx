@@ -13,8 +13,9 @@ import { Pricing } from "@/components/marketing/landing/Pricing";
 import { Faq } from "@/components/marketing/landing/Faq";
 import { FinalCta } from "@/components/marketing/landing/FinalCta";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { softwareApplicationSchema } from "@/lib/seo/schemas";
+import { softwareApplicationSchema, faqSchema } from "@/lib/seo/schemas";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { FAQ_TABS } from "@/lib/design/landing";
 
 export async function generateMetadata({
   params,
@@ -29,6 +30,20 @@ export async function generateMetadata({
     path: "/",
     locale,
     absoluteTitle: true,
+    keywords: [
+      "Point of Sale",
+      "POS System",
+      "Restaurant POS",
+      "Retail POS",
+      "Wholesale POS",
+      "Offline POS Software",
+      "Kitchen Display System KDS",
+      "Van Sales Software",
+      "Khata Credit Ledger",
+      "Inventory Management",
+      "FBR E-invoicing POS",
+      "ZATCA E-invoicing POS",
+    ],
   });
 }
 
@@ -36,9 +51,17 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   setRequestLocale(locale);
 
+  const faqT = await getTranslations({ locale, namespace: "landing.faq" });
+  const faqQuestions = FAQ_TABS.flatMap((tab) =>
+    Array.from({ length: tab.count }, (_, i) => ({
+      question: faqT(`groups.${tab.id}.items.${i}.q`),
+      answer: faqT(`groups.${tab.id}.items.${i}.a`),
+    }))
+  );
+
   return (
     <>
-      <JsonLd schema={softwareApplicationSchema()} />
+      <JsonLd schema={[softwareApplicationSchema(), faqSchema(faqQuestions)]} />
 
       {/* Narrative order: the pitch and today's numbers → what it replaces →
           who it's for (real shop photography) → the five things it does differently →

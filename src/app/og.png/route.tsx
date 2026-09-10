@@ -59,39 +59,39 @@ export function GET() {
         <div
           style={{
             display: "flex",
-            fontSize: 30,
+            fontSize: 28,
             color: "#00D27A",
             fontWeight: 600,
             letterSpacing: "0.5px",
-            marginBottom: 22,
+            marginBottom: 20,
           }}
         >
-          Point of Sale · Khata · Storefront
+          POS for Restaurants · Retail · Wholesale & Distribution
         </div>
         <div
           style={{
             display: "flex",
-            fontSize: 86,
+            fontSize: 82,
             fontWeight: 800,
             color: "#ffffff",
             letterSpacing: "-3px",
             lineHeight: 1.04,
           }}
         >
-          Run your shop. Everywhere.
+          Run your business. Everywhere.
         </div>
         <div
           style={{
             display: "flex",
-            fontSize: 31,
-            color: "rgba(255,255,255,0.62)",
-            marginTop: 26,
-            maxWidth: 880,
+            fontSize: 29,
+            color: "rgba(255,255,255,0.65)",
+            marginTop: 24,
+            maxWidth: 900,
             lineHeight: 1.4,
           }}
         >
-          The offline-first operating system for the modern merchant — in three languages, on every
-          device.
+          The offline-first operating system — POS counter, kitchen display, inventory, digital
+          credit ledger, and van delivery.
         </div>
       </div>
 
@@ -113,20 +113,20 @@ export function GET() {
         >
           tajirpoint.com
         </div>
-        <div style={{ display: "flex", gap: "12px" }}>
-          {["POS", "Inventory", "Accounting"].map((region) => (
+        <div style={{ display: "flex", gap: "10px" }}>
+          {["Restaurants", "Retail", "Wholesale", "Offline POS"].map((pill) => (
             <div
-              key={region}
+              key={pill}
               style={{
                 display: "flex",
-                fontSize: 22,
-                color: "rgba(255,255,255,0.8)",
-                border: "1px solid rgba(0,210,122,0.4)",
+                fontSize: 20,
+                color: "rgba(255,255,255,0.9)",
+                border: "1px solid rgba(0,210,122,0.45)",
                 borderRadius: 999,
-                padding: "8px 20px",
+                padding: "7px 18px",
               }}
             >
-              {region}
+              {pill}
             </div>
           ))}
         </div>

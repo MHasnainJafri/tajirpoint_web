@@ -63,11 +63,29 @@ export function FaqPanel({ groups }: { groups: FaqGroup[] }) {
                 type="button"
                 aria-expanded={isOpen}
                 onClick={() => setOpen(isOpen ? -1 : i)}
-                className="flex w-full cursor-pointer items-center justify-between gap-4 border-none bg-transparent py-[18px] text-left text-[15px] font-semibold text-[var(--color-ink)] transition-colors duration-[250ms]"
+                className="group flex w-full cursor-pointer items-center justify-between gap-4 border-none bg-transparent py-[18px] text-left text-[15px] font-semibold text-[var(--color-ink)] transition-colors duration-[250ms] hover:text-[var(--color-mint-2)]"
               >
                 <span>{f.q}</span>
-                <span aria-hidden="true" className="text-[20px] font-light leading-none">
-                  {isOpen ? "−" : "+"}
+                <span
+                  aria-hidden="true"
+                  className={`grid h-7 w-7 flex-none place-items-center rounded-full border border-[var(--color-line-2)] text-[11px] transition-all duration-300 ${
+                    isOpen
+                      ? "rotate-180 bg-[#0A0A0A] text-white border-[#0A0A0A]"
+                      : "bg-white text-[var(--color-muted)] group-hover:border-[var(--color-line-3)]"
+                  }`}
+                >
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
                 </span>
               </button>
               <div

@@ -87,7 +87,16 @@ export function buildMetadata({
       url,
       siteName: siteConfig.name,
       type,
-      images: [{ url: imageUrl, width: 1200, height: 630, alt: title }],
+      images: [
+        {
+          url: imageUrl,
+          secureUrl: imageUrl,
+          width: 1200,
+          height: 630,
+          type: "image/png",
+          alt: `${title} — ${siteConfig.name}`,
+        },
+      ],
       locale: ogLocale,
     },
     twitter: {
@@ -95,7 +104,13 @@ export function buildMetadata({
       title,
       description,
       site: siteConfig.twitterHandle,
+      creator: siteConfig.twitterHandle,
       images: [imageUrl],
+    },
+    appleWebApp: {
+      capable: true,
+      statusBarStyle: "default",
+      title: siteConfig.name,
     },
     ...(noIndex && { robots: { index: false, follow: false } }),
   };

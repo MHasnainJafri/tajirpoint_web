@@ -17,10 +17,11 @@ export function Replaces() {
       <div className="eyebrow">{t("eyebrow")}</div>
 
       <div className="mt-[18px] flex flex-wrap items-center justify-center gap-[10px]">
-        {REPLACED.map((id) => (
+        {REPLACED.map((id, index) => (
           <span
             key={id}
-            className="rounded-full border border-dashed border-[#C9CDD6] px-4 py-[9px] text-[13px] text-[var(--color-muted)] line-through decoration-[#0A0A0A]"
+            style={{ animationDelay: `${index * 80}ms` }}
+            className="cursor-default rounded-full border border-dashed border-[#C9CDD6] px-4 py-[9px] text-[13px] text-[var(--color-muted)] line-through decoration-[#0A0A0A] decoration-1 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#8A8F98] hover:bg-[#F4F5F7] hover:text-[#0A0A0A]"
           >
             {t(`items.${id}`)}
           </span>

@@ -6,6 +6,8 @@ import { Icon } from "@/components/design/Icon";
 import { VerticalScreenMock } from "@/components/marketing/landing/VerticalScreenMock";
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { verticalSoftwareSchema } from "@/lib/seo/schemas";
 
 export async function generateMetadata({
   params,
@@ -14,11 +16,21 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "Distribution & Wholesale POS",
+    title: "Wholesale & Distribution POS — Van Sales, Route Delivery & Multi-Warehouse",
     description:
-      "Tajir Point for distributors and wholesalers. Route planning, driver dispatch, proof of delivery, purchase orders, and multi-warehouse inventory.",
+      "Wholesale POS and mobile distribution software. Van sales, route planning, driver dispatch, proof of delivery, purchase orders, and multi-warehouse inventory management.",
     path: "/solutions/distributors",
     locale,
+    keywords: [
+      "Wholesale POS software",
+      "Distribution POS system",
+      "Van sales software",
+      "Route delivery dispatch app",
+      "B2B wholesale inventory software",
+      "Proof of delivery app",
+      "Multi-warehouse POS",
+      "Driver cash reconciliation",
+    ],
   });
 }
 
@@ -81,6 +93,17 @@ export default async function DistributorsPage({
 
   return (
     <>
+      <JsonLd
+        schema={verticalSoftwareSchema({
+          name: "Tajir Point for Wholesale & Distribution",
+          applicationSubCategory: "DistributionManagementSoftware",
+          description:
+            "Wholesale and distribution management system with van sales, driver dispatch, route planning, proof of delivery, and multi-warehouse inventory.",
+          path: "/solutions/distributors",
+          features: FEATURES.map((f) => f.title),
+        })}
+      />
+
       {/* ── Header ──────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden px-5 pb-14 pt-[140px] md:px-10">
         <div

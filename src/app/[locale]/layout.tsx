@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { Geist, Geist_Mono, Reem_Kufi } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
@@ -10,25 +10,18 @@ import { organizationSchema, websiteSchema } from "@/lib/seo/schemas";
 import { siteConfig } from "@/lib/config/site";
 import { localeAlternates } from "@/lib/seo/metadata";
 import { routing, isRtl, type Locale } from "@/i18n/routing";
+import { AnalyticsProvider } from "@/components/analytics/AnalyticsProvider";
 
-/**
- * The root layout.
- *
- * It lives under `[locale]` rather than at `src/app/` on purpose: `lang` and
- * `dir` on <html> vary per locale, so the element that carries them has to sit
- * inside the segment that knows the locale. Next.js supports this explicitly —
- * "the root layout can also be nested in the new folder (e.g.
- * `app/[lang]/layout.js`)". Keeping <html> at `src/app/layout.tsx` meant
- * reading the locale from the request via `getLocale()`, which opts every route
- * in the app out of static rendering: the previous build emitted all 29 routes
- * as `ƒ (Dynamic) server-rendered on demand`, Vercel answered every one of them
- * with `Cache-Control: private, no-cache, no-store` and `X-Vercel-Cache: MISS`,
- * and each request ran a full render in iad1 for an audience in Pakistan.
- */
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
-// Geist is what the design is drawn in — it carries the tight tracking the
-// display clamps rely on. Variable font, so no `weight` array: the whole
-// 100–900 axis ships and the design's 500/600/700/800 all resolve.
 const geist = Geist({
   subsets: ["latin"],
   variable: "--font-geist",
@@ -66,6 +59,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const ogImageUrl = `${siteConfig.url}${siteConfig.ogImage}`;
 
   return {
     metadataBase: new URL(siteConfig.url),
@@ -80,17 +74,37 @@ export async function generateMetadata({
       siteName: siteConfig.name,
       locale: OG_LOCALE_MAP[locale] ?? "en_US",
       type: "website",
-      images: [{ url: siteConfig.ogImage, width: 1200, height: 630, alt: siteConfig.name }],
+      images: [
+        {
+          url: ogImageUrl,
+          secureUrl: ogImageUrl,
+          width: 1200,
+          height: 630,
+          type: "image/png",
+          alt: siteConfig.name,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       site: siteConfig.twitterHandle,
+      creator: siteConfig.twitterHandle,
       title: siteConfig.name,
       description: siteConfig.description,
-      images: [siteConfig.ogImage],
+      images: [ogImageUrl],
     },
     icons: {
-      icon: "/favicon.svg",
+      icon: [
+        { url: "/favicon.svg", type: "image/svg+xml" },
+        { url: "/icon.svg", type: "image/svg+xml" },
+      ],
+      apple: [{ url: "/icon.svg", sizes: "180x180", type: "image/svg+xml" }],
+    },
+    manifest: "/manifest.webmanifest",
+    appleWebApp: {
+      capable: true,
+      statusBarStyle: "default",
+      title: siteConfig.name,
     },
   };
 }
@@ -161,6 +175,7 @@ export default async function LocaleLayout({
         <JsonLd schema={[organizationSchema(), websiteSchema()]} />
       </head>
       <body className="min-h-screen bg-[var(--color-bg)] text-[var(--color-ink)]">
+        <AnalyticsProvider />
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>

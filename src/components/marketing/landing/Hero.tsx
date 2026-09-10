@@ -32,8 +32,11 @@ export function Hero() {
         <div className="pointer-events-none absolute -bottom-[170px] -right-[100px] h-[480px] w-[480px] rounded-full border border-white/[0.07]" />
 
         <div className="relative max-w-[600px]">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.08] py-[6px] pl-[9px] pr-3 text-[12px] text-[#C9CDD6]">
-            <span className="h-2 w-2 rounded-full bg-[var(--color-mint)]" />
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.08] py-[6px] pl-[9px] pr-3 text-[12px] text-[#C9CDD6] transition-all duration-200 hover:bg-white/[0.12]">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--color-mint)] opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--color-mint)]" />
+            </span>
             {t("badge")}
           </div>
 
@@ -46,7 +49,7 @@ export function Hero() {
           <div className="mt-[26px] flex flex-wrap items-center gap-[10px]">
             <Link
               href="/pricing"
-              className="inline-flex items-center gap-[10px] whitespace-nowrap rounded-full bg-[var(--color-mint)] py-3 pl-[22px] pr-3 text-[14px] font-bold text-[#0A0A0A] transition-[transform,box-shadow] duration-[250ms] hover:-translate-y-[2px] hover:shadow-[0_14px_30px_rgba(0,210,122,.35)]"
+              className="inline-flex items-center gap-[10px] whitespace-nowrap rounded-full bg-[var(--color-mint)] py-3 pl-[22px] pr-3 text-[14px] font-bold text-[#0A0A0A] transition-[transform,box-shadow] duration-[250ms] hover:-translate-y-[2px] hover:shadow-[0_14px_30px_rgba(0,210,122,.35)] motion-safe:animate-[tpPulseGlow_4s_ease-in-out_infinite]"
             >
               {t("ctaPrimary")}
               <span className="grid h-[26px] w-[26px] place-items-center rounded-full bg-[#0A0A0A] text-[var(--color-mint)]">
@@ -55,7 +58,7 @@ export function Hero() {
             </Link>
             <a
               href="#product"
-              className="whitespace-nowrap rounded-full border border-white/[0.22] px-[22px] py-3 text-[14px] font-semibold text-white transition-colors duration-[250ms] hover:bg-white/10"
+              className="whitespace-nowrap rounded-full border border-white/[0.22] px-[22px] py-3 text-[14px] font-semibold text-white transition-all duration-[250ms] hover:border-white/40 hover:bg-white/10"
             >
               {t("ctaSecondary")}
             </a>
@@ -73,7 +76,7 @@ export function Hero() {
           <HeroTillMock />
 
           {/* Customer portal on a phone */}
-          <div className="max-w-[190px] shrink grow basis-[140px] rounded-[20px] border border-white/[0.14] bg-[#0A0A0A] p-[6px] shadow-[0_30px_60px_rgba(0,0,0,.55)]">
+          <div className="max-w-[190px] shrink grow basis-[140px] rounded-[20px] border border-white/[0.14] bg-[#0A0A0A] p-[6px] shadow-[0_30px_60px_rgba(0,0,0,.55)] transition-transform duration-300 hover:-translate-y-1">
             <div className="flex min-h-[200px] flex-col gap-[5px] rounded-[15px] bg-white px-[10px] py-[11px] text-[#0A0A0A]">
               <div className="flex justify-between font-[family-name:var(--font-mono)] text-[7.5px] text-[#8A8F98]">
                 <span>9:41</span>
@@ -99,7 +102,7 @@ export function Hero() {
                   </span>
                 </div>
               ))}
-              <div className="mt-auto rounded-[7px] bg-[#0A0A0A] p-[6px] text-center text-[8px] font-bold text-white">
+              <div className="mt-auto rounded-[7px] bg-[#0A0A0A] p-[6px] text-center text-[8px] font-bold text-white transition-opacity hover:opacity-90">
                 Pay online
               </div>
             </div>
@@ -110,7 +113,10 @@ export function Hero() {
       {/* ── The stat column ─────────────────────────────────────── */}
       <div className="flex shrink grow basis-[300px] flex-col gap-[14px]">
         {/* Sales today */}
-        <div data-reveal className="rounded-[20px] bg-[var(--color-surface)] p-5">
+        <div
+          data-reveal
+          className="rounded-[20px] bg-[var(--color-surface)] p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)]"
+        >
           <div className="flex items-center justify-between gap-[10px]">
             <div className="flex items-center gap-[9px] text-[13px] font-semibold">
               <span className="grid h-6 w-6 place-items-center rounded-[7px] bg-[#0A0A0A] text-white">
@@ -123,7 +129,9 @@ export function Hero() {
             </span>
           </div>
           <div className="mt-2 text-[26px] font-extrabold tracking-[-0.03em]">
-            {DEMO.salesToday}
+            <span data-count="1842" data-count-prefix="$" data-count-suffix=".00">
+              {DEMO.salesToday}
+            </span>
           </div>
 
           <div
@@ -133,7 +141,7 @@ export function Hero() {
             {HERO_BARS.map((h, i) => (
               <div
                 key={i}
-                className="flex-1 origin-bottom rounded-t-[4px] transition-[filter] duration-[250ms] hover:brightness-90 motion-safe:animate-[tpGrow_.8s_cubic-bezier(.2,.8,.3,1)_both]"
+                className="flex-1 origin-bottom rounded-t-[4px] transition-all duration-[250ms] hover:brightness-75 hover:scale-y-105 motion-safe:animate-[tpGrow_.8s_cubic-bezier(.2,.8,.3,1)_both]"
                 style={{
                   height: `${h}%`,
                   background: i === HERO_BAR_PEAK ? "#0A0A0A" : "#9FE3C2",
@@ -141,7 +149,7 @@ export function Hero() {
                 }}
               />
             ))}
-            <div className="absolute -top-[6px] left-[66%] -translate-x-1/2 whitespace-nowrap rounded-[7px] bg-[#0A0A0A] px-2 py-[3px] text-[10px] font-semibold text-white">
+            <div className="absolute -top-[6px] left-[66%] -translate-x-1/2 whitespace-nowrap rounded-[7px] bg-[#0A0A0A] px-2 py-[3px] text-[10px] font-semibold text-white shadow-sm">
               {DEMO.salesPeak}
             </div>
           </div>
@@ -156,7 +164,10 @@ export function Hero() {
 
         <div className="grid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] gap-[14px]">
           {/* Customer credit — the one warm surface in the design */}
-          <div data-reveal className="rounded-[20px] bg-[var(--color-cream)] p-[18px]">
+          <div
+            data-reveal
+            className="rounded-[20px] bg-[var(--color-cream)] p-[18px] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(60,40,10,.12)]"
+          >
             <div className="flex items-center gap-2 text-[12.5px] font-semibold">
               <span className="grid h-[22px] w-[22px] place-items-center rounded-[6px] bg-[#0A0A0A] text-white">
                 <Stroke name="book" size={12} width={2} />
@@ -164,7 +175,9 @@ export function Hero() {
               {t("cards.credit.title")}
             </div>
             <div className="mt-4 text-[24px] font-extrabold tracking-[-0.03em]">
-              {DEMO.creditTotal}
+              <span data-count="4126" data-count-prefix="$" data-count-suffix=".00">
+                {DEMO.creditTotal}
+              </span>
             </div>
             <div className="text-[11px] text-[var(--color-cream-ink)]">
               {t("cards.credit.owed")}
@@ -180,7 +193,7 @@ export function Hero() {
           {/* Offline */}
           <div
             data-reveal
-            className="on-dark relative overflow-hidden rounded-[20px] bg-[#0A0A0A] p-[18px] text-white"
+            className="on-dark relative overflow-hidden rounded-[20px] bg-[#0A0A0A] p-[18px] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(0,0,0,.5)]"
           >
             <div className="pointer-events-none absolute -right-10 -top-10 h-[130px] w-[130px] rounded-full border border-white/[0.08]" />
             <div className="flex items-center gap-2 text-[12.5px] font-semibold">
@@ -189,7 +202,11 @@ export function Hero() {
               </span>
               {t("cards.offline.title")}
             </div>
-            <div className="mt-4 text-[24px] font-extrabold tracking-[-0.03em]">14 sales</div>
+            <div className="mt-4 text-[24px] font-extrabold tracking-[-0.03em]">
+              <span data-count="14" data-count-suffix=" sales">
+                14 sales
+              </span>
+            </div>
             <div className="text-[11px] text-[#B5B9C2]">{t("cards.offline.queued")}</div>
             <div className="mt-3 flex items-center gap-2 text-[11px] font-semibold text-[var(--color-mint)]">
               <span className="h-[7px] w-[7px] flex-none rounded-full bg-[var(--color-mint)] motion-safe:animate-[tpPulseRing_1.6s_ease-out_infinite]" />
@@ -201,7 +218,7 @@ export function Hero() {
         {/* Language & currency */}
         <div
           data-reveal
-          className="flex flex-1 flex-col justify-between gap-3 rounded-[20px] bg-[var(--color-surface)] p-[18px]"
+          className="flex flex-1 flex-col justify-between gap-3 rounded-[20px] bg-[var(--color-surface)] p-[18px] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)]"
         >
           <div className="flex items-center gap-2 text-[12.5px] font-semibold">
             <span className="grid h-[22px] w-[22px] place-items-center rounded-[6px] bg-[#0A0A0A] text-white">

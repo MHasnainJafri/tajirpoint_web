@@ -6,6 +6,8 @@ import { Icon } from "@/components/design/Icon";
 import { VerticalScreenMock } from "@/components/marketing/landing/VerticalScreenMock";
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { verticalSoftwareSchema } from "@/lib/seo/schemas";
 
 export async function generateMetadata({
   params,
@@ -14,11 +16,21 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "Restaurant POS — Tables, KDS & Delivery",
+    title: "Restaurant POS System — Tables, KDS & Online Ordering",
     description:
-      "Tajir Point for restaurants, cafés, and cloud kitchens. Table management, Kitchen Display System, modifiers, split bills, and delivery dispatch.",
+      "All-in-one restaurant POS for dine-in, takeaway, and cloud kitchens. Visual table floor plans, Kitchen Display System (KDS), split bills, modifiers, and rider delivery dispatch.",
     path: "/solutions/restaurants",
     locale,
+    keywords: [
+      "Restaurant POS system",
+      "Restaurant Point of Sale",
+      "Kitchen Display System KDS",
+      "Table Management POS",
+      "Cloud Kitchen POS Software",
+      "Dine-in and Takeaway Billing",
+      "Restaurant Order Modifiers",
+      "Offline Restaurant POS",
+    ],
   });
 }
 
@@ -81,6 +93,17 @@ export default async function RestaurantsPage({ params }: { params: Promise<{ lo
 
   return (
     <>
+      <JsonLd
+        schema={verticalSoftwareSchema({
+          name: "Tajir Point for Restaurants & Cafés",
+          applicationSubCategory: "RestaurantManagementSoftware",
+          description:
+            "Restaurant POS system with visual table management, Kitchen Display System (KDS), split bills, modifiers, and delivery dispatch.",
+          path: "/solutions/restaurants",
+          features: FEATURES.map((f) => f.title),
+        })}
+      />
+
       {/* ── Header ──────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden px-5 pb-14 pt-[140px] md:px-10">
         <div

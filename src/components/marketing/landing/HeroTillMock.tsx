@@ -199,7 +199,10 @@ export function HeroTillMock() {
             </button>
           )}
         </div>
-        <span className="inline-flex items-center gap-1 whitespace-nowrap rounded-[8px] border border-[#E3E5EA] bg-[#F7F8FA] px-2 py-1.5 font-mono text-[8px] font-semibold text-[#4B5058]">
+        <span className="relative inline-flex items-center gap-1 overflow-hidden whitespace-nowrap rounded-[8px] border border-[#E3E5EA] bg-[#F7F8FA] px-2 py-1.5 font-mono text-[8px] font-semibold text-[#4B5058] shadow-xs">
+          <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[8px]">
+            <div className="h-[1.5px] w-full bg-[#00D27A] opacity-80 shadow-[0_0_6px_#00D27A] motion-safe:animate-[tpLaserScan_2.8s_ease-in-out_infinite]" />
+          </div>
           <svg
             width="10"
             height="10"
@@ -221,9 +224,9 @@ export function HeroTillMock() {
             key={cat.id}
             type="button"
             onClick={() => setActiveCat(cat.id)}
-            className={`cursor-pointer whitespace-nowrap rounded-full px-2 py-0.5 font-semibold transition-colors ${
+            className={`cursor-pointer whitespace-nowrap rounded-full px-2 py-0.5 font-semibold transition-all duration-200 active:scale-95 ${
               activeCat === cat.id
-                ? "bg-[#0A0A0A] text-white"
+                ? "bg-[#0A0A0A] text-white shadow-xs"
                 : "bg-[#F0F2F5] text-[#5F6368] hover:bg-[#E3E5EA]"
             }`}
           >
@@ -242,7 +245,7 @@ export function HeroTillMock() {
                 key={p.id}
                 type="button"
                 onClick={() => addToCart(p)}
-                className="group relative cursor-pointer overflow-hidden rounded-[8px] border border-[#ECEEF2] bg-[#F9FAFB] p-1 text-left transition-all hover:border-[#00D27A] hover:bg-white hover:shadow-xs active:scale-95"
+                className="group relative cursor-pointer overflow-hidden rounded-[8px] border border-[#ECEEF2] bg-[#F9FAFB] p-1 text-left transition-all duration-200 hover:border-[#00D27A] hover:bg-white hover:shadow-xs active:scale-90 hover:-translate-y-0.5"
               >
                 <div
                   className="flex aspect-[1.3] w-full items-center justify-center rounded-[6px]"
@@ -294,7 +297,7 @@ export function HeroTillMock() {
               {cart.map((item) => (
                 <div
                   key={item.id}
-                  className="flex items-center justify-between text-[7.5px] text-[#2D3139]"
+                  className="flex items-center justify-between text-[7.5px] text-[#2D3139] motion-safe:animate-[tpCardPop_200ms_ease-out] rounded-[4px] px-1 py-0.5 transition-colors hover:bg-white/60"
                 >
                   <div className="truncate pr-1">
                     <span className="font-semibold">{item.name}</span>

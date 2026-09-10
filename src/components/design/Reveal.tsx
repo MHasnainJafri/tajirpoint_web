@@ -78,8 +78,14 @@ export function Reveal() {
           countIo.unobserve(e.target);
           const el = e.target as HTMLElement;
           const target = parseInt(el.dataset.count ?? "0", 10);
+          const prefix = el.dataset.countPrefix ?? "";
+          const suffix = el.dataset.countSuffix ?? "";
+          const formatNumber = (num: number) => {
+            return `${prefix}${num.toLocaleString()}${suffix}`;
+          };
+
           if (reduce) {
-            el.textContent = String(target);
+            el.textContent = formatNumber(target);
             return;
           }
           const t0 = performance.now();
@@ -87,13 +93,13 @@ export function Reveal() {
           const tick = (now: number) => {
             const p = Math.min(1, (now - t0) / dur);
             const eased = 1 - Math.pow(1 - p, 3);
-            el.textContent = String(Math.round(target * eased));
+            el.textContent = formatNumber(Math.round(target * eased));
             if (p < 1) requestAnimationFrame(tick);
           };
           requestAnimationFrame(tick);
         });
       },
-      { threshold: 0.6 }
+      { threshold: 0.2 }
     );
     document.querySelectorAll("[data-count]").forEach((el) => countIo.observe(el));
 
