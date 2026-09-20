@@ -50,9 +50,9 @@
     },
     "megaExtensions": {
       "badge": "MARKETPLACE",
-      "title": "31 extensions, installed per shop",
+      "title": "Extensions, installed per shop",
       "desc": "The interface only shows what you switch on. Most are free; a few are priced per month.",
-      "cta": "Browse all 31",
+      "cta": "Browse all extensions",
       "groupPacks": "Popular extensions",
       "groupPayments": "PAYMENTS",
       "groupIntegrations": "INTEGRATIONS",
@@ -221,7 +221,7 @@
       "tax": {
         "label": "05 · Local tax compliance",
         "title": "Local tax rules built in, not bolted on",
-        "body": "Real-time e-invoicing where regulators require it, with a QR code on every receipt. Withholding tax, regional structures and multi-currency billing handled per country.",
+        "body": "Tax-inclusive and tax-exclusive pricing per line, withholding certificates, regional tax structures and multi-currency billing, handled per country. Regulator e-invoicing is on the way.",
         "chips": {
           "inclusive": "Tax inclusive / exclusive",
           "withholding": "Withholding certificates",
@@ -337,7 +337,7 @@
         },
         "comply": {
           "title": "Comply",
-          "body": "E-invoicing, withholding tax, age checks, audit logs."
+          "body": "Withholding tax, tax-inclusive pricing, regional structures, audit logs."
         },
         "grow": {
           "title": "Grow",
@@ -524,7 +524,7 @@
           "items": {
             "0": {
               "q": "Is there a free trial?",
-              "a": "Three months, every module, no card required. Nothing is switched off during it — the restaurant pack, van sales, accounting and all 31 extensions are included."
+              "a": "Three months, every module, no card required. Nothing is switched off during it — the restaurant pack, van sales, accounting and every released extension are included."
             },
             "1": {
               "q": "What happens after the trial?",
@@ -796,7 +796,7 @@
   "extensions": {
     "meta": {
       "title": "Extensions — The TajirPoint marketplace",
-      "description": "31 extensions installed per shop: verticals, payments, accounting, compliance, e-commerce, shipping and customer tools."
+      "description": "Extensions installed per shop: verticals, payments, accounting, compliance, e-commerce, shipping and customer tools."
     },
     "badge": "MARKETPLACE · {count} EXTENSIONS",
     "headline": "The extension",
@@ -973,7 +973,7 @@
       "ecommerce": "E-commerce sync",
       "couriers": "Couriers & shipping",
       "tax": "Tax & compliance",
-      "allExtensions": "All 31 extensions",
+      "allExtensions": "All extensions",
       "security": "Security"
     },
     "copyright": "© 2026 TajirPoint · An AmalAxis product",
