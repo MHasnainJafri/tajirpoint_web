@@ -22,6 +22,13 @@ const PlanSchema = z.object({
   tagline: z.string(),
   /** Already formatted for display: "$19", "€24", or "Custom". */
   price: z.string(),
+  /** The bare number behind `price`, as a decimal string. Structured data
+   *  needs a machine-readable amount and an ISO currency — "$19" is neither. */
+  price_amount: z.string(),
+  /** ISO-4217. Never the reader's currency; see planCurrency.ts. */
+  currency_code: z.string(),
+  /** Annual amount as a decimal string. "0" when the tier is not sold yearly. */
+  annual_price: z.string(),
   /** False for contact-sales plans — the "/ month" suffix is hidden. */
   is_priced: z.boolean(),
   bullets: z.array(z.string()),

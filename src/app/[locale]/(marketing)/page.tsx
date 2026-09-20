@@ -14,6 +14,7 @@ import { Faq } from "@/components/marketing/landing/Faq";
 import { FinalCta } from "@/components/marketing/landing/FinalCta";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { softwareApplicationSchema, faqSchema } from "@/lib/seo/schemas";
+import { getPricing } from "@/lib/api/plans";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { FAQ_TABS } from "@/lib/design/landing";
 
@@ -59,9 +60,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     }))
   );
 
+  // The same rows the Pricing section renders. Next dedupes the fetch across
+  // one render pass, so this is the request Pricing already makes — not a
+  // second one — and the markup cannot claim a tier the cards do not show.
+  const pricing = await getPricing();
+
   return (
     <>
-      <JsonLd schema={[softwareApplicationSchema(), faqSchema(faqQuestions)]} />
+      <JsonLd schema={[softwareApplicationSchema(pricing?.plans), faqSchema(faqQuestions)]} />
 
       {/* Narrative order: the pitch and today's numbers → what it replaces →
           who it's for (real shop photography) → the five things it does differently →
