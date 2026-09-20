@@ -402,12 +402,26 @@ export const EXTENSION_STATUS: Record<string, ExtensionStatus> = {
 };
 
 /* ── Pricing ───────────────────────────────────────────────────────
-   One free trial, not a tier table. Every module and every vertical is
-   switched on for the trial period; anything past it — chains, custom
-   integrations, migration — is a conversation rather than a price. */
+   Published tiers, read from the backend, with a trial in front of them.
+   Every module and every vertical is switched on for the trial; only the
+   chain/franchise tier stays a conversation rather than a price. */
 
-/** Change this one number to move the trial length everywhere. */
-export const TRIAL_MONTHS = 3;
+/**
+ * Trial length in DAYS — the FALLBACK only.
+ *
+ * The live number comes from the backend now: `/api/v1/public/plans/` returns
+ * `trial_days` straight from the TRIAL_PERIOD_DAYS setting that actually
+ * grants the window, and `getPricing()` hands it to the pricing section. This
+ * constant is used only when that request fails, at which point the page is
+ * already falling back to hardcoded copy.
+ *
+ * It exists as a constant at all because the two drifted badly: the site said
+ * fourteen days while production granted ninety, and a signup promised one
+ * number and given another is a false claim, not a copy inconsistency. Reading
+ * it from the source of truth is what stops that recurring — do not reintroduce
+ * a second hardcoded trial length anywhere.
+ */
+export const TRIAL_DAYS = 14;
 
 /** What the trial includes. Ticked two-up under the price. */
 export const TRIAL_INCLUDES = [
@@ -420,7 +434,6 @@ export const TRIAL_INCLUDES = [
   "store",
   "staff",
   "offline",
-  "tax",
   "extensions",
   "support",
 ] as const;

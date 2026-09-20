@@ -108,7 +108,7 @@
       "headline": "The point of sale that runs",
       "headlineAccent": "your whole business.",
       "sub": "TajirPoint is a complete point-of-sale system — and everything behind it. The counter, stock, customer credit, accounting, staff, delivery and your online store — one login, in your language and currency. And it keeps selling when the internet drops.",
-      "ctaPrimary": "Start 14-day free trial",
+      "ctaPrimary": "Start {days}-day free trial",
       "ctaSecondary": "See how it works",
       "note": "No card required · Every module included · Cancel anytime",
       "cards": {
@@ -415,15 +415,15 @@
     },
     "pricing": {
       "eyebrow": "Pricing",
-      "headline": "Free for your first {months} months.",
-      "sub": "Every module, every industry pack, every device — switched on from day one. No card, no per-module upsells, no transaction fees. After {months} months we agree a price that fits the size of your business.",
+      "headline": "Simple, published pricing.",
+      "sub": "Every plan includes a {days}-day free trial with every module, every industry pack and every device switched on. No card to start, no per-module upsells, no transaction fees.",
       "trial": {
         "name": "Full product trial",
         "who": "One shop or fifty — nothing is held back",
         "badge": "No card required",
         "price": "Free",
-        "period": "for {months} months",
-        "note": "Not a limited edition. The restaurant pack, van sales, accounting, the online store and all 31 extensions are available for the whole trial.",
+        "period": "for {days} days",
+        "note": "Not a limited edition. The restaurant pack, van sales, accounting, the online store and every released extension are available for the whole trial.",
         "cta": "Start free trial",
         "includesLabel": "Everything included",
         "includes": {
@@ -436,8 +436,7 @@
           "store": "Online store & customer portal",
           "staff": "Staff, attendance & payroll",
           "offline": "Works offline",
-          "tax": "Local tax & e-invoicing",
-          "extensions": "All 31 extensions",
+          "extensions": "Every released extension",
           "support": "Onboarding & support"
         }
       },
@@ -453,7 +452,9 @@
         },
         "ctaMeeting": "Book a 20-minute call",
         "ctaEmail": "Email us"
-      }
+      },
+      "perMonth": "/ month",
+      "trialNote": "Every paid plan starts with a {days}-day free trial. No card required. Annual billing saves two months."
     },
     "faq": {
       "headline": "Questions merchants ask us",
@@ -581,7 +582,7 @@
     "sub": "Every industry runs differently. Extensions shape TajirPoint around yours — nothing more on screen than your business needs.",
     "cta": {
       "headline": "See it shaped around your business",
-      "body": "14 days free, every module included. No card required.",
+      "body": "{days} days free, every module included. No card required.",
       "primary": "Start free trial",
       "secondary": "Browse extensions"
     },
@@ -812,12 +813,13 @@
       "customer": "Customer tools"
     },
     "notes": {
+      "soon": "Coming soon",
       "validating": "In final validation",
       "newer": "Newer integration"
     },
     "cta": {
       "headline": "Every extension. One price.",
-      "body": "No per-module upsells. Install and uninstall freely during your 14-day trial.",
+      "body": "No per-module upsells. Install and uninstall freely during your {days}-day trial.",
       "primary": "See pricing"
     },
     "items": {
