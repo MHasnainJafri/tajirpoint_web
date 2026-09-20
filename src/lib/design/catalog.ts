@@ -91,7 +91,7 @@ export const EXTENSIONS = [
   { id: "postex", icon: "parcel", cat: "shipping", note: "soon" },
 
   { id: "customer-portal", icon: "key", cat: "customer" },
-  { id: "delivery-aggregator", icon: "scooter", cat: "customer" },
+  { id: "delivery-aggregator", icon: "scooter", cat: "customer", note: "soon" },
   { id: "coupons", icon: "ticket", cat: "customer" },
   { id: "time-promos", icon: "alarmpct", cat: "customer" },
   { id: "whatsapp-ai", icon: "brand-whatsapp", cat: "customer", note: "soon" },
