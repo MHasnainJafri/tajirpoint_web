@@ -421,7 +421,9 @@ export const EXTENSION_STATUS: Record<string, ExtensionStatus> = {
  * it from the source of truth is what stops that recurring — do not reintroduce
  * a second hardcoded trial length anywhere.
  */
-export const TRIAL_DAYS = 14;
+// Fallback only (used when the API is unreachable). Matches production's
+// `trial_days` from /api/v1/public/plans/ as of 2026-09-24: 90.
+export const TRIAL_DAYS = 90;
 
 /** What the trial includes. Ticked two-up under the price. */
 export const TRIAL_INCLUDES = [

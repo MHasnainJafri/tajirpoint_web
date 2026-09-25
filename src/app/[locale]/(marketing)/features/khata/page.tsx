@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { TrialDays } from "@/components/marketing/TrialDays";
 import { setRequestLocale } from "next-intl/server";
 import {
   BookOpen,
@@ -305,7 +306,7 @@ export default async function KhataFeaturePage({
       <section className="px-5 pb-[110px] pt-5 md:px-10">
         <CtaPanel>
           <h2 className="relative text-[clamp(28px,3.6vw,46px)] font-extrabold tracking-[-0.03em]">
-            Start free 14-day trial — no card required
+            Start free <TrialDays />-day trial — no card required
           </h2>
           <p className="relative mx-auto mt-4 max-w-[440px] text-[16px] leading-[1.6] text-[var(--color-muted)]">
             Move your credit register onto a ledger both sides can trust.

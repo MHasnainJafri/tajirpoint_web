@@ -21,7 +21,7 @@ import { getPricing, type MarketingPlan } from "@/lib/api/plans";
  * admin is what renders. Making a plan public is an admin change, not a
  * deploy.
  */
-export async function Pricing() {
+export async function Pricing({ showHeader = true }: { showHeader?: boolean } = {}) {
   const t = await getTranslations("landing.pricing");
   const pricing = await getPricing();
   const plans = pricing?.plans ?? null;
@@ -32,6 +32,9 @@ export async function Pricing() {
 
   return (
     <section id="pricing" className="mt-[clamp(64px,9vw,120px)] scroll-mt-[86px]">
+      {/* /pricing renders these three lines as its own <h1> hero; showing them
+          again here printed the same eyebrow, headline and sub twice. */}
+      {showHeader && (
       <div data-reveal className="text-center">
         <div className="eyebrow">{t("eyebrow")}</div>
         <h2 className="mx-auto mt-3 max-w-[18ch] text-[clamp(28px,3.6vw,44px)] font-bold leading-[1.12] tracking-[-0.035em] text-balance">
@@ -41,6 +44,7 @@ export async function Pricing() {
           {t("sub", { days: trialDays })}
         </p>
       </div>
+      )}
 
       {plans ? (
         <>

@@ -31,10 +31,10 @@ const CONTACT_OPTIONS = [
   },
   {
     icon: <MessageCircle size={22} strokeWidth={1.8} />,
-    title: "Live chat",
-    desc: "Chat with our team right from the dashboard",
-    action: "Open chat →",
-    href: siteConfig.dashboardUrl,
+    title: "WhatsApp",
+    desc: "Message our team on WhatsApp",
+    action: "Start a chat →",
+    href: siteConfig.social.whatsapp,
   },
   {
     icon: <CalendarDays size={22} strokeWidth={1.8} />,

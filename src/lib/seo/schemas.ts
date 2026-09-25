@@ -207,7 +207,7 @@ export function verticalSoftwareSchema({
       "@type": "Offer",
       price: "0",
       priceCurrency: "USD",
-      description: "14-day free trial, all modules included",
+      description: "Free trial, all modules included",
       url: `${siteConfig.url}/pricing`,
     } as any,
   };

@@ -24,7 +24,7 @@ export const siteConfig = {
 
   // External links
   dashboardUrl: "https://app.tajirpoint.com",
-  signupUrl: "https://app.tajirpoint.com/signup",
+  signupUrl: "https://app.tajirpoint.com/register",
   calendlyUrl: "https://calendly.com/mhasnainjafri/tajir-point",
   docsUrl: "https://docs.tajirpoint.com",
   contactEmail: "hello@tajirpoint.com",

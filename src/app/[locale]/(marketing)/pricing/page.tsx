@@ -4,7 +4,8 @@ import { Pricing } from "@/components/marketing/landing/Pricing";
 import { Faq } from "@/components/marketing/landing/Faq";
 import { FinalCta } from "@/components/marketing/landing/FinalCta";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { FAQ_TABS, TRIAL_DAYS } from "@/lib/design/landing";
+import { FAQ_TABS } from "@/lib/design/landing";
+import { getTrialDays } from "@/lib/api/plans";
 import { faqSchema } from "@/lib/seo/schemas";
 import { buildMetadata } from "@/lib/seo/metadata";
 
@@ -14,10 +15,11 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const trialDays = await getTrialDays();
   return buildMetadata({
     title: "Pricing — Starter, Growth and Enterprise",
     description:
-      "Published plans with every module, every industry pack and every device included. A 14-day free trial on every plan — no card, no per-module upsells, no transaction fees.",
+      `Published plans with every module, every industry pack and every device included. A ${trialDays}-day free trial on every plan — no card, no per-module upsells, no transaction fees.`,
     path: "/pricing",
     locale,
   });
@@ -28,6 +30,7 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
   setRequestLocale(locale);
 
   const t = await getTranslations("landing.pricing");
+  const trialDays = await getTrialDays();
   const tFaq = await getTranslations("landing.faq");
 
   // Flattened from the grouped FAQ so the structured data always matches what
@@ -53,11 +56,11 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
             {t("headline")}
           </h1>
           <p className="mx-auto mt-5 max-w-[58ch] animate-[tpRise_.7s_.12s_cubic-bezier(.22,.9,.3,1)_both] text-[15.5px] leading-[1.65] text-[var(--color-body)]">
-            {t("sub", { days: TRIAL_DAYS })}
+            {t("sub", { days: trialDays })}
           </p>
         </section>
 
-        <Pricing />
+        <Pricing showHeader={false} />
         <Faq />
       </div>
 

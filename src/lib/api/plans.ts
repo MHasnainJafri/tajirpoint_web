@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { TRIAL_DAYS } from "@/lib/design/landing";
 
 /**
  * The published pricing table, read from the POS backend so plans can be
@@ -75,4 +76,15 @@ export async function getPricing(): Promise<MarketingPricing | null> {
 /** Plans only, for callers that do not render the trial claim. */
 export async function getPlans(): Promise<MarketingPlan[] | null> {
   return (await getPricing())?.plans ?? null;
+}
+
+/**
+ * The trial length to print in copy. The backend grants the trial, so the
+ * backend says how long it is (`TRIAL_PERIOD_DAYS`, 90 days in production when
+ * this was written); `TRIAL_DAYS` is only the fallback for when the API is
+ * unreachable. Rides the same cached `getPricing()` fetch, so calling it from
+ * several places on one page costs one request.
+ */
+export async function getTrialDays(): Promise<number> {
+  return (await getPricing())?.trialDays ?? TRIAL_DAYS;
 }

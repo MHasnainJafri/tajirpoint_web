@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { TrialDays } from "@/components/marketing/TrialDays";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { PillBadge, MintButton, GhostButton, CtaPanel } from "@/components/design/primitives";
@@ -224,7 +225,7 @@ function SolutionPage({
       <section className="px-5 pb-[110px] pt-5 md:px-10">
         <CtaPanel>
           <h2 className="relative text-[clamp(28px,3.6vw,46px)] font-extrabold tracking-[-0.03em]">
-            14-day free trial. No card needed.
+            <TrialDays />-day free trial. No card needed.
           </h2>
           <p className="relative mx-auto mt-4 max-w-[440px] text-[16px] leading-[1.6] text-[rgba(242,247,244,.64)]">
             Set up in minutes. Your data, your language, your compliance — ready from day one.
