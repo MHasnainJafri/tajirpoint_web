@@ -33,7 +33,7 @@ and ZATCA in Saudi Arabia today — and it runs on web, desktop, Android and iOS
 ## Core pages
 
 ${link("Home", "/", "Product overview — what Tajir Point does and who it is for")}
-${link("Pricing", "/pricing", "Starter, Growth and Enterprise plans")}
+${link("Pricing", "/pricing", "Counter (free), Shop, Chain and Enterprise plans, priced in USD")}
 ${link("Solutions", "/solutions", "Index of the industry-specific configurations")}
 ${link("Extensions", "/extensions", "The 31 optional extensions that bolt onto the core platform")}
 ${link("About", "/about", "Who builds Tajir Point")}
