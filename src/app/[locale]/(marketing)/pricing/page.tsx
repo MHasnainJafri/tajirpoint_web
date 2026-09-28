@@ -17,7 +17,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const trialDays = await getTrialDays();
   return buildMetadata({
-    title: "Pricing — Counter, Shop, Chain and Enterprise",
+    title: "Pricing — Basic, Pro, Business and Enterprise",
     description:
       `Published plans with every module, every industry pack and every device included. A ${trialDays}-day free trial on every plan — no card, no per-module upsells, no transaction fees.`,
     path: "/pricing",
