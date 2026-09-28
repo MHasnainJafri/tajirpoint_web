@@ -115,19 +115,19 @@ export function Nav() {
             {t("signIn")}
           </a>
 
-          {/* The design shortens this to "Free trial" in compact mode. It has to:
+          {/* The design shortens this to "Start free" in compact mode. It has to:
               at 320px the full label pushes the burger past the right edge. */}
           <Link
             href="/pricing"
             className="whitespace-nowrap rounded-full bg-[var(--color-mint)] px-[14px] py-[9px] text-[13px] font-bold text-[#0A0A0A] transition-[transform,box-shadow] duration-[250ms] hover:-translate-y-px hover:shadow-[0_10px_22px_rgba(0,210,122,.35)] nav:hidden"
           >
-            {t("freeTrial")}
+            {t("startFreeShort")}
           </Link>
           <Link
             href="/pricing"
             className="hidden whitespace-nowrap rounded-full bg-[var(--color-mint)] px-[18px] py-[10px] text-[13.5px] font-bold text-[#0A0A0A] transition-[transform,box-shadow] duration-[250ms] hover:-translate-y-px hover:shadow-[0_10px_22px_rgba(0,210,122,.35)] nav:inline-flex"
           >
-            {t("startTrial")}
+            {t("startFree")}
           </Link>
 
           <button

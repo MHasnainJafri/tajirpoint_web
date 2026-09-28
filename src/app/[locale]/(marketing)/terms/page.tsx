@@ -18,7 +18,7 @@ export async function generateMetadata({
   });
 }
 
-const LAST_UPDATED = "1 May 2025";
+const LAST_UPDATED = "28 September 2026";
 
 export default async function TermsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -68,13 +68,18 @@ export default async function TermsPage({ params }: { params: Promise<{ locale: 
           <LegalSection title="3. Subscription and payment">
             <ul>
               <li>
-                Plans are billed monthly or annually in advance. All fees are non-refundable except
-                as required by law.
+                The free plan costs nothing and has no time limit. Paid plans are billed monthly or
+                annually in advance.
               </li>
               <li>
-                Prices are listed in PKR (Pakistan), AED (UAE), and SAR (Saudi Arabia) inclusive of
-                applicable taxes.
+                You can cancel a paid plan at any time. It stays active until the end of the period
+                you have paid for and is not renewed after that.
               </li>
+              <li>
+                You may request a refund of a payment within 15 days of it being made. After 15
+                days, fees are non-refundable except as required by law.
+              </li>
+              <li>Prices are listed and billed in US dollars (USD).</li>
               <li>
                 We may change pricing with 30 days' notice. Continued use after the effective date
                 constitutes acceptance.

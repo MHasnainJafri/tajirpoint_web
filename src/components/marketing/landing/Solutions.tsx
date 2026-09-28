@@ -10,7 +10,7 @@ import { ICON, SOLUTIONS, SOLUTION_BULLETS } from "@/lib/design/landing";
  * left, a mock of that trade's actual screen on the right.
  *
  * Server component — it builds all six panels and hands them to the client
- * shell, so every vertical's "start trial" and deep link ships in the HTML.
+ * shell, so every vertical's "start free" and deep link ships in the HTML.
  * The row content in each mock is fixture data and is not translated.
  */
 export function Solutions() {
@@ -58,7 +58,7 @@ export function Solutions() {
             href="/pricing"
             className="inline-flex items-center whitespace-nowrap rounded-full bg-[#0A0A0A] px-5 py-[10px] text-[13px] font-semibold text-white transition-transform duration-200 hover:-translate-y-[2px]"
           >
-            {t("ctaTrial")}
+            {t("ctaStart")}
           </Link>
           <a
             href="#extensions"

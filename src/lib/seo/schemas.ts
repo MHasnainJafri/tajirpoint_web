@@ -7,7 +7,7 @@ import type {
   WithContext,
 } from "schema-dts";
 import { siteConfig } from "@/lib/config/site";
-import type { MarketingPlan } from "@/lib/api/plans";
+import { isContactSalesPlan, isFreePlan, type MarketingPlan } from "@/lib/api/plans";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -111,14 +111,10 @@ export function softwareApplicationSchema(
 
 /** One tier as an Offer. Prices are per month, in the plan's own currency. */
 function planOffer(plan: MarketingPlan) {
-  // `is_priced` is false for the free trial AND for the contact-sales tier,
-  // and both carry monthly_price = 0, so neither the flag nor the amount can
-  // separate them. `tier` is the documented discriminator (see MarketingPlan):
-  // the trial is the `custom` tier, everything else unpriced is a conversation.
-  // The first version of this read the word "free" out of the display string,
-  // which is copy the admin can retype in any language.
-  const isTrial = !plan.is_priced && plan.tier === "custom";
-  const isContactSales = !plan.is_priced && !isTrial;
+  // The free plan and the contact-sales tier are both unpriced; `tier` tells
+  // them apart (see isFreePlan). The free plan is an Offer at price 0.
+  const isFree = isFreePlan(plan);
+  const isContactSales = isContactSalesPlan(plan);
 
   const offer: Record<string, unknown> = {
     "@type": "Offer",
@@ -134,10 +130,11 @@ function planOffer(plan: MarketingPlan) {
   // "contact us" tier would be worse than omitting it. schema.org has no way
   // to say "price on application", so the tier is listed without an amount.
   if (!isContactSales) {
-    const amount = isTrial ? "0" : plan.price_amount;
+    const amount = isFree ? "0" : plan.price_amount;
     offer.price = amount;
     offer.priceCurrency = plan.currency_code;
-    offer.priceSpecification = {
+    // A free-forever plan has no billing period to specify.
+    if (!isFree) offer.priceSpecification = {
       "@type": "UnitPriceSpecification",
       price: amount,
       priceCurrency: plan.currency_code,
@@ -185,12 +182,16 @@ export function verticalSoftwareSchema({
   description,
   path,
   features,
+  plans,
 }: {
   name: string;
   applicationSubCategory: string;
   description: string;
   path: string;
   features: string[];
+  /** The published catalogue from getPlans(). Offers are omitted when it
+   *  could not be read rather than guessed. */
+  plans?: MarketingPlan[] | null;
 }): WithContext<SoftwareApplication> {
   return {
     "@context": "https://schema.org",
@@ -203,12 +204,8 @@ export function verticalSoftwareSchema({
     operatingSystem: "Android, iOS, Web, Windows",
     inLanguage: ["en", "ur", "ar"],
     featureList: features.join(", "),
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-      description: "Free trial, all modules included",
-      url: `${siteConfig.url}/pricing`,
-    } as any,
+    // Same Offers as the home page, from the same API rows — never a
+    // hardcoded plan name or price.
+    ...(plans?.length ? { offers: plans.map((plan) => planOffer(plan)) as any } : {}),
   };
 }

@@ -402,42 +402,19 @@ export const EXTENSION_STATUS: Record<string, ExtensionStatus> = {
 };
 
 /* ── Pricing ───────────────────────────────────────────────────────
-   Published tiers, read from the backend, with a trial in front of them.
-   Every module and every vertical is switched on for the trial; only the
-   chain/franchise tier stays a conversation rather than a price. */
+   Published tiers, read from the backend: a free plan, paid plans, and a
+   contact-sales tier. Names and prices live only in the API. */
 
-/**
- * Trial length in DAYS — the FALLBACK only.
- *
- * The live number comes from the backend now: `/api/v1/public/plans/` returns
- * `trial_days` straight from the TRIAL_PERIOD_DAYS setting that actually
- * grants the window, and `getPricing()` hands it to the pricing section. This
- * constant is used only when that request fails, at which point the page is
- * already falling back to hardcoded copy.
- *
- * It exists as a constant at all because the two drifted badly: the site said
- * fourteen days while production granted ninety, and a signup promised one
- * number and given another is a false claim, not a copy inconsistency. Reading
- * it from the source of truth is what stops that recurring — do not reintroduce
- * a second hardcoded trial length anywhere.
- */
-// Fallback only (used when the API is unreachable). Matches production's
-// `trial_days` from /api/v1/public/plans/ as of 2026-09-24: 90.
-export const TRIAL_DAYS = 90;
-
-/** What the trial includes. Ticked two-up under the price. */
-export const TRIAL_INCLUDES = [
+/** What the free plan includes. Ticked two-up under the price on the
+ *  fallback card (shown only when the plans API cannot be read). Mirrors the
+ *  free-plan bullets the backend publishes. */
+export const BASIC_INCLUDES = [
   "pos",
   "inventory",
   "credit",
-  "accounting",
-  "restaurant",
-  "vansales",
-  "store",
-  "staff",
+  "einvoicing",
   "offline",
-  "extensions",
-  "support",
+  "devices",
 ] as const;
 
 /* ── FAQ ───────────────────────────────────────────────────────── */

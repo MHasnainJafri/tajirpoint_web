@@ -70,7 +70,7 @@
     },
     "product": "Product",
     "resources": "Resources",
-    "startTrial": "Start free trial",
+    "startFree": "Get started free",
     "chip": "Point of sale",
     "megaResources": {
       "items": {
@@ -96,7 +96,7 @@
         }
       }
     },
-    "freeTrial": "Free trial"
+    "startFreeShort": "Start free"
   },
   "landing": {
     "meta": {
@@ -108,9 +108,9 @@
       "headline": "The point of sale that runs",
       "headlineAccent": "your whole business.",
       "sub": "TajirPoint is a complete point-of-sale system — and everything behind it. The counter, stock, customer credit, accounting, staff, delivery and your online store — one login, in your language and currency. And it keeps selling when the internet drops.",
-      "ctaPrimary": "Start {days}-day free trial",
+      "ctaPrimary": "Get started free",
       "ctaSecondary": "See how it works",
-      "note": "No card required · Every module included · Cancel anytime",
+      "note": "Free plan, forever · No card required · Cancel paid plans anytime",
       "cards": {
         "sales": {
           "title": "Sales today",
@@ -235,7 +235,7 @@
       "headline": "Made for your kind of shop",
       "sub": "Six verticals, each with its own screens. Switch on what you need — a grocery store never sees a kitchen display.",
       "tablistLabel": "Choose your trade",
-      "ctaTrial": "Start free trial",
+      "ctaStart": "Start free",
       "ctaExtensions": "See extensions",
       "items": {
         "retail": {
@@ -416,28 +416,23 @@
     "pricing": {
       "eyebrow": "Pricing",
       "headline": "Simple, published pricing.",
-      "sub": "Every plan includes a {days}-day free trial with every module, every industry pack and every device switched on. No card to start, no per-module upsells, no transaction fees.",
-      "trial": {
-        "name": "Full product trial",
-        "who": "One shop or fifty — nothing is held back",
+      "sub": "Start on the free plan and stay on it for as long as you like. Move up to a paid plan when you need more users and branches — no per-module upsells, no transaction fees.",
+      "basic": {
+        "name": "Free plan",
+        "who": "Everything you need to start selling",
         "badge": "No card required",
         "price": "Free",
-        "period": "for {days} days",
-        "note": "Not a limited edition. The restaurant pack, van sales, accounting, the online store and every released extension are available for the whole trial.",
-        "cta": "Start free trial",
-        "includesLabel": "Everything included",
+        "period": "forever",
+        "note": "Not time-limited. The free plan stays free for as long as you use it — move up to a paid plan whenever you need more users and branches.",
+        "cta": "Get started free",
+        "includesLabel": "Included free",
         "includes": {
-          "pos": "POS, registers & shifts",
-          "inventory": "Inventory, batches & serials",
+          "pos": "Full POS & receipts",
+          "inventory": "Inventory & stock counts",
           "credit": "Customer & supplier credit",
-          "accounting": "Double-entry accounting",
-          "restaurant": "Restaurant, tables & kitchen display",
-          "vansales": "Van sales, routes & delivery",
-          "store": "Online store & customer portal",
-          "staff": "Staff, attendance & payroll",
+          "einvoicing": "Tax e-invoicing",
           "offline": "Works offline",
-          "extensions": "Every released extension",
-          "support": "Onboarding & support"
+          "devices": "Web, desktop & Android"
         }
       },
       "custom": {
@@ -454,7 +449,8 @@
         "ctaEmail": "Email us"
       },
       "perMonth": "/ month",
-      "trialNote": "Every paid plan starts with a {days}-day free trial. No card required. Annual billing saves two months."
+      "forever": "forever",
+      "plansNote": "The free plan is free forever. Paid plans are billed in USD and can be cancelled any time, with a 15-day refund window on payments. Annual billing saves two months."
     },
     "faq": {
       "headline": "Questions merchants ask us",
@@ -523,20 +519,20 @@
           "label": "Pricing",
           "items": {
             "0": {
-              "q": "Is there a free trial?",
-              "a": "Three months, every module, no card required. Nothing is switched off during it — the restaurant pack, van sales, accounting and every released extension are included."
+              "q": "Is there a free plan?",
+              "a": "Yes. The free plan is free forever, no card required. The pricing page lists what each plan includes — move up to a paid plan only when you need more."
             },
             "1": {
-              "q": "What happens after the trial?",
-              "a": "We agree a price that fits the size of your business. There are no published tiers to grow out of, and no per-module upsells or transaction fees — payment-gateway processing fees are set by the gateway, not by us."
+              "q": "Can I cancel, or get a refund?",
+              "a": "Cancel a paid plan any time — it stays active until the end of the period you paid for. You can ask for a refund on any payment within 15 days of it."
             },
             "2": {
               "q": "Which currencies can I pay in?",
-              "a": "Your local currency. Billing, tax rules and payment methods follow the country the shop is registered in."
+              "a": "Plans are priced and billed in US dollars (USD). We charge no transaction fees — payment-gateway processing fees are set by the gateway, not by us."
             },
             "3": {
               "q": "Do I need a card to start?",
-              "a": "No. Start the trial, and talk to us when you are ready — by email or on a 20-minute call."
+              "a": "No. Sign up and choose the free plan to start. You only add a card if you pick a paid plan, at checkout."
             }
           }
         }
@@ -544,8 +540,8 @@
     },
     "cta": {
       "headline": "Start selling in an afternoon.",
-      "sub": "Import your products from Excel, Shopify or WooCommerce, connect a printer, and ring your first sale. Fourteen days free, every module, no card.",
-      "ctaPrimary": "Start free trial",
+      "sub": "Import your products from Excel, Shopify or WooCommerce, connect a printer, and ring your first sale. Free plan, free forever, no card.",
+      "ctaPrimary": "Get started free",
       "ctaSecondary": "Book a demo",
       "steps": {
         "import": {
@@ -582,8 +578,8 @@
     "sub": "Every industry runs differently. Extensions shape TajirPoint around yours — nothing more on screen than your business needs.",
     "cta": {
       "headline": "See it shaped around your business",
-      "body": "{days} days free, every module included. No card required.",
-      "primary": "Start free trial",
+      "body": "Free plan, free forever. No card required.",
+      "primary": "Start free",
       "secondary": "Browse extensions"
     },
     "industries": {
@@ -819,7 +815,7 @@
     },
     "cta": {
       "headline": "Every extension. One price.",
-      "body": "No per-module upsells. Install and uninstall freely during your {days}-day trial.",
+      "body": "No per-module upsells. Install and uninstall freely — and start on the free plan.",
       "primary": "See pricing"
     },
     "items": {

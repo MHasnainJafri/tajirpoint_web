@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { TRIAL_DAYS } from "@/lib/design/landing";
 
 /**
  * The published pricing table, read from the POS backend so plans can be
@@ -18,7 +17,8 @@ const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://api.tajirpoint.com"
 const PlanSchema = z.object({
   id: z.string(),
   name: z.string(),
-  /** basic | silver | gold | custom. Distinguishes the trial from contact-sales. */
+  /** basic | silver | gold. Separates the free plan (unpriced, `basic`) from
+   *  contact-sales (unpriced, `gold`) — see isFreePlan(). */
   tier: z.string(),
   tagline: z.string(),
   /** Already formatted for display: "$19", "€24", or "Custom". */
@@ -30,7 +30,8 @@ const PlanSchema = z.object({
   currency_code: z.string(),
   /** Annual amount as a decimal string. "0" when the tier is not sold yearly. */
   annual_price: z.string(),
-  /** False for contact-sales plans — the "/ month" suffix is hidden. */
+  /** False for the free plan and for contact-sales plans — the "/ month"
+   *  suffix is hidden for both. */
   is_priced: z.boolean(),
   bullets: z.array(z.string()),
   cta: z.string(),
@@ -39,18 +40,32 @@ const PlanSchema = z.object({
 
 const ResponseSchema = z.object({
   plans: z.array(PlanSchema),
-  /** Trial length in days, from the backend setting that actually grants it.
-   *  Optional so an older backend still parses; the caller falls back to the
-   *  TRIAL_DAYS constant then. */
-  trial_days: z.number().int().positive().optional(),
 });
 
 export type MarketingPlan = z.infer<typeof PlanSchema>;
 
 export interface MarketingPricing {
   plans: MarketingPlan[];
-  /** Null when the backend did not say — use the local constant. */
-  trialDays: number | null;
+}
+
+/**
+ * The free-forever plan (Basic). `is_priced` is false for it AND for the
+ * contact-sales tier, and both carry price_amount 0, so neither the flag nor
+ * the amount can separate them — `tier` does: the free plan is `basic`,
+ * Enterprise is `gold`. Never read the word "Free" out of the display string;
+ * that is copy the admin can retype in any language.
+ */
+export function isFreePlan(plan: MarketingPlan): boolean {
+  return !plan.is_priced && plan.tier === "basic";
+}
+
+/**
+ * Anything unpriced that is not the free plan is a conversation. That is the
+ * safe direction: sending someone to checkout for a plan with no price is the
+ * worse of the two mistakes.
+ */
+export function isContactSalesPlan(plan: MarketingPlan): boolean {
+  return !plan.is_priced && !isFreePlan(plan);
 }
 
 export async function getPricing(): Promise<MarketingPricing | null> {
@@ -64,27 +79,33 @@ export async function getPricing(): Promise<MarketingPricing | null> {
     // An empty catalogue is a misconfiguration, not a valid pricing page.
     if (!parsed.success || parsed.data.plans.length === 0) return null;
 
-    return {
-      plans: parsed.data.plans,
-      trialDays: parsed.data.trial_days ?? null,
-    };
+    return { plans: parsed.data.plans };
   } catch {
     return null;
   }
 }
 
-/** Plans only, for callers that do not render the trial claim. */
+/** Plans only. */
 export async function getPlans(): Promise<MarketingPlan[] | null> {
   return (await getPricing())?.plans ?? null;
 }
 
 /**
- * The trial length to print in copy. The backend grants the trial, so the
- * backend says how long it is (`TRIAL_PERIOD_DAYS`, 90 days in production when
- * this was written); `TRIAL_DAYS` is only the fallback for when the API is
- * unreachable. Rides the same cached `getPricing()` fetch, so calling it from
- * several places on one page costs one request.
+ * The catalogue as one line of plain text, for metadata and llms.txt:
+ * "Basic Free, Pro $29/month, Business $79/month, Enterprise Custom".
+ * Built from the API rows so an admin edit to a name or price reaches every
+ * surface that quotes it. Null when there is nothing to describe — callers
+ * then fall back to wording that names no plan and quotes no price.
  */
-export async function getTrialDays(): Promise<number> {
-  return (await getPricing())?.trialDays ?? TRIAL_DAYS;
+export function planSummary(plans: MarketingPlan[] | null | undefined): string | null {
+  if (!plans?.length) return null;
+  return plans.map((p) => `${p.name} ${p.price}${p.is_priced ? "/month" : ""}`).join(", ");
+}
+
+/** "Basic, Pro, Business and Enterprise", from the API rows. */
+export function planNames(plans: MarketingPlan[] | null | undefined): string | null {
+  if (!plans?.length) return null;
+  const names = plans.map((p) => p.name);
+  const last = names.pop();
+  return names.length ? `${names.join(", ")} and ${last}` : (last ?? null);
 }

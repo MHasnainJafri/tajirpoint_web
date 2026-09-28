@@ -171,7 +171,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
               rel="noopener noreferrer"
               className="inline-flex items-center gap-[10px] whitespace-nowrap rounded-full border border-[var(--color-line-2)] bg-white/[0.07] px-7 py-[15px] text-[16px] font-semibold text-[var(--color-ink)] transition-colors duration-200 hover:bg-white/[0.12] hover:text-white"
             >
-              Start free trial
+              Get started free
             </a>
           </div>
         </CtaPanel>

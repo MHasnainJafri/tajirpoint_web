@@ -1,5 +1,6 @@
 import { siteConfig } from "@/lib/config/site";
 import { RESOURCES } from "@/lib/docs/nav";
+import { getPlans, planSummary } from "@/lib/api/plans";
 
 // Served at /llms.txt — a dotted path, so the next-intl proxy matcher
 // (which excludes `.*\..*`) skips it, same as /og.png.
@@ -8,7 +9,11 @@ import { RESOURCES } from "@/lib/docs/nav";
 // siteConfig.url and the API reference list stays in sync with docs/api-data.json.
 // The llmstxt.org format wants a Markdown file with exactly one H1, an optional
 // blockquote summary, and H2 sections of `- [name](url): description` links.
-export const dynamic = "force-static";
+//
+// The pricing line is read from the plans API, like the pricing cards, and the
+// file is regenerated at most every five minutes so an admin edit to a plan
+// shows up here too.
+export const revalidate = 300;
 
 const url = (path: string) => `${siteConfig.url}${path}`;
 
@@ -16,7 +21,7 @@ function link(name: string, path: string, description: string) {
   return `- [${name}](${url(path)}): ${description}`;
 }
 
-function body(): string {
+function body(pricing: string): string {
   return `# Tajir Point
 
 > Tajir Point is an offline-first point-of-sale and business operating system for
@@ -33,7 +38,7 @@ and ZATCA in Saudi Arabia today — and it runs on web, desktop, Android and iOS
 ## Core pages
 
 ${link("Home", "/", "Product overview — what Tajir Point does and who it is for")}
-${link("Pricing", "/pricing", "Basic (free), Pro, Business and Enterprise plans, priced in USD")}
+${link("Pricing", "/pricing", pricing)}
 ${link("Solutions", "/solutions", "Index of the industry-specific configurations")}
 ${link("Extensions", "/extensions", "The 31 optional extensions that bolt onto the core platform")}
 ${link("About", "/about", "Who builds Tajir Point")}
@@ -81,11 +86,15 @@ ${link("Security", "/security", "Security posture summary")}
 `;
 }
 
-export function GET() {
-  return new Response(body(), {
+export async function GET() {
+  const summary = planSummary(await getPlans());
+  const pricing = summary
+    ? `Plans and prices (USD): ${summary}. The free plan needs no card; paid plans can be cancelled any time, with a 15-day refund window on payments`
+    : "Free and paid plans, priced in USD";
+  return new Response(body(pricing), {
     headers: {
       "Content-Type": "text/markdown; charset=utf-8",
-      "Cache-Control": "public, max-age=3600, stale-while-revalidate=86400",
+      "Cache-Control": "public, max-age=300, stale-while-revalidate=86400",
     },
   });
 }

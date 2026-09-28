@@ -83,7 +83,7 @@ export default async function BookDemoPage({ params }: { params: Promise<{ local
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Start a free trial →
+                Start on the free plan →
               </a>
             </p>
           </div>

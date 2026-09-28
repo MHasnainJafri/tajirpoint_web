@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { TrialDays } from "@/components/marketing/TrialDays";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { PillBadge, MintButton, GhostButton, CtaPanel } from "@/components/design/primitives";
@@ -9,6 +8,7 @@ import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { verticalSoftwareSchema } from "@/lib/seo/schemas";
+import { getPlans } from "@/lib/api/plans";
 
 export async function generateMetadata({
   params,
@@ -92,6 +92,7 @@ export default async function GeneralRetailPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const plans = await getPlans();
 
   return (
     <>
@@ -103,6 +104,7 @@ export default async function GeneralRetailPage({
             "Retail POS system with barcode scanning, digital Khata credit ledger, multi-branch stock reconciliation, and offline billing.",
           path: "/solutions/general-retail",
           features: FEATURES.map((f) => f.title),
+          plans,
         })}
       />
       <SolutionPage
@@ -185,7 +187,7 @@ function SolutionPage({
 
             <div className="mt-9 flex animate-[tpFadeUp_.8s_.36s_cubic-bezier(.22,1,.36,1)_both] flex-wrap gap-[14px]">
               <MintButton href={siteConfig.signupUrl} external>
-                Start free trial <span>→</span>
+                Get started free <span>→</span>
               </MintButton>
               <GhostButton href={siteConfig.calendlyUrl} external>
                 Book a demo
@@ -225,7 +227,7 @@ function SolutionPage({
       <section className="px-5 pb-[110px] pt-5 md:px-10">
         <CtaPanel>
           <h2 className="relative text-[clamp(28px,3.6vw,46px)] font-extrabold tracking-[-0.03em]">
-            <TrialDays />-day free trial. No card needed.
+            Free plan, free forever. No card needed.
           </h2>
           <p className="relative mx-auto mt-4 max-w-[440px] text-[16px] leading-[1.6] text-[rgba(242,247,244,.64)]">
             Set up in minutes. Your data, your language, your compliance — ready from day one.
