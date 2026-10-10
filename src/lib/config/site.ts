@@ -63,6 +63,7 @@ export const siteConfig = {
       { label: "Privacy", href: "/privacy" },
       { label: "Terms", href: "/terms" },
       { label: "Data Privacy", href: "/data-privacy" },
+      { label: "Delete Account", href: "/delete-account" },
       { label: "Data Security", href: "/data-security" },
     ],
   },

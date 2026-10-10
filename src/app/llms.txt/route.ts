@@ -76,6 +76,7 @@ ${RESOURCES.map((r) => link(r.title, `/docs/${r.slug}`, `${r.title} API referenc
 ${link("Privacy policy", "/privacy", "How customer data is handled")}
 ${link("Terms of service", "/terms", "Terms governing use of Tajir Point")}
 ${link("Data privacy", "/data-privacy", "Data residency and processing detail")}
+${link("Delete your account", "/delete-account", "How to request account and data deletion")}
 ${link("Data security", "/data-security", "Security controls and practices")}
 
 ## Optional

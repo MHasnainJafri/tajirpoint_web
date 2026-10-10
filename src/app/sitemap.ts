@@ -51,6 +51,7 @@ const PAGES: Page[] = [
   { path: "/security", priority: 0.5, changeFrequency: "monthly" },
   { path: "/data-security", priority: 0.5, changeFrequency: "monthly" },
   { path: "/data-privacy", priority: 0.5, changeFrequency: "monthly" },
+  { path: "/delete-account", priority: 0.4, changeFrequency: "yearly" },
   { path: "/privacy", priority: 0.4, changeFrequency: "yearly" },
   { path: "/terms", priority: 0.4, changeFrequency: "yearly" },
 ];
