@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { ONBOARDING } from "@/lib/design/landing";
+import { siteConfig } from "@/lib/config/site";
 
 /**
  * The close-out panel, and the only section wider than the 1240px page grid —
@@ -24,13 +25,13 @@ export function FinalCta() {
             {t("headline")}
           </h2>
           <p className="mt-4 max-w-[48ch] text-[15px] leading-[1.65] text-[#B5B9C2]">{t("sub")}</p>
-          <div className="mt-[26px] flex flex-wrap gap-[10px]">
-            <Link
-              href="/pricing"
+          <div className="mt-[26px] flex flex-wrap gap-[10px]" data-track="final_cta">
+            <a
+              href={siteConfig.signupUrl}
               className="whitespace-nowrap rounded-full bg-[var(--color-mint)] px-6 py-3 text-[14px] font-bold text-[#0A0A0A] transition-[transform,box-shadow] duration-[250ms] hover:-translate-y-[2px] hover:shadow-[0_14px_30px_rgba(0,210,122,.35)]"
             >
               {t("ctaPrimary")}
-            </Link>
+            </a>
             <Link
               href="/book-demo"
               className="whitespace-nowrap rounded-full border border-white/[0.22] px-6 py-3 text-[14px] font-semibold text-white transition-colors duration-[250ms] hover:bg-white/10"

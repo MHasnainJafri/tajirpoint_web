@@ -462,7 +462,6 @@
         "ctaEmail": "راسلنا"
       },
       "perMonth": "/ شهريًا",
-      "forever": "لمدة 3 أشهر",
       "plansNote": "خطة Light مجانية لمدة 3 أشهر من التسجيل دون بطاقة. تُفوتَر الخطط المدفوعة بالدولار الأمريكي ويمكن إلغاؤها في أي وقت، مع إمكانية استرداد أي دفعة خلال 15 يومًا.",
       "freePeriod": "لمدة 3 أشهر",
       "perYear": "/ سنة",
@@ -600,6 +599,12 @@
           "time": "الآن"
         }
       }
+    },
+    "businesses": {
+      "eyebrow": "اختر نشاطك",
+      "headline": "مصمّم لطريقتك في البيع.",
+      "sub": "اختر نوع نشاطك لترى الشاشات والتطبيقات والتقارير التي ستستخدمها كل يوم.",
+      "all": "عرض كل الأنشطة"
     }
   },
   "solutions": {
@@ -1023,7 +1028,7 @@
       "retail": "التجزئة",
       "restaurants": "المطاعم",
       "distribution": "التوزيع",
-      "contact": "تواصل مع المبيعات",
+      "contact": "تواصل معنا",
       "signIn": "تسجيل الدخول",
       "developers": "وثائق API",
       "about": "من نحن",
@@ -1035,15 +1040,22 @@
       "couriers": "الشحن والتوصيل",
       "tax": "الضرائب والامتثال",
       "allExtensions": "جميع الإضافات",
-      "security": "الأمان"
+      "security": "الأمان",
+      "bookDemo": "احجز عرضًا",
+      "cookies": "ملفات تعريف الارتباط",
+      "refund": "سياسة الاسترداد",
+      "deleteAccount": "حذف الحساب",
+      "allBusinesses": "كل الأنشطة"
     },
-    "copyright": "© 2026 TajirPoint — منتج من AmalAxis",
+    "copyright": "© 2026 TajirPoint، منتج من AmalAxis · تشغّله Anssol (SMC-Private) Limited، إسلام آباد",
     "badge": "مصمّم للتجار في كل مكان.",
     "strapline": "نقاط البيع — نظام التاجر",
     "chipEnglish": "English",
     "chipLocal": "لغات محلية حسب الدولة",
     "solutions": "الحلول",
-    "extensions": "الإضافات"
+    "extensions": "الإضافات",
+    "businesses": "الأنشطة",
+    "reach": "تحدث إلينا"
   },
   "common": {
     "skipToContent": "تخطَّ إلى المحتوى الرئيسي"

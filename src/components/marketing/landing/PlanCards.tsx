@@ -23,6 +23,8 @@ export interface PlanCardLabels {
   recommended: string;
   notIncluded: string;
   billingLabel: string;
+  /** Shown after "Free" when the API sends no `price_display` (older backend). */
+  freePeriod: string;
 }
 
 /**
@@ -117,7 +119,15 @@ function PlanCard({
   const saved = showYearly ? annualMonthsSaved(plan) : 0;
 
   const price = showYearly ? formatMoney(yearlyAmount, plan.currency_code) : planPriceLabel(plan);
-  const period = plan.is_priced ? (showYearly ? labels.perYear : labels.perMonth) : null;
+  // Older backends send "Free" with no period; Light is free for 3 months, so
+  // say so rather than imply it never ends.
+  const period = plan.is_priced
+    ? showYearly
+      ? labels.perYear
+      : labels.perMonth
+    : free && !plan.price_display
+      ? labels.freePeriod
+      : null;
   const bullets = compact ? plan.bullets.slice(0, 3) : plan.bullets;
 
   return (
@@ -169,7 +179,7 @@ function PlanCard({
       {!contactSales ? (
         <a
           href={signupUrl}
-          data-track={`pricing_${plan.name.toLowerCase()}`}
+          data-track={`plan_${plan.name.toLowerCase().replace(/[^a-z0-9]+/g, "_")}`}
           className={
             dark
               ? "relative inline-flex items-center justify-center gap-[10px] self-start rounded-full bg-[var(--color-mint)] py-3 pl-6 pr-3 text-[14px] font-bold text-[#0A0A0A] transition-transform duration-200 hover:-translate-y-[2px]"

@@ -1,4 +1,5 @@
-import { siteConfig } from "@/lib/config/site";
+import { legal, siteConfig } from "@/lib/config/site";
+import { BUSINESSES } from "@/lib/marketing/businesses";
 import { RESOURCES } from "@/lib/docs/nav";
 import { getPlans, planSummary } from "@/lib/api/plans";
 
@@ -22,44 +23,41 @@ function link(name: string, path: string, description: string) {
 }
 
 function body(pricing: string): string {
-  return `# Tajir Point
+  return `# TajirPoint
 
-> Tajir Point is an offline-first point-of-sale and business operating system for
-> small and medium retail, restaurant, electronics and distribution businesses.
-> One platform and one login covers POS, inventory,
-> purchasing, the khata (running credit ledger), double-entry accounting, staff,
-> delivery and an online storefront, extended by 31 optional extensions.
+> TajirPoint is a point-of-sale and back-office system for shops, restaurants,
+> pharmacies, distributors and other small and medium businesses — POS,
+> inventory, khata (customer and supplier credit), purchasing, staff, online
+> ordering and delivery, in English, Urdu and Arabic. The Light plan is free
+> for 3 months with no card; Shop and Business are the paid plans.
 
-Tajir Point is built for merchants who cannot depend on a stable internet
-connection: the POS keeps selling while offline and reconciles when the
-connection returns. Tax e-invoicing is supported per regime — FBR
-and ZATCA in Saudi Arabia today — and it runs on web, desktop, Android and iOS.
+TajirPoint keeps selling while offline and syncs when the connection returns.
+It runs in the browser, as a Windows desktop app and on Android. Switching from
+another POS is free: the team loads your products, customers, suppliers and
+khata balances for you. Operated by ${legal.operator}, ${legal.city}, ${legal.country}.
+Contact: ${legal.email}, WhatsApp ${legal.whatsappDisplay}.
 
 ## Core pages
 
-${link("Home", "/", "Product overview — what Tajir Point does and who it is for")}
+${link("Home", "/", "Product overview — what TajirPoint does and who it is for")}
 ${link("Pricing", "/pricing", pricing)}
-${link("Solutions", "/solutions", "Index of the industry-specific configurations")}
-${link("Extensions", "/extensions", "The 31 optional extensions that bolt onto the core platform")}
-${link("About", "/about", "Who builds Tajir Point")}
-${link("Contact", "/contact", "Sales and support contact details")}
-${link("Book a demo", "/book-demo", "Schedule a live walkthrough")}
+${link("Book a demo", "/book-demo", "Book a free demo; optional free data migration from your old POS")}
+${link("Businesses", "/business", "Every business type TajirPoint is set up for")}
+${link("Extensions", "/extensions", "Optional extensions that add features per shop")}
+${link("About", "/about", "Who builds TajirPoint")}
+${link("Contact", "/contact", "Email and WhatsApp")}
+
+## By business
+
+${BUSINESSES.map((b) => link(b.name, `/business/${b.slug}`, b.navLine)).join("\n")}
 
 ## Features
 
 ${link("Khata (credit ledger)", "/features/khata", "Running customer and supplier credit balances, the way shops actually track debt")}
-${link("Offline mode", "/features/offline", "How the POS keeps selling with no internet and reconciles afterwards")}
-${link("Accounting", "/features/accounting", "Double-entry general ledger driven automatically by POS activity")}
-${link("Van sales", "/features/van-sales", "Mobile selling and stock reconciliation for distribution routes")}
-${link("E-invoicing", "/features/e-invoicing", "Tax e-invoicing compliance per regime, including FBR and ZATCA")}
-
-## Industries
-
-${link("General retail", "/solutions/general-retail", "Grocery, pharmacy, apparel and general stores")}
-${link("Restaurants", "/solutions/restaurants", "Table service, kitchen display and delivery")}
-${link("Electronics", "/solutions/electronics", "Serial and warranty tracking for electronics retail")}
-${link("Services", "/solutions/services", "Appointment and service-based businesses")}
-${link("Distributors", "/solutions/distributors", "Wholesale and distribution with van sales routes")}
+${link("Offline mode", "/features/offline", "How the POS keeps selling with no internet and syncs afterwards")}
+${link("Accounting", "/features/accounting", "Double-entry ledger posted from POS activity (Shop plan and above)")}
+${link("Van sales", "/features/van-sales", "Route selling and day-end reconciliation for distributors")}
+${link("E-invoicing", "/features/e-invoicing", "Tax e-invoicing per regime")}
 
 ## API documentation
 
@@ -73,25 +71,25 @@ ${RESOURCES.map((r) => link(r.title, `/docs/${r.slug}`, `${r.title} API referenc
 
 ## Legal
 
-${link("Privacy policy", "/privacy", "How customer data is handled")}
-${link("Terms of service", "/terms", "Terms governing use of Tajir Point")}
-${link("Data privacy", "/data-privacy", "Data residency and processing detail")}
+${link("Terms of service", "/terms", "Terms governing use of TajirPoint")}
+${link("Privacy policy", "/privacy", "How personal and business data is handled")}
+${link("Cookie policy", "/cookies", "Cookies and similar technologies on the website and apps")}
+${link("Refund policy", "/refund-policy", "Cancellations and the 15-day refund window")}
+${link("Security", "/security", "How accounts and data are protected")}
 ${link("Delete your account", "/delete-account", "How to request account and data deletion")}
-${link("Data security", "/data-security", "Security controls and practices")}
 
 ## Optional
 
-${link("Security", "/security", "Security posture summary")}
-- [Merchant dashboard](${siteConfig.dashboardUrl}): the logged-in application (not public)
-- [Status page](${siteConfig.statusUrl}): live platform uptime
+- [Merchant app](${siteConfig.dashboardUrl}): the logged-in application (not public)
+- [Sign up](${siteConfig.signupUrl}): start the free Light plan
 `;
 }
 
 export async function GET() {
   const summary = planSummary(await getPlans());
   const pricing = summary
-    ? `Plans and prices (USD): ${summary}. The free plan needs no card; paid plans can be cancelled any time, with a 15-day refund window on payments`
-    : "Free and paid plans, priced in USD";
+    ? `Plans and prices (USD): ${summary}. Light is free for 3 months with no card; paid plans can be cancelled any time, with a 15-day refund window on payments`
+    : "Light is free for 3 months with no card; Shop and Business are paid plans, priced in USD";
   return new Response(body(pricing), {
     headers: {
       "Content-Type": "text/markdown; charset=utf-8",

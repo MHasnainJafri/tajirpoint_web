@@ -462,7 +462,6 @@
         "ctaEmail": "Email us"
       },
       "perMonth": "/ month",
-      "forever": "for 3 months",
       "plansNote": "Light is free for 3 months from signup, no card needed. Paid plans are billed in USD and can be cancelled any time, with a 15-day refund window on payments.",
       "freePeriod": "for 3 months",
       "perYear": "/ year",
@@ -600,6 +599,12 @@
           "time": "Now"
         }
       }
+    },
+    "businesses": {
+      "eyebrow": "Find your business",
+      "headline": "Built for the way you sell.",
+      "sub": "Pick your kind of business to see the screens, apps and reports you would use every day.",
+      "all": "See all businesses"
     }
   },
   "solutions": {
@@ -1023,7 +1028,7 @@
       "retail": "Retail",
       "restaurants": "Restaurants",
       "distribution": "Distribution",
-      "contact": "Contact sales",
+      "contact": "Contact",
       "signIn": "Sign in",
       "developers": "API docs",
       "about": "About",
@@ -1035,15 +1040,22 @@
       "couriers": "Couriers & shipping",
       "tax": "Tax & compliance",
       "allExtensions": "All extensions",
-      "security": "Security"
+      "security": "Security",
+      "bookDemo": "Book a demo",
+      "cookies": "Cookies",
+      "refund": "Refund policy",
+      "deleteAccount": "Delete account",
+      "allBusinesses": "All businesses"
     },
-    "copyright": "© 2026 TajirPoint · An AmalAxis product",
+    "copyright": "© 2026 TajirPoint, an AmalAxis product · Operated by Anssol (SMC-Private) Limited, Islamabad",
     "badge": "Built for merchants everywhere.",
     "strapline": "POINT OF SALE · MERCHANT OS",
     "chipEnglish": "English",
     "chipLocal": "Local languages by country",
     "solutions": "Solutions",
-    "extensions": "Extensions"
+    "extensions": "Extensions",
+    "businesses": "Businesses",
+    "reach": "Talk to us"
   },
   "common": {
     "skipToContent": "Skip to main content"

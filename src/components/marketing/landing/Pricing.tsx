@@ -3,61 +3,54 @@ import { Link } from "@/i18n/navigation";
 import { Stroke, Tick } from "./Stroke";
 import { BASIC_INCLUDES } from "@/lib/design/landing";
 import { siteConfig } from "@/lib/config/site";
-import { getPricing, isContactSalesPlan, isFreePlan, type MarketingPlan } from "@/lib/api/plans";
+import { getPricing, hasLimits, planPriceLabel, type MarketingPlan } from "@/lib/api/plans";
+import { PlanCards } from "./PlanCards";
+import { getPlanLabels } from "./planLabels";
 
 /**
  * The published tier table, read from the backend.
  *
- * Every number on this page comes from `getPlans()` — the same rows the
- * checkout bills from. Nothing here hardcodes a price, because a card that
- * says $19 while the plan row says something else is a false quote, and the
- * two have no way of catching each other.
+ * Every number here comes from `getPricing()` — the same rows the checkout
+ * bills from. Nothing hardcodes a price: a card that says $19 while the plan
+ * row says something else is a false quote.
  *
- * `getPlans()` returns null on any failure (network, bad shape, empty
- * catalogue). That falls back to the free-plan card below rather than an
- * empty pricing section — fewer claims, none of them wrong.
+ * Works with both API shapes: the relaunch shape (Light/Shop/Business with
+ * `limits`, `not_included`, `price_display`) adds the comparison table and the
+ * "not included" list; the older shape renders the cards alone.
  *
- * Note the catalogue drives the layout: whatever plans are marked public in
- * admin is what renders. Making a plan public is an admin change, not a
- * deploy.
+ * `getPricing()` returns null on any failure. That falls back to the Light
+ * card below — fewer claims, none of them a paid price.
  */
-export async function Pricing({ showHeader = true }: { showHeader?: boolean } = {}) {
+export async function Pricing({
+  showHeader = true,
+  showCompare = false,
+}: { showHeader?: boolean; showCompare?: boolean } = {}) {
   const t = await getTranslations("landing.pricing");
-  const pricing = await getPricing();
+  const [pricing, labels] = await Promise.all([getPricing(), getPlanLabels()]);
   const plans = pricing?.plans ?? null;
 
   return (
     <section id="pricing" className="mt-[clamp(64px,9vw,120px)] scroll-mt-[86px]">
-      {/* /pricing renders these three lines as its own <h1> hero; showing them
-          again here printed the same eyebrow, headline and sub twice. */}
+      {/* /pricing renders these three lines as its own <h1> hero. */}
       {showHeader && (
-      <div data-reveal className="text-center">
-        <div className="eyebrow">{t("eyebrow")}</div>
-        <h2 className="mx-auto mt-3 max-w-[18ch] text-[clamp(28px,3.6vw,44px)] font-bold leading-[1.12] tracking-[-0.035em] text-balance">
-          {t("headline")}
-        </h2>
-        <p className="mx-auto mt-3 max-w-[56ch] text-[14.5px] leading-[1.65] text-[var(--color-body)]">
-          {t("sub")}
-        </p>
-      </div>
+        <div data-reveal className="text-center">
+          <div className="eyebrow">{t("eyebrow")}</div>
+          <h2 className="mx-auto mt-3 max-w-[18ch] text-[clamp(28px,3.6vw,44px)] font-bold leading-[1.12] tracking-[-0.035em] text-balance">
+            {t("headline")}
+          </h2>
+          <p className="mx-auto mt-3 max-w-[56ch] text-[14.5px] leading-[1.65] text-[var(--color-body)]">
+            {t("sub")}
+          </p>
+        </div>
       )}
 
       {plans ? (
         <>
-          <div className="mt-[34px] grid grid-cols-[repeat(auto-fit,minmax(272px,1fr))] items-stretch gap-[14px]">
-            {plans.map((plan) => (
-              <PlanCard
-                key={plan.id}
-                plan={plan}
-                perMonth={t("perMonth")}
-                forever={t("forever")}
-                signupUrl={siteConfig.signupUrl}
-              />
-            ))}
-          </div>
-          <p className="mt-5 text-center text-[13px] text-[var(--color-muted)]">
+          <PlanCards plans={plans} labels={labels} signupUrl={siteConfig.signupUrl} />
+          <p className="mx-auto mt-5 max-w-[70ch] text-center text-[13px] text-[var(--color-muted)]">
             {t("plansNote")}
           </p>
+          {showCompare && hasLimits(plans) && <CompareTable plans={plans} t={t} />}
         </>
       ) : (
         <FreePlanFallback t={t} />
@@ -66,105 +59,60 @@ export async function Pricing({ showHeader = true }: { showHeader?: boolean } = 
   );
 }
 
-/* ── One plan ──────────────────────────────────────────────────────── */
+/* ── Comparison table (relaunch API shape only) ───────────────────── */
 
-function PlanCard({
-  plan,
-  perMonth,
-  forever,
-  signupUrl,
-}: {
-  plan: MarketingPlan;
-  perMonth: string;
-  forever: string;
-  signupUrl: string;
-}) {
-  const dark = plan.highlighted;
+type T = Awaited<ReturnType<typeof getTranslations>>;
 
-  /**
-   * Only contact-sales plans lack a self-serve path. A paid tier goes to
-   * signup because you can buy it; the free plan goes to signup
-   * because you can start using it. Anything else unpriced is treated as
-   * contact-sales — the safe direction, since sending someone to checkout for
-   * a plan with no price is the worse of the two mistakes.
-   */
-  const contactSales = isContactSalesPlan(plan);
-  const free = isFreePlan(plan);
+function limitCell(value: number | null | undefined, t: T): string {
+  return value == null ? t("compare.unlimited") : new Intl.NumberFormat("en-US").format(value);
+}
 
+function CompareTable({ plans, t }: { plans: MarketingPlan[]; t: T }) {
+  const rows: Array<{ label: string; cell: (p: MarketingPlan) => string }> = [
+    { label: t("compare.price"), cell: (p) => `${planPriceLabel(p)}${p.is_priced ? ` ${t("perMonth")}` : ""}` },
+    { label: t("compare.shops"), cell: (p) => limitCell(p.limits?.shops, t) },
+    { label: t("compare.users"), cell: (p) => limitCell(p.limits?.users, t) },
+    { label: t("compare.products"), cell: (p) => limitCell(p.limits?.products, t) },
+    { label: t("compare.ordersPerDay"), cell: (p) => limitCell(p.limits?.orders_per_day, t) },
+    { label: t("compare.warehouses"), cell: (p) => limitCell(p.limits?.warehouses, t) },
+    {
+      label: t("compare.extensions"),
+      cell: (p) => (p.extensions_restricted ? t("compare.extRestricted") : t("compare.extAll")),
+    },
+  ];
   return (
-    <div
-      data-reveal
-      className={
-        dark
-          ? "on-dark relative flex flex-col gap-[18px] overflow-hidden rounded-[24px] bg-[#0A0A0A] p-[clamp(22px,2.6vw,32px)] text-white"
-          : "relative flex flex-col gap-[18px] rounded-[24px] border border-[var(--color-line-2)] p-[clamp(22px,2.6vw,32px)]"
-      }
-    >
-      {dark && (
-        <div className="pointer-events-none absolute -right-[90px] -top-[90px] h-[300px] w-[300px] rounded-full border border-[rgba(0,210,122,.2)]" />
-      )}
-
-      <div className="relative">
-        <div className="text-[15px] font-bold">{plan.name}</div>
-        <div
-          className={`mt-[3px] text-[12.5px] ${dark ? "text-[#B5B9C2]" : "text-[var(--color-muted)]"}`}
-        >
-          {plan.tagline}
-        </div>
-      </div>
-
-      <div className="relative flex flex-wrap items-baseline gap-x-[8px] gap-y-1">
-        <span className="text-[clamp(32px,3.6vw,44px)] font-extrabold leading-none tracking-[-0.045em]">
-          {plan.price}
-        </span>
-        {/* Contact-sales plans have no period: "Custom / month" is nonsense.
-            The free plan reads "Free forever". */}
-        {(plan.is_priced || free) && (
-          <span
-            className={`text-[14px] font-semibold ${dark ? "text-[var(--color-mint)]" : "text-[var(--color-muted)]"}`}
-          >
-            {free ? forever : perMonth}
-          </span>
-        )}
-      </div>
-
-      {!contactSales ? (
-        <a
-          href={signupUrl}
-          className={
-            dark
-              ? "relative inline-flex items-center justify-center gap-[10px] self-start rounded-full bg-[var(--color-mint)] py-3 pl-6 pr-3 text-[14px] font-bold text-[#0A0A0A] transition-[transform,box-shadow] duration-[250ms] hover:-translate-y-[2px] hover:shadow-[0_14px_30px_rgba(0,210,122,.35)]"
-              : "relative inline-flex items-center justify-center gap-[10px] self-start rounded-full bg-[#0A0A0A] py-3 pl-6 pr-3 text-[14px] font-bold text-white transition-transform duration-[250ms] hover:-translate-y-[2px]"
-          }
-        >
-          {plan.cta}
-          <span
-            className={`grid h-[26px] w-[26px] place-items-center rounded-full ${
-              dark ? "bg-[#0A0A0A] text-[var(--color-mint)]" : "bg-white text-[#0A0A0A]"
-            }`}
-          >
-            <Stroke name="arrowRight" size={14} width={2.2} />
-          </span>
-        </a>
-      ) : (
-        <Link
-          href="/book-demo"
-          className="relative inline-flex items-center justify-center gap-2 self-start rounded-full border border-[var(--color-line-3)] px-5 py-3 text-[13.5px] font-semibold transition-colors duration-200 hover:bg-[var(--color-surface)]"
-        >
-          <Stroke name="calendar" size={16} />
-          {plan.cta}
-        </Link>
-      )}
-
-      <div className="relative mt-auto flex flex-col gap-[9px] pt-1 text-[13.5px]">
-        {plan.bullets.map((bullet) => (
-          <div key={bullet} className="flex items-start gap-[9px]">
-            <span className={dark ? "text-[var(--color-mint)]" : "text-[var(--color-mint-2)]"}>
-              <Tick size={17} />
-            </span>
-            {bullet}
-          </div>
-        ))}
+    <div data-reveal className="mt-[clamp(40px,6vw,64px)]">
+      <h2 className="text-center text-[clamp(22px,2.8vw,32px)] font-bold tracking-[-0.03em]">{t("compare.title")}</h2>
+      {/* Scrolls inside its own box on a phone — the page never scrolls sideways. */}
+      <div className="mt-6 overflow-x-auto rounded-[20px] border border-[var(--color-line-2)] bg-white" tabIndex={0} role="region" aria-label={t("compare.title")}>
+        <table className="w-full min-w-[560px] border-collapse text-[14px]">
+          <thead>
+            <tr className="border-b border-[var(--color-line-2)] bg-[var(--color-surface)]">
+              <th scope="col" className="px-4 py-3 text-start font-semibold text-[var(--color-muted)]">
+                {t("compare.feature")}
+              </th>
+              {plans.map((p) => (
+                <th key={p.id} scope="col" className="px-4 py-3 text-start font-bold text-[var(--color-ink)]">
+                  {p.name}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr key={row.label} className="border-b border-[var(--color-line)] last:border-b-0">
+                <th scope="row" className="px-4 py-3 text-start font-semibold text-[var(--color-ink-3)]">
+                  {row.label}
+                </th>
+                {plans.map((p) => (
+                  <td key={p.id} className="px-4 py-3 text-[var(--color-ink)]">
+                    {row.cell(p)}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );

@@ -3,9 +3,10 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Pricing } from "@/components/marketing/landing/Pricing";
 import { Faq } from "@/components/marketing/landing/Faq";
 import { FinalCta } from "@/components/marketing/landing/FinalCta";
+import { MigrationBand } from "@/components/marketing/business/MigrationBand";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { FAQ_TABS } from "@/lib/design/landing";
-import { faqSchema } from "@/lib/seo/schemas";
+import { faqSchema, softwareApplicationSchema } from "@/lib/seo/schemas";
 import { getPlans, planNames, planSummary } from "@/lib/api/plans";
 import { buildMetadata } from "@/lib/seo/metadata";
 
@@ -21,8 +22,8 @@ export async function generateMetadata({
   const names = planNames(plans);
   const summary = planSummary(plans);
   return buildMetadata({
-    title: names ? `Pricing — ${names}` : "Pricing — Free and paid plans",
-    description: `${summary ? `${summary}. ` : ""}Start on the free plan with no card; paid plans are billed in USD, cancel any time, 15-day refund on payments, no transaction fees.`,
+    title: names ? `Pricing — ${names}` : "Pricing — Free for 3 months, then Shop or Business",
+    description: `${summary ? `${summary}. ` : ""}Light is free for 3 months with no card; paid plans are billed in USD, cancel any time, 15-day refund on payments, no transaction fees.`,
     path: "/pricing",
     locale,
   });
@@ -33,6 +34,7 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
   setRequestLocale(locale);
 
   const t = await getTranslations("landing.pricing");
+  const plans = await getPlans();
   const tFaq = await getTranslations("landing.faq");
 
   // Flattened from the grouped FAQ so the structured data always matches what
@@ -46,7 +48,7 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
 
   return (
     <>
-      <JsonLd schema={faqSchema(questions)} />
+      <JsonLd schema={[softwareApplicationSchema(plans), faqSchema(questions)]} />
 
       <div
         className="mx-auto max-w-[1240px] px-[clamp(14px,3vw,24px)] pt-4"
@@ -62,7 +64,10 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
           </p>
         </section>
 
-        <Pricing showHeader={false} />
+        <Pricing showHeader={false} showCompare />
+        <div className="mt-[clamp(64px,9vw,120px)]">
+          <MigrationBand />
+        </div>
         <Faq />
       </div>
 

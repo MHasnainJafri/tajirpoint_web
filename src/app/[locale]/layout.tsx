@@ -142,16 +142,13 @@ export default async function LocaleLayout({
     .filter(Boolean)
     .join(" ");
 
-  // Only the namespaces that client components actually read. Nav and
-  // ExtensionGrid are the only "use client" trees using translations, between
-  // them covering nav/extensions/solutions. Passing the whole catalogue shipped
-  // every string in `landing`, `footer` and `common` into the RSC payload of
-  // every page for nothing.
+  // Only the namespaces that client components actually read: Nav (nav,
+  // extensions.items) and ExtensionGrid (extensions). Passing the whole
+  // catalogue shipped every string into the RSC payload of every page.
   const messages = await getMessages();
   const clientMessages = {
     nav: messages.nav,
     extensions: messages.extensions,
-    solutions: messages.solutions,
   };
 
   return (

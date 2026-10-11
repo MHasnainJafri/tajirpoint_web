@@ -6,7 +6,7 @@ import type {
   FAQPage,
   WithContext,
 } from "schema-dts";
-import { siteConfig } from "@/lib/config/site";
+import { legal, siteConfig } from "@/lib/config/site";
 import { isContactSalesPlan, isFreePlan, type MarketingPlan } from "@/lib/api/plans";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -16,8 +16,15 @@ export function organizationSchema(): WithContext<Organization> {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: siteConfig.name,
+    legalName: legal.operator,
     url: siteConfig.url,
     description: siteConfig.description,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: legal.city,
+      addressCountry: "PK",
+    } as any,
+    email: legal.email,
     logo: {
       "@type": "ImageObject",
       url: `${siteConfig.url}/brand/mark/mark-on-white.svg`,
@@ -27,8 +34,8 @@ export function organizationSchema(): WithContext<Organization> {
       {
         "@type": "ContactPoint",
         contactType: "sales",
-        telephone: "+923446800893",
-        email: "hello@tajirpoint.com",
+        telephone: legal.whatsappE164,
+        email: legal.email,
         url: `${siteConfig.url}/contact`,
         availableLanguage: ["English", "Urdu", "Arabic"],
       },
@@ -119,7 +126,9 @@ function planOffer(plan: MarketingPlan) {
   const offer: Record<string, unknown> = {
     "@type": "Offer",
     name: plan.name,
-    description: plan.tagline,
+    description: isFree && plan.free_period_days
+      ? `${plan.tagline} (free for ${plan.free_period_days} days from signup)`
+      : plan.tagline,
     availability: "https://schema.org/InStock",
     // A contact-sales tier is a conversation; everything else is on the
     // pricing page, which is the page this markup describes.
@@ -133,7 +142,8 @@ function planOffer(plan: MarketingPlan) {
     const amount = isFree ? "0" : plan.price_amount;
     offer.price = amount;
     offer.priceCurrency = plan.currency_code;
-    // A free-forever plan has no billing period to specify.
+    // The free plan (Light, free for its first 90 days) is an Offer at 0
+    // with no billing period; its description carries the time limit.
     if (!isFree) offer.priceSpecification = {
       "@type": "UnitPriceSpecification",
       price: amount,

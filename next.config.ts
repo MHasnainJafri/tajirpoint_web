@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 import bundleAnalyzer from "@next/bundle-analyzer";
 import createNextIntlPlugin from "next-intl/plugin";
+import { LEGACY_SOLUTION_REDIRECTS } from "./src/lib/marketing/businesses";
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
@@ -15,6 +16,14 @@ const securityHeaders = [
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
 ];
+
+/** One permanent redirect per move, for the bare path and its /ur and /ar copies. */
+function pageMoves(moves: ReadonlyArray<readonly [string, string]>) {
+  return moves.flatMap(([from, to]) => [
+    { source: from, destination: to, permanent: true },
+    { source: `/:locale(ur|ar)${from}`, destination: `/:locale${to}`, permanent: true },
+  ]);
+}
 
 const nextConfig: NextConfig = {
   images: {
@@ -50,6 +59,24 @@ const nextConfig: NextConfig = {
       // footer, and whatever anyone has already bookmarked.
       { source: "/developers", destination: "/docs", permanent: true },
       { source: "/developers/:path*", destination: "/docs/:path*", permanent: true },
+
+      // Marketing relaunch (Oct 2026). Page moves, not locale rules: each one
+      // also matches the /ur and /ar copies of the same page so a shared
+      // Urdu or Arabic link lands on the new Urdu or Arabic URL. Query strings
+      // pass through untouched (Next keeps them on redirects), which is what
+      // keeps a Facebook ad's utm_* tags alive across /demo → /book-demo.
+      ...pageMoves([
+        // The thin /solutions/* pages became catalog-driven /business/* pages.
+        ...Object.entries(LEGACY_SOLUTION_REDIRECTS).map(
+          ([from, to]) => [`/solutions/${from}`, `/business/${to}`] as const
+        ),
+        ["/solutions", "/business"],
+        // The two legal duplicates were folded into Privacy and Security.
+        ["/data-privacy", "/privacy"],
+        ["/data-security", "/security"],
+        // Short link for ads and WhatsApp messages.
+        ["/demo", "/book-demo"],
+      ]),
 
       // Legacy locale prefixes from the pre-redesign site, which ran five
       // locales (en, ur, ar, nl, es) with `localePrefix: "always"` and
