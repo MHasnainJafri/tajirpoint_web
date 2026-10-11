@@ -1,22 +1,28 @@
 import { defineConfig, devices } from "@playwright/test";
 
+// E2E_BASE_URL points the suite at a server that is already running (for
+// example `pnpm start -p 3017`); without it Playwright starts `pnpm start`.
+const external = process.env.E2E_BASE_URL;
+
 export default defineConfig({
   testDir: "./src/tests/e2e",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-  reporter: "html",
+  reporter: process.env.CI ? "html" : "list",
   use: {
-    baseURL: "http://localhost:3000",
+    baseURL: external ?? "http://localhost:3000",
     trace: "on-first-retry",
   },
-  projects: [
-    { name: "chromium", use: { ...devices["Desktop Chrome"] } },
-  ],
-  webServer: {
-    command: "pnpm start",
-    url: "http://localhost:3000",
-    reuseExistingServer: !process.env.CI,
-  },
+  projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
+  ...(external
+    ? {}
+    : {
+        webServer: {
+          command: "pnpm start",
+          url: "http://localhost:3000",
+          reuseExistingServer: !process.env.CI,
+        },
+      }),
 });
