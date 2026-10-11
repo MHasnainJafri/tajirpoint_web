@@ -14,6 +14,11 @@ export default defineConfig({
   use: {
     baseURL: external ?? "http://localhost:3000",
     trace: "on-first-retry",
+    // Optional: reuse a Chromium already on the machine when the bundled
+    // revision is not downloaded (E2E_CHROMIUM_PATH=/path/to/chrome-headless-shell).
+    ...(process.env.E2E_CHROMIUM_PATH
+      ? { launchOptions: { executablePath: process.env.E2E_CHROMIUM_PATH } }
+      : {}),
   },
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   ...(external

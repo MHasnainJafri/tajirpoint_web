@@ -15,7 +15,8 @@ test.describe("desktop Businesses mega-menu", () => {
 
     const panel = page.locator(`#${await trigger.getAttribute("aria-controls")}`);
     await expect(panel).toBeVisible();
-    await expect(panel.locator('a[href^="/business/"]')).toHaveCount(11); // 10 + "All businesses"
+    await expect(panel.locator('a[href^="/business/"]')).toHaveCount(10);
+    await expect(panel.locator('a[href="/business"]')).toHaveCount(1); // "All businesses"
     await expect(panel.getByRole("link", { name: /Book a free demo/ })).toHaveAttribute("href", "/book-demo");
 
     // Tab moves into the open panel, not past it.
@@ -32,7 +33,10 @@ test.describe("desktop Businesses mega-menu", () => {
   test("navigates to a business page", async ({ page }) => {
     await page.goto("/");
     const nav = page.getByRole("navigation", { name: "Main navigation" }).first();
-    await nav.getByRole("button", { name: "Businesses" }).click();
+    const trigger = nav.getByRole("button", { name: "Businesses" });
+    await trigger.hover();
+    await trigger.click(); // a click right after the hover keeps it open
+    await expect(trigger).toHaveAttribute("aria-expanded", "true");
     await nav.getByRole("link", { name: /^Pharmacies/ }).click();
     await expect(page).toHaveURL(/\/business\/pharmacy$/);
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
@@ -66,7 +70,16 @@ test.describe("mobile drawer", () => {
 
 test("business pages have no horizontal scroll at 375px", async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
-  for (const path of ["/business/restaurants", "/book-demo", "/pricing", "/contact"]) {
+  for (const path of [
+    "/business/restaurants",
+    "/book-demo",
+    "/pricing",
+    "/contact",
+    // Right-to-left pages: anything parked far off to the left is scrollable there.
+    "/ur",
+    "/ar/business/pharmacy",
+    "/ur/book-demo",
+  ]) {
     await page.goto(path);
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     expect(overflow, path).toBeLessThanOrEqual(0);

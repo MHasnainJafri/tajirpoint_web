@@ -19,11 +19,16 @@ export const errorCls = "text-[12.5px] font-medium text-[#B42318]";
 /** Visually hidden, still read by screen readers. */
 export const srOnly = "sr-only";
 
-/** Off-screen honeypot — never focusable, never announced. */
+/**
+ * Honeypot wrapper — never focusable, never announced. Clipped in place, not
+ * pushed to left:-9999px, which would add sideways scroll on RTL pages.
+ */
 export const honeypotStyle = {
   position: "absolute",
-  left: "-9999px",
   width: 1,
   height: 1,
+  overflow: "hidden",
+  clipPath: "inset(50%)",
+  whiteSpace: "nowrap",
   opacity: 0,
 } as const;

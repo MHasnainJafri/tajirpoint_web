@@ -14,7 +14,7 @@ test("shows field errors and keeps what was typed", async ({ page }) => {
   await page.getByLabel("City").fill("Lahore");
   await page.getByRole("button", { name: "Book my free demo" }).click();
 
-  await expect(page.getByRole("alert")).toContainText("Please check the highlighted fields");
+  await expect(page.locator("form").getByRole("alert")).toContainText("Please check the highlighted fields");
   await expect(page.getByText("Please enter your name.")).toBeVisible();
   await expect(page.getByText("Please enter a WhatsApp or phone number we can reach.")).toBeVisible();
   await expect(page.getByText("Please check your email address.")).toBeVisible();

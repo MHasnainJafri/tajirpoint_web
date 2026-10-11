@@ -28,10 +28,11 @@ test("no free-forever copy anywhere on the home page", async ({ page }) => {
   await expect(page.locator("body")).not.toContainText(/forever/i);
 });
 
-test("Urdu and Arabic home pages render right-to-left", async ({ page }) => {
-  for (const locale of ["ur", "ar"]) {
+for (const locale of ["ur", "ar"]) {
+  test(`${locale} home page renders right-to-left`, async ({ page }) => {
     await page.goto(`/${locale}`);
     await expect(page.locator("html")).toHaveAttribute("dir", "rtl");
+    await expect(page.locator("html")).toHaveAttribute("lang", locale);
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-  }
-});
+  });
+}

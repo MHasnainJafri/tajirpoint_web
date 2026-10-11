@@ -57,6 +57,7 @@ export function Nav() {
   const [mobileSection, setMobileSection] = useState<MegaKey | null>("businesses");
   const triggers = useRef<Partial<Record<MegaKey, HTMLButtonElement | null>>>({});
   const headerRef = useRef<HTMLElement>(null);
+  const hoverOpenedAt = useRef(0);
 
   const closeAll = useCallback(() => {
     setMega(null);
@@ -88,8 +89,16 @@ export function Nav() {
       buttonRef={(el) => {
         triggers.current[key] = el;
       }}
-      onHover={() => setMega(key)}
-      onToggle={() => setMega((m) => (m === key ? null : key))}
+      onHover={() => {
+        if (mega !== key) hoverOpenedAt.current = Date.now();
+        setMega(key);
+      }}
+      onToggle={(byKeyboard) => {
+        // A mouse click that lands just after the hover opened the panel
+        // would otherwise close it again straight away.
+        if (!byKeyboard && mega === key && Date.now() - hoverOpenedAt.current < 600) return;
+        setMega((m) => (m === key ? null : key));
+      }}
     />
   );
 
@@ -303,11 +312,11 @@ export function Nav() {
         <Link
           href="/"
           aria-label="TajirPoint home"
-          className="flex min-w-0 items-center gap-2 text-[var(--color-ink)]"
+          className="flex flex-none items-center gap-2 text-[var(--color-ink)]"
           onMouseEnter={() => setMega(null)}
         >
           <Wordmark />
-          <span className="hidden whitespace-nowrap rounded-[6px] bg-[var(--color-surface)] px-[9px] py-1 font-[family-name:var(--font-mono)] text-[9.5px] font-semibold uppercase tracking-[0.12em] text-[var(--color-muted)] tabs:inline">
+          <span className="hidden whitespace-nowrap rounded-[6px] bg-[var(--color-surface)] px-[9px] py-1 font-[family-name:var(--font-mono)] text-[9.5px] font-semibold uppercase tracking-[0.12em] text-[var(--color-muted)] tabs:inline nav:hidden">
             {t("chip")}
           </span>
         </Link>
@@ -491,14 +500,15 @@ function MegaTrigger({
   controls: string;
   buttonRef: (el: HTMLButtonElement | null) => void;
   onHover: () => void;
-  onToggle: () => void;
+  /** `true` when activated from the keyboard (Enter/Space). */
+  onToggle: (byKeyboard: boolean) => void;
 }) {
   return (
     <button
       ref={buttonRef}
       type="button"
       onMouseEnter={onHover}
-      onClick={onToggle}
+      onClick={(e) => onToggle(e.detail === 0)}
       aria-expanded={open}
       aria-controls={controls}
       className={`${linkBase} cursor-pointer ${open ? "bg-[var(--color-surface)]" : ""}`}

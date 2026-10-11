@@ -553,18 +553,26 @@ body {
 }
 
 /* ── Skip link ─────────────────────────────────────────────────── */
+/* Visually hidden until focused. Clipped in place rather than pushed to
+   left:-10000px: in a right-to-left page an element far off to the left is
+   scrollable, which gave every /ur and /ar page 10,000px of sideways scroll. */
 .skip-link {
   position: absolute;
-  left: -10000px;
-  top: auto;
+  top: 0;
+  inset-inline-start: 0;
   width: 1px;
   height: 1px;
+  margin: -1px;
   overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 .skip-link:focus {
   position: fixed;
   top: 12px;
-  left: 12px;
+  inset-inline-start: 12px;
+  margin: 0;
+  clip-path: none;
   width: auto;
   height: auto;
   padding: 12px 18px;
