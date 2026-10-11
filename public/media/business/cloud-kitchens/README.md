@@ -8,7 +8,7 @@ See ../../README.md for formats, sizes and compression tips.
 |---|---|---|---|---|---|
 | Hero (top of the page) | `hero` | video | `hero.mp4` (+ `hero-poster.jpg`), or an image `hero.webp` / `hero.jpg` | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Order board receiving orders for three brands from one kitchen |
 | Several brands from one kitchen | `brands` | image | `brands.webp` / `brands.jpg` / `brands.png`, or `brands.mp4` (+ `brands-poster.jpg`) | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Brand list with three delivery brands |
-| An order page for each brand | `order-pages` | phone | `order-pages.webp` / `order-pages.jpg` / `order-pages.png` (portrait), or `order-pages.mp4` (+ `order-pages-poster.jpg`) | 4:5 · 1080 × 1350 | Two brand order pages side by side |
+| Online ordering for every brand | `order-pages` | phone | `order-pages.webp` / `order-pages.jpg` / `order-pages.png` (portrait), or `order-pages.mp4` (+ `order-pages-poster.jpg`) | 4:5 · 1080 × 1350 | Two brand order pages side by side |
 | One board for every order | `receiver` | video | `receiver.mp4` (+ `receiver-poster.jpg`), or an image `receiver.webp` / `receiver.jpg` | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Order receiver board with orders from several brands |
 | Kitchen display by station | `kds` | image | `kds.webp` / `kds.jpg` / `kds.png`, or `kds.mp4` (+ `kds-poster.jpg`) | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Kitchen display with tickets from several brands |
 | Packer screen | `packer` | image | `packer.webp` / `packer.jpg` / `packer.png`, or `packer.mp4` (+ `packer-poster.jpg`) | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Packer screen with an item checklist |

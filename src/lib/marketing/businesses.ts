@@ -1369,7 +1369,18 @@ export const LEGACY_SOLUTION_REDIRECTS: Record<string, BusinessSlug> = {
 
 /** The campaign name used in Facebook ad links for a business. */
 export function demoCampaign(slug: BusinessSlug): string {
-  return `demo_${slug.replace(/-/g, "_")}`;
+  return `demo_${slug}`;
+}
+
+/** The ready-to-paste Facebook ad link for a business (docs/FACEBOOK-ADS-LINKS.md). */
+export function facebookAdLink(origin: string, slug: BusinessSlug): string {
+  const q = new URLSearchParams({
+    type: slug,
+    utm_source: "facebook",
+    utm_medium: "paid_social",
+    utm_campaign: demoCampaign(slug),
+  });
+  return `${origin}/book-demo?${q.toString()}`;
 }
 
 /** Every media slot on every business page, for docs and tests. */

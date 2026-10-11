@@ -45,7 +45,7 @@ Other slots on the site (not part of this list):
 |---|---|---|---|---|---|
 | [ ] | Hero | `public/media/business/cloud-kitchens/hero.*` | video | 16:10 | — |
 | [ ] | Several brands from one kitchen | `public/media/business/cloud-kitchens/brands.*` | image | 16:10 | — |
-| [ ] | An order page for each brand | `public/media/business/cloud-kitchens/order-pages.*` | phone | 4:5 | — |
+| [ ] | Online ordering for every brand | `public/media/business/cloud-kitchens/order-pages.*` | phone | 4:5 | — |
 | [ ] | One board for every order | `public/media/business/cloud-kitchens/receiver.*` | video | 16:10 | — |
 | [ ] | Kitchen display by station | `public/media/business/cloud-kitchens/kds.*` | image | 16:10 | — |
 | [ ] | Packer screen | `public/media/business/cloud-kitchens/packer.*` | image | 16:10 | — |

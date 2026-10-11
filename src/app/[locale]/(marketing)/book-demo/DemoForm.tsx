@@ -28,7 +28,7 @@ import {
 } from "@/components/forms/styles";
 
 /**
- * Our own demo booking form (Calendly is gone). Posts through a server action
+ * Our own demo booking form (no third-party scheduler). Posts through a server action
  * to the backend's demo-request endpoint, with the visitor's first-touch
  * campaign tags in hidden fields.
  *
