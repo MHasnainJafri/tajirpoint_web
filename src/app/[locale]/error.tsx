@@ -20,12 +20,12 @@ export default function ErrorPage({
       />
       <Container size="tight">
         <div className="relative text-center">
-          <p className="font-mono text-[12px] tracking-[2.5px] text-[var(--color-berry)]">ERROR</p>
+          <p className="font-mono text-[12px] tracking-[2.5px] text-[#B42318]">ERROR</p>
           <h1 className="mt-5 text-[clamp(34px,5vw,58px)] font-extrabold leading-[1.05] tracking-[-0.035em] text-[var(--color-ink)]">
             Something went wrong
           </h1>
           <p className="mx-auto mt-5 max-w-[480px] text-[17px] leading-[1.6] text-[var(--color-muted)]">
-            {error.message || "An unexpected error occurred. Please try again."}
+            An unexpected error occurred. Please try again — if it keeps happening, WhatsApp us at +92 344 6800893.{error.digest ? ` (ref ${error.digest})` : ""}
           </p>
           <div className="mt-9 flex flex-wrap justify-center gap-4">
             <button
@@ -36,7 +36,7 @@ export default function ErrorPage({
             </button>
             <Link
               href="/"
-              className="inline-flex items-center gap-[10px] rounded-full border border-[var(--color-line-2)] bg-white/[0.07] px-7 py-[15px] text-[16px] font-semibold text-[var(--color-ink)] transition-colors duration-200 hover:bg-white/[0.12] hover:text-white"
+              className="inline-flex items-center gap-[10px] rounded-full border border-[var(--color-line-2)] bg-white px-7 py-[15px] text-[16px] font-semibold text-[var(--color-ink)] transition-colors duration-200 hover:bg-[var(--color-surface)]"
             >
               Back to home
             </Link>

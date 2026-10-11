@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { Check } from "lucide-react";
 import { PillBadge } from "@/components/design/primitives";
-import { siteConfig } from "@/lib/config/site";
+import { legal, siteConfig, whatsappLink } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { DemoForm } from "./DemoForm";
 
 export async function generateMetadata({
   params,
@@ -12,104 +13,88 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "Book a Demo",
-    description: "See Tajir Point in action. Book a free 30-minute demo with our team.",
+    title: "Book a Free Demo",
+    description:
+      "See TajirPoint with your own kind of business. Book a free demo — we WhatsApp you within one working day, and we can move your data from your old POS for free.",
     path: "/book-demo",
     locale,
   });
 }
+
+const POINTS: Array<[string, string]> = [
+  ["Your kind of business", "Restaurant, shop, pharmacy, distributor — we show the screens you will use."],
+  ["Your own products", "Send a few items beforehand and we set them up for the demo."],
+  ["We move your data", "Switching from another POS? We load your products, customers and khata for free."],
+  ["In your language", "English or Urdu, on WhatsApp video or a call."],
+];
 
 export default async function BookDemoPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
 
   return (
-    <section className="relative overflow-hidden px-5 pb-[110px] pt-[140px] md:px-10">
-      <div
-        className="pointer-events-none absolute left-1/2 top-[-320px] h-[640px] w-[1100px] -translate-x-1/2"
-        style={{
-          background: "radial-gradient(ellipse at center,rgba(0,210,122,.13),transparent 60%)",
-        }}
-      />
+    <section className="relative px-[clamp(16px,4vw,40px)] pb-[clamp(60px,9vw,110px)] pt-[clamp(36px,7vw,90px)]">
+      <div className="relative mx-auto grid max-w-[1160px] items-start gap-[clamp(32px,5vw,72px)] lg:grid-cols-[0.9fr_1.1fr]">
+        {/* ── Left: what to expect ──────────────────────────────────── */}
+        <div className="lg:sticky lg:top-[100px]">
+          <PillBadge>Free demo · no obligation</PillBadge>
 
-      <div className="relative mx-auto grid max-w-[1200px] items-start gap-12 lg:grid-cols-2 lg:gap-20">
-        {/* ── Left: info ────────────────────────────────────────────── */}
-        <div className="lg:sticky lg:top-[100px] lg:pt-6">
-          <PillBadge>Free 30-minute demo</PillBadge>
-
-          <h1 className="mt-6 animate-[tpFadeUp_.8s_.15s_cubic-bezier(.22,1,.36,1)_both] text-[clamp(36px,4.6vw,56px)] font-extrabold leading-[1.06] tracking-[-0.035em]">
-            See Tajir Point
-            <br />
-            <span className="text-[var(--color-mint)] [text-shadow:0_0_40px_rgba(0,210,122,.4)]">
-              in action.
-            </span>
+          <h1 className="mt-6 text-[clamp(32px,4.6vw,54px)] font-extrabold leading-[1.06] tracking-[-0.035em] text-balance">
+            See TajirPoint run <span className="text-[var(--color-mint-2)]">your</span> business.
           </h1>
 
-          <p className="mt-5 max-w-[440px] animate-[tpFadeUp_.8s_.28s_cubic-bezier(.22,1,.36,1)_both] text-[17px] leading-[1.65] text-[var(--color-muted)]">
-            One of our product specialists will walk you through a live demo tailored to your
-            business type — retail, restaurant, electronics, or services.
+          <p className="mt-5 max-w-[46ch] text-[16.5px] leading-[1.65] text-[var(--color-body)]">
+            Tell us a little about your shop and we&apos;ll WhatsApp you within one working day to
+            fix a time.
           </p>
 
-          <ul className="mt-10 flex flex-col gap-4">
-            {[
-              ["30 minutes", "No commitment, just a focused walkthrough"],
-              ["Your vertical", "We customise the demo to your shop type"],
-              ["Live Q&A", "Ask anything — pricing, integrations, migration"],
-              ["In your language", "English, اردو, or العربية"],
-            ].map(([title, desc], i) => (
-              <li
-                key={title}
-                data-reveal
-                data-reveal-delay={i * 70}
-                className="flex items-start gap-3.5"
-              >
-                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[rgba(0,210,122,.3)] bg-[rgba(0,210,122,.12)]">
-                  <Check size={12} color="var(--color-mint-2)" strokeWidth={2.5} />
+          <ul className="mt-8 flex flex-col gap-4">
+            {POINTS.map(([title, desc]) => (
+              <li key={title} className="flex items-start gap-3.5">
+                <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--color-mint-soft)]">
+                  <Check size={14} color="var(--color-mint-2)" strokeWidth={2.6} aria-hidden="true" />
                 </span>
                 <div>
-                  <span className="text-[15px] font-semibold text-[var(--color-ink)]">{title}</span>
-                  <span className="ms-2 text-[14px] text-[var(--color-muted)]">{desc}</span>
+                  <div className="text-[15px] font-semibold text-[var(--color-ink)]">{title}</div>
+                  <div className="mt-[2px] text-[14px] leading-[1.55] text-[var(--color-muted)]">{desc}</div>
                 </div>
               </li>
             ))}
           </ul>
 
-          <div className="mt-10 border-t border-[var(--color-line-soft)] pt-8">
-            <p className="text-[13px] text-[var(--color-muted-2)]">
-              Prefer to just explore?{" "}
+          <div className="mt-8 flex flex-col gap-3 border-t border-[var(--color-line-2)] pt-6 text-[14px] text-[var(--color-body)]">
+            <p>
+              In a hurry?{" "}
               <a
-                href="https://app.tajirpoint.com/signup"
-                className="font-semibold text-[var(--color-mint-2)] underline underline-offset-2 transition-colors hover:text-[var(--color-ink)]"
+                href={whatsappLink("Hi TajirPoint, I'd like a demo.")}
                 target="_blank"
                 rel="noopener noreferrer"
+                data-track="book_demo_aside"
+                className="font-semibold text-[var(--color-mint-2)] underline underline-offset-2"
               >
-                Start on the free plan →
+                WhatsApp us at <span dir="ltr">{legal.whatsappDisplay}</span>
+              </a>
+            </p>
+            <p>
+              Prefer to try it yourself?{" "}
+              <a
+                href={siteConfig.signupUrl}
+                data-track="book_demo_aside"
+                className="font-semibold text-[var(--color-mint-2)] underline underline-offset-2"
+              >
+                Start free — 3 months, no card
               </a>
             </p>
           </div>
         </div>
 
-        {/* ── Right: Calendly embed, framed in a dark panel ─────────── */}
-        <div data-reveal data-reveal-delay={120} className="relative">
-          <div
-            className="pointer-events-none absolute -inset-[30px] blur-[24px]"
-            style={{
-              background: "radial-gradient(ellipse,rgba(0,210,122,.12),transparent 65%)",
-            }}
-          />
-          <div className="relative rounded-[24px] border border-[var(--color-line-2)] bg-[var(--color-panel)] p-2 shadow-[0_40px_100px_rgba(0,0,0,.55)]">
-            {/* Calendly renders its own light UI — keep it, but frame it in the panel. */}
-            <div className="overflow-hidden rounded-[18px] bg-white">
-              <iframe
-                src={`${siteConfig.calendlyUrl}?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=00d27a`}
-                width="100%"
-                height="700"
-                frameBorder="0"
-                title="Book a demo with Tajir Point"
-                loading="lazy"
-              />
-            </div>
-          </div>
+        {/* ── Right: the form ───────────────────────────────────────── */}
+        <div className="min-w-0 rounded-[24px] border border-[var(--color-line-2)] bg-white p-[clamp(18px,3.4vw,36px)] shadow-[var(--shadow-card)]">
+          <h2 className="text-[20px] font-bold tracking-[-0.02em]">Book your free demo</h2>
+          <p className="mb-6 mt-1 text-[13.5px] text-[var(--color-muted)]">
+            Fields marked <span className="text-[#B42318]">*</span> are required.
+          </p>
+          <DemoForm />
         </div>
       </div>
     </section>

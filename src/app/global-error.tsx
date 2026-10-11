@@ -17,8 +17,8 @@ export default function GlobalError({
           minHeight: "100vh",
           margin: 0,
           padding: "24px",
-          background: "#060D0A",
-          color: "#F2F7F4",
+          background: "#FFFFFF",
+          color: "#0A0A0A",
           fontFamily: "system-ui, -apple-system, sans-serif",
           WebkitFontSmoothing: "antialiased",
         }}
@@ -42,7 +42,7 @@ export default function GlobalError({
               fontFamily: "ui-monospace, monospace",
               fontSize: "12px",
               letterSpacing: "2.5px",
-              color: "#FF7A6B",
+              color: "#B42318",
             }}
           >
             CRITICAL
@@ -63,10 +63,11 @@ export default function GlobalError({
               margin: "18px 0 0",
               fontSize: "17px",
               lineHeight: 1.6,
-              color: "rgba(242,247,244,.62)",
+              color: "#4B5058",
             }}
           >
-            {error.message || "A critical error occurred."}
+            The page could not load. Please try again — if it keeps happening, WhatsApp us at +92 344
+            6800893.{error.digest ? ` (ref ${error.digest})` : ""}
           </p>
           <button
             onClick={reset}
@@ -76,7 +77,7 @@ export default function GlobalError({
               border: "none",
               borderRadius: "999px",
               background: "#00D27A",
-              color: "#04130B",
+              color: "#0A0A0A",
               fontSize: "16px",
               fontWeight: 700,
               fontFamily: "inherit",

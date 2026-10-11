@@ -11,6 +11,7 @@ import { siteConfig } from "@/lib/config/site";
 import { localeAlternates } from "@/lib/seo/metadata";
 import { routing, isRtl, type Locale } from "@/i18n/routing";
 import { AnalyticsProvider } from "@/components/analytics/AnalyticsProvider";
+import { SiteTracking } from "@/components/analytics/SiteTracking";
 
 export const viewport: Viewport = {
   themeColor: [
@@ -170,12 +171,11 @@ export default async function LocaleLayout({
         />
         {/* Warm up connections to external domains hit on first meaningful interaction */}
         <link rel="preconnect" href="https://app.tajirpoint.com" />
-        <link rel="preconnect" href="https://calendly.com" />
-        <link rel="dns-prefetch" href="https://calendly.com" />
         <JsonLd schema={[organizationSchema(), websiteSchema()]} />
       </head>
       <body className="min-h-screen bg-[var(--color-bg)] text-[var(--color-ink)]">
         <AnalyticsProvider />
+        <SiteTracking />
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
