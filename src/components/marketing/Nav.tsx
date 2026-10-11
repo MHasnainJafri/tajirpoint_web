@@ -57,7 +57,9 @@ export function Nav() {
   const [mobileSection, setMobileSection] = useState<MegaKey | null>("businesses");
   const triggers = useRef<Partial<Record<MegaKey, HTMLButtonElement | null>>>({});
   const headerRef = useRef<HTMLElement>(null);
-  const hoverOpenedAt = useRef(0);
+  // True while the open panel was opened by the pointer resting on its
+  // trigger; the first click then pins it open instead of closing it.
+  const openedByHover = useRef(false);
 
   const closeAll = useCallback(() => {
     setMega(null);
@@ -90,13 +92,17 @@ export function Nav() {
         triggers.current[key] = el;
       }}
       onHover={() => {
-        if (mega !== key) hoverOpenedAt.current = Date.now();
+        if (mega !== key) openedByHover.current = true;
         setMega(key);
       }}
       onToggle={(byKeyboard) => {
-        // A mouse click that lands just after the hover opened the panel
-        // would otherwise close it again straight away.
-        if (!byKeyboard && mega === key && Date.now() - hoverOpenedAt.current < 600) return;
+        // Hover then click is the usual desktop gesture: the click must keep
+        // the panel open, however long the visitor took. A second click closes it.
+        if (!byKeyboard && mega === key && openedByHover.current) {
+          openedByHover.current = false;
+          return;
+        }
+        openedByHover.current = false;
         setMega((m) => (m === key ? null : key));
       }}
     />
