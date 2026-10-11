@@ -51,7 +51,7 @@
     "megaExtensions": {
       "badge": "MARKETPLACE",
       "title": "Extensions, installed per shop",
-      "desc": "The interface only shows what you switch on. Most are free; a few are priced per month.",
+      "desc": "The interface only shows what you switch on. Light includes a starter set; the rest come with Shop and above.",
       "cta": "Browse all extensions",
       "groupPacks": "Popular extensions",
       "groupPayments": "PAYMENTS",
@@ -70,7 +70,7 @@
     },
     "product": "Product",
     "resources": "Resources",
-    "startFree": "Get started free",
+    "startFree": "Start free — 3 months",
     "chip": "Point of sale",
     "megaResources": {
       "items": {
@@ -80,7 +80,7 @@
         },
         "demo": {
           "title": "Book a demo",
-          "sub": "Twenty minutes, in your language, on your own data."
+          "sub": "A free walkthrough, in your language, with your own products."
         },
         "security": {
           "title": "Security",
@@ -91,12 +91,25 @@
           "sub": "Who builds TajirPoint, and why."
         },
         "contact": {
-          "title": "Contact sales",
-          "sub": "WhatsApp, call, or send us a question."
+          "title": "Contact us",
+          "sub": "WhatsApp or email — we reply within one working day."
         }
       }
     },
-    "startFreeShort": "Start free"
+    "startFreeShort": "Start free",
+    "businesses": "Businesses",
+    "mainLabel": "Main navigation",
+    "megaBusinesses": {
+      "heading": "Find your business",
+      "demoBadge": "Free demo",
+      "demoTitle": "Book a free demo",
+      "demoSub": "We show you TajirPoint with your own products — in English or Urdu.",
+      "demoCta": "Book a demo",
+      "migrateTitle": "We move your data from your old POS",
+      "migrateSub": "Send us an Excel or CSV export and our team loads it for you, free.",
+      "viewAll": "All businesses",
+      "startFreeNote": "Free for 3 months. No card needed."
+    }
   },
   "landing": {
     "meta": {
@@ -108,9 +121,9 @@
       "headline": "The point of sale that runs",
       "headlineAccent": "your whole business.",
       "sub": "TajirPoint is a complete point-of-sale system — and everything behind it. The counter, stock, customer credit, accounting, staff, delivery and your online store — one login, in your language and currency. And it keeps selling when the internet drops.",
-      "ctaPrimary": "Get started free",
-      "ctaSecondary": "See how it works",
-      "note": "Free plan, forever · No card required · Cancel paid plans anytime",
+      "ctaPrimary": "Start free — 3 months",
+      "ctaSecondary": "Book a demo",
+      "note": "Free for 3 months · No card needed · We move your data for free",
       "cards": {
         "sales": {
           "title": "Sales today",
@@ -416,45 +429,67 @@
     "pricing": {
       "eyebrow": "Pricing",
       "headline": "Simple, published pricing.",
-      "sub": "Start on the free plan and stay on it for as long as you like. Move up to a paid plan when you need more users and branches — no per-module upsells, no transaction fees.",
+      "sub": "Start on Light, free for 3 months with no card. Then choose Shop or Business to keep selling — no transaction fees.",
       "basic": {
-        "name": "Free plan",
-        "who": "Everything you need to start selling",
+        "name": "Light",
+        "who": "Free for 3 months — everything to open your shop",
         "badge": "No card required",
         "price": "Free",
-        "period": "forever",
-        "note": "Not time-limited. The free plan stays free for as long as you use it — move up to a paid plan whenever you need more users and branches.",
-        "cta": "Get started free",
-        "includesLabel": "Included free",
+        "period": "for 3 months",
+        "note": "Free for 90 days from the day you sign up, no card needed. Then choose Shop or Business to keep selling — you can always sign in, view and export your data.",
+        "cta": "Start free",
+        "includesLabel": "Included in Light",
         "includes": {
-          "pos": "Full POS & receipts",
-          "inventory": "Inventory & stock counts",
-          "credit": "Customer & supplier credit",
-          "einvoicing": "Tax e-invoicing",
+          "pos": "POS, receipts & barcode",
+          "inventory": "Up to 30 products",
+          "credit": "Customer & supplier khata",
+          "einvoicing": "100 orders a day",
           "offline": "Works offline",
-          "devices": "Web, desktop & Android"
+          "devices": "2 staff logins"
         }
       },
       "custom": {
-        "name": "Something bigger?",
-        "who": "Chains, franchises and custom work",
-        "body": "If you run many branches, need a migration handled for you, or want the product wired into systems you already have — talk to us and we will quote it properly.",
+        "name": "Shop, Business & Enterprise",
+        "who": "More products, staff and branches",
+        "body": "Our paid plans remove Light's limits and add online ordering, more staff and more branches. Prices are on this page once it loads — or ask us and we'll help you choose.",
         "points": {
-          "chains": "Unlimited branches and users",
-          "migration": "Migration done for you",
-          "integrations": "Custom integrations & SLA",
-          "onprem": "On-premise and single sign-on"
+          "chains": "No time limit",
+          "migration": "Data moved from your old POS, free",
+          "integrations": "Online order page & integrations",
+          "onprem": "Several branches and warehouses"
         },
-        "ctaMeeting": "Book a 20-minute call",
+        "ctaMeeting": "Book a free demo",
         "ctaEmail": "Email us"
       },
       "perMonth": "/ month",
-      "forever": "forever",
-      "plansNote": "The free plan is free forever. Paid plans are billed in USD and can be cancelled any time, with a 15-day refund window on payments. Annual billing saves two months."
+      "forever": "for 3 months",
+      "plansNote": "Light is free for 3 months from signup, no card needed. Paid plans are billed in USD and can be cancelled any time, with a 15-day refund window on payments.",
+      "freePeriod": "for 3 months",
+      "perYear": "/ year",
+      "monthly": "Monthly",
+      "annual": "Yearly",
+      "save": "Save {n} months",
+      "recommended": "Most popular",
+      "notIncluded": "Not included",
+      "billingLabel": "Billing period",
+      "compare": {
+        "title": "Compare plans",
+        "feature": "Plan",
+        "price": "Price",
+        "shops": "Shops",
+        "users": "Staff logins",
+        "products": "Products",
+        "ordersPerDay": "Orders a day",
+        "warehouses": "Warehouses",
+        "extensions": "Extensions",
+        "unlimited": "Unlimited",
+        "extRestricted": "Starter set",
+        "extAll": "All"
+      }
     },
     "faq": {
       "headline": "Questions merchants ask us",
-      "sub": "Still unsure? Write to us on WhatsApp or book a 20-minute demo.",
+      "sub": "Still unsure? Write to us on WhatsApp or book a free demo.",
       "groups": {
         "general": {
           "label": "General",
@@ -520,7 +555,7 @@
           "items": {
             "0": {
               "q": "Is there a free plan?",
-              "a": "Yes. The free plan is free forever, no card required. The pricing page lists what each plan includes — move up to a paid plan only when you need more."
+              "a": "Yes. Light is free for 3 months from the day you sign up, no card needed — one shop, two staff logins, 30 products and 100 orders a day. Then choose Shop or Business to keep selling."
             },
             "1": {
               "q": "Can I cancel, or get a refund?",
@@ -532,7 +567,7 @@
             },
             "3": {
               "q": "Do I need a card to start?",
-              "a": "No. Sign up and choose the free plan to start. You only add a card if you pick a paid plan, at checkout."
+              "a": "No. Sign up and start on Light, free for 3 months. You only add a card when you choose a paid plan."
             }
           }
         }
@@ -540,8 +575,8 @@
     },
     "cta": {
       "headline": "Start selling in an afternoon.",
-      "sub": "Import your products from Excel, Shopify or WooCommerce, connect a printer, and ring your first sale. Free plan, free forever, no card.",
-      "ctaPrimary": "Get started free",
+      "sub": "Import your products from Excel, connect a printer and ring your first sale — or send us your old POS export and we load it for you. Free for 3 months, no card.",
+      "ctaPrimary": "Start free — 3 months",
       "ctaSecondary": "Book a demo",
       "steps": {
         "import": {
@@ -578,7 +613,7 @@
     "sub": "Every industry runs differently. Extensions shape TajirPoint around yours — nothing more on screen than your business needs.",
     "cta": {
       "headline": "See it shaped around your business",
-      "body": "Free plan, free forever. No card required.",
+      "body": "Free for 3 months. No card needed.",
       "primary": "Start free",
       "secondary": "Browse extensions"
     },
@@ -588,7 +623,12 @@
         "tag": "GROCERY · APPAREL · HARDWARE",
         "headline": "Barcode-fast selling with credit built in",
         "body": "Ring up a queue in seconds, sell by carton, kg or piece with automatic unit conversion, and keep every customer’s running credit balance without a paper register.",
-        "chips": ["Barcode checkout", "Credit ledger", "Unit conversion", "Label printing"],
+        "chips": [
+          "Barcode checkout",
+          "Credit ledger",
+          "Unit conversion",
+          "Label printing"
+        ],
         "panelTitle": "WHAT RETAILERS USE MOST",
         "feats": [
           {
@@ -622,7 +662,12 @@
         "tag": "DINE-IN · TAKEAWAY · DELIVERY",
         "headline": "From table to kitchen to bill, in sync",
         "body": "Floor plans and table service at the front, timed orders on kitchen screens at the back, and delivery-app orders flowing into the same queue.",
-        "chips": ["Floor plans", "Kitchen display", "QR self-ordering", "Split bills"],
+        "chips": [
+          "Floor plans",
+          "Kitchen display",
+          "QR self-ordering",
+          "Split bills"
+        ],
         "panelTitle": "WHAT RESTAURANTS USE MOST",
         "feats": [
           {
@@ -656,7 +701,12 @@
         "tag": "HANDSETS · ACCESSORIES · REPAIRS",
         "headline": "Every handset tracked, serial by serial",
         "body": "IMEI and serial tracking across the full lifecycle — purchase, sale, warranty, repair, trade-in — so you always know exactly which unit went where.",
-        "chips": ["IMEI tracking", "Warranty records", "Repair jobs", "Trade-ins"],
+        "chips": [
+          "IMEI tracking",
+          "Warranty records",
+          "Repair jobs",
+          "Trade-ins"
+        ],
         "panelTitle": "WHAT ELECTRONICS SHOPS USE MOST",
         "feats": [
           {
@@ -690,7 +740,12 @@
         "tag": "BATCH · EXPIRY · PRESCRIPTIONS",
         "headline": "Sell safe. Never sell expired.",
         "body": "Batch and expiry tracking with first-expiry-first-out picking, expiry alerts before stock dies on the shelf, and expired stock automatically excluded from sale.",
-        "chips": ["FEFO picking", "Expiry alerts", "Drug schedules", "Prescription log"],
+        "chips": [
+          "FEFO picking",
+          "Expiry alerts",
+          "Drug schedules",
+          "Prescription log"
+        ],
         "panelTitle": "WHAT PHARMACIES USE MOST",
         "feats": [
           {
@@ -724,7 +779,12 @@
         "tag": "VAN SALES · ROUTES · WAREHOUSES",
         "headline": "The truck is a warehouse. Treat it like one.",
         "body": "Load a van in the morning, sell and collect door-to-door on a route, then reconcile cash, goods and fuel at day end — including what the driver still owes.",
-        "chips": ["Van sales", "Route planning", "Driver reconciliation", "Multi-warehouse"],
+        "chips": [
+          "Van sales",
+          "Route planning",
+          "Driver reconciliation",
+          "Multi-warehouse"
+        ],
         "panelTitle": "WHAT DISTRIBUTORS USE MOST",
         "feats": [
           {
@@ -758,7 +818,12 @@
         "tag": "SALONS · CLINICS · GYMS · TUTORS",
         "headline": "Appointments, memberships, commissions",
         "body": "Book appointments, bill memberships on a cycle, and pay staff commissions that post straight into the accounts — recurring revenue without the spreadsheet.",
-        "chips": ["Appointments", "Memberships", "Staff commissions", "Recurring billing"],
+        "chips": [
+          "Appointments",
+          "Memberships",
+          "Staff commissions",
+          "Recurring billing"
+        ],
         "panelTitle": "WHAT SERVICE BUSINESSES USE MOST",
         "feats": [
           {
@@ -814,8 +879,8 @@
       "newer": "Newer integration"
     },
     "cta": {
-      "headline": "Every extension. One price.",
-      "body": "No per-module upsells. Install and uninstall freely — and start on the free plan.",
+      "headline": "Extensions that grow with you.",
+      "body": "Light includes the restaurant, pharmacy, route dispatch, cash management, coupon and promotion extensions. Everything else comes with Shop and above.",
       "primary": "See pricing"
     },
     "items": {

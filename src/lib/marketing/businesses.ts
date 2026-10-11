@@ -90,6 +90,7 @@ export const APPS: Record<AppId, AppInfo> = {
     line: "Online orders ring on one screen; accept them with a tap.",
     icon: "alarmpct",
     status: "live",
+    plan: SHOP_PLAN_NOTE,
   },
   packer: {
     id: "packer",
@@ -137,8 +138,8 @@ export const APPS: Record<AppId, AppInfo> = {
   },
   vanSales: {
     id: "vanSales",
-    name: "Van sales & route app",
-    line: "Load the van, sell along a route and reconcile cash and stock at day end.",
+    name: "Van sales & routes",
+    line: "Plan trips, load the van, sell along the route and reconcile at day end — in the POS.",
     icon: "truck",
     status: "live",
   },
@@ -372,12 +373,12 @@ const restaurants: Business = {
       id: "receiver",
       icon: "alarmpct",
       title: "Order receiver board",
-      benefit: "Every online order rings on one screen until someone accepts it — no missed orders on a busy night.",
+      benefit: "Every online order rings on one screen until someone accepts it, so orders don't slip through on a busy night.",
       bullets: [
         "Loud ring for new orders until they are accepted",
         "Accept or decline, then it goes to the kitchen",
         "Packer screen to check bags before handover",
-        "Works on a tablet or the Android order desk app",
+        "Works in the browser on any tablet or PC",
       ],
       media: { slot: "receiver", expect: "video", alt: "Order receiver board ringing with a new delivery order" },
     },
@@ -391,7 +392,7 @@ const restaurants: Business = {
         "Banners and time-limited deals you control",
         "Delivery areas, fees and opening hours",
         "Cash on delivery, or online payment with a connected gateway",
-        "Customer phone or email verification to stop fake orders",
+        "Optional customer verification to cut fake orders",
       ],
       media: { slot: "order-page", expect: "phone", alt: "Online order page on a phone showing deals and a cart" },
       plan: SHOP_PLAN_NOTE,
@@ -405,7 +406,6 @@ const restaurants: Business = {
         "Rider app for Android: jobs, navigation, proof of delivery",
         "Live rider location while on shift",
         "Rider cash and pay tracked per shift",
-        "Need more riders? Request one from the TajirPoint courier network where it operates",
       ],
       media: { slot: "delivery", expect: "phone", alt: "Rider app showing a delivery job and route" },
     },
@@ -431,7 +431,7 @@ const restaurants: Business = {
         "Z-report and takings per register",
         "Item sales and best sellers",
         "Tax and VAT by rate",
-        "Profit and loss with the accounting add-on",
+        "Profit and loss with the accounting add-on (Shop plan and above)",
       ],
       media: { slot: "reports", expect: "image", alt: "Restaurant day-end report with takings and best sellers" },
     },
@@ -597,14 +597,14 @@ const cloudKitchens: Business = {
   seo: {
     title: "Cloud Kitchen POS — Multiple Brands, One Kitchen",
     description:
-      "Run several delivery brands from one kitchen: an order page per brand, one order receiver board, kitchen display, packer screen, rider app and reports per brand. Free for 3 months.",
+      "Run several delivery brands from one kitchen: online ordering for each brand, one order receiver board, kitchen display, packer screen, rider app and reports per brand. Free for 3 months.",
     keywords: ["cloud kitchen POS", "ghost kitchen software", "dark kitchen POS", "delivery kitchen software"],
   },
   schemaSubCategory: "Cloud kitchen management",
   hero: {
     eyebrow: "TajirPoint for cloud kitchens",
-    headline: "Several brands. One kitchen. Zero missed orders.",
-    sub: "Give each brand its own menu and ordering page, receive every order on one board, cook from one kitchen screen and pack each bag against its ticket.",
+    headline: "Several brands. One kitchen. One order board.",
+    sub: "Give each brand its own menu on your online order page, receive every order on one board, cook from one kitchen screen and pack each bag against its ticket.",
     media: { slot: "hero", expect: "video", alt: "Order board receiving orders for three brands from one kitchen" },
   },
   apps: ["receiver", "kds", "packer", "orderPage", "riderApp", "backOffice", "ownerApp"],
@@ -617,7 +617,7 @@ const cloudKitchens: Business = {
       bullets: [
         "Kitchen brands with their own menus",
         "Shared ingredient stock across brands",
-        "Sales reported per brand",
+        "One team and one set of reports",
       ],
       media: { slot: "brands", expect: "image", alt: "Brand list with three delivery brands" },
       plan: SHOP_PLAN_NOTE,
@@ -625,8 +625,8 @@ const cloudKitchens: Business = {
     {
       id: "order-pages",
       icon: "globe",
-      title: "An order page for each brand",
-      benefit: "Each brand gets its own ordering link with its own deals, so customers never see the others.",
+      title: "Online ordering for every brand",
+      benefit: "Put each brand's menu and deals on your online order page and take delivery and pickup orders for all of them.",
       bullets: [
         "Delivery and pickup",
         "Deals and banners per brand",
@@ -644,7 +644,6 @@ const cloudKitchens: Business = {
       bullets: [
         "Brand shown on every order",
         "Accept or decline in one tap",
-        "Order desk app for Android",
       ],
       media: { slot: "receiver", expect: "video", alt: "Order receiver board with orders from several brands" },
     },
@@ -672,7 +671,6 @@ const cloudKitchens: Business = {
       bullets: [
         "Rider app for Android",
         "Live location and proof of delivery",
-        "Courier network riders where it operates",
       ],
       media: { slot: "riders", expect: "phone", alt: "Rider app with a delivery job" },
     },
@@ -683,6 +681,7 @@ const cloudKitchens: Business = {
       benefit: "Bring orders from delivery apps into the same board and kitchen screen.",
       bullets: ["Aggregator orders next to your own", "One kitchen queue"],
       media: { slot: "aggregators", expect: "image", alt: "Aggregator orders on the order board" },
+      plan: SHOP_PLAN_NOTE,
       status: "soon",
     },
   ],
@@ -770,13 +769,14 @@ const retailFashion: Business = {
       benefit: "See stock in every branch and move it to where it sells.",
       bullets: ["Stock transfers between branches", "Stock counts and adjustments", "Reports per branch"],
       media: { slot: "branches", expect: "image", alt: "Stock transfer between two branches" },
+      plan: SHOP_PLAN_NOTE,
     },
     {
       id: "khata",
       icon: "book",
       title: "Khata for regular customers",
       benefit: "Sell on credit to customers you trust and always know who owes what.",
-      bullets: ["Customer credit with limits", "Statements to share", "Customer portal to see their balance"],
+      bullets: ["Customer credit with limits", "Statements to share", "Customer portal to see their balance (Shop plan and above)"],
       media: { slot: "khata", expect: "image", alt: "Customer khata with balance and history" },
     },
     {
@@ -851,7 +851,7 @@ const groceryKiryana: Business = {
       icon: "book",
       title: "Digital khata",
       benefit: "Every customer's udhaar in one place — with limits, history and a balance they can see.",
-      bullets: ["Credit sales straight to the customer's khata", "Credit limits per customer", "Payments received against the balance", "Customer portal to see their own balance"],
+      bullets: ["Credit sales straight to the customer's khata", "Credit limits per customer", "Payments received against the balance", "Customer portal to see their own balance (Shop plan and above)"],
       media: { slot: "khata", expect: "video", alt: "Customer khata with running balance" },
     },
     {
@@ -894,7 +894,7 @@ const groceryKiryana: Business = {
     },
     {
       q: "Can my customers see what they owe?",
-      a: "Yes. Each customer can have a link to a portal showing their khata balance and history.",
+      a: "Yes. With the customer portal add-on (Shop plan and above), each customer gets a link showing their khata balance and history. On any plan you can share a statement on WhatsApp.",
     },
   ],
   cta: {
@@ -922,7 +922,7 @@ const pharmacy: Business = {
   schemaSubCategory: "Pharmacy point of sale",
   hero: {
     eyebrow: "TajirPoint for pharmacies",
-    headline: "Sell safely. Never sell expired.",
+    headline: "Sell safely. Sell the oldest stock first.",
     sub: "Every strip linked to its batch and expiry, the oldest stock sold first, and a near-expiry list before stock turns into a loss.",
     media: { slot: "hero", expect: "video", alt: "Pharmacy counter selling a medicine with its batch and expiry" },
   },
@@ -980,7 +980,7 @@ const pharmacy: Business = {
   faqs: [
     {
       q: "Is the pharmacy pack included in the free plan?",
-      a: "Yes. The pharmacy tools are one of the extensions included in the free Light plan.",
+      a: "Yes. The pharmacy pack is one of the extensions included in the free Light plan, within its limits (one shop, two users, 30 products, 100 orders a day). Most pharmacies move to Shop for more products.",
     },
   ],
   cta: {
@@ -1053,6 +1053,7 @@ const electronicsMobile: Business = {
       benefit: "Move a unit from one branch to another and keep its serial history.",
       bullets: ["Stock transfers", "Stock per branch", "Reports per branch"],
       media: { slot: "branches", expect: "image", alt: "Stock transfer of serialised phones" },
+      plan: SHOP_PLAN_NOTE,
     },
   ],
   faqs: [
@@ -1121,7 +1122,7 @@ const salonsServices: Business = {
       icon: "idcard",
       title: "Staff logins and roles",
       benefit: "Each staff member signs in with their own login, so you know who did what.",
-      bullets: ["Roles and permissions", "Sales by staff member", "HR and payroll add-on"],
+      bullets: ["Roles and permissions", "Sales by staff member", "HR and payroll add-on (Shop plan and above)"],
       media: { slot: "staff", expect: "image", alt: "Staff list with roles" },
     },
     {
@@ -1185,7 +1186,7 @@ const distributorsWholesale: Business = {
       icon: "route",
       title: "Route dispatch and van sales",
       benefit: "Plan a trip, load the van and sell from it stop by stop.",
-      bullets: ["Trips with stops and load lists", "Sell, collect and take returns on the route", "Van stock tracked separately from the warehouse"],
+      bullets: ["Trips with stops and load lists", "Sell, collect and take returns on the route", "Load list for every trip"],
       media: { slot: "trips", expect: "video", alt: "Trip screen with stops and a loaded van" },
     },
     {
@@ -1193,7 +1194,7 @@ const distributorsWholesale: Business = {
       icon: "cash",
       title: "Day-end reconciliation",
       benefit: "When the van returns, match the cash, the goods sold and the goods returned in one screen.",
-      bullets: ["Cash collected vs sales", "Returned stock back into the warehouse", "Differences shown per trip"],
+      bullets: ["Cash collected vs sales", "Returns recorded per trip", "Differences shown per trip"],
       media: { slot: "reconcile", expect: "image", alt: "Trip reconciliation screen" },
     },
     {
@@ -1219,6 +1220,7 @@ const distributorsWholesale: Business = {
       benefit: "Stock in every warehouse, and transfers between them that leave a record.",
       bullets: ["Multiple warehouses", "Stock transfers", "Stock counts and adjustments"],
       media: { slot: "warehouses", expect: "image", alt: "Warehouse stock overview" },
+      plan: SHOP_PLAN_NOTE,
     },
     {
       id: "purchasing",
@@ -1297,6 +1299,7 @@ const furnitureHome: Business = {
       benefit: "Know what is on the floor and what is in the warehouse.",
       bullets: ["Multiple warehouses", "Transfers", "Stock counts"],
       media: { slot: "warehouse", expect: "image", alt: "Stock by warehouse" },
+      plan: SHOP_PLAN_NOTE,
     },
     {
       id: "delivery",
