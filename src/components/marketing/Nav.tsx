@@ -353,7 +353,7 @@ export function Nav() {
 
           <Link
             href="/book-demo"
-            className="hidden whitespace-nowrap rounded-full border border-[var(--color-line-3)] px-4 py-[9px] text-[13.5px] font-semibold text-[var(--color-ink)] transition-colors hover:bg-[var(--color-surface)] xl:inline-flex"
+            className="hidden whitespace-nowrap rounded-full border border-[var(--color-line-3)] px-4 py-[9px] text-[13.5px] font-semibold text-[var(--color-ink)] transition-colors hover:bg-[var(--color-surface)] min-[1320px]:inline-flex"
           >
             {t("bookDemo")}
           </Link>
