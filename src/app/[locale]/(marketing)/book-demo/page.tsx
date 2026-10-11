@@ -22,9 +22,15 @@ export async function generateMetadata({
 }
 
 const POINTS: Array<[string, string]> = [
-  ["Your kind of business", "Restaurant, shop, pharmacy, distributor — we show the screens you will use."],
+  [
+    "Your kind of business",
+    "Restaurant, shop, pharmacy, distributor — we show the screens you will use.",
+  ],
   ["Your own products", "Send a few items beforehand and we set them up for the demo."],
-  ["We move your data", "Switching from another POS? We load your products, customers and khata for free."],
+  [
+    "We move your data",
+    "Switching from another POS? We load your products, customers and khata for free.",
+  ],
   ["In your language", "English or Urdu, on WhatsApp video or a call."],
 ];
 
@@ -34,9 +40,11 @@ export default async function BookDemoPage({ params }: { params: Promise<{ local
 
   return (
     <section className="relative px-[clamp(16px,4vw,40px)] pb-[clamp(60px,9vw,110px)] pt-[clamp(36px,7vw,90px)]">
-      <div className="relative mx-auto grid max-w-[1160px] items-start gap-[clamp(32px,5vw,72px)] lg:grid-cols-[0.9fr_1.1fr]">
-        {/* ── Left: what to expect ──────────────────────────────────── */}
-        <div className="lg:sticky lg:top-[100px]">
+      <div className="relative mx-auto grid max-w-[1160px] items-start gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:grid-rows-[auto_1fr] lg:gap-x-[clamp(32px,5vw,72px)] lg:gap-y-0">
+        {/* Phones (where ad clicks land) see heading → form → reasons;
+            desktop keeps heading + reasons on the left, form on the right. */}
+        {/* ── Heading ───────────────────────────────────────────────── */}
+        <div className="lg:col-start-1 lg:row-start-1">
           <PillBadge>Free demo · no obligation</PillBadge>
 
           <h1 className="mt-6 text-[clamp(32px,4.6vw,54px)] font-extrabold leading-[1.06] tracking-[-0.035em] text-balance">
@@ -47,16 +55,34 @@ export default async function BookDemoPage({ params }: { params: Promise<{ local
             Tell us a little about your shop and we&apos;ll WhatsApp you within one working day to
             fix a time.
           </p>
+        </div>
 
-          <ul className="mt-8 flex flex-col gap-4">
+        {/* ── The form ──────────────────────────────────────────────── */}
+        <div className="min-w-0 rounded-[24px] lg:col-start-2 lg:row-span-2 lg:row-start-1 border border-[var(--color-line-2)] bg-white p-[clamp(18px,3.4vw,36px)] shadow-[var(--shadow-card)]">
+          <h2 className="text-[20px] font-bold tracking-[-0.02em]">Book your free demo</h2>
+          <p className="mb-6 mt-1 text-[13.5px] text-[var(--color-muted)]">
+            Fields marked <span className="text-[#B42318]">*</span> are required.
+          </p>
+          <DemoForm />
+        </div>
+        {/* ── What to expect ────────────────────────────────────────── */}
+        <div className="lg:col-start-1 lg:row-start-2 lg:mt-8">
+          <ul className="flex flex-col gap-4">
             {POINTS.map(([title, desc]) => (
               <li key={title} className="flex items-start gap-3.5">
                 <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--color-mint-soft)]">
-                  <Check size={14} color="var(--color-mint-2)" strokeWidth={2.6} aria-hidden="true" />
+                  <Check
+                    size={14}
+                    color="var(--color-mint-2)"
+                    strokeWidth={2.6}
+                    aria-hidden="true"
+                  />
                 </span>
                 <div>
                   <div className="text-[15px] font-semibold text-[var(--color-ink)]">{title}</div>
-                  <div className="mt-[2px] text-[14px] leading-[1.55] text-[var(--color-muted)]">{desc}</div>
+                  <div className="mt-[2px] text-[14px] leading-[1.55] text-[var(--color-muted)]">
+                    {desc}
+                  </div>
                 </div>
               </li>
             ))}
@@ -86,15 +112,6 @@ export default async function BookDemoPage({ params }: { params: Promise<{ local
               </a>
             </p>
           </div>
-        </div>
-
-        {/* ── Right: the form ───────────────────────────────────────── */}
-        <div className="min-w-0 rounded-[24px] border border-[var(--color-line-2)] bg-white p-[clamp(18px,3.4vw,36px)] shadow-[var(--shadow-card)]">
-          <h2 className="text-[20px] font-bold tracking-[-0.02em]">Book your free demo</h2>
-          <p className="mb-6 mt-1 text-[13.5px] text-[var(--color-muted)]">
-            Fields marked <span className="text-[#B42318]">*</span> are required.
-          </p>
-          <DemoForm />
         </div>
       </div>
     </section>
