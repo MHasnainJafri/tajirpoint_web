@@ -370,7 +370,7 @@
         },
         "integrate": {
           "title": "Integrate",
-          "body": "Shopify, WooCommerce, QuickBooks, public API & webhooks."
+          "body": "Public API & webhooks. Shopify, WooCommerce and QuickBooks coming soon."
         }
       }
     },
@@ -507,7 +507,7 @@
             },
             "3": {
               "q": "Can I bring my existing products?",
-              "a": "Import from CSV or Excel. Shopify and WooCommerce exports are detected automatically, so migration takes an afternoon."
+              "a": "Yes. Import from Excel or CSV — or send us an export from your old POS and we load your products, customers, suppliers and khata balances for you, free."
             }
           }
         },
@@ -580,7 +580,7 @@
       "steps": {
         "import": {
           "title": "Import your products",
-          "sub": "Excel, CSV, Shopify or WooCommerce export",
+          "sub": "Excel or CSV — or we do it for you",
           "time": "20 min"
         },
         "connect": {

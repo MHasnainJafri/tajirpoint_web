@@ -370,7 +370,7 @@
         },
         "integrate": {
           "title": "التكامل",
-          "body": "‏Shopify، وWooCommerce، وQuickBooks، وواجهة API عامة وWebhooks."
+          "body": "واجهة API عامة وWebhooks. وتكامل Shopify وWooCommerce وQuickBooks قريبًا."
         }
       }
     },
@@ -507,7 +507,7 @@
             },
             "3": {
               "q": "هل يمكنني نقل منتجاتي الحالية؟",
-              "a": "استورد من CSV أو Excel. ويُكتشف تصدير Shopify وWooCommerce تلقائيًا، فيستغرق النقل بعد ظهيرة واحدة."
+              "a": "نعم. استورد من Excel أو CSV — أو أرسل لنا ملف التصدير من نظامك القديم وسنحمّل منتجاتك وعملاءك ومورديك وأرصدة الحسابات مجانًا."
             }
           }
         },
@@ -580,7 +580,7 @@
       "steps": {
         "import": {
           "title": "استورد منتجاتك",
-          "sub": "‏Excel أو CSV أو تصدير Shopify أو WooCommerce",
+          "sub": "Excel أو CSV — أو نقوم بذلك عنك",
           "time": "20 دقيقة"
         },
         "connect": {
