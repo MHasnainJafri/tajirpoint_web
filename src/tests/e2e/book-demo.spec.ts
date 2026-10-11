@@ -42,7 +42,7 @@ test("old solution pages redirect permanently", async ({ request }) => {
     ["/ur/solutions/services", "/ur/business/salons-services"],
     ["/data-privacy", "/privacy"],
     ["/data-security", "/security"],
-  ]) {
+  ] as const) {
     const res = await request.get(from, { maxRedirects: 0 });
     expect(res.status(), from).toBe(308);
     expect(res.headers()["location"], from).toBe(to);

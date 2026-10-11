@@ -14,7 +14,7 @@ import {
   getBusiness,
   isBusinessSlug,
 } from "@/lib/marketing/businesses";
-// @ts-expect-error — plain .mjs helper shared with scripts/media.mjs
+// Plain .mjs helper shared with scripts/media.mjs.
 import { IMAGE_EXT, VIDEO_EXT, renderBusinessReadme } from "../../../scripts/media-lib.mjs";
 import manifest from "@/lib/media/manifest.json";
 

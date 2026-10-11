@@ -38,7 +38,7 @@ describe("upcomingDays", () => {
   it("lists the next 14 days without Sundays, starting tomorrow", () => {
     const from = new Date(2026, 9, 11); // Sun 11 Oct 2026
     const days = upcomingDays(from);
-    expect(days[0].value).toBe("2026-10-12");
+    expect(days[0]!.value).toBe("2026-10-12");
     expect(days).toHaveLength(12); // 14 days minus two Sundays
     for (const d of days) expect(new Date(`${d.value}T12:00:00`).getDay()).not.toBe(0);
   });

@@ -9,6 +9,7 @@ import {
   planNames,
   planPriceLabel,
   planSummary,
+  type MarketingPlan,
 } from "@/lib/api/plans";
 
 /** What production returned on 11 Oct 2026 (before the relaunch backend). */
@@ -55,7 +56,7 @@ describe("getPricing", () => {
     mockFetch(OLD_SHAPE);
     const pricing = await getPricing();
     expect(pricing?.plans.map((p) => p.name)).toEqual(["Basic", "Pro", "Business", "Enterprise"]);
-    const [basic, pro, business, enterprise] = pricing!.plans;
+    const [basic, pro, business, enterprise] = pricing!.plans as [MarketingPlan, MarketingPlan, MarketingPlan, MarketingPlan];
     expect(isFreePlan(basic)).toBe(true);
     expect(isFreePlan(pro)).toBe(false); // priced, even though tier is "basic"
     expect(isContactSalesPlan(enterprise)).toBe(true);
@@ -70,7 +71,7 @@ describe("getPricing", () => {
   it("parses the relaunch shape", async () => {
     mockFetch(NEW_SHAPE);
     const pricing = await getPricing();
-    const [light, shop, , enterprise] = pricing!.plans;
+    const [light, shop, , enterprise] = pricing!.plans as [MarketingPlan, MarketingPlan, MarketingPlan, MarketingPlan];
     expect(isFreePlan(light)).toBe(true);
     expect(planPriceLabel(light)).toBe("Free for 3 months");
     expect(planPriceLabel(shop)).toBe("$29");
@@ -88,7 +89,7 @@ describe("getPricing", () => {
   it("treats a free plan with free_period_days as free even if its tier changes", async () => {
     mockFetch({ plans: [{ ...NEW_SHAPE.plans[0], tier: "silver" }] });
     const pricing = await getPricing();
-    expect(isFreePlan(pricing!.plans[0])).toBe(true);
+    expect(isFreePlan(pricing!.plans[0]!)).toBe(true);
   });
 
   it("returns null on errors, bad shapes and empty catalogues", async () => {
