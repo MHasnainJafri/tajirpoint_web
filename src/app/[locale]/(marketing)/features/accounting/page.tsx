@@ -63,9 +63,9 @@ const ACCOUNTANT_GETS = [
 ];
 
 const AUDIENCES = [
-  { icon: ShoppingBag, label: "Retail", href: "/solutions/general-retail" },
-  { icon: Truck, label: "Distribution", href: "/solutions/distributors" },
-  { icon: CalendarCheck, label: "Services", href: "/solutions/services" },
+  { icon: ShoppingBag, label: "Retail", href: "/business/grocery-kiryana" },
+  { icon: Truck, label: "Distribution", href: "/business/distributors-wholesale" },
+  { icon: CalendarCheck, label: "Services", href: "/business/salons-services" },
 ] as const;
 
 const FAQS = [
@@ -75,8 +75,14 @@ const FAQS = [
       "No. You run your shop; the books post themselves. Your accountant gets clean, ready ledgers.",
   },
   {
+    question: "Is accounting included in the free Light plan?",
+    answer:
+      "No. Light covers the POS, stock and khata. The accounting add-on (general ledger, profit and loss, balance sheet) is available on the Shop plan and above.",
+  },
+  {
     question: "Can I connect QuickBooks?",
-    answer: "Yes — the QuickBooks Online extension pushes journals straight across.",
+    answer:
+      "A QuickBooks Online extension is coming soon. Until then your accountant can export the ledgers and reports from TajirPoint.",
   },
 ];
 
@@ -126,14 +132,14 @@ export default async function AccountingFeaturePage({
 
             <p className="mt-5 max-w-[560px] animate-[tpFadeUp_.8s_.28s_cubic-bezier(.22,1,.36,1)_both] text-[17.5px] leading-[1.6] text-[var(--color-muted)]">
               A real double-entry ledger, posted automatically from everything that happens in your
-              shop.
+              shop. The accounting add-on is available on the Shop plan and above.
             </p>
 
             <div className="mt-9 flex animate-[tpFadeUp_.8s_.36s_cubic-bezier(.22,1,.36,1)_both] flex-wrap gap-[14px]">
               <MintButton href={siteConfig.signupUrl} external>
-                Get started free <span>→</span>
+                Start free — 3 months <span>→</span>
               </MintButton>
-              <GhostButton href={siteConfig.calendlyUrl} external>
+              <GhostButton href="/book-demo">
                 Book a demo
               </GhostButton>
             </div>
@@ -307,7 +313,7 @@ export default async function AccountingFeaturePage({
       <section className="px-5 pb-[110px] pt-5 md:px-10">
         <CtaPanel>
           <h2 className="relative text-[clamp(28px,3.6vw,46px)] font-extrabold tracking-[-0.03em]">
-            Start on the free plan — no card required
+            Free for 3 months. No card needed.
           </h2>
           <p className="relative mx-auto mt-4 max-w-[440px] text-[16px] leading-[1.6] text-[var(--color-muted)]">
             Run a week of real sales and watch the trial balance, P&amp;L and cash position build
@@ -315,7 +321,7 @@ export default async function AccountingFeaturePage({
           </p>
           <div className="relative mt-8 flex flex-wrap justify-center gap-[14px]">
             <MintButton href={siteConfig.signupUrl} external>
-              Get started free <span>→</span>
+              Start free — 3 months <span>→</span>
             </MintButton>
             <GhostButton href="/extensions">Browse extensions</GhostButton>
           </div>

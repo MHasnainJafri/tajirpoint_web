@@ -172,10 +172,10 @@ export const HERO_STRIP = [
  * back to the coded POS mock until a real screenshot is dropped in.
  */
 export const HERO_MODES = [
-  { id: "retail", href: "/solutions/general-retail" },
-  { id: "restaurants", href: "/solutions/restaurants" },
-  { id: "electronics", href: "/solutions/electronics" },
-  { id: "distribution", href: "/solutions/distributors" },
+  { id: "retail", href: "/business/grocery-kiryana" },
+  { id: "restaurants", href: "/business/restaurants" },
+  { id: "electronics", href: "/business/electronics-mobile" },
+  { id: "distribution", href: "/business/distributors-wholesale" },
   { id: "all", href: "/solutions" },
 ] as const;
 

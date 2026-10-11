@@ -63,9 +63,9 @@ const PROFILE_FEATURES = [
 ];
 
 const AUDIENCES = [
-  { icon: ShoppingBag, label: "Retail", href: "/solutions/general-retail" },
-  { icon: Truck, label: "Distribution", href: "/solutions/distributors" },
-  { icon: Smartphone, label: "Electronics", href: "/solutions/electronics" },
+  { icon: ShoppingBag, label: "Retail", href: "/business/grocery-kiryana" },
+  { icon: Truck, label: "Distribution", href: "/business/distributors-wholesale" },
+  { icon: Smartphone, label: "Electronics", href: "/business/electronics-mobile" },
 ] as const;
 
 const FAQS = [
@@ -131,9 +131,9 @@ export default async function KhataFeaturePage({
 
             <div className="mt-9 flex animate-[tpFadeUp_.8s_.36s_cubic-bezier(.22,1,.36,1)_both] flex-wrap gap-[14px]">
               <MintButton href={siteConfig.signupUrl} external>
-                Get started free <span>→</span>
+                Start free — 3 months <span>→</span>
               </MintButton>
-              <GhostButton href={siteConfig.calendlyUrl} external>
+              <GhostButton href="/book-demo">
                 Book a demo
               </GhostButton>
             </div>
@@ -305,14 +305,14 @@ export default async function KhataFeaturePage({
       <section className="px-5 pb-[110px] pt-5 md:px-10">
         <CtaPanel>
           <h2 className="relative text-[clamp(28px,3.6vw,46px)] font-extrabold tracking-[-0.03em]">
-            Start on the free plan — no card required
+            Free for 3 months. No card needed.
           </h2>
           <p className="relative mx-auto mt-4 max-w-[440px] text-[16px] leading-[1.6] text-[var(--color-muted)]">
             Move your credit register onto a ledger both sides can trust.
           </p>
           <div className="relative mt-8 flex flex-wrap justify-center gap-[14px]">
             <MintButton href={siteConfig.signupUrl} external>
-              Get started free <span>→</span>
+              Start free — 3 months <span>→</span>
             </MintButton>
             <GhostButton href="/pricing">See pricing</GhostButton>
           </div>
