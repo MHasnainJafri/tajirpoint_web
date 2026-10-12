@@ -1071,6 +1071,7 @@
     "current": {
       "granted": "You accepted optional cookies.",
       "denied": "You rejected optional cookies.",
+      "signal": "Your browser asks websites not to track you, so optional cookies are off.",
       "unset": "You have not chosen yet."
     }
   }

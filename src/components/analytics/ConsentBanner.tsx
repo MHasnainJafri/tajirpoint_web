@@ -33,7 +33,10 @@ export function ConsentBanner() {
           <h2 className="text-[15px] font-bold">{t("title")}</h2>
           <p className="mt-1 text-[13.5px] leading-[1.55] text-[var(--color-body)]">
             {t("body")}{" "}
-            <Link href="/cookies" className="font-semibold text-[var(--color-mint-2)] underline underline-offset-2">
+            <Link
+              href="/cookies"
+              className="font-semibold text-[var(--color-mint-2)] underline underline-offset-2"
+            >
               {t("policy")}
             </Link>
           </p>

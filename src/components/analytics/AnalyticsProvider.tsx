@@ -1,10 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { usePathname } from "next/navigation";
-import { analyticsIdsFromEnv, cleanIds, hasAnyTag, type AnalyticsIds } from "@/lib/analytics/config";
-import { loadAnalytics } from "@/lib/analytics/loader";
-import { trackPageView } from "@/lib/analytics/events";
+import { useEffect } from "react";
+import { analyticsIdsFromEnv, hasAnyTag } from "@/lib/analytics/config";
+import { pauseAnalytics, startAnalytics } from "@/lib/analytics/loader";
 import { ConsentBanner } from "./ConsentBanner";
 import { useConsentState } from "./useConsent";
 
@@ -16,29 +14,19 @@ import { useConsentState } from "./useConsent";
  * - ID set → shows the cookie banner; no script and no event until the
  *   visitor presses Accept. A Do Not Track / Global Privacy Control signal
  *   counts as Reject.
- * - After Accept → starts the tags and sends a page view now and on every
- *   client-side route change.
- *
- * `ids` is for tests; the site reads the environment.
+ * - After Accept → starts the tags, which count the page view themselves,
+ *   now and on every client-side route change (see loader.ts).
  */
-export function AnalyticsProvider({ ids: idsProp }: { ids?: AnalyticsIds }) {
-  const ids = idsProp ? cleanIds(idsProp) : analyticsIdsFromEnv();
-  const { gaId, metaPixelId, gtmId } = ids;
-  const enabled = hasAnyTag(ids);
+export function AnalyticsProvider() {
+  const enabled = hasAnyTag(analyticsIdsFromEnv());
   const consent = useConsentState();
-  const pathname = usePathname();
-  const lastView = useRef<string | null>(null);
 
   useEffect(() => {
-    if (!enabled || consent !== "granted") return;
-    loadAnalytics({ gaId, metaPixelId, gtmId });
-    // One view per URL: guards React's double effect in development and a
-    // re-render that did not change the page.
-    const key = `${window.location.pathname}${window.location.search}`;
-    if (lastView.current === key) return;
-    lastView.current = key;
-    trackPageView(window.location.href);
-  }, [enabled, consent, pathname, gaId, metaPixelId, gtmId]);
+    if (!enabled || consent === "unknown") return;
+    if (consent === "granted") startAnalytics();
+    // Withdrawn in another tab while tags run here (this tab reloads on Reject).
+    else pauseAnalytics();
+  }, [enabled, consent]);
 
   return enabled ? <ConsentBanner /> : null;
 }

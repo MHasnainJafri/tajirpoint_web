@@ -1,18 +1,22 @@
 /**
  * Conversion events for Google Tag Manager (dataLayer), Google Analytics 4
  * (gtag) and the Meta Pixel (fbq). Each sink is optional — nothing happens if
- * its script is not configured.
+ * its ID is not configured.
  *
  * Privacy: events never carry personal data (no names, phones, emails or
  * free text). Only the page location, the business type slug and similar
  * coarse labels.
  *
  * Consent: every event is dropped unless the visitor accepted optional
- * cookies (see consent.ts). The tag scripts themselves are only loaded after
- * that choice (loader.ts), so this check is the second lock, not the only one.
+ * cookies (see consent.ts). With consent, the tags are started first if they
+ * are not running yet (loader.ts) — so an event fired while the page is still
+ * loading, before the tags were added, is queued behind them instead of lost.
+ *
+ * Page views are not sent from here: Google Analytics and the Meta Pixel
+ * count them themselves (see loader.ts).
  */
 
-import { analyticsAllowed } from "./consent";
+import { startAnalytics } from "./loader";
 
 declare global {
   interface Window {
@@ -40,7 +44,7 @@ function safe(fn: () => void) {
 
 /** GTM dataLayer + GA4. */
 export function trackEvent(eventName: string, params: Params = {}) {
-  if (typeof window === "undefined" || !analyticsAllowed()) return;
+  if (!startAnalytics()) return;
   const data = compact(params);
   safe(() => window.dataLayer?.push({ event: eventName, ...data }));
   safe(() => {
@@ -50,49 +54,16 @@ export function trackEvent(eventName: string, params: Params = {}) {
 
 /** Meta Pixel standard event. */
 function pixel(event: string, params: Params = {}) {
-  if (typeof window === "undefined" || typeof window.fbq !== "function" || !analyticsAllowed()) return;
+  if (!startAnalytics() || typeof window.fbq !== "function") return;
   const fbq = window.fbq;
   safe(() => fbq("track", event, compact(params)));
 }
 
 /** Meta Pixel custom event. */
 function pixelCustom(event: string, params: Params = {}) {
-  if (typeof window === "undefined" || typeof window.fbq !== "function" || !analyticsAllowed()) return;
+  if (!startAnalytics() || typeof window.fbq !== "function") return;
   const fbq = window.fbq;
   safe(() => fbq("trackCustom", event, compact(params)));
-}
-
-/**
- * One page view, to GA4 and the Meta Pixel. Sent on first load and on every
- * client-side route change. The URL is sent without its query string except
- * campaign tags (utm_*, gclid, fbclid), so nothing typed into a form or
- * passed in a link can leak into the reports.
- */
-export function trackPageView(url: string = typeof window === "undefined" ? "" : window.location.href) {
-  if (typeof window === "undefined" || !analyticsAllowed() || !url) return;
-  let location = url;
-  let path = url;
-  try {
-    const u = new URL(url, window.location.origin);
-    const kept = new URLSearchParams();
-    u.searchParams.forEach((v, k) => {
-      if (/^(utm_[a-z]+|gclid|fbclid|msclkid)$/i.test(k)) kept.set(k, v);
-    });
-    const query = kept.toString();
-    path = u.pathname;
-    location = `${u.origin}${u.pathname}${query ? `?${query}` : ""}`;
-  } catch {
-    // keep the raw value
-  }
-  safe(() => {
-    if (typeof window.gtag === "function")
-      window.gtag("event", "page_view", {
-        page_location: location,
-        page_path: path,
-        page_title: typeof document === "undefined" ? undefined : document.title,
-      });
-  });
-  pixel("PageView");
 }
 
 /** The free-plan offer, as one label for every event that mentions it. */
