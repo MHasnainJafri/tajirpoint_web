@@ -1,5 +1,5 @@
 import { analyticsIdsFromEnv, type AnalyticsIds } from "./config";
-import { analyticsAllowed } from "./consent";
+import { analyticsAllowed, onConsentWithdrawn } from "./consent";
 
 /**
  * Starts the configured tags. This is the single place a third-party tracking
@@ -190,6 +190,9 @@ export function pauseAnalytics() {
   if (started.gaId || started.gtmId) window.gtag?.("consent", "update", googleConsent("denied"));
   if (started.metaPixelId) window.fbq?.("consent", "revoke");
 }
+
+// Reject on this page: stop the tags before their cookies are deleted.
+onConsentWithdrawn(pauseAnalytics);
 
 /** For tests only. */
 export function resetLoaderForTests() {

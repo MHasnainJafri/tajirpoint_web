@@ -153,10 +153,18 @@ export function openConsentPrompt() {
 const defaultReload = () => window.location.reload();
 let reloadPage = defaultReload;
 
+/** Run first when consent is withdrawn on this page; loader.ts stops the running tags here. */
+const withdrawHandlers = new Set<() => void>();
+
+export function onConsentWithdrawn(handler: () => void) {
+  withdrawHandlers.add(handler);
+}
+
 /**
  * Save the visitor's choice. Withdrawing consent after tags already loaded
- * deletes their cookies and reloads the page: the scripts cannot be unloaded,
- * and a fresh page is the only way to be sure none of them keeps running.
+ * stops them, deletes their cookies and reloads the page — in that order, so
+ * a tag cannot write its cookie back. The scripts cannot be unloaded, and a
+ * fresh page is the only way to be sure none of them keeps running.
  */
 export function setConsent(choice: ConsentChoice) {
   const before = currentConsent();
@@ -172,6 +180,13 @@ export function setConsent(choice: ConsentChoice) {
   promptOpen = false;
   emit();
   if (before === "granted" && choice === "denied" && typeof window !== "undefined") {
+    for (const stop of withdrawHandlers) {
+      try {
+        stop();
+      } catch {
+        // A tag that will not stop is still cut off by the reload below.
+      }
+    }
     clearTrackingCookies();
     try {
       reloadPage();

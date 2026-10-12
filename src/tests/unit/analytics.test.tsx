@@ -450,6 +450,12 @@ describe("withdrawing consent", () => {
       document.cookie = `${name}=x; path=/`;
     }
     const before = gtagCalls().length;
+    const gaOff = () => (window as unknown as Record<string, unknown>)[`ga-disable-${GA}`];
+    // What the page looked like at the moment it reloaded.
+    let atReload: { gaOff: unknown; pixel: string | undefined; cookies: unknown[] } | undefined;
+    reload.mockImplementationOnce(() => {
+      atReload = { gaOff: gaOff(), pixel: pixelCalls().at(-1), cookies: cookieNames() };
+    });
 
     fireEvent.click(screen.getByRole("button", { name: "Change cookie choices" }));
     fireEvent.click(screen.getByRole("button", { name: "Reject non-essential" }));
@@ -458,6 +464,9 @@ describe("withdrawing consent", () => {
     expect(currentConsent()).toBe("denied");
     expect(cookieNames()).toEqual(["NEXT_LOCALE"]);
     expect(reload).toHaveBeenCalledTimes(1);
+    // The tags were already switched off and their cookies gone before the
+    // reload, so nothing could write a cookie back on the way out.
+    expect(atReload).toEqual({ gaOff: true, pixel: "consent:revoke", cookies: ["NEXT_LOCALE"] });
     expect(gtagEvents()).toEqual([]);
     // Only the consent update was added — no event.
     expect(gtagCalls().slice(before)).toEqual([["consent", "update", ALL("denied")]]);

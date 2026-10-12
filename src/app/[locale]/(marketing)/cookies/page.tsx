@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { LegalPage, LegalSection, MailLink, defineSections } from "@/components/legal/LegalPage";
 import { legal } from "@/lib/config/site";
 import { CookieChoicesButton } from "@/components/analytics/CookieChoicesButton";
+import { CONSENT_STORAGE_KEY } from "@/lib/analytics/consent";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export async function generateMetadata({
@@ -50,6 +51,12 @@ const NECESSARY: CookieRow[] = [
       "Remembers the utm_source, utm_medium, utm_campaign and utm_content you arrived with during your visit, so a demo request can be linked to the ad or link that brought you.",
     kind: "Session storage · cleared when you close the tab",
   },
+  {
+    name: CONSENT_STORAGE_KEY,
+    purpose:
+      "Remembers whether you accepted or rejected optional cookies, and when, so we do not ask again on every page.",
+    kind: "Local storage · strictly necessary",
+  },
 ];
 
 const ANALYTICS: CookieRow[] = [
@@ -62,6 +69,12 @@ const ANALYTICS: CookieRow[] = [
     name: "_gid",
     purpose: "Google Analytics — distinguishes visitors over a short period.",
     kind: "Cookie · analytics",
+  },
+  {
+    name: "_gcl_*",
+    purpose:
+      "Google — links a visit to the Google ad that was clicked, when our advertising account is connected.",
+    kind: "Cookie · advertising",
   },
   {
     name: "_fbp, _fbc",
@@ -91,6 +104,9 @@ export default async function CookiesPage({ params }: { params: Promise<{ locale
   return (
     <LegalPage
       title="Cookie Policy"
+      // This page changed after the shared legal date: it now describes the
+      // cookie banner. Update this when the cookies described here change.
+      badge={<>Last updated: 12 October 2026</>}
       toc={Object.values(S)}
       intro={
         <p>
@@ -147,7 +163,8 @@ export default async function CookiesPage({ params }: { params: Promise<{ locale
           Analytics nor the Meta Pixel is loaded until you press Accept. If you press Reject
           non-essential, or your browser sends a Do Not Track or Global Privacy Control signal and
           you have not accepted, they are never loaded. Your choice is kept in your browser&apos;s
-          local storage, and you can change your mind at any time.
+          local storage, and you can change your mind at any time. If you reject after accepting, we
+          delete the analytics and advertising cookies from your browser and reload the page.
         </p>
         <CookieChoicesButton />
       </LegalSection>
