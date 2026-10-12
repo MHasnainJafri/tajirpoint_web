@@ -1,7 +1,11 @@
 /**
- * Analytics and conversion event telemetry for TajirPoint.
- * Dispatches events safely across Google Analytics (gtag), GTM (dataLayer),
- * and Meta Pixel (fbq) if configured.
+ * Conversion events for Google Tag Manager (dataLayer), Google Analytics 4
+ * (gtag) and the Meta Pixel (fbq). Each sink is optional — nothing happens if
+ * its script is not configured.
+ *
+ * Privacy: events never carry personal data (no names, phones, emails or
+ * free text). Only the page location, the business type slug and similar
+ * coarse labels.
  */
 
 declare global {
@@ -12,76 +16,93 @@ declare global {
   }
 }
 
-export function trackEvent(eventName: string, params: Record<string, unknown> = {}) {
-  if (typeof window === "undefined") return;
+type Params = Record<string, string | number | boolean | undefined>;
 
+function compact(params: Params): Record<string, string | number | boolean> {
+  const out: Record<string, string | number | boolean> = {};
+  for (const [k, v] of Object.entries(params)) if (v !== undefined && v !== "") out[k] = v;
+  return out;
+}
+
+function safe(fn: () => void) {
   try {
-    // 1. Google Tag Manager dataLayer
-    if (window.dataLayer) {
-      window.dataLayer.push({
-        event: eventName,
-        ...params,
-      });
-    }
-
-    // 2. Google Analytics 4 (gtag)
-    if (typeof window.gtag === "function") {
-      window.gtag("event", eventName, params);
-    }
-
-    // 3. Meta (Facebook/Instagram) Pixel
-    if (typeof window.fbq === "function") {
-      window.fbq("trackCustom", eventName, params);
-    }
+    fn();
   } catch (error) {
-    if (process.env.NODE_ENV === "development") {
-      console.warn(`[Analytics] Failed to track event: ${eventName}`, error);
-    }
+    if (process.env.NODE_ENV === "development") console.warn("[analytics]", error);
   }
 }
 
-/** Track user converting on primary trial sign-up CTA */
-export function trackTrialSignupClick(location: string) {
-  trackEvent("lead_trial_signup", {
-    event_category: "Conversion",
-    event_label: location,
+/** GTM dataLayer + GA4. */
+export function trackEvent(eventName: string, params: Params = {}) {
+  if (typeof window === "undefined") return;
+  const data = compact(params);
+  safe(() => window.dataLayer?.push({ event: eventName, ...data }));
+  safe(() => {
+    if (typeof window.gtag === "function") window.gtag("event", eventName, data);
   });
-
-  if (typeof window !== "undefined" && typeof window.fbq === "function") {
-    window.fbq("track", "Lead", { content_name: "14_day_trial", content_category: location });
-  }
 }
 
-/** Track merchant booking a product walkthrough demo */
+/** Meta Pixel standard event. */
+function pixel(event: string, params: Params = {}) {
+  if (typeof window === "undefined" || typeof window.fbq !== "function") return;
+  const fbq = window.fbq;
+  safe(() => fbq("track", event, compact(params)));
+}
+
+/** Meta Pixel custom event. */
+function pixelCustom(event: string, params: Params = {}) {
+  if (typeof window === "undefined" || typeof window.fbq !== "function") return;
+  const fbq = window.fbq;
+  safe(() => fbq("trackCustom", event, compact(params)));
+}
+
+/** The free-plan offer, as one label for every event that mentions it. */
+export const OFFER_LABEL = "light_free_3_months";
+
+/** Click on any "Start free" link (to the app's sign-up). */
+export function trackSignupClick(location: string) {
+  trackEvent("sign_up_click", { location, offer: OFFER_LABEL });
+  pixelCustom("StartFreeClick", { content_name: OFFER_LABEL, content_category: location });
+}
+
+/** Click on a "Book a demo" link — the visit, not the booking. */
 export function trackBookDemoClick(location: string) {
-  trackEvent("book_demo_click", {
-    event_category: "Conversion",
-    event_label: location,
-  });
-
-  if (typeof window !== "undefined" && typeof window.fbq === "function") {
-    window.fbq("track", "Schedule", { content_name: "book_demo", content_category: location });
-  }
+  trackEvent("book_demo_click", { location });
 }
 
-/** Track merchant initiating conversation via WhatsApp */
-export function trackWhatsAppInquiry(location: string) {
-  trackEvent("whatsapp_inquiry_click", {
-    event_category: "Lead",
-    event_label: location,
-  });
-
-  if (typeof window !== "undefined" && typeof window.fbq === "function") {
-    window.fbq("track", "Contact", { content_name: "whatsapp", content_category: location });
-  }
+/** Click on any WhatsApp link. */
+export function trackWhatsAppClick(location: string) {
+  trackEvent("whatsapp_click", { location });
+  pixel("Contact", { content_name: "whatsapp", content_category: location });
 }
 
-/** Track interest in specific industry vertical */
-export function trackVerticalInterest(
-  vertical: "restaurants" | "retail" | "distributors" | "pharmacies" | "electronics" | "services"
-) {
-  trackEvent("view_vertical_solution", {
-    event_category: "Engagement",
-    vertical,
+/** Demo form submitted and stored — fire on success only. */
+export function trackDemoRequest(details: {
+  businessType: string;
+  wantsMigration: boolean;
+  branches: string;
+}) {
+  const businessType = details.businessType || "unknown";
+  trackEvent("generate_lead", {
+    form: "demo_request",
+    business_type: businessType,
+    wants_migration: details.wantsMigration,
+    branches: details.branches || "unknown",
   });
+  trackEvent("demo_request_submitted", { business_type: businessType });
+  pixel("Lead", { content_name: "demo_request", content_category: businessType });
+  pixel("Schedule", { content_name: "demo_request", content_category: businessType });
+}
+
+/** Contact form sent — fire on success only. */
+export function trackContactSubmit(details: { businessType: string }) {
+  const businessType = details.businessType || "unknown";
+  trackEvent("generate_lead", { form: "contact", business_type: businessType });
+  pixel("Contact", { content_name: "contact_form", content_category: businessType });
+}
+
+/** A business page was viewed (for ad audiences per business type). */
+export function trackBusinessView(slug: string) {
+  trackEvent("view_business_page", { business_type: slug });
+  pixel("ViewContent", { content_name: "business_page", content_category: slug });
 }

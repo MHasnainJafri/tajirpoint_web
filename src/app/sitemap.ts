@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
 import { localeUrl } from "@/lib/seo/metadata";
 import { RESOURCES } from "@/lib/docs/nav";
+import { BUSINESS_SLUGS } from "@/lib/marketing/businesses";
 
 type Page = {
   path: string;
@@ -29,15 +30,18 @@ const DOCS_PAGES: Page[] = [
   ),
 ];
 
+const BUSINESS_PAGES: Page[] = [
+  { path: "/business", priority: 0.9, changeFrequency: "weekly" },
+  ...BUSINESS_SLUGS.map(
+    (slug): Page => ({ path: `/business/${slug}`, priority: 0.9, changeFrequency: "monthly" })
+  ),
+];
+
 const PAGES: Page[] = [
   { path: "/", priority: 1.0, changeFrequency: "weekly" },
   { path: "/pricing", priority: 0.9, changeFrequency: "monthly" },
-  { path: "/solutions", priority: 0.9, changeFrequency: "weekly" },
-  { path: "/solutions/general-retail", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/solutions/restaurants", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/solutions/electronics", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/solutions/services", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/solutions/distributors", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/book-demo", priority: 0.9, changeFrequency: "monthly" },
+  ...BUSINESS_PAGES,
   { path: "/extensions", priority: 0.8, changeFrequency: "monthly" },
   { path: "/features/khata", priority: 0.8, changeFrequency: "monthly" },
   { path: "/features/offline", priority: 0.8, changeFrequency: "monthly" },
@@ -47,12 +51,12 @@ const PAGES: Page[] = [
   ...DOCS_PAGES,
   { path: "/about", priority: 0.7, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.7, changeFrequency: "monthly" },
-  { path: "/book-demo", priority: 0.6, changeFrequency: "monthly" },
   { path: "/security", priority: 0.5, changeFrequency: "monthly" },
-  { path: "/data-security", priority: 0.5, changeFrequency: "monthly" },
-  { path: "/data-privacy", priority: 0.5, changeFrequency: "monthly" },
   { path: "/privacy", priority: 0.4, changeFrequency: "yearly" },
   { path: "/terms", priority: 0.4, changeFrequency: "yearly" },
+  { path: "/cookies", priority: 0.3, changeFrequency: "yearly" },
+  { path: "/refund-policy", priority: 0.3, changeFrequency: "yearly" },
+  { path: "/delete-account", priority: 0.3, changeFrequency: "yearly" },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

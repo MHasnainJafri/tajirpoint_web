@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/media.mjs && next dev",
+    "build": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/media.mjs && next build",
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -15,7 +15,8 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "analyze": "ANALYZE=true next build",
-    "prepare": "husky"
+    "prepare": "husky",
+    "media:docs": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/media.mjs --docs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",

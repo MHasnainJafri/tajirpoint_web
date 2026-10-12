@@ -1,7 +1,24 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
-import { Database, Globe, Lock, ShieldCheck, TriangleAlert, Users } from "lucide-react";
-import { PillBadge } from "@/components/design/primitives";
+import {
+  CreditCard,
+  DatabaseBackup,
+  History,
+  KeyRound,
+  Lock,
+  ServerCog,
+  UserCog,
+  WifiOff,
+} from "lucide-react";
+import { Link } from "@/i18n/navigation";
+import {
+  LegalPage,
+  LegalSection,
+  MailLink,
+  WhatsAppLink,
+  defineSections,
+} from "@/components/legal/LegalPage";
+import { legal } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export async function generateMetadata({
@@ -11,9 +28,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "Security — How We Protect Your Business Data",
+    title: "Security",
     description:
-      "AES-256 encryption, zero-trust access, 99.9%% uptime SLA and responsible disclosure. Enterprise-grade protection for every merchant.",
+      "How TajirPoint protects your business data: encrypted connections, hashed passwords, per-user logins and roles, activity logs, backups, offline selling and responsible disclosure.",
     path: "/security",
     locale,
   });
@@ -21,112 +38,146 @@ export async function generateMetadata({
 
 const MEASURES = [
   {
-    icon: <Lock size={22} strokeWidth={1.8} />,
-    title: "Encryption at rest",
-    body: "All stored data — transaction records, customer data, inventory — is encrypted with AES-256. Encryption keys rotate every 90 days.",
+    icon: Lock,
+    title: "Encrypted connections",
+    body: "Traffic between your devices, our apps and our servers travels over HTTPS/TLS.",
   },
   {
-    icon: <Globe size={22} strokeWidth={1.8} />,
-    title: "TLS 1.3 in transit",
-    body: "All data moving between your device and our servers is encrypted with TLS 1.3. Older protocol versions are disabled.",
+    icon: KeyRound,
+    title: "Hashed passwords",
+    body: "Passwords are stored as one-way hashes, never in plain text.",
   },
   {
-    icon: <ShieldCheck size={22} strokeWidth={1.8} />,
-    title: "Trusted cloud infrastructure",
-    body: "We host on AWS data centres and build our security practices to align with industry standards such as SOC 2 and ISO 27001.",
+    icon: UserCog,
+    title: "Per-user logins and roles",
+    body: "Every staff member gets their own login. Role-based permissions decide what each person can see and do.",
   },
   {
-    icon: <Users size={22} strokeWidth={1.8} />,
-    title: "Role-based access control",
-    body: "Granular permissions per user and branch. Cashiers see only the register. Managers see their branch. Owners see everything.",
+    icon: History,
+    title: "Activity logs",
+    body: "Key business actions are recorded in activity and audit logs, so you can see who did what.",
   },
   {
-    icon: <TriangleAlert size={22} strokeWidth={1.8} />,
-    title: "Vulnerability disclosure",
-    body: "We run a responsible disclosure programme. Security researchers can report vulnerabilities to security@tajirpoint.com.",
+    icon: DatabaseBackup,
+    title: "Regular backups",
+    body: "We back up data regularly so it can be recovered if something goes wrong.",
   },
   {
-    icon: <Database size={22} strokeWidth={1.8} />,
-    title: "Daily backups",
-    body: "Your data is backed up daily to geographically separate AWS regions. Backups are retained for 30 days and can be restored on request.",
+    icon: ServerCog,
+    title: "Limited production access",
+    body: "Access to production systems is limited to authorised personnel who need it.",
+  },
+  {
+    icon: WifiOff,
+    title: "Keeps selling offline",
+    body: "The point of sale can keep recording sales during an internet outage and syncs them when the connection returns.",
+  },
+  {
+    icon: CreditCard,
+    title: "We don't store card numbers",
+    body: "Card payments are handled by Lemon Squeezy for subscriptions, or by the payment gateway a merchant connects.",
   },
 ];
+
+const S = defineSections({
+  payments: "How payments are handled",
+  "your-data": "Your data: export and deletion",
+  "your-part": "What you can do",
+  disclosure: "Reporting a vulnerability",
+  incidents: "If something goes wrong",
+});
 
 export default async function SecurityPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
 
   return (
-    <div className="min-h-screen bg-[var(--color-bg)]">
-      {/* Hero */}
-      <section className="relative overflow-hidden pb-16 pt-[150px] lg:pb-20">
-        <div
-          className="pointer-events-none absolute left-1/2 top-[-320px] h-[640px] w-[1100px] -translate-x-1/2"
-          style={{
-            background: "radial-gradient(ellipse at center,rgba(0,210,122,.15),transparent 60%)",
-          }}
-        />
-        <div className="relative mx-auto max-w-[1320px] px-7 lg:px-10">
-          <PillBadge>Security</PillBadge>
-          <h1 className="mt-6 max-w-[700px] text-[clamp(40px,5.4vw,64px)] font-extrabold leading-[1.04] tracking-[-0.035em] text-[var(--color-ink)]">
-            Your data is safe
-            <br />
-            with us.
-          </h1>
-          <p className="mt-5 max-w-[520px] text-[17.5px] leading-[1.65] text-[var(--color-muted)]">
-            Security isn't a feature — it's foundational. Here's how we protect your business data,
-            your customers, and your transactions.
-          </p>
-        </div>
-      </section>
-
-      {/* Measures */}
-      <section className="pb-20 lg:pb-28">
-        <div className="mx-auto max-w-[1320px] px-7 lg:px-10">
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {MEASURES.map((m) => (
-              <div
-                key={m.title}
-                className="rounded-[20px] border border-[var(--color-line)] bg-white/[0.025] p-7 transition-colors hover:border-[var(--color-line-2)] hover:bg-white/[0.04]"
-              >
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-[10px] bg-[var(--color-mint-soft)] text-[var(--color-mint)] ring-1 ring-[var(--color-mint-line)]">
-                  {m.icon}
-                </div>
-                <h3 className="mb-2 text-[15px] font-bold text-[var(--color-ink)]">{m.title}</h3>
-                <p className="text-[13.5px] leading-[1.6] text-[var(--color-muted)]">{m.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Report vulnerability */}
-      <section className="border-t border-[var(--color-line)] bg-[var(--color-bg-2)] py-16">
-        <div className="mx-auto max-w-[1320px] px-7 lg:px-10">
-          <div className="max-w-[640px]">
-            <h2 className="mb-4 text-[24px] font-extrabold tracking-[-0.025em] text-[var(--color-ink)]">
-              Found a vulnerability?
+    <LegalPage
+      title="Security at TajirPoint"
+      intro={
+        <p>
+          Your sales, stock and customer records are the heart of your business. This page explains,
+          plainly, what we do to protect them — and what we don’t claim. We take reasonable
+          technical and organisational measures, but no system is 100% secure.
+        </p>
+      }
+    >
+      <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        {MEASURES.map(({ icon: Icon, title, body }) => (
+          <li
+            key={title}
+            className="rounded-[20px] border border-[var(--color-line-2)] bg-[var(--color-bg-2)] p-5 sm:p-6"
+          >
+            <span className="flex h-10 w-10 items-center justify-center rounded-[10px] bg-[var(--color-mint-soft)] text-[var(--color-mint-2)]">
+              <Icon size={20} strokeWidth={1.8} aria-hidden />
+            </span>
+            <h2 className="mt-4 text-[16px] font-bold tracking-[-0.01em] text-[var(--color-ink)]">
+              {title}
             </h2>
-            <p className="mb-6 text-[15.5px] leading-[1.65] text-[var(--color-muted)]">
-              We take security reports seriously. If you've found a potential vulnerability, please
-              disclose it responsibly — email us at{" "}
-              <a
-                href="mailto:security@tajirpoint.com"
-                className="font-semibold text-[var(--color-mint-2)] underline-offset-4 hover:underline"
-              >
-                security@tajirpoint.com
-              </a>
-              . We'll acknowledge within 24 hours and keep you informed throughout the resolution
-              process.
-            </p>
-            <p className="text-[13.5px] leading-[1.6] text-[var(--color-muted-2)]">
-              Please do not disclose vulnerabilities publicly until we've had a reasonable
-              opportunity to address them. We do not pursue legal action against good-faith security
-              researchers.
-            </p>
-          </div>
-        </div>
-      </section>
-    </div>
+            <p className="mt-2 text-[14.5px] leading-[1.6] text-[var(--color-body)]">{body}</p>
+          </li>
+        ))}
+      </ul>
+
+      <LegalSection {...S.payments}>
+        <p>
+          {legal.product} does not store full card numbers. Online card payments for {legal.product}{" "}
+          subscriptions are processed by Lemon Squeezy, which acts as the merchant of record. When a
+          merchant connects a payment gateway (for example Stripe or PayPal) to take payments from
+          its own customers, the card details are handled by that gateway.
+        </p>
+      </LegalSection>
+
+      <LegalSection {...S["your-data"]}>
+        <ul>
+          <li>
+            You can export your data at any time from the export tools in the app — including when
+            your account is read-only — or ask us at <MailLink />.
+          </li>
+          <li>
+            To close your account and have your data deleted, see{" "}
+            <Link href="/delete-account">how to delete your account</Link>.
+          </li>
+          <li>
+            How we collect, use and share personal data is explained in our{" "}
+            <Link href="/privacy">Privacy Policy</Link>.
+          </li>
+        </ul>
+      </LegalSection>
+
+      <LegalSection {...S["your-part"]}>
+        <ul>
+          <li>Give each staff member their own login — never share passwords.</li>
+          <li>Give people only the role and permissions they need, and remove leavers promptly.</li>
+          <li>Use a strong, unique password for your owner account.</li>
+          <li>Let offline sales sync before clearing browser data or resetting a device.</li>
+          <li>
+            Tell us straight away at <MailLink subject="Security" /> if you think someone has
+            accessed your account.
+          </li>
+        </ul>
+      </LegalSection>
+
+      <LegalSection {...S.disclosure}>
+        <p>
+          If you find a security vulnerability in {legal.product}, please email{" "}
+          <MailLink subject="Security" /> with the subject “Security” and enough detail for us to
+          reproduce it. We will acknowledge your report and work with you to fix it.
+        </p>
+        <p>
+          Please act in good faith: do not access, change or delete other people’s data, do not
+          disrupt the service, and give us a reasonable chance to fix the issue before sharing it
+          publicly. We do not currently run a paid bug bounty.
+        </p>
+      </LegalSection>
+
+      <LegalSection {...S.incidents}>
+        <p>
+          If a security incident affects merchants’ personal data, we will investigate, take steps
+          to contain it, and notify affected merchants without undue delay where the law requires.
+          You can reach us any time at <MailLink /> or on WhatsApp at <WhatsAppLink />.
+        </p>
+      </LegalSection>
+    </LegalPage>
   );
 }

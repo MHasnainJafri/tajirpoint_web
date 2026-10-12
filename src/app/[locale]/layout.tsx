@@ -11,6 +11,7 @@ import { siteConfig } from "@/lib/config/site";
 import { localeAlternates } from "@/lib/seo/metadata";
 import { routing, isRtl, type Locale } from "@/i18n/routing";
 import { AnalyticsProvider } from "@/components/analytics/AnalyticsProvider";
+import { SiteTracking } from "@/components/analytics/SiteTracking";
 
 export const viewport: Viewport = {
   themeColor: [
@@ -141,16 +142,13 @@ export default async function LocaleLayout({
     .filter(Boolean)
     .join(" ");
 
-  // Only the namespaces that client components actually read. Nav and
-  // ExtensionGrid are the only "use client" trees using translations, between
-  // them covering nav/extensions/solutions. Passing the whole catalogue shipped
-  // every string in `landing`, `footer` and `common` into the RSC payload of
-  // every page for nothing.
+  // Only the namespaces that client components actually read: Nav (nav,
+  // extensions.items) and ExtensionGrid (extensions). Passing the whole
+  // catalogue shipped every string into the RSC payload of every page.
   const messages = await getMessages();
   const clientMessages = {
     nav: messages.nav,
     extensions: messages.extensions,
-    solutions: messages.solutions,
   };
 
   return (
@@ -170,12 +168,11 @@ export default async function LocaleLayout({
         />
         {/* Warm up connections to external domains hit on first meaningful interaction */}
         <link rel="preconnect" href="https://app.tajirpoint.com" />
-        <link rel="preconnect" href="https://calendly.com" />
-        <link rel="dns-prefetch" href="https://calendly.com" />
         <JsonLd schema={[organizationSchema(), websiteSchema()]} />
       </head>
       <body className="min-h-screen bg-[var(--color-bg)] text-[var(--color-ink)]">
         <AnalyticsProvider />
+        <SiteTracking />
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>

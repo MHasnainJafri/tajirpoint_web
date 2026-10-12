@@ -12,6 +12,8 @@ import { Extensions } from "@/components/marketing/landing/Extensions";
 import { Pricing } from "@/components/marketing/landing/Pricing";
 import { Faq } from "@/components/marketing/landing/Faq";
 import { FinalCta } from "@/components/marketing/landing/FinalCta";
+import { FindYourBusiness } from "@/components/marketing/landing/FindYourBusiness";
+import { MigrationBand } from "@/components/marketing/business/MigrationBand";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { softwareApplicationSchema, faqSchema } from "@/lib/seo/schemas";
 import { getPricing } from "@/lib/api/plans";
@@ -69,10 +71,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     <>
       <JsonLd schema={[softwareApplicationSchema(pricing?.plans), faqSchema(faqQuestions)]} />
 
-      {/* Narrative order: the pitch and today's numbers → what it replaces →
+      {/* Narrative order: the pitch and today's numbers → find your business →
+          what it replaces →
           who it's for (real shop photography) → the five things it does differently →
           vertical trade screens → unified surfaces (counter, back office, online) →
-          the full back office → where it runs → extensions marketplace → price → FAQ.
+          the full back office → where it runs → extensions marketplace → switching
+          is free → price → FAQ.
 
           `overflow-x: clip` (not hidden) contains the hero's decorative circles
           without creating a scroll container, so `position: sticky` on the nav
@@ -83,6 +87,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         style={{ overflowX: "clip" }}
       >
         <Hero />
+        <FindYourBusiness />
         <Replaces />
         <WhoItsFor />
         <Signature />
@@ -91,6 +96,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <Pillars />
         <Platforms />
         <Extensions />
+        <div className="mt-[clamp(64px,9vw,120px)]">
+          <MigrationBand />
+        </div>
         <Pricing />
         <Faq />
       </div>

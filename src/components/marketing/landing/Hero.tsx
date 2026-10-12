@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { siteConfig } from "@/lib/config/site";
 import { Stroke } from "./Stroke";
 import { HeroTillMock } from "./HeroTillMock";
 import { HERO_BARS, HERO_BAR_PEAK, HERO_PORTAL_ROWS, DEMO } from "@/lib/design/landing";
@@ -46,22 +47,22 @@ export function Hero() {
 
           <p className="mt-3 max-w-[54ch] text-[15px] leading-[1.65] text-[#B5B9C2]">{t("sub")}</p>
 
-          <div className="mt-[26px] flex flex-wrap items-center gap-[10px]">
-            <Link
-              href="/pricing"
+          <div className="mt-[26px] flex flex-wrap items-center gap-[10px]" data-track="hero">
+            <a
+              href={siteConfig.signupUrl}
               className="inline-flex items-center gap-[10px] whitespace-nowrap rounded-full bg-[var(--color-mint)] py-3 pl-[22px] pr-3 text-[14px] font-bold text-[#0A0A0A] transition-[transform,box-shadow] duration-[250ms] hover:-translate-y-[2px] hover:shadow-[0_14px_30px_rgba(0,210,122,.35)] motion-safe:animate-[tpPulseGlow_4s_ease-in-out_infinite]"
             >
               {t("ctaPrimary")}
               <span className="grid h-[26px] w-[26px] place-items-center rounded-full bg-[#0A0A0A] text-[var(--color-mint)]">
                 <Stroke name="arrowRight" size={14} width={2.2} />
               </span>
-            </Link>
-            <a
-              href="#product"
+            </a>
+            <Link
+              href="/book-demo"
               className="whitespace-nowrap rounded-full border border-white/[0.22] px-[22px] py-3 text-[14px] font-semibold text-white transition-all duration-[250ms] hover:border-white/40 hover:bg-white/10"
             >
               {t("ctaSecondary")}
-            </a>
+            </Link>
           </div>
 
           <div className="mt-[14px] text-[12px] text-[#8A8F98]">{t("note")}</div>

@@ -184,7 +184,7 @@ export const SOLUTIONS = [
   {
     id: "retail",
     icon: "cart",
-    href: "/solutions/general-retail",
+    href: "/business/grocery-kiryana",
     screen: "Counter · Northgate Market",
     rows: [
       { a: "Rice 5 kg", b: "1 case = 20 × 5 kg · sells by kg", c: "$3.40 / kg" },
@@ -199,7 +199,7 @@ export const SOLUTIONS = [
   {
     id: "restaurants",
     icon: "utensils",
-    href: "/solutions/restaurants",
+    href: "/business/restaurants",
     screen: "Floor · Table 07",
     rows: [
       {
@@ -214,7 +214,7 @@ export const SOLUTIONS = [
   {
     id: "electronics",
     icon: "phone",
-    href: "/solutions/electronics",
+    href: "/business/electronics-mobile",
     screen: "Serials · Galaxy A15",
     rows: [
       { a: "IMEI 35-882109-•••-4", b: "Sold 12 Mar · warranty to 12 Mar 2027", c: "Active" },
@@ -225,7 +225,7 @@ export const SOLUTIONS = [
   {
     id: "pharmacies",
     icon: "pill",
-    href: "/solutions",
+    href: "/business/pharmacy",
     screen: "Stock · Batch alerts",
     rows: [
       {
@@ -240,7 +240,7 @@ export const SOLUTIONS = [
   {
     id: "distribution",
     icon: "truck",
-    href: "/solutions/distributors",
+    href: "/business/distributors-wholesale",
     screen: "Trip TRP-0418 · VAN-4471",
     rows: [
       { a: "Route Midtown → Riverside", b: "14 / 18 stops · 3 credit sales", c: "$842.00 cash" },
@@ -251,7 +251,7 @@ export const SOLUTIONS = [
   {
     id: "services",
     icon: "scissors",
-    href: "/solutions/services",
+    href: "/business/salons-services",
     screen: "Appointments · Saturday",
     rows: [
       { a: "Hair & beard · J. Rivera", b: "4:30 pm · Stylist Alex · commission 20%", c: "$15.00" },
