@@ -1,12 +1,22 @@
 /**
  * Conversion events for Google Tag Manager (dataLayer), Google Analytics 4
  * (gtag) and the Meta Pixel (fbq). Each sink is optional — nothing happens if
- * its script is not configured.
+ * its ID is not configured.
  *
  * Privacy: events never carry personal data (no names, phones, emails or
  * free text). Only the page location, the business type slug and similar
  * coarse labels.
+ *
+ * Consent: every event is dropped unless the visitor accepted optional
+ * cookies (see consent.ts). With consent, the tags are started first if they
+ * are not running yet (loader.ts) — so an event fired while the page is still
+ * loading, before the tags were added, is queued behind them instead of lost.
+ *
+ * Page views are not sent from here: Google Analytics and the Meta Pixel
+ * count them themselves (see loader.ts).
  */
+
+import { startAnalytics } from "./loader";
 
 declare global {
   interface Window {
@@ -34,7 +44,7 @@ function safe(fn: () => void) {
 
 /** GTM dataLayer + GA4. */
 export function trackEvent(eventName: string, params: Params = {}) {
-  if (typeof window === "undefined") return;
+  if (!startAnalytics()) return;
   const data = compact(params);
   safe(() => window.dataLayer?.push({ event: eventName, ...data }));
   safe(() => {
@@ -44,14 +54,14 @@ export function trackEvent(eventName: string, params: Params = {}) {
 
 /** Meta Pixel standard event. */
 function pixel(event: string, params: Params = {}) {
-  if (typeof window === "undefined" || typeof window.fbq !== "function") return;
+  if (!startAnalytics() || typeof window.fbq !== "function") return;
   const fbq = window.fbq;
   safe(() => fbq("track", event, compact(params)));
 }
 
 /** Meta Pixel custom event. */
 function pixelCustom(event: string, params: Params = {}) {
-  if (typeof window === "undefined" || typeof window.fbq !== "function") return;
+  if (!startAnalytics() || typeof window.fbq !== "function") return;
   const fbq = window.fbq;
   safe(() => fbq("trackCustom", event, compact(params)));
 }
@@ -63,6 +73,26 @@ export const OFFER_LABEL = "light_free_3_months";
 export function trackSignupClick(location: string) {
   trackEvent("sign_up_click", { location, offer: OFFER_LABEL });
   pixelCustom("StartFreeClick", { content_name: OFFER_LABEL, content_category: location });
+}
+
+/**
+ * A plan's button on a pricing card was clicked. `plan` is the plan's name as
+ * a slug ("light", "shop"), `billing` the monthly/annual switch position.
+ */
+export function trackPlanSelected(details: {
+  plan: string;
+  billing: "monthly" | "annual";
+  location: string;
+  contactSales?: boolean;
+}) {
+  const plan = details.plan || "unknown";
+  trackEvent("select_plan", {
+    plan,
+    billing: details.billing,
+    location: details.location,
+    contact_sales: details.contactSales ?? false,
+  });
+  pixelCustom("PlanSelected", { content_name: plan, content_category: details.billing });
 }
 
 /** Click on a "Book a demo" link — the visit, not the booking. */

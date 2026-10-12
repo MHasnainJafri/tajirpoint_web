@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { Stroke, Tick } from "./Stroke";
+import { trackPlanSelected } from "@/lib/analytics/events";
 import {
   annualAmount,
   annualMonthsSaved,
@@ -129,6 +130,19 @@ function PlanCard({
       ? labels.freePeriod
       : null;
   const bullets = compact ? plan.bullets.slice(0, 3) : plan.bullets;
+  // Admin-edited names may not be Latin; the tier is the stable fallback.
+  const planSlug =
+    plan.name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "_")
+      .replace(/^_+|_+$/g, "") || plan.tier;
+  const onSelect = () =>
+    trackPlanSelected({
+      plan: planSlug,
+      billing: showYearly ? "annual" : "monthly",
+      location: compact ? "plan_teaser" : "pricing",
+      contactSales,
+    });
 
   return (
     <div
@@ -179,7 +193,8 @@ function PlanCard({
       {!contactSales ? (
         <a
           href={signupUrl}
-          data-track={`plan_${plan.name.toLowerCase().replace(/[^a-z0-9]+/g, "_")}`}
+          data-track={`plan_${planSlug}`}
+          onClick={onSelect}
           className={
             dark
               ? "relative inline-flex items-center justify-center gap-[10px] self-start rounded-full bg-[var(--color-mint)] py-3 pl-6 pr-3 text-[14px] font-bold text-[#0A0A0A] transition-transform duration-200 hover:-translate-y-[2px]"
@@ -198,6 +213,8 @@ function PlanCard({
       ) : (
         <Link
           href="/book-demo"
+          data-track={`plan_${planSlug}`}
+          onClick={onSelect}
           className="relative inline-flex items-center justify-center gap-2 self-start rounded-full border border-[var(--color-line-3)] px-5 py-3 text-[13.5px] font-semibold transition-colors duration-200 hover:bg-[var(--color-surface)]"
         >
           <Stroke name="calendar" size={16} />

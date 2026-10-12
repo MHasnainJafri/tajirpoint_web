@@ -110,8 +110,76 @@ cp .env.example .env.local
 |---|---|---|
 | `NEXT_PUBLIC_SITE_URL` | Yes | Canonical base URL (e.g. `https://tajirpoint.com`) |
 | `NEXT_PUBLIC_API_URL` | No | Backend API base URL |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | No | Google Analytics 4 measurement ID (`G-XXXXXXXXXX`). The older name `NEXT_PUBLIC_GA_ID` is still read. |
+| `NEXT_PUBLIC_META_PIXEL_ID` | No | Meta (Facebook / Instagram) Pixel ID, digits only |
+| `NEXT_PUBLIC_GTM_ID` | No | Google Tag Manager container (`GTM-XXXXXXX`). Only if tags are managed in GTM — do not also send the same GA4 property from GTM, or events count twice. |
 
 The app validates env vars at boot via `src/env.ts` — missing required vars crash the server immediately with a clear error.
+
+### Analytics, Meta Pixel and cookie consent
+
+Tracking is **off until an ID is set**. With none of the three IDs above, the
+site loads no tracking script and shows no cookie banner.
+
+**To switch it on:** add `NEXT_PUBLIC_GA_MEASUREMENT_ID` and
+`NEXT_PUBLIC_META_PIXEL_ID` in the hosting project's environment settings and
+redeploy. They are `NEXT_PUBLIC_*`, so they are baked in at **build** time — a
+restart is not enough. Numbers appear in Google Analytics (Realtime) and Meta
+Events Manager once a visitor presses Accept.
+
+With an ID set:
+
+1. A cookie banner (Accept / Reject non-essential) appears for visitors who
+   have not chosen. No script is loaded, no cookie is set and no event is sent
+   before Accept.
+2. A browser Do Not Track or Global Privacy Control signal counts as Reject
+   (no banner); the visitor can still opt in from `/cookies`. An explicit
+   Accept outranks the signal.
+3. After Accept the tags load and report:
+
+   | What | Google Analytics 4 | Meta Pixel |
+   |---|---|---|
+   | Page view (first load and every route change) | `page_view` (automatic) | `PageView` (automatic) |
+   | Demo form stored | `generate_lead` (`form: demo_request`) + `demo_request_submitted` | `Lead` + `Schedule` |
+   | Contact form sent | `generate_lead` (`form: contact`) | `Contact` |
+   | "Start free" click (to sign-up) | `sign_up_click` | `StartFreeClick` (custom) |
+   | Plan button on a pricing card | `select_plan` | `PlanSelected` (custom) |
+   | "Book a demo" click | `book_demo_click` | — |
+   | WhatsApp click | `whatsapp_click` | `Contact` |
+   | Business page viewed | `view_business_page` | `ViewContent` |
+
+   Events never carry personal data. See `src/lib/analytics/events.ts`.
+4. The choice is stored in `localStorage` (`tp_cookie_consent`); `/cookies`
+   has a "Change cookie choices" button. Rejecting after accepting deletes the
+   tags' cookies (`_ga*`, `_gid`, `_gcl_*`, `_fbp`, `_fbc`) and reloads the
+   page so no tag keeps running. A choice made in one tab applies to the
+   others.
+
+Things to know:
+
+- **Page views are the vendors' own.** GA4 sends one when it is configured and
+  one on each browser-history change; the Meta Pixel does the same. In the GA4
+  property keep _Admin → Data streams → Enhanced measurement → Page views →
+  "Page changes based on browser history events"_ **on** (it is by default),
+  or client-side navigation is not counted. The code sends no `page_view` of
+  its own — that would count every page twice.
+- **Conversions.** In GA4 mark `generate_lead` (or `demo_request_submitted`)
+  as a key event; in Meta use `Lead` / `Schedule` as the campaign's conversion
+  event.
+- **Consent signals.** Google gets Consent Mode v2 signals (`denied` by
+  default, `granted` on Accept) and the Pixel gets `consent grant`, so EU/UK
+  visitors who accept are usable for ads measurement.
+- IDs with the wrong shape are ignored rather than injected
+  (`src/lib/analytics/config.ts`).
+- The site sends no Content-Security-Policy header today
+  (`next.config.ts` has none). If one is added, allow
+  `https://www.googletagmanager.com`, `https://*.google-analytics.com`,
+  `https://*.analytics.google.com` and `https://connect.facebook.net`
+  (script-src / connect-src) and `https://www.facebook.com`
+  (img-src / connect-src).
+- To try it locally: put test IDs in `.env.local`, run `pnpm build && pnpm
+  start`, and watch the Network tab — nothing goes to Google or Facebook until
+  Accept. Unit tests: `pnpm vitest run src/tests/unit/analytics.test.tsx`.
 
 ---
 
