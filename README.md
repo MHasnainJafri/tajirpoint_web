@@ -110,8 +110,41 @@ cp .env.example .env.local
 |---|---|---|
 | `NEXT_PUBLIC_SITE_URL` | Yes | Canonical base URL (e.g. `https://tajirpoint.com`) |
 | `NEXT_PUBLIC_API_URL` | No | Backend API base URL |
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | No | Google Analytics 4 measurement ID (`G-XXXXXXXXXX`). The older name `NEXT_PUBLIC_GA_ID` is still read. |
+| `NEXT_PUBLIC_META_PIXEL_ID` | No | Meta (Facebook / Instagram) Pixel ID, digits only |
+| `NEXT_PUBLIC_GTM_ID` | No | Google Tag Manager container (`GTM-XXXXXXX`), only if GTM is used instead of / as well as GA4 |
 
 The app validates env vars at boot via `src/env.ts` — missing required vars crash the server immediately with a clear error.
+
+### Analytics, Meta Pixel and cookie consent
+
+Tracking is off until an ID is set. With none of the three IDs above, the site
+loads no tracking script and shows no cookie banner. They are `NEXT_PUBLIC_*`,
+so they are baked in at **build** time — rebuild after changing them.
+
+With an ID set:
+
+1. A cookie banner (Accept / Reject non-essential) appears for visitors who
+   have not chosen. Nothing is loaded and no event is sent before Accept.
+2. A browser Do Not Track or Global Privacy Control signal counts as Reject
+   (no banner); the visitor can still opt in from `/cookies`.
+3. After Accept: page views (first load and every route change) and these
+   events are sent — `sign_up_click`, `book_demo_click`, `whatsapp_click`,
+   `select_plan`, `generate_lead` + `demo_request_submitted` (demo form
+   stored), `generate_lead` (contact form sent), `view_business_page`. The
+   Meta Pixel gets `PageView`, `Lead`, `Schedule`, `Contact`, `ViewContent`
+   and the custom `StartFreeClick` and `PlanSelected`. Events never carry
+   personal data. See `src/lib/analytics/events.ts`.
+4. The choice is stored in `localStorage` (`tp_cookie_consent`); `/cookies`
+   has a "Change cookie choices" button. Rejecting after accepting reloads
+   the page so no tag keeps running.
+
+IDs with the wrong shape are ignored rather than injected
+(`src/lib/analytics/config.ts`). The site sends no Content-Security-Policy
+header today; if one is added, allow `https://www.googletagmanager.com`,
+`https://www.google-analytics.com`, `https://*.google-analytics.com` and
+`https://connect.facebook.net` (script-src / connect-src) and
+`https://www.facebook.com` (img-src / connect-src).
 
 ---
 

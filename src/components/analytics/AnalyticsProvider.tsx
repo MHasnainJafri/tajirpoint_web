@@ -1,74 +1,44 @@
 "use client";
 
-import Script from "next/script";
+import { useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
+import { analyticsIdsFromEnv, cleanIds, hasAnyTag, type AnalyticsIds } from "@/lib/analytics/config";
+import { loadAnalytics } from "@/lib/analytics/loader";
+import { trackPageView } from "@/lib/analytics/events";
+import { ConsentBanner } from "./ConsentBanner";
+import { useConsentState } from "./useConsent";
 
-interface AnalyticsProviderProps {
-  gaId?: string;
-  gtmId?: string;
-  metaPixelId?: string;
-}
+/**
+ * Google Analytics 4, the Meta Pixel and (optionally) Google Tag Manager,
+ * configured only by environment variables (see config.ts):
+ *
+ * - No ID set → renders nothing at all: no banner, no script.
+ * - ID set → shows the cookie banner; no script and no event until the
+ *   visitor presses Accept. A Do Not Track / Global Privacy Control signal
+ *   counts as Reject.
+ * - After Accept → starts the tags and sends a page view now and on every
+ *   client-side route change.
+ *
+ * `ids` is for tests; the site reads the environment.
+ */
+export function AnalyticsProvider({ ids: idsProp }: { ids?: AnalyticsIds }) {
+  const ids = idsProp ? cleanIds(idsProp) : analyticsIdsFromEnv();
+  const { gaId, metaPixelId, gtmId } = ids;
+  const enabled = hasAnyTag(ids);
+  const consent = useConsentState();
+  const pathname = usePathname();
+  const lastView = useRef<string | null>(null);
 
-export function AnalyticsProvider({
-  gaId = process.env.NEXT_PUBLIC_GA_ID,
-  gtmId = process.env.NEXT_PUBLIC_GTM_ID,
-  metaPixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID,
-}: AnalyticsProviderProps) {
-  return (
-    <>
-      {/* ── Google Tag Manager ─────────────────────────────────────── */}
-      {gtmId && (
-        <Script
-          id="gtm-script"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','${gtmId}');`,
-          }}
-        />
-      )}
+  useEffect(() => {
+    if (!enabled || consent !== "granted") return;
+    loadAnalytics({ gaId, metaPixelId, gtmId });
+    // One view per URL: guards React's double effect in development and a
+    // re-render that did not change the page.
+    const key = `${window.location.pathname}${window.location.search}`;
+    if (lastView.current === key) return;
+    lastView.current = key;
+    trackPageView(window.location.href);
+  }, [enabled, consent, pathname, gaId, metaPixelId, gtmId]);
 
-      {/* ── Google Analytics 4 (GA4) ───────────────────────────────── */}
-      {gaId && (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-            strategy="afterInteractive"
-          />
-          <Script
-            id="ga4-script"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', '${gaId}', { page_path: window.location.pathname });`,
-            }}
-          />
-        </>
-      )}
-
-      {/* ── Meta (Facebook & Instagram) Pixel ──────────────────────── */}
-      {metaPixelId && (
-        <Script
-          id="meta-pixel-script"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '${metaPixelId}');
-fbq('track', 'PageView');`,
-          }}
-        />
-      )}
-    </>
-  );
+  return enabled ? <ConsentBanner /> : null;
 }

@@ -143,12 +143,14 @@ export default async function LocaleLayout({
     .join(" ");
 
   // Only the namespaces that client components actually read: Nav (nav,
-  // extensions.items) and ExtensionGrid (extensions). Passing the whole
-  // catalogue shipped every string into the RSC payload of every page.
+  // extensions.items), ExtensionGrid (extensions) and the cookie banner
+  // (consent). Passing the whole catalogue shipped every string into the RSC
+  // payload of every page.
   const messages = await getMessages();
   const clientMessages = {
     nav: messages.nav,
     extensions: messages.extensions,
+    consent: messages.consent,
   };
 
   return (
@@ -171,7 +173,6 @@ export default async function LocaleLayout({
         <JsonLd schema={[organizationSchema(), websiteSchema()]} />
       </head>
       <body className="min-h-screen bg-[var(--color-bg)] text-[var(--color-ink)]">
-        <AnalyticsProvider />
         <SiteTracking />
         <a href="#main-content" className="skip-link">
           Skip to main content
@@ -179,6 +180,8 @@ export default async function LocaleLayout({
         <ThemeProvider>
           <NextIntlClientProvider locale={locale as Locale} messages={clientMessages}>
             {children}
+            {/* Inside the intl provider: its cookie banner is translated. */}
+            <AnalyticsProvider />
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

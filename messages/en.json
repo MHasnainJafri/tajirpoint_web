@@ -1059,5 +1059,19 @@
   },
   "common": {
     "skipToContent": "Skip to main content"
+  },
+  "consent": {
+    "title": "Cookies on this site",
+    "body": "We use optional analytics and advertising cookies (Google Analytics and the Meta Pixel) to see which pages and ads work. They are only set if you accept. Necessary cookies are always on.",
+    "policy": "Cookie policy",
+    "accept": "Accept",
+    "reject": "Reject non-essential",
+    "label": "Cookie choices",
+    "change": "Change cookie choices",
+    "current": {
+      "granted": "You accepted optional cookies.",
+      "denied": "You rejected optional cookies.",
+      "unset": "You have not chosen yet."
+    }
   }
 }

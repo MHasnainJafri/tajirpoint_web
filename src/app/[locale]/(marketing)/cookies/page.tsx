@@ -3,6 +3,7 @@ import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { LegalPage, LegalSection, MailLink, defineSections } from "@/components/legal/LegalPage";
 import { legal } from "@/lib/config/site";
+import { CookieChoicesButton } from "@/components/analytics/CookieChoicesButton";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export async function generateMetadata({
@@ -141,11 +142,14 @@ export default async function CookiesPage({ params }: { params: Promise<{ locale
 
       <LegalSection {...S.consent}>
         <p>
-          Strictly necessary cookies and storage do not need consent. If you visit from a region
-          whose law requires consent for analytics or advertising cookies (for example the EU or the
-          UK), we will ask for your consent before setting them, and you can change your mind at any
-          time.
+          Strictly necessary cookies and storage do not need consent. Analytics and advertising
+          cookies are optional: wherever you visit from, our website asks first, and neither Google
+          Analytics nor the Meta Pixel is loaded until you press Accept. If you press Reject
+          non-essential, or your browser sends a Do Not Track or Global Privacy Control signal and
+          you have not accepted, they are never loaded. Your choice is kept in your browser&apos;s
+          local storage, and you can change your mind at any time.
         </p>
+        <CookieChoicesButton />
       </LegalSection>
 
       <LegalSection {...S.control}>

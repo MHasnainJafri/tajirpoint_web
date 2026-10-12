@@ -6,7 +6,13 @@
  * Privacy: events never carry personal data (no names, phones, emails or
  * free text). Only the page location, the business type slug and similar
  * coarse labels.
+ *
+ * Consent: every event is dropped unless the visitor accepted optional
+ * cookies (see consent.ts). The tag scripts themselves are only loaded after
+ * that choice (loader.ts), so this check is the second lock, not the only one.
  */
+
+import { analyticsAllowed } from "./consent";
 
 declare global {
   interface Window {
@@ -34,7 +40,7 @@ function safe(fn: () => void) {
 
 /** GTM dataLayer + GA4. */
 export function trackEvent(eventName: string, params: Params = {}) {
-  if (typeof window === "undefined") return;
+  if (typeof window === "undefined" || !analyticsAllowed()) return;
   const data = compact(params);
   safe(() => window.dataLayer?.push({ event: eventName, ...data }));
   safe(() => {
@@ -44,16 +50,49 @@ export function trackEvent(eventName: string, params: Params = {}) {
 
 /** Meta Pixel standard event. */
 function pixel(event: string, params: Params = {}) {
-  if (typeof window === "undefined" || typeof window.fbq !== "function") return;
+  if (typeof window === "undefined" || typeof window.fbq !== "function" || !analyticsAllowed()) return;
   const fbq = window.fbq;
   safe(() => fbq("track", event, compact(params)));
 }
 
 /** Meta Pixel custom event. */
 function pixelCustom(event: string, params: Params = {}) {
-  if (typeof window === "undefined" || typeof window.fbq !== "function") return;
+  if (typeof window === "undefined" || typeof window.fbq !== "function" || !analyticsAllowed()) return;
   const fbq = window.fbq;
   safe(() => fbq("trackCustom", event, compact(params)));
+}
+
+/**
+ * One page view, to GA4 and the Meta Pixel. Sent on first load and on every
+ * client-side route change. The URL is sent without its query string except
+ * campaign tags (utm_*, gclid, fbclid), so nothing typed into a form or
+ * passed in a link can leak into the reports.
+ */
+export function trackPageView(url: string = typeof window === "undefined" ? "" : window.location.href) {
+  if (typeof window === "undefined" || !analyticsAllowed() || !url) return;
+  let location = url;
+  let path = url;
+  try {
+    const u = new URL(url, window.location.origin);
+    const kept = new URLSearchParams();
+    u.searchParams.forEach((v, k) => {
+      if (/^(utm_[a-z]+|gclid|fbclid|msclkid)$/i.test(k)) kept.set(k, v);
+    });
+    const query = kept.toString();
+    path = u.pathname;
+    location = `${u.origin}${u.pathname}${query ? `?${query}` : ""}`;
+  } catch {
+    // keep the raw value
+  }
+  safe(() => {
+    if (typeof window.gtag === "function")
+      window.gtag("event", "page_view", {
+        page_location: location,
+        page_path: path,
+        page_title: typeof document === "undefined" ? undefined : document.title,
+      });
+  });
+  pixel("PageView");
 }
 
 /** The free-plan offer, as one label for every event that mentions it. */
@@ -63,6 +102,26 @@ export const OFFER_LABEL = "light_free_3_months";
 export function trackSignupClick(location: string) {
   trackEvent("sign_up_click", { location, offer: OFFER_LABEL });
   pixelCustom("StartFreeClick", { content_name: OFFER_LABEL, content_category: location });
+}
+
+/**
+ * A plan's button on a pricing card was clicked. `plan` is the plan's name as
+ * a slug ("light", "shop"), `billing` the monthly/annual switch position.
+ */
+export function trackPlanSelected(details: {
+  plan: string;
+  billing: "monthly" | "annual";
+  location: string;
+  contactSales?: boolean;
+}) {
+  const plan = details.plan || "unknown";
+  trackEvent("select_plan", {
+    plan,
+    billing: details.billing,
+    location: details.location,
+    contact_sales: details.contactSales ?? false,
+  });
+  pixelCustom("PlanSelected", { content_name: plan, content_category: details.billing });
 }
 
 /** Click on a "Book a demo" link — the visit, not the booking. */
