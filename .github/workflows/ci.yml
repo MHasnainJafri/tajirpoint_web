@@ -1,10 +1,14 @@
 name: CI
 
+# Runs ONLY when a release is cut: change the number in the RELEASE file at the
+# repo root and push it to main (see RELEASING.md). Ordinary pushes, other
+# branches and pull requests do not run it. "Run workflow" in the Actions tab
+# runs it by hand at any time.
 on:
   push:
-    branches: [main, develop]
-  pull_request:
-    branches: [main, develop]
+    branches: [main]
+    paths: [RELEASE]
+  workflow_dispatch: {}
 
 jobs:
   ci:
