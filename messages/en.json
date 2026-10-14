@@ -148,6 +148,23 @@
         }
       }
     },
+    "trades": {
+      "eyebrow": "Built for every kind of business",
+      "items": {
+        "restaurants": "Restaurants & cafés",
+        "retail": "Retail & grocery",
+        "laptops": "Laptop shops",
+        "mobiles": "Mobile shops",
+        "wholesale": "Wholesale & distribution",
+        "trucking": "Trucking & logistics",
+        "factories": "Factories & manufacturing",
+        "pharmacy": "Pharmacies",
+        "salons": "Salons & services",
+        "cloud": "Cloud kitchens",
+        "hardware": "Hardware & furniture",
+        "online": "Online stores"
+      }
+    },
     "replaces": {
       "eyebrow": "One platform instead of five",
       "items": {

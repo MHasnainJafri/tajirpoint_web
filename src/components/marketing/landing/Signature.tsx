@@ -21,6 +21,9 @@ import {
 const MONO_LABEL =
   "font-[family-name:var(--font-mono)] text-[11.5px] uppercase tracking-[0.14em] text-[var(--color-muted)]";
 
+/** Sets the step order (`--i`) a `[data-play]` sequence reads. */
+const step = (i: number) => ({ "--i": i }) as React.CSSProperties;
+
 const BLOCK =
   "rounded-[24px] bg-[var(--color-surface)] p-[clamp(18px,2.6vw,32px)] grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-[clamp(20px,3vw,48px)] items-center";
 
@@ -81,7 +84,10 @@ export function Signature() {
           <Bullets t={t} block="khata" />
         </div>
 
-        <div className="rounded-[18px] border border-[var(--color-cream-line)] bg-[var(--color-cream)] p-[18px] shadow-[0_24px_50px_rgba(60,40,10,.10)]">
+        <div
+          data-play
+          className="rounded-[18px] border border-[var(--color-cream-line)] bg-[var(--color-cream)] p-[18px] shadow-[0_24px_50px_rgba(60,40,10,.10)]"
+        >
           <div className="flex items-start justify-between gap-[10px]">
             <div>
               <div className="text-[11px] text-[var(--color-cream-ink)]">
@@ -104,9 +110,11 @@ export function Signature() {
             <span className="text-right">{t("khata.card.balance")}</span>
           </div>
 
-          {KHATA_ROWS.map((k) => (
+          {KHATA_ROWS.map((k, i) => (
             <div
               key={k.date + k.detail}
+              data-step
+              style={step(i)}
               className="grid grid-cols-[auto_minmax(0,1fr)_auto_auto] items-center gap-x-3 border-b border-[var(--color-cream-line-2)] py-[9px] text-[12.5px]"
             >
               <span className="font-[family-name:var(--font-mono)] text-[11px] text-[var(--color-cream-ink)]">
@@ -130,8 +138,9 @@ export function Signature() {
             </div>
             <div className="mt-[6px] h-[6px] overflow-hidden rounded-full bg-[var(--color-cream-line)]">
               <div
+                data-bar
+                style={{ ...step(KHATA_ROWS.length), width: `${KHATA_LIMIT.used}%` }}
                 className="h-full rounded-full bg-[#0A0A0A]"
-                style={{ width: `${KHATA_LIMIT.used}%` }}
               />
             </div>
           </div>
@@ -150,7 +159,10 @@ export function Signature() {
 
       {/* ── 02 · Accounting on autopilot ──────────────────────────── */}
       <div data-reveal className={`mt-[18px] ${BLOCK}`}>
-        <div className="rounded-[18px] bg-white p-[18px] shadow-[0_20px_44px_rgba(10,10,10,.08)]">
+        <div
+          data-play
+          className="rounded-[18px] bg-white p-[18px] shadow-[0_20px_44px_rgba(10,10,10,.08)]"
+        >
           <div className="flex flex-wrap items-center justify-between gap-[10px]">
             <div>
               <div className="text-[11px] text-[var(--color-muted)]">Journal entry JE-20931</div>
@@ -168,9 +180,11 @@ export function Signature() {
             <span className="text-right">{t("accounting.card.credit")}</span>
           </div>
 
-          {JOURNAL_LINES.map((j) => (
+          {JOURNAL_LINES.map((j, i) => (
             <div
               key={j.name}
+              data-step
+              style={step(i)}
               className="grid grid-cols-[minmax(0,1fr)_auto_auto] gap-x-[14px] border-b border-[var(--color-line)] py-[9px] text-[12.5px] tabular-nums"
             >
               <span
@@ -183,7 +197,11 @@ export function Signature() {
             </div>
           ))}
 
-          <div className="grid grid-cols-[minmax(0,1fr)_auto_auto] gap-x-[14px] pt-[10px] text-[12.5px] font-bold tabular-nums">
+          <div
+            data-step
+            style={step(JOURNAL_LINES.length)}
+            className="grid grid-cols-[minmax(0,1fr)_auto_auto] gap-x-[14px] pt-[10px] text-[12.5px] font-bold tabular-nums"
+          >
             <span>{t("accounting.card.balanced")}</span>
             <span className="text-right">{JOURNAL_TOTAL}</span>
             <span className="text-right">{JOURNAL_TOTAL}</span>
@@ -226,7 +244,10 @@ export function Signature() {
           <Bullets t={t} block="van" />
         </div>
 
-        <div className="on-dark rounded-[18px] bg-[#0A0A0A] p-[18px] text-white shadow-[0_24px_50px_rgba(10,10,10,.25)]">
+        <div
+          data-play
+          className="on-dark rounded-[18px] bg-[#0A0A0A] p-[18px] text-white shadow-[0_24px_50px_rgba(10,10,10,.25)]"
+        >
           <div className="flex flex-wrap items-center justify-between gap-[10px]">
             <div>
               <div className="text-[11px] text-[#8A8F98]">Trip TRP-0418 · LEB-4471</div>
@@ -239,14 +260,20 @@ export function Signature() {
 
           <div className="mt-[14px] h-[6px] overflow-hidden rounded-full bg-white/[0.12]">
             <div
+              data-bar
               className="h-full rounded-full bg-[var(--color-mint)]"
-              style={{ width: `${TRIP_PROGRESS}%` }}
+              style={{ ...step(1), width: `${TRIP_PROGRESS}%` }}
             />
           </div>
 
           <div className="mt-4 grid grid-cols-[repeat(3,minmax(0,1fr))] gap-[10px]">
-            {TRIP_STATS.map((s) => (
-              <div key={s.id} className="rounded-[12px] bg-white/[0.06] p-3">
+            {TRIP_STATS.map((s, i) => (
+              <div
+                key={s.id}
+                data-step
+                style={step(i + 2)}
+                className="rounded-[12px] bg-white/[0.06] p-3"
+              >
                 <div className="text-[10.5px] text-[#8A8F98]">{t(`van.card.${s.id}`)}</div>
                 <div
                   className="mt-[3px] text-[16px] font-extrabold tracking-[-0.02em]"
@@ -259,9 +286,11 @@ export function Signature() {
           </div>
 
           <div className="mt-[14px] flex flex-col">
-            {TRIP_ROWS.map((r) => (
+            {TRIP_ROWS.map((r, i) => (
               <div
                 key={r.a}
+                data-step
+                style={step(i + 5)}
                 className="flex justify-between gap-3 border-t border-white/[0.1] py-[9px] text-[12.5px]"
               >
                 <span className="text-[#C9CDD6]">{r.a}</span>
@@ -276,6 +305,7 @@ export function Signature() {
       <div className="mt-[18px] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[18px]">
         <div
           data-reveal
+          data-play
           className="on-dark relative overflow-hidden rounded-[24px] bg-[#0A0A0A] p-[clamp(18px,2.6vw,32px)] text-white"
         >
           <div className="pointer-events-none absolute -right-[120px] -top-[120px] h-[340px] w-[340px] rounded-full border border-[rgba(0,210,122,.18)]" />
@@ -290,9 +320,11 @@ export function Signature() {
           </p>
 
           <div className="mt-[22px] flex flex-col">
-            {OFFLINE_STEPS.map((s) => (
+            {OFFLINE_STEPS.map((s, i) => (
               <div
                 key={s.id}
+                data-step
+                style={step(i * 3)}
                 className="grid grid-cols-[auto_auto_minmax(0,1fr)] items-center gap-3 border-t border-white/[0.1] py-[10px]"
               >
                 <span className="w-[44px] font-[family-name:var(--font-mono)] text-[11.5px] text-[#8A8F98]">
@@ -335,6 +367,7 @@ export function Signature() {
 
           {/* The printed receipt, with its verified e-invoice QR */}
           <div
+            data-play
             className="w-[150px] rounded-[10px] bg-white p-3 font-[family-name:var(--font-mono)] text-[8.5px] leading-[1.5] text-[var(--color-body)] shadow-[0_16px_34px_rgba(10,10,10,.1)]"
             aria-hidden="true"
           >
@@ -343,8 +376,8 @@ export function Signature() {
             </div>
             <div className="text-center text-[var(--color-muted-2)]">{RECEIPT_MOCK.taxId}</div>
             <div className="my-2 border-t border-dashed border-[#D5D8DE]" />
-            {RECEIPT_MOCK.lines.map((l) => (
-              <div key={l.name} className="flex justify-between">
+            {RECEIPT_MOCK.lines.map((l, i) => (
+              <div key={l.name} data-step style={step(i)} className="flex justify-between">
                 <span>{l.name}</span>
                 <span>{l.amt}</span>
               </div>
@@ -358,7 +391,11 @@ export function Signature() {
               <span>TOTAL</span>
               <span>{RECEIPT_MOCK.total}</span>
             </div>
-            <div className="mt-[10px] grid place-items-center">
+            <div
+              data-step
+              style={step(RECEIPT_MOCK.lines.length + 1)}
+              className="mt-[10px] grid place-items-center"
+            >
               <svg
                 viewBox="0 0 21 21"
                 className="h-[62px] w-[62px]"
@@ -372,7 +409,13 @@ export function Signature() {
             <div className="mt-[6px] text-center font-semibold text-[var(--color-ink)]">
               {RECEIPT_MOCK.ref}
             </div>
-            <div className="text-center font-semibold text-[var(--color-mint-2)]">VERIFIED</div>
+            <div
+              data-step
+              style={step(RECEIPT_MOCK.lines.length + 3)}
+              className="text-center font-semibold text-[var(--color-mint-2)]"
+            >
+              VERIFIED
+            </div>
           </div>
         </div>
       </div>

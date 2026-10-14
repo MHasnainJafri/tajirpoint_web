@@ -11,6 +11,7 @@ import { usePathname } from "@/i18n/navigation";
  *  - `[data-reveal]`      fade + rise as they enter the viewport
  *  - `[data-count]`       count up to their target number
  *  - `[data-draw]`        stroke-draw a connector line
+ *  - `[data-play]`        start a card's step-by-step sequence (see globals.css)
  *
  * Elements that cross the threshold together are staggered by their position in
  * the batch — capped at eight so a twelve-card grid never leaves the last card
@@ -67,9 +68,24 @@ export function Reveal() {
     // a tab that was never painted, a browser that throttles it, a layout that
     // leaves an element zero-height — show everything rather than leave the
     // page blank. Anything already revealed keeps the delay it animated with.
+    const playEls = document.querySelectorAll<HTMLElement>("[data-play]");
     const failsafe = window.setTimeout(() => {
       revealEls.forEach((el) => el.classList.add("is-revealed"));
+      playEls.forEach((el) => el.classList.add("is-playing"));
     }, 2500);
+
+    const playIo = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          e.target.classList.add("is-playing");
+          playIo.unobserve(e.target);
+        });
+      },
+      { threshold: 0.3 }
+    );
+    if (reduce) playEls.forEach((el) => el.classList.add("is-playing"));
+    else playEls.forEach((el) => playIo.observe(el));
 
     const countIo = new IntersectionObserver(
       (entries) => {
@@ -125,6 +141,7 @@ export function Reveal() {
       revealIo?.disconnect();
       countIo.disconnect();
       drawIo.disconnect();
+      playIo.disconnect();
     };
   }, [pathname]);
 

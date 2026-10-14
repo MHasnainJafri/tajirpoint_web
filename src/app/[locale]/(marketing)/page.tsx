@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Hero } from "@/components/marketing/landing/Hero";
+import { TradesMarquee } from "@/components/marketing/landing/TradesMarquee";
 import { Replaces } from "@/components/marketing/landing/Replaces";
 import { WhoItsFor } from "@/components/marketing/landing/WhoItsFor";
 import { Signature } from "@/components/marketing/landing/Signature";
@@ -87,6 +88,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         style={{ overflowX: "clip" }}
       >
         <Hero />
+        <TradesMarquee />
         <FindYourBusiness />
         <Replaces />
         <WhoItsFor />

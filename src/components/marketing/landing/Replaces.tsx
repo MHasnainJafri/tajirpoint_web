@@ -13,25 +13,36 @@ export function Replaces() {
   const t = useTranslations("landing.replaces");
 
   return (
-    <section data-reveal className="mt-[clamp(56px,7vw,84px)] text-center">
+    <section data-reveal data-play className="mt-[clamp(56px,7vw,84px)] text-center">
       <div className="eyebrow">{t("eyebrow")}</div>
 
       <div className="mt-[18px] flex flex-wrap items-center justify-center gap-[10px]">
         {REPLACED.map((id, index) => (
           <span
             key={id}
-            style={{ animationDelay: `${index * 80}ms` }}
-            className="cursor-default rounded-full border border-dashed border-[#C9CDD6] px-4 py-[9px] text-[13px] text-[var(--color-muted)] line-through decoration-[#0A0A0A] decoration-1 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#8A8F98] hover:bg-[#F4F5F7] hover:text-[#0A0A0A]"
+            data-step
+            data-strike
+            style={{ "--i": index } as React.CSSProperties}
+            className="cursor-default rounded-full border border-dashed border-[#C9CDD6] px-4 py-[9px] text-[13px] text-[var(--color-muted)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#8A8F98] hover:bg-[#F4F5F7] hover:text-[#0A0A0A]"
           >
             {t(`items.${id}`)}
           </span>
         ))}
 
-        <span className="text-[var(--color-mint-2)]" aria-hidden="true">
+        <span
+          data-step
+          style={{ "--i": 13 } as React.CSSProperties}
+          className="text-[var(--color-mint-2)]"
+          aria-hidden="true"
+        >
           <Stroke name="arrowRight" size={22} width={2} />
         </span>
 
-        <span className="rounded-full bg-[#0A0A0A] px-[18px] py-[10px] text-[13.5px] font-bold tracking-[-0.02em] text-white">
+        <span
+          data-step
+          style={{ "--i": 14 } as React.CSSProperties}
+          className="rounded-full bg-[#0A0A0A] px-[18px] py-[10px] text-[13.5px] font-bold tracking-[-0.02em] text-white"
+        >
           tajir point<span className="text-[var(--color-mint)]">.</span>
         </span>
       </div>
