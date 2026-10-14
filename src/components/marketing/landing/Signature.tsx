@@ -302,7 +302,7 @@ export function Signature() {
       </div>
 
       {/* ── 04 offline + 05 tax, sharing a row ────────────────────── */}
-      <div className="mt-[18px] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[18px]">
+      <div className="mt-[18px] grid grid-cols-1 gap-[18px] lg:grid-cols-2">
         <div
           data-reveal
           data-play
@@ -342,10 +342,11 @@ export function Signature() {
         </div>
 
         <div
+          id="local-tax"
           data-reveal
-          className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-5 rounded-[24px] bg-[var(--color-surface)] p-[clamp(18px,2.6vw,32px)]"
+          className="grid min-w-0 scroll-mt-[86px] grid-cols-1 items-start gap-5 rounded-[24px] bg-[var(--color-surface)] p-[clamp(18px,2.6vw,32px)] sm:grid-cols-[minmax(0,1fr)_150px]"
         >
-          <div>
+          <div className="min-w-0">
             <div className={MONO_LABEL}>{t("tax.label")}</div>
             <h3 className="mt-3 max-w-[16ch] text-[clamp(22px,2.4vw,30px)] font-bold leading-[1.2] tracking-[-0.03em]">
               {t("tax.title")}
@@ -368,7 +369,7 @@ export function Signature() {
           {/* The printed receipt, with its verified e-invoice QR */}
           <div
             data-play
-            className="w-[150px] rounded-[10px] bg-white p-3 font-[family-name:var(--font-mono)] text-[8.5px] leading-[1.5] text-[var(--color-body)] shadow-[0_16px_34px_rgba(10,10,10,.1)]"
+            className="w-[150px] max-w-full justify-self-center rounded-[10px] bg-white p-3 font-[family-name:var(--font-mono)] text-[8.5px] leading-[1.5] text-[var(--color-body)] shadow-[0_16px_34px_rgba(10,10,10,.1)] sm:justify-self-end"
             aria-hidden="true"
           >
             <div className="text-center font-semibold text-[var(--color-ink)]">
