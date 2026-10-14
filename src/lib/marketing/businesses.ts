@@ -59,7 +59,7 @@ export const APPS: Record<AppId, AppInfo> = {
   backOffice: {
     id: "backOffice",
     name: "Back office",
-    line: "Stock, purchases, khata, staff and reports in your browser.",
+    line: "Stock, purchases, credit, staff and reports in your browser.",
     icon: "chart",
     status: "live",
   },
@@ -174,6 +174,8 @@ export const BUSINESS_SLUGS = [
   "electronics-mobile",
   "salons-services",
   "distributors-wholesale",
+  "transport-delivery",
+  "factories-mills",
   "furniture-home",
 ] as const;
 
@@ -237,7 +239,7 @@ export const MIGRATION = {
   sub: "Send us an export from your old system — Excel or CSV is fine — and our team loads it into TajirPoint before you go live.",
   points: [
     "Products, prices, barcodes and categories",
-    "Customers and suppliers, with their opening khata balances",
+    "Customers and suppliers, with their opening credit balances",
     "Opening stock for each branch or warehouse",
     "Staff logins and roles set up with you on a call",
   ],
@@ -251,7 +253,7 @@ export const COMMON_FAQS: Faq[] = [
   },
   {
     q: "Can you move my data from my old POS?",
-    a: "Yes, for free. Send us an export from your current system (Excel or CSV is fine) and we load your products, customers, suppliers, khata balances and opening stock for you. Tick “move my data for me” when you book a demo.",
+    a: "Yes, for free. Send us an export from your current system (Excel or CSV is fine) and we load your products, customers, suppliers, credit balances and opening stock for you. Tick “move my data for me” when you book a demo.",
   },
   {
     q: "Which devices does it run on?",
@@ -281,7 +283,7 @@ const restaurants: Business = {
       "Restaurant POS with floor plan and tables, kitchen display (KDS), tickets by course, a waiter app, an order receiver board, your own online order page with deals, and a rider app. Free for 3 months.",
     keywords: [
       "restaurant POS",
-      "restaurant POS Pakistan",
+      "restaurant POS",
       "kitchen display system",
       "KDS",
       "waiter app",
@@ -470,7 +472,7 @@ const cafesBakeries: Business = {
     title: "Café & Bakery POS — Fast Counter, Loyalty & Pre-orders",
     description:
       "POS for cafés and bakeries: quick counter with modifiers, customer display, loyalty points, recipes that deduct ingredients, batch expiry for baked goods and online pre-orders. Free for 3 months.",
-    keywords: ["cafe POS", "bakery POS", "coffee shop POS", "bakery software Pakistan", "cafe loyalty"],
+    keywords: ["cafe POS", "bakery POS", "coffee shop POS", "bakery software", "cafe loyalty"],
   },
   schemaSubCategory: "Café and bakery point of sale",
   hero: {
@@ -711,7 +713,7 @@ const retailFashion: Business = {
     title: "Retail & Clothing POS — Variants, Barcodes & Exchanges",
     description:
       "POS for clothing, shoes and general retail: size and colour variants with their own barcodes, label printing, returns and exchanges, loyalty, multi-branch stock and an online store. Free for 3 months.",
-    keywords: ["clothing store POS", "fashion retail POS", "boutique POS", "retail POS Pakistan", "barcode label printing"],
+    keywords: ["clothing store POS", "fashion retail POS", "boutique POS", "retail POS", "barcode label printing"],
   },
   schemaSubCategory: "Retail point of sale",
   hero: {
@@ -750,7 +752,7 @@ const retailFashion: Business = {
       bullets: [
         "Return against the original receipt",
         "Return reasons recorded",
-        "Refund in cash or to the customer's khata",
+        "Refund in cash or to the customer's credit account",
       ],
       media: { slot: "returns", expect: "video", alt: "Exchange of a shirt for a different size" },
     },
@@ -774,10 +776,10 @@ const retailFashion: Business = {
     {
       id: "khata",
       icon: "book",
-      title: "Khata for regular customers",
+      title: "Credit accounts for regular customers",
       benefit: "Sell on credit to customers you trust and always know who owes what.",
       bullets: ["Customer credit with limits", "Statements to share", "Customer portal to see their balance (Shop plan and above)"],
-      media: { slot: "khata", expect: "image", alt: "Customer khata with balance and history" },
+      media: { slot: "khata", expect: "image", alt: "Customer credit account with balance and history" },
     },
     {
       id: "online-store",
@@ -807,8 +809,8 @@ const retailFashion: Business = {
 
 const groceryKiryana: Business = {
   slug: "grocery-kiryana",
-  name: "Grocery & kiryana",
-  navLine: "Barcode checkout, khata, cartons to pieces, works offline.",
+  name: "Grocery & supermarkets",
+  navLine: "Barcode checkout, customer credit, cartons to pieces, works offline.",
   icon: "store",
   localized: {
     ur: { name: "گروسری اور کریانہ", navLine: "بارکوڈ چیک آؤٹ، کھاتہ، کارٹن سے عدد، آف لائن بھی۔" },
@@ -816,17 +818,17 @@ const groceryKiryana: Business = {
   },
   contactLabel: "General retail / Kiryana",
   seo: {
-    title: "Grocery & Kiryana POS — Barcode, Khata & Offline",
+    title: "Grocery & Supermarket POS — Barcode, Credit & Offline",
     description:
-      "POS for grocery and kiryana stores: fast barcode checkout, sell by carton, kg or piece, digital khata for customers and suppliers, low-stock alerts and offline selling. Free for 3 months.",
-    keywords: ["kiryana POS", "grocery POS", "supermarket POS Pakistan", "digital khata", "offline POS"],
+      "POS for grocery stores and supermarkets: fast barcode checkout, sell by carton, kg or piece, a digital credit ledger for customers and suppliers, low-stock alerts and offline selling. Free for 3 months.",
+    keywords: ["grocery POS", "supermarket POS", "convenience store POS", "customer credit ledger", "offline POS"],
   },
   schemaSubCategory: "Grocery point of sale",
   hero: {
-    eyebrow: "TajirPoint for grocery & kiryana",
-    headline: "Fast checkout, honest khata, and it keeps selling offline.",
-    sub: "Scan and sell in seconds, sell by carton, kg or piece, and keep every customer's udhaar in a digital khata instead of a register.",
-    media: { slot: "hero", expect: "video", alt: "Kiryana counter scanning items and adding a sale to a customer's khata" },
+    eyebrow: "TajirPoint for grocery & supermarkets",
+    headline: "Fast checkout, honest credit books, and it keeps selling offline.",
+    sub: "Scan and sell in seconds, sell by carton, kg or piece, and keep every customer's credit in a digital ledger instead of a paper register.",
+    media: { slot: "hero", expect: "video", alt: "Grocery counter scanning items and adding a sale to a customer's credit account" },
   },
   apps: ["pos", "customerDisplay", "backOffice", "ownerApp", "website"],
   features: [
@@ -849,17 +851,17 @@ const groceryKiryana: Business = {
     {
       id: "khata",
       icon: "book",
-      title: "Digital khata",
-      benefit: "Every customer's udhaar in one place — with limits, history and a balance they can see.",
-      bullets: ["Credit sales straight to the customer's khata", "Credit limits per customer", "Payments received against the balance", "Customer portal to see their own balance (Shop plan and above)"],
-      media: { slot: "khata", expect: "video", alt: "Customer khata with running balance" },
+      title: "Digital credit ledger",
+      benefit: "Every customer's credit in one place — with limits, history and a balance they can see.",
+      bullets: ["Credit sales straight to the customer's account", "Credit limits per customer", "Payments received against the balance", "Customer portal to see their own balance (Shop plan and above)"],
+      media: { slot: "khata", expect: "video", alt: "Customer credit account with running balance" },
     },
     {
       id: "suppliers",
       icon: "truck",
       title: "Suppliers and purchases",
       benefit: "Record what you bought and what you still owe each supplier.",
-      bullets: ["Purchase orders and goods received", "Supplier khata", "Purchase returns"],
+      bullets: ["Purchase orders and goods received", "Supplier ledger", "Purchase returns"],
       media: { slot: "suppliers", expect: "image", alt: "Goods received note from a supplier" },
     },
     {
@@ -875,7 +877,7 @@ const groceryKiryana: Business = {
       icon: "refresh",
       title: "Keeps selling offline",
       benefit: "When the internet or power-backup router drops, the counter keeps ringing up sales and syncs later.",
-      bullets: ["Offline sales queue and sync automatically", "Offline receipts are numbered separately", "Credit (khata) sales need a connection"],
+      bullets: ["Offline sales queue and sync automatically", "Offline receipts are numbered separately", "Credit sales need a connection"],
       media: { slot: "offline", expect: "image", alt: "Offline banner with queued sales" },
     },
     {
@@ -894,12 +896,12 @@ const groceryKiryana: Business = {
     },
     {
       q: "Can my customers see what they owe?",
-      a: "Yes. With the customer portal add-on (Shop plan and above), each customer gets a link showing their khata balance and history. On any plan you can share a statement on WhatsApp.",
+      a: "Yes. With the customer portal add-on (Shop plan and above), each customer gets a link showing their balance and history. On any plan you can share a statement on WhatsApp.",
     },
   ],
   cta: {
     headline: "Close the paper register for good.",
-    sub: "Book a demo and we'll show you checkout, khata and day-end on your own products.",
+    sub: "Book a demo and we'll show you checkout, credit and day-end on your own products.",
   },
 };
 
@@ -917,7 +919,7 @@ const pharmacy: Business = {
     title: "Pharmacy POS — Batches, Expiry, FEFO & Prescriptions",
     description:
       "Pharmacy POS with batch and expiry tracking, oldest-first (FEFO) selling, near-expiry reports, generic/molecule search and a prescription log. Free for 3 months.",
-    keywords: ["pharmacy POS", "pharmacy software Pakistan", "medical store software", "batch expiry tracking", "FEFO"],
+    keywords: ["pharmacy POS", "pharmacy software", "medical store software", "batch expiry tracking", "FEFO"],
   },
   schemaSubCategory: "Pharmacy point of sale",
   hero: {
@@ -973,7 +975,7 @@ const pharmacy: Business = {
       icon: "truck",
       title: "Distributors and purchases",
       benefit: "Track purchases, bonuses and what you owe each distributor.",
-      bullets: ["Purchase orders and goods received", "Supplier khata", "Purchase returns"],
+      bullets: ["Purchase orders and goods received", "Supplier ledger", "Purchase returns"],
       media: { slot: "suppliers", expect: "image", alt: "Supplier ledger" },
     },
   ],
@@ -992,7 +994,7 @@ const pharmacy: Business = {
 const electronicsMobile: Business = {
   slug: "electronics-mobile",
   name: "Electronics & mobile",
-  navLine: "IMEI and serial tracking, variants, quotations and khata.",
+  navLine: "IMEI and serial tracking, variants, quotations and credit.",
   icon: "phone",
   localized: {
     ur: { name: "الیکٹرانکس اور موبائل", navLine: "IMEI اور سیریل ٹریکنگ، ویریئنٹس، کوٹیشنز اور کھاتہ۔" },
@@ -1002,7 +1004,7 @@ const electronicsMobile: Business = {
   seo: {
     title: "Mobile & Electronics Shop POS — IMEI & Serial Tracking",
     description:
-      "POS for mobile phone and electronics shops: IMEI and serial number tracking from purchase to sale, colour and storage variants, quotations, khata and supplier ledgers. Free for 3 months.",
+      "POS for mobile phone and electronics shops: IMEI and serial number tracking from purchase to sale, colour and storage variants, quotations, customer credit and supplier ledgers. Free for 3 months.",
     keywords: ["mobile shop POS", "IMEI tracking software", "electronics store POS", "serial number tracking"],
   },
   schemaSubCategory: "Electronics retail point of sale",
@@ -1041,7 +1043,7 @@ const electronicsMobile: Business = {
     {
       id: "khata",
       icon: "book",
-      title: "Customer and supplier khata",
+      title: "Customer and supplier credit",
       benefit: "Sell on credit to trusted customers and keep track of what you owe each distributor.",
       bullets: ["Customer credit with limits", "Supplier ledgers", "Payments against balances"],
       media: { slot: "khata", expect: "image", alt: "Supplier ledger for a distributor" },
@@ -1082,7 +1084,7 @@ const salonsServices: Business = {
     title: "Salon & Services POS — Services, Products & Client History",
     description:
       "POS for salons, spas and service businesses: sell services and retail products together, client history, loyalty and coupons, staff logins and online booking requests from your website. Free for 3 months.",
-    keywords: ["salon POS", "salon software Pakistan", "spa POS", "service business POS"],
+    keywords: ["salon POS", "salon software", "spa POS", "service business POS"],
   },
   schemaSubCategory: "Salon and service business point of sale",
   hero: {
@@ -1106,7 +1108,7 @@ const salonsServices: Business = {
       icon: "users",
       title: "Client history",
       benefit: "See what each client had last time and what they spent.",
-      bullets: ["Customer profiles", "Visit and payment history", "Khata for clients who pay later"],
+      bullets: ["Customer profiles", "Visit and payment history", "Credit accounts for clients who pay later"],
       media: { slot: "clients", expect: "image", alt: "Client profile with visit history" },
     },
     {
@@ -1170,7 +1172,7 @@ const distributorsWholesale: Business = {
     title: "Distribution & Wholesale Software — Van Sales & Routes",
     description:
       "Software for distributors and wholesalers: route dispatch and van sales, day-end reconciliation, dealer price lists, multi-warehouse stock, credit limits and supplier ledgers. Free for 3 months.",
-    keywords: ["distribution software Pakistan", "van sales app", "route sales software", "wholesale POS", "order booker app"],
+    keywords: ["distribution software", "van sales app", "route sales software", "wholesale POS", "order booker app"],
   },
   schemaSubCategory: "Distribution and wholesale management",
   hero: {
@@ -1208,7 +1210,7 @@ const distributorsWholesale: Business = {
     {
       id: "credit",
       icon: "book",
-      title: "Credit limits and khata",
+      title: "Credit limits and balances",
       benefit: "Know each shop's balance before you sell to them again.",
       bullets: ["Credit limits per customer", "Ageing of what is owed", "Payments collected on the route"],
       media: { slot: "credit", expect: "image", alt: "Customer balance with ageing" },
@@ -1238,8 +1240,182 @@ const distributorsWholesale: Business = {
     },
   ],
   cta: {
-    headline: "Every trip reconciled. Every rupee accounted for.",
+    headline: "Every trip reconciled. Every cent accounted for.",
     sub: "Book a demo and we'll walk through a trip from loading to day-end.",
+  },
+};
+
+const transportDelivery: Business = {
+  slug: "transport-delivery",
+  name: "Transport & delivery fleets",
+  navLine: "Routes, drivers, proof of delivery, fuel and profit per trip.",
+  icon: "truck",
+  localized: {
+    ur: { name: "ٹرانسپورٹ اور ڈیلیوری فلیٹس", navLine: "روٹس، ڈرائیور، ڈیلیوری کا ثبوت، ایندھن اور فی سفر منافع۔" },
+    ar: { name: "النقل وأساطيل التوصيل", navLine: "المسارات، السائقون، إثبات التسليم، الوقود وربح كل رحلة." },
+  },
+  contactLabel: "Distributor / Wholesale",
+  seo: {
+    title: "Fleet & Delivery Software — Routes, Drivers & Trip Profit",
+    description:
+      "Software for trucking and delivery fleets: route and stop planning, driver dispatch, proof of delivery, cash collected on the road, fuel and mileage checks, and profit per trip. Free for 3 months.",
+    keywords: ["fleet management software", "delivery fleet software", "trucking software", "route dispatch software", "driver cash reconciliation"],
+  },
+  schemaSubCategory: "Fleet and delivery management",
+  hero: {
+    eyebrow: "TajirPoint for transport & delivery fleets",
+    headline: "Know what every trip really earned.",
+    sub: "Plan the route, dispatch the vehicle and driver, collect proof of delivery and cash on the road — then see the profit after fuel, trip by trip.",
+    media: { slot: "hero", expect: "video", alt: "Dispatch screen with a vehicle, driver and stops" },
+  },
+  apps: ["vanSales", "riderApp", "backOffice", "ownerApp"],
+  features: [
+    {
+      id: "dispatch",
+      icon: "route",
+      title: "Routes and dispatch",
+      benefit: "Plan stops, assign a vehicle and a driver, and send the trip out.",
+      bullets: ["Trips with stops and load lists", "Vehicles and drivers on every trip", "Stops completed as the driver goes"],
+      media: { slot: "dispatch", expect: "video", alt: "Trip planned with stops, a vehicle and a driver" },
+    },
+    {
+      id: "proof",
+      icon: "receipt",
+      title: "Proof of delivery",
+      benefit: "Every drop confirmed on the driver's phone, so there is nothing to argue about later.",
+      bullets: ["Delivery confirmed per stop", "Returns and damages recorded"],
+      media: { slot: "proof", expect: "phone", alt: "Driver confirming a delivery on a phone" },
+    },
+    {
+      id: "cash",
+      icon: "cash",
+      title: "Cash collected on the road",
+      benefit: "Drivers collect payment at the door; you match it to the trip when they return.",
+      bullets: ["Cash and credit sales per trip", "Day-end reconciliation", "Any shortfall on the driver's account"],
+      media: { slot: "cash", expect: "image", alt: "Trip reconciliation with cash collected" },
+    },
+    {
+      id: "fuel",
+      icon: "chart",
+      title: "Fuel, mileage and profit",
+      benefit: "Log fuel and distance per trip and see what each trip and vehicle really earned.",
+      bullets: ["Fuel and mileage with anomaly flags", "Per-trip profit report"],
+      media: { slot: "fuel", expect: "image", alt: "Per-trip profit report with fuel costs" },
+    },
+    {
+      id: "couriers",
+      icon: "package",
+      title: "Partner couriers when you need them",
+      benefit: "Send overflow parcels to a courier and track them from the same screen.",
+      bullets: ["Book shipments with courier extensions", "Print labels", "Track deliveries"],
+      media: { slot: "couriers", expect: "image", alt: "Courier shipment with tracking status" },
+      plan: SHOP_PLAN_NOTE,
+    },
+    {
+      id: "books",
+      icon: "ledgerbook",
+      title: "Books that follow the trips",
+      benefit: "Collections, expenses and customer balances post to the ledger without re-typing.",
+      bullets: ["Double-entry books posted automatically", "Customer balances and statements", "Cash drawers and petty cash"],
+      media: { slot: "books", expect: "image", alt: "Ledger entries created from delivery trips" },
+    },
+  ],
+  faqs: [
+    {
+      q: "Can I use it for trucking and not only for selling from a van?",
+      a: "Yes, for the trip side: routes and stops, vehicles and drivers, proof of delivery, cash collected, fuel and profit per trip. If you also sell goods from the vehicle, the same trip handles stock and sales.",
+    },
+  ],
+  cta: {
+    headline: "Every trip planned, delivered and accounted for.",
+    sub: "Book a demo and we'll walk through a trip from dispatch to day-end.",
+  },
+};
+
+const factoriesMills: Business = {
+  slug: "factories-mills",
+  name: "Factories & mills",
+  navLine: "Raw-material purchasing, warehouses, batches, dealer pricing and credit.",
+  icon: "warehouse",
+  localized: {
+    ur: { name: "فیکٹریاں اور ملز", navLine: "خام مال کی خریداری، گودام، بیچز، ڈیلر قیمتیں اور اُدھار۔" },
+    ar: { name: "المصانع والمطاحن", navLine: "شراء المواد الخام، المستودعات، الدفعات، أسعار الموزعين والآجل." },
+  },
+  contactLabel: "Distributor / Wholesale",
+  seo: {
+    title: "Factory & Mill Software — Stock, Dealers & Credit",
+    description:
+      "Software for factories and mills that sell to dealers and wholesalers: raw-material purchasing and goods receipt, multi-warehouse and batch stock, dealer price lists, credit limits and books that post themselves. Free for 3 months.",
+    keywords: ["factory inventory software", "mill software", "manufacturer sales software", "wholesale distribution software", "dealer price list software"],
+  },
+  schemaSubCategory: "Manufacturer inventory, sales and accounting",
+  hero: {
+    eyebrow: "TajirPoint for factories & mills",
+    headline: "Buy it in, hold it right, sell it to dealers on credit.",
+    sub: "From raw-material purchase orders to finished goods in several warehouses to dealer invoices — with the stock, the credit and the books kept in step.",
+    media: { slot: "hero", expect: "image", alt: "Warehouse stock overview for a factory" },
+  },
+  apps: ["backOffice", "pos", "vanSales", "ownerApp"],
+  features: [
+    {
+      id: "purchasing",
+      icon: "bag",
+      title: "Raw-material purchasing",
+      benefit: "Purchase orders, goods received and supplier balances in one place.",
+      bullets: ["Purchase orders and goods receipt", "Supplier ledgers", "Purchase returns"],
+      media: { slot: "purchasing", expect: "image", alt: "Purchase order and goods receipt screen" },
+    },
+    {
+      id: "warehouses",
+      icon: "warehouse",
+      title: "Warehouses and batches",
+      benefit: "Know what is in every warehouse and which batch it came from.",
+      bullets: ["Multiple warehouses and transfers", "Batch tracking", "Stock counts and adjustments"],
+      media: { slot: "warehouses", expect: "image", alt: "Stock by warehouse and batch" },
+      plan: SHOP_PLAN_NOTE,
+    },
+    {
+      id: "pricing",
+      icon: "percent",
+      title: "Dealer and bulk pricing",
+      benefit: "Different prices for dealers, wholesalers and retailers, applied automatically.",
+      bullets: ["Price lists per customer group", "Units of measure (carton, dozen, piece)", "Quotations"],
+      media: { slot: "pricing", expect: "image", alt: "Dealer price list" },
+    },
+    {
+      id: "credit",
+      icon: "book",
+      title: "Credit limits and statements",
+      benefit: "Sell to dealers on credit without losing track of who owes what.",
+      bullets: ["Credit limits per customer", "30 / 60 / 90-day ageing", "Statements to share"],
+      media: { slot: "credit", expect: "image", alt: "Dealer balance with ageing" },
+    },
+    {
+      id: "costing",
+      icon: "calculator",
+      title: "Costing and books",
+      benefit: "Stock valued with the costing method you choose, and every movement posts to the ledger.",
+      bullets: ["Costing methods", "Double-entry books posted automatically", "Trial balance, P&L and balance sheet"],
+      media: { slot: "costing", expect: "image", alt: "Profit and loss report" },
+    },
+    {
+      id: "delivery",
+      icon: "truck",
+      title: "Dispatch to dealers",
+      benefit: "Send finished goods out on your own vehicles and reconcile each trip.",
+      bullets: ["Trips with stops and load lists", "Cash collected per trip", "Day-end reconciliation"],
+      media: { slot: "delivery", expect: "image", alt: "Delivery trip for dealer orders" },
+    },
+  ],
+  faqs: [
+    {
+      q: "Does it plan production or manage bills of materials?",
+      a: "Not today. TajirPoint covers the buying, stock, selling, credit and accounting around your factory. Tell us what you need on a demo call and we will say plainly whether it fits.",
+    },
+  ],
+  cta: {
+    headline: "Stock, dealers and books in one place.",
+    sub: "Book a demo and we'll set it up with your own products and price lists.",
   },
 };
 
@@ -1288,9 +1464,9 @@ const furnitureHome: Business = {
       id: "credit",
       icon: "book",
       title: "Balances and credit",
-      benefit: "Take part payment now and keep the balance on the customer's khata until delivery.",
-      bullets: ["Part payment at the counter", "Balance on the customer's khata", "Statements to share"],
-      media: { slot: "credit", expect: "image", alt: "Customer khata showing an outstanding balance" },
+      benefit: "Take part payment now and keep the balance on the customer's account until delivery.",
+      bullets: ["Part payment at the counter", "Balance on the customer's account", "Statements to share"],
+      media: { slot: "credit", expect: "image", alt: "Customer account showing an outstanding balance" },
     },
     {
       id: "warehouse",
@@ -1306,7 +1482,7 @@ const furnitureHome: Business = {
       icon: "truck",
       title: "Delivery",
       benefit: "Plan deliveries to customers with your own vehicles and drivers.",
-      bullets: ["Delivery trips with stops", "Balance collected on delivery goes to the khata"],
+      bullets: ["Delivery trips with stops", "Balance collected on delivery goes to the customer's account"],
       media: { slot: "delivery", expect: "image", alt: "Delivery trip for furniture orders" },
     },
     {
@@ -1322,11 +1498,11 @@ const furnitureHome: Business = {
   faqs: [
     {
       q: "Can I take a deposit and collect the rest on delivery?",
-      a: "Yes. Take part payment at the counter and the remaining balance stays on the customer's khata until they pay it.",
+      a: "Yes. Take part payment at the counter and the remaining balance stays on the customer's account until they pay it.",
     },
   ],
   cta: {
-    headline: "Big sales, tracked to the last rupee.",
+    headline: "Big sales, tracked to the last cent.",
     sub: "Book a demo and we'll set up a quotation and delivery with your own products.",
   },
 };
@@ -1341,6 +1517,8 @@ export const BUSINESSES: readonly Business[] = [
   electronicsMobile,
   salonsServices,
   distributorsWholesale,
+  transportDelivery,
+  factoriesMills,
   furnitureHome,
 ];
 

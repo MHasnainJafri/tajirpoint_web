@@ -20,7 +20,7 @@ export function VerticalScreenMock({ id, screenTitle, rows }: VerticalScreenMock
           <span className="font-mono text-[11px] font-bold text-[#0A0A0A]">{screenTitle}</span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="inline-flex items-center gap-1 rounded-full bg-[#E4FAEF] px-2 py-0.5 text-[9px] font-bold text-[#00A862]">
+          <span className="inline-flex items-center gap-1 rounded-full bg-[#E4FAEF] px-2 py-0.5 text-[10.5px] font-bold text-[#00A862]">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#00D27A]" />
             ACTIVE TERMINAL
           </span>
@@ -39,29 +39,29 @@ export function VerticalScreenMock({ id, screenTitle, rows }: VerticalScreenMock
             <div className="grid grid-cols-4 gap-2">
               <div className="rounded-xl border border-[#00D27A] bg-[#E4FAEF] p-2 text-center">
                 <div className="text-[10px] font-extrabold text-[#00A862]">T-07 · 6p</div>
-                <div className="mt-0.5 text-[9px] font-semibold text-[#0A0A0A]">$24.00</div>
-                <span className="mt-1 inline-block rounded-full bg-[#00D27A] px-1.5 py-0.2 text-[7.5px] font-bold text-white">
+                <div className="mt-0.5 text-[10.5px] font-semibold text-[#0A0A0A]">$24.00</div>
+                <span className="mt-1 inline-block rounded-full bg-[#00D27A] px-1.5 py-0.2 text-[10px] font-bold text-white">
                   12m KDS
                 </span>
               </div>
               <div className="rounded-xl border border-[#E3E5EA] bg-[#F7F8FA] p-2 text-center">
                 <div className="text-[10px] font-bold text-[#6B7079]">T-01 · 2p</div>
-                <div className="mt-0.5 text-[9px] font-medium text-[#8A8F98]">Free</div>
-                <span className="mt-1 inline-block rounded-full bg-[#E3E5EA] px-1.5 py-0.2 text-[7.5px] font-semibold text-[#6B7079]">
+                <div className="mt-0.5 text-[10.5px] font-medium text-[#8A8F98]">Free</div>
+                <span className="mt-1 inline-block rounded-full bg-[#E3E5EA] px-1.5 py-0.2 text-[10px] font-semibold text-[#6B7079]">
                   Available
                 </span>
               </div>
               <div className="rounded-xl border border-[#F5A524] bg-[#FFF8EE] p-2 text-center">
                 <div className="text-[10px] font-extrabold text-[#D97706]">T-03 · 4p</div>
-                <div className="mt-0.5 text-[9px] font-semibold text-[#0A0A0A]">$68.50</div>
-                <span className="mt-1 inline-block rounded-full bg-[#F5A524] px-1.5 py-0.2 text-[7.5px] font-bold text-white">
+                <div className="mt-0.5 text-[10.5px] font-semibold text-[#0A0A0A]">$68.50</div>
+                <span className="mt-1 inline-block rounded-full bg-[#F5A524] px-1.5 py-0.2 text-[10px] font-bold text-white">
                   Billing
                 </span>
               </div>
               <div className="rounded-xl border border-[#E3E5EA] bg-[#F7F8FA] p-2 text-center">
                 <div className="text-[10px] font-bold text-[#6B7079]">T-05 · 4p</div>
-                <div className="mt-0.5 text-[9px] font-medium text-[#8A8F98]">Free</div>
-                <span className="mt-1 inline-block rounded-full bg-[#E3E5EA] px-1.5 py-0.2 text-[7.5px] font-semibold text-[#6B7079]">
+                <div className="mt-0.5 text-[10.5px] font-medium text-[#8A8F98]">Free</div>
+                <span className="mt-1 inline-block rounded-full bg-[#E3E5EA] px-1.5 py-0.2 text-[10px] font-semibold text-[#6B7079]">
                   Reserved
                 </span>
               </div>
@@ -77,7 +77,7 @@ export function VerticalScreenMock({ id, screenTitle, rows }: VerticalScreenMock
             </div>
             <div className="mt-1.5 flex items-center justify-between rounded-lg bg-white px-2.5 py-1.5 text-[10.5px] border border-[#ECEEF2]">
               <span className="font-mono font-bold text-[#0A0A0A]">IMEI 35-882109-8472-4</span>
-              <span className="rounded-full bg-[#E4FAEF] px-2 py-0.5 text-[9px] font-extrabold text-[#00A862]">
+              <span className="rounded-full bg-[#E4FAEF] px-2 py-0.5 text-[10.5px] font-extrabold text-[#00A862]">
                 WARRANTY ACTIVE
               </span>
             </div>
@@ -88,14 +88,14 @@ export function VerticalScreenMock({ id, screenTitle, rows }: VerticalScreenMock
           <div className="mb-3 rounded-xl border border-[#E3E5EA] bg-[#F7F8FA] p-2.5">
             <div className="flex items-center justify-between text-[10px]">
               <span className="font-bold text-[#0A0A0A]">FEFO Batch Picking Engine</span>
-              <span className="rounded-full bg-[#FFF0E6] px-2 py-0.5 text-[9px] font-bold text-[#E65100]">
+              <span className="rounded-full bg-[#FFF0E6] px-2 py-0.5 text-[10.5px] font-bold text-[#E65100]">
                 EXPIRY CONTROL ACTIVE
               </span>
             </div>
             <div className="mt-1.5 flex items-center justify-between rounded-lg bg-white px-2.5 py-1.5 text-[10.5px] border border-[#ECEEF2]">
               <div>
                 <div className="font-bold text-[#0A0A0A]">Paracetamol 500mg (Batch B2291)</div>
-                <div className="text-[9px] text-[#6B7079]">
+                <div className="text-[10.5px] text-[#6B7079]">
                   Exp 03/2027 · First Expiry First Out
                 </div>
               </div>
@@ -114,6 +114,39 @@ export function VerticalScreenMock({ id, screenTitle, rows }: VerticalScreenMock
             </div>
             <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-[#E3E5EA]">
               <div className="h-full rounded-full bg-[#00D27A]" style={{ width: "78%" }} />
+            </div>
+          </div>
+        )}
+
+        {id === "transport" && (
+          <div className="mb-3 rounded-xl border border-[#E3E5EA] bg-[#F7F8FA] p-2.5">
+            <div className="flex items-center justify-between text-[10.5px]">
+              <span className="font-bold text-[#0A0A0A]">Trip TRP-0731 · 4 / 6 stops (67%)</span>
+              <span className="font-mono font-bold text-[#00A862]">$1,240.00 billed</span>
+            </div>
+            <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-[#E3E5EA]">
+              <div className="h-full rounded-full bg-[#00D27A]" style={{ width: "67%" }} />
+            </div>
+          </div>
+        )}
+
+        {id === "factories" && (
+          <div className="mb-3 rounded-xl border border-[#E3E5EA] bg-[#F7F8FA] p-2.5">
+            <div className="flex items-center justify-between text-[10.5px]">
+              <span className="font-bold text-[#0A0A0A]">Stock by warehouse</span>
+              <span className="font-mono font-bold text-[#00A862]">3 locations</span>
+            </div>
+            <div className="mt-1.5 grid grid-cols-3 gap-1.5 text-center text-[10.5px]">
+              {[
+                ["Main", "1,860"],
+                ["North", "940"],
+                ["Dispatch", "310"],
+              ].map(([n, q]) => (
+                <div key={n} className="rounded-lg border border-[#ECEEF2] bg-white px-2 py-1.5">
+                  <div className="font-semibold text-[#6B7079]">{n}</div>
+                  <div className="font-mono font-extrabold text-[#0A0A0A]">{q}</div>
+                </div>
+              ))}
             </div>
           </div>
         )}

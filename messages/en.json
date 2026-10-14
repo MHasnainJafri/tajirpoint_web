@@ -27,7 +27,7 @@
       "groupOps": "Run & grow",
       "items": {
         "khata": {
-          "name": "Digital Khata",
+          "name": "Credit ledger",
           "desc": "Real-time customer credit ledger"
         },
         "accounting": {
@@ -113,14 +113,14 @@
   },
   "landing": {
     "meta": {
-      "title": "TajirPoint — All-in-One POS for Restaurants, Retail & Wholesalers",
-      "description": "All-in-one offline-first POS for restaurants, retail shops & wholesale distributors. Table management, barcode checkout, Khata credit ledger, inventory & delivery."
+      "title": "TajirPoint — POS & Back Office for Restaurants, Retail, Wholesale & More",
+      "description": "All-in-one, offline-first POS and back office for restaurants, retail, laptop and mobile shops, wholesalers, distributors, delivery fleets and factories. Stock, customer credit, accounting, delivery and an online store on one login."
     },
     "hero": {
-      "badge": "Point of sale & back office · Built for local markets worldwide",
+      "badge": "Point of sale & back office · For every kind of business, in every market",
       "headline": "The point of sale that runs",
       "headlineAccent": "your whole business.",
-      "sub": "TajirPoint is a complete point-of-sale system — and everything behind it. The counter, stock, customer credit, accounting, staff, delivery and your online store — one login, in your language and currency. And it keeps selling when the internet drops.",
+      "sub": "TajirPoint is a complete point-of-sale system — and everything behind it. Restaurants, shops, wholesalers, fleets and factories run their counter, stock, customer credit, accounting, staff, delivery and online store from one login, in their language and currency. And it keeps selling when the internet drops.",
       "ctaPrimary": "Start free — 3 months",
       "ctaSecondary": "Book a demo",
       "note": "Free for 3 months · No card needed · We move your data for free",
@@ -169,7 +169,7 @@
       "eyebrow": "One platform instead of five",
       "items": {
         "till": "POS till",
-        "notebook": "Paper credit notebook",
+        "notebook": "Paper credit book",
         "excel": "Excel stock sheet",
         "ledger": "Accountant's ledger",
         "whatsapp": "WhatsApp order chaos"
@@ -179,11 +179,11 @@
     "signature": {
       "eyebrow": "Signature features",
       "headline": "Five things most POS systems get wrong",
-      "sub": "Built for how shops actually run — credit, outages, local taxes and the truck that leaves at 7 am.",
+      "sub": "Built for how businesses actually run — customer credit, outages, local taxes and the truck that leaves at 7 am.",
       "khata": {
-        "label": "01 · Digital credit ledger",
-        "title": "The credit notebook, made tamper-proof",
-        "body": "Every sale, payment and adjustment posts automatically with a running balance the shopkeeper can't accidentally fudge and the customer can't dispute. Share a PDF statement over WhatsApp in one tap.",
+        "label": "01 · Credit ledger",
+        "title": "The credit book, made tamper-proof",
+        "body": "Every sale, payment and adjustment posts automatically with a running balance nobody can quietly edit and no customer can dispute. Share a PDF statement over WhatsApp or email in one tap.",
         "bullets": {
           "0": "Credit limits with approaching-limit alerts",
           "1": "30 / 60 / 90-day aging",
@@ -222,9 +222,9 @@
         }
       },
       "van": {
-        "label": "03 · Van sales & distribution",
+        "label": "03 · Fleet & distribution",
         "title": "Load the truck. Sell the route. Reconcile by evening.",
-        "body": "Treat a vehicle as a mobile warehouse: load stock, sell and collect cash door-to-door — credit sales included — then match cash, goods and fuel at day end, with any shortfall on the driver's account.",
+        "body": "Treat every vehicle as a mobile warehouse: load stock, sell and collect payment on the route — credit sales included — then match cash, goods and fuel at day end, with any shortfall on the driver's account. Built for van sales, delivery fleets and trucking.",
         "bullets": {
           "0": "Route & stop planning",
           "1": "Driver cash reconciliation",
@@ -262,8 +262,8 @@
     },
     "solutions": {
       "eyebrow": "Solutions",
-      "headline": "Made for your kind of shop",
-      "sub": "Six verticals, each with its own screens. Switch on what you need — a grocery store never sees a kitchen display.",
+      "headline": "Made for your kind of business",
+      "sub": "Eight trades, each with its own screens. Switch on what you need — a laptop shop never sees a kitchen display.",
       "tablistLabel": "Choose your trade",
       "ctaStart": "Start free",
       "ctaExtensions": "See extensions",
@@ -314,7 +314,7 @@
         },
         "distribution": {
           "name": "Distributors & wholesale",
-          "who": "FMCG distribution, wholesalers, mills",
+          "who": "Wholesalers, distributors, FMCG suppliers",
           "blurb": "Vans as mobile warehouses, routes with cash and credit collection, and reconciliation the driver can't argue with.",
           "bullets": {
             "0": "Van sales & route planning",
@@ -332,6 +332,28 @@
             "1": "Staff commissions",
             "2": "Memberships & packages",
             "3": "Recurring billing"
+          }
+        },
+        "transport": {
+          "name": "Transport & delivery fleets",
+          "who": "Trucking, couriers, delivery fleets",
+          "blurb": "Plan routes, dispatch vehicles and drivers, collect proof of delivery and see what every trip really earned after fuel.",
+          "bullets": {
+            "0": "Route & stop planning",
+            "1": "Proof of delivery",
+            "2": "Fuel & mileage with anomaly flags",
+            "3": "Per-trip profit report"
+          }
+        },
+        "factories": {
+          "name": "Factories & mills",
+          "who": "Producers selling to dealers and wholesalers",
+          "blurb": "Buy raw materials, hold stock across warehouses and batches, and sell finished goods to dealers on credit — with costing and books that post themselves.",
+          "bullets": {
+            "0": "Purchase orders & goods receipt",
+            "1": "Multi-warehouse & batch stock",
+            "2": "Bulk & tier pricing for dealers",
+            "3": "Costing methods & automatic books"
           }
         }
       }
@@ -459,7 +481,7 @@
         "includes": {
           "pos": "POS, receipts & barcode",
           "inventory": "Up to 30 products",
-          "credit": "Customer & supplier khata",
+          "credit": "Customer & supplier credit",
           "einvoicing": "100 orders a day",
           "offline": "Works offline",
           "devices": "2 staff logins"
@@ -524,7 +546,7 @@
             },
             "3": {
               "q": "Can I bring my existing products?",
-              "a": "Yes. Import from Excel or CSV — or send us an export from your old POS and we load your products, customers, suppliers and khata balances for you, free."
+              "a": "Yes. Import from Excel or CSV — or send us an export from your old POS and we load your products, customers, suppliers and credit balances for you, free."
             }
           }
         },

@@ -1,4 +1,4 @@
-# Media for /business/grocery-kiryana — Grocery & kiryana
+# Media for /business/grocery-kiryana — Grocery & supermarkets
 
 Drop files into this folder using the exact names below, then rebuild/redeploy.
 Until a file exists the page shows a branded placeholder, so nothing breaks.
@@ -6,10 +6,10 @@ See ../../README.md for formats, sizes and compression tips.
 
 | Section | Slot | Best as | File name(s) | Ratio · size | What it should show |
 |---|---|---|---|---|---|
-| Hero (top of the page) | `hero` | video | `hero.mp4` (+ `hero-poster.jpg`), or an image `hero.webp` / `hero.jpg` | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Kiryana counter scanning items and adding a sale to a customer's khata |
+| Hero (top of the page) | `hero` | video | `hero.mp4` (+ `hero-poster.jpg`), or an image `hero.webp` / `hero.jpg` | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Grocery counter scanning items and adding a sale to a customer's credit account |
 | Barcode checkout | `checkout` | video | `checkout.mp4` (+ `checkout-poster.jpg`), or an image `checkout.webp` / `checkout.jpg` | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Scanning groceries at the counter |
 | Cartons, kilos and pieces | `units` | image | `units.webp` / `units.jpg` / `units.png`, or `units.mp4` (+ `units-poster.jpg`) | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Product with carton and piece units |
-| Digital khata | `khata` | video | `khata.mp4` (+ `khata-poster.jpg`), or an image `khata.webp` / `khata.jpg` | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Customer khata with running balance |
+| Digital credit ledger | `khata` | video | `khata.mp4` (+ `khata-poster.jpg`), or an image `khata.webp` / `khata.jpg` | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Customer credit account with running balance |
 | Suppliers and purchases | `suppliers` | image | `suppliers.webp` / `suppliers.jpg` / `suppliers.png`, or `suppliers.mp4` (+ `suppliers-poster.jpg`) | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Goods received note from a supplier |
 | Low stock and reorder | `reorder` | image | `reorder.webp` / `reorder.jpg` / `reorder.png`, or `reorder.mp4` (+ `reorder-poster.jpg`) | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Reorder suggestions list |
 | Keeps selling offline | `offline` | image | `offline.webp` / `offline.jpg` / `offline.png`, or `offline.mp4` (+ `offline-poster.jpg`) | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Offline banner with queued sales |

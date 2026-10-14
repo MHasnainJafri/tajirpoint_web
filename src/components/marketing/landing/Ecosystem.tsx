@@ -38,7 +38,7 @@ export function Ecosystem() {
             <h3 className="text-[17px] font-bold tracking-[-0.02em]">Centralized Management</h3>
             <p className="mt-1.5 text-[13px] leading-[1.6] text-[var(--color-body)]">
               View live revenue, reorder stock from suppliers, and let your accountant pull clean
-              general ledger statements without setting foot in the shop.
+              general ledger statements without visiting the shop or warehouse.
             </p>
           </div>
         </div>
@@ -68,10 +68,10 @@ export function Ecosystem() {
             </span>
           </div>
           <div className="mt-4 p-2">
-            <h3 className="text-[18px] font-bold tracking-[-0.02em]">Sub-Second Checkout Speed</h3>
+            <h3 className="text-[18px] font-bold tracking-[-0.02em]">Fast checkout that never stalls</h3>
             <p className="mt-1.5 text-[13.5px] leading-[1.6] text-[var(--color-body)]">
-              Equipped with barcode scanning, quick touch tiles, dual receipts, customer credit
-              validation, and offline engine that never stalls during peak rushes.
+              Barcode scanning, quick touch tiles, split payments, customer credit checks and an offline
+              engine that keeps ringing sales through peak rushes and outages.
             </p>
           </div>
         </div>
@@ -97,8 +97,8 @@ export function Ecosystem() {
           <div className="mt-4 p-2">
             <h3 className="text-[17px] font-bold tracking-[-0.02em]">Customer Portal</h3>
             <p className="mt-1.5 text-[13px] leading-[1.6] text-[var(--color-body)]">
-              Let loyal clients browse your online catalog, view their outstanding khata statement,
-              and settle payments via digital wallets.
+              Let loyal clients browse your online catalog, view their outstanding balance and
+              invoices, and pay online.
             </p>
           </div>
         </div>

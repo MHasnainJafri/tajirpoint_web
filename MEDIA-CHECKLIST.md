@@ -1,6 +1,6 @@
 # Media checklist — marketing site
 
-Every image/video slot on the business pages. 0 of 77 slots filled.
+Every image/video slot on the business pages. 0 of 91 slots filled.
 
 How to add media: read `public/media/README.md`. In short — name the file after
 the slot, put it in the folder shown, run `pnpm media:docs` (optional, refreshes
@@ -62,17 +62,17 @@ Other slots on the site (not part of this list):
 | [ ] | Returns and exchanges | `public/media/business/retail-fashion/returns.*` | video | 16:10 | — |
 | [ ] | Loyalty, coupons and promotions | `public/media/business/retail-fashion/loyalty.*` | image | 16:10 | — |
 | [ ] | Multi-branch stock | `public/media/business/retail-fashion/branches.*` | image | 16:10 | — |
-| [ ] | Khata for regular customers | `public/media/business/retail-fashion/khata.*` | image | 16:10 | — |
+| [ ] | Credit accounts for regular customers | `public/media/business/retail-fashion/khata.*` | image | 16:10 | — |
 | [ ] | An online store from the same stock | `public/media/business/retail-fashion/online-store.*` | image | 16:10 | — |
 
-## Grocery & kiryana — /business/grocery-kiryana (8 slots)
+## Grocery & supermarkets — /business/grocery-kiryana (8 slots)
 
 | Done | Section | Path | Best as | Ratio | Current |
 |---|---|---|---|---|---|
 | [ ] | Hero | `public/media/business/grocery-kiryana/hero.*` | video | 16:10 | — |
 | [ ] | Barcode checkout | `public/media/business/grocery-kiryana/checkout.*` | video | 16:10 | — |
 | [ ] | Cartons, kilos and pieces | `public/media/business/grocery-kiryana/units.*` | image | 16:10 | — |
-| [ ] | Digital khata | `public/media/business/grocery-kiryana/khata.*` | video | 16:10 | — |
+| [ ] | Digital credit ledger | `public/media/business/grocery-kiryana/khata.*` | video | 16:10 | — |
 | [ ] | Suppliers and purchases | `public/media/business/grocery-kiryana/suppliers.*` | image | 16:10 | — |
 | [ ] | Low stock and reorder | `public/media/business/grocery-kiryana/reorder.*` | image | 16:10 | — |
 | [ ] | Keeps selling offline | `public/media/business/grocery-kiryana/offline.*` | image | 16:10 | — |
@@ -98,7 +98,7 @@ Other slots on the site (not part of this list):
 | [ ] | IMEI and serial numbers | `public/media/business/electronics-mobile/serials.*` | video | 16:10 | — |
 | [ ] | Colours and storage as variants | `public/media/business/electronics-mobile/variants.*` | image | 16:10 | — |
 | [ ] | Quotations | `public/media/business/electronics-mobile/quotations.*` | image | 16:10 | — |
-| [ ] | Customer and supplier khata | `public/media/business/electronics-mobile/khata.*` | image | 16:10 | — |
+| [ ] | Customer and supplier credit | `public/media/business/electronics-mobile/khata.*` | image | 16:10 | — |
 | [ ] | Branches and transfers | `public/media/business/electronics-mobile/branches.*` | image | 16:10 | — |
 
 ## Salons & services — /business/salons-services (7 slots)
@@ -121,9 +121,33 @@ Other slots on the site (not part of this list):
 | [ ] | Route dispatch and van sales | `public/media/business/distributors-wholesale/trips.*` | video | 16:10 | — |
 | [ ] | Day-end reconciliation | `public/media/business/distributors-wholesale/reconcile.*` | image | 16:10 | — |
 | [ ] | Dealer price lists | `public/media/business/distributors-wholesale/pricing.*` | image | 16:10 | — |
-| [ ] | Credit limits and khata | `public/media/business/distributors-wholesale/credit.*` | image | 16:10 | — |
+| [ ] | Credit limits and balances | `public/media/business/distributors-wholesale/credit.*` | image | 16:10 | — |
 | [ ] | Warehouses and transfers | `public/media/business/distributors-wholesale/warehouses.*` | image | 16:10 | — |
 | [ ] | Purchasing and suppliers | `public/media/business/distributors-wholesale/purchasing.*` | image | 16:10 | — |
+
+## Transport & delivery fleets — /business/transport-delivery (7 slots)
+
+| Done | Section | Path | Best as | Ratio | Current |
+|---|---|---|---|---|---|
+| [ ] | Hero | `public/media/business/transport-delivery/hero.*` | video | 16:10 | — |
+| [ ] | Routes and dispatch | `public/media/business/transport-delivery/dispatch.*` | video | 16:10 | — |
+| [ ] | Proof of delivery | `public/media/business/transport-delivery/proof.*` | phone | 4:5 | — |
+| [ ] | Cash collected on the road | `public/media/business/transport-delivery/cash.*` | image | 16:10 | — |
+| [ ] | Fuel, mileage and profit | `public/media/business/transport-delivery/fuel.*` | image | 16:10 | — |
+| [ ] | Partner couriers when you need them | `public/media/business/transport-delivery/couriers.*` | image | 16:10 | — |
+| [ ] | Books that follow the trips | `public/media/business/transport-delivery/books.*` | image | 16:10 | — |
+
+## Factories & mills — /business/factories-mills (7 slots)
+
+| Done | Section | Path | Best as | Ratio | Current |
+|---|---|---|---|---|---|
+| [ ] | Hero | `public/media/business/factories-mills/hero.*` | image | 16:10 | — |
+| [ ] | Raw-material purchasing | `public/media/business/factories-mills/purchasing.*` | image | 16:10 | — |
+| [ ] | Warehouses and batches | `public/media/business/factories-mills/warehouses.*` | image | 16:10 | — |
+| [ ] | Dealer and bulk pricing | `public/media/business/factories-mills/pricing.*` | image | 16:10 | — |
+| [ ] | Credit limits and statements | `public/media/business/factories-mills/credit.*` | image | 16:10 | — |
+| [ ] | Costing and books | `public/media/business/factories-mills/costing.*` | image | 16:10 | — |
+| [ ] | Dispatch to dealers | `public/media/business/factories-mills/delivery.*` | image | 16:10 | — |
 
 ## Furniture & home — /business/furniture-home (7 slots)
 

@@ -117,8 +117,8 @@ export const KHATA_LIMIT = { used: 71, limit: "$600.00" } as const;
 export const JOURNAL_LINES = [
   { name: "Cash in drawer · Register 1", dr: "20.00", cr: "", indent: false },
   { name: "Accounts receivable · Meridian Traders", dr: "12.40", cr: "", indent: false },
-  { name: "Sales revenue", dr: "", cr: "27.46", indent: true },
-  { name: "Sales tax payable · 18%", dr: "", cr: "4.94", indent: true },
+  { name: "Sales revenue", dr: "", cr: "29.45", indent: true },
+  { name: "Sales tax payable · 10%", dr: "", cr: "2.95", indent: true },
 ] as const;
 
 export const JOURNAL_TOTAL = "32.40";
@@ -158,7 +158,7 @@ export const RECEIPT_MOCK = {
     { name: "Coffee 500g", amt: "5.90" },
     { name: "Green tea 250g", amt: "10.00" },
   ],
-  tax: { label: "Tax 18%", amt: "4.94" },
+  tax: { label: "Tax 10%", amt: "2.95" },
   total: "$32.40",
   ref: "E-INVOICE 7100128",
 } as const;
@@ -239,13 +239,35 @@ export const SOLUTIONS = [
   },
   {
     id: "distribution",
-    icon: "truck",
+    icon: "box",
     href: "/business/distributors-wholesale",
     screen: "Trip TRP-0418 · VAN-4471",
     rows: [
       { a: "Route Midtown → Riverside", b: "14 / 18 stops · 3 credit sales", c: "$842.00 cash" },
       { a: "Load · 240 cartons", b: "186 sold · 4 returned damaged", c: "50 on van" },
       { a: "Day-end reconciliation", b: "Cash, goods & fuel matched", c: "Variance $0.00" },
+    ],
+  },
+  {
+    id: "transport",
+    icon: "truck",
+    href: "/business/transport-delivery",
+    screen: "Dispatch · Trip TRP-0731",
+    rows: [
+      { a: "Depot → Harbor Road", b: "6 stops · driver Omar · ETA 2:40 pm", c: "In transit" },
+      { a: "Proof of delivery · stop 4", b: "Confirmed on the driver's phone · 2 pallets", c: "Delivered" },
+      { a: "Trip profit · TRK-2208", b: "Revenue $1,240 − fuel $212 − driver $90", c: "+ $938.00" },
+    ],
+  },
+  {
+    id: "factories",
+    icon: "layers",
+    href: "/business/factories-mills",
+    screen: "Stock · Warehouses & batches",
+    rows: [
+      { a: "Flour 50 kg bag · Batch L-2210", b: "Main warehouse · received 04 Oct", c: "1,860 bags" },
+      { a: "Alpha Traders · dealer", b: "Credit limit $20,000 · 62% used · 30-day ageing", c: "$12,400 due" },
+      { a: "PO-0412 · raw wheat", b: "Goods receipt posted · supplier ledger updated", c: "Received" },
     ],
   },
   {

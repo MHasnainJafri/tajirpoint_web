@@ -10,7 +10,7 @@ See ../../README.md for formats, sizes and compression tips.
 | IMEI and serial numbers | `serials` | video | `serials.mp4` (+ `serials-poster.jpg`), or an image `serials.webp` / `serials.jpg` | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Serial number list for a phone model |
 | Colours and storage as variants | `variants` | image | `variants.webp` / `variants.jpg` / `variants.png`, or `variants.mp4` (+ `variants-poster.jpg`) | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Phone model with colour and storage variants |
 | Quotations | `quotations` | image | `quotations.webp` / `quotations.jpg` / `quotations.png`, or `quotations.mp4` (+ `quotations-poster.jpg`) | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Quotation for five laptops |
-| Customer and supplier khata | `khata` | image | `khata.webp` / `khata.jpg` / `khata.png`, or `khata.mp4` (+ `khata-poster.jpg`) | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Supplier ledger for a distributor |
+| Customer and supplier credit | `khata` | image | `khata.webp` / `khata.jpg` / `khata.png`, or `khata.mp4` (+ `khata-poster.jpg`) | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Supplier ledger for a distributor |
 | Branches and transfers | `branches` | image | `branches.webp` / `branches.jpg` / `branches.png`, or `branches.mp4` (+ `branches-poster.jpg`) | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Stock transfer of serialised phones |
 
 Order of preference for a slot: local video (`.mp4`/`.webm`) → YouTube/Vimeo id

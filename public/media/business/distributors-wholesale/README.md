@@ -10,7 +10,7 @@ See ../../README.md for formats, sizes and compression tips.
 | Route dispatch and van sales | `trips` | video | `trips.mp4` (+ `trips-poster.jpg`), or an image `trips.webp` / `trips.jpg` | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Trip screen with stops and a loaded van |
 | Day-end reconciliation | `reconcile` | image | `reconcile.webp` / `reconcile.jpg` / `reconcile.png`, or `reconcile.mp4` (+ `reconcile-poster.jpg`) | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Trip reconciliation screen |
 | Dealer price lists | `pricing` | image | `pricing.webp` / `pricing.jpg` / `pricing.png`, or `pricing.mp4` (+ `pricing-poster.jpg`) | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Price list for dealers |
-| Credit limits and khata | `credit` | image | `credit.webp` / `credit.jpg` / `credit.png`, or `credit.mp4` (+ `credit-poster.jpg`) | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Customer balance with ageing |
+| Credit limits and balances | `credit` | image | `credit.webp` / `credit.jpg` / `credit.png`, or `credit.mp4` (+ `credit-poster.jpg`) | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Customer balance with ageing |
 | Warehouses and transfers | `warehouses` | image | `warehouses.webp` / `warehouses.jpg` / `warehouses.png`, or `warehouses.mp4` (+ `warehouses-poster.jpg`) | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Warehouse stock overview |
 | Purchasing and suppliers | `purchasing` | image | `purchasing.webp` / `purchasing.jpg` / `purchasing.png`, or `purchasing.mp4` (+ `purchasing-poster.jpg`) | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Purchase order screen |
 

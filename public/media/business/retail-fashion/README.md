@@ -12,7 +12,7 @@ See ../../README.md for formats, sizes and compression tips.
 | Returns and exchanges | `returns` | video | `returns.mp4` (+ `returns-poster.jpg`), or an image `returns.webp` / `returns.jpg` | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Exchange of a shirt for a different size |
 | Loyalty, coupons and promotions | `loyalty` | image | `loyalty.webp` / `loyalty.jpg` / `loyalty.png`, or `loyalty.mp4` (+ `loyalty-poster.jpg`) | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Coupon applied at checkout |
 | Multi-branch stock | `branches` | image | `branches.webp` / `branches.jpg` / `branches.png`, or `branches.mp4` (+ `branches-poster.jpg`) | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Stock transfer between two branches |
-| Khata for regular customers | `khata` | image | `khata.webp` / `khata.jpg` / `khata.png`, or `khata.mp4` (+ `khata-poster.jpg`) | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Customer khata with balance and history |
+| Credit accounts for regular customers | `khata` | image | `khata.webp` / `khata.jpg` / `khata.png`, or `khata.mp4` (+ `khata-poster.jpg`) | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Customer credit account with balance and history |
 | An online store from the same stock | `online-store` | image | `online-store.webp` / `online-store.jpg` / `online-store.png`, or `online-store.mp4` (+ `online-store-poster.jpg`) | 16:10 · 1600 × 1000 image · 1920 × 1200 (or 1080p) video | Fashion store website built with TajirPoint |
 
 Order of preference for a slot: local video (`.mp4`/`.webm`) → YouTube/Vimeo id

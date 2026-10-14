@@ -13,22 +13,22 @@ const SEGMENTS: Segment[] = [
     id: "single",
     img: "/images/who-single.jpg",
     badge: "1 – 2 COUNTERS",
-    title: "Independent shops & single counters",
-    body: "From neighbourhood groceries to boutiques, one register handles fast checkouts, stock counts, and customer credit ledger without complicated setup.",
+    title: "Independent shops, cafés & counters",
+    body: "From corner shops and coffee bars to phone and laptop stores, one register handles fast checkouts, stock counts and customer credit without complicated setup.",
   },
   {
     id: "multi",
     img: "/images/who-multi.jpg",
     badge: "MULTI-LOCATION",
-    title: "Several branches & growing retail",
-    body: "Manage central inventory across all outlets, transfer stock between warehouses, and see consolidated profit & loss reports in real time.",
+    title: "Chains & growing businesses",
+    body: "Manage central inventory across every outlet, transfer stock between warehouses and see consolidated profit & loss in real time.",
   },
   {
     id: "mobile",
     img: "/images/who-mobile.jpg",
     badge: "ON THE ROAD",
-    title: "Distribution & van sales",
-    body: "Equip delivery drivers and route salesmen with mobile POS on Android phones. Sell door-to-door, issue receipts, and reconcile cash by evening.",
+    title: "Wholesale, fleets & factories",
+    body: "Sell door to door from a van, dispatch trucks with proof of delivery, or supply dealers from your warehouse — and reconcile cash and stock every evening.",
   },
 ];
 
@@ -39,12 +39,12 @@ export function WhoItsFor() {
         <div>
           <div className="eyebrow">BUILT FOR REAL COMMERCE</div>
           <h2 className="mt-3 max-w-[20ch] text-[clamp(28px,3.6vw,44px)] font-bold leading-[1.12] tracking-[-0.035em] text-balance">
-            Designed for the way real shops actually operate.
+            Designed for the way real businesses operate.
           </h2>
         </div>
         <p className="max-w-[42ch] text-[14.5px] leading-[1.65] text-[var(--color-body)]">
-          Whether you run a single checkout counter, five busy city branches, or a fleet of delivery
-          vans, Tajir Point adapts to your exact scale.
+          Whether you run one counter, five city branches, a wholesale warehouse or a fleet of
+          delivery vans, TajirPoint adapts to your exact scale.
         </p>
       </div>
 
