@@ -62,8 +62,8 @@ export function ExtensionGrid() {
               className="relative animate-[tpFadeUp_.5s_both] rounded-2xl border border-[var(--color-line)] bg-[var(--surface-1)] p-6 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-[rgba(0,210,122,.55)] hover:shadow-[0_18px_50px_rgba(0,0,0,.4)]"
             >
               <div className="flex items-center justify-between">
-                <span className="flex h-[42px] w-[42px] items-center justify-center rounded-[11px] border border-[rgba(0,210,122,.22)] bg-[rgba(0,210,122,.12)] text-[var(--color-mint-2)]">
-                  <Icon name={ext.icon} size={19} />
+                <span className="flex h-[72px] w-[88px] items-center justify-center rounded-[11px] border border-[rgba(0,210,122,.22)] bg-white text-[var(--color-mint-2)]">
+                  <Icon name={ext.icon} size={28} />
                 </span>
                 <span className="rounded-full border border-[var(--color-line-2)] px-[10px] py-1 text-[12px] font-semibold text-[var(--color-brand)]">
                   {t(`filters.${ext.cat}`)}

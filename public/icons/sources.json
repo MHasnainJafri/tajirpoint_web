@@ -1,0 +1,123 @@
+{
+  "retrieved": "2026-10-13",
+  "note": "Brand marks identify integrations. Preserve original artwork and colors. Custom 3D artwork provenance and prompts: docs/qa/extension-icons/generated-artwork.json.",
+  "brands": [
+    {
+      "name": "Stripe",
+      "file": "brand-stripe.svg",
+      "source": "https://stripe.com/newsroom/information",
+      "distribution": "Simple Icons 16.35.0; original brand geometry, brand color",
+      "license": "See Simple Icons license and brand guidelines"
+    },
+    {
+      "name": "PayPal",
+      "file": "brand-paypal-official.svg",
+      "source": "https://www.paypalobjects.com/webstatic/i/logo/rebrand/ppcom.svg",
+      "distribution": "Official PayPal asset server; original full-color artwork"
+    },
+    {
+      "name": "Razorpay",
+      "file": "brand-razorpay.svg",
+      "source": "https://razorpay.com/newsroom/brand-assets/",
+      "distribution": "Simple Icons 16.35.0; original brand geometry, brand color",
+      "license": "See Simple Icons license and brand guidelines"
+    },
+    {
+      "name": "Square",
+      "file": "brand-square.svg",
+      "source": "https://squareup.com",
+      "distribution": "Simple Icons 16.35.0; original brand geometry, brand color",
+      "license": "See Simple Icons license and brand guidelines"
+    },
+    {
+      "name": "QuickBooks",
+      "file": "brand-quickbooks.svg",
+      "source": "https://design.intuit.com/quickbooks/brand",
+      "distribution": "Simple Icons 16.35.0; original brand geometry, brand color",
+      "license": "See Simple Icons license and brand guidelines"
+    },
+    {
+      "name": "WooCommerce",
+      "file": "brand-woocommerce.svg",
+      "source": "https://woocommerce.com/style-guide",
+      "distribution": "Simple Icons 16.35.0; original brand geometry, brand color",
+      "license": "See Simple Icons license and brand guidelines"
+    },
+    {
+      "name": "Shopify",
+      "file": "brand-shopify.svg",
+      "source": "https://www.shopify.com/brand-assets",
+      "distribution": "Simple Icons 16.35.0; original brand geometry, brand color",
+      "license": "See Simple Icons license and brand guidelines"
+    },
+    {
+      "name": "Wix",
+      "file": "brand-wix.svg",
+      "source": "https://www.wix.com/about/design-assets",
+      "distribution": "Simple Icons 16.35.0; original brand geometry, brand color",
+      "license": "See Simple Icons license and brand guidelines"
+    },
+    {
+      "name": "BigCommerce",
+      "file": "brand-bigcommerce.svg",
+      "source": "https://www.bigcommerce.co.uk/press",
+      "distribution": "Simple Icons 16.35.0; original brand geometry, brand color",
+      "license": "See Simple Icons license and brand guidelines"
+    },
+    {
+      "name": "WhatsApp",
+      "file": "brand-whatsapp.svg",
+      "source": "https://about.meta.com/brand/resources/whatsapp/whatsapp-brand",
+      "distribution": "Simple Icons 16.35.0; original brand geometry, brand color",
+      "license": "See Simple Icons license and brand guidelines"
+    },
+    {
+      "name": "easypaisa",
+      "file": "brand-easypaisa.png",
+      "source": "https://easypaisa.com.pk/wp-content/uploads/2026/01/cropped-cropped-easypaisa-logo-dark-1.png",
+      "distribution": "Official brand website; original downloaded artwork"
+    },
+    {
+      "name": "hbl",
+      "file": "brand-hbl.png",
+      "source": "https://www.hbl.com/assets/images/HBL-Device-Logo-full_colour.png",
+      "distribution": "Official brand website; original downloaded artwork"
+    },
+    {
+      "name": "jazzcash",
+      "file": "brand-jazzcash.svg",
+      "source": "https://www.jazzcash.com.pk/assets/svgs/JazzCash-logo-hd-80.svg",
+      "distribution": "Official brand website; original downloaded artwork"
+    },
+    {
+      "name": "leopards",
+      "file": "brand-leopards.png",
+      "source": "https://leopardscourier.com//leopardcourier_dubai/images/logo.png",
+      "distribution": "Official brand website; original downloaded artwork"
+    },
+    {
+      "name": "tcs",
+      "file": "brand-tcs.png",
+      "source": "https://www.tcsexpress.com/logo512.png",
+      "distribution": "Official brand website; original downloaded artwork"
+    },
+    {
+      "name": "postex",
+      "file": "brand-postex.webp",
+      "source": "https://postex.pk/images/home/postex-logo.webp",
+      "distribution": "Official brand website; original downloaded artwork"
+    },
+    {
+      "name": "fbr",
+      "file": "brand-fbr.png",
+      "source": "https://download1.fbr.gov.pk/MediaManager/english/images/FBR-Logo.png",
+      "distribution": "Official brand website; original downloaded artwork"
+    },
+    {
+      "name": "magento",
+      "file": "brand-magento.svg",
+      "source": "https://cdn.jsdelivr.net/npm/simple-icons@11.15.0/icons/magento.svg",
+      "distribution": "Simple Icons 11.15.0"
+    }
+  ]
+}

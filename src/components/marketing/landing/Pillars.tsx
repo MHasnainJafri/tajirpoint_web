@@ -1,35 +1,21 @@
 import { useTranslations } from "next-intl";
-import {
-  Blocks,
-  BookUser,
-  Calculator,
-  Megaphone,
-  Package,
-  Puzzle,
-  ReceiptText,
-  ShieldCheck,
-  ShoppingCart,
-  Truck,
-  Users,
-  Wallet,
-  type LucideIcon,
-} from "lucide-react";
+import { Icon } from "@/components/design/Icon";
 import { PILLARS } from "@/lib/design/landing";
 
-/** One purpose-drawn icon per capability (Lucide), instead of the generic strokes. */
-const PILLAR_ICON: Record<(typeof PILLARS)[number]["id"], LucideIcon> = {
-  sell: ShoppingCart,
-  stock: Package,
-  buy: ReceiptText,
-  getPaid: Wallet,
-  credit: BookUser,
-  account: Calculator,
-  comply: ShieldCheck,
-  grow: Megaphone,
-  deliver: Truck,
-  people: Users,
-  specialise: Puzzle,
-  integrate: Blocks,
+/** The same dimensional illustration family as the extension marketplace. */
+const PILLAR_ARTWORK: Record<(typeof PILLARS)[number]["id"], string> = {
+  sell: "artwork-pos-checkout",
+  stock: "artwork-inventory",
+  buy: "artwork-purchasing",
+  getPaid: "extension-cash-management",
+  credit: "extension-customer-portal",
+  account: "extension-accounting-gl",
+  comply: "artwork-compliance",
+  grow: "extension-coupons",
+  deliver: "extension-route-dispatch",
+  people: "extension-hr-payroll",
+  specialise: "extension-restaurant-toolbox",
+  integrate: "artwork-integrations",
 };
 
 /**
@@ -41,7 +27,7 @@ export function Pillars() {
   const t = useTranslations("landing.pillars");
 
   return (
-    <section className="mt-[clamp(64px,9vw,120px)]">
+    <section id="back-office" className="mt-[clamp(64px,9vw,120px)] scroll-mt-[86px]">
       <div data-reveal className="flex flex-wrap items-end justify-between gap-5">
         <div>
           <div className="eyebrow">{t("eyebrow")}</div>
@@ -56,15 +42,14 @@ export function Pillars() {
 
       <div className="mt-[30px] grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-3">
         {PILLARS.map((p) => {
-          const Icon = PILLAR_ICON[p.id];
           return (
             <div
               key={p.id}
               data-reveal
-              className="rounded-[18px] border border-[var(--color-line)] p-[18px] transition-[transform,box-shadow,border-color] duration-[250ms] hover:-translate-y-[3px] hover:border-[var(--color-line-3)] hover:shadow-[0_16px_34px_rgba(10,10,10,.08)]"
+              className="group rounded-[18px] border border-[var(--color-line)] p-[18px] transition-[transform,box-shadow,border-color] duration-[250ms] hover:-translate-y-[3px] hover:border-[var(--color-line-3)] hover:shadow-[0_16px_34px_rgba(10,10,10,.08)]"
             >
-              <span className="grid h-11 w-11 place-items-center rounded-[13px] bg-[#0A0A0A] text-[var(--color-mint)] shadow-[0_6px_16px_rgba(10,10,10,.14)]">
-                <Icon size={22} strokeWidth={1.8} aria-hidden="true" />
+              <span className="flex h-[72px] w-[80px] items-center justify-center rounded-[16px] border border-[var(--color-line-soft)] bg-gradient-to-b from-white to-[#f1f7f4] transition-transform duration-300 group-hover:-translate-y-0.5 motion-reduce:transform-none">
+                <Icon name={PILLAR_ARTWORK[p.id]} size={28} />
               </span>
               <div className="mt-[14px] text-[15px] font-bold tracking-[-0.01em]">
                 {t(`items.${p.id}.title`)}

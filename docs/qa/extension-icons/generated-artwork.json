@@ -1,0 +1,132 @@
+{
+  "tool": "built-in image_gen",
+  "style": "Satin 3D product illustrations, emerald/ivory with coral, lavender and gold accents; transparent backgrounds.",
+  "assets": [
+    {
+      "id": "ledger",
+      "path": "/Users/mac/.codex/generated_images/01a1246d-e2fd-7f70-8f8b-bc791867d795/exec-701f202b-6f5d-4ac6-a7f5-0f2073eca135.png",
+      "prompt": "Use case: stylized-concept. Asset type: premium SaaS marketplace icon, isolated 3D object with true transparent background. Create one accounting/general-ledger icon for TajirPoint, a polished enterprise POS website with white surfaces, charcoal type and emerald accents. Subject: a substantial emerald hardbound accounting ledger, slightly open to reveal crisp ivory pages, a neat lavender bookmark, and one small gold coin at its base. Elegant dimensional product illustration, not a line icon, not a flat pictogram. Orthographic three-quarter view, rounded bevels, soft satin ceramic/plastic materials, subtle realistic ambient occlusion, controlled studio lighting upper-left. Emerald main material, mint highlights, warm gold accent, restrained lavender detail. One clear silhouette, object fills 82% of square, centered with comfortable equal margins; highly legible when displayed at 60px. No pedestal, no surrounding tile, no text, no letters, no numeric symbols, no decorative particles, no brand logo. Transparent alpha background.",
+      "file": "public/design/icons/extension-accounting-gl-3d.webp"
+    },
+    {
+      "id": "restaurant",
+      "path": "/Users/mac/.codex/generated_images/01a1246d-e2fd-7f70-8f8b-bc791867d795/exec-cc453231-20f1-41ce-86ae-7b14462d773e.png",
+      "prompt": "Use case: stylized-concept. Create ONE premium 3D icon for TajirPoint's enterprise POS website. Subject: a polished ivory and emerald restaurant serving cloche with a warm coral plate rim and small gold handle. Match the reference's polished dimensional material quality and camera angle, with simpler clear geometry at 60px. Rounded bevels, soft satin materials, realistic ambient occlusion, studio light upper-left, orthographic three-quarter view. Tasteful emerald/mint, ivory, restrained coral/lavender and small gold accents. Centered isolated object filling 82% of square, equal margins. True transparent alpha background. No text, letters, numbers, logos, border, enclosing tile, pedestal, floating decorations or additional objects.",
+      "file": "public/design/icons/extension-restaurant-3d.webp"
+    },
+    {
+      "id": "route-dispatch",
+      "path": "/Users/mac/.codex/generated_images/01a1246d-e2fd-7f70-8f8b-bc791867d795/exec-c4409e1a-e164-4d7d-ae77-ca7b740a4e10.png",
+      "prompt": "Use case: stylized-concept. Create ONE premium 3D icon for TajirPoint's enterprise POS website. Subject: a compact emerald delivery truck with ivory cargo box, charcoal tires, a small amber route-pin behind it. Match the reference's polished dimensional material quality and camera angle, with simpler clear geometry at 60px. Rounded bevels, soft satin materials, realistic ambient occlusion, studio light upper-left, orthographic three-quarter view. Tasteful emerald/mint, ivory, restrained coral/lavender and small gold accents. Centered isolated object filling 82% of square, equal margins. True transparent alpha background. No text, letters, numbers, logos, border, enclosing tile, pedestal, floating decorations or additional objects.",
+      "file": "public/design/icons/extension-route-dispatch-3d.webp"
+    },
+    {
+      "id": "pharmacy",
+      "path": "/Users/mac/.codex/generated_images/01a1246d-e2fd-7f70-8f8b-bc791867d795/exec-6de6248e-34e8-405f-a819-4b3e55dc1138.png",
+      "prompt": "Use case: stylized-concept. Create ONE premium 3D icon for TajirPoint's enterprise POS website. Subject: an ivory pharmacy bottle with emerald cross and two mint-and-coral capsules beside it. Match the reference's polished dimensional material quality and camera angle, with simpler clear geometry at 60px. Rounded bevels, soft satin materials, realistic ambient occlusion, studio light upper-left, orthographic three-quarter view. Tasteful emerald/mint, ivory, restrained coral/lavender and small gold accents. Centered isolated object filling 82% of square, equal margins. True transparent alpha background. No text, letters, numbers, logos, border, enclosing tile, pedestal, floating decorations or additional objects.",
+      "file": "public/design/icons/extension-pharmacy-3d.webp"
+    },
+    {
+      "id": "hr-payroll",
+      "path": "/Users/mac/.codex/generated_images/01a1246d-e2fd-7f70-8f8b-bc791867d795/exec-49ddc615-3ae3-4f5b-a645-b121ae985489.png",
+      "prompt": "Use case: stylized-concept. Create ONE premium 3D icon for TajirPoint's enterprise POS website. Subject: two rounded professional profile busts in emerald and lavender with a small ivory payroll card and gold coin. Match the reference's polished dimensional material quality and camera angle, with simpler clear geometry at 60px. Rounded bevels, soft satin materials, realistic ambient occlusion, studio light upper-left, orthographic three-quarter view. Tasteful emerald/mint, ivory, restrained coral/lavender and small gold accents. Centered isolated object filling 82% of square, equal margins. True transparent alpha background. No text, letters, numbers, logos, border, enclosing tile, pedestal, floating decorations or additional objects.",
+      "file": "public/design/icons/extension-hr-payroll-3d.webp"
+    },
+    {
+      "id": "cloud-kitchen",
+      "path": "/Users/mac/.codex/generated_images/01a1246d-e2fd-7f70-8f8b-bc791867d795/exec-73d41f12-583a-4169-a766-dd4bb49af7ba.png",
+      "prompt": "Use case: stylized-concept. Create ONE premium 3D icon for TajirPoint's enterprise POS website. Subject: a sculptural ivory chef hat above an emerald cloud-shaped kitchen base with a small warm coral cooking pot. Match the reference's polished dimensional material quality and camera angle, with simpler clear geometry at 60px. Rounded bevels, soft satin materials, realistic ambient occlusion, studio light upper-left, orthographic three-quarter view. Tasteful emerald/mint, ivory, restrained coral/lavender and small gold accents. Centered isolated object filling 82% of square, equal margins. True transparent alpha background. No text, letters, numbers, logos, border, enclosing tile, pedestal, floating decorations or additional objects.",
+      "file": "public/design/icons/extension-cloud-kitchen-3d.webp"
+    },
+    {
+      "id": "website-builder",
+      "path": "/Users/mac/.codex/generated_images/01a1246d-e2fd-7f70-8f8b-bc791867d795/exec-4a15f731-1c11-4887-aa1a-9c73bbf79414.png",
+      "prompt": "Use case: stylized-concept. Create ONE premium 3D icon for TajirPoint's enterprise POS website. Subject: an ivory browser window with emerald header, layered lavender image panel and small mint layout blocks. Match the reference's polished dimensional material quality and camera angle, with simpler clear geometry at 60px. Rounded bevels, soft satin materials, realistic ambient occlusion, studio light upper-left, orthographic three-quarter view. Tasteful emerald/mint, ivory, restrained coral/lavender and small gold accents. Centered isolated object filling 82% of square, equal margins. True transparent alpha background. No text, letters, numbers, logos, border, enclosing tile, pedestal, floating decorations or additional objects.",
+      "file": "public/design/icons/extension-website-builder-3d.webp"
+    },
+    {
+      "id": "cash-management",
+      "path": "/Users/mac/.codex/generated_images/01a1246d-e2fd-7f70-8f8b-bc791867d795/exec-ba9324bb-517e-4b72-ae69-64383433f987.png",
+      "prompt": "Use case: stylized-concept. Create ONE premium 3D icon for TajirPoint's enterprise POS website. Subject: an emerald cash register drawer pulled open with neat ivory banknotes and two small gold coins. Match the reference's polished dimensional material quality and camera angle, with simple clear geometry readable at 60px. Rounded bevels, soft satin materials, realistic ambient occlusion, studio light upper-left, orthographic three-quarter view. Tasteful emerald/mint, ivory, restrained coral/lavender and small gold accents. Centered isolated object filling 82% of square, equal margins. True transparent alpha background. No text, letters, numbers, logos, border, enclosing tile, pedestal, floating decorations or additional objects.",
+      "file": "public/design/icons/extension-cash-management-3d.webp"
+    },
+    {
+      "id": "age-verification",
+      "path": "/Users/mac/.codex/generated_images/01a1246d-e2fd-7f70-8f8b-bc791867d795/exec-1dd32b8d-8df9-45f4-bad2-acc21d9dfb16.png",
+      "prompt": "Use case: stylized-concept. Create ONE premium 3D icon for TajirPoint's enterprise POS website. Subject: a dimensional ivory identity card with an emerald profile portrait and a raised mint verification-check shield. Match the reference's polished dimensional material quality and camera angle, with simple clear geometry readable at 60px. Rounded bevels, soft satin materials, realistic ambient occlusion, studio light upper-left, orthographic three-quarter view. Tasteful emerald/mint, ivory, restrained coral/lavender and small gold accents. Centered isolated object filling 82% of square, equal margins. True transparent alpha background. No text, letters, numbers, logos, border, enclosing tile, pedestal, floating decorations or additional objects.",
+      "file": "public/design/icons/extension-age-verification-3d.webp"
+    },
+    {
+      "id": "customer-portal",
+      "path": "/Users/mac/.codex/generated_images/01a1246d-e2fd-7f70-8f8b-bc791867d795/exec-38eb4951-a328-495a-a54f-df84c0c8534d.png",
+      "prompt": "Use case: stylized-concept. Create ONE premium 3D icon for TajirPoint's enterprise POS website. Subject: an ivory personal-account dashboard window with a dimensional lavender profile portrait, emerald invoice card and one small gold coin. Match the reference's polished dimensional material quality and camera angle, with simple clear geometry readable at 60px. Rounded bevels, soft satin materials, realistic ambient occlusion, studio light upper-left, orthographic three-quarter view. Tasteful emerald/mint, ivory, restrained coral/lavender and small gold accents. Centered isolated object filling 82% of square, equal margins. True transparent alpha background. No text, letters, numbers, logos, border, enclosing tile, pedestal, floating decorations or additional objects.",
+      "file": "public/design/icons/extension-customer-portal-3d.webp"
+    },
+    {
+      "id": "delivery-aggregator",
+      "path": "/Users/mac/.codex/generated_images/01a1246d-e2fd-7f70-8f8b-bc791867d795/exec-08cb66a2-6426-408c-b0b9-133e8e1ec9e8.png",
+      "prompt": "Use case: stylized-concept. Create ONE premium 3D icon for TajirPoint's enterprise POS website. Subject: three small emerald coral and lavender parcel boxes converging into one ivory inbox tray. Match the reference's polished dimensional material quality and camera angle, with simple clear geometry readable at 60px. Rounded bevels, soft satin materials, realistic ambient occlusion, studio light upper-left, orthographic three-quarter view. Tasteful emerald/mint, ivory, restrained coral/lavender and small gold accents. Centered isolated object filling 82% of square, equal margins. True transparent alpha background. No text, letters, numbers, logos, border, enclosing tile, pedestal, floating decorations or additional objects.",
+      "file": "public/design/icons/extension-delivery-aggregator-3d.webp"
+    },
+    {
+      "id": "coupons",
+      "path": "/Users/mac/.codex/generated_images/01a1246d-e2fd-7f70-8f8b-bc791867d795/exec-93fba90b-7df1-4ddc-bcdf-75489a9e6c71.png",
+      "prompt": "Use case: stylized-concept. Create ONE premium 3D icon for TajirPoint's enterprise POS website. Subject: a folded warm coral discount ticket with punched ends and a raised ivory percent symbol. Match the reference's polished dimensional material quality and camera angle, with simple clear geometry readable at 60px. Rounded bevels, soft satin materials, realistic ambient occlusion, studio light upper-left, orthographic three-quarter view. Tasteful emerald/mint, ivory, restrained coral/lavender and small gold accents. Centered isolated object filling 82% of square, equal margins. True transparent alpha background. No text, letters, numbers, logos, border, enclosing tile, pedestal, floating decorations or additional objects.",
+      "file": "public/design/icons/extension-coupons-3d.webp"
+    },
+    {
+      "id": "time-promos",
+      "path": "/Users/mac/.codex/generated_images/01a1246d-e2fd-7f70-8f8b-bc791867d795/exec-66457d73-ad77-468c-8c40-774b6ffb0148.png",
+      "prompt": "Use case: stylized-concept. Create ONE premium 3D icon for TajirPoint's enterprise POS website. Subject: a sculptural ivory and emerald clock with a coral discount ticket tucked against its base. Match the reference's polished dimensional material quality and camera angle, with simple clear geometry readable at 60px. Rounded bevels, soft satin materials, realistic ambient occlusion, studio light upper-left, orthographic three-quarter view. Tasteful emerald/mint, ivory, restrained coral/lavender and small gold accents. Centered isolated object filling 82% of square, equal margins. True transparent alpha background. No text, letters, numbers, logos, border, enclosing tile, pedestal, floating decorations or additional objects.",
+      "file": "public/design/icons/extension-time-promos-3d.webp"
+    },
+    {
+      "id": "ai-phone-ordering",
+      "path": "/Users/mac/.codex/generated_images/01a1246d-e2fd-7f70-8f8b-bc791867d795/exec-e3182447-b841-4360-bfa3-028bb211ee7a.png",
+      "prompt": "Use case: stylized-concept. Create ONE premium 3D icon for TajirPoint's enterprise POS website. Subject: an emerald telephone handset resting alongside an ivory chat bubble with three mint dots. Match the reference's polished dimensional material quality and camera angle, with simple clear geometry readable at 60px. Rounded bevels, soft satin materials, realistic ambient occlusion, studio light upper-left, orthographic three-quarter view. Tasteful emerald/mint, ivory, restrained coral/lavender and small gold accents. Centered isolated object filling 82% of square, equal margins. True transparent alpha background. No text, letters, numbers, logos, border, enclosing tile, pedestal, floating decorations or additional objects.",
+      "file": "public/design/icons/extension-ai-phone-ordering-3d.webp"
+    },
+    {
+      "id": "restaurant-toolbox",
+      "path": "/Users/mac/.codex/generated_images/01a1246d-e2fd-7f70-8f8b-bc791867d795/exec-386c7f7a-cd89-47a5-868f-94745123d46c.png",
+      "prompt": "Use case: stylized-concept. Create ONE premium 3D icon for TajirPoint's enterprise POS website. Subject: an emerald utensil holder with ivory fork and spoon, and a small warm coral chef hat. Match the reference's polished dimensional material quality and camera angle, with simple clear geometry readable at 60px. Rounded bevels, soft satin materials, realistic ambient occlusion, studio light upper-left, orthographic three-quarter view. Tasteful emerald/mint, ivory, restrained coral/lavender and small gold accents. Centered isolated object filling 82% of square, equal margins. True transparent alpha background. No text, letters, numbers, logos, border, enclosing tile, pedestal, floating decorations or additional objects.",
+      "file": "public/design/icons/extension-restaurant-toolbox-3d.webp"
+    },
+    {
+      "id": "signage",
+      "path": "/Users/mac/.codex/generated_images/01a1246d-e2fd-7f70-8f8b-bc791867d795/exec-ad24bae9-1890-4309-afec-92b22d7c1adb.png",
+      "prompt": "Use case: stylized-concept. Create ONE premium 3D icon for TajirPoint's enterprise POS website. Subject: a freestanding ivory digital display on an emerald stand, showing bold lavender and coral abstract menu panels. Match the reference's polished dimensional material quality and camera angle, with simple clear geometry readable at 60px. Rounded bevels, soft satin materials, realistic ambient occlusion, studio light upper-left, orthographic three-quarter view. Tasteful emerald/mint, ivory, restrained coral/lavender and small gold accents. Centered isolated object filling 82% of square, equal margins. True transparent alpha background. No text, letters, numbers, logos, border, enclosing tile, pedestal, floating decorations or additional objects.",
+      "file": "public/design/icons/extension-signage-3d.webp"
+    },
+    {
+      "id": "pos-checkout",
+      "path": "/Users/mac/.codex/generated_images/01a1246d-e2fd-7f70-8f8b-bc791867d795/exec-23122b9c-fa11-450a-a556-0234cef3ab48.png",
+      "prompt": "Use case: stylized-concept. Create ONE premium 3D icon for TajirPoint's enterprise POS website. Subject: an emerald point-of-sale payment terminal with ivory screen and a warm coral receipt curling from its side. Match the reference's polished dimensional material quality and camera angle, with simple clear geometry readable at 60px. Rounded bevels, soft satin materials, realistic ambient occlusion, studio light upper-left, orthographic three-quarter view. Tasteful emerald/mint, ivory, restrained coral/lavender and small gold accents. Centered isolated object filling 82% of square, equal margins. True transparent alpha background. No text, letters, numbers, logos, border, enclosing tile, pedestal, floating decorations or additional objects.",
+      "file": "public/design/icons/pos-checkout-3d.webp"
+    },
+    {
+      "id": "inventory",
+      "path": "/Users/mac/.codex/generated_images/01a1246d-e2fd-7f70-8f8b-bc791867d795/exec-00355a7f-3d18-47c8-ac03-2791f7bc30ce.png",
+      "prompt": "Use case: stylized-concept. Create ONE premium 3D icon for TajirPoint's enterprise POS website. Subject: two stacked ivory and emerald inventory cartons with lavender packaging tape. Match the reference's polished dimensional material quality and camera angle, with simple clear geometry readable at 60px. Rounded bevels, soft satin materials, realistic ambient occlusion, studio light upper-left, orthographic three-quarter view. Tasteful emerald/mint, ivory, restrained coral/lavender and small gold accents. Centered isolated object filling 82% of square, equal margins. True transparent alpha background. No text, letters, numbers, logos, border, enclosing tile, pedestal, floating decorations or additional objects.",
+      "file": "public/design/icons/inventory-3d.webp"
+    },
+    {
+      "id": "purchasing",
+      "path": "/Users/mac/.codex/generated_images/01a1246d-e2fd-7f70-8f8b-bc791867d795/exec-98e7e67d-2e36-4a2d-9e70-3ec181db3bc3.png",
+      "prompt": "Use case: stylized-concept. Create ONE premium 3D icon for TajirPoint's enterprise POS website. Subject: an ivory purchase-order receipt curling over an emerald clipboard with two small gold coins. Match the reference's polished dimensional material quality and camera angle, with simple clear geometry readable at 60px. Rounded bevels, soft satin materials, realistic ambient occlusion, studio light upper-left, orthographic three-quarter view. Tasteful emerald/mint, ivory, restrained coral/lavender and small gold accents. Centered isolated object filling 82% of square, equal margins. True transparent alpha background. No text, letters, numbers, logos, border, enclosing tile, pedestal, floating decorations or additional objects.",
+      "file": "public/design/icons/purchasing-3d.webp"
+    },
+    {
+      "id": "compliance",
+      "path": "/Users/mac/.codex/generated_images/01a1246d-e2fd-7f70-8f8b-bc791867d795/exec-78e85147-bac1-4159-b952-7c8b947cc74f.png",
+      "prompt": "Use case: stylized-concept. Create ONE premium 3D icon for TajirPoint's enterprise POS website. Subject: an emerald and ivory shield with a raised mint check mark and a subtle gold rim. Match the reference's polished dimensional material quality and camera angle, with simple clear geometry readable at 60px. Rounded bevels, soft satin materials, realistic ambient occlusion, studio light upper-left, orthographic three-quarter view. Tasteful emerald/mint, ivory, restrained coral/lavender and small gold accents. Centered isolated object filling 82% of square, equal margins. True transparent alpha background. No text, letters, numbers, logos, border, enclosing tile, pedestal, floating decorations or additional objects.",
+      "file": "public/design/icons/compliance-3d.webp"
+    },
+    {
+      "id": "integrations",
+      "path": "/Users/mac/.codex/generated_images/01a1246d-e2fd-7f70-8f8b-bc791867d795/exec-d04a1ab4-0e97-48c7-aa2b-c60c84a4595c.png",
+      "prompt": "Use case: stylized-concept. Create ONE premium 3D icon for TajirPoint's enterprise POS website. Subject: three dimensional interlocking emerald lavender and ivory rounded blocks connected as a clean modular system. Match the reference's polished dimensional material quality and camera angle, with simple clear geometry readable at 60px. Rounded bevels, soft satin materials, realistic ambient occlusion, studio light upper-left, orthographic three-quarter view. Tasteful emerald/mint, ivory, restrained coral/lavender and small gold accents. Centered isolated object filling 82% of square, equal margins. True transparent alpha background. No text, letters, numbers, logos, border, enclosing tile, pedestal, floating decorations or additional objects.",
+      "file": "public/design/icons/integrations-3d.webp"
+    }
+  ]
+}

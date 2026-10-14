@@ -58,12 +58,12 @@ export type ExtensionCategory = (typeof EXTENSION_CATEGORIES)[number];
 
 /** `note` keys map to `extensions.notes.*` — omitted when there is no badge. */
 export const EXTENSIONS = [
-  { id: "restaurant", icon: "restaurant", cat: "verticals" },
-  { id: "route-dispatch", icon: "route", cat: "verticals" },
-  { id: "pharmacy", icon: "pill", cat: "verticals", note: "soon" },
-  { id: "hr-payroll", icon: "users", cat: "verticals" },
-  { id: "cloud-kitchen", icon: "cloud", cat: "verticals", note: "soon" },
-  { id: "website-builder", icon: "globe", cat: "verticals" },
+  { id: "restaurant", icon: "extension-restaurant", cat: "verticals" },
+  { id: "route-dispatch", icon: "extension-route-dispatch", cat: "verticals" },
+  { id: "pharmacy", icon: "extension-pharmacy", cat: "verticals", note: "soon" },
+  { id: "hr-payroll", icon: "extension-hr-payroll", cat: "verticals" },
+  { id: "cloud-kitchen", icon: "extension-cloud-kitchen", cat: "verticals", note: "soon" },
+  { id: "website-builder", icon: "extension-website-builder", cat: "verticals" },
 
   { id: "stripe", icon: "brand-stripe", cat: "payments" },
   { id: "jazzcash", icon: "brand-jazzcash", cat: "payments", note: "soon" },
@@ -73,12 +73,12 @@ export const EXTENSIONS = [
   { id: "razorpay", icon: "brand-razorpay", cat: "payments", note: "soon" },
   { id: "square", icon: "brand-square", cat: "payments", note: "soon" },
 
-  { id: "accounting-gl", icon: "ledgerbook", cat: "accounting" },
-  { id: "cash-management", icon: "pettycash", cat: "accounting" },
+  { id: "accounting-gl", icon: "extension-accounting-gl", cat: "accounting" },
+  { id: "cash-management", icon: "extension-cash-management", cat: "accounting" },
   { id: "quickbooks", icon: "brand-quickbooks", cat: "accounting", note: "soon" },
 
   { id: "fbr", icon: "brand-fbr", cat: "compliance", note: "soon" },
-  { id: "age-verification", icon: "idcard", cat: "compliance", note: "soon" },
+  { id: "age-verification", icon: "extension-age-verification", cat: "compliance", note: "soon" },
 
   { id: "shopify", icon: "brand-shopify", cat: "ecommerce", note: "soon" },
   { id: "woocommerce", icon: "brand-woocommerce", cat: "ecommerce", note: "soon" },
@@ -86,14 +86,19 @@ export const EXTENSIONS = [
   { id: "wix", icon: "brand-wix", cat: "ecommerce", note: "soon" },
   { id: "bigcommerce", icon: "brand-bigcommerce", cat: "ecommerce", note: "soon" },
 
-  { id: "leopards", icon: "leopard", cat: "shipping", note: "soon" },
-  { id: "tcs", icon: "package", cat: "shipping", note: "soon" },
-  { id: "postex", icon: "parcel", cat: "shipping", note: "soon" },
+  { id: "leopards", icon: "brand-leopards", cat: "shipping", note: "soon" },
+  { id: "tcs", icon: "brand-tcs", cat: "shipping", note: "soon" },
+  { id: "postex", icon: "brand-postex", cat: "shipping", note: "soon" },
 
-  { id: "customer-portal", icon: "key", cat: "customer" },
-  { id: "delivery-aggregator", icon: "scooter", cat: "customer", note: "soon" },
-  { id: "coupons", icon: "ticket", cat: "customer" },
-  { id: "time-promos", icon: "alarmpct", cat: "customer" },
+  { id: "customer-portal", icon: "extension-customer-portal", cat: "customer" },
+  {
+    id: "delivery-aggregator",
+    icon: "extension-delivery-aggregator",
+    cat: "customer",
+    note: "soon",
+  },
+  { id: "coupons", icon: "extension-coupons", cat: "customer" },
+  { id: "time-promos", icon: "extension-time-promos", cat: "customer" },
   { id: "whatsapp-ai", icon: "brand-whatsapp", cat: "customer", note: "soon" },
 ] as const satisfies ReadonlyArray<{
   id: string;

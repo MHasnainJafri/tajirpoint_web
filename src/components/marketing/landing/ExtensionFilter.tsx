@@ -136,13 +136,12 @@ export function ExtensionFilter({
           {filteredItems.map((e) => (
             <div
               key={e.id}
-              data-reveal
               className="group flex flex-col justify-between rounded-[18px] border border-[var(--color-line)] bg-[var(--color-surface)] p-[18px] transition-all duration-250 hover:-translate-y-1 hover:border-[rgba(0,210,122,.5)] hover:bg-white hover:shadow-[0_16px_34px_rgba(10,10,10,.08)]"
             >
               <div>
                 <div className="flex items-center justify-between gap-3">
-                  <span className="flex h-[42px] w-[42px] flex-none items-center justify-center rounded-[12px] border border-[var(--color-line-soft)] bg-white shadow-xs transition-transform duration-200 group-hover:scale-105">
-                    <Icon name={e.icon} size={22} />
+                  <span className="flex h-[72px] w-[88px] flex-none items-center justify-center rounded-[12px] border border-[var(--color-line-soft)] bg-white shadow-xs transition-transform duration-200 group-hover:scale-105">
+                    <Icon name={e.icon} size={28} />
                   </span>
                   <span
                     className={`flex-none rounded-full px-2.5 py-[3px] text-[10.5px] font-semibold tracking-[0.02em] ${
