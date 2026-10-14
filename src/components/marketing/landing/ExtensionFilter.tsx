@@ -71,16 +71,17 @@ export function ExtensionFilter({
           </span>
           <input
             type="search"
+            aria-label="Search extensions"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search extensions (e.g. Stripe, FBR, QuickBooks, Shopify)..."
-            className="w-full rounded-full border border-[var(--color-line-2)] bg-white py-2.5 pl-10 pr-10 text-[13.5px] font-medium text-[var(--color-ink)] placeholder:text-[var(--color-muted-2)] focus:border-[#0A0A0A] focus:outline-none focus:ring-1 focus:ring-[#0A0A0A]"
+            className="w-full rounded-full border border-[var(--color-line-2)] bg-white py-2.5 pl-10 pr-10 text-[16px] font-medium text-[var(--color-ink)] placeholder:text-[var(--color-muted-2)] focus:border-[#0A0A0A] focus:outline-none focus:ring-1 focus:ring-[#0A0A0A]"
           />
           {searchQuery && (
             <button
               type="button"
               onClick={() => setSearchQuery("")}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-[12px] font-bold text-[var(--color-muted-2)] hover:text-[#0A0A0A]"
+              className="absolute right-1 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center text-[12px] font-bold text-[var(--color-muted-2)] hover:text-[#0A0A0A]"
               aria-label="Clear search"
             >
               ✕
@@ -132,7 +133,7 @@ export function ExtensionFilter({
           </button>
         </div>
       ) : (
-        <div className="mt-6 grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-3">
+        <div className="mt-6 grid grid-cols-[repeat(auto-fill,minmax(min(100%,250px),1fr))] gap-3">
           {filteredItems.map((e) => (
             <div
               key={e.id}

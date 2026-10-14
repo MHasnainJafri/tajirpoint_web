@@ -173,7 +173,7 @@ export function HeroShowcase() {
   const view = viewOverride ?? "till";
 
   return (
-    <div ref={rootRef} className="@container relative mt-8">
+    <div ref={rootRef} lang="en" dir="ltr" className="@container relative mt-8">
       <ProductArtDefs />
 
       {/* ── business switcher ─────────────────────────────────── */}

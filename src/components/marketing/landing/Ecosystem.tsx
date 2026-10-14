@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function Ecosystem() {
   return (
-    <section className="mt-[clamp(64px,9vw,120px)]">
+    <section lang="en" dir="ltr" className="mt-[clamp(64px,9vw,120px)]">
       <div data-reveal className="flex flex-wrap items-end justify-between gap-5">
         <div>
           <div className="eyebrow">UNIFIED COMMERCE SURFACES</div>
@@ -16,18 +16,18 @@ export function Ecosystem() {
         </p>
       </div>
 
-      <div className="mt-10 grid grid-cols-1 items-stretch gap-5 lg:grid-cols-12">
+      <div className="mt-10 grid grid-cols-1 items-stretch gap-5 md:grid-cols-2 xl:grid-cols-12">
         {/* Left: Back office */}
         <div
           data-reveal
-          className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-[var(--color-line)] bg-[var(--color-surface)] p-4 transition-all duration-300 hover:border-[var(--color-line-3)] hover:shadow-[0_20px_40px_rgba(10,10,10,.08)] lg:col-span-4"
+          className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-[var(--color-line)] bg-[var(--color-surface)] p-4 transition-all duration-300 hover:border-[var(--color-line-3)] hover:shadow-[0_20px_40px_rgba(10,10,10,.08)] xl:col-span-4"
         >
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[18px] bg-[var(--color-bg-3)]">
             <Image
-              src="/images/eco-back-office.jpg"
-              alt="Back office analytics on laptop"
+              src="/images/contactless-reader.webp"
+              alt="A retailer taking a card payment, recorded for the back office"
               fill
-              sizes="(max-width: 1024px) 100vw, 33vw"
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <span className="absolute left-3 top-3 rounded-full bg-[#0A0A0A]/75 px-3 py-1 font-mono text-[10px] font-bold tracking-wide text-white backdrop-blur-md">
@@ -47,14 +47,14 @@ export function Ecosystem() {
         <div
           data-reveal
           data-reveal-delay={80}
-          className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border-2 border-[var(--color-mint)] bg-[var(--color-surface)] p-4 shadow-[0_24px_50px_rgba(0,210,122,.12)] transition-all duration-300 hover:shadow-[0_28px_60px_rgba(0,210,122,.2)] lg:col-span-5"
+          className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border-2 border-[var(--color-mint)] bg-[var(--color-surface)] p-4 shadow-[0_24px_50px_rgba(0,210,122,.12)] transition-all duration-300 hover:shadow-[0_28px_60px_rgba(0,210,122,.2)] xl:col-span-4"
         >
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[18px] bg-[var(--color-bg-3)]">
             <Image
-              src="/images/eco-counter.jpg"
-              alt="Checkout counter POS hardware"
+              src="/images/card-payment.webp"
+              alt="Contactless card payment at a café counter"
               fill
-              sizes="(max-width: 1024px) 100vw, 42vw"
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
               // No `priority` here. Ecosystem is the sixth section of the
               // homepage, far below the fold, but `priority` emits a
               // <link rel="preload" as="image"> into <head> — so the browser
@@ -68,10 +68,12 @@ export function Ecosystem() {
             </span>
           </div>
           <div className="mt-4 p-2">
-            <h3 className="text-[18px] font-bold tracking-[-0.02em]">Fast checkout that never stalls</h3>
+            <h3 className="text-[18px] font-bold tracking-[-0.02em]">
+              Fast checkout that never stalls
+            </h3>
             <p className="mt-1.5 text-[13.5px] leading-[1.6] text-[var(--color-body)]">
-              Barcode scanning, quick touch tiles, split payments, customer credit checks and an offline
-              engine that keeps ringing sales through peak rushes and outages.
+              Barcode scanning, quick touch tiles, split payments, customer credit checks and an
+              offline engine that keeps ringing sales through peak rushes and outages.
             </p>
           </div>
         </div>
@@ -80,14 +82,14 @@ export function Ecosystem() {
         <div
           data-reveal
           data-reveal-delay={160}
-          className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-[var(--color-line)] bg-[var(--color-surface)] p-4 transition-all duration-300 hover:border-[var(--color-line-3)] hover:shadow-[0_20px_40px_rgba(10,10,10,.08)] lg:col-span-3"
+          className="group relative flex flex-col justify-between overflow-hidden rounded-[24px] border border-[var(--color-line)] bg-[var(--color-surface)] p-4 transition-all duration-300 hover:border-[var(--color-line-3)] hover:shadow-[0_20px_40px_rgba(10,10,10,.08)] md:col-span-2 xl:col-span-4"
         >
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[18px] bg-[var(--color-bg-3)]">
             <Image
-              src="/images/eco-online.jpg"
-              alt="Customer mobile store ordering"
+              src="/images/mobile-payment.webp"
+              alt="Customer paying with a mobile wallet at a retail checkout"
               fill
-              sizes="(max-width: 1024px) 100vw, 25vw"
+              sizes="(max-width: 1280px) 100vw, 33vw"
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <span className="absolute left-3 top-3 rounded-full bg-[#0A0A0A]/75 px-3 py-1 font-mono text-[10px] font-bold tracking-wide text-white backdrop-blur-md">
@@ -95,7 +97,7 @@ export function Ecosystem() {
             </span>
           </div>
           <div className="mt-4 p-2">
-            <h3 className="text-[17px] font-bold tracking-[-0.02em]">Customer Portal</h3>
+            <h3 className="text-[17px] font-bold tracking-[-0.02em]">Online ordering & payments</h3>
             <p className="mt-1.5 text-[13px] leading-[1.6] text-[var(--color-body)]">
               Let loyal clients browse your online catalog, view their outstanding balance and
               invoices, and pay online.

@@ -25,12 +25,12 @@ const MONO_LABEL =
 const step = (i: number) => ({ "--i": i }) as React.CSSProperties;
 
 const BLOCK =
-  "rounded-[24px] bg-[var(--color-surface)] p-[clamp(18px,2.6vw,32px)] grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-[clamp(20px,3vw,48px)] items-center";
+  "rounded-[24px] bg-[var(--color-surface)] p-[clamp(18px,2.6vw,32px)] grid grid-cols-[repeat(auto-fit,minmax(min(100%,280px),1fr))] gap-[clamp(20px,3vw,48px)] items-center";
 
 /** Ticked bullet list — the same four-up grid under every feature block. */
 function Bullets({ t, block }: { t: (k: string) => string; block: string }) {
   return (
-    <div className="mt-[18px] grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-x-4 gap-y-[9px]">
+    <div className="mt-[18px] grid grid-cols-[repeat(auto-fit,minmax(min(100%,200px),1fr))] gap-x-4 gap-y-[9px]">
       {Array.from({ length: SIGNATURE_BULLETS }, (_, i) => (
         <div
           key={i}
@@ -250,8 +250,8 @@ export function Signature() {
         >
           <div className="flex flex-wrap items-center justify-between gap-[10px]">
             <div>
-              <div className="text-[11px] text-[#8A8F98]">Trip TRP-0418 · LEB-4471</div>
-              <div className="mt-[2px] text-[14px] font-bold">Gulberg → Model Town</div>
+              <div className="text-[11px] text-[#8A8F98]">Trip TRP-0418 · VAN-0418</div>
+              <div className="mt-[2px] text-[14px] font-bold">Northside → Riverside</div>
             </div>
             <span className="rounded-full bg-[rgba(0,210,122,.16)] px-[10px] py-[5px] text-[11.5px] font-semibold text-[var(--color-mint)]">
               {t("van.card.progress")}
@@ -415,9 +415,12 @@ export function Signature() {
               style={step(RECEIPT_MOCK.lines.length + 3)}
               className="text-center font-semibold text-[var(--color-mint-2)]"
             >
-              VERIFIED
+              SAMPLE
             </div>
           </div>
+          <p className="text-[11.5px] leading-relaxed text-[var(--color-muted)] sm:col-span-2">
+            {t("tax.receiptNote")}
+          </p>
         </div>
       </div>
     </section>

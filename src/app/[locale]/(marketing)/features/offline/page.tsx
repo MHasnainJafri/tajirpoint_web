@@ -88,7 +88,7 @@ export default async function OfflineFeaturePage({
   setRequestLocale(locale);
 
   return (
-    <>
+    <div lang="en" dir="ltr">
       <JsonLd schema={faqSchema(FAQS)} />
 
       {/* ── Hero ────────────────────────────────────────────────────── */}
@@ -103,10 +103,10 @@ export default async function OfflineFeaturePage({
         <div className="relative mx-auto grid max-w-[1140px] grid-cols-1 items-center gap-[44px] lg:grid-cols-[1.05fr_1fr]">
           <div>
             <Link
-              href="/solutions"
+              href="/business"
               className="mb-7 inline-flex items-center gap-2 font-mono text-[12px] tracking-[1.5px] text-[var(--color-muted-2)] transition-colors hover:text-[var(--color-mint-2)]"
             >
-              ← All solutions
+              ← All businesses
             </Link>
 
             <div>
@@ -132,9 +132,7 @@ export default async function OfflineFeaturePage({
               <MintButton href={siteConfig.signupUrl} external>
                 Start free — 3 months <span>→</span>
               </MintButton>
-              <GhostButton href="/book-demo">
-                Book a demo
-              </GhostButton>
+              <GhostButton href="/book-demo">Book a demo</GhostButton>
             </div>
           </div>
 
@@ -318,6 +316,6 @@ export default async function OfflineFeaturePage({
           </div>
         </CtaPanel>
       </section>
-    </>
+    </div>
   );
 }

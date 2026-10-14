@@ -28,7 +28,7 @@ export async function generateMetadata({
   return buildMetadata({
     title: "E-Invoicing & Fiscal Compliance",
     description:
-      "E-invoicing, VAT/GST and fiscal receipts for your region. Report invoices in real time, print QR receipts, and keep audit-ready records for every sale.",
+      "Tax-inclusive pricing, withholding and transaction records for your business. Regulatory e-invoicing integrations are planned; confirm country-specific requirements with our team.",
     path: "/features/e-invoicing",
     locale,
   });
@@ -36,8 +36,8 @@ export async function generateMetadata({
 
 /** The proof points from the design's "how Tajir Point solves it" column. */
 const SOLUTION_POINTS = [
-  "Real-time invoice submission where a market requires it",
-  "QR codes on printed receipts",
+  "Regulatory e-invoicing connectors — coming soon",
+  "Itemised receipts and transaction history",
   "VAT / GST capture and reporting",
   "Withholding tax with certificates",
   "Region-aware tax structures",
@@ -47,13 +47,13 @@ const SOLUTION_POINTS = [
 const BUILT_IN_POINTS = [
   {
     icon: Zap,
-    title: "Real-time",
-    body: "Reported as you print",
+    title: "Every sale",
+    body: "Tax recorded at checkout",
   },
   {
     icon: QrCode,
-    title: "QR receipts",
-    body: "Verifiable at a glance",
+    title: "Clear records",
+    body: "Receipts and audit history",
   },
   {
     icon: Percent,
@@ -64,7 +64,7 @@ const BUILT_IN_POINTS = [
 
 const AUDIENCES = [
   { icon: ShoppingBag, label: "Retail", href: "/business/grocery-kiryana" },
-  { icon: Cross, label: "Pharmacies", href: "/solutions" },
+  { icon: Cross, label: "Pharmacies", href: "/business/pharmacy" },
   { icon: Truck, label: "Distribution", href: "/business/distributors-wholesale" },
 ] as const;
 
@@ -72,11 +72,12 @@ const FAQS = [
   {
     question: "Which regions are supported?",
     answer:
-      "Compliance is configured per market. Talk to us about the specific countries you operate in.",
+      "Tax rules depend on your country and business. Our regulatory e-invoicing integrations, including FBR, are not yet released. Contact us before relying on a country-specific reporting workflow.",
   },
   {
     question: "Are receipts verifiable?",
-    answer: "Yes — a QR code on each receipt lets customers and inspectors verify it.",
+    answer:
+      "Receipts and sales records are available in the POS. Regulatory verification depends on a supported, released tax-authority integration; we do not currently promise certified receipts in every market.",
   },
 ];
 
@@ -89,7 +90,7 @@ export default async function EInvoicingFeaturePage({
   setRequestLocale(locale);
 
   return (
-    <>
+    <div lang="en" dir="ltr">
       <JsonLd schema={faqSchema(FAQS)} />
 
       {/* ── Hero ────────────────────────────────────────────────────── */}
@@ -104,10 +105,10 @@ export default async function EInvoicingFeaturePage({
         <div className="relative mx-auto grid max-w-[1140px] grid-cols-1 items-center gap-[44px] lg:grid-cols-[1.05fr_1fr]">
           <div>
             <Link
-              href="/solutions"
+              href="/business"
               className="mb-7 inline-flex items-center gap-2 font-mono text-[12px] tracking-[1.5px] text-[var(--color-muted-2)] transition-colors hover:text-[var(--color-mint-2)]"
             >
-              ← All solutions
+              ← All businesses
             </Link>
 
             <div>
@@ -119,23 +120,21 @@ export default async function EInvoicingFeaturePage({
             </span>
 
             <h1 className="mt-[18px] max-w-[620px] animate-[tpFadeUp_.8s_.15s_cubic-bezier(.22,1,.36,1)_both] text-[clamp(34px,4.6vw,56px)] font-extrabold leading-[1.05] tracking-[-0.035em]">
-              Fiscal compliance,
+              Tax handling,
               <br />
               built into checkout.
             </h1>
 
             <p className="mt-5 max-w-[560px] animate-[tpFadeUp_.8s_.28s_cubic-bezier(.22,1,.36,1)_both] text-[17.5px] leading-[1.6] text-[var(--color-muted)]">
-              E-invoicing, VAT/GST and fiscal receipts for the regions you operate in — part of the
-              sale, not an afterthought.
+              Record tax as part of the sale, keep clear receipts and review your transaction
+              history. Regulatory e-invoicing integrations are coming soon.
             </p>
 
             <div className="mt-9 flex animate-[tpFadeUp_.8s_.36s_cubic-bezier(.22,1,.36,1)_both] flex-wrap gap-[14px]">
               <MintButton href={siteConfig.signupUrl} external>
                 Start free — 3 months <span>→</span>
               </MintButton>
-              <GhostButton href="/book-demo">
-                Book a demo
-              </GhostButton>
+              <GhostButton href="/book-demo">Book a demo</GhostButton>
             </div>
           </div>
 
@@ -156,7 +155,7 @@ export default async function EInvoicingFeaturePage({
                 </div>
 
                 {[
-                  { label: "Status", value: "Reported", tone: "text-[var(--color-mint-2)]" },
+                  { label: "Status", value: "Sample invoice", tone: "text-[var(--color-mint-2)]" },
                   { label: "VAT", value: "$39.80", tone: "text-[var(--color-ink)]" },
                   { label: "QR receipt", value: "Printed", tone: "text-[var(--color-mint-2)]" },
                 ].map((row) => (
@@ -198,7 +197,7 @@ export default async function EInvoicingFeaturePage({
               HOW TAJIR POINT SOLVES IT
             </div>
             <h2 className="mt-4 text-[clamp(24px,3vw,32px)] font-extrabold tracking-[-0.025em]">
-              Compliant the moment you ring it up
+              Clear tax records from the first sale
             </h2>
 
             <ul className="mt-[22px] flex flex-col gap-[14px]">
@@ -216,10 +215,10 @@ export default async function EInvoicingFeaturePage({
             </ul>
 
             {/* Scope note — the design calls this out so nobody reads it as a certification. */}
-            <div className="mt-5 inline-flex items-start gap-[9px] rounded-[999px] border border-[var(--color-line)] bg-[var(--surface-2)] px-4 py-2 text-[13px] font-semibold leading-[1.5] text-[var(--color-amber)]">
+            <div className="mt-5 inline-flex items-start gap-[9px] rounded-[16px] border border-[var(--color-line)] bg-[var(--surface-2)] px-4 py-2 text-[13px] font-semibold leading-[1.5] text-[var(--color-amber)]">
               <Sparkles className="mt-[2px] h-[15px] w-[15px] shrink-0" strokeWidth={1.8} />
-              Markets served include EU, UAE VAT and Saudi ZATCA — configured per region, not a
-              certification we hold.
+              Country-specific reporting must be confirmed before launch. We do not claim EU, UAE
+              VAT or Saudi ZATCA certification. Regulatory connectors are not yet released.
             </div>
           </div>
 
@@ -318,6 +317,6 @@ export default async function EInvoicingFeaturePage({
           </div>
         </CtaPanel>
       </section>
-    </>
+    </div>
   );
 }

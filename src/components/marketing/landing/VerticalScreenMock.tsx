@@ -154,11 +154,11 @@ export function VerticalScreenMock({ id, screenTitle, rows }: VerticalScreenMock
         {id === "services" && (
           <div className="mb-3 rounded-xl border border-[#E3E5EA] bg-[#F7F8FA] p-2.5">
             <div className="flex items-center justify-between text-[10px]">
-              <span className="font-bold text-[#0A0A0A]">Daily Appointments & Commission</span>
-              <span className="font-semibold text-[#00A862]">Stylist: Alex (20%)</span>
+              <span className="font-bold text-[#0A0A0A]">Recent service sales</span>
+              <span className="font-semibold text-[#00A862]">Client: J. Rivera</span>
             </div>
             <div className="mt-1.5 flex items-center justify-between rounded-lg bg-white px-2.5 py-1.5 text-[10.5px] border border-[#ECEEF2]">
-              <span className="font-bold text-[#0A0A0A]">4:30 pm · Hair & Beard (J. Rivera)</span>
+              <span className="font-bold text-[#0A0A0A]">Hair & Beard · Paid</span>
               <span className="font-mono font-bold text-[#00A862]">$15.00</span>
             </div>
           </div>

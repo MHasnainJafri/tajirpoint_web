@@ -55,14 +55,14 @@ export function ExtensionGrid() {
 
       {/* ── Grid ────────────────────────────────────────────────────── */}
       <div className="mx-auto max-w-[1220px] px-5 pb-[90px] pt-[50px] md:px-10">
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(270px,1fr))] gap-[14px]">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,270px),1fr))] gap-[14px]">
           {visible.map((ext) => (
             <div
               key={ext.id}
-              className="relative animate-[tpFadeUp_.5s_both] rounded-2xl border border-[var(--color-line)] bg-[var(--surface-1)] p-6 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-[rgba(0,210,122,.55)] hover:shadow-[0_18px_50px_rgba(0,0,0,.4)]"
+              className="relative min-w-0 animate-[tpFadeUp_.5s_both] rounded-2xl border border-[var(--color-line)] bg-[var(--surface-1)] p-6 transition-[border-color,transform,box-shadow] duration-300 hover:-translate-y-1 hover:border-[rgba(0,210,122,.55)] hover:shadow-[0_18px_50px_rgba(0,0,0,.4)]"
             >
               <div className="flex items-center justify-between">
-                <span className="flex h-[72px] w-[88px] items-center justify-center rounded-[11px] border border-[rgba(0,210,122,.22)] bg-white text-[var(--color-mint-2)]">
+                <span className="flex h-[72px] w-[88px] items-center justify-center rounded-[11px] border border-[rgba(0,210,122,.22)] bg-white text-[var(--color-mint-2)] flex-none">
                   <Icon name={ext.icon} size={28} />
                 </span>
                 <span className="rounded-full border border-[var(--color-line-2)] px-[10px] py-1 text-[12px] font-semibold text-[var(--color-brand)]">

@@ -11,21 +11,21 @@ interface Segment {
 const SEGMENTS: Segment[] = [
   {
     id: "single",
-    img: "/images/who-single.jpg",
+    img: "/images/shop-counter.webp",
     badge: "1 – 2 COUNTERS",
     title: "Independent shops, cafés & counters",
     body: "From corner shops and coffee bars to phone and laptop stores, one register handles fast checkouts, stock counts and customer credit without complicated setup.",
   },
   {
     id: "multi",
-    img: "/images/who-multi.jpg",
+    img: "/images/retail-store.webp",
     badge: "MULTI-LOCATION",
     title: "Chains & growing businesses",
     body: "Manage central inventory across every outlet, transfer stock between warehouses and see consolidated profit & loss in real time.",
   },
   {
     id: "mobile",
-    img: "/images/who-mobile.jpg",
+    img: "/images/warehouse-stock.webp",
     badge: "ON THE ROAD",
     title: "Wholesale, fleets & factories",
     body: "Sell door to door from a van, dispatch trucks with proof of delivery, or supply dealers from your warehouse — and reconcile cash and stock every evening.",
@@ -34,7 +34,7 @@ const SEGMENTS: Segment[] = [
 
 export function WhoItsFor() {
   return (
-    <section className="mt-[clamp(64px,9vw,110px)]">
+    <section lang="en" dir="ltr" className="mt-[clamp(64px,9vw,110px)]">
       <div data-reveal className="flex flex-wrap items-end justify-between gap-5">
         <div>
           <div className="eyebrow">BUILT FOR REAL COMMERCE</div>
@@ -48,7 +48,7 @@ export function WhoItsFor() {
         </p>
       </div>
 
-      <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+      <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
         {SEGMENTS.map((seg, idx) => (
           <div
             key={seg.id}
@@ -61,7 +61,7 @@ export function WhoItsFor() {
                 src={seg.img}
                 alt={seg.title}
                 fill
-                sizes="(max-width: 768px) 100vw, 33vw"
+                sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <span className="absolute left-3 top-3 rounded-full bg-[#0A0A0A]/75 px-3 py-1 font-mono text-[10px] font-bold tracking-wide text-white backdrop-blur-md">

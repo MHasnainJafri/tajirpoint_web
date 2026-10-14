@@ -1,13 +1,22 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { setRequestLocale } from "next-intl/server";
 
 import { DocsSidebar } from "@/components/docs/DocsSidebar";
 import { siteConfig } from "@/lib/config/site";
 
-export default function DocsLayout({ children }: { children: React.ReactNode }) {
+export default async function DocsLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   return (
     // The reference is English-first and full of code — force LTR so snippets
     // and paths never mirror under the Urdu/Arabic layout.
-    <div dir="ltr" className="relative min-h-screen bg-[var(--color-bg)]">
+    <div lang="en" dir="ltr" className="relative min-h-screen overflow-x-clip bg-[var(--color-bg)]">
       <div
         className="pointer-events-none absolute left-1/2 top-[-320px] h-[560px] w-[1100px] -translate-x-1/2"
         style={{
@@ -16,8 +25,8 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
       />
 
       <header className="sticky top-0 z-30 border-b border-[var(--color-line)] bg-[var(--color-bg)]/80 backdrop-blur">
-        <div className="mx-auto flex h-[64px] max-w-[1400px] items-center justify-between px-6 lg:px-8">
-          <div className="flex items-center gap-3">
+        <div className="mx-auto flex h-[64px] max-w-[1400px] items-center justify-between gap-2 px-4 sm:px-6 lg:px-8">
+          <div className="flex min-w-0 items-center gap-2 sm:gap-3">
             <Link
               href="/"
               className="text-[16px] font-extrabold tracking-[-0.02em] text-[var(--color-ink)]"
@@ -45,7 +54,7 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
         </div>
       </header>
 
-      <div className="relative mx-auto max-w-[1400px] px-6 lg:px-8">
+      <div className="relative mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[236px_minmax(0,1fr)] lg:gap-12">
           <DocsSidebar />
           <main id="main-content" className="min-w-0 py-12 lg:py-14">

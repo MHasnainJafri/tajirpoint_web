@@ -12,7 +12,14 @@ import {
   type Attribution,
 } from "@/lib/marketing/utm";
 import { trackContactSubmit } from "@/lib/analytics/events";
-import { errorCls, hintCls, honeypotStyle, inputCls, labelCls, textareaCls } from "@/components/forms/styles";
+import {
+  errorCls,
+  hintCls,
+  honeypotStyle,
+  inputCls,
+  labelCls,
+  textareaCls,
+} from "@/components/forms/styles";
 
 export function ContactForm() {
   const [state, action, pending] = useActionState<ContactState | undefined, FormData>(
@@ -47,10 +54,15 @@ export function ContactForm() {
         role="status"
         className="rounded-[18px] border border-[var(--color-mint-line)] bg-[var(--color-mint-soft)] p-7 outline-none"
       >
-        <p className="text-[19px] font-extrabold text-[var(--color-ink)]">Message sent — thank you.</p>
+        <p className="text-[19px] font-extrabold text-[var(--color-ink)]">
+          Message sent — thank you.
+        </p>
         <p className="mt-2 text-[14.5px] leading-[1.6] text-[var(--color-body)]">
           We&apos;ll reply within one working day. Want to see the product sooner?{" "}
-          <Link href="/book-demo" className="font-semibold text-[var(--color-mint-2)] underline underline-offset-2">
+          <Link
+            href="/book-demo"
+            className="font-semibold text-[var(--color-mint-2)] underline underline-offset-2"
+          >
             Book a free demo
           </Link>
           .
@@ -89,31 +101,76 @@ export function ContactForm() {
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div className="flex flex-col gap-2">
           <label htmlFor="c-name" className={labelCls}>
-            Name <span aria-hidden="true" className="text-[#B42318]">*</span>
+            Name{" "}
+            <span aria-hidden="true" className="text-[#B42318]">
+              *
+            </span>
           </label>
-          <input id="c-name" name="name" type="text" autoComplete="name" required className={inputCls(!!f.name)} {...err("name")} />
-          {f.name && <p id="c-name-error" className={errorCls}>{f.name}</p>}
+          <input
+            id="c-name"
+            name="name"
+            type="text"
+            autoComplete="name"
+            required
+            className={inputCls(!!f.name)}
+            {...err("name")}
+          />
+          {f.name && (
+            <p id="c-name-error" className={errorCls}>
+              {f.name}
+            </p>
+          )}
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="c-email" className={labelCls}>
-            Email <span aria-hidden="true" className="text-[#B42318]">*</span>
+            Email{" "}
+            <span aria-hidden="true" className="text-[#B42318]">
+              *
+            </span>
           </label>
-          <input id="c-email" name="email" type="email" autoComplete="email" required className={inputCls(!!f.email)} {...err("email")} />
-          {f.email && <p id="c-email-error" className={errorCls}>{f.email}</p>}
+          <input
+            id="c-email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            required
+            className={inputCls(!!f.email)}
+            {...err("email")}
+          />
+          {f.email && (
+            <p id="c-email-error" className={errorCls}>
+              {f.email}
+            </p>
+          )}
         </div>
       </div>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div className="flex flex-col gap-2">
           <label htmlFor="c-phone" className={labelCls}>
-            Phone / WhatsApp <span className="font-normal text-[var(--color-muted)]">(optional)</span>
+            Phone / WhatsApp{" "}
+            <span className="font-normal text-[var(--color-muted)]">(optional)</span>
           </label>
-          <input id="c-phone" name="phone" type="tel" inputMode="tel" autoComplete="tel" placeholder="03xx xxxxxxx" className={inputCls(!!f.phone)} {...err("phone")} />
-          {f.phone && <p id="c-phone-error" className={errorCls}>{f.phone}</p>}
+          <input
+            id="c-phone"
+            name="phone"
+            type="tel"
+            inputMode="tel"
+            autoComplete="tel"
+            placeholder="+1 415 555 0123"
+            className={inputCls(!!f.phone)}
+            {...err("phone")}
+          />
+          {f.phone && (
+            <p id="c-phone-error" className={errorCls}>
+              {f.phone}
+            </p>
+          )}
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="c-business" className={labelCls}>
-            Type of business <span className="font-normal text-[var(--color-muted)]">(optional)</span>
+            Type of business{" "}
+            <span className="font-normal text-[var(--color-muted)]">(optional)</span>
           </label>
           <select id="c-business" name="business_type" defaultValue="" className={inputCls(false)}>
             <option value="">Choose one</option>
@@ -128,10 +185,25 @@ export function ContactForm() {
 
       <div className="flex flex-col gap-2">
         <label htmlFor="c-message" className={labelCls}>
-          Message <span aria-hidden="true" className="text-[#B42318]">*</span>
+          Message{" "}
+          <span aria-hidden="true" className="text-[#B42318]">
+            *
+          </span>
         </label>
-        <textarea id="c-message" name="message" rows={5} required placeholder="How can we help?" className={textareaCls(!!f.message)} {...err("message")} />
-        {f.message && <p id="c-message-error" className={errorCls}>{f.message}</p>}
+        <textarea
+          id="c-message"
+          name="message"
+          rows={5}
+          required
+          placeholder="How can we help?"
+          className={textareaCls(!!f.message)}
+          {...err("message")}
+        />
+        {f.message && (
+          <p id="c-message-error" className={errorCls}>
+            {f.message}
+          </p>
+        )}
       </div>
 
       <div aria-hidden="true" style={honeypotStyle}>
@@ -152,7 +224,10 @@ export function ContactForm() {
         </button>
         <p className={hintCls}>
           Want a walkthrough instead?{" "}
-          <Link href="/book-demo" className="font-semibold text-[var(--color-mint-2)] underline underline-offset-2">
+          <Link
+            href="/book-demo"
+            className="font-semibold text-[var(--color-mint-2)] underline underline-offset-2"
+          >
             Book a demo
           </Link>
         </p>

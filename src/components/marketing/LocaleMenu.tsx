@@ -52,7 +52,10 @@ export function LocaleMenu({ compact = false }: { compact?: boolean }) {
 
   const pick = (code: Locale) => {
     close();
-    if (code !== locale) router.replace(pathname, { locale: code });
+    if (code !== locale)
+      router.replace(`${pathname}${window.location.search}${window.location.hash}`, {
+        locale: code,
+      });
   };
 
   return (

@@ -40,7 +40,7 @@ export function Pillars() {
         </p>
       </div>
 
-      <div className="mt-[30px] grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-3">
+      <div className="mt-[30px] grid grid-cols-[repeat(auto-fit,minmax(min(100%,200px),1fr))] gap-3">
         {PILLARS.map((p) => {
           return (
             <div

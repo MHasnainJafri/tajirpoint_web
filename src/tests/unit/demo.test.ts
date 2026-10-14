@@ -12,12 +12,18 @@ import { emptyAttribution } from "@/lib/marketing/utm";
 
 describe("normalizePhone", () => {
   it.each([
-    ["0344 6800893", "+923446800893"],
-    ["0344-680-0893", "+923446800893"],
-    ["3446800893", "+923446800893"],
+    ["0344 6800893", ""],
+    ["0344-680-0893", ""],
+    ["3446800893", ""],
     ["+92 344 6800893", "+923446800893"],
     ["0092 344 6800893", "+923446800893"],
     ["+971 50 123 4567", "+971501234567"],
+    ["+1 (415) 555-0123", "+14155550123"],
+    ["0044 20 7946 0123", "+442079460123"],
+    ["+61 2 5550 1234", "+61255501234"],
+    ["+01 234567890", ""],
+    ["+44 call 123456789", ""],
+    ["+1234567890123456", ""],
     ["", ""],
     ["12345", ""],
     ["call me", ""],
@@ -45,7 +51,7 @@ describe("upcomingDays", () => {
 });
 
 describe("DemoRequestSchema", () => {
-  const base = { name: "Ayesha Khan", phone: "0300 1234567" };
+  const base = { name: "Ayesha Khan", phone: "+92 300 1234567" };
 
   it("needs a name and a reachable phone", () => {
     const r = DemoRequestSchema.safeParse({ name: "", phone: "abc" });
@@ -72,7 +78,9 @@ describe("DemoRequestSchema", () => {
     });
     expect(r.success).toBe(false);
     const paths = r.success ? [] : r.error.issues.map((i) => i.path[0]);
-    expect(paths).toEqual(expect.arrayContaining(["email", "branches", "preferred_date", "preferred_time"]));
+    expect(paths).toEqual(
+      expect.arrayContaining(["email", "branches", "preferred_date", "preferred_time"])
+    );
   });
 
   it("drops an unknown business type instead of failing", () => {
@@ -84,11 +92,12 @@ describe("demo payload", () => {
   it("reads the form, maps branches to a number and carries attribution", () => {
     const form = new FormData();
     form.set("name", "Ali");
-    form.set("phone", "03001234567");
+    form.set("phone", "+923001234567");
     form.set("business_type", "restaurants");
     form.set("branches", "2-5");
     form.set("wants_migration", "on");
     form.set("preferred_time", "evening");
+    form.set("time_zone", "America/Los_Angeles");
     form.set("message", "Two branches in Lahore");
     const req = DemoRequestSchema.parse(demoInputFromForm(form));
     const a = { ...emptyAttribution(), utm_source: "facebook", utm_campaign: "demo_restaurants" };
@@ -108,6 +117,8 @@ describe("demo payload", () => {
     });
     expect(body.message).toContain("2–5 shops");
     expect(body.message).toContain("Two branches in Lahore");
+    expect(body.message).toContain("America/Los_Angeles");
+    expect(demoSummary(req, a)).toContain("Time zone: America/Los_Angeles");
     expect(demoSummary(req, a)).toContain("Move my data: Yes");
   });
 });

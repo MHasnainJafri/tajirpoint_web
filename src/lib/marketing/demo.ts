@@ -37,23 +37,13 @@ export function preselectType(value: string | null | undefined): string {
   return isBusinessSlug(v) || v === "other" ? v : "";
 }
 
-/**
- * Turns what people type into something WhatsApp can dial.
- * "0344 6800893" → "+923446800893"; "92 344..." → "+92344..."; "+971 50..." kept.
- * Returns "" when it cannot be a phone number.
- */
+/** Normalise an explicitly international number; never guess a visitor's country. */
 export function normalizePhone(input: string): string {
   const raw = input.trim();
-  if (!raw) return "";
-  const plus = raw.startsWith("+") || raw.startsWith("00");
-  let digits = raw.replace(/\D/g, "");
-  if (raw.startsWith("00")) digits = digits.slice(2);
-  if (!plus) {
-    if (digits.startsWith("0") && digits.length === 11) digits = `92${digits.slice(1)}`;
-    else if (digits.startsWith("3") && digits.length === 10) digits = `92${digits}`;
-  }
-  if (digits.length < 9 || digits.length > 15) return "";
-  return `+${digits}`;
+  if (!/^(\+|00)[\d\s().-]+$/.test(raw)) return "";
+  const cleaned = raw.replace(/\D/g, "");
+  const digits = raw.startsWith("00") ? cleaned.slice(2) : cleaned;
+  return /^[1-9]\d{7,14}$/.test(digits) ? `+${digits}` : "";
 }
 
 /** YYYY-MM-DD in the browser's local time zone. */
@@ -71,7 +61,11 @@ export function isoDate(d: Date): string {
  */
 export function upcomingDays(from: Date, days = 14): Array<{ value: string; label: string }> {
   const out: Array<{ value: string; label: string }> = [];
-  const fmt = new Intl.DateTimeFormat("en-GB", { weekday: "short", day: "numeric", month: "short" });
+  const fmt = new Intl.DateTimeFormat("en-GB", {
+    weekday: "short",
+    day: "numeric",
+    month: "short",
+  });
   for (let i = 1; i <= days; i += 1) {
     const d = new Date(from.getFullYear(), from.getMonth(), from.getDate() + i);
     if (d.getDay() === 0) continue;
@@ -88,13 +82,16 @@ export const DemoRequestSchema = z.object({
     .string()
     .trim()
     .transform((v) => normalizePhone(v))
-    .refine((v) => v.length > 0, "Please enter a WhatsApp or phone number we can reach."),
+    .refine((v) => v.length > 0, "Include your country code, for example +1 415 555 0123."),
   email: z
     .string()
     .trim()
     .max(200)
     .default("")
-    .refine((v) => v === "" || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v), "Please check your email address."),
+    .refine(
+      (v) => v === "" || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+      "Please check your email address."
+    ),
   business_name: text(160),
   business_type: z
     .string()
@@ -106,7 +103,10 @@ export const DemoRequestSchema = z.object({
     .string()
     .trim()
     .default("")
-    .refine((v) => v === "" || BRANCH_OPTIONS.some((o) => o.value === v), "Pick how many shops you run."),
+    .refine(
+      (v) => v === "" || BRANCH_OPTIONS.some((o) => o.value === v),
+      "Pick how many shops you run."
+    ),
   current_pos: text(120),
   wants_migration: z.boolean().default(false),
   preferred_date: z
@@ -119,6 +119,7 @@ export const DemoRequestSchema = z.object({
     .trim()
     .default("")
     .refine((v) => v === "" || TIME_OPTIONS.some((o) => o.value === v), "Pick a time of day."),
+  time_zone: text(80),
   message: text(3000),
   /** Honeypot: humans never see it. */
   company: text(200),
@@ -157,6 +158,7 @@ export function demoInputFromForm(form: FormData): DemoRequestInput {
     wants_migration: form.get("wants_migration") === "on" || form.get("wants_migration") === "true",
     preferred_date: s("preferred_date"),
     preferred_time: s("preferred_time"),
+    time_zone: s("time_zone"),
     message: s("message"),
     company: s("company"),
   };
@@ -192,7 +194,11 @@ export function demoPayload(req: DemoRequest, attribution: Attribution) {
     wants_migration: req.wants_migration,
     preferred_date: req.preferred_date || null,
     preferred_time: req.preferred_time,
-    message: [band && band.value !== "1" ? `Branches: ${band.label}` : "", req.message]
+    message: [
+      band && band.value !== "1" ? `Branches: ${band.label}` : "",
+      req.time_zone ? `Preferred date and time zone: ${req.time_zone}` : "",
+      req.message,
+    ]
       .filter(Boolean)
       .join("\n\n"),
     company: req.company,
@@ -218,7 +224,13 @@ export function demoSummary(req: DemoRequest, attribution: Attribution): string 
     ["Move my data", req.wants_migration ? "Yes" : "No"],
     ["Preferred day", req.preferred_date],
     ["Preferred time", time],
-    ["Campaign", [attribution.utm_source, attribution.utm_medium, attribution.utm_campaign].filter(Boolean).join(" / ")],
+    ["Time zone", req.time_zone],
+    [
+      "Campaign",
+      [attribution.utm_source, attribution.utm_medium, attribution.utm_campaign]
+        .filter(Boolean)
+        .join(" / "),
+    ],
     ["Landing page", attribution.landing_page],
   ];
   const head = lines

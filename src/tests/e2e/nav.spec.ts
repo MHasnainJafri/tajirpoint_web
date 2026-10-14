@@ -15,9 +15,12 @@ test.describe("desktop Businesses mega-menu", () => {
 
     const panel = page.locator(`#${await trigger.getAttribute("aria-controls")}`);
     await expect(panel).toBeVisible();
-    await expect(panel.locator('a[href^="/business/"]')).toHaveCount(10);
+    await expect(panel.locator('a[href^="/business/"]')).toHaveCount(12);
     await expect(panel.locator('a[href="/business"]')).toHaveCount(1); // "All businesses"
-    await expect(panel.getByRole("link", { name: /Book a free demo/ })).toHaveAttribute("href", "/book-demo");
+    await expect(panel.getByRole("link", { name: /Book a free demo/ })).toHaveAttribute(
+      "href",
+      "/book-demo"
+    );
 
     // Tab moves into the open panel, not past it.
     await page.keyboard.press("Tab");
@@ -46,9 +49,13 @@ test.describe("desktop Businesses mega-menu", () => {
 test.describe("mobile drawer", () => {
   test.use({ viewport: { width: 375, height: 812 } });
 
-  test("has the businesses accordion and both CTAs, without horizontal scroll", async ({ page }) => {
+  test("has the businesses accordion and both CTAs, without horizontal scroll", async ({
+    page,
+  }) => {
     await page.goto("/");
-    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollWidth - window.innerWidth
+    );
     expect(overflow).toBeLessThanOrEqual(0);
 
     await page.getByRole("button", { name: "Open menu" }).click();
@@ -56,8 +63,11 @@ test.describe("mobile drawer", () => {
     await expect(drawer).toBeVisible();
     const section = drawer.getByRole("button", { name: "Businesses" });
     await expect(section).toHaveAttribute("aria-expanded", "true");
-    await expect(drawer.locator('a[href^="/business/"]')).toHaveCount(10);
-    await expect(drawer.getByRole("link", { name: "Book a demo" })).toHaveAttribute("href", "/book-demo");
+    await expect(drawer.locator('a[href^="/business/"]')).toHaveCount(12);
+    await expect(drawer.getByRole("link", { name: "Book a demo" })).toHaveAttribute(
+      "href",
+      "/book-demo"
+    );
     await expect(drawer.getByRole("link", { name: /Start free/ })).toHaveAttribute(
       "href",
       "https://app.tajirpoint.com/register"
@@ -81,7 +91,9 @@ test("business pages have no horizontal scroll at 375px", async ({ page }) => {
     "/ur/book-demo",
   ]) {
     await page.goto(path);
-    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollWidth - window.innerWidth
+    );
     expect(overflow, path).toBeLessThanOrEqual(0);
   }
 });

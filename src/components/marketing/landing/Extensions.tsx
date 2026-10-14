@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 import { EXTENSIONS, EXTENSION_CATEGORIES, EXTENSION_COUNT } from "@/lib/design/catalog";
-import { EXTENSION_STATUS } from "@/lib/design/landing";
+import type { ExtensionStatus } from "@/lib/design/landing";
 import { ExtensionFilter, type ExtensionCard } from "./ExtensionFilter";
 
 /**
@@ -16,7 +16,7 @@ export function Extensions() {
   const tItems = useTranslations("extensions.items");
 
   const items: ExtensionCard[] = EXTENSIONS.map((e) => {
-    const status = EXTENSION_STATUS[e.id] ?? "live";
+    const status: ExtensionStatus = "note" in e && e.note === "soon" ? "soon" : "live";
     return {
       id: e.id,
       name: tItems(`${e.id}.name`),

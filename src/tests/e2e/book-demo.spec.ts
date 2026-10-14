@@ -14,9 +14,13 @@ test("shows field errors and keeps what was typed", async ({ page }) => {
   await page.getByLabel("City").fill("Lahore");
   await page.getByRole("button", { name: "Book my free demo" }).click();
 
-  await expect(page.locator("form").getByRole("alert")).toContainText("Please check the highlighted fields");
+  await expect(page.locator("form").getByRole("alert")).toContainText(
+    "Please check the highlighted fields"
+  );
   await expect(page.getByText("Please enter your name.")).toBeVisible();
-  await expect(page.getByText("Please enter a WhatsApp or phone number we can reach.")).toBeVisible();
+  await expect(
+    page.getByText("Include your country code, for example +1 415 555 0123.")
+  ).toBeVisible();
   await expect(page.getByText("Please check your email address.")).toBeVisible();
   await expect(page.getByLabel(/Your name/)).toHaveAttribute("aria-invalid", "true");
   await expect(page.getByLabel("City")).toHaveValue("Lahore");

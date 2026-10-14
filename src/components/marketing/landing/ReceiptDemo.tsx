@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { RECEIPT_LANGS, RECEIPT_TOTAL } from "@/lib/design/landing";
 
 /**
@@ -13,6 +13,7 @@ import { RECEIPT_LANGS, RECEIPT_TOTAL } from "@/lib/design/landing";
  */
 export function ReceiptDemo({ caption, label }: { caption: string; label: string }) {
   const [active, setActive] = useState(0);
+  const receiptId = useId();
   // `noUncheckedIndexedAccess` is on: a number index is never assumed present.
   const lang = RECEIPT_LANGS[active] ?? RECEIPT_LANGS[0];
 
@@ -24,16 +25,32 @@ export function ReceiptDemo({ caption, label }: { caption: string; label: string
       <div
         role="tablist"
         aria-label={label}
-        className="inline-flex rounded-full border border-[var(--color-line)] bg-white p-1"
+        onKeyDown={(event) => {
+          const delta = event.key === "ArrowRight" ? 1 : event.key === "ArrowLeft" ? -1 : 0;
+          if (!delta && event.key !== "Home" && event.key !== "End") return;
+          event.preventDefault();
+          const next =
+            event.key === "Home"
+              ? 0
+              : event.key === "End"
+                ? RECEIPT_LANGS.length - 1
+                : (active + delta + RECEIPT_LANGS.length) % RECEIPT_LANGS.length;
+          setActive(next);
+          event.currentTarget.querySelectorAll<HTMLButtonElement>('[role="tab"]')[next]?.focus();
+        }}
+        className="inline-flex max-w-full flex-wrap justify-center rounded-full border border-[var(--color-line)] bg-white p-1"
       >
         {RECEIPT_LANGS.map((l, i) => (
           <button
             key={l.id}
             type="button"
             role="tab"
+            id={`${receiptId}-tab-${i}`}
+            aria-controls={`${receiptId}-panel`}
             aria-selected={i === active}
+            tabIndex={i === active ? 0 : -1}
             onClick={() => setActive(i)}
-            className={`cursor-pointer rounded-full border-none px-4 py-[7px] text-[13px] font-semibold leading-[1.4] transition-all duration-200 ${
+            className={`cursor-pointer rounded-full border-none px-3 py-[10px] sm:px-4 text-[13px] font-semibold leading-[1.4] transition-all duration-200 ${
               i === active ? "bg-[#0A0A0A] text-white" : "bg-transparent text-[var(--color-ink-3)]"
             }`}
           >
@@ -43,8 +60,11 @@ export function ReceiptDemo({ caption, label }: { caption: string; label: string
       </div>
 
       <div
+        id={`${receiptId}-panel`}
+        role="tabpanel"
+        aria-labelledby={`${receiptId}-tab-${active}`}
         dir={lang.dir}
-        lang={lang.id === "es" ? "es" : "en"}
+        lang={lang.id}
         className="w-full max-w-[320px] rounded-[14px] bg-white px-[22px] py-5 leading-[1.6] shadow-[0_20px_44px_rgba(10,10,10,.08)]"
       >
         <div className="text-[15px] font-bold">{lang.shop}</div>
@@ -55,7 +75,9 @@ export function ReceiptDemo({ caption, label }: { caption: string; label: string
         {lang.items.map((it) => (
           <div key={it.name} className="flex justify-between gap-3 py-[5px] text-[13.5px]">
             <span>{it.name}</span>
-            <span className="tabular-nums">{it.amt}</span>
+            <span dir="ltr" className="tabular-nums">
+              {it.amt}
+            </span>
           </div>
         ))}
 

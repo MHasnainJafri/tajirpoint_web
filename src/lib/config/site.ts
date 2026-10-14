@@ -45,7 +45,7 @@ export const siteConfig = {
   name: "Tajir Point",
   url: resolvedUrl,
   description:
-    "POS, inventory, khata, online ordering and delivery for shops, restaurants and distributors — in English, Urdu and Arabic. Free for 3 months.",
+    "Point of sale, inventory, customer credit and accounting for stores, restaurants and distributors. Multi-currency support on web, desktop and Android. Free for 3 months.",
   tagline: "Run your shop. Everywhere.",
   locale: "en",
 

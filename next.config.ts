@@ -91,15 +91,15 @@ const nextConfig: NextConfig = {
       // navigates to /ur to change locale, and this rule 308'd it back to /
       // before the middleware could ever see it.
       //
-      // `en` stays, because as-needed keeps English on the bare path — /en is
-      // a duplicate. `nl` and `es` stay because they are no longer locales at
-      // all and would otherwise 404.
+      // next-intl removes the default /en prefix itself. Keep that redirect
+      // with the locale router rather than duplicating it in config. Only
+      // retired languages need explicit permanent redirects here.
       //
       // Ordering matters: the bare-prefix rule must come first, otherwise
       // `:path*` (zero-or-more) swallows it.
-      { source: "/:locale(en|nl|es)", destination: "/", permanent: true },
+      { source: "/:locale(nl|es)", destination: "/", permanent: true },
       {
-        source: "/:locale(en|nl|es)/:path*",
+        source: "/:locale(nl|es)/:path*",
         destination: "/:path*",
         permanent: true,
       },

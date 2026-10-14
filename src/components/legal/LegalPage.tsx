@@ -43,7 +43,7 @@ export function LegalPage({
   children: React.ReactNode;
 }) {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[var(--color-bg)]">
+    <div lang="en" dir="ltr" className="relative min-h-screen overflow-hidden bg-[var(--color-bg)]">
       <div
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-[-320px] h-[640px] w-[min(1100px,200vw)] -translate-x-1/2"

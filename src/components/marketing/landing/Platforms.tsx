@@ -18,7 +18,7 @@ export function Platforms() {
   return (
     <section
       id="platforms"
-      className="mt-[clamp(64px,9vw,120px)] grid scroll-mt-[86px] grid-cols-[repeat(auto-fit,minmax(300px,1fr))] items-center gap-[clamp(20px,4vw,56px)]"
+      className="mt-[clamp(64px,9vw,120px)] grid scroll-mt-[86px] grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] items-center gap-[clamp(20px,4vw,56px)]"
     >
       <div data-reveal>
         <div className="eyebrow">{t("eyebrow")}</div>
@@ -29,7 +29,7 @@ export function Platforms() {
           {t("sub")}
         </p>
 
-        <div className="mt-[22px] grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-[10px]">
+        <div className="mt-[22px] grid grid-cols-[repeat(auto-fit,minmax(min(100%,150px),1fr))] gap-[10px]">
           {PLATFORMS.map((p) => (
             <div
               key={p.id}

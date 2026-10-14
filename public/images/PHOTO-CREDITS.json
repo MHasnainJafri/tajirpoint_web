@@ -1,0 +1,36 @@
+{
+  "license": "https://unsplash.com/license",
+  "note": "Genuine merchant-context photography. These photographs are not screenshots of TajirPoint and do not imply endorsement by the depicted shops or hardware brands.",
+  "photos": [
+    {
+      "file": "shop-counter.webp",
+      "photographer": "Christiann Koepke",
+      "source": "https://unsplash.com/photos/r6rokVkrwZk"
+    },
+    {
+      "file": "retail-store.webp",
+      "photographer": "Clark Street Mercantile",
+      "source": "https://unsplash.com/photos/clothes-store-interior-P3pI6xzovu0"
+    },
+    {
+      "file": "warehouse-stock.webp",
+      "photographer": "Adrian Sulyok",
+      "source": "https://unsplash.com/photos/sczNLg6rrhQ"
+    },
+    {
+      "file": "mobile-payment.webp",
+      "photographer": "Blake Wisz",
+      "source": "https://unsplash.com/photos/Xn5FbEM9564"
+    },
+    {
+      "file": "card-payment.webp",
+      "photographer": "Blake Wisz",
+      "source": "https://unsplash.com/photos/-JJg90OAnWI"
+    },
+    {
+      "file": "contactless-reader.webp",
+      "photographer": "Nathan Dumlao",
+      "source": "https://unsplash.com/photos/lvWw_G8tKsk"
+    }
+  ]
+}

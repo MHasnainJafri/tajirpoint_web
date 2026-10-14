@@ -20,7 +20,7 @@ export async function generateMetadata({
   return buildMetadata({
     title: "About TajirPoint",
     description:
-      "TajirPoint is a point of sale and business system for shops, restaurants, pharmacies and distributors, built in Pakistan by Anssol. Web, Windows and Android, in English, Urdu and Arabic.",
+      "TajirPoint connects point of sale, inventory, customer credit and accounting for stores, restaurants and distributors. Available on web, desktop and Android.",
     path: "/about",
     locale,
   });
@@ -59,7 +59,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   setRequestLocale(locale);
 
   return (
-    <>
+    <div lang="en" dir="ltr">
       {/* ── Header ──────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden px-4 pb-14 pt-[clamp(48px,8vw,96px)] text-center sm:px-7 md:px-10">
         <div
@@ -100,8 +100,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             >
               <p>
                 We started {legal.product} in March 2025 to give small and medium businesses one
-                place to run the day: selling at the counter, keeping stock, tracking khata
-                (credit), taking online orders and managing deliveries.
+                place to run the day: selling at the counter, keeping stock, tracking customer
+                credit (credit), taking online orders and managing deliveries.
               </p>
               <p>
                 {legal.product} is built and run by{" "}
@@ -160,6 +160,6 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           </div>
         </CtaPanel>
       </section>
-    </>
+    </div>
   );
 }

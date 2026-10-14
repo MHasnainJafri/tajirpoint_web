@@ -113,74 +113,55 @@ export function MediaSlot({
 
   return (
     <div className={frame} style={{ aspectRatio: ratio }}>
-      <MediaPlaceholder title={title} icon={icon} phone={media.expect === "phone"} hint={base} media={media} />
+      <FeatureIllustration title={title} icon={icon} />
     </div>
   );
 }
 
-/**
- * Stand-in until the real file arrives: a quiet "app window" with the
- * feature's icon and name. Decorative — the section copy beside it carries the
- * meaning. The expected filename only shows in development.
- */
-export function MediaPlaceholder({
-  title,
-  icon,
-  phone,
-  hint,
-  media,
-}: {
-  title: string;
-  icon: string;
-  phone: boolean;
-  hint?: string;
-  media?: MediaRef;
-}) {
-  const showHint = process.env.NODE_ENV === "development" && hint;
+/** Purposeful artwork while no product photo/video is supplied; never a fake screenshot. */
+const FEATURE_ART: Record<string, string> = {
+  pos: "artwork-pos-checkout",
+  store: "extension-website-builder",
+  utensils: "extension-restaurant",
+  restaurant: "extension-restaurant",
+  pill: "extension-pharmacy",
+  cloud: "extension-cloud-kitchen",
+  users: "extension-hr-payroll",
+  truck: "extension-route-dispatch",
+  route: "extension-route-dispatch",
+  bike: "extension-route-dispatch",
+  scooter: "extension-route-dispatch",
+  package: "artwork-inventory",
+  warehouse: "artwork-inventory",
+  goods: "artwork-inventory",
+  book: "extension-accounting-gl",
+  ledgerbook: "extension-accounting-gl",
+  calculator: "extension-accounting-gl",
+  chart: "extension-customer-portal",
+  receipt: "artwork-purchasing",
+  cash: "extension-cash-management",
+  bank: "extension-cash-management",
+  wallet: "extension-cash-management",
+  shield: "artwork-compliance",
+  phone: "extension-ai-phone-ordering",
+  ticket: "extension-coupons",
+  percent: "extension-coupons",
+  alarmpct: "extension-time-promos",
+  refresh: "artwork-integrations",
+};
+
+function FeatureIllustration({ title, icon }: { title: string; icon: string }) {
   return (
     <div
-      aria-hidden="true"
-      className="absolute inset-0 flex items-center justify-center p-[8%]"
-      style={{
-        background:
-          "radial-gradient(ellipse 70% 60% at 80% 0%, rgba(0,210,122,.16), transparent 60%), linear-gradient(160deg, #F7F8FA, #EEF0F3)",
-      }}
+      role="img"
+      aria-label={`${title} — feature illustration`}
+      className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-5"
+      style={{ background: "linear-gradient(145deg, #F5FAF7, #EDF3EF)" }}
     >
-      <div
-        className={`flex flex-col overflow-hidden rounded-[16px] border border-[var(--color-line-2)] bg-white shadow-[var(--shadow-lift)] ${
-          phone ? "h-full w-[62%] rounded-[26px]" : "h-full w-full"
-        }`}
-      >
-        <div className="flex items-center gap-[6px] border-b border-[var(--color-line)] px-3 py-[9px]">
-          {phone ? (
-            <span className="mx-auto h-[5px] w-10 rounded-full bg-[var(--color-line-3)]" />
-          ) : (
-            <>
-              <span className="h-[7px] w-[7px] rounded-full bg-[#FF7A6B]" />
-              <span className="h-[7px] w-[7px] rounded-full bg-[#F5A524]" />
-              <span className="h-[7px] w-[7px] rounded-full bg-[var(--color-mint)]" />
-            </>
-          )}
-        </div>
-        <div className="flex flex-1 flex-col items-center justify-center gap-3 px-4 text-center">
-          <span className="grid h-14 w-14 place-items-center rounded-[16px] bg-[var(--color-mint-soft)]">
-            <Icon name={icon} size={28} />
-          </span>
-          <span className="max-w-[26ch] text-[14px] font-bold leading-snug tracking-[-0.01em] text-[var(--color-ink)]">
-            {title}
-          </span>
-          <span className="flex w-full max-w-[220px] flex-col gap-[6px]">
-            <span className="h-[7px] w-full rounded-full bg-[var(--color-surface)]" />
-            <span className="h-[7px] w-4/5 rounded-full bg-[var(--color-surface)]" />
-            <span className="h-[7px] w-3/5 rounded-full bg-[var(--color-surface)]" />
-          </span>
-          {showHint && (
-            <span className="font-mono text-[10.5px] text-[var(--color-muted-2)]">
-              public/media/{hint}.{media?.expect === "image" ? "webp" : "mp4"}
-            </span>
-          )}
-        </div>
-      </div>
+      <Icon name={FEATURE_ART[icon] ?? "artwork-pos-checkout"} size={68} />
+      <span className="max-w-[28ch] text-center text-[12px] font-medium leading-snug text-[var(--color-muted)]">
+        {title}
+      </span>
     </div>
   );
 }

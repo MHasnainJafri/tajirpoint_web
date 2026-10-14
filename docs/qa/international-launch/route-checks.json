@@ -1,0 +1,1648 @@
+{
+  "method": "CUA browser production preview. DOM measurements for all public routes at 320 and 768px, representative 390/1024px and RTL checks. Code blocks scroll inside their panel; animated marquees intentionally clip. Visual inspection was representative, not a pixel-by-pixel review of all sections on every route.",
+  "checks": [
+    {
+      "documentWidth": 320,
+      "headings": ["The point of sale that runs your whole business."],
+      "images": [],
+      "overflow": [],
+      "url": "/",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Simple, published pricing."],
+      "images": [],
+      "overflow": [],
+      "url": "/pricing",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["The extension marketplace"],
+      "images": [],
+      "overflow": [],
+      "url": "/extensions",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["One system, shaped around your counter."],
+      "images": [],
+      "overflow": [],
+      "url": "/business",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["From the table to the kitchen to the rider — one system."],
+      "images": [],
+      "overflow": [],
+      "url": "/business/restaurants",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Keep the queue moving, from the first coffee to the last cake."],
+      "images": [],
+      "overflow": [],
+      "url": "/business/cafes-bakeries",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Several brands. One kitchen. One order board."],
+      "images": [],
+      "overflow": [],
+      "url": "/business/cloud-kitchens",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Every size, every colour, every branch — counted."],
+      "images": [],
+      "overflow": [],
+      "url": "/business/retail-fashion",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Fast checkout, honest credit books, and it keeps selling offline."],
+      "images": [],
+      "overflow": [],
+      "url": "/business/grocery-kiryana",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Sell safely. Sell the oldest stock first."],
+      "images": [],
+      "overflow": [],
+      "url": "/business/pharmacy",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Every handset, tracked by its IMEI."],
+      "images": [],
+      "overflow": [],
+      "url": "/business/electronics-mobile",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Services and products, one bill, every client remembered."],
+      "images": [],
+      "overflow": [],
+      "url": "/business/salons-services",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["The van is a warehouse. Treat it like one."],
+      "images": [],
+      "overflow": [],
+      "url": "/business/distributors-wholesale",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Know what every trip really earned."],
+      "images": [],
+      "overflow": [],
+      "url": "/business/transport-delivery",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Buy it in, hold it right, sell it to dealers on credit."],
+      "images": [],
+      "overflow": [],
+      "url": "/business/factories-mills",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Quote it, sell it, deliver it — and get paid in full."],
+      "images": [],
+      "overflow": [],
+      "url": "/business/furniture-home",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Your credit book,finally under control."],
+      "images": [],
+      "overflow": [],
+      "url": "/features/khata",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Keep selling whenthe internet drops."],
+      "images": [],
+      "overflow": [],
+      "url": "/features/offline",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Books that keepthemselves."],
+      "images": [],
+      "overflow": [],
+      "url": "/features/accounting",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Turn every truck intoa mobile warehouse."],
+      "images": [],
+      "overflow": [],
+      "url": "/features/van-sales",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Tax handling,built into checkout."],
+      "images": [],
+      "overflow": [],
+      "url": "/features/e-invoicing",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["A simple, honest system for businesses that work hard."],
+      "images": [],
+      "overflow": [],
+      "url": "/about",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Talk to the TajirPoint team."],
+      "images": [],
+      "overflow": [],
+      "url": "/contact",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["See TajirPoint run your business."],
+      "images": [],
+      "overflow": [],
+      "url": "/book-demo",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Security at TajirPoint"],
+      "images": [],
+      "overflow": [],
+      "url": "/security",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Privacy Policy"],
+      "images": [],
+      "overflow": [],
+      "url": "/privacy",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Terms of Service"],
+      "images": [],
+      "overflow": [],
+      "url": "/terms",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Cookie Policy"],
+      "images": [],
+      "overflow": [],
+      "url": "/cookies",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Refund & Cancellation Policy"],
+      "images": [],
+      "overflow": [],
+      "url": "/refund-policy",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Delete your Tajir Point account"],
+      "images": [],
+      "overflow": [],
+      "url": "/delete-account",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Tajir Point API"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs",
+      "width": 320,
+      "intentionalCodeScrollers": [
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 484,
+          "tag": "PRE",
+          "text": "curl https://api.tajirpoint.com/api/v1/catalog/products/ \\\n  -H \"Authorization: Beare",
+          "width": 286
+        }
+      ]
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Get your API key"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/authentication",
+      "width": 320,
+      "intentionalCodeScrollers": [
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 531,
+          "tag": "PRE",
+          "text": "curl -X POST https://api.tajirpoint.com/api/v1/identity/login/ \\\n  -H \"Content-Type: ",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 430,
+          "tag": "PRE",
+          "text": "{\n  \"user\": {\n    \"id\": 7,\n    \"email\": \"you@yourshop.com\",\n    \"name\": \"Ahmed Raza\"\n",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 484,
+          "tag": "PRE",
+          "text": "curl https://api.tajirpoint.com/api/v1/catalog/products/ \\\n  -H \"Authorization: Beare",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 594,
+          "tag": "PRE",
+          "text": "curl -X POST https://api.tajirpoint.com/api/v1/identity/token/refresh/ \\\n  -H \"Conten",
+          "width": 286
+        }
+      ]
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Pagination"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/pagination",
+      "width": 320,
+      "intentionalCodeScrollers": [
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 757,
+          "tag": "PRE",
+          "text": "{\n  \"next\": \"https://api.tajirpoint.com/api/v1/catalog/products/?cursor=cD0yMDI2LTA3L",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 640,
+          "tag": "PRE",
+          "text": "let url = \"https://api.tajirpoint.com/api/v1/catalog/products/?page_size=200\";\nconst ",
+          "width": 286
+        }
+      ]
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Errors"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/errors",
+      "width": 320,
+      "intentionalCodeScrollers": [
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 438,
+          "tag": "PRE",
+          "text": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Validation failed.\",\n    \"details\": {",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 594,
+          "tag": "PRE",
+          "text": "{\n  \"error\": {\n    \"code\": 409,\n    \"message\": \"Need 5 but only 2 available for NES-2",
+          "width": 286
+        }
+      ]
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Idempotency"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/idempotency",
+      "width": 320,
+      "intentionalCodeScrollers": [
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 562,
+          "tag": "PRE",
+          "text": "curl -X POST https://api.tajirpoint.com/api/v1/sales/sales/ \\\n  -H \"Authorization: Be",
+          "width": 286
+        }
+      ]
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Webhooks"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/webhooks",
+      "width": 320,
+      "intentionalCodeScrollers": [
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 469,
+          "tag": "PRE",
+          "text": "{\n  \"event\": \"sale.created\",\n  \"shop_id\": \"8f1c2d3e-4b5a-6c7d-8e9f-0a1b2c3d4e5f\",\n  \"",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 695,
+          "tag": "PRE",
+          "text": "import crypto from \"node:crypto\";\n\n// Verify against the RAW body. Parsing to JSON an",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 516,
+          "tag": "PRE",
+          "text": "import hmac, hashlib\n\ndef verify(raw_body: bytes, header: str, secret: str) -> bool:\n",
+          "width": 286
+        }
+      ]
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Products"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/products",
+      "width": 320,
+      "intentionalCodeScrollers": [
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 484,
+          "tag": "PRE",
+          "text": "curl https://api.tajirpoint.com/api/v1/catalog/products/ \\\n  -H \"Authorization: Beare",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 859,
+          "tag": "PRE",
+          "text": "{\n  \"next\": \"https://api.tajirpoint.com/api/v1/catalog/products/?cursor=cD0yMDI2LTA3L",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 406,
+          "tag": "PRE",
+          "text": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Validation failed.\",\n    \"details\": {",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 547,
+          "tag": "PRE",
+          "text": "curl -X POST https://api.tajirpoint.com/api/v1/catalog/products/ \\\n  -H \"Authorizatio",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 326,
+          "tag": "PRE",
+          "text": "{\n  \"id\": 42,\n  \"name\": \"Nescafé Classic 200g\",\n  \"name_ur\": \"نیسکافے کلاسک ۲۰۰ گرام\"",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 406,
+          "tag": "PRE",
+          "text": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Validation failed.\",\n    \"details\": {",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 508,
+          "tag": "PRE",
+          "text": "curl https://api.tajirpoint.com/api/v1/catalog/products/42/ \\\n  -H \"Authorization: Be",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 326,
+          "tag": "PRE",
+          "text": "{\n  \"id\": 42,\n  \"name\": \"Nescafé Classic 200g\",\n  \"name_ur\": \"نیسکافے کلاسک ۲۰۰ گرام\"",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 406,
+          "tag": "PRE",
+          "text": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Validation failed.\",\n    \"details\": {",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 578,
+          "tag": "PRE",
+          "text": "curl -X PATCH https://api.tajirpoint.com/api/v1/catalog/products/42/ \\\n  -H \"Authoriz",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 326,
+          "tag": "PRE",
+          "text": "{\n  \"id\": 42,\n  \"name\": \"Nescafé Classic 200g\",\n  \"name_ur\": \"نیسکافے کلاسک ۲۰۰ گرام\"",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 406,
+          "tag": "PRE",
+          "text": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Validation failed.\",\n    \"details\": {",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 586,
+          "tag": "PRE",
+          "text": "curl -X DELETE https://api.tajirpoint.com/api/v1/catalog/products/42/ \\\n  -H \"Authori",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 406,
+          "tag": "PRE",
+          "text": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Validation failed.\",\n    \"details\": {",
+          "width": 286
+        }
+      ]
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Categories & brands"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/categories",
+      "width": 320,
+      "intentionalCodeScrollers": [
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 500,
+          "tag": "PRE",
+          "text": "curl https://api.tajirpoint.com/api/v1/catalog/categories/ \\\n  -H \"Authorization: Bea",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 874,
+          "tag": "PRE",
+          "text": "{\n  \"next\": \"https://api.tajirpoint.com/api/v1/catalog/categories/?cursor=cD0yMDI2LTA",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 406,
+          "tag": "PRE",
+          "text": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Validation failed.\",\n    \"details\": {",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 570,
+          "tag": "PRE",
+          "text": "curl -X POST https://api.tajirpoint.com/api/v1/catalog/categories/ \\\n  -H \"Authorizat",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 555,
+          "tag": "PRE",
+          "text": "{\n  \"id\": 42,\n  \"name\": \"Nescafé Classic 200g\",\n  \"slug\": \"slug\",\n  \"parent\": 1,\n  \"s",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 406,
+          "tag": "PRE",
+          "text": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Validation failed.\",\n    \"details\": {",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 469,
+          "tag": "PRE",
+          "text": "curl https://api.tajirpoint.com/api/v1/catalog/brands/ \\\n  -H \"Authorization: Bearer ",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 843,
+          "tag": "PRE",
+          "text": "{\n  \"next\": \"https://api.tajirpoint.com/api/v1/catalog/brands/?cursor=cD0yMDI2LTA3LTE",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 406,
+          "tag": "PRE",
+          "text": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Validation failed.\",\n    \"details\": {",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 562,
+          "tag": "PRE",
+          "text": "curl -X POST https://api.tajirpoint.com/api/v1/catalog/brands/ \\\n  -H \"Authorization:",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 547,
+          "tag": "PRE",
+          "text": "{\n  \"id\": 42,\n  \"name\": \"Nescafé Classic 200g\",\n  \"slug\": \"slug\",\n  \"logo_url\": \"http",
+          "width": 286
+        },
+        {
+          "client": 286,
+          "left": 17,
+          "right": 303,
+          "scroll": 406,
+          "tag": "PRE",
+          "text": "{\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"Validation failed.\",\n    \"details\": {",
+          "width": 286
+        }
+      ]
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Stock levels"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/stock",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Adjustments & transfers"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/adjustments",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Sales"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/sales",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Returns"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/returns",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Customers & suppliers"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/customers",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Khata (ledger)"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/khata",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Payments"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/payments",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Purchases"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/purchases",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["The point of sale that runs your whole business."],
+      "images": [],
+      "overflow": [],
+      "url": "/",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Simple, published pricing."],
+      "images": [],
+      "overflow": [],
+      "url": "/pricing",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["The extension marketplace"],
+      "images": [],
+      "overflow": [],
+      "url": "/extensions",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["One system, shaped around your counter."],
+      "images": [],
+      "overflow": [],
+      "url": "/business",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["From the table to the kitchen to the rider — one system."],
+      "images": [],
+      "overflow": [],
+      "url": "/business/restaurants",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Keep the queue moving, from the first coffee to the last cake."],
+      "images": [],
+      "overflow": [],
+      "url": "/business/cafes-bakeries",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Several brands. One kitchen. One order board."],
+      "images": [],
+      "overflow": [],
+      "url": "/business/cloud-kitchens",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Every size, every colour, every branch — counted."],
+      "images": [],
+      "overflow": [],
+      "url": "/business/retail-fashion",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Fast checkout, honest credit books, and it keeps selling offline."],
+      "images": [],
+      "overflow": [],
+      "url": "/business/grocery-kiryana",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Sell safely. Sell the oldest stock first."],
+      "images": [],
+      "overflow": [],
+      "url": "/business/pharmacy",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Every handset, tracked by its IMEI."],
+      "images": [],
+      "overflow": [],
+      "url": "/business/electronics-mobile",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Services and products, one bill, every client remembered."],
+      "images": [],
+      "overflow": [],
+      "url": "/business/salons-services",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["The van is a warehouse. Treat it like one."],
+      "images": [],
+      "overflow": [],
+      "url": "/business/distributors-wholesale",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Know what every trip really earned."],
+      "images": [],
+      "overflow": [],
+      "url": "/business/transport-delivery",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Buy it in, hold it right, sell it to dealers on credit."],
+      "images": [],
+      "overflow": [],
+      "url": "/business/factories-mills",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Quote it, sell it, deliver it — and get paid in full."],
+      "images": [],
+      "overflow": [],
+      "url": "/business/furniture-home",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Your credit book,finally under control."],
+      "images": [],
+      "overflow": [],
+      "url": "/features/khata",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Keep selling whenthe internet drops."],
+      "images": [],
+      "overflow": [],
+      "url": "/features/offline",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Books that keepthemselves."],
+      "images": [],
+      "overflow": [],
+      "url": "/features/accounting",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Turn every truck intoa mobile warehouse."],
+      "images": [],
+      "overflow": [],
+      "url": "/features/van-sales",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Tax handling,built into checkout."],
+      "images": [],
+      "overflow": [],
+      "url": "/features/e-invoicing",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["A simple, honest system for businesses that work hard."],
+      "images": [],
+      "overflow": [],
+      "url": "/about",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Talk to the TajirPoint team."],
+      "images": [],
+      "overflow": [],
+      "url": "/contact",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["See TajirPoint run your business."],
+      "images": [],
+      "overflow": [],
+      "url": "/book-demo",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Security at TajirPoint"],
+      "images": [],
+      "overflow": [],
+      "url": "/security",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Privacy Policy"],
+      "images": [],
+      "overflow": [],
+      "url": "/privacy",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Terms of Service"],
+      "images": [],
+      "overflow": [],
+      "url": "/terms",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Cookie Policy"],
+      "images": [],
+      "overflow": [],
+      "url": "/cookies",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Refund & Cancellation Policy"],
+      "images": [],
+      "overflow": [],
+      "url": "/refund-policy",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Delete your Tajir Point account"],
+      "images": [],
+      "overflow": [],
+      "url": "/delete-account",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Tajir Point API"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Get your API key"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/authentication",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Pagination"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/pagination",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Errors"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/errors",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Idempotency"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/idempotency",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Webhooks"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/webhooks",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Products"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/products",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Categories & brands"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/categories",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Stock levels"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/stock",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Adjustments & transfers"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/adjustments",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Sales"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/sales",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Returns"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/returns",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Customers & suppliers"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/customers",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Khata (ledger)"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/khata",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Payments"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/payments",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 768,
+      "headings": ["Purchases"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs/purchases",
+      "width": 768,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["وہ پوائنٹ آف سیل جو چلائے آپ کا پورا کاروبار۔"],
+      "images": [],
+      "overflow": [],
+      "url": "/ur",
+      "width": 320,
+      "intentionalCodeScrollers": [],
+      "intentionalMarqueeItems": [
+        {
+          "client": 168,
+          "left": -785,
+          "right": -615,
+          "scroll": 168,
+          "tag": "LI",
+          "text": "ریستوران اور کیفے",
+          "width": 170
+        },
+        {
+          "client": 166,
+          "left": -603,
+          "right": -435,
+          "scroll": 166,
+          "tag": "LI",
+          "text": "ریٹیل اور گروسری",
+          "width": 168
+        },
+        {
+          "client": 161,
+          "left": -423,
+          "right": -259,
+          "scroll": 161,
+          "tag": "LI",
+          "text": "لیپ ٹاپ کی دکانیں",
+          "width": 163
+        },
+        {
+          "client": 154,
+          "left": -247,
+          "right": -92,
+          "scroll": 154,
+          "tag": "LI",
+          "text": "موبائل کی دکانیں",
+          "width": 156
+        },
+        {
+          "client": 189,
+          "left": -80,
+          "right": 112,
+          "scroll": 189,
+          "tag": "LI",
+          "text": "تھوک اور ڈسٹری بیوشن",
+          "width": 191
+        },
+        {
+          "client": 204,
+          "left": 315,
+          "right": 521,
+          "scroll": 204,
+          "tag": "LI",
+          "text": "فیکٹریاں اور مینوفیکچرنگ",
+          "width": 206
+        },
+        {
+          "client": 120,
+          "left": 533,
+          "right": 655,
+          "scroll": 120,
+          "tag": "LI",
+          "text": "فارمیسیاں",
+          "width": 122
+        },
+        {
+          "client": 162,
+          "left": 667,
+          "right": 831,
+          "scroll": 162,
+          "tag": "LI",
+          "text": "سیلون اور سروسز",
+          "width": 164
+        },
+        {
+          "client": 124,
+          "left": 843,
+          "right": 969,
+          "scroll": 124,
+          "tag": "LI",
+          "text": "کلاؤڈ کچن",
+          "width": 126
+        },
+        {
+          "client": 170,
+          "left": 981,
+          "right": 1153,
+          "scroll": 170,
+          "tag": "LI",
+          "text": "ہارڈویئر اور فرنیچر",
+          "width": 172
+        },
+        {
+          "client": 145,
+          "left": 1165,
+          "right": 1312,
+          "scroll": 145,
+          "tag": "LI",
+          "text": "آن لائن اسٹورز",
+          "width": 147
+        }
+      ]
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["نقطة البيع التي تدير عملك بالكامل."],
+      "images": [],
+      "overflow": [],
+      "url": "/ar",
+      "width": 320,
+      "intentionalCodeScrollers": [],
+      "intentionalMarqueeItems": [
+        {
+          "client": 154,
+          "left": -3,
+          "right": 153,
+          "scroll": 154,
+          "tag": "LI",
+          "text": "المطاعم والمقاهي",
+          "width": 156
+        },
+        {
+          "client": 198,
+          "left": 321,
+          "right": 522,
+          "scroll": 198,
+          "tag": "LI",
+          "text": "محلات الحواسيب المحمولة",
+          "width": 200
+        },
+        {
+          "client": 146,
+          "left": 534,
+          "right": 682,
+          "scroll": 146,
+          "tag": "LI",
+          "text": "محلات الهواتف",
+          "width": 148
+        },
+        {
+          "client": 145,
+          "left": 694,
+          "right": 841,
+          "scroll": 145,
+          "tag": "LI",
+          "text": "الجملة والتوزيع",
+          "width": 147
+        },
+        {
+          "client": 134,
+          "left": 853,
+          "right": 989,
+          "scroll": 134,
+          "tag": "LI",
+          "text": "الشحن والنقل",
+          "width": 136
+        },
+        {
+          "client": 157,
+          "left": 1001,
+          "right": 1160,
+          "scroll": 157,
+          "tag": "LI",
+          "text": "المصانع والتصنيع",
+          "width": 159
+        },
+        {
+          "client": 121,
+          "left": 1172,
+          "right": 1296,
+          "scroll": 121,
+          "tag": "LI",
+          "text": "الصيدليات",
+          "width": 123
+        },
+        {
+          "client": 171,
+          "left": 1308,
+          "right": 1480,
+          "scroll": 171,
+          "tag": "LI",
+          "text": "الصالونات والخدمات",
+          "width": 173
+        },
+        {
+          "client": 150,
+          "left": 1492,
+          "right": 1644,
+          "scroll": 150,
+          "tag": "LI",
+          "text": "المطابخ السحابية",
+          "width": 152
+        },
+        {
+          "client": 148,
+          "left": 1656,
+          "right": 1806,
+          "scroll": 148,
+          "tag": "LI",
+          "text": "الأدوات والأثاث",
+          "width": 150
+        },
+        {
+          "client": 160,
+          "left": 1818,
+          "right": 1980,
+          "scroll": 160,
+          "tag": "LI",
+          "text": "المتاجر الإلكترونية",
+          "width": 162
+        }
+      ]
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Sell safely. Sell the oldest stock first."],
+      "images": [],
+      "overflow": [],
+      "url": "/ar/business/pharmacy",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["See TajirPoint run your business."],
+      "images": [],
+      "overflow": [],
+      "url": "/ur/book-demo",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["متجر الإضافات"],
+      "images": [],
+      "overflow": [],
+      "url": "/ar/extensions",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Tajir Point API"],
+      "images": [],
+      "overflow": [],
+      "url": "/ar/docs",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 1024,
+      "headings": ["The point of sale that runs your whole business."],
+      "images": [],
+      "overflow": [],
+      "url": "/",
+      "width": 1024,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 1024,
+      "headings": ["Simple, published pricing."],
+      "images": [],
+      "overflow": [],
+      "url": "/pricing",
+      "width": 1024,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 1024,
+      "headings": ["The extension marketplace"],
+      "images": [],
+      "overflow": [],
+      "url": "/extensions",
+      "width": 1024,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 1024,
+      "headings": ["See TajirPoint run your business."],
+      "images": [],
+      "overflow": [],
+      "url": "/book-demo",
+      "width": 1024,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 1024,
+      "headings": ["Tajir Point API"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs",
+      "width": 1024,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 1024,
+      "headings": ["نقطة البيع التي تدير عملك بالكامل."],
+      "images": [],
+      "overflow": [],
+      "url": "/ar",
+      "width": 1024,
+      "intentionalCodeScrollers": [],
+      "intentionalMarqueeItems": [
+        {
+          "client": 157,
+          "left": 1010,
+          "right": 1169,
+          "scroll": 157,
+          "tag": "LI",
+          "text": "المصانع والتصنيع",
+          "width": 159
+        },
+        {
+          "client": 121,
+          "left": 1181,
+          "right": 1305,
+          "scroll": 121,
+          "tag": "LI",
+          "text": "الصيدليات",
+          "width": 123
+        },
+        {
+          "client": 171,
+          "left": 1317,
+          "right": 1489,
+          "scroll": 171,
+          "tag": "LI",
+          "text": "الصالونات والخدمات",
+          "width": 173
+        },
+        {
+          "client": 150,
+          "left": 1501,
+          "right": 1653,
+          "scroll": 150,
+          "tag": "LI",
+          "text": "المطابخ السحابية",
+          "width": 152
+        },
+        {
+          "client": 148,
+          "left": 1665,
+          "right": 1815,
+          "scroll": 148,
+          "tag": "LI",
+          "text": "الأدوات والأثاث",
+          "width": 150
+        },
+        {
+          "client": 160,
+          "left": 1827,
+          "right": 1989,
+          "scroll": 160,
+          "tag": "LI",
+          "text": "المتاجر الإلكترونية",
+          "width": 162
+        }
+      ]
+    },
+    {
+      "documentWidth": 390,
+      "headings": ["The point of sale that runs your whole business."],
+      "images": [],
+      "overflow": [],
+      "url": "/",
+      "width": 390,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 390,
+      "headings": ["See TajirPoint run your business."],
+      "images": [],
+      "overflow": [],
+      "url": "/book-demo",
+      "width": 390,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 390,
+      "headings": ["Talk to the TajirPoint team."],
+      "images": [],
+      "overflow": [],
+      "url": "/contact",
+      "width": 390,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["The point of sale that runs your whole business."],
+      "images": [],
+      "overflow": [],
+      "url": "/",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["See TajirPoint run your business."],
+      "images": [],
+      "overflow": [],
+      "url": "/book-demo",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Talk to the TajirPoint team."],
+      "images": [],
+      "overflow": [],
+      "url": "/contact",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["See TajirPoint run your business."],
+      "images": [],
+      "overflow": [],
+      "url": "/ar/book-demo",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Books that keepthemselves."],
+      "images": [],
+      "overflow": [],
+      "url": "/ur/features/accounting",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Privacy Policy"],
+      "images": [],
+      "overflow": [],
+      "url": "/ar/privacy",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    },
+    {
+      "documentWidth": 320,
+      "headings": ["Tajir Point API"],
+      "images": [],
+      "overflow": [],
+      "url": "/docs",
+      "width": 320,
+      "intentionalCodeScrollers": []
+    }
+  ]
+}

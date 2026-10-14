@@ -255,7 +255,11 @@ export const SOLUTIONS = [
     screen: "Dispatch · Trip TRP-0731",
     rows: [
       { a: "Depot → Harbor Road", b: "6 stops · driver Omar · ETA 2:40 pm", c: "In transit" },
-      { a: "Proof of delivery · stop 4", b: "Confirmed on the driver's phone · 2 pallets", c: "Delivered" },
+      {
+        a: "Proof of delivery · stop 4",
+        b: "Confirmed on the driver's phone · 2 pallets",
+        c: "Delivered",
+      },
       { a: "Trip profit · TRK-2208", b: "Revenue $1,240 − fuel $212 − driver $90", c: "+ $938.00" },
     ],
   },
@@ -265,9 +269,21 @@ export const SOLUTIONS = [
     href: "/business/factories-mills",
     screen: "Stock · Warehouses & batches",
     rows: [
-      { a: "Flour 50 kg bag · Batch L-2210", b: "Main warehouse · received 04 Oct", c: "1,860 bags" },
-      { a: "Alpha Traders · dealer", b: "Credit limit $20,000 · 62% used · 30-day ageing", c: "$12,400 due" },
-      { a: "PO-0412 · raw wheat", b: "Goods receipt posted · supplier ledger updated", c: "Received" },
+      {
+        a: "Flour 50 kg bag · Batch L-2210",
+        b: "Main warehouse · received 04 Oct",
+        c: "1,860 bags",
+      },
+      {
+        a: "Alpha Traders · dealer",
+        b: "Credit limit $20,000 · 62% used · 30-day ageing",
+        c: "$12,400 due",
+      },
+      {
+        a: "PO-0412 · raw wheat",
+        b: "Goods receipt posted · supplier ledger updated",
+        c: "Received",
+      },
     ],
   },
   {
@@ -350,33 +366,33 @@ export const RECEIPT_LANGS = [
     ],
   },
   {
-    id: "es",
-    label: "Español",
-    dir: "ltr",
-    shop: "Tienda General Northgate",
-    title: "Recibo",
-    total: "Total",
-    paid: "Pagado · efectivo",
-    thanks: "Gracias",
+    id: "ur",
+    label: "اردو",
+    dir: "rtl",
+    shop: "نارتھ گیٹ جنرل اسٹور",
+    title: "رسید",
+    total: "کل",
+    paid: "نقد ادائیگی",
+    thanks: "شکریہ",
     items: [
-      { name: "Aceite de oliva 1 L", amt: "$16.50" },
-      { name: "Café en grano 500 g", amt: "$5.90" },
-      { name: "Té verde 250 g", amt: "$10.00" },
+      { name: "زیتون کا تیل 1 لیٹر", amt: "$16.50" },
+      { name: "کافی 500 گرام", amt: "$5.90" },
+      { name: "سبز چائے 250 گرام", amt: "$10.00" },
     ],
   },
   {
-    id: "rtl",
-    label: "Right-to-left",
+    id: "ar",
+    label: "العربية",
     dir: "rtl",
-    shop: "Northgate General Store",
-    title: "Receipt (RTL layout)",
-    total: "Total",
-    paid: "Paid · cash",
-    thanks: "Thank you",
+    shop: "متجر نورث جيت",
+    title: "إيصال",
+    total: "الإجمالي",
+    paid: "تم الدفع نقدًا",
+    thanks: "شكرًا لك",
     items: [
-      { name: "Olive oil 1 L", amt: "$16.50" },
-      { name: "Coffee beans 500 g", amt: "$5.90" },
-      { name: "Green tea 250 g", amt: "$10.00" },
+      { name: "زيت زيتون 1 لتر", amt: "$16.50" },
+      { name: "قهوة 500 غرام", amt: "$5.90" },
+      { name: "شاي أخضر 250 غرام", amt: "$10.00" },
     ],
   },
 ] as const;
@@ -387,41 +403,8 @@ export const RECEIPT_TOTAL = "$32.40";
    The 31 ids, categories and copy already live in `catalog.ts` and
    `messages.extensions.*`; this only adds the design's status badge. */
 
-export type ExtensionStatus = "live" | "beta" | "ready";
-
-export const EXTENSION_STATUS: Record<string, ExtensionStatus> = {
-  restaurant: "live",
-  "route-dispatch": "live",
-  pharmacy: "live",
-  "hr-payroll": "live",
-  "cloud-kitchen": "ready",
-  "website-builder": "live",
-  stripe: "live",
-  jazzcash: "live",
-  easypaisa: "beta",
-  hblpay: "beta",
-  paypal: "beta",
-  razorpay: "beta",
-  square: "beta",
-  "accounting-gl": "live",
-  "cash-management": "live",
-  quickbooks: "beta",
-  fbr: "ready",
-  "age-verification": "live",
-  shopify: "live",
-  woocommerce: "beta",
-  magento: "beta",
-  wix: "beta",
-  bigcommerce: "beta",
-  leopards: "live",
-  tcs: "live",
-  postex: "live",
-  "customer-portal": "live",
-  "delivery-aggregator": "live",
-  coupons: "live",
-  "time-promos": "live",
-  "whatsapp-ai": "beta",
-};
+/** Availability follows the catalog's backend-aligned release notes on both pages. */
+export type ExtensionStatus = "live" | "soon";
 
 /* ── Pricing ───────────────────────────────────────────────────────
    Published tiers, read from the backend: a free plan, paid plans, and a

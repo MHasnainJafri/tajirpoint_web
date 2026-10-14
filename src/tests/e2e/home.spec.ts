@@ -1,5 +1,14 @@
 import { test, expect } from "@playwright/test";
 
+test("English production routes resolve without a locale redirect loop", async ({ page }) => {
+  for (const route of ["/", "/pricing", "/extensions", "/docs"]) {
+    const response = await page.goto(route);
+    expect(response?.status(), route).toBe(200);
+    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+    expect(new URL(page.url()).pathname).toBe(route);
+  }
+});
+
 test("home page renders the hero and its two CTAs", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
@@ -8,7 +17,10 @@ test("home page renders the hero and its two CTAs", async ({ page }) => {
     "href",
     "https://app.tajirpoint.com/register"
   );
-  await expect(hero.getByRole("link", { name: "Book a demo" })).toHaveAttribute("href", "/book-demo");
+  await expect(hero.getByRole("link", { name: "Book a demo" })).toHaveAttribute(
+    "href",
+    "/book-demo"
+  );
 });
 
 test("main navigation is labelled", async ({ page }) => {
@@ -19,8 +31,11 @@ test("main navigation is labelled", async ({ page }) => {
 test("find-your-business grid links to every business page", async ({ page }) => {
   await page.goto("/");
   const grid = page.locator("#businesses");
-  await expect(grid.getByRole("link", { name: /Restaurants/ })).toHaveAttribute("href", "/business/restaurants");
-  await expect(grid.locator('a[href^="/business/"]')).toHaveCount(10);
+  await expect(grid.getByRole("link", { name: /Restaurants/ })).toHaveAttribute(
+    "href",
+    "/business/restaurants"
+  );
+  await expect(grid.locator('a[href^="/business/"]')).toHaveCount(12);
 });
 
 test("no free-forever copy anywhere on the home page", async ({ page }) => {

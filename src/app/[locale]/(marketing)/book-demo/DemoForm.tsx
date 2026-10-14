@@ -43,6 +43,7 @@ export function DemoForm() {
   );
   const [businessType, setBusinessType] = useState("");
   const [wantsMigration, setWantsMigration] = useState(false);
+  const [timeZone, setTimeZone] = useState("");
   const [days, setDays] = useState<Array<{ value: string; label: string }>>([]);
   const [attribution, setAttribution] = useState<Attribution>(emptyAttribution);
   const tracked = useRef(false);
@@ -57,6 +58,7 @@ export function DemoForm() {
     setBusinessType(preselectType(params.get("type")));
     setWantsMigration(params.get("migrate") === "1");
     setDays(upcomingDays(new Date()));
+    setTimeZone(Intl.DateTimeFormat().resolvedOptions().timeZone);
     setAttribution(readAttribution(sessionStore(), currentAttribution()));
     /* eslint-enable react-hooks/set-state-in-effect */
   }, []);
@@ -131,13 +133,21 @@ export function DemoForm() {
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <Field id="name" label="Your name" required error={f.name}>
-          <input id="name" name="name" type="text" autoComplete="name" required className={inputCls(!!f.name)} {...err("name")} />
+          <input
+            id="name"
+            name="name"
+            type="text"
+            autoComplete="name"
+            required
+            className={inputCls(!!f.name)}
+            {...err("name")}
+          />
         </Field>
         <Field
           id="phone"
           label="WhatsApp number"
           required
-          hint="Pakistan numbers can start with 03 — we add +92."
+          hint="Include your country code, for example +1, +44 or +971."
           error={f.phone}
         >
           <input
@@ -147,7 +157,7 @@ export function DemoForm() {
             inputMode="tel"
             autoComplete="tel"
             required
-            placeholder="03xx xxxxxxx"
+            placeholder="+1 415 555 0123"
             className={inputCls(!!f.phone)}
             aria-describedby={f.phone ? "phone-error" : "phone-hint"}
             aria-invalid={f.phone ? true : undefined}
@@ -157,10 +167,24 @@ export function DemoForm() {
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <Field id="email" label="Email" optional error={f.email}>
-          <input id="email" name="email" type="email" autoComplete="email" className={inputCls(!!f.email)} {...err("email")} />
+          <input
+            id="email"
+            name="email"
+            type="email"
+            autoComplete="email"
+            className={inputCls(!!f.email)}
+            {...err("email")}
+          />
         </Field>
         <Field id="business_name" label="Business name" optional error={f.business_name}>
-          <input id="business_name" name="business_name" type="text" autoComplete="organization" className={inputCls(!!f.business_name)} {...err("business_name")} />
+          <input
+            id="business_name"
+            name="business_name"
+            type="text"
+            autoComplete="organization"
+            className={inputCls(!!f.business_name)}
+            {...err("business_name")}
+          />
         </Field>
       </div>
 
@@ -182,13 +206,21 @@ export function DemoForm() {
           </select>
         </Field>
         <Field id="city" label="City" optional error={f.city}>
-          <input id="city" name="city" type="text" autoComplete="address-level2" className={inputCls(!!f.city)} {...err("city")} />
+          <input
+            id="city"
+            name="city"
+            type="text"
+            autoComplete="address-level2"
+            className={inputCls(!!f.city)}
+            {...err("city")}
+          />
         </Field>
       </div>
 
       <fieldset className="flex flex-col gap-2">
         <legend className={labelCls}>
-          How many shops or branches? <span className="font-normal text-[var(--color-muted)]">(optional)</span>
+          How many shops or branches?{" "}
+          <span className="font-normal text-[var(--color-muted)]">(optional)</span>
         </legend>
         <div className="mt-2 flex flex-wrap gap-2">
           {BRANCH_OPTIONS.map((o) => (
@@ -196,7 +228,12 @@ export function DemoForm() {
               key={o.value}
               className="relative inline-flex cursor-pointer items-center gap-2 rounded-full border border-[var(--color-line-3)] bg-white px-4 py-[10px] text-[14px] font-semibold text-[var(--color-ink)] has-[:checked]:border-[var(--color-mint-2)] has-[:checked]:bg-[var(--color-mint-soft)] has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-[rgba(0,210,122,.35)]"
             >
-              <input type="radio" name="branches" value={o.value} className="accent-[var(--color-mint-2)]" />
+              <input
+                type="radio"
+                name="branches"
+                value={o.value}
+                className="accent-[var(--color-mint-2)]"
+              />
               {o.label}
             </label>
           ))}
@@ -204,7 +241,12 @@ export function DemoForm() {
         {f.branches && <p className={errorCls}>{f.branches}</p>}
       </fieldset>
 
-      <Field id="current_pos" label="Are you using a POS or software now? Which one?" optional error={f.current_pos}>
+      <Field
+        id="current_pos"
+        label="Are you using a POS or software now? Which one?"
+        optional
+        error={f.current_pos}
+      >
         <input
           id="current_pos"
           name="current_pos"
@@ -224,16 +266,25 @@ export function DemoForm() {
           className="mt-[3px] h-[18px] w-[18px] flex-none accent-[var(--color-mint-2)]"
         />
         <span>
-          <span className="block text-[14.5px] font-semibold text-[var(--color-ink)]">Move my data for me</span>
+          <span className="block text-[14.5px] font-semibold text-[var(--color-ink)]">
+            Move my data for me
+          </span>
           <span className={`mt-1 block ${hintCls}`}>
-            We load your products, customers, suppliers and khata balances from your old system — free.
+            We load your products, customers, suppliers and credit balances from your old system —
+            free.
           </span>
         </span>
       </label>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <Field id="preferred_date" label="Preferred day" optional error={f.preferred_date}>
-          <select id="preferred_date" name="preferred_date" defaultValue="" className={inputCls(!!f.preferred_date)} {...err("preferred_date")}>
+          <select
+            id="preferred_date"
+            name="preferred_date"
+            defaultValue=""
+            className={inputCls(!!f.preferred_date)}
+            {...err("preferred_date")}
+          >
             <option value="">Any day</option>
             {days.map((d) => (
               <option key={d.value} value={d.value}>
@@ -242,8 +293,24 @@ export function DemoForm() {
             ))}
           </select>
         </Field>
-        <Field id="preferred_time" label="Preferred time (Pakistan time)" optional error={f.preferred_time}>
-          <select id="preferred_time" name="preferred_time" defaultValue="" className={inputCls(!!f.preferred_time)} {...err("preferred_time")}>
+        <Field
+          id="preferred_time"
+          label="Preferred time (your local time)"
+          hint={
+            timeZone
+              ? `Time zone: ${timeZone}. We will confirm availability with you.`
+              : "Tell us your time zone in the message below."
+          }
+          optional
+          error={f.preferred_time}
+        >
+          <select
+            id="preferred_time"
+            name="preferred_time"
+            defaultValue=""
+            className={inputCls(!!f.preferred_time)}
+            {...err("preferred_time")}
+          >
             <option value="">Any time</option>
             {TIME_OPTIONS.map((o) => (
               <option key={o.value} value={o.value}>
@@ -264,6 +331,8 @@ export function DemoForm() {
           {...err("message")}
         />
       </Field>
+
+      <input type="hidden" name="time_zone" value={timeZone} />
 
       {/* Honeypot — hidden from people; bots fill it and are dropped. */}
       <div aria-hidden="true" style={honeypotStyle}>

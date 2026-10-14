@@ -30,7 +30,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   setRequestLocale(locale);
 
   return (
-    <div className="px-[clamp(16px,4vw,40px)] pb-[clamp(60px,9vw,110px)]">
+    <div lang="en" dir="ltr" className="px-[clamp(16px,4vw,40px)] pb-[clamp(60px,9vw,110px)]">
       {/* ── Header ──────────────────────────────────────────────────── */}
       <section className="pb-10 pt-[clamp(36px,7vw,90px)] text-center">
         <PillBadge>Get in touch</PillBadge>
@@ -44,8 +44,17 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
       </section>
 
       {/* ── Ways to reach us ────────────────────────────────────────── */}
-      <section aria-label="Ways to reach us" className="mx-auto grid max-w-[1080px] grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-4">
-        <a href={whatsappLink("Hi TajirPoint")} target="_blank" rel="noopener noreferrer" data-track="contact_card" className={cardCls}>
+      <section
+        aria-label="Ways to reach us"
+        className="mx-auto grid max-w-[1080px] grid-cols-[repeat(auto-fit,minmax(min(100%,240px),1fr))] gap-4"
+      >
+        <a
+          href={whatsappLink("Hi TajirPoint")}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-track="contact_card"
+          className={cardCls}
+        >
           <span className="grid h-11 w-11 place-items-center rounded-[12px] bg-[var(--color-mint-soft)] text-[var(--color-mint-2)]">
             <MessageCircle size={22} strokeWidth={1.8} aria-hidden="true" />
           </span>
@@ -53,7 +62,9 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           <span className="text-[14px] text-[var(--color-body)]" dir="ltr">
             {legal.whatsappDisplay}
           </span>
-          <span className="mt-auto text-[13.5px] font-semibold text-[var(--color-mint-2)]">Start a chat →</span>
+          <span className="mt-auto text-[13.5px] font-semibold text-[var(--color-mint-2)]">
+            Start a chat →
+          </span>
         </a>
         <a href={`mailto:${legal.email}`} className={cardCls}>
           <span className="grid h-11 w-11 place-items-center rounded-[12px] bg-[var(--color-mint-soft)] text-[var(--color-mint-2)]">
@@ -61,7 +72,9 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           </span>
           <span className="text-[17px] font-bold text-[var(--color-ink)]">Email</span>
           <span className="text-[14px] text-[var(--color-body)]">{legal.email}</span>
-          <span className="mt-auto text-[13.5px] font-semibold text-[var(--color-mint-2)]">Write to us →</span>
+          <span className="mt-auto text-[13.5px] font-semibold text-[var(--color-mint-2)]">
+            Write to us →
+          </span>
         </a>
         <Link href="/book-demo" className={cardCls}>
           <span className="grid h-11 w-11 place-items-center rounded-[12px] bg-[var(--color-mint-soft)] text-[var(--color-mint-2)]">
@@ -71,7 +84,9 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           <span className="text-[14px] text-[var(--color-body)]">
             See it with your own kind of business. We can move your data for free.
           </span>
-          <span className="mt-auto text-[13.5px] font-semibold text-[var(--color-mint-2)]">Book a demo →</span>
+          <span className="mt-auto text-[13.5px] font-semibold text-[var(--color-mint-2)]">
+            Book a demo →
+          </span>
         </Link>
       </section>
 

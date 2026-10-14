@@ -117,10 +117,10 @@
       "description": "All-in-one, offline-first POS and back office for restaurants, retail, laptop and mobile shops, wholesalers, distributors, delivery fleets and factories. Stock, customer credit, accounting, delivery and an online store on one login."
     },
     "hero": {
-      "badge": "Point of sale & back office · For every kind of business, in every market",
+      "badge": "Point of sale & back office · Built around your business",
       "headline": "The point of sale that runs",
       "headlineAccent": "your whole business.",
-      "sub": "TajirPoint is a complete point-of-sale system — and everything behind it. Restaurants, shops, wholesalers, fleets and factories run their counter, stock, customer credit, accounting, staff, delivery and online store from one login, in their language and currency. And it keeps selling when the internet drops.",
+      "sub": "Run checkout, stock, purchasing, customer credit and accounting in one place. Add the tools your restaurant, store or distribution business needs, with multi-currency support and a POS that keeps selling offline.",
       "ctaPrimary": "Start free — 3 months",
       "ctaSecondary": "Book a demo",
       "note": "Free for 3 months · No card needed · We move your data for free",
@@ -178,12 +178,12 @@
     },
     "signature": {
       "eyebrow": "Signature features",
-      "headline": "Five things most POS systems get wrong",
+      "headline": "Five essentials for a connected business",
       "sub": "Built for how businesses actually run — customer credit, outages, local taxes and the truck that leaves at 7 am.",
       "khata": {
         "label": "01 · Credit ledger",
-        "title": "The credit book, made tamper-proof",
-        "body": "Every sale, payment and adjustment posts automatically with a running balance nobody can quietly edit and no customer can dispute. Share a PDF statement over WhatsApp or email in one tap.",
+        "title": "A credit ledger with a clear audit trail",
+        "body": "Sales, payments and adjustments update each customer’s running balance automatically. Review the history and share PDF statements by WhatsApp or email.",
         "bullets": {
           "0": "Credit limits with approaching-limit alerts",
           "1": "30 / 60 / 90-day aging",
@@ -211,7 +211,7 @@
           "0": "Bank statement import & reconciliation",
           "1": "Cash drawers, safes & petty cash",
           "2": "Accounting periods & close",
-          "3": "QuickBooks Online sync"
+          "3": "QuickBooks connector — coming soon"
         },
         "card": {
           "posted": "Posted automatically",
@@ -250,14 +250,15 @@
       },
       "tax": {
         "label": "05 · Local tax compliance",
-        "title": "Local tax rules built in, not bolted on",
-        "body": "Tax-inclusive and tax-exclusive pricing per line, withholding certificates, regional tax structures and multi-currency billing, handled per country. Regulator e-invoicing is on the way.",
+        "title": "Tax records built into your daily sales",
+        "body": "Set tax-inclusive or tax-exclusive prices, track withholding and keep transaction records. Tax settings must match your local requirements; regulatory e-invoicing integrations are not yet released.",
         "chips": {
           "inclusive": "Tax inclusive / exclusive",
           "withholding": "Withholding certificates",
-          "age": "Age verification",
+          "age": "Tax summaries",
           "audit": "Audit log"
-        }
+        },
+        "receiptNote": "Illustrative receipt. Regulatory integrations are not yet released."
       }
     },
     "solutions": {
@@ -326,12 +327,12 @@
         "services": {
           "name": "Services",
           "who": "Salons, clinics, gyms, tutors",
-          "blurb": "Appointments, staff commissions and memberships that bill themselves every month.",
+          "blurb": "Sell services and products together, keep client history and reward returning customers. Take booking requests through your website.",
           "bullets": {
-            "0": "Appointments & scheduling",
-            "1": "Staff commissions",
-            "2": "Memberships & packages",
-            "3": "Recurring billing"
+            "0": "Services and products on one bill",
+            "1": "Client and payment history",
+            "2": "Loyalty and coupons",
+            "3": "Online booking requests"
           }
         },
         "transport": {
@@ -377,7 +378,7 @@
         },
         "getPaid": {
           "title": "Get paid",
-          "body": "Cash, card, cheque, wallets; 7 gateways; allocate across invoices."
+          "body": "Cash, card, cheque and supported online gateways; allocate payments across invoices."
         },
         "credit": {
           "title": "Credit",
@@ -397,7 +398,7 @@
         },
         "deliver": {
           "title": "Deliver",
-          "body": "Van sales, 3PL couriers, delivery-aggregator inbox."
+          "body": "Van sales, dispatch and proof of delivery. Courier and aggregator connectors are coming soon."
         },
         "people": {
           "title": "Run people",
@@ -459,11 +460,12 @@
         "customer": "Sales & customer tools"
       },
       "status": {
-        "live": "Live",
+        "live": "Available",
         "beta": "Beta",
-        "ready": "Ready"
+        "ready": "Ready",
+        "soon": "Coming soon"
       },
-      "legend": "Live — in production use. Beta — built, final validation in progress. Ready — built, goes live with your credentials."
+      "legend": "Available — released for installation. Coming soon — listed for preview and not yet released. Gateways, couriers and tax integrations depend on your country, provider account and plan."
     },
     "pricing": {
       "eyebrow": "Pricing",
@@ -501,7 +503,7 @@
         "ctaEmail": "Email us"
       },
       "perMonth": "/ month",
-      "plansNote": "Light is free for 3 months from signup, no card needed. Paid plans are billed in USD and can be cancelled any time, with a 15-day refund window on payments.",
+      "plansNote": "Light is free for 3 months from signup, no card needed. Paid plans are billed in USD and can be cancelled any time, with a 15-day refund window on payments. Add-ons marked coming soon are not yet available, regardless of plan.",
       "freePeriod": "for 3 months",
       "perYear": "/ year",
       "monthly": "Monthly",
@@ -667,12 +669,7 @@
         "tag": "GROCERY · APPAREL · HARDWARE",
         "headline": "Barcode-fast selling with credit built in",
         "body": "Ring up a queue in seconds, sell by carton, kg or piece with automatic unit conversion, and keep every customer’s running credit balance without a paper register.",
-        "chips": [
-          "Barcode checkout",
-          "Credit ledger",
-          "Unit conversion",
-          "Label printing"
-        ],
+        "chips": ["Barcode checkout", "Credit ledger", "Unit conversion", "Label printing"],
         "panelTitle": "WHAT RETAILERS USE MOST",
         "feats": [
           {
@@ -706,12 +703,7 @@
         "tag": "DINE-IN · TAKEAWAY · DELIVERY",
         "headline": "From table to kitchen to bill, in sync",
         "body": "Floor plans and table service at the front, timed orders on kitchen screens at the back, and delivery-app orders flowing into the same queue.",
-        "chips": [
-          "Floor plans",
-          "Kitchen display",
-          "QR self-ordering",
-          "Split bills"
-        ],
+        "chips": ["Floor plans", "Kitchen display", "QR self-ordering", "Split bills"],
         "panelTitle": "WHAT RESTAURANTS USE MOST",
         "feats": [
           {
@@ -745,12 +737,7 @@
         "tag": "HANDSETS · ACCESSORIES · REPAIRS",
         "headline": "Every handset tracked, serial by serial",
         "body": "IMEI and serial tracking across the full lifecycle — purchase, sale, warranty, repair, trade-in — so you always know exactly which unit went where.",
-        "chips": [
-          "IMEI tracking",
-          "Warranty records",
-          "Repair jobs",
-          "Trade-ins"
-        ],
+        "chips": ["IMEI tracking", "Warranty records", "Repair jobs", "Trade-ins"],
         "panelTitle": "WHAT ELECTRONICS SHOPS USE MOST",
         "feats": [
           {
@@ -784,12 +771,7 @@
         "tag": "BATCH · EXPIRY · PRESCRIPTIONS",
         "headline": "Sell safe. Never sell expired.",
         "body": "Batch and expiry tracking with first-expiry-first-out picking, expiry alerts before stock dies on the shelf, and expired stock automatically excluded from sale.",
-        "chips": [
-          "FEFO picking",
-          "Expiry alerts",
-          "Drug schedules",
-          "Prescription log"
-        ],
+        "chips": ["FEFO picking", "Expiry alerts", "Drug schedules", "Prescription log"],
         "panelTitle": "WHAT PHARMACIES USE MOST",
         "feats": [
           {
@@ -823,12 +805,7 @@
         "tag": "VAN SALES · ROUTES · WAREHOUSES",
         "headline": "The truck is a warehouse. Treat it like one.",
         "body": "Load a van in the morning, sell and collect door-to-door on a route, then reconcile cash, goods and fuel at day end — including what the driver still owes.",
-        "chips": [
-          "Van sales",
-          "Route planning",
-          "Driver reconciliation",
-          "Multi-warehouse"
-        ],
+        "chips": ["Van sales", "Route planning", "Driver reconciliation", "Multi-warehouse"],
         "panelTitle": "WHAT DISTRIBUTORS USE MOST",
         "feats": [
           {
@@ -862,12 +839,7 @@
         "tag": "SALONS · CLINICS · GYMS · TUTORS",
         "headline": "Appointments, memberships, commissions",
         "body": "Book appointments, bill memberships on a cycle, and pay staff commissions that post straight into the accounts — recurring revenue without the spreadsheet.",
-        "chips": [
-          "Appointments",
-          "Memberships",
-          "Staff commissions",
-          "Recurring billing"
-        ],
+        "chips": ["Appointments", "Memberships", "Staff commissions", "Recurring billing"],
         "panelTitle": "WHAT SERVICE BUSINESSES USE MOST",
         "feats": [
           {
@@ -906,7 +878,7 @@
     "badge": "MARKETPLACE · {count} EXTENSIONS",
     "headline": "The extension",
     "headlineAccent": "marketplace",
-    "sub": "Install what your business needs, per shop. The interface only shows what's switched on — a small store never sees restaurant or payroll screens.",
+    "sub": "Install what your business needs, per location. Availability, pricing and provider support vary by country and plan. Features marked coming soon cannot be installed yet.",
     "filterAll": "All",
     "filters": {
       "verticals": "Verticals",
@@ -958,15 +930,15 @@
       },
       "jazzcash": {
         "name": "JazzCash",
-        "desc": "Mobile wallet payments at the till and online."
+        "desc": "JazzCash wallet payments for eligible merchants in Pakistan."
       },
       "easypaisa": {
         "name": "Easypaisa",
-        "desc": "Mobile wallet payments at the till and online."
+        "desc": "Easypaisa wallet payments for eligible merchants in Pakistan."
       },
       "hblpay": {
         "name": "HBLPay",
-        "desc": "Card payments with 3-D Secure."
+        "desc": "HBLPay card gateway, subject to merchant-country availability."
       },
       "paypal": {
         "name": "PayPal",
@@ -993,8 +965,8 @@
         "desc": "Push sales, payments and expenses to QuickBooks."
       },
       "fbr": {
-        "name": "Tax Authority E-Invoicing",
-        "desc": "Real-time e-invoicing with QR on receipts, per country."
+        "name": "FBR E-Invoicing (Pakistan)",
+        "desc": "Planned connector for Pakistan’s Federal Board of Revenue."
       },
       "age-verification": {
         "name": "Age Verification",
@@ -1022,15 +994,15 @@
       },
       "leopards": {
         "name": "Leopards Courier",
-        "desc": "Book shipments, print labels, track deliveries."
+        "desc": "Book and track shipments with your courier account in Pakistan."
       },
       "tcs": {
         "name": "TCS Express",
-        "desc": "Book shipments, print labels, track deliveries."
+        "desc": "Book and track shipments with your courier account in Pakistan."
       },
       "postex": {
         "name": "PostEx",
-        "desc": "Book shipments, print labels, track deliveries."
+        "desc": "Book and track shipments with your courier account in Pakistan."
       },
       "customer-portal": {
         "name": "Customer Portal",

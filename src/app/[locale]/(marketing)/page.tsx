@@ -43,10 +43,9 @@ export async function generateMetadata({
       "Offline POS Software",
       "Kitchen Display System KDS",
       "Van Sales Software",
-      "Khata Credit Ledger",
+      "Customer Credit Ledger",
       "Inventory Management",
-      "FBR E-invoicing POS",
-      "ZATCA E-invoicing POS",
+      "POS Tax Records",
     ],
   });
 }

@@ -60,9 +60,9 @@ export type ExtensionCategory = (typeof EXTENSION_CATEGORIES)[number];
 export const EXTENSIONS = [
   { id: "restaurant", icon: "extension-restaurant", cat: "verticals" },
   { id: "route-dispatch", icon: "extension-route-dispatch", cat: "verticals" },
-  { id: "pharmacy", icon: "extension-pharmacy", cat: "verticals", note: "soon" },
+  { id: "pharmacy", icon: "extension-pharmacy", cat: "verticals" },
   { id: "hr-payroll", icon: "extension-hr-payroll", cat: "verticals" },
-  { id: "cloud-kitchen", icon: "extension-cloud-kitchen", cat: "verticals", note: "soon" },
+  { id: "cloud-kitchen", icon: "extension-cloud-kitchen", cat: "verticals" },
   { id: "website-builder", icon: "extension-website-builder", cat: "verticals" },
 
   { id: "stripe", icon: "brand-stripe", cat: "payments" },

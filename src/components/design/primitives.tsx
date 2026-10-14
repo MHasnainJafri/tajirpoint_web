@@ -44,7 +44,7 @@ type ButtonProps = {
  * text) rather than bright mint, which only managed 3.5:1 at button sizes.
  */
 const primaryClasses =
-  "inline-flex items-center gap-[10px] whitespace-nowrap rounded-full bg-[var(--color-brand)] font-semibold text-[var(--color-on-brand)] shadow-[var(--shadow-card)] transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-[1px] hover:bg-[var(--color-brand-hover)] hover:shadow-[var(--shadow-lift)]";
+  "inline-flex max-w-full items-center justify-center gap-[10px] rounded-full text-center bg-[var(--color-brand)] font-semibold text-[var(--color-on-brand)] shadow-[var(--shadow-card)] transition-[background-color,transform,box-shadow] duration-200 hover:-translate-y-[1px] hover:bg-[var(--color-brand-hover)] hover:shadow-[var(--shadow-lift)]";
 
 export function MintButton({ href, external, children, className = "" }: ButtonProps) {
   const cls = `${primaryClasses} px-7 py-[14px] text-[16px] ${className}`;
@@ -64,7 +64,7 @@ export function MintButton({ href, external, children, className = "" }: ButtonP
 
 /** Secondary action — a white chip, not a translucent grey wash. */
 const ghostClasses =
-  "inline-flex items-center gap-[10px] whitespace-nowrap rounded-full border border-[var(--color-line-2)] bg-[var(--color-bg-2)] font-semibold text-[var(--color-ink)] shadow-[var(--shadow-card)] transition-[transform,box-shadow] duration-200 hover:-translate-y-[1px] hover:shadow-[var(--shadow-lift)]";
+  "inline-flex max-w-full items-center justify-center gap-[10px] rounded-full text-center border border-[var(--color-line-2)] bg-[var(--color-bg-2)] font-semibold text-[var(--color-ink)] shadow-[var(--shadow-card)] transition-[transform,box-shadow] duration-200 hover:-translate-y-[1px] hover:shadow-[var(--shadow-lift)]";
 
 export function GhostButton({ href, external, children, className = "" }: ButtonProps) {
   const cls = `${ghostClasses} px-7 py-[14px] text-[16px] ${className}`;

@@ -1,7 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
@@ -71,7 +70,7 @@ export function DocsSidebar() {
             onClick={() => setOpen(false)}
             role="presentation"
           />
-          <div className="absolute inset-y-0 left-0 w-[290px] overflow-y-auto border-r border-[var(--color-line)] bg-[var(--color-bg-2)] p-6">
+          <div className="absolute inset-y-0 left-0 w-[min(290px,calc(100vw-24px))] overflow-y-auto border-r border-[var(--color-line)] bg-[var(--color-bg-2)] p-6">
             <div className="mb-6 flex items-center justify-between">
               <span className="text-[14px] font-bold text-[var(--color-ink)]">Documentation</span>
               <button

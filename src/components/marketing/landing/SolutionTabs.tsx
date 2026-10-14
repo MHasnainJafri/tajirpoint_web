@@ -110,7 +110,7 @@ export function SolutionTabs({
         })}
       </div>
 
-      <div className="shrink basis-[420px] tabs:grow-[3]" style={{ flexGrow: 3 }}>
+      <div className="min-w-0 shrink basis-[420px] tabs:grow-[3]" style={{ flexGrow: 3 }}>
         {panels.map((panel, i) => (
           <div
             key={tabs[i]?.id ?? i}
