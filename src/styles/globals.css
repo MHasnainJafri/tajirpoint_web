@@ -169,6 +169,65 @@
       transform: scale(1);
     }
   }
+  @keyframes tpStamp {
+    0% {
+      opacity: 0;
+      transform: rotate(-14deg) scale(1.9);
+    }
+    60% {
+      opacity: 1;
+      transform: rotate(-14deg) scale(0.94);
+    }
+    100% {
+      opacity: 1;
+      transform: rotate(-14deg) scale(1);
+    }
+  }
+  @keyframes tpTapRing {
+    0% {
+      opacity: 0.9;
+      transform: scale(0.6);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.5);
+    }
+  }
+  @keyframes tpSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes tpBarFill {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+  @keyframes tpChipFill {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+  @keyframes tpBlink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.25;
+    }
+  }
   @keyframes tpTabFade {
     from {
       opacity: 0;
@@ -519,6 +578,64 @@ body {
 .js [data-reveal].is-revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ── In-view sequences ([data-play]) ───────────────────────────
+   A card marked `data-play` stays quiet until it scrolls into view, then its
+   `[data-step]` rows slide in one after another (order = --i) and its
+   `[data-bar]` bars and `[data-strike]` lines draw. Same `.js` gate and
+   reduced-motion fallback as [data-reveal]. */
+.js [data-play] [data-step] {
+  opacity: 0;
+}
+.js [data-play].is-playing [data-step] {
+  animation: tpSlideIn 0.55s cubic-bezier(0.22, 0.9, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 140ms + 250ms);
+}
+.js [data-play] [data-bar] {
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.js [data-play].is-playing [data-bar] {
+  animation: tpBarFill 1.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+  animation-delay: calc(var(--i, 0) * 140ms + 350ms);
+}
+[data-strike] {
+  position: relative;
+}
+[data-strike]::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  top: 50%;
+  height: 1.5px;
+  background: #0a0a0a;
+  transform-origin: left center;
+}
+.js [data-play] [data-strike]::after {
+  transform: scaleX(0);
+}
+.js [data-play].is-playing [data-strike]::after {
+  animation: tpBarFill 0.45s cubic-bezier(0.4, 0, 0.2, 1) both;
+  animation-delay: calc(var(--i, 0) * 260ms + 600ms);
+}
+.js [data-play] [data-strike] {
+  transition:
+    color 0.4s ease,
+    border-color 0.4s ease;
+}
+.js [data-play].is-playing [data-strike] {
+  transition-delay: calc(var(--i, 0) * 260ms + 900ms);
+}
+@media (prefers-reduced-motion: reduce) {
+  .js [data-play] [data-step] {
+    opacity: 1;
+  }
+  .js [data-play] [data-bar],
+  .js [data-play] [data-strike]::after {
+    transform: none;
+  }
 }
 
 /* ── Inline code (developer docs) ──────────────────────────────── */
