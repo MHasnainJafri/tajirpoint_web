@@ -106,8 +106,13 @@ export default async function DeleteAccountPage({
               described above.
             </p>
             <p>
-              <strong>Customers of a shop</strong> (TajirPoint Store app) should email us with the
-              phone number they ordered with.
+              <strong>Customers of a shop</strong> (TajirPoint Store app) can delete their account
+              themselves, straight away: open <strong>Account</strong> in the app and choose{" "}
+              <strong>Delete my account</strong>, then confirm. On the shop&rsquo;s online order
+              page it is the same: <strong>Your account</strong>, then{" "}
+              <strong>Delete my account</strong>. Each shop also has its own page at{" "}
+              <strong>/delete-account</strong> on its order page address. If you can no longer sign
+              in, email us with the phone number you ordered with.
             </p>
           </LegalSection>
 
@@ -120,7 +125,9 @@ export default async function DeleteAccountPage({
                 <strong>Riders:</strong> location history and uploaded documents.
               </li>
               <li>
-                <strong>Customers:</strong> saved delivery addresses.
+                <strong>Customers:</strong> saved delivery addresses, loyalty points and wallet
+                balance at that shop. Past orders stay with the shop for its accounts, without your
+                name or contact details.
               </li>
             </ul>
           </LegalSection>
