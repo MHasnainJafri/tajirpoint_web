@@ -162,12 +162,6 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Marks that scripting is alive, before first paint. The scroll-reveal
-            styles are scoped to `.js`, so if this never runs the page renders
-            fully visible rather than blank. */}
-        <script
-          dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }}
-        />
         {/* Warm up connections to external domains hit on first meaningful interaction */}
         <link rel="preconnect" href="https://app.tajirpoint.com" />
         <JsonLd schema={[organizationSchema(), websiteSchema()]} />

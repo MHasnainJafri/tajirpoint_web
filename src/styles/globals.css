@@ -558,13 +558,15 @@ body {
   animation-direction: reverse;
 }
 
-/* ── Scroll reveal (driven by useReveal) ───────────────────────── */
-/* Gated on `.js`, which an inline script in <head> sets before first paint.
-   Without it the reveal state never applies, so a failed chunk, a blocked
-   script or a no-JS client gets the page at full opacity instead of a blank
-   screen. The failsafe sweep in Reveal.tsx covers the other half: JS present
-   but IntersectionObserver never firing. */
-.js [data-reveal] {
+/* ── Scroll reveal (driven by Reveal.tsx) ──────────────────────
+   Progressive: nothing here applies to the server-rendered page, so the first
+   paint shows every section at full opacity without waiting for JS. Reveal.tsx
+   adds `js-reveal` to <html> after hydration and arms (`reveal-armed`) only the
+   elements still below the fold; those hide and rise in as they scroll into
+   view. Anything on screen when JS arrives (the hero) is never armed, so it
+   never blinks. Under reduced motion nothing is armed (and these rules are
+   neutralised again below, in case the preference changes mid-visit). */
+.js-reveal [data-reveal].reveal-armed {
   opacity: 0;
   transform: translateY(26px);
   /* The design's `rise` curve — a fast start that settles rather than easing
@@ -575,28 +577,29 @@ body {
   transition-delay: var(--reveal-delay, 0ms);
   will-change: opacity, transform;
 }
-.js [data-reveal].is-revealed {
+.js-reveal [data-reveal].reveal-armed.is-revealed {
   opacity: 1;
   transform: translateY(0);
 }
 
 /* ── In-view sequences ([data-play]) ───────────────────────────
-   A card marked `data-play` stays quiet until it scrolls into view, then its
-   `[data-step]` rows slide in one after another (order = --i) and its
-   `[data-bar]` bars and `[data-strike]` lines draw. Same `.js` gate and
-   reduced-motion fallback as [data-reveal]. */
-.js [data-play] [data-step] {
+   A card marked `data-play` and armed below the fold (`play-armed`) stays
+   quiet until it scrolls into view, then its `[data-step]` rows slide in one
+   after another (order = --i) and its `[data-bar]` bars and `[data-strike]`
+   lines draw. Unarmed — no JS, reduced motion, or already on screen at
+   hydration — it simply shows its finished state. */
+.js-reveal [data-play].play-armed [data-step] {
   opacity: 0;
 }
-.js [data-play].is-playing [data-step] {
+.js-reveal [data-play].play-armed.is-playing [data-step] {
   animation: tpSlideIn 0.55s cubic-bezier(0.22, 0.9, 0.3, 1) both;
   animation-delay: calc(var(--i, 0) * 140ms + 250ms);
 }
-.js [data-play] [data-bar] {
+.js-reveal [data-play].play-armed [data-bar] {
   transform: scaleX(0);
   transform-origin: left center;
 }
-.js [data-play].is-playing [data-bar] {
+.js-reveal [data-play].play-armed.is-playing [data-bar] {
   animation: tpBarFill 1.4s cubic-bezier(0.4, 0, 0.2, 1) both;
   animation-delay: calc(var(--i, 0) * 140ms + 350ms);
 }
@@ -613,27 +616,31 @@ body {
   background: #0a0a0a;
   transform-origin: left center;
 }
-.js [data-play] [data-strike]::after {
+.js-reveal [data-play].play-armed [data-strike]::after {
   transform: scaleX(0);
 }
-.js [data-play].is-playing [data-strike]::after {
+.js-reveal [data-play].play-armed.is-playing [data-strike]::after {
   animation: tpBarFill 0.45s cubic-bezier(0.4, 0, 0.2, 1) both;
   animation-delay: calc(var(--i, 0) * 260ms + 600ms);
 }
-.js [data-play] [data-strike] {
+.js-reveal [data-play].play-armed [data-strike] {
   transition:
     color 0.4s ease,
     border-color 0.4s ease;
 }
-.js [data-play].is-playing [data-strike] {
+.js-reveal [data-play].play-armed.is-playing [data-strike] {
   transition-delay: calc(var(--i, 0) * 260ms + 900ms);
 }
 @media (prefers-reduced-motion: reduce) {
-  .js [data-play] [data-step] {
+  .js-reveal [data-reveal].reveal-armed {
+    opacity: 1;
+    transform: none;
+  }
+  .js-reveal [data-play].play-armed [data-step] {
     opacity: 1;
   }
-  .js [data-play] [data-bar],
-  .js [data-play] [data-strike]::after {
+  .js-reveal [data-play].play-armed [data-bar],
+  .js-reveal [data-play].play-armed [data-strike]::after {
     transform: none;
   }
 }
@@ -715,9 +722,5 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-  .js [data-reveal] {
-    opacity: 1;
-    transform: none;
   }
 }

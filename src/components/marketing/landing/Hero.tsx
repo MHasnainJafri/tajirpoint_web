@@ -15,6 +15,11 @@ import { HERO_BARS, HERO_BAR_PEAK, DEMO } from "@/lib/design/landing";
  * business types — restaurant, retail, laptop shop, mobile shop — because the
  * platform is not specific to any one trade.
  *
+ * Everything here is above the fold, so none of it waits on JS: no
+ * `data-reveal`, no entrance animations that start transparent or collapsed.
+ * The server HTML is the finished first frame; only the live demo and the
+ * activity feed move, and only once they have something new to show.
+ *
  * Everything inside the two device mocks is simulated app chrome — the amounts,
  * party names and register numbers are fixtures, and like the rest of the mock
  * data in `landing.ts` they are deliberately not translated.
@@ -25,10 +30,7 @@ export function Hero() {
   return (
     <section className="flex flex-col gap-[14px]">
       {/* ── The black panel ─────────────────────────────────────── */}
-      <div
-        data-reveal
-        className="on-dark relative flex flex-col overflow-hidden rounded-[26px] bg-[#0A0A0A] p-[clamp(18px,3.4vw,44px)] text-white"
-      >
+      <div className="on-dark relative flex flex-col overflow-hidden rounded-[26px] bg-[#0A0A0A] p-[clamp(18px,3.4vw,44px)] text-white">
         <div className="pointer-events-none absolute -bottom-[240px] -right-[180px] h-[680px] w-[680px] rounded-full border border-[rgba(0,210,122,.16)]" />
         <div className="pointer-events-none absolute -bottom-[170px] -right-[100px] h-[480px] w-[480px] rounded-full border border-white/[0.07]" />
 
@@ -86,10 +88,7 @@ export function Hero() {
       {/* ── The stat column ─────────────────────────────────────── */}
       <div className="grid gap-[14px] sm:grid-cols-2 lg:grid-cols-4">
         {/* Sales today */}
-        <div
-          data-reveal
-          className="flex flex-col rounded-[20px] bg-[var(--color-surface)] p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)]"
-        >
+        <div className="flex flex-col rounded-[20px] bg-[var(--color-surface)] p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)]">
           <div className="flex items-center justify-between gap-[10px]">
             <div className="flex items-center gap-[9px] text-[13px] font-semibold">
               <span className="grid h-6 w-6 place-items-center rounded-[7px] bg-[#0A0A0A] text-white">
@@ -114,11 +113,10 @@ export function Hero() {
             {HERO_BARS.map((h, i) => (
               <div
                 key={i}
-                className="flex-1 origin-bottom rounded-t-[4px] transition-all duration-[250ms] hover:brightness-75 hover:scale-y-105 motion-safe:animate-[tpGrow_.8s_cubic-bezier(.2,.8,.3,1)_both]"
+                className="flex-1 origin-bottom rounded-t-[4px] transition-all duration-[250ms] hover:brightness-75 hover:scale-y-105"
                 style={{
                   height: `${h}%`,
                   background: i === HERO_BAR_PEAK ? "#0A0A0A" : "#9FE3C2",
-                  animationDelay: `${300 + i * 60}ms`,
                 }}
               />
             ))}
@@ -137,10 +135,7 @@ export function Hero() {
 
         <>
           {/* Customer credit — the one warm surface in the design */}
-          <div
-            data-reveal
-            className="rounded-[20px] bg-[var(--color-cream)] p-[18px] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(60,40,10,.12)]"
-          >
+          <div className="rounded-[20px] bg-[var(--color-cream)] p-[18px] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(60,40,10,.12)]">
             <div className="flex items-center gap-2 text-[12.5px] font-semibold">
               <span className="grid h-[22px] w-[22px] place-items-center rounded-[6px] bg-[#0A0A0A] text-white">
                 <Stroke name="book" size={12} width={2} />
@@ -164,10 +159,7 @@ export function Hero() {
           </div>
 
           {/* Offline */}
-          <div
-            data-reveal
-            className="on-dark relative overflow-hidden rounded-[20px] bg-[#0A0A0A] p-[18px] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(0,0,0,.5)]"
-          >
+          <div className="on-dark relative overflow-hidden rounded-[20px] bg-[#0A0A0A] p-[18px] text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(0,0,0,.5)]">
             <div className="pointer-events-none absolute -right-10 -top-10 h-[130px] w-[130px] rounded-full border border-white/[0.08]" />
             <div className="flex items-center gap-2 text-[12.5px] font-semibold">
               <span className="grid h-[22px] w-[22px] place-items-center rounded-[6px] bg-[var(--color-mint)] text-[#0A0A0A]">
@@ -189,10 +181,7 @@ export function Hero() {
         </>
 
         {/* Language & currency */}
-        <div
-          data-reveal
-          className="flex flex-col justify-between gap-3 rounded-[20px] bg-[var(--color-surface)] p-[18px] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)]"
-        >
+        <div className="flex flex-col justify-between gap-3 rounded-[20px] bg-[var(--color-surface)] p-[18px] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lift)]">
           <div className="flex items-center gap-2 text-[12.5px] font-semibold">
             <span className="grid h-[22px] w-[22px] place-items-center rounded-[6px] bg-[#0A0A0A] text-white">
               <Stroke name="globe" size={12} width={2} />

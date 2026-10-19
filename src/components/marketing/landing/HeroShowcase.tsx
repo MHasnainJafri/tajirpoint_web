@@ -5,6 +5,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { SHOWCASE, type ShowcaseBusiness, type ShowcaseProduct } from "@/lib/design/heroShowcase";
 import { ProductArt, ProductArtDefs } from "./ProductArt";
 import { Stroke } from "./Stroke";
+import { Enter, EnterScope } from "./Enter";
 
 /**
  * The hero demo: a live till and the invoice it produces.
@@ -18,6 +19,11 @@ import { Stroke } from "./Stroke";
  *
  * Narrow screens show one device at a time (switchable, and it follows the
  * sale: till while building, invoice once paid); wide ones show both.
+ *
+ * It sits above the fold, so the server HTML is a finished frame at full
+ * opacity: nothing animates in on first paint. Cart lines, invoice lines and
+ * the stamp use `<Enter>`, which animates only rows added after hydration; the
+ * device panels only slide in when a narrow screen switches between them.
  */
 
 type Cart = Record<string, number>;
@@ -171,125 +177,132 @@ export function HeroShowcase() {
   };
 
   const view = viewOverride ?? "till";
+  // Narrow screens slide the newly shown device in, but only once the visitor
+  // (or a finished sale) has switched it — never on first paint, never on wide.
+  const switchAnim = viewOverride
+    ? "motion-safe:@max-[640px]:animate-[tpSlideIn_300ms_ease-out_both]"
+    : "";
 
   return (
-    <div ref={rootRef} lang="en" dir="ltr" className="@container relative mt-8">
-      <ProductArtDefs />
+    <EnterScope>
+      <div ref={rootRef} lang="en" dir="ltr" className="@container relative mt-8">
+        <ProductArtDefs />
 
-      {/* ── business switcher ─────────────────────────────────── */}
-      <div
-        className="mb-3 flex flex-wrap items-center gap-x-2 gap-y-2"
-        role="tablist"
-        aria-label="See TajirPoint in your kind of business"
-      >
-        <span className="mr-1 w-full text-[11px] font-semibold uppercase tracking-[0.12em] text-[#8A8F98] @[560px]:w-auto">
-          Built for
-        </span>
-        {SHOWCASE.map((b, i) => {
-          const active = i === idx;
-          return (
+        {/* ── business switcher ─────────────────────────────────── */}
+        <div
+          className="mb-3 flex flex-wrap items-center gap-x-2 gap-y-2"
+          role="tablist"
+          aria-label="See TajirPoint in your kind of business"
+        >
+          <span className="mr-1 w-full text-[11px] font-semibold uppercase tracking-[0.12em] text-[#8A8F98] @[560px]:w-auto">
+            Built for
+          </span>
+          {SHOWCASE.map((b, i) => {
+            const active = i === idx;
+            return (
+              <button
+                key={b.id}
+                type="button"
+                role="tab"
+                aria-selected={active}
+                onClick={() => selectBusiness(i)}
+                className={`relative inline-flex cursor-pointer items-center gap-[7px] whitespace-nowrap rounded-full px-3 py-[7px] text-[12.5px] font-semibold transition-all duration-200 ${
+                  active
+                    ? "bg-[var(--color-mint)] text-[#0A0A0A] shadow-[0_6px_18px_rgba(0,210,122,.3)]"
+                    : "bg-white/[0.08] text-[#C9CDD6] hover:bg-white/[0.14]"
+                }`}
+              >
+                <Stroke name={b.icon} size={14} width={2} />
+                {b.label}
+                {active && !frozen && (
+                  <span className="pointer-events-none absolute inset-x-3 bottom-[3px] h-[2px] overflow-hidden rounded-full bg-black/15">
+                    <span
+                      key={idx}
+                      className="block h-full origin-left rounded-full bg-[#0A0A0A]/70"
+                      style={{
+                        transform: `scaleX(${loopProgress(step, U)})`,
+                        transition: `transform ${stepDelay(step, U)}ms linear`,
+                      }}
+                    />
+                  </span>
+                )}
+              </button>
+            );
+          })}
+          <span className="text-[12px] text-[#8A8F98]">
+            + wholesale, distribution, factories &amp; more
+          </span>
+        </div>
+
+        {/* ── narrow screens: one device at a time ──────────────── */}
+        <div
+          className="mb-3 inline-flex rounded-full bg-white/[0.08] p-[3px] @[640px]:hidden"
+          role="group"
+          aria-label="Show"
+        >
+          {(["till", "invoice"] as const).map((v) => (
             <button
-              key={b.id}
+              key={v}
               type="button"
-              role="tab"
-              aria-selected={active}
-              onClick={() => selectBusiness(i)}
-              className={`relative inline-flex cursor-pointer items-center gap-[7px] whitespace-nowrap rounded-full px-3 py-[7px] text-[12.5px] font-semibold transition-all duration-200 ${
-                active
-                  ? "bg-[var(--color-mint)] text-[#0A0A0A] shadow-[0_6px_18px_rgba(0,210,122,.3)]"
-                  : "bg-white/[0.08] text-[#C9CDD6] hover:bg-white/[0.14]"
+              aria-pressed={view === v}
+              onClick={() => {
+                setViewOverride(v);
+                holdDemo();
+              }}
+              className={`cursor-pointer rounded-full px-4 py-[6px] text-[12.5px] font-semibold transition-colors ${
+                view === v ? "bg-white text-[#0A0A0A]" : "text-[#C9CDD6]"
               }`}
             >
-              <Stroke name={b.icon} size={14} width={2} />
-              {b.label}
-              {active && !frozen && (
-                <span className="pointer-events-none absolute inset-x-3 bottom-[3px] h-[2px] overflow-hidden rounded-full bg-black/15">
-                  <span
-                    key={idx}
-                    className="block h-full origin-left rounded-full bg-[#0A0A0A]/70"
-                    style={{
-                      transform: `scaleX(${loopProgress(step, U)})`,
-                      transition: `transform ${stepDelay(step, U)}ms linear`,
-                    }}
-                  />
-                </span>
+              {v === "till" ? "Till" : "Invoice"}
+              {v === "invoice" && paid && view !== "invoice" && (
+                <span className="ml-1.5 inline-block h-[7px] w-[7px] rounded-full bg-[#00D27A] align-middle" />
               )}
             </button>
-          );
-        })}
-        <span className="text-[12px] text-[#8A8F98]">
-          + wholesale, distribution, factories &amp; more
-        </span>
-      </div>
+          ))}
+        </div>
 
-      {/* ── narrow screens: one device at a time ──────────────── */}
-      <div
-        className="mb-3 inline-flex rounded-full bg-white/[0.08] p-[3px] @[640px]:hidden"
-        role="group"
-        aria-label="Show"
-      >
-        {(["till", "invoice"] as const).map((v) => (
-          <button
-            key={v}
-            type="button"
-            aria-pressed={view === v}
-            onClick={() => {
-              setViewOverride(v);
-              holdDemo();
-            }}
-            className={`cursor-pointer rounded-full px-4 py-[6px] text-[12.5px] font-semibold transition-colors ${
-              view === v ? "bg-white text-[#0A0A0A]" : "text-[#C9CDD6]"
+        {/* ── devices ───────────────────────────────────────────── */}
+        <div className="gap-3 @[640px]:flex @[640px]:items-stretch">
+          <div
+            className={`min-w-0 @[640px]:flex-1 ${switchAnim} ${
+              view === "till" ? "" : "hidden @[640px]:block"
             }`}
           >
-            {v === "till" ? "Till" : "Invoice"}
-            {v === "invoice" && paid && view !== "invoice" && (
-              <span className="ml-1.5 inline-block h-[7px] w-[7px] rounded-full bg-[#00D27A] align-middle" />
-            )}
-          </button>
-        ))}
-      </div>
+            <Till
+              key={biz.id}
+              biz={biz}
+              lines={lines}
+              total={total}
+              tax={tax}
+              pay={pay}
+              paid={paid}
+              lastAdded={lastAdded}
+              step={step}
+              onAdd={addProduct}
+              onRemove={removeProduct}
+              onPay={choosePayment}
+              onComplete={completeSale}
+              onTouch={holdDemo}
+            />
+          </div>
 
-      {/* ── devices ───────────────────────────────────────────── */}
-      <div className="gap-3 @[640px]:flex @[640px]:items-stretch">
-        <div
-          className={`min-w-0 motion-safe:animate-[tpSlideIn_300ms_ease-out_both] @[640px]:flex-1 ${
-            view === "till" ? "" : "hidden @[640px]:block"
-          }`}
-        >
-          <Till
-            key={biz.id}
-            biz={biz}
-            lines={lines}
-            total={total}
-            tax={tax}
-            pay={pay}
-            paid={paid}
-            lastAdded={lastAdded}
-            step={step}
-            onAdd={addProduct}
-            onRemove={removeProduct}
-            onPay={choosePayment}
-            onComplete={completeSale}
-            onTouch={holdDemo}
-          />
-        </div>
-
-        <div
-          className={`min-w-0 motion-safe:animate-[tpSlideIn_300ms_ease-out_both] @[640px]:w-[236px] @[640px]:flex-none ${
-            view === "invoice" ? "" : "hidden @[640px]:block"
-          }`}
-        >
-          <Invoice
-            biz={biz}
-            lines={lines}
-            total={total}
-            tax={tax}
-            paid={paid}
-            method={biz.payments[pay] ?? biz.payments[0]}
-          />
+          <div
+            className={`min-w-0 @[640px]:w-[236px] @[640px]:flex-none ${switchAnim} ${
+              view === "invoice" ? "" : "hidden @[640px]:block"
+            }`}
+          >
+            <Invoice
+              biz={biz}
+              lines={lines}
+              total={total}
+              tax={tax}
+              paid={paid}
+              method={biz.payments[pay] ?? biz.payments[0]}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </EnterScope>
   );
 }
 
@@ -475,9 +488,10 @@ function Till({
             </div>
             <div className="mt-2 min-h-[92px] space-y-1.5">
               {lines.map(({ p, qty }) => (
-                <div
+                <Enter
                   key={`${p.id}-${qty}`}
-                  className="flex items-center justify-between gap-2 text-[11.5px] motion-safe:animate-[tpSlideIn_260ms_ease-out_both]"
+                  className="flex items-center justify-between gap-2 text-[11.5px]"
+                  motion="motion-safe:animate-[tpSlideIn_260ms_ease-out_both]"
                 >
                   <div className="min-w-0 truncate">
                     <span className="font-semibold">{p.name}</span>
@@ -494,7 +508,7 @@ function Till({
                       −
                     </button>
                   </div>
-                </div>
+                </Enter>
               ))}
               {lines.length === 0 && (
                 <div className="grid min-h-[84px] place-items-center text-center text-[11.5px] text-[#8A8F98]">
@@ -615,9 +629,10 @@ function Invoice({
 
       <div className="mt-3 min-h-[112px] flex-1 space-y-1.5 border-t border-[#EEF0F3] pt-3">
         {lines.map(({ p, qty }) => (
-          <div
+          <Enter
             key={`${p.id}-${qty}`}
-            className="flex items-start justify-between gap-2 text-[11px] motion-safe:animate-[tpSlideIn_260ms_ease-out_both]"
+            className="flex items-start justify-between gap-2 text-[11px]"
+            motion="motion-safe:animate-[tpSlideIn_260ms_ease-out_both]"
           >
             <span className="min-w-0">
               <span className="font-semibold">{p.name}</span>
@@ -626,7 +641,7 @@ function Invoice({
               </span>
             </span>
             <span className="flex-none font-mono font-bold">{money(p.price * qty)}</span>
-          </div>
+          </Enter>
         ))}
         {lines.length === 0 && (
           <div className="grid min-h-[96px] place-items-center text-[11px] text-[#9AA0A6]">
@@ -652,14 +667,16 @@ function Invoice({
 
       <div className="mt-1 grid h-[58px] place-items-center">
         {paid && (
-          <span
+          <Enter
+            as="span"
             key={`${biz.id}-${stamp}`}
-            className={`-rotate-[14deg] rounded-[6px] border-[2.5px] px-2.5 py-0.5 text-[15px] font-black tracking-[0.1em] motion-safe:animate-[tpStamp_420ms_cubic-bezier(.2,.9,.3,1.2)_both] ${
+            className={`-rotate-[14deg] rounded-[6px] border-[2.5px] px-2.5 py-0.5 text-[15px] font-black tracking-[0.1em] ${
               settled ? "border-[#00A862] text-[#00A862]" : "border-[#B36B00] text-[#B36B00]"
             }`}
+            motion="motion-safe:animate-[tpStamp_420ms_cubic-bezier(.2,.9,.3,1.2)_both]"
           >
             {stamp}
-          </span>
+          </Enter>
         )}
       </div>
 
