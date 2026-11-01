@@ -13,7 +13,7 @@ export async function generateMetadata({
   return buildMetadata({
     title: "Delete Your Account",
     description:
-      "How to delete your Tajir Point account and data from the TajirPoint POS, Business, Order Desk, Rider and Store apps: steps, what is deleted, what is kept, and timelines.",
+      "How to delete your TajirPoint account and data from the POS, Business, Order Desk, Rider and Store apps: the steps, what is deleted, what is kept and when.",
     path: "/delete-account",
     locale,
   });
@@ -53,10 +53,10 @@ export default async function DeleteAccountPage({
         <PillBadge>Account deletion</PillBadge>
 
         <h1 className="mt-6 text-[clamp(36px,5.4vw,64px)] font-extrabold leading-[1.04] tracking-[-0.035em] text-[var(--color-ink)]">
-          Delete your Tajir Point account
+          Delete your TajirPoint account
         </h1>
         <p className="mt-5 max-w-[620px] text-[17.5px] leading-[1.65] text-[var(--color-muted)]">
-          You can ask Tajir Point to delete your account and the personal data linked to it at any
+          You can ask TajirPoint to delete your account and the personal data linked to it at any
           time. This page explains how to request it, what we delete, what we must keep by law, and
           how long it takes.
         </p>
@@ -69,7 +69,7 @@ export default async function DeleteAccountPage({
         <div className="mt-14 flex flex-col gap-6">
           <LegalSection title="Which apps this covers">
             <p>
-              One Tajir Point account is used across all of our Android apps. Deleting it removes
+              One TajirPoint account is used across all of our Android apps. Deleting it removes
               your access to every one of them:
             </p>
             <ul>

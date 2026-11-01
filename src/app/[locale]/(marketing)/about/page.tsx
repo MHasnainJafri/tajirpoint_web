@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { pageBreadcrumbs } from "@/lib/seo/schemas";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { setRequestLocale } from "next-intl/server";
 import { ArrowRightLeft, Gift, Languages, MonitorSmartphone, WifiOff } from "lucide-react";
 import {
@@ -18,7 +20,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "About TajirPoint",
+    title: "About TajirPoint: POS & Back Office for Merchants",
+    absoluteTitle: true,
     description:
       "TajirPoint connects point of sale, inventory, customer credit and accounting for stores, restaurants and distributors. Available on web, desktop and Android.",
     path: "/about",
@@ -60,6 +63,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
   return (
     <div lang="en" dir="ltr">
+      <JsonLd schema={pageBreadcrumbs(locale, [["About", "/about"]])} />
       {/* ── Header ──────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden px-4 pb-14 pt-[clamp(48px,8vw,96px)] text-center sm:px-7 md:px-10">
         <div

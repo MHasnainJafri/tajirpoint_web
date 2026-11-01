@@ -17,7 +17,7 @@ import { PillBadge, MintButton, GhostButton, CtaPanel } from "@/components/desig
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { faqSchema } from "@/lib/seo/schemas";
+import { faqSchema, pageBreadcrumbs } from "@/lib/seo/schemas";
 
 export async function generateMetadata({
   params,
@@ -26,7 +26,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "Accounting — Books That Keep Themselves",
+    title: "Accounting Software Built Into Your POS",
     description:
       "A real double-entry ledger posted automatically from your shop. Trial balance, P&L, balance sheet, bank reconciliation and accountant-ready exports.",
     path: "/features/accounting",
@@ -34,7 +34,7 @@ export async function generateMetadata({
   });
 }
 
-/** The proof points from the design's "how Tajir Point solves it" column. */
+/** The proof points from the design's "how TajirPoint solves it" column. */
 const SOLUTION_POINTS = [
   "Real double-entry ledger from every sale, purchase, expense and payroll run",
   "Chart of accounts, trial balance, P&L, balance sheet and cash flow",
@@ -96,7 +96,12 @@ export default async function AccountingFeaturePage({
 
   return (
     <div lang="en" dir="ltr">
-      <JsonLd schema={faqSchema(FAQS)} />
+      <JsonLd
+        schema={[
+          faqSchema(FAQS),
+          pageBreadcrumbs(locale, [["Accounting", "/features/accounting"]]),
+        ]}
+      />
 
       {/* ── Hero ────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden px-5 pb-[70px] pt-[140px] md:px-10">
@@ -125,9 +130,9 @@ export default async function AccountingFeaturePage({
             </span>
 
             <h1 className="mt-[18px] max-w-[620px] animate-[tpFadeUp_.8s_.15s_cubic-bezier(.22,1,.36,1)_both] text-[clamp(34px,4.6vw,56px)] font-extrabold leading-[1.05] tracking-[-0.035em]">
-              Books that keep
+              Accounting books that
               <br />
-              themselves.
+              keep themselves.
             </h1>
 
             <p className="mt-5 max-w-[560px] animate-[tpFadeUp_.8s_.28s_cubic-bezier(.22,1,.36,1)_both] text-[17.5px] leading-[1.6] text-[var(--color-muted)]">

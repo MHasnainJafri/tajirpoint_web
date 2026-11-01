@@ -16,7 +16,7 @@ import { PillBadge, MintButton, GhostButton, CtaPanel } from "@/components/desig
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { faqSchema } from "@/lib/seo/schemas";
+import { faqSchema, pageBreadcrumbs } from "@/lib/seo/schemas";
 
 export async function generateMetadata({
   params,
@@ -25,9 +25,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "Khata — Your Credit Book, Under Control",
+    title: "Khata App: Digital Credit Book for Shops",
     description:
-      "The paper notebook every merchant keeps, made real-time and tamper-proof. Every sale and payment posts to a living customer ledger with limits and aging.",
+      "A khata app that replaces the paper credit book: every sale and payment posts to a live customer ledger with credit limits, aging, reminders and statements.",
     path: "/features/khata",
     locale,
   });
@@ -91,7 +91,9 @@ export default async function KhataFeaturePage({
 
   return (
     <div lang="en" dir="ltr">
-      <JsonLd schema={faqSchema(FAQS)} />
+      <JsonLd
+        schema={[faqSchema(FAQS), pageBreadcrumbs(locale, [["Khata app", "/features/khata"]])]}
+      />
 
       {/* ── Hero ────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden px-5 pb-[70px] pt-[140px] md:px-10">
@@ -120,7 +122,7 @@ export default async function KhataFeaturePage({
             </span>
 
             <h1 className="mt-[18px] max-w-[620px] animate-[tpFadeUp_.8s_.15s_cubic-bezier(.22,1,.36,1)_both] text-[clamp(34px,4.6vw,56px)] font-extrabold leading-[1.05] tracking-[-0.035em]">
-              Your credit book,
+              Your khata credit book,
               <br />
               finally under control.
             </h1>

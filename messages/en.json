@@ -113,8 +113,14 @@
   },
   "landing": {
     "meta": {
-      "title": "TajirPoint — POS & Back Office for Restaurants, Retail, Wholesale & More",
-      "description": "All-in-one, offline-first POS and back office for restaurants, retail, laptop and mobile shops, wholesalers, distributors, delivery fleets and factories. Stock, customer credit, accounting, delivery and an online store on one login."
+      "title": "TajirPoint: POS System for Shops, Restaurants & Distributors",
+      "description": "Offline-first POS and back office for shops, restaurants and distributors: stock, khata credit, accounting, delivery and an online store. Free for 3 months."
+    },
+    "pricingMeta": {
+      "title": "POS Pricing — Free for 3 Months, No Card",
+      "offer": "Light is free for 3 months with no card.",
+      "terms": "Cancel any time, no transaction fees.",
+      "description": "Light is free for 3 months with no card. Then pick Shop or Business, monthly plans billed in USD. Cancel any time, 15-day refund, no transaction fees."
     },
     "hero": {
       "badge": "Point of sale & back office · Built around your business",

@@ -48,6 +48,8 @@ ${link("Businesses", "/business", "Every business type TajirPoint is set up for"
 ${link("Add-ons", "/extensions", "Optional add-ons (extensions) that add features per shop, with status and price")}
 ${link("About", "/about", "Who builds TajirPoint")}
 ${link("Contact", "/contact", "Email and WhatsApp")}
+${link("اردو (Urdu home page)", "/ur", "The home page and pricing in Urdu")}
+${link("العربية (Arabic home page)", "/ar", "The home page and pricing in Arabic")}
 
 ## By business
 
@@ -59,11 +61,11 @@ ${addons.map((a) => link(a.name, `/extensions/${a.slug}`, `${STATUS_LABEL[a.stat
 
 ## Features
 
-${link("Khata (credit ledger)", "/features/khata", "Running customer and supplier credit balances, the way shops actually track debt")}
-${link("Offline mode", "/features/offline", "How the POS keeps selling with no internet and syncs afterwards")}
+${link("Khata app (credit ledger)", "/features/khata", "Running customer and supplier credit balances, the way shops actually track debt")}
+${link("Offline POS", "/features/offline", "How the POS keeps selling with no internet and syncs afterwards")}
 ${link("Accounting", "/features/accounting", "Double-entry ledger posted from POS activity (Shop plan and above)")}
 ${link("Van sales", "/features/van-sales", "Route selling and day-end reconciliation for distributors")}
-${link("E-invoicing", "/features/e-invoicing", "Tax e-invoicing per regime")}
+${link("Tax & e-invoicing", "/features/e-invoicing", "Tax-inclusive pricing, VAT/GST and withholding at checkout; regulatory e-invoicing connectors (e.g. FBR) are not yet released")}
 
 ## API documentation
 

@@ -7,13 +7,16 @@ import "@/styles/globals.css";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { organizationSchema, websiteSchema } from "@/lib/seo/schemas";
-import { siteConfig } from "@/lib/config/site";
-import { localeAlternates } from "@/lib/seo/metadata";
+import { legal, siteConfig } from "@/lib/config/site";
+import { buildMetadata } from "@/lib/seo/metadata";
+import { verificationMetadata } from "@/lib/seo/verification";
 import { routing, isRtl, type Locale } from "@/i18n/routing";
 import { AnalyticsProvider } from "@/components/analytics/AnalyticsProvider";
 import { SiteTracking } from "@/components/analytics/SiteTracking";
 
 export const viewport: Viewport = {
+  // Matches the page background in each colour scheme, so the browser bar
+  // blends with the site on Android Chrome and iOS Safari.
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
     { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
@@ -48,58 +51,53 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-const OG_LOCALE_MAP: Record<string, string> = {
-  en: "en_US",
-  ur: "ur_PK",
-  ar: "ar_AE",
-};
-
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const ogImageUrl = `${siteConfig.url}${siteConfig.ogImage}`;
+  // The defaults every page inherits; pages override title, description,
+  // alternates, openGraph and twitter through buildMetadata().
+  const base = buildMetadata({
+    title: siteConfig.name,
+    description: siteConfig.description,
+    path: "/",
+    locale,
+    absoluteTitle: true,
+    image: siteConfig.ogImage,
+  });
 
   return {
+    ...base,
     metadataBase: new URL(siteConfig.url),
     title: { default: siteConfig.name, template: `%s | ${siteConfig.name}` },
-    description: siteConfig.description,
-    robots: { index: true, follow: true },
-    alternates: localeAlternates("/", locale),
-    openGraph: {
-      title: siteConfig.name,
-      description: siteConfig.description,
-      url: `${siteConfig.url}${locale === routing.defaultLocale ? "" : `/${locale}`}`,
-      siteName: siteConfig.name,
-      locale: OG_LOCALE_MAP[locale] ?? "en_US",
-      type: "website",
-      images: [
-        {
-          url: ogImageUrl,
-          secureUrl: ogImageUrl,
-          width: 1200,
-          height: 630,
-          type: "image/png",
-          alt: siteConfig.name,
-        },
-      ],
+    applicationName: siteConfig.name,
+    publisher: legal.operator,
+    category: "business",
+    // Large image previews in Google results and Discover; full snippets.
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
     },
-    twitter: {
-      card: "summary_large_image",
-      site: siteConfig.twitterHandle,
-      creator: siteConfig.twitterHandle,
-      title: siteConfig.name,
-      description: siteConfig.description,
-      images: [ogImageUrl],
-    },
+    // Keep phone numbers in copy from turning into iOS tel: links we did not
+    // write (the real ones are explicit links, which are tracked).
+    formatDetection: { telephone: false, email: false, address: false },
     icons: {
       icon: [
         { url: "/favicon.svg", type: "image/svg+xml" },
-        { url: "/icon.svg", type: "image/svg+xml" },
+        { url: "/brand/png/icon-48.png", sizes: "48x48", type: "image/png" },
+        { url: "/brand/png/icon-192.png", sizes: "192x192", type: "image/png" },
       ],
-      apple: [{ url: "/icon.svg", sizes: "180x180", type: "image/svg+xml" }],
+      // iOS ignores SVG touch icons: a 180×180 PNG, full-bleed (iOS rounds it).
+      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
     },
     manifest: "/manifest.webmanifest",
     appleWebApp: {
@@ -107,6 +105,7 @@ export async function generateMetadata({
       statusBarStyle: "default",
       title: siteConfig.name,
     },
+    ...verificationMetadata(),
   };
 }
 
@@ -164,7 +163,7 @@ export default async function LocaleLayout({
       <head>
         {/* Warm up connections to external domains hit on first meaningful interaction */}
         <link rel="preconnect" href="https://app.tajirpoint.com" />
-        <JsonLd schema={[organizationSchema(), websiteSchema()]} />
+        <JsonLd schema={[organizationSchema(), websiteSchema(locale)]} />
       </head>
       <body className="min-h-screen bg-[var(--color-bg)] text-[var(--color-ink)]">
         <SiteTracking />

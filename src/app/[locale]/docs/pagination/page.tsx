@@ -12,9 +12,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "Pagination — Tajir Point API",
+    title: "Pagination — TajirPoint API",
+    absoluteTitle: true,
     description:
-      "List endpoints are cursor-paginated: 50 items by default, 200 max. Follow the opaque next URL rather than constructing cursors.",
+      "TajirPoint API list endpoints are cursor-paginated: 50 items by default, 200 at most. Follow the opaque next URL rather than building cursors yourself.",
     path: "/docs/pagination",
     locale,
   });

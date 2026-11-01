@@ -45,8 +45,12 @@ describe("business catalog", () => {
     for (const v of [b.name, b.navLine, b.icon, b.seo.title, b.seo.description, b.schemaSubCategory, b.hero.eyebrow, b.hero.headline, b.hero.sub, b.cta.headline, b.cta.sub]) {
       expect(v.trim().length).toBeGreaterThan(0);
     }
-    expect(b.seo.title.length).toBeLessThanOrEqual(70);
-    expect(b.seo.description.length).toBeLessThanOrEqual(320);
+    // The page title is `${seo.title} | TajirPoint` and Google shows ~60
+    // characters; the description must fit the ~160 a snippet shows.
+    expect(b.seo.title.length + " | TajirPoint".length).toBeLessThanOrEqual(60);
+    expect(b.seo.description.length).toBeGreaterThanOrEqual(140);
+    expect(b.seo.description.length).toBeLessThanOrEqual(160);
+    expect(new Set(b.seo.keywords).size).toBe(b.seo.keywords.length);
     expect(b.seo.keywords.length).toBeGreaterThan(0);
     expect(CONTACT_LABELS).toContain(b.contactLabel);
     for (const loc of ["ur", "ar"] as const) {

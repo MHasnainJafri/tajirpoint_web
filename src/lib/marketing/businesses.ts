@@ -278,12 +278,13 @@ const restaurants: Business = {
   },
   contactLabel: "Restaurant / Food",
   seo: {
-    title: "Restaurant POS — Tables, KDS, Waiter App & Online Ordering",
+    title: "Restaurant POS with KDS, Waiter App & Delivery",
     description:
-      "Restaurant POS with floor plan and tables, kitchen display (KDS), tickets by course, a waiter app, an order receiver board, your own online order page with deals, and a rider app. Free for 3 months.",
+      "Restaurant POS for dine-in, takeaway and delivery: tables, kitchen display (KDS), a waiter app, your own online order page and a rider app. Free for 3 months.",
     keywords: [
       "restaurant POS",
-      "restaurant POS",
+      "restaurant POS system",
+      "takeaway POS",
       "kitchen display system",
       "KDS",
       "waiter app",
@@ -294,7 +295,7 @@ const restaurants: Business = {
   },
   schemaSubCategory: "Restaurant point of sale",
   hero: {
-    eyebrow: "TajirPoint for restaurants",
+    eyebrow: "Restaurant POS system",
     headline: "From the table to the kitchen to the rider — one system.",
     sub: "Take orders at the counter or the table, send them to the right kitchen screen, accept online orders from your own order page, and hand deliveries to riders. Every sale lands in the same reports.",
     media: {
@@ -469,14 +470,14 @@ const cafesBakeries: Business = {
   },
   contactLabel: "Restaurant / Food",
   seo: {
-    title: "Café & Bakery POS — Fast Counter, Loyalty & Pre-orders",
+    title: "Café & Bakery POS with Loyalty & Pre-orders",
     description:
-      "POS for cafés and bakeries: quick counter with modifiers, customer display, loyalty points, recipes that deduct ingredients, batch expiry for baked goods and online pre-orders. Free for 3 months.",
+      "Café and bakery POS: a fast counter with modifiers, loyalty points, recipes that deduct ingredients, batch expiry for baked goods and online pre-orders.",
     keywords: ["cafe POS", "bakery POS", "coffee shop POS", "bakery software", "cafe loyalty"],
   },
   schemaSubCategory: "Café and bakery point of sale",
   hero: {
-    eyebrow: "TajirPoint for cafés & bakeries",
+    eyebrow: "Café & bakery POS",
     headline: "Keep the queue moving, from the first coffee to the last cake.",
     sub: "A fast counter with the modifiers your drinks need, loyalty for your regulars, recipes that keep ingredient stock honest, and pre-orders for cakes and catering.",
     media: { slot: "hero", expect: "video", alt: "Café counter taking a coffee order with milk and size options" },
@@ -597,14 +598,14 @@ const cloudKitchens: Business = {
   },
   contactLabel: "Restaurant / Food",
   seo: {
-    title: "Cloud Kitchen POS — Multiple Brands, One Kitchen",
+    title: "Cloud Kitchen POS: Many Brands, One Kitchen",
     description:
-      "Run several delivery brands from one kitchen: online ordering for each brand, one order receiver board, kitchen display, packer screen, rider app and reports per brand. Free for 3 months.",
+      "Cloud kitchen POS: online ordering for each delivery brand, one order board, kitchen display, packer screen, rider app and reports per brand. Free for 3 months.",
     keywords: ["cloud kitchen POS", "ghost kitchen software", "dark kitchen POS", "delivery kitchen software"],
   },
   schemaSubCategory: "Cloud kitchen management",
   hero: {
-    eyebrow: "TajirPoint for cloud kitchens",
+    eyebrow: "Cloud kitchen POS software",
     headline: "Several brands. One kitchen. One order board.",
     sub: "Give each brand its own menu on your online order page, receive every order on one board, cook from one kitchen screen and pack each bag against its ticket.",
     media: { slot: "hero", expect: "video", alt: "Order board receiving orders for three brands from one kitchen" },
@@ -710,14 +711,14 @@ const retailFashion: Business = {
   },
   contactLabel: "General retail / Kiryana",
   seo: {
-    title: "Retail & Clothing POS — Variants, Barcodes & Exchanges",
+    title: "Clothing & Retail POS with Barcodes & Variants",
     description:
-      "POS for clothing, shoes and general retail: size and colour variants with their own barcodes, label printing, returns and exchanges, loyalty, multi-branch stock and an online store. Free for 3 months.",
+      "POS for clothing, shoe and retail stores: size and colour variants with barcodes, label printing, exchanges, loyalty, multi-branch stock and an online store.",
     keywords: ["clothing store POS", "fashion retail POS", "boutique POS", "retail POS", "barcode label printing"],
   },
   schemaSubCategory: "Retail point of sale",
   hero: {
-    eyebrow: "TajirPoint for retail & fashion",
+    eyebrow: "Clothing & retail store POS",
     headline: "Every size, every colour, every branch — counted.",
     sub: "Variants with their own barcodes, labels printed from the back office, exchanges without arguments, and stock you can trust across every branch.",
     media: { slot: "hero", expect: "video", alt: "Clothing store POS scanning a shirt variant" },
@@ -818,14 +819,14 @@ const groceryKiryana: Business = {
   },
   contactLabel: "General retail / Kiryana",
   seo: {
-    title: "Grocery & Supermarket POS — Barcode, Credit & Offline",
+    title: "Grocery & Kiryana Store POS with Khata",
     description:
-      "POS for grocery stores and supermarkets: fast barcode checkout, sell by carton, kg or piece, a digital credit ledger for customers and suppliers, low-stock alerts and offline selling. Free for 3 months.",
+      "Grocery, kiryana and supermarket POS: fast barcode checkout, sell by carton, kg or piece, a digital khata for credit, low-stock alerts and offline selling.",
     keywords: ["grocery POS", "supermarket POS", "convenience store POS", "customer credit ledger", "offline POS"],
   },
   schemaSubCategory: "Grocery point of sale",
   hero: {
-    eyebrow: "TajirPoint for grocery & supermarkets",
+    eyebrow: "Grocery & kiryana store POS",
     headline: "Fast checkout, honest credit books, and it keeps selling offline.",
     sub: "Scan and sell in seconds, sell by carton, kg or piece, and keep every customer's credit in a digital ledger instead of a paper register.",
     media: { slot: "hero", expect: "video", alt: "Grocery counter scanning items and adding a sale to a customer's credit account" },
@@ -916,14 +917,14 @@ const pharmacy: Business = {
   },
   contactLabel: "General retail / Kiryana",
   seo: {
-    title: "Pharmacy POS — Batches, Expiry, FEFO & Prescriptions",
+    title: "Pharmacy POS with Batch & Expiry Tracking",
     description:
-      "Pharmacy POS with batch and expiry tracking, oldest-first (FEFO) selling, near-expiry reports, generic/molecule search and a prescription log. Free for 3 months.",
+      "Pharmacy and medical store POS: batch and expiry tracking, oldest-first (FEFO) selling, near-expiry reports, search by generic name and a prescription log.",
     keywords: ["pharmacy POS", "pharmacy software", "medical store software", "batch expiry tracking", "FEFO"],
   },
   schemaSubCategory: "Pharmacy point of sale",
   hero: {
-    eyebrow: "TajirPoint for pharmacies",
+    eyebrow: "Pharmacy POS & medical store software",
     headline: "Sell safely. Sell the oldest stock first.",
     sub: "Every strip linked to its batch and expiry, the oldest stock sold first, and a near-expiry list before stock turns into a loss.",
     media: { slot: "hero", expect: "video", alt: "Pharmacy counter selling a medicine with its batch and expiry" },
@@ -1002,14 +1003,14 @@ const electronicsMobile: Business = {
   },
   contactLabel: "Electronics / Mobile",
   seo: {
-    title: "Mobile & Electronics Shop POS — IMEI & Serial Tracking",
+    title: "Mobile Shop POS with IMEI & Serial Tracking",
     description:
-      "POS for mobile phone and electronics shops: IMEI and serial number tracking from purchase to sale, colour and storage variants, quotations, customer credit and supplier ledgers. Free for 3 months.",
+      "POS for mobile phone and electronics shops: IMEI and serial number tracking from purchase to sale, storage variants, quotations, customer and supplier credit.",
     keywords: ["mobile shop POS", "IMEI tracking software", "electronics store POS", "serial number tracking"],
   },
   schemaSubCategory: "Electronics retail point of sale",
   hero: {
-    eyebrow: "TajirPoint for electronics & mobile shops",
+    eyebrow: "Mobile & electronics shop POS",
     headline: "Every handset, tracked by its IMEI.",
     sub: "Record serial and IMEI numbers when stock arrives, sell the exact unit, and find any sale by its number months later.",
     media: { slot: "hero", expect: "video", alt: "Selling a phone by scanning its IMEI" },
@@ -1081,14 +1082,14 @@ const salonsServices: Business = {
   },
   contactLabel: "Services / Salon",
   seo: {
-    title: "Salon & Services POS — Services, Products & Client History",
+    title: "Salon POS: Services, Products & Client History",
     description:
-      "POS for salons, spas and service businesses: sell services and retail products together, client history, loyalty and coupons, staff logins and online booking requests from your website. Free for 3 months.",
+      "Salon and spa POS: bill services and retail products together, keep client history, run loyalty and coupons, staff logins and booking requests from your site.",
     keywords: ["salon POS", "salon software", "spa POS", "service business POS"],
   },
   schemaSubCategory: "Salon and service business point of sale",
   hero: {
-    eyebrow: "TajirPoint for salons & services",
+    eyebrow: "Salon & services POS",
     headline: "Services and products, one bill, every client remembered.",
     sub: "Charge for a haircut and the shampoo on the same bill, see each client's history, and bring them back with loyalty and coupons.",
     media: { slot: "hero", expect: "image", alt: "Salon counter billing a service and a product" },
@@ -1169,14 +1170,14 @@ const distributorsWholesale: Business = {
   },
   contactLabel: "Distributor / Wholesale",
   seo: {
-    title: "Distribution & Wholesale Software — Van Sales & Routes",
+    title: "Distribution Software for Van Sales & Routes",
     description:
-      "Software for distributors and wholesalers: route dispatch and van sales, day-end reconciliation, dealer price lists, multi-warehouse stock, credit limits and supplier ledgers. Free for 3 months.",
+      "Distribution and wholesale software: route dispatch, van sales, day-end reconciliation, dealer price lists, multi-warehouse stock, credit limits and ledgers.",
     keywords: ["distribution software", "van sales app", "route sales software", "wholesale POS", "order booker app"],
   },
   schemaSubCategory: "Distribution and wholesale management",
   hero: {
-    eyebrow: "TajirPoint for distributors & wholesale",
+    eyebrow: "Distribution & wholesale software",
     headline: "The van is a warehouse. Treat it like one.",
     sub: "Load the van in the morning, sell and collect along the route, then reconcile cash and stock at the end of the day — with credit limits that stop bad debt before it starts.",
     media: { slot: "hero", expect: "video", alt: "Van sales trip with stops and collections" },
@@ -1256,14 +1257,14 @@ const transportDelivery: Business = {
   },
   contactLabel: "Distributor / Wholesale",
   seo: {
-    title: "Fleet & Delivery Software — Routes, Drivers & Trip Profit",
+    title: "Fleet & Delivery Software: Routes & Drivers",
     description:
-      "Software for trucking and delivery fleets: route and stop planning, driver dispatch, proof of delivery, cash collected on the road, fuel and mileage checks, and profit per trip. Free for 3 months.",
+      "Trucking and delivery fleet software: route and stop planning, driver dispatch, proof of delivery, cash collected on the road, fuel checks and profit per trip.",
     keywords: ["fleet management software", "delivery fleet software", "trucking software", "route dispatch software", "driver cash reconciliation"],
   },
   schemaSubCategory: "Fleet and delivery management",
   hero: {
-    eyebrow: "TajirPoint for transport & delivery fleets",
+    eyebrow: "Fleet & delivery management software",
     headline: "Know what every trip really earned.",
     sub: "Plan the route, dispatch the vehicle and driver, collect proof of delivery and cash on the road — then see the profit after fuel, trip by trip.",
     media: { slot: "hero", expect: "video", alt: "Dispatch screen with a vehicle, driver and stops" },
@@ -1343,14 +1344,14 @@ const factoriesMills: Business = {
   },
   contactLabel: "Distributor / Wholesale",
   seo: {
-    title: "Factory & Mill Software — Stock, Dealers & Credit",
+    title: "Factory & Mill Software: Stock, Dealers, Credit",
     description:
-      "Software for factories and mills that sell to dealers and wholesalers: raw-material purchasing and goods receipt, multi-warehouse and batch stock, dealer price lists, credit limits and books that post themselves. Free for 3 months.",
+      "Factory and mill software for selling to dealers: raw-material purchasing, batch stock in every warehouse, dealer price lists, credit limits, auto-posted books.",
     keywords: ["factory inventory software", "mill software", "manufacturer sales software", "wholesale distribution software", "dealer price list software"],
   },
   schemaSubCategory: "Manufacturer inventory, sales and accounting",
   hero: {
-    eyebrow: "TajirPoint for factories & mills",
+    eyebrow: "Factory & mill sales software",
     headline: "Buy it in, hold it right, sell it to dealers on credit.",
     sub: "From raw-material purchase orders to finished goods in several warehouses to dealer invoices — with the stock, the credit and the books kept in step.",
     media: { slot: "hero", expect: "image", alt: "Warehouse stock overview for a factory" },
@@ -1430,14 +1431,14 @@ const furnitureHome: Business = {
   },
   contactLabel: "General retail / Kiryana",
   seo: {
-    title: "Furniture Store POS — Quotations, Variants & Delivery",
+    title: "Furniture Store POS with Quotations & Delivery",
     description:
-      "POS for furniture and home stores: quotations that turn into sales, variants for fabric and finish, custom fields for dimensions, customer credit, warehouse stock and delivery. Free for 3 months.",
+      "Furniture and home store POS: quotations that turn into sales, fabric and finish variants, dimensions as custom fields, customer credit, stock and delivery.",
     keywords: ["furniture store POS", "furniture shop software", "home decor POS", "quotation software"],
   },
   schemaSubCategory: "Furniture retail point of sale",
   hero: {
-    eyebrow: "TajirPoint for furniture & home stores",
+    eyebrow: "Furniture store POS",
     headline: "Quote it, sell it, deliver it — and get paid in full.",
     sub: "Big-ticket sales need quotations, balances and delivery. TajirPoint keeps all three on the same customer record.",
     media: { slot: "hero", expect: "image", alt: "Furniture showroom with a quotation on a tablet" },

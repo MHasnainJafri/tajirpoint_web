@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { pageBreadcrumbs } from "@/lib/seo/schemas";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { setRequestLocale } from "next-intl/server";
 import { CalendarDays, Mail, MessageCircle } from "lucide-react";
 import { Link } from "@/i18n/navigation";
@@ -14,7 +16,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "Contact TajirPoint",
+    title: "Contact TajirPoint: Sales, Support & WhatsApp",
+    absoluteTitle: true,
     description:
       "Email hello@tajirpoint.com or WhatsApp +92 344 6800893. Ask about pricing, switching from another POS or support — we reply within one working day.",
     path: "/contact",
@@ -31,6 +34,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 
   return (
     <div lang="en" dir="ltr" className="px-[clamp(16px,4vw,40px)] pb-[clamp(60px,9vw,110px)]">
+      <JsonLd schema={pageBreadcrumbs(locale, [["Contact", "/contact"]])} />
       {/* ── Header ──────────────────────────────────────────────────── */}
       <section className="pb-10 pt-[clamp(36px,7vw,90px)] text-center">
         <PillBadge>Get in touch</PillBadge>

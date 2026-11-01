@@ -21,7 +21,7 @@ export async function generateMetadata({
   return buildMetadata({
     title: "Privacy Policy",
     description:
-      "How TajirPoint collects, uses, shares and protects personal data — for merchants, their customers, riders and website visitors — and how to exercise your rights.",
+      "How TajirPoint collects, uses, shares and protects personal data for merchants, their customers, riders and site visitors, and how to exercise your rights.",
     path: "/privacy",
     locale,
   });

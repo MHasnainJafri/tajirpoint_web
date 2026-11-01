@@ -16,7 +16,7 @@ import { PillBadge, MintButton, GhostButton, CtaPanel } from "@/components/desig
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { faqSchema } from "@/lib/seo/schemas";
+import { faqSchema, pageBreadcrumbs } from "@/lib/seo/schemas";
 
 export async function generateMetadata({
   params,
@@ -25,9 +25,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "Offline-First POS — Keep Selling, Always",
+    title: "Offline POS: Keep Selling Without Internet",
     description:
-      "Power cuts should never stop a sale. Tajir Point bills offline, writes every sale to the device first, and syncs automatically with no duplicates.",
+      "Power cuts and dropped internet should never stop a sale. TajirPoint's offline POS saves every sale on the device first and syncs later with no duplicates.",
     path: "/features/offline",
     locale,
   });
@@ -89,7 +89,9 @@ export default async function OfflineFeaturePage({
 
   return (
     <div lang="en" dir="ltr">
-      <JsonLd schema={faqSchema(FAQS)} />
+      <JsonLd
+        schema={[faqSchema(FAQS), pageBreadcrumbs(locale, [["Offline POS", "/features/offline"]])]}
+      />
 
       {/* ── Hero ────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden px-5 pb-[70px] pt-[140px] md:px-10">
@@ -118,14 +120,14 @@ export default async function OfflineFeaturePage({
             </span>
 
             <h1 className="mt-[18px] max-w-[620px] animate-[tpFadeUp_.8s_.15s_cubic-bezier(.22,1,.36,1)_both] text-[clamp(34px,4.6vw,56px)] font-extrabold leading-[1.05] tracking-[-0.035em]">
-              Keep selling when
+              An offline POS that keeps
               <br />
-              the internet drops.
+              selling when the internet drops.
             </h1>
 
             <p className="mt-5 max-w-[560px] animate-[tpFadeUp_.8s_.28s_cubic-bezier(.22,1,.36,1)_both] text-[17.5px] leading-[1.6] text-[var(--color-muted)]">
-              Power cuts and dead connections should never stop a sale. Tajir Point keeps billing
-              and syncs safely later.
+              Power cuts and dead connections should never stop a sale. TajirPoint keeps billing and
+              syncs safely later.
             </p>
 
             <div className="mt-9 flex animate-[tpFadeUp_.8s_.36s_cubic-bezier(.22,1,.36,1)_both] flex-wrap gap-[14px]">

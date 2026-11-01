@@ -11,9 +11,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "Errors — Tajir Point API",
+    title: "Errors — TajirPoint API",
+    absoluteTitle: true,
     description:
-      "Every error uses the same envelope: a status code, a message, and a details object naming the offending fields.",
+      "Every TajirPoint API error uses the same envelope: an HTTP status code, a readable message and a details object naming each field that failed validation.",
     path: "/docs/errors",
     locale,
   });

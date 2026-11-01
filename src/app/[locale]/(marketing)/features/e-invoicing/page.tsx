@@ -17,7 +17,7 @@ import { PillBadge, MintButton, GhostButton, CtaPanel } from "@/components/desig
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { faqSchema } from "@/lib/seo/schemas";
+import { faqSchema, pageBreadcrumbs } from "@/lib/seo/schemas";
 
 export async function generateMetadata({
   params,
@@ -26,15 +26,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "E-Invoicing & Fiscal Compliance",
+    title: "E-Invoicing & Tax Handling for Your POS",
     description:
-      "Tax-inclusive pricing, withholding and transaction records for your business. Regulatory e-invoicing integrations are planned; confirm country-specific requirements with our team.",
+      "Tax-inclusive pricing, VAT/GST capture, withholding and audit-ready records at checkout. Regulatory e-invoicing connectors such as FBR are not yet released.",
     path: "/features/e-invoicing",
     locale,
   });
 }
 
-/** The proof points from the design's "how Tajir Point solves it" column. */
+/** The proof points from the design's "how TajirPoint solves it" column. */
 const SOLUTION_POINTS = [
   "Regulatory e-invoicing connectors — coming soon",
   "Itemised receipts and transaction history",
@@ -91,7 +91,12 @@ export default async function EInvoicingFeaturePage({
 
   return (
     <div lang="en" dir="ltr">
-      <JsonLd schema={faqSchema(FAQS)} />
+      <JsonLd
+        schema={[
+          faqSchema(FAQS),
+          pageBreadcrumbs(locale, [["E-invoicing", "/features/e-invoicing"]]),
+        ]}
+      />
 
       {/* ── Hero ────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden px-5 pb-[70px] pt-[140px] md:px-10">

@@ -6,30 +6,48 @@ import type {
   FAQPage,
   WithContext,
 } from "schema-dts";
-import { legal, siteConfig } from "@/lib/config/site";
+import { legal, siteConfig, socialProfiles } from "@/lib/config/site";
 import { isContactSalesPlan, isFreePlan, type MarketingPlan } from "@/lib/api/plans";
+import { canonicalUrl } from "@/lib/seo/metadata";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+/** Stable entity ids, so every page's markup points at the same Organization and WebSite. */
+export const ORG_ID = `${siteConfig.url}/#organization`;
+export const WEBSITE_ID = `${siteConfig.url}/#website`;
+
+const LANGUAGE_NAMES: Record<string, string> = { en: "en", ur: "ur", ar: "ar" };
+
 export function organizationSchema(): WithContext<Organization> {
+  const sameAs = socialProfiles();
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": ORG_ID,
     name: siteConfig.name,
+    alternateName: [...siteConfig.alternateNames],
     legalName: legal.operator,
     url: siteConfig.url,
     description: siteConfig.description,
+    // City and country only — the operator publishes no street address, so
+    // there is deliberately no LocalBusiness markup (it requires one).
     address: {
       "@type": "PostalAddress",
       addressLocality: legal.city,
       addressCountry: "PK",
     } as any,
     email: legal.email,
+    // A raster logo: Google's logo guidelines want at least 112×112 and
+    // not every consumer of this markup renders SVG.
     logo: {
       "@type": "ImageObject",
-      url: `${siteConfig.url}/brand/mark/mark-on-white.svg`,
+      url: `${siteConfig.url}${siteConfig.logo}`,
+      width: 512,
+      height: 512,
     } as any,
-    sameAs: Object.values(siteConfig.social),
+    image: `${siteConfig.url}${siteConfig.ogImage}`,
+    // Only profiles configured in the environment (see siteConfig.social).
+    ...(sameAs.length && { sameAs }),
     contactPoint: [
       {
         "@type": "ContactPoint",
@@ -42,7 +60,9 @@ export function organizationSchema(): WithContext<Organization> {
       {
         "@type": "ContactPoint",
         contactType: "customer support",
-        url: siteConfig.dashboardUrl,
+        telephone: legal.whatsappE164,
+        email: legal.email,
+        url: `${siteConfig.url}/contact`,
         availableLanguage: ["English", "Urdu"],
       },
     ] as any,
@@ -53,14 +73,18 @@ export function organizationSchema(): WithContext<Organization> {
   };
 }
 
-export function websiteSchema(): WithContext<WebSite> {
-  // SearchAction is removed until a /search route exists.
-  // Pointing SearchAction at a 404 triggers a Google Search Console warning.
+export function websiteSchema(locale: string = "en"): WithContext<WebSite> {
+  // No SearchAction: the site has no search page, and a SearchAction that
+  // points at a 404 earns a Search Console warning instead of a sitelinks box.
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": WEBSITE_ID,
     name: siteConfig.name,
+    alternateName: [...siteConfig.alternateNames],
     url: siteConfig.url,
+    inLanguage: LANGUAGE_NAMES[locale] ?? "en",
+    publisher: { "@id": ORG_ID } as any,
   };
 }
 
@@ -106,11 +130,17 @@ export function softwareApplicationSchema(
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
+    "@id": `${siteConfig.url}/#software`,
     name: siteConfig.name,
     applicationCategory: "BusinessApplication",
+    applicationSubCategory: "Point of sale (POS) software",
     description: siteConfig.description,
     url: siteConfig.url,
-    operatingSystem: "Android, iOS, Web",
+    image: `${siteConfig.url}${siteConfig.ogImage}`,
+    // Web (any browser), the desktop app and Android — what the
+    // Platforms section and the FAQ say. No iOS app is published.
+    operatingSystem: "Web, Windows, macOS, Linux, Android",
+    publisher: { "@id": ORG_ID } as any,
     inLanguage: ["en", "ur", "ar"],
     offers: (plans?.length ? plans : []).map((plan) => planOffer(plan)) as any,
   };
@@ -126,9 +156,10 @@ function planOffer(plan: MarketingPlan) {
   const offer: Record<string, unknown> = {
     "@type": "Offer",
     name: plan.name,
-    description: isFree && plan.free_period_days
-      ? `${plan.tagline} (free for ${plan.free_period_days} days from signup)`
-      : plan.tagline,
+    description:
+      isFree && plan.free_period_days
+        ? `${plan.tagline} (free for ${plan.free_period_days} days from signup)`
+        : plan.tagline,
     availability: "https://schema.org/InStock",
     // A contact-sales tier is a conversation; everything else is on the
     // pricing page, which is the page this markup describes.
@@ -144,14 +175,15 @@ function planOffer(plan: MarketingPlan) {
     offer.priceCurrency = plan.currency_code;
     // The free plan (Light, free for its first 90 days) is an Offer at 0
     // with no billing period; its description carries the time limit.
-    if (!isFree) offer.priceSpecification = {
-      "@type": "UnitPriceSpecification",
-      price: amount,
-      priceCurrency: plan.currency_code,
-      // Every published price on the page is a monthly one.
-      unitCode: "MON",
-      unitText: "month",
-    };
+    if (!isFree)
+      offer.priceSpecification = {
+        "@type": "UnitPriceSpecification",
+        price: amount,
+        priceCurrency: plan.currency_code,
+        // Every published price on the page is a monthly one.
+        unitCode: "MON",
+        unitText: "month",
+      };
   }
 
   return offer;
@@ -211,11 +243,28 @@ export function verticalSoftwareSchema({
     applicationSubCategory,
     description,
     url: `${siteConfig.url}${path}`,
-    operatingSystem: "Android, iOS, Web, Windows",
+    image: `${siteConfig.url}/og/business-${path.split("/").pop()}.png`,
+    operatingSystem: "Web, Windows, macOS, Linux, Android",
+    publisher: { "@id": ORG_ID } as any,
     inLanguage: ["en", "ur", "ar"],
     featureList: features.join(", "),
     // Same Offers as the home page, from the same API rows — never a
     // hardcoded plan name or price.
     ...(plans?.length ? { offers: plans.map((plan) => planOffer(plan)) as any } : {}),
   };
+}
+
+/**
+ * BreadcrumbList for a page, Home first, with canonical URLs (an untranslated
+ * page's /ur copy names the English URLs it canonicalises to).
+ * `trail` is [name, path] pairs below Home, ending with the page itself.
+ */
+export function pageBreadcrumbs(
+  locale: string,
+  trail: ReadonlyArray<readonly [string, string]>
+): WithContext<BreadcrumbList> {
+  return breadcrumbSchema([
+    { name: "Home", url: canonicalUrl("/", locale) },
+    ...trail.map(([name, path]) => ({ name, url: canonicalUrl(path, locale) })),
+  ]);
 }
