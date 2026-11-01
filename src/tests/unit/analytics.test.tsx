@@ -18,6 +18,7 @@ import { analyticsIdsFromEnv, cleanIds } from "@/lib/analytics/config";
 import { SCRIPT_IDS, resetLoaderForTests } from "@/lib/analytics/loader";
 import {
   trackBusinessView,
+  trackCallbackRequest,
   trackContactSubmit,
   trackDemoRequest,
   trackPlanSelected,
@@ -397,6 +398,26 @@ describe("after consent", () => {
       "trackCustom:StartFreeClick",
       "trackCustom:PlanSelected",
       "track:Contact",
+    ]);
+  });
+
+  it("a call-back request is a lead in GA4 and the Pixel", () => {
+    setConsent("granted");
+    renderSite();
+
+    trackCallbackRequest({ businessType: "pharmacy", location: "home" });
+
+    expect(gtagEvents()).toEqual(["generate_lead", "callback_request_submitted"]);
+    expect(gtagCalls().find((c) => c[1] === "generate_lead")?.[2]).toEqual({
+      form: "callback_request",
+      business_type: "pharmacy",
+      location: "home",
+    });
+    expect(pixelCalls()).toEqual([
+      "consent:grant",
+      `init:${PIXEL}`,
+      "track:PageView",
+      "track:Lead",
     ]);
   });
 

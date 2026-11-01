@@ -29,10 +29,18 @@ export function Footer() {
           </p>
           <div className="mt-4 flex flex-col gap-[6px] text-[13px]">
             <span className="font-semibold text-[var(--color-ink)]">{t("reach")}</span>
-            <a href={legal.whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-[var(--color-ink-3)] hover:text-[var(--color-ink)]">
+            <a
+              href={legal.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[var(--color-ink-3)] hover:text-[var(--color-ink)]"
+            >
               WhatsApp <span dir="ltr">{legal.whatsappDisplay}</span>
             </a>
-            <a href={`mailto:${legal.email}`} className="text-[var(--color-ink-3)] hover:text-[var(--color-ink)]">
+            <a
+              href={`mailto:${legal.email}`}
+              className="text-[var(--color-ink-3)] hover:text-[var(--color-ink)]"
+            >
               {legal.email}
             </a>
           </div>
@@ -58,6 +66,7 @@ export function Footer() {
 
         <FooterColumn heading={t("company")}>
           <FooterLink href="/book-demo">{t("links.bookDemo")}</FooterLink>
+          <FooterLink href="/get-a-call">{t("links.getACall")}</FooterLink>
           <FooterLink href="/contact">{t("links.contact")}</FooterLink>
           <FooterLink href="/about">{t("links.about")}</FooterLink>
           <FooterLink href="/security">{t("links.security")}</FooterLink>
@@ -102,7 +111,10 @@ function FooterColumn({ heading, children }: { heading: string; children: React.
 
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <Link href={href} className="text-[var(--color-ink-3)] transition-colors hover:text-[var(--color-ink)]">
+    <Link
+      href={href}
+      className="text-[var(--color-ink-3)] transition-colors hover:text-[var(--color-ink)]"
+    >
       {children}
     </Link>
   );

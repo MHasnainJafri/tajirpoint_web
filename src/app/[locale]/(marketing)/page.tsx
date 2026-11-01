@@ -15,6 +15,7 @@ import { Faq } from "@/components/marketing/landing/Faq";
 import { FinalCta } from "@/components/marketing/landing/FinalCta";
 import { FindYourBusiness } from "@/components/marketing/landing/FindYourBusiness";
 import { MigrationBand } from "@/components/marketing/business/MigrationBand";
+import { CallbackSection } from "@/components/marketing/callback/CallbackSection";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { softwareApplicationSchema, faqSchema } from "@/lib/seo/schemas";
 import { getPricing } from "@/lib/api/plans";
@@ -76,7 +77,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           who it's for (real shop photography) → the five things it does differently →
           vertical trade screens → unified surfaces (counter, back office, online) →
           the full back office → where it runs → extensions marketplace → switching
-          is free → price → FAQ.
+          is free → price → FAQ → "we'll call you" form.
 
           `overflow-x: clip` (not hidden) contains the hero's decorative circles
           without creating a scroll container, so `position: sticky` on the nav
@@ -102,6 +103,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
         <Pricing />
         <Faq />
+        <CallbackSection location="home" />
       </div>
 
       {/* Wider than the page grid on purpose — see FinalCta. */}

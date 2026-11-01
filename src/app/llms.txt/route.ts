@@ -42,6 +42,7 @@ Contact: ${legal.email}, WhatsApp ${legal.whatsappDisplay}.
 ${link("Home", "/", "Product overview — what TajirPoint does and who it is for")}
 ${link("Pricing", "/pricing", pricing)}
 ${link("Book a demo", "/book-demo", "Book a free demo; optional free data migration from your old POS")}
+${link("Get a call back", "/get-a-call", "Leave a business name and phone number; the team calls within one working day")}
 ${link("Businesses", "/business", "Every business type TajirPoint is set up for")}
 ${link("Extensions", "/extensions", "Optional extensions that add features per shop")}
 ${link("About", "/about", "Who builds TajirPoint")}

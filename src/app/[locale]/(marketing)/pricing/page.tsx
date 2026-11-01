@@ -4,6 +4,7 @@ import { Pricing } from "@/components/marketing/landing/Pricing";
 import { Faq } from "@/components/marketing/landing/Faq";
 import { FinalCta } from "@/components/marketing/landing/FinalCta";
 import { MigrationBand } from "@/components/marketing/business/MigrationBand";
+import { CallbackSection } from "@/components/marketing/callback/CallbackSection";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { FAQ_TABS } from "@/lib/design/landing";
 import { faqSchema, softwareApplicationSchema } from "@/lib/seo/schemas";
@@ -69,6 +70,7 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
           <MigrationBand />
         </div>
         <Faq />
+        <CallbackSection location="pricing" />
       </div>
 
       <FinalCta />

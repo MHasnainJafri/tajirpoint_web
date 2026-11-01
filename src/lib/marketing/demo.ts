@@ -1,6 +1,9 @@
 import { z } from "zod";
 import { BUSINESSES, isBusinessSlug } from "./businesses";
 import { emptyAttribution, type Attribution } from "./utm";
+import { countryByIso, countryForE164, normalizePhone, phoneFromForm } from "./phone";
+
+export { normalizePhone };
 
 /**
  * The "Book a demo" form: options, validation and the payload sent to
@@ -37,15 +40,6 @@ export function preselectType(value: string | null | undefined): string {
   return isBusinessSlug(v) || v === "other" ? v : "";
 }
 
-/** Normalise an explicitly international number; never guess a visitor's country. */
-export function normalizePhone(input: string): string {
-  const raw = input.trim();
-  if (!/^(\+|00)[\d\s().-]+$/.test(raw)) return "";
-  const cleaned = raw.replace(/\D/g, "");
-  const digits = raw.startsWith("00") ? cleaned.slice(2) : cleaned;
-  return /^[1-9]\d{7,14}$/.test(digits) ? `+${digits}` : "";
-}
-
 /** YYYY-MM-DD in the browser's local time zone. */
 export function isoDate(d: Date): string {
   const y = d.getFullYear();
@@ -74,30 +68,50 @@ export function upcomingDays(from: Date, days = 14): Array<{ value: string; labe
   return out;
 }
 
-const text = (max: number) => z.string().trim().max(max).default("");
+export const text = (max: number) => z.string().trim().max(max).default("");
+
+export const PHONE_ERROR = "Choose your country code and enter your number (7–15 digits).";
+
+/** Required phone: E.164 from the picker, or a typed "+…" / "00…" number. */
+export const phoneSchema = z
+  .string()
+  .trim()
+  .transform((v) => normalizePhone(v))
+  .refine((v) => v.length > 0, PHONE_ERROR);
+
+/** ISO2 of the chosen dial code; anything unknown is dropped, never an error. */
+export const countrySchema = z
+  .string()
+  .trim()
+  .default("")
+  .transform((v) => countryByIso(v)?.iso2 ?? "");
+
+export const nameSchema = z.string().trim().min(2, "Please enter your name.").max(120);
+
+export const emailSchema = z
+  .string()
+  .trim()
+  .max(200)
+  .default("")
+  .refine(
+    (v) => v === "" || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+    "Please check your email address."
+  );
+
+/** Optional business type: a catalog slug or "other"; anything else becomes "". */
+export const businessTypeSchema = z
+  .string()
+  .trim()
+  .default("")
+  .transform((v) => preselectType(v));
 
 export const DemoRequestSchema = z.object({
-  name: z.string().trim().min(2, "Please enter your name.").max(120),
-  phone: z
-    .string()
-    .trim()
-    .transform((v) => normalizePhone(v))
-    .refine((v) => v.length > 0, "Include your country code, for example +1 415 555 0123."),
-  email: z
-    .string()
-    .trim()
-    .max(200)
-    .default("")
-    .refine(
-      (v) => v === "" || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
-      "Please check your email address."
-    ),
+  name: nameSchema,
+  phone: phoneSchema,
+  country: countrySchema,
+  email: emailSchema,
   business_name: text(160),
-  business_type: z
-    .string()
-    .trim()
-    .default("")
-    .transform((v) => preselectType(v)),
+  business_type: businessTypeSchema,
   city: text(80),
   branches: z
     .string()
@@ -146,9 +160,11 @@ export function demoInputFromForm(form: FormData): DemoRequestInput {
     const v = form.get(k);
     return typeof v === "string" ? v : "";
   };
+  const { phone, country } = phoneFromForm(form);
   return {
     name: s("name"),
-    phone: s("phone"),
+    phone,
+    country,
     email: s("email"),
     business_name: s("business_name"),
     business_type: s("business_type"),
@@ -188,7 +204,7 @@ export function demoPayload(req: DemoRequest, attribution: Attribution) {
     business_name: req.business_name,
     business_type: req.business_type,
     city: req.city,
-    country: req.phone.startsWith("+92") ? "PK" : "",
+    country: req.country || countryForE164(req.phone)?.iso2 || "",
     branches: band ? band.count : null,
     current_pos: req.current_pos,
     wants_migration: req.wants_migration,

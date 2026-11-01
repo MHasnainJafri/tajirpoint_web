@@ -124,6 +124,21 @@ export function trackDemoRequest(details: {
   pixel("Schedule", { content_name: "demo_request", content_category: businessType });
 }
 
+/**
+ * "We'll call you" form stored — fire on success only. `location` is where the
+ * form sat (home, pricing, get_a_call page).
+ */
+export function trackCallbackRequest(details: { businessType: string; location: string }) {
+  const businessType = details.businessType || "unknown";
+  trackEvent("generate_lead", {
+    form: "callback_request",
+    business_type: businessType,
+    location: details.location,
+  });
+  trackEvent("callback_request_submitted", { business_type: businessType });
+  pixel("Lead", { content_name: "callback_request", content_category: businessType });
+}
+
 /** Contact form sent — fire on success only. */
 export function trackContactSubmit(details: { businessType: string }) {
   const businessType = details.businessType || "unknown";

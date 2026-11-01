@@ -19,11 +19,38 @@ test("shows field errors and keeps what was typed", async ({ page }) => {
   );
   await expect(page.getByText("Please enter your name.")).toBeVisible();
   await expect(
-    page.getByText("Include your country code, for example +1 415 555 0123.")
+    page.getByText("Choose your country code and enter your number (7–15 digits).")
   ).toBeVisible();
   await expect(page.getByText("Please check your email address.")).toBeVisible();
   await expect(page.getByLabel(/Your name/)).toHaveAttribute("aria-invalid", "true");
   await expect(page.getByLabel("City")).toHaveValue("Lahore");
+});
+
+test("a pasted international number switches the country picker", async ({ page }) => {
+  await page.goto("/book-demo");
+  const phone = page.getByLabel("WhatsApp number");
+  await phone.focus();
+  await page.evaluate(() => {
+    const el = document.activeElement as HTMLInputElement;
+    const data = new DataTransfer();
+    data.setData("text", "+44 20 7946 0123");
+    el.dispatchEvent(
+      new ClipboardEvent("paste", { clipboardData: data, bubbles: true, cancelable: true })
+    );
+  });
+  await expect(
+    page.getByRole("button", { name: /Country code: United Kingdom \+44/ })
+  ).toBeVisible();
+  await expect(phone).toHaveValue("2079460123");
+  await expect(page.locator('input[type="hidden"][name="phone"]')).toHaveValue("+442079460123");
+  await expect(page.locator('input[type="hidden"][name="country"]')).toHaveValue("GB");
+});
+
+test("the call-back page has its form", async ({ page }) => {
+  await page.goto("/get-a-call");
+  await expect(page.getByRole("form", { name: "Ask for a call back" })).toBeVisible();
+  await page.getByRole("button", { name: "Call me back" }).click();
+  await expect(page.getByText("Please enter your business name.")).toBeVisible();
 });
 
 test("offers the next 14 days (no Sundays) and three times of day", async ({ page }) => {

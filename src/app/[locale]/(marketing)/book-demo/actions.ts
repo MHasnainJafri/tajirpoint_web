@@ -1,6 +1,5 @@
 "use server";
 
-import { headers } from "next/headers";
 import { getBusiness } from "@/lib/marketing/businesses";
 import {
   DemoRequestSchema,
@@ -11,9 +10,12 @@ import {
   fieldErrors,
   type FieldErrors,
 } from "@/lib/marketing/demo";
-
-// Server-side so there is no CORS and the backend URL stays out of the bundle.
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://api.tajirpoint.com";
+import {
+  API_BASE,
+  LEAD_FAILED,
+  fieldErrorsFromResponse,
+  forwardHeaders,
+} from "@/lib/marketing/lead-request";
 
 export type DemoState = {
   ok?: boolean;
@@ -22,17 +24,6 @@ export type DemoState = {
   /** Echoed back for the success screen's analytics — no personal data. */
   summary?: { businessType: string; wantsMigration: boolean; branches: string };
 };
-
-async function forwardHeaders(): Promise<Record<string, string>> {
-  const h = await headers();
-  const out: Record<string, string> = { "Content-Type": "application/json" };
-  // The backend throttles per IP; pass the visitor's through, not ours.
-  const ip = h.get("x-forwarded-for") ?? h.get("x-real-ip");
-  if (ip) out["X-Forwarded-For"] = ip;
-  const ua = h.get("user-agent");
-  if (ua) out["User-Agent"] = ua.slice(0, 300);
-  return out;
-}
 
 export async function submitDemoRequest(
   _prev: DemoState | undefined,
@@ -53,10 +44,7 @@ export async function submitDemoRequest(
   // Honeypot filled: look successful, send nothing.
   if (req.company) return { ok: true, summary };
 
-  const failed: DemoState = {
-    error:
-      "We could not save your request just now. Please message us on WhatsApp at +92 344 6800893 or email hello@tajirpoint.com.",
-  };
+  const failed: DemoState = { error: LEAD_FAILED };
 
   try {
     const hdrs = await forwardHeaders();
@@ -69,14 +57,7 @@ export async function submitDemoRequest(
     if (res.ok) return { ok: true, summary };
 
     if (res.status === 400) {
-      const body = (await res.json().catch(() => null)) as Record<string, unknown> | null;
-      const fields: FieldErrors = {};
-      if (body && typeof body === "object") {
-        for (const [k, v] of Object.entries(body)) {
-          const msg = Array.isArray(v) ? String(v[0]) : typeof v === "string" ? v : "";
-          if (msg && k in req) fields[k as keyof FieldErrors] = msg;
-        }
-      }
+      const fields: FieldErrors = await fieldErrorsFromResponse(res, req);
       return { error: "Please check the highlighted fields.", fields };
     }
 

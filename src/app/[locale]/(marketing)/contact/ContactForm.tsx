@@ -20,6 +20,7 @@ import {
   labelCls,
   textareaCls,
 } from "@/components/forms/styles";
+import { PhoneField } from "@/components/forms/PhoneField";
 
 export function ContactForm() {
   const [state, action, pending] = useActionState<ContactState | undefined, FormData>(
@@ -146,27 +147,7 @@ export function ContactForm() {
       </div>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        <div className="flex flex-col gap-2">
-          <label htmlFor="c-phone" className={labelCls}>
-            Phone / WhatsApp{" "}
-            <span className="font-normal text-[var(--color-muted)]">(optional)</span>
-          </label>
-          <input
-            id="c-phone"
-            name="phone"
-            type="tel"
-            inputMode="tel"
-            autoComplete="tel"
-            placeholder="+1 415 555 0123"
-            className={inputCls(!!f.phone)}
-            {...err("phone")}
-          />
-          {f.phone && (
-            <p id="c-phone-error" className={errorCls}>
-              {f.phone}
-            </p>
-          )}
-        </div>
+        <PhoneField id="c-phone" label="Phone / WhatsApp" optional error={f.phone} />
         <div className="flex flex-col gap-2">
           <label htmlFor="c-business" className={labelCls}>
             Type of business{" "}

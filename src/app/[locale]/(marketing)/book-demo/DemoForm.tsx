@@ -26,6 +26,8 @@ import {
   labelCls,
   textareaCls,
 } from "@/components/forms/styles";
+import { Field } from "@/components/forms/Field";
+import { PhoneField } from "@/components/forms/PhoneField";
 
 /**
  * Our own demo booking form (no third-party scheduler). Posts through a server action
@@ -143,26 +145,13 @@ export function DemoForm() {
             {...err("name")}
           />
         </Field>
-        <Field
+        <PhoneField
           id="phone"
           label="WhatsApp number"
           required
-          hint="Include your country code, for example +1, +44 or +971."
-          error={f.phone}
-        >
-          <input
-            id="phone"
-            name="phone"
-            type="tel"
-            inputMode="tel"
-            autoComplete="tel"
-            required
-            placeholder="+1 415 555 0123"
-            className={inputCls(!!f.phone)}
-            aria-describedby={f.phone ? "phone-error" : "phone-hint"}
-            aria-invalid={f.phone ? true : undefined}
-          />
-        </Field>
+          hint="Pick your country, then type your number."
+          error={f.phone ?? f.country}
+        />
       </div>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -355,49 +344,5 @@ export function DemoForm() {
         <p className={hintCls}>We only use your number to arrange the demo.</p>
       </div>
     </form>
-  );
-}
-
-function Field({
-  id,
-  label,
-  required,
-  optional,
-  hint,
-  error,
-  children,
-}: {
-  id: string;
-  label: string;
-  required?: boolean;
-  optional?: boolean;
-  hint?: string;
-  error?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="flex flex-col gap-2">
-      <label htmlFor={id} className={labelCls}>
-        {label}
-        {required && (
-          <span aria-hidden="true" className="text-[#B42318]">
-            {" "}
-            *
-          </span>
-        )}
-        {optional && <span className="font-normal text-[var(--color-muted)]"> (optional)</span>}
-      </label>
-      {children}
-      {hint && !error && (
-        <p id={`${id}-hint`} className={hintCls}>
-          {hint}
-        </p>
-      )}
-      {error && (
-        <p id={`${id}-error`} className={errorCls}>
-          {error}
-        </p>
-      )}
-    </div>
   );
 }

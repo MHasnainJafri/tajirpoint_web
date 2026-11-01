@@ -4,6 +4,7 @@ import { headers } from "next/headers";
 import { z } from "zod";
 import { getBusiness } from "@/lib/marketing/businesses";
 import { attributionFromForm, normalizePhone } from "@/lib/marketing/demo";
+import { phoneFromForm } from "@/lib/marketing/phone";
 
 // Server-side so there's no CORS and the backend URL stays out of the bundle.
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://api.tajirpoint.com";
@@ -40,7 +41,7 @@ export async function submitContact(
   const parsed = ContactSchema.safeParse({
     name: get("name"),
     email: get("email"),
-    phone: get("phone"),
+    phone: phoneFromForm(formData).phone,
     business_type: get("business_type"),
     message: get("message"),
     company: get("company"),
@@ -86,13 +87,15 @@ export async function submitContact(
     });
     if (!res.ok) {
       return {
-        error: "Could not send your message. Please email hello@tajirpoint.com or WhatsApp +92 344 6800893.",
+        error:
+          "Could not send your message. Please email hello@tajirpoint.com or WhatsApp +92 344 6800893.",
       };
     }
     return { ok: true, businessType };
   } catch {
     return {
-      error: "Could not reach the server. Please email hello@tajirpoint.com or WhatsApp +92 344 6800893.",
+      error:
+        "Could not reach the server. Please email hello@tajirpoint.com or WhatsApp +92 344 6800893.",
     };
   }
 }

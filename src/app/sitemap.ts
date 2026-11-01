@@ -41,6 +41,7 @@ const PAGES: Page[] = [
   { path: "/", priority: 1.0, changeFrequency: "weekly" },
   { path: "/pricing", priority: 0.9, changeFrequency: "monthly" },
   { path: "/book-demo", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/get-a-call", priority: 0.8, changeFrequency: "monthly" },
   ...BUSINESS_PAGES,
   { path: "/extensions", priority: 0.8, changeFrequency: "monthly" },
   { path: "/features/khata", priority: 0.8, changeFrequency: "monthly" },

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { Check } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { PillBadge } from "@/components/design/primitives";
 import { legal, siteConfig, whatsappLink } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -107,6 +108,15 @@ export default async function BookDemoPage({ params }: { params: Promise<{ local
               >
                 WhatsApp us at <span dir="ltr">{legal.whatsappDisplay}</span>
               </a>
+            </p>
+            <p>
+              Just want to talk?{" "}
+              <Link
+                href="/get-a-call"
+                className="font-semibold text-[var(--color-mint-2)] underline underline-offset-2"
+              >
+                Ask for a call back
+              </Link>
             </p>
             <p>
               Prefer to try it yourself?{" "}
