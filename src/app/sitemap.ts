@@ -3,6 +3,10 @@ import { routing } from "@/i18n/routing";
 import { localeUrl } from "@/lib/seo/metadata";
 import { RESOURCES } from "@/lib/docs/nav";
 import { BUSINESS_SLUGS } from "@/lib/marketing/businesses";
+import { getAddonCatalogue } from "@/lib/marketing/addons";
+
+// The add-on pages come from the backend catalogue; refresh with it.
+export const revalidate = 600;
 
 type Page = {
   path: string;
@@ -60,7 +64,19 @@ const PAGES: Page[] = [
   { path: "/delete-account", priority: 0.3, changeFrequency: "yearly" },
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
+/** One page per add-on in the backend catalogue (snapshot if the API is down). */
+async function addonPages(): Promise<Page[]> {
+  const { addons } = await getAddonCatalogue();
+  return addons.map((a) => ({
+    path: `/extensions/${a.slug}`,
+    // Pages a shop can act on today rank above the roadmap.
+    priority: a.status === "coming_soon" || a.status === "unavailable" ? 0.6 : 0.7,
+    changeFrequency: "monthly",
+  }));
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const pages = [...PAGES, ...(await addonPages())];
   // One entry per page per locale, each carrying the full hreflang cluster.
   //
   // This is only possible because routing moved to `localePrefix: "as-needed"`.
@@ -72,7 +88,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // time, so every page would claim to have changed on every deploy; a sitemap
   // that always cries "just updated" trains Google to stop trusting the signal.
   // Better omitted than faked — restore it only with real per-page dates.
-  return PAGES.flatMap(({ path, priority, changeFrequency }) =>
+  return pages.flatMap(({ path, priority, changeFrequency }) =>
     routing.locales.map((locale) => ({
       url: localeUrl(path, locale),
       changeFrequency,

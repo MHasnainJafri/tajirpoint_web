@@ -28,6 +28,9 @@ function pageMoves(moves: ReadonlyArray<readonly [string, string]>) {
 const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
+    // Add-on icons come from the backend catalogue (`icon_url`), hosted on
+    // our media host. Only that host: next/image refuses everything else.
+    remotePatterns: [{ protocol: "https", hostname: "media.tajirpoint.com", pathname: "/**" }],
   },
   async headers() {
     return [

@@ -2,6 +2,7 @@ import { legal, siteConfig } from "@/lib/config/site";
 import { BUSINESSES } from "@/lib/marketing/businesses";
 import { RESOURCES } from "@/lib/docs/nav";
 import { getPlans, planSummary } from "@/lib/api/plans";
+import { STATUS_LABEL, getAddonCatalogue, type Addon } from "@/lib/marketing/addons";
 
 // Served at /llms.txt — a dotted path, so the next-intl proxy matcher
 // (which excludes `.*\..*`) skips it, same as /og.png.
@@ -22,7 +23,7 @@ function link(name: string, path: string, description: string) {
   return `- [${name}](${url(path)}): ${description}`;
 }
 
-function body(pricing: string): string {
+function body(pricing: string, addons: Addon[]): string {
   return `# TajirPoint
 
 > TajirPoint is a point-of-sale and back-office system for shops, restaurants,
@@ -44,13 +45,17 @@ ${link("Pricing", "/pricing", pricing)}
 ${link("Book a demo", "/book-demo", "Book a free demo; optional free data migration from your old POS")}
 ${link("Get a call back", "/get-a-call", "Leave a business name and phone number; the team calls within one working day")}
 ${link("Businesses", "/business", "Every business type TajirPoint is set up for")}
-${link("Extensions", "/extensions", "Optional extensions that add features per shop")}
+${link("Add-ons", "/extensions", "Optional add-ons (extensions) that add features per shop, with status and price")}
 ${link("About", "/about", "Who builds TajirPoint")}
 ${link("Contact", "/contact", "Email and WhatsApp")}
 
 ## By business
 
 ${BUSINESSES.map((b) => link(b.name, `/business/${b.slug}`, b.navLine)).join("\n")}
+
+## Add-ons
+
+${addons.map((a) => link(a.name, `/extensions/${a.slug}`, `${STATUS_LABEL[a.status]}, ${a.price}. ${a.summary}`)).join("\n")}
 
 ## Features
 
@@ -87,11 +92,12 @@ ${link("Delete your account", "/delete-account", "How to request account and dat
 }
 
 export async function GET() {
-  const summary = planSummary(await getPlans());
+  const [plans, catalogue] = await Promise.all([getPlans(), getAddonCatalogue()]);
+  const summary = planSummary(plans);
   const pricing = summary
     ? `Plans and prices (USD): ${summary}. Light is free for 3 months with no card; paid plans can be cancelled any time, with a 15-day refund window on payments`
     : "Light is free for 3 months with no card; Shop and Business are paid plans, priced in USD";
-  return new Response(body(pricing), {
+  return new Response(body(pricing, catalogue.addons), {
     headers: {
       "Content-Type": "text/markdown; charset=utf-8",
       "Cache-Control": "public, max-age=300, stale-while-revalidate=86400",

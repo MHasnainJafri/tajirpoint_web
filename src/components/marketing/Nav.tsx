@@ -13,6 +13,7 @@ import {
   MEGA_EXT_PAYMENTS,
   MEGA_EXT_INTEGRATIONS,
   EXTENSIONS,
+  extensionHref,
 } from "@/lib/design/catalog";
 import { BUSINESSES, businessLabel } from "@/lib/marketing/businesses";
 import { siteConfig } from "@/lib/config/site";
@@ -241,7 +242,7 @@ export function Nav() {
               return (
                 <Link
                   key={id}
-                  href="/extensions"
+                  href={extensionHref(id)}
                   className="-mx-[10px] flex items-center gap-[10px] rounded-[10px] px-[10px] py-[9px] text-[13.5px] font-semibold transition-colors duration-200 hover:bg-[var(--color-surface)]"
                 >
                   <span className="inline-flex text-[var(--color-mint-2)]">

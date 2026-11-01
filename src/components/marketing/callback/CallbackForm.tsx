@@ -12,6 +12,7 @@ import {
 } from "@/lib/marketing/utm";
 import { trackCallbackRequest } from "@/lib/analytics/events";
 import { whatsappLink } from "@/lib/config/site";
+import { addonInterestMessage, addonNameFromSlug } from "@/lib/marketing/addon-names";
 import { hintCls, honeypotStyle, inputCls, textareaCls } from "@/components/forms/styles";
 import { Field } from "@/components/forms/Field";
 import { PhoneField } from "@/components/forms/PhoneField";
@@ -37,6 +38,7 @@ export function CallbackForm({
     undefined
   );
   const [businessType, setBusinessType] = useState("");
+  const [message, setMessage] = useState("");
   const [attribution, setAttribution] = useState<Attribution>(emptyAttribution);
   const tracked = useRef(false);
   const successRef = useRef<HTMLDivElement>(null);
@@ -47,6 +49,9 @@ export function CallbackForm({
     const params = new URLSearchParams(window.location.search);
     /* eslint-disable react-hooks/set-state-in-effect -- one-off sync from the URL and the stored first touch on mount */
     setBusinessType(preselectType(params.get("type")));
+    // From an add-on page: /get-a-call?addon=<slug>.
+    const addon = addonNameFromSlug(params.get("addon"));
+    if (addon) setMessage((m) => m || addonInterestMessage(addon));
     setAttribution(readAttribution(sessionStore(), currentAttribution()));
     /* eslint-enable react-hooks/set-state-in-effect */
   }, []);
@@ -177,6 +182,8 @@ export function CallbackForm({
           id={id("message")}
           name="message"
           rows={3}
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
           placeholder="Prices, switching from your old system, hardware…"
           className={textareaCls(!!f.message)}
           {...err("message")}

@@ -109,6 +109,40 @@ export const EXTENSIONS = [
 
 export const EXTENSION_COUNT = EXTENSIONS.length; // 31
 
+/**
+ * The backend catalogue slug (`/extensions/<slug>` detail page) for each id
+ * above whose id differs from it. Ids not listed use their own id as slug.
+ */
+const EXTENSION_SLUG_OVERRIDES: Partial<Record<(typeof EXTENSIONS)[number]["id"], string>> = {
+  pharmacy: "pharmacy-pack",
+  "hr-payroll": "hrm",
+  stripe: "stripe-payments",
+  jazzcash: "jazzcash-payments",
+  easypaisa: "easypaisa-payments",
+  hblpay: "hbl-payments",
+  paypal: "paypal-payments",
+  razorpay: "razorpay-payments",
+  square: "square-payments",
+  "accounting-gl": "accounting-gl",
+  quickbooks: "quickbooks-accounting",
+  fbr: "fbr-integration",
+  shopify: "shopify-sync",
+  woocommerce: "woocommerce-sync",
+  magento: "magento-sync",
+  wix: "wix-sync",
+  bigcommerce: "bigcommerce-sync",
+  leopards: "courier-leopards",
+  tcs: "courier-tcs",
+  postex: "courier-postex",
+  "time-promos": "time-promotions",
+};
+
+/** The add-on detail page for a marketplace id, e.g. "stripe" → "/extensions/stripe-payments". */
+export function extensionHref(id: string): string {
+  const slug = EXTENSION_SLUG_OVERRIDES[id as keyof typeof EXTENSION_SLUG_OVERRIDES] ?? id;
+  return `/extensions/${slug}`;
+}
+
 /* ── Landing: "one platform instead of five tools" ────────────────── */
 
 export const REPLACES = [
