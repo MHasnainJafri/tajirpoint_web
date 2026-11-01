@@ -13,9 +13,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "Idempotency — Tajir Point API",
+    title: "Idempotency — TajirPoint API",
+    absoluteTitle: true,
     description:
-      "Send an Idempotency-Key on sales and payments so a retried request cannot create a duplicate. Keys are held for 24 hours.",
+      "Send an Idempotency-Key header on sales and payments so a retried request cannot create a duplicate. TajirPoint keeps each key for 24 hours.",
     path: "/docs/idempotency",
     locale,
   });

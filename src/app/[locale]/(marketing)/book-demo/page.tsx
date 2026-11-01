@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { pageBreadcrumbs } from "@/lib/seo/schemas";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { setRequestLocale } from "next-intl/server";
 import { Check } from "lucide-react";
 import { Link } from "@/i18n/navigation";
@@ -14,7 +16,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "Book a Free Demo",
+    title: "Book a Free POS Demo",
     description:
       "See TajirPoint with your own kind of business. Book a free demo — we WhatsApp you within one working day, and we can move your data from your old POS for free.",
     path: "/book-demo",
@@ -48,6 +50,7 @@ export default async function BookDemoPage({ params }: { params: Promise<{ local
       dir="ltr"
       className="relative px-[clamp(16px,4vw,40px)] pb-[clamp(60px,9vw,110px)] pt-[clamp(36px,7vw,90px)]"
     >
+      <JsonLd schema={pageBreadcrumbs(locale, [["Book a demo", "/book-demo"]])} />
       <div className="relative mx-auto grid max-w-[1160px] items-start gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:grid-rows-[auto_1fr] lg:gap-x-[clamp(32px,5vw,72px)] lg:gap-y-0">
         {/* Phones (where ad clicks land) see heading → form → reasons;
             desktop keeps heading + reasons on the left, form on the right. */}

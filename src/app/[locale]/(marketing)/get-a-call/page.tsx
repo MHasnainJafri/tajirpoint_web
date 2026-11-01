@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { pageBreadcrumbs } from "@/lib/seo/schemas";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { setRequestLocale } from "next-intl/server";
 import { Check } from "lucide-react";
 import { Link } from "@/i18n/navigation";
@@ -14,9 +16,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "Get a Call Back",
+    title: "Get a Free Call Back from Our POS Team",
     description:
-      "Interested in TajirPoint POS? Leave your business name and phone number and our team will call you within one working day.",
+      "Interested in TajirPoint POS? Leave your business name and phone number and a person from our team calls you within one working day to answer your questions.",
     path: "/get-a-call",
     locale,
   });
@@ -44,6 +46,7 @@ export default async function GetACallPage({ params }: { params: Promise<{ local
       dir="ltr"
       className="relative px-[clamp(16px,4vw,40px)] pb-[clamp(60px,9vw,110px)] pt-[clamp(36px,7vw,90px)]"
     >
+      <JsonLd schema={pageBreadcrumbs(locale, [["Get a call back", "/get-a-call"]])} />
       <div className="relative mx-auto grid max-w-[1160px] items-start gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:grid-rows-[auto_1fr] lg:gap-x-[clamp(32px,5vw,72px)] lg:gap-y-0">
         {/* Phones see heading → form → reasons; desktop keeps heading +
             reasons on the left, form on the right (same as Book a demo). */}

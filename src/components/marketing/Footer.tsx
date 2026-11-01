@@ -52,6 +52,7 @@ export function Footer() {
               {businessLabel(b, locale).name}
             </FooterLink>
           ))}
+          <FooterLink href="/business">{t("links.allBusinesses")}</FooterLink>
         </FooterColumn>
 
         <FooterColumn heading={t("product")}>

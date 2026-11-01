@@ -14,11 +14,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "Tajir Point API — Documentation",
+    title: "TajirPoint API Documentation",
+    absoluteTitle: true,
     description:
       "REST API for products, inventory, sales, khata, and payments. JSON over HTTPS, bearer auth, cursor pagination, idempotent writes, and signed webhooks.",
     path: "/docs",
-    keywords: ["Tajir Point API", "POS API", "REST API", "developer documentation"],
+    keywords: ["TajirPoint API", "POS API", "REST API", "developer documentation"],
     locale,
   });
 }
@@ -58,7 +59,7 @@ export default async function DocsIndexPage({ params }: { params: Promise<{ loca
     <div className="flex max-w-[860px] flex-col gap-12">
       <header className="flex flex-col gap-4">
         <h1 className="text-[40px] font-extrabold leading-[1.1] tracking-[-0.04em] text-[var(--color-ink)]">
-          Tajir Point API
+          TajirPoint API
         </h1>
         <p className="text-[16.5px] leading-[1.7] text-[var(--color-muted)]">
           A REST API over your shop: products, stock, sales, khata, and payments. Predictable

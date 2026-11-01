@@ -24,7 +24,7 @@ export function Lockup({ className, size, variant, ...props }: LockupProps) {
   return (
     <span
       className={cn(lockupVariants({ size, variant }), className)}
-      aria-label="Tajir Point"
+      aria-label="TajirPoint"
       {...props}
     >
       <Mark

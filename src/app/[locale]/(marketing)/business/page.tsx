@@ -7,7 +7,8 @@ import { MigrationBand } from "@/components/marketing/business/MigrationBand";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { BUSINESSES, OFFER_LINE } from "@/lib/marketing/businesses";
 import { siteConfig } from "@/lib/config/site";
-import { buildMetadata, localeUrl } from "@/lib/seo/metadata";
+import { buildMetadata, canonicalUrl } from "@/lib/seo/metadata";
+import { pageBreadcrumbs } from "@/lib/seo/schemas";
 
 export async function generateMetadata({
   params,
@@ -16,9 +17,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "POS for Every Kind of Business",
+    title: "POS System for Every Kind of Business",
     description:
-      "TajirPoint for restaurants, cafés, cloud kitchens, retail and fashion, grocery and kiryana, pharmacies, electronics, salons, distributors and furniture stores. Free for 3 months.",
+      "TajirPoint POS for restaurants, cafés, cloud kitchens, clothing, grocery and kiryana stores, pharmacies, mobile shops, salons, distributors and factories.",
     path: "/business",
     locale,
   });
@@ -31,22 +32,25 @@ export default async function BusinessIndexPage({ params }: { params: Promise<{ 
   return (
     <div className="mx-auto max-w-[1240px] px-[clamp(16px,3vw,24px)] pb-[clamp(56px,8vw,104px)]" style={{ overflowX: "clip" }}>
       <JsonLd
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "ItemList",
-          name: "TajirPoint by business type",
-          itemListElement: BUSINESSES.map((b, i) => ({
-            "@type": "ListItem",
-            position: i + 1,
-            name: b.name,
-            url: localeUrl(`/business/${b.slug}`, locale),
-          })),
-        }}
+        schema={[
+          pageBreadcrumbs(locale, [["Businesses", "/business"]]),
+          {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            name: "TajirPoint by business type",
+            itemListElement: BUSINESSES.map((b, i) => ({
+              "@type": "ListItem",
+              position: i + 1,
+              name: b.name,
+              url: canonicalUrl(`/business/${b.slug}`, locale),
+            })),
+          },
+        ]}
       />
       <section className="pb-10 pt-[clamp(36px,7vw,90px)] text-center">
         <PillBadge>Find your business</PillBadge>
         <h1 className="mx-auto mt-6 max-w-[20ch] text-[clamp(32px,5vw,60px)] font-extrabold leading-[1.05] tracking-[-0.04em] text-balance">
-          One system, shaped around your counter.
+          One POS system, shaped around your counter.
         </h1>
         <p className="mx-auto mt-5 max-w-[56ch] text-[16.5px] leading-[1.65] text-[var(--color-body)]">
           Pick your kind of business to see the screens, apps and reports you would use — then book a

@@ -13,7 +13,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "Webhooks — Tajir Point API",
+    title: "Webhooks — TajirPoint API",
+    absoluteTitle: true,
     description:
       "Register an HTTPS endpoint and get signed POSTs on sale, refund, payment, purchase or low-stock events. HMAC-SHA256 signatures, 5 retries with backoff.",
     path: "/docs/webhooks",

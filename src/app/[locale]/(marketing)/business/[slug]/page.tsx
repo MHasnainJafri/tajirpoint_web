@@ -20,7 +20,7 @@ import {
 } from "@/lib/marketing/businesses";
 import { getPlans } from "@/lib/api/plans";
 import { siteConfig } from "@/lib/config/site";
-import { buildMetadata, localeUrl } from "@/lib/seo/metadata";
+import { buildMetadata, canonicalUrl } from "@/lib/seo/metadata";
 import { breadcrumbSchema, faqSchema, verticalSoftwareSchema } from "@/lib/seo/schemas";
 
 /** Only the catalog's slugs exist; anything else is a 404, not a render. */
@@ -75,9 +75,9 @@ export default async function BusinessPage({ params }: { params: Params }) {
           }),
           faqSchema(faqs.map((f) => ({ question: f.q, answer: f.a }))),
           breadcrumbSchema([
-            { name: "Home", url: localeUrl("/", locale) },
-            { name: "Businesses", url: localeUrl("/business", locale) },
-            { name: b.name, url: localeUrl(`/business/${b.slug}`, locale) },
+            { name: "Home", url: canonicalUrl("/", locale) },
+            { name: "Businesses", url: canonicalUrl("/business", locale) },
+            { name: b.name, url: canonicalUrl(`/business/${b.slug}`, locale) },
           ]),
         ]}
       />
@@ -101,9 +101,13 @@ export default async function BusinessPage({ params }: { params: Params }) {
         {/* ── Hero ───────────────────────────────────────────────── */}
         <section className="grid items-center gap-[clamp(28px,5vw,64px)] pb-[clamp(40px,6vw,72px)] pt-[clamp(24px,4vw,48px)] lg:grid-cols-[1fr_1.1fr]">
           <div>
-            <div className="eyebrow">{b.hero.eyebrow}</div>
-            <h1 className="mt-4 text-[clamp(32px,4.8vw,58px)] font-extrabold leading-[1.05] tracking-[-0.04em] text-balance">
-              {b.hero.headline}
+            {/* The eyebrow is part of the h1: it carries the search term
+                ("Restaurant POS system") that the headline, written for
+                people, does not. Styled exactly as before. */}
+            <h1 className="text-[clamp(32px,4.8vw,58px)] font-extrabold leading-[1.05] tracking-[-0.04em] text-balance">
+              <span className="eyebrow">{b.hero.eyebrow}</span>
+              <span className="sr-only">: </span>
+              <span className="mt-4 block">{b.hero.headline}</span>
             </h1>
             <p className="mt-5 max-w-[56ch] text-[16.5px] leading-[1.65] text-[var(--color-body)]">{b.hero.sub}</p>
             <div className="mt-7 flex flex-wrap gap-[10px]" data-track={`business_${b.slug}_hero`}>

@@ -16,7 +16,7 @@ export async function generateMetadata({
   return buildMetadata({
     title: "Cookie Policy",
     description:
-      "Which cookies and similar storage TajirPoint uses on its website, web app and order pages, what they do, and how to control them.",
+      "Which cookies and similar storage TajirPoint uses on its website, web app and order pages, what each one does, and how to accept, refuse or remove them.",
     path: "/cookies",
     locale,
   });

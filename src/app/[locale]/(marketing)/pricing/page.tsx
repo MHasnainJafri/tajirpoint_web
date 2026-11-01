@@ -7,9 +7,11 @@ import { MigrationBand } from "@/components/marketing/business/MigrationBand";
 import { CallbackSection } from "@/components/marketing/callback/CallbackSection";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { FAQ_TABS } from "@/lib/design/landing";
-import { faqSchema, softwareApplicationSchema } from "@/lib/seo/schemas";
-import { getPlans, planNames, planSummary } from "@/lib/api/plans";
-import { buildMetadata } from "@/lib/seo/metadata";
+import { faqSchema, pageBreadcrumbs, softwareApplicationSchema } from "@/lib/seo/schemas";
+import { TrackView } from "@/components/analytics/TrackView";
+import { getPlans, planSummary } from "@/lib/api/plans";
+import { buildMetadata, fitDescription } from "@/lib/seo/metadata";
+import { routing } from "@/i18n/routing";
 
 export async function generateMetadata({
   params,
@@ -17,14 +19,16 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  // Plan names and prices come from the same API rows as the cards, so an
-  // admin edit reaches the search snippet too. Without them, name nothing.
-  const plans = await getPlans();
-  const names = planNames(plans);
-  const summary = planSummary(plans);
+  const t = await getTranslations({ locale, namespace: "landing.pricingMeta" });
+  // English snippets lead with the live plan list from the same API rows as
+  // the cards ("Shop $29/month…"), so an admin price edit reaches the search
+  // result too. fitDescription drops trailing sentences rather than letting a
+  // longer plan list run past 160 characters. Urdu and Arabic use their own
+  // copy: the plan summary is English.
+  const summary = locale === routing.defaultLocale ? planSummary(await getPlans()) : null;
   return buildMetadata({
-    title: names ? `Pricing — ${names}` : "Pricing — Free for 3 months, then Shop or Business",
-    description: `${summary ? `${summary}. ` : ""}Light is free for 3 months with no card; paid plans are billed in USD, cancel any time, 15-day refund on payments, no transaction fees.`,
+    title: t("title"),
+    description: summary ? fitDescription(`${summary}.`, t("offer"), t("terms")) : t("description"),
     path: "/pricing",
     locale,
   });
@@ -49,7 +53,14 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
 
   return (
     <>
-      <JsonLd schema={[softwareApplicationSchema(plans), faqSchema(questions)]} />
+      <JsonLd
+        schema={[
+          softwareApplicationSchema(plans),
+          faqSchema(questions),
+          pageBreadcrumbs(locale, [["Pricing", "/pricing"]]),
+        ]}
+      />
+      <TrackView event="pricing" />
 
       <div
         className="mx-auto max-w-[1240px] px-[clamp(14px,3vw,24px)] pt-4"

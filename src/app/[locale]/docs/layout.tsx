@@ -31,7 +31,7 @@ export default async function DocsLayout({
               href="/"
               className="text-[16px] font-extrabold tracking-[-0.02em] text-[var(--color-ink)]"
             >
-              Tajir Point
+              TajirPoint
             </Link>
             <span className="text-[var(--color-muted-3)]">/</span>
             <Link

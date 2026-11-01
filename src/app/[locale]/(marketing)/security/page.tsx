@@ -28,9 +28,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "Security",
+    title: "Security: How We Protect Your Data",
     description:
-      "How TajirPoint protects your business data: encrypted connections, hashed passwords, per-user logins and roles, activity logs, backups, offline selling and responsible disclosure.",
+      "How TajirPoint protects your business data: encrypted connections, hashed passwords, staff logins and roles, activity logs, backups and responsible disclosure.",
     path: "/security",
     locale,
   });

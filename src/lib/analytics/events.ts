@@ -146,6 +146,21 @@ export function trackContactSubmit(details: { businessType: string }) {
   pixel("Contact", { content_name: "contact_form", content_category: businessType });
 }
 
+/**
+ * The pricing page was viewed — a high-intent visit, worth its own GA4 key
+ * event and a Meta "ViewContent" for retargeting people who saw the prices.
+ */
+export function trackPricingView() {
+  trackEvent("view_pricing", { page_location: window.location.href });
+  pixel("ViewContent", { content_name: "pricing", content_category: "pricing" });
+}
+
+/** Click on a phone (tel:) or email (mailto:) link. */
+export function trackContactClick(channel: "phone" | "email", location: string) {
+  trackEvent("contact_click", { channel, location });
+  pixel("Contact", { content_name: channel, content_category: location });
+}
+
 /** A business page was viewed (for ad audiences per business type). */
 export function trackBusinessView(slug: string) {
   trackEvent("view_business_page", { business_type: slug });

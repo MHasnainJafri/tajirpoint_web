@@ -15,7 +15,7 @@ import { PillBadge, MintButton, GhostButton, CtaPanel } from "@/components/desig
 import { JsonLd } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { faqSchema } from "@/lib/seo/schemas";
+import { faqSchema, pageBreadcrumbs } from "@/lib/seo/schemas";
 
 export async function generateMetadata({
   params,
@@ -24,15 +24,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "Van Sales & Route Dispatch for Distributors",
+    title: "Van Sales & Route Dispatch Software",
     description:
-      "Van sales, route dispatch and day-end reconciliation. Load stock onto a van, collect cash door to door, and balance every route at night.",
+      "Van sales software for distributors: load stock onto a van, sell and collect cash door to door, dispatch routes and reconcile every route at day end.",
     path: "/features/van-sales",
     locale,
   });
 }
 
-/** The proof points from the design's "how Tajir Point solves it" column. */
+/** The proof points from the design's "how TajirPoint solves it" column. */
 const SOLUTION_POINTS = [
   "Load stock onto a van as a mobile warehouse",
   "Route selling and door-to-door cash collection",
@@ -86,7 +86,9 @@ export default async function VanSalesFeaturePage({
 
   return (
     <div lang="en" dir="ltr">
-      <JsonLd schema={faqSchema(FAQS)} />
+      <JsonLd
+        schema={[faqSchema(FAQS), pageBreadcrumbs(locale, [["Van sales", "/features/van-sales"]])]}
+      />
 
       {/* ── Hero ────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden px-5 pb-[70px] pt-[140px] md:px-10">
@@ -115,7 +117,7 @@ export default async function VanSalesFeaturePage({
             </span>
 
             <h1 className="mt-[18px] max-w-[620px] animate-[tpFadeUp_.8s_.15s_cubic-bezier(.22,1,.36,1)_both] text-[clamp(34px,4.6vw,56px)] font-extrabold leading-[1.05] tracking-[-0.035em]">
-              Turn every truck into
+              Van sales software: every truck
               <br />a mobile warehouse.
             </h1>
 

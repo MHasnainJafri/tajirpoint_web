@@ -11,7 +11,7 @@ export function Mark({ variant = "on-light", className, ...props }: MarkProps) {
     <svg
       viewBox="0 0 200 200"
       xmlns="http://www.w3.org/2000/svg"
-      aria-label="Tajir Point"
+      aria-label="TajirPoint"
       className={cn("h-8 w-8", className)}
       {...props}
     >

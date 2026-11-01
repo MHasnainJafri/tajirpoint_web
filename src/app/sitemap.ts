@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
-import { localeUrl } from "@/lib/seo/metadata";
+import { isTranslated, localeUrl } from "@/lib/seo/metadata";
 import { RESOURCES } from "@/lib/docs/nav";
 import { BUSINESS_SLUGS } from "@/lib/marketing/businesses";
 
@@ -8,83 +8,104 @@ type Page = {
   path: string;
   priority: number;
   changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
+  /**
+   * The date the page's CONTENT last changed (copy, structured data, links) —
+   * not the deploy date. Google only trusts <lastmod> when it is consistently
+   * true, so a build-time `new Date()` on every page would teach it to ignore
+   * the field. Bump the date in the same commit that changes the page.
+   */
+  updated: string;
 };
 
-/** Every docs page is its own indexable URL — that is the whole point of
- *  splitting the reference out of one long marketing page. */
+const DOCS_UPDATED = "2026-09-10";
+
+/** Every docs page is its own indexable URL. */
 const DOCS_PAGES: Page[] = [
-  { path: "/docs", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/docs", priority: 0.6, changeFrequency: "monthly", updated: DOCS_UPDATED },
   ...["authentication", "pagination", "errors", "idempotency", "webhooks"].map(
     (slug): Page => ({
       path: `/docs/${slug}`,
-      priority: 0.7,
+      priority: 0.5,
       changeFrequency: "monthly",
+      updated: DOCS_UPDATED,
     })
   ),
   ...RESOURCES.map(
     (r): Page => ({
       path: `/docs/${r.slug}`,
-      priority: 0.7,
+      priority: 0.5,
       changeFrequency: "monthly",
+      updated: DOCS_UPDATED,
     })
   ),
 ];
 
 const BUSINESS_PAGES: Page[] = [
-  { path: "/business", priority: 0.9, changeFrequency: "weekly" },
+  { path: "/business", priority: 0.9, changeFrequency: "weekly", updated: "2026-11-01" },
   ...BUSINESS_SLUGS.map(
-    (slug): Page => ({ path: `/business/${slug}`, priority: 0.9, changeFrequency: "monthly" })
+    (slug): Page => ({
+      path: `/business/${slug}`,
+      priority: 0.9,
+      changeFrequency: "monthly",
+      updated: "2026-11-01",
+    })
   ),
 ];
 
+const FEATURE_PAGES: Page[] = ["khata", "offline", "accounting", "van-sales", "e-invoicing"].map(
+  (slug): Page => ({
+    path: `/features/${slug}`,
+    priority: 0.8,
+    changeFrequency: "monthly",
+    updated: "2026-11-01",
+  })
+);
+
 const PAGES: Page[] = [
-  { path: "/", priority: 1.0, changeFrequency: "weekly" },
-  { path: "/pricing", priority: 0.9, changeFrequency: "monthly" },
-  { path: "/book-demo", priority: 0.9, changeFrequency: "monthly" },
-  { path: "/get-a-call", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/", priority: 1.0, changeFrequency: "weekly", updated: "2026-11-01" },
+  { path: "/pricing", priority: 0.9, changeFrequency: "monthly", updated: "2026-11-01" },
+  { path: "/book-demo", priority: 0.8, changeFrequency: "monthly", updated: "2026-11-01" },
+  { path: "/get-a-call", priority: 0.8, changeFrequency: "monthly", updated: "2026-11-01" },
   ...BUSINESS_PAGES,
-  { path: "/extensions", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/features/khata", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/features/offline", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/features/accounting", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/features/van-sales", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/features/e-invoicing", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/extensions", priority: 0.8, changeFrequency: "monthly", updated: "2026-09-10" },
+  ...FEATURE_PAGES,
   ...DOCS_PAGES,
-  { path: "/about", priority: 0.7, changeFrequency: "monthly" },
-  { path: "/contact", priority: 0.7, changeFrequency: "monthly" },
-  { path: "/security", priority: 0.5, changeFrequency: "monthly" },
-  { path: "/privacy", priority: 0.4, changeFrequency: "yearly" },
-  { path: "/terms", priority: 0.4, changeFrequency: "yearly" },
-  { path: "/cookies", priority: 0.3, changeFrequency: "yearly" },
-  { path: "/refund-policy", priority: 0.3, changeFrequency: "yearly" },
-  { path: "/delete-account", priority: 0.3, changeFrequency: "yearly" },
+  { path: "/about", priority: 0.6, changeFrequency: "monthly", updated: "2026-10-14" },
+  { path: "/contact", priority: 0.6, changeFrequency: "monthly", updated: "2026-10-14" },
+  { path: "/security", priority: 0.4, changeFrequency: "yearly", updated: "2026-10-11" },
+  { path: "/privacy", priority: 0.3, changeFrequency: "yearly", updated: "2026-10-11" },
+  { path: "/terms", priority: 0.3, changeFrequency: "yearly", updated: "2026-10-11" },
+  { path: "/cookies", priority: 0.2, changeFrequency: "yearly", updated: "2026-10-12" },
+  { path: "/refund-policy", priority: 0.2, changeFrequency: "yearly", updated: "2026-10-11" },
+  { path: "/delete-account", priority: 0.2, changeFrequency: "yearly", updated: "2026-10-15" },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // One entry per page per locale, each carrying the full hreflang cluster.
+  // Only canonical URLs. A translated page is listed once per language, each
+  // entry carrying the full hreflang cluster. An untranslated page is listed
+  // once, in English: its /ur and /ar copies canonicalise to the English URL
+  // (see TRANSLATED_PATHS), and a sitemap must not list non-canonical URLs.
   //
-  // This is only possible because routing moved to `localePrefix: "as-needed"`.
-  // Under the previous `"never"` all three languages resolved to a single URL,
-  // so there was nothing to list and no valid cluster to annotate — Urdu and
-  // Arabic were entirely absent from Google.
-  //
-  // Still no `lastModified`, deliberately. `new Date()` is evaluated at build
-  // time, so every page would claim to have changed on every deploy; a sitemap
-  // that always cries "just updated" trains Google to stop trusting the signal.
-  // Better omitted than faked — restore it only with real per-page dates.
-  return PAGES.flatMap(({ path, priority, changeFrequency }) =>
-    routing.locales.map((locale) => ({
+  // `priority` and `changefreq` are ignored by Google; Bing still reads them.
+  return PAGES.flatMap(({ path, priority, changeFrequency, updated }) => {
+    const lastModified = new Date(`${updated}T00:00:00Z`);
+    if (!isTranslated(path)) {
+      return [
+        { url: localeUrl(path, routing.defaultLocale), lastModified, changeFrequency, priority },
+      ];
+    }
+    const languages = Object.fromEntries([
+      ...routing.locales.map((l) => [l, localeUrl(path, l)]),
+      ["x-default", localeUrl(path, routing.defaultLocale)],
+    ]);
+    return routing.locales.map((locale) => ({
       url: localeUrl(path, locale),
+      lastModified,
       changeFrequency,
       // Non-default locales rank slightly below their English counterpart so
       // the English URL stays the preferred entry point of each cluster.
       priority: locale === routing.defaultLocale ? priority : Math.max(0.1, priority - 0.1),
-      alternates: {
-        languages: Object.fromEntries([
-          ...routing.locales.map((l) => [l, localeUrl(path, l)]),
-          ["x-default", localeUrl(path, routing.defaultLocale)],
-        ]),
-      },
-    }))
-  );
+      alternates: { languages },
+    }));
+  });
 }

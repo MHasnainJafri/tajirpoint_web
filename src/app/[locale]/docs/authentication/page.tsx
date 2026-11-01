@@ -14,9 +14,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "Get your API key — Tajir Point API",
+    title: "API Authentication — TajirPoint API",
+    absoluteTitle: true,
     description:
-      "Authenticate against the Tajir Point API: exchange credentials for a bearer token, send X-Shop-Id, and refresh before the 30-minute expiry.",
+      "Authenticate against the TajirPoint API: exchange your credentials for a bearer token, send the X-Shop-Id header and refresh it before the 30-minute expiry.",
     path: "/docs/authentication",
     locale,
   });
