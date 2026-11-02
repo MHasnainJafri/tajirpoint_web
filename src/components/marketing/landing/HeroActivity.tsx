@@ -100,7 +100,7 @@ export function HeroActivity() {
                 className="flex items-center gap-3 rounded-[16px] border border-white/[0.1] bg-white/[0.06] px-3.5 py-3 backdrop-blur-sm transition-all duration-700 ease-out"
                 motion="motion-safe:animate-[tpSlideIn_600ms_ease-out_both]"
                 style={{
-                  opacity: 1 - age * 0.24,
+                  opacity: 1 - age * 0.12,
                   transform: `scale(${1 - age * 0.035})`,
                   transformOrigin: "top center",
                 }}
@@ -120,9 +120,9 @@ export function HeroActivity() {
                   <span className="block truncate text-[13px] font-semibold text-white">
                     {e.title}
                   </span>
-                  <span className="block truncate text-[11.5px] text-[#9AA0AA]">{e.meta}</span>
+                  <span className="block truncate text-[11.5px] text-[#B5B9C2]">{e.meta}</span>
                 </span>
-                <span className="ms-auto flex-none text-[10.5px] text-[#6B7079]">
+                <span className="ms-auto flex-none text-[10.5px] text-[#9AA0AA]">
                   {age === 0 ? "now" : `${age * 3}s`}
                 </span>
               </Enter>

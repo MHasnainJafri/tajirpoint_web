@@ -1,13 +1,20 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 import { Link } from "@/i18n/navigation";
 import { Stroke, Tick } from "./Stroke";
 import { BASIC_INCLUDES } from "@/lib/design/landing";
 import { siteConfig } from "@/lib/config/site";
-import { getPricing, hasLimits, pkrLabel, planPriceLabel, type MarketingPlan } from "@/lib/api/plans";
+import {
+  getPricing,
+  hasLimits,
+  pkrLabel,
+  planPriceLabel,
+  type MarketingPlan,
+} from "@/lib/api/plans";
 import { PlanCards } from "./PlanCards";
 import { PkrPrice } from "./PkrPrice";
 import { getPlanLabels } from "./planLabels";
+import { localizePlans } from "@/content/i18n/plans";
 
 /**
  * The published tier table, read from the backend.
@@ -28,8 +35,8 @@ export async function Pricing({
   showCompare = false,
 }: { showHeader?: boolean; showCompare?: boolean } = {}) {
   const t = await getTranslations("landing.pricing");
-  const [pricing, labels] = await Promise.all([getPricing(), getPlanLabels()]);
-  const plans = pricing?.plans ?? null;
+  const [pricing, labels, locale] = await Promise.all([getPricing(), getPlanLabels(), getLocale()]);
+  const plans = pricing ? localizePlans(pricing.plans, locale) : null;
 
   return (
     <section id="pricing" className="mt-[clamp(64px,9vw,120px)] scroll-mt-[86px]">
@@ -79,7 +86,11 @@ function CompareTable({ plans, t }: { plans: MarketingPlan[]; t: T }) {
         <>
           {`${planPriceLabel(p)}${p.is_priced ? ` ${t("perMonth")}` : ""}`}
           {/* PKR for visitors in Pakistan, only when the plan has one. */}
-          <PkrPrice amount={pkrLabel(p, "monthly")} period={t("perMonth")} className="block text-[13px] text-[var(--color-ink-3)]" />
+          <PkrPrice
+            amount={pkrLabel(p, "monthly")}
+            period={t("perMonth")}
+            className="block text-[13px] text-[var(--color-ink-3)]"
+          />
         </>
       ),
     },
@@ -95,18 +106,32 @@ function CompareTable({ plans, t }: { plans: MarketingPlan[]; t: T }) {
   ];
   return (
     <div data-reveal className="mt-[clamp(40px,6vw,64px)]">
-      <h2 className="text-center text-[clamp(22px,2.8vw,32px)] font-bold tracking-[-0.03em]">{t("compare.title")}</h2>
+      <h2 className="text-center text-[clamp(22px,2.8vw,32px)] font-bold tracking-[-0.03em]">
+        {t("compare.title")}
+      </h2>
       {/* Scrolls inside its own box on a phone — the page never scrolls sideways. */}
-      <div className="mt-6 overflow-x-auto rounded-[20px] border border-[var(--color-line-2)] bg-white" tabIndex={0} role="region" aria-label={t("compare.title")}>
+      <div
+        className="mt-6 overflow-x-auto rounded-[20px] border border-[var(--color-line-2)] bg-white"
+        tabIndex={0}
+        role="region"
+        aria-label={t("compare.title")}
+      >
         <table className="w-full min-w-[560px] border-collapse text-[14px]">
           <thead>
             <tr className="border-b border-[var(--color-line-2)] bg-[var(--color-surface)]">
-              <th scope="col" className="px-4 py-3 text-start font-semibold text-[var(--color-muted)]">
+              <th
+                scope="col"
+                className="px-4 py-3 text-start font-semibold text-[var(--color-muted)]"
+              >
                 {t("compare.feature")}
               </th>
               {plans.map((p) => (
-                <th key={p.id} scope="col" className="px-4 py-3 text-start font-bold text-[var(--color-ink)]">
-                  {p.name}
+                <th
+                  key={p.id}
+                  scope="col"
+                  className="px-4 py-3 text-start font-bold text-[var(--color-ink)]"
+                >
+                  <bdi>{p.name}</bdi>
                 </th>
               ))}
             </tr>
@@ -114,7 +139,10 @@ function CompareTable({ plans, t }: { plans: MarketingPlan[]; t: T }) {
           <tbody>
             {rows.map((row) => (
               <tr key={row.label} className="border-b border-[var(--color-line)] last:border-b-0">
-                <th scope="row" className="px-4 py-3 text-start font-semibold text-[var(--color-ink-3)]">
+                <th
+                  scope="row"
+                  className="px-4 py-3 text-start font-semibold text-[var(--color-ink-3)]"
+                >
                   {row.label}
                 </th>
                 {plans.map((p) => (

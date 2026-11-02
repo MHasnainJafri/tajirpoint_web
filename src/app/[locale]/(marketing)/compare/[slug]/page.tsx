@@ -66,12 +66,18 @@ export default async function ComparisonPage({ params }: { params: Params }) {
         ]}
       />
 
-      <div className="mx-auto max-w-[1140px] px-[clamp(16px,3vw,24px)]" style={{ overflowX: "clip" }}>
+      <div
+        className="mx-auto max-w-[1140px] px-[clamp(16px,3vw,24px)]"
+        style={{ overflowX: "clip" }}
+      >
         {/* ── Breadcrumb ─────────────────────────────────────────── */}
         <nav aria-label="Breadcrumb" className="pt-5 text-[12.5px] text-[var(--color-muted)]">
           <ol className="flex flex-wrap items-center gap-2">
             <li>
-              <Link href="/compare" className="max-md:inline-flex max-md:min-h-[44px] max-md:items-center hover:text-[var(--color-ink)]">
+              <Link
+                href="/compare"
+                className="max-md:inline-flex max-md:min-h-[44px] max-md:items-center hover:text-[var(--color-ink)]"
+              >
                 Compare
               </Link>
             </li>
@@ -96,8 +102,12 @@ export default async function ComparisonPage({ params }: { params: Params }) {
             {isCompetitor ? (
               <>
                 {" "}
-                Facts about {c.otherName} checked <time dateTime={CHECKED_ISO}>{CHECKED}</time>{" "}
-                from its own pages (<a href="#sources-title" className="underline underline-offset-2">sources</a>).
+                Facts about {c.otherName} checked <time dateTime={CHECKED_ISO}>{CHECKED}</time> from
+                its own pages (
+                <a href="#sources-title" className="underline underline-offset-2">
+                  sources
+                </a>
+                ).
               </>
             ) : null}
           </p>
@@ -111,33 +121,52 @@ export default async function ComparisonPage({ params }: { params: Params }) {
 
         {/* ── The short answer ──────────────────────────────────── */}
         <section aria-labelledby="verdict-title">
-          <h2 id="verdict-title" className="text-[clamp(22px,2.8vw,30px)] font-extrabold tracking-[-0.025em]">
+          <h2
+            id="verdict-title"
+            className="text-[clamp(22px,2.8vw,30px)] font-extrabold tracking-[-0.025em]"
+          >
             The short answer
           </h2>
           <div className="mt-5 grid gap-4 md:grid-cols-2">
             <div className="rounded-[18px] border border-[var(--color-mint-line)] bg-[var(--color-mint-soft)] p-5">
-              <div className="text-[13px] font-bold text-[var(--color-brand)]">TajirPoint is a better fit if…</div>
-              <p className="mt-2 text-[15px] leading-[1.6] text-[var(--color-ink-2)]">{c.verdict.tajirpoint}</p>
+              <div className="text-[13px] font-bold text-[var(--color-mint-2)]">
+                TajirPoint is a better fit if…
+              </div>
+              <p className="mt-2 text-[15px] leading-[1.6] text-[var(--color-ink-2)]">
+                {c.verdict.tajirpoint}
+              </p>
             </div>
             <div className="rounded-[18px] border border-[var(--color-line)] bg-[var(--color-bg-2)] p-5">
-              <div className="text-[13px] font-bold text-[var(--color-ink-3)]">{c.otherName} is a better fit if…</div>
-              <p className="mt-2 text-[15px] leading-[1.6] text-[var(--color-ink-2)]">{c.verdict.other}</p>
+              <div className="text-[13px] font-bold text-[var(--color-ink-3)]">
+                {c.otherName} is a better fit if…
+              </div>
+              <p className="mt-2 text-[15px] leading-[1.6] text-[var(--color-ink-2)]">
+                {c.verdict.other}
+              </p>
             </div>
           </div>
         </section>
 
         {/* ── Strengths, both sides ─────────────────────────────── */}
         <section aria-labelledby="strengths-title" className="mt-[clamp(40px,6vw,72px)]">
-          <h2 id="strengths-title" className="text-[clamp(22px,2.8vw,30px)] font-extrabold tracking-[-0.025em]">
+          <h2
+            id="strengths-title"
+            className="text-[clamp(22px,2.8vw,30px)] font-extrabold tracking-[-0.025em]"
+          >
             Where each one is stronger
           </h2>
           <div className="mt-5 grid gap-6 md:grid-cols-2">
             <div>
-              <h3 className="text-[16px] font-bold text-[var(--color-ink)]">Where TajirPoint helps</h3>
+              <h3 className="text-[16px] font-bold text-[var(--color-ink)]">
+                Where TajirPoint helps
+              </h3>
               <ul className="mt-3 flex flex-col gap-3">
                 {c.tajirpointStrengths.map((s) => (
-                  <li key={s} className="flex items-start gap-3 text-[15px] leading-[1.55] text-[var(--color-body)]">
-                    <span className="mt-[2px] shrink-0 text-[var(--color-brand)]">
+                  <li
+                    key={s}
+                    className="flex items-start gap-3 text-[15px] leading-[1.55] text-[var(--color-body)]"
+                  >
+                    <span className="mt-[2px] shrink-0 text-[var(--color-mint-2)]">
                       <Tick />
                     </span>
                     <span className="min-w-0">{s}</span>
@@ -146,10 +175,15 @@ export default async function ComparisonPage({ params }: { params: Params }) {
               </ul>
             </div>
             <div>
-              <h3 className="text-[16px] font-bold text-[var(--color-ink)]">Where {c.otherName} is stronger</h3>
+              <h3 className="text-[16px] font-bold text-[var(--color-ink)]">
+                Where {c.otherName} is stronger
+              </h3>
               <ul className="mt-3 flex flex-col gap-3">
                 {c.otherStrengths.map((s) => (
-                  <li key={s} className="flex items-start gap-3 text-[15px] leading-[1.55] text-[var(--color-body)]">
+                  <li
+                    key={s}
+                    className="flex items-start gap-3 text-[15px] leading-[1.55] text-[var(--color-body)]"
+                  >
                     <span className="mt-[2px] shrink-0 text-[var(--color-muted)]">
                       <Tick />
                     </span>
@@ -163,18 +197,26 @@ export default async function ComparisonPage({ params }: { params: Params }) {
 
         {/* ── Feature table ─────────────────────────────────────── */}
         <section aria-labelledby="table-title" className="mt-[clamp(40px,6vw,72px)]">
-          <h2 id="table-title" className="text-[clamp(22px,2.8vw,30px)] font-extrabold tracking-[-0.025em]">
+          <h2
+            id="table-title"
+            className="text-[clamp(22px,2.8vw,30px)] font-extrabold tracking-[-0.025em]"
+          >
             {`TajirPoint vs ${c.otherName}, feature by feature`}
           </h2>
           <p className="mb-5 mt-2 max-w-[70ch] text-[14px] leading-[1.6] text-[var(--color-muted)]">
-            “Partly” means on a higher plan, with an add-on or with a limit. “Coming soon” means built
-            or being built, not released yet.
-            {isCompetitor ? " Where we could not confirm something on their site, we say so instead of guessing." : ""}
+            “Partly” means on a higher plan, with an add-on or with a limit. “Coming soon” means
+            built or being built, not released yet.
+            {isCompetitor
+              ? " Where we could not confirm something on their site, we say so instead of guessing."
+              : ""}
           </p>
           <CompareTable c={c} />
           <p className="mt-4 text-[13.5px] leading-[1.6] text-[var(--color-muted)]">
             {tpPlans ? <>TajirPoint plans today: {tpPlans}. </> : null}
-            <Link href="/pricing" className="font-semibold text-[var(--color-brand)] hover:underline">
+            <Link
+              href="/pricing"
+              className="font-semibold text-[var(--color-mint-2)] hover:underline"
+            >
               See TajirPoint pricing
             </Link>
             .
@@ -185,21 +227,31 @@ export default async function ComparisonPage({ params }: { params: Params }) {
         <div className="mt-[clamp(40px,6vw,72px)] max-w-[760px]">
           {c.sections.map((s) => (
             <section key={s.heading} className="mt-8 first:mt-0">
-              <h2 className="text-[clamp(20px,2.4vw,26px)] font-extrabold tracking-[-0.02em]">{s.heading}</h2>
+              <h2 className="text-[clamp(20px,2.4vw,26px)] font-extrabold tracking-[-0.02em]">
+                {s.heading}
+              </h2>
               {s.paragraphs.map((p) => (
-                <p key={p.slice(0, 40)} className="mt-3 text-[16px] leading-[1.7] text-[var(--color-body)]">
+                <p
+                  key={p.slice(0, 40)}
+                  className="mt-3 text-[16px] leading-[1.7] text-[var(--color-body)]"
+                >
                   {p}
                 </p>
               ))}
             </section>
           ))}
           <section className="mt-8">
-            <h2 className="text-[clamp(20px,2.4vw,26px)] font-extrabold tracking-[-0.02em]">Switching to TajirPoint</h2>
+            <h2 className="text-[clamp(20px,2.4vw,26px)] font-extrabold tracking-[-0.02em]">
+              Switching to TajirPoint
+            </h2>
             <p className="mt-3 text-[16px] leading-[1.7] text-[var(--color-body)]">
-              Send us an export from your current system or your sheets (Excel or CSV is fine) and our
-              team loads your products, customers, suppliers, credit balances and opening stock for
-              free before you go live.{" "}
-              <Link href="/book-demo?migrate=1" className="font-semibold text-[var(--color-brand)] hover:underline">
+              Send us an export from your current system or your sheets (Excel or CSV is fine) and
+              our team loads your products, customers, suppliers, credit balances and opening stock
+              for free before you go live.{" "}
+              <Link
+                href="/book-demo?migrate=1"
+                className="font-semibold text-[var(--color-mint-2)] hover:underline"
+              >
                 Book a free migration call
               </Link>
               .

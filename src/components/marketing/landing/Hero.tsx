@@ -1,4 +1,4 @@
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { siteConfig } from "@/lib/config/site";
 import { Stroke } from "./Stroke";
@@ -26,6 +26,7 @@ import { HERO_BARS, HERO_BAR_PEAK, DEMO } from "@/lib/design/landing";
  */
 export function Hero() {
   const t = useTranslations("landing.hero");
+  const locale = useLocale();
 
   return (
     <section className="flex flex-col gap-[14px]">
@@ -78,10 +79,14 @@ export function Hero() {
 
         {/* ── Live till + invoice, rotating through business types ─ */}
         <div className="relative mx-auto mt-2 w-full max-w-[1000px]">
-          <div className="mb-3 text-center text-[11px] font-medium tracking-wide text-[#B5B9C2]">
-            Interactive product demo · Sample data
+          <div className="mb-3 text-center text-[11px] font-medium tracking-wide text-[#B5B9C2] rtl:tracking-normal">
+            {t("demoCaption")}
           </div>
-          <HeroShowcase />
+          {/* The mock till is English sample data (see above): on /ur and /ar
+              keep it left-to-right and tell screen readers it is English. */}
+          <div lang={locale === "en" ? undefined : "en"} dir={locale === "en" ? undefined : "ltr"}>
+            <HeroShowcase />
+          </div>
         </div>
       </div>
 
