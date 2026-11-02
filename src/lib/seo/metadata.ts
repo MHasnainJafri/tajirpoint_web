@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/lib/config/site";
 import { routing } from "@/i18n/routing";
 import { ogImageForPath, OG_IMAGE_SIZE } from "@/lib/seo/og-cards";
+import { BUSINESS_SLUGS } from "@/lib/marketing/businesses";
 
 /** Open Graph locale per site locale (language_TERRITORY, as Facebook expects). */
 export const OG_LOCALE_MAP: Record<string, string> = {
@@ -22,7 +23,14 @@ export const OG_LOCALE_MAP: Record<string, string> = {
  * copies point their canonical there, carry no hreflang cluster, and stay out
  * of the sitemap. Add a path here the day its body copy is translated.
  */
-export const TRANSLATED_PATHS: ReadonlySet<string> = new Set(["/", "/pricing", "/extensions"]);
+export const TRANSLATED_PATHS: ReadonlySet<string> = new Set([
+  "/",
+  "/pricing",
+  "/extensions",
+  // Business pages: Urdu + Arabic copy in src/content/i18n/businesses.{ur,ar}.ts.
+  "/business",
+  ...BUSINESS_SLUGS.map((slug) => `/business/${slug}`),
+]);
 
 export function isTranslated(path: string): boolean {
   return TRANSLATED_PATHS.has(path);

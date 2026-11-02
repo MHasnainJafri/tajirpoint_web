@@ -8,8 +8,11 @@
  *  - Every claim must be true of what ships today (see KNOWLEDGE-BASE.md).
  *    Anything not shipped is marked `status: "soon"` or left out.
  *  - Anything only on paid plans carries a `plan` note.
- *  - Copy is English-only for now; `localized` holds the few strings shown in
- *    the Urdu/Arabic navigation.
+ *  - English copy lives here. Urdu and Arabic page copy lives in
+ *    `src/content/i18n/businesses.{ur,ar}.ts`, keyed by slug and feature id —
+ *    add a translation there whenever you add or change a feature here (a
+ *    missing one falls back to English). `localized` holds the name and nav
+ *    line used in the Urdu/Arabic navigation.
  *  - This file must stay free of runtime imports: `scripts/media.mjs` imports
  *    it directly with Node's type stripping to write the media READMEs.
  *

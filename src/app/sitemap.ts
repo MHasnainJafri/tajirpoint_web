@@ -45,13 +45,13 @@ const DOCS_PAGES: Page[] = [
 ];
 
 const BUSINESS_PAGES: Page[] = [
-  { path: "/business", priority: 0.9, changeFrequency: "weekly", updated: "2026-11-01" },
+  { path: "/business", priority: 0.9, changeFrequency: "weekly", updated: "2026-11-02" },
   ...BUSINESS_SLUGS.map(
     (slug): Page => ({
       path: `/business/${slug}`,
       priority: 0.9,
       changeFrequency: "monthly",
-      updated: "2026-11-01",
+      updated: "2026-11-02",
     })
   ),
 ];
