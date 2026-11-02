@@ -5,6 +5,7 @@ import { getPlans, planSummary } from "@/lib/api/plans";
 import { STATUS_LABEL, getAddonCatalogue, type Addon } from "@/lib/marketing/addons";
 import { CHECKED, COMPARISONS } from "@/content/compare";
 import { LOCATIONS, LOCATIONS_HUB, locationPath } from "@/content/locations";
+import { GUIDES } from "@/content/guides";
 
 // Served at /llms.txt — a dotted path, so the next-intl proxy matcher
 // (which excludes `.*\..*`) skips it, same as /og.png.
@@ -80,6 +81,11 @@ ${link("Tax & e-invoicing", "/features/e-invoicing", "Tax-inclusive pricing, VAT
 
 ${link("Compare", "/compare", `Honest comparisons with paper khata, Excel, a cash register and other POS systems; competitor facts sourced and checked ${CHECKED}`)}
 ${COMPARISONS.map((c) => link(c.label, `/compare/${c.slug}`, c.blurb)).join("\n")}
+
+## Guides
+
+${link("Guides", "/guides", "Plain guides for shop and restaurant owners")}
+${GUIDES.map((g) => link(g.title, `/guides/${g.slug}`, g.summary)).join("\n")}
 
 ## API documentation
 

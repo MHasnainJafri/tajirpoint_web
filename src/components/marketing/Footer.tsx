@@ -13,6 +13,7 @@ import {
   labelLocale,
   locationPath,
 } from "@/content/locations";
+import { guidesNavLabel } from "@/content/guides/labels";
 
 /**
  * Link columns beside the brand block, then a rule and the fine print.
@@ -78,6 +79,7 @@ export function Footer() {
           <FooterLink href="/extensions">{ux.addOns}</FooterLink>
           <FooterLink href="/pricing">{t("links.pricing")}</FooterLink>
           <FooterLink href="/compare">{COMPARE_LABEL[locale] ?? COMPARE_LABEL.en}</FooterLink>
+          <FooterLink href="/guides">{guidesNavLabel(locale).title}</FooterLink>
         </FooterColumn>
 
         <FooterColumn heading={LOCATIONS_HEADING[labelLocale(locale)]}>

@@ -6,6 +6,7 @@ import { BUSINESS_SLUGS } from "@/lib/marketing/businesses";
 import { getAddonCatalogue } from "@/lib/marketing/addons";
 import { COMPARE_SLUGS } from "@/content/compare";
 import { LOCATIONS, LOCATIONS_HUB, locationPath } from "@/content/locations";
+import { GUIDES, GUIDES_HUB } from "@/content/guides";
 
 // The add-on pages come from the backend catalogue; refresh with it.
 export const revalidate = 600;
@@ -98,6 +99,18 @@ const LOCATION_PAGES: Page[] = [
   ),
 ];
 
+const GUIDE_PAGES: Page[] = [
+  { path: GUIDES_HUB.path, priority: 0.7, changeFrequency: "weekly", updated: GUIDES_HUB.updated },
+  ...GUIDES.map(
+    (g): Page => ({
+      path: `/guides/${g.slug}`,
+      priority: 0.7,
+      changeFrequency: "monthly",
+      updated: g.dateModified,
+    })
+  ),
+];
+
 const PAGES: Page[] = [
   { path: "/", priority: 1.0, changeFrequency: "weekly", updated: "2026-11-01" },
   { path: "/pricing", priority: 0.9, changeFrequency: "monthly", updated: "2026-11-01" },
@@ -108,6 +121,7 @@ const PAGES: Page[] = [
   ...FEATURE_PAGES,
   ...COMPARE_PAGES,
   ...LOCATION_PAGES,
+  ...GUIDE_PAGES,
   ...DOCS_PAGES,
   { path: "/about", priority: 0.6, changeFrequency: "monthly", updated: "2026-11-02" },
   { path: "/contact", priority: 0.6, changeFrequency: "monthly", updated: "2026-11-02" },
