@@ -3,7 +3,8 @@
 import { useState, useEffect, useCallback, useRef, useId } from "react";
 import { Menu, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { Link, usePathname } from "@/i18n/navigation";
+import { usePathname } from "@/i18n/navigation";
+import { SiteLink as Link } from "@/components/marketing/SiteLink";
 import { Icon } from "@/components/design/Icon";
 import { Wordmark } from "@/components/brand/Wordmark";
 import { LocaleMenu } from "@/components/marketing/LocaleMenu";

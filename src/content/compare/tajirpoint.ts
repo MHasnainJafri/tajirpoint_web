@@ -25,7 +25,7 @@ export const TP = {
   },
   devices: {
     mark: "info",
-    text: "Any browser, a Windows desktop app (macOS and Linux too) and Android. iOS is coming soon.",
+    text: "Any browser, a Windows desktop app (a Mac build on request) and Android. iOS is coming soon.",
   },
   iosSoon: {
     mark: "soon",
@@ -33,7 +33,7 @@ export const TP = {
   },
   windowsApp: {
     mark: "yes",
-    text: "Windows desktop app (also macOS and Linux).",
+    text: "Windows desktop app (a Mac build on request).",
   },
   khata: {
     mark: "yes",
@@ -88,7 +88,7 @@ export const TP = {
   },
   languages: {
     mark: "yes",
-    text: "App and receipts in English, Urdu and Arabic, with right-to-left screens.",
+    text: "App and receipts in English, Urdu and Arabic, with right-to-left screens. French and Spanish screens too.",
   },
   fbr: {
     mark: "soon",

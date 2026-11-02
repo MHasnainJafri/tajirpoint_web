@@ -22,7 +22,7 @@ export const E_INVOICING_COPY: Localized<FeaturePageCopy> = {
       rows: [
         { label: "Status", value: "Sample invoice" },
         { label: "VAT", value: "$39.80" },
-        { label: "QR receipt", value: "Printed" },
+        { label: "Tax lines", value: "Itemised" },
       ],
     },
     problem: {
@@ -83,7 +83,7 @@ export const E_INVOICING_COPY: Localized<FeaturePageCopy> = {
       rows: [
         { label: "حیثیت", value: "نمونہ انوائس" },
         { label: "VAT", value: "$39.80" },
-        { label: "QR رسید", value: "پرنٹ ہو گئی" },
+        { label: "ٹیکس لائنیں", value: "الگ الگ درج" },
       ],
     },
     problem: {
@@ -144,7 +144,7 @@ export const E_INVOICING_COPY: Localized<FeaturePageCopy> = {
       rows: [
         { label: "الحالة", value: "فاتورة نموذجية" },
         { label: "ض.ق.م", value: "$39.80" },
-        { label: "إيصال QR", value: "مطبوع" },
+        { label: "بنود الضريبة", value: "مفصّلة" },
       ],
     },
     problem: {

@@ -34,7 +34,7 @@ export const KHATA_COPY: Localized<FeaturePageCopy> = {
         "Aging buckets — 30 / 60 / 90+ days — at a glance",
         "PDF statements shared over chat in a tap",
         "Automatic, scheduled payment reminders",
-        "Customer Portal so credit customers log in and pay online",
+        "Customer Portal: credit customers log in to see their own balance, bills and payments",
       ],
     },
     panel: {
@@ -55,7 +55,7 @@ export const KHATA_COPY: Localized<FeaturePageCopy> = {
       {
         question: "Can customers pay online?",
         answer:
-          "Yes — with the Customer Portal extension, credit customers log in, see their balance and pay by card.",
+          "Not yet. With the Customer Portal add-on they can see their balance, bills and payments; you record the payment when it comes in.",
       },
     ],
     cta: {
@@ -96,7 +96,7 @@ export const KHATA_COPY: Localized<FeaturePageCopy> = {
         "پرانے بقایا جات — 30 / 60 / 90+ دن — ایک نظر میں",
         "PDF اسٹیٹمنٹ ایک ٹیپ میں چیٹ پر شیئر",
         "ادائیگی کی خودکار، طے شدہ یاد دہانیاں",
-        "کسٹمر پورٹل: اُدھار والے گاہک لاگ اِن کر کے آن لائن ادائیگی کریں",
+        "کسٹمر پورٹل: اُدھار والے گاہک لاگ اِن کر کے اپنا بیلنس، بل اور ادائیگیاں دیکھیں",
       ],
     },
     panel: {
@@ -117,7 +117,7 @@ export const KHATA_COPY: Localized<FeaturePageCopy> = {
       {
         question: "کیا گاہک آن لائن ادائیگی کر سکتے ہیں؟",
         answer:
-          "جی ہاں — کسٹمر پورٹل ایکسٹینشن کے ساتھ اُدھار والے گاہک لاگ اِن کر کے اپنا بیلنس دیکھتے ہیں اور کارڈ سے ادائیگی کرتے ہیں۔",
+          "ابھی نہیں۔ کسٹمر پورٹل ایڈ آن کے ساتھ وہ اپنا بیلنس، بل اور ادائیگیاں دیکھ سکتے ہیں؛ ادائیگی آنے پر آپ اسے درج کرتے ہیں۔",
       },
     ],
     cta: {
@@ -158,7 +158,7 @@ export const KHATA_COPY: Localized<FeaturePageCopy> = {
         "أعمار الديون — 30 / 60 / 90+ يومًا — بنظرة واحدة",
         "كشوف حساب PDF تُشارك عبر المحادثة بلمسة",
         "تذكيرات دفع تلقائية ومجدولة",
-        "بوابة العملاء ليدخل عملاء الآجل ويدفعوا أونلاين",
+        "بوابة العملاء: يدخل عملاء الآجل ليروا رصيدهم وفواتيرهم ودفعاتهم",
       ],
     },
     panel: {
@@ -178,7 +178,7 @@ export const KHATA_COPY: Localized<FeaturePageCopy> = {
       },
       {
         question: "هل يمكن للعملاء الدفع أونلاين؟",
-        answer: "نعم — مع إضافة بوابة العملاء، يدخل عملاء الآجل ويرون رصيدهم ويدفعون بالبطاقة.",
+        answer: "ليس بعد. مع إضافة بوابة العملاء يرون رصيدهم وفواتيرهم ودفعاتهم، وأنت تسجّل الدفعة عند وصولها.",
       },
     ],
     cta: {

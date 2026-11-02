@@ -7,7 +7,7 @@ const content: AddonContent = {
   slug: "cash-management",
   seoTitle: "Cash Management Add-on: Drawers, Petty Cash & Counts",
   seoDescription:
-    "Track every rupee or pound in your cash drawers, safe and petty cash. Count cash by notes and coins, see the difference straight away, and move cash between drawers.",
+    "Track every rupee or pound in your cash drawers, safe and petty cash. Count by notes and coins, see the difference at once, and move cash between drawers.",
   keywords: [
     "cash drawer management",
     "petty cash software",

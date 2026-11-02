@@ -802,7 +802,7 @@ const retailFashion: Business = {
     },
     {
       q: "Does the counter work if the internet drops?",
-      a: "Yes. Sales keep going offline and sync when the connection returns. Credit sales and actions that need a manager’s approval need a connection.",
+      a: "Yes. Sales keep going offline and sync when the connection returns. Credit sales work offline for customers already on the till, up to their credit limit; going over the limit and other manager approvals need a connection.",
     },
   ],
   cta: {
@@ -881,7 +881,7 @@ const groceryKiryana: Business = {
       icon: "refresh",
       title: "Keeps selling offline",
       benefit: "When the internet or power-backup router drops, the counter keeps ringing up sales and syncs later.",
-      bullets: ["Offline sales queue and sync automatically", "Offline receipts are numbered separately", "Credit sales need a connection"],
+      bullets: ["Offline sales queue and sync automatically", "Offline receipts are numbered separately", "Credit sales offline up to each customer’s limit"],
       media: { slot: "offline", expect: "image", alt: "Offline banner with queued sales" },
     },
     {

@@ -63,7 +63,7 @@ export function PlanBilling({
                 role="radio"
                 aria-checked={opt.on}
                 onClick={() => setYearly(opt.value)}
-                className={`cursor-pointer rounded-full px-5 py-2 text-[13.5px] font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-mint-2)] ${
+                className={`inline-flex min-h-[44px] cursor-pointer items-center rounded-full px-5 py-2 text-[13.5px] font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-mint-2)] ${
                   opt.on
                     ? "bg-[#0A0A0A] text-white"
                     : "text-[var(--color-ink-3)] hover:text-[var(--color-ink)]"

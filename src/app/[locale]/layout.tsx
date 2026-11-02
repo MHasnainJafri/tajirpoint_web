@@ -78,6 +78,10 @@ export async function generateMetadata({
 
   return {
     ...base,
+    // No canonical or hreflang by default: a route that does not set its own
+    // (a 404, say) must not claim to be the home page. Every real page sets
+    // them through buildMetadata().
+    alternates: undefined,
     metadataBase: new URL(siteConfig.url),
     title: { default: siteConfig.name, template: `%s | ${siteConfig.name}` },
     applicationName: siteConfig.name,
@@ -168,9 +172,9 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Warm up connections to external domains hit on first meaningful interaction */}
-        <link rel="preconnect" href="https://app.tajirpoint.com" />
-        <JsonLd schema={[organizationSchema(), websiteSchema(locale)]} />
+        {/* DNS only: a full preconnect to the app went unused on first load (Lighthouse). */}
+        <link rel="dns-prefetch" href="https://app.tajirpoint.com" />
+        <JsonLd schema={[organizationSchema(), websiteSchema()]} />
       </head>
       <body className="min-h-screen bg-[var(--color-bg)] text-[var(--color-ink)]">
         <SiteTracking />

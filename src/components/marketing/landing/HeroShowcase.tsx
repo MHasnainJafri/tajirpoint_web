@@ -194,7 +194,7 @@ export function HeroShowcase() {
           role="tablist"
           aria-label="See TajirPoint in your kind of business"
         >
-          <span className="mr-1 w-full text-[11px] font-semibold uppercase tracking-[0.12em] text-[#6B7079] @[560px]:w-auto">
+          <span className="mr-1 w-full text-[11px] font-semibold uppercase tracking-[0.12em] text-[#8A8F98] @[560px]:w-auto">
             Built for
           </span>
           {SHOWCASE.map((b, i) => {
@@ -229,7 +229,7 @@ export function HeroShowcase() {
               </button>
             );
           })}
-          <span className="text-[12px] text-[#6B7079]">
+          <span className="text-[12px] text-[#8A8F98]">
             + wholesale, distribution, factories &amp; more
           </span>
         </div>

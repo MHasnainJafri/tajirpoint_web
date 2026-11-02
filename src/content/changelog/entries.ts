@@ -102,8 +102,8 @@ export const CHANGELOG: ChangelogMonth[] = [
     items: [
       {
         audience: "Everyone",
-        title: "A full security review",
-        body: "We reviewed the whole of TajirPoint for security problems and fixed what we found.",
+        title: "A security review",
+        body: "We reviewed TajirPoint for security problems and fixed the issues that affect shops; the rest are scheduled.",
       },
       {
         audience: "Restaurants",
@@ -130,11 +130,10 @@ export const CHANGELOG: ChangelogMonth[] = [
         title: "Ingredient alerts that never block a sale",
         body: "A short ingredient never stops an order. Ingredients can have a shelf life, and you get low-stock and use-first alerts.",
       },
-      {
-        audience: "Restaurants",
-        title: "Keep selling without internet",
-        body: "Open the register, sell and take payments when the internet is down; everything syncs when it comes back. Kitchen screens and waiters keep working over the shop Wi-Fi, and each cashier can unlock the till with their own PIN while offline.",
-      },
+      // "Keep selling without internet" (restaurant offline) is held back: it
+      // only reaches shops through the desktop POS and the new restaurant app
+      // builds, which are not public yet. Add it once those are released (and
+      // update TP.offlineRetail, the Loyverse/CORN POS copy and businesses.ts).
       {
         audience: "Everyone",
         title: "Phone and tablet layouts",

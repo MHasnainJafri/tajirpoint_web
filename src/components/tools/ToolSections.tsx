@@ -32,7 +32,7 @@ export function ToolBreadcrumbs({ trail }: { trail: ReadonlyArray<readonly [stri
                 {name}
               </span>
             ) : (
-              <Link href={href} className="hover:text-[var(--color-ink)]">
+              <Link href={href} className="max-md:inline-flex max-md:min-h-[44px] max-md:items-center hover:text-[var(--color-ink)]">
                 {name}
               </Link>
             )}

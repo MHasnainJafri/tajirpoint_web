@@ -223,7 +223,7 @@ const guide: Guide = {
     },
     {
       q: "What food cost percentage should I aim for?",
-      a: "Many restaurants aim for roughly 28-35% food cost, but it depends on your concept and prices. Cost every dish from its recipe and check it monthly.",
+      a: "It depends on your concept and prices. Pick a target food cost for your concept, cost every dish from its recipe and check it monthly.",
     },
   ],
   sources: [

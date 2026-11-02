@@ -42,7 +42,7 @@ export async function PlanTeaser({ id = "plans", locale }: { id?: string; locale
         </div>
       )}
       <p className="mt-5 text-center text-[14px]">
-        <Link href="/pricing" className="font-semibold text-[var(--color-mint-2)] underline underline-offset-2">
+        <Link href="/pricing" className="inline-block py-3 font-semibold text-[var(--color-mint-2)] underline underline-offset-2">
           {t.compare} <span aria-hidden="true" className="inline-block rtl:-scale-x-100">→</span>
         </Link>
       </p>

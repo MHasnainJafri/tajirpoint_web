@@ -4,6 +4,7 @@ import { routing } from "@/i18n/routing";
 import { ogImageForPath, OG_IMAGE_SIZE } from "@/lib/seo/og-cards";
 import { BUSINESS_SLUGS } from "@/lib/marketing/businesses";
 import { TRANSLATED_ADDON_SLUGS } from "@/content/addons/i18n";
+import { TRANSLATED_STATIC_PATHS } from "@/lib/seo/translated-paths";
 
 /** Open Graph locale per site locale (language_TERRITORY, as Facebook expects). */
 export const OG_LOCALE_MAP: Record<string, string> = {
@@ -25,22 +26,10 @@ export const OG_LOCALE_MAP: Record<string, string> = {
  * of the sitemap. Add a path here the day its body copy is translated.
  */
 export const TRANSLATED_PATHS: ReadonlySet<string> = new Set([
-  "/",
-  "/pricing",
-  "/extensions",
+  // The fixed list lives in translated-paths.ts so the header can share it.
+  ...TRANSLATED_STATIC_PATHS,
   // Business pages: Urdu + Arabic copy in src/content/i18n/businesses.{ur,ar}.ts.
-  "/business",
   ...BUSINESS_SLUGS.map((slug) => `/business/${slug}`),
-  // Feature + lead pages: copy in src/content/i18n/{features,lead-pages}.
-  "/features/khata",
-  "/features/accounting",
-  "/features/e-invoicing",
-  "/features/offline",
-  "/features/van-sales",
-  "/book-demo",
-  "/get-a-call",
-  "/contact",
-  "/about",
 ]);
 
 /**

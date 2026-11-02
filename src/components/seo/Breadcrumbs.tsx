@@ -32,7 +32,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
                   {item.label}
                 </span>
               ) : (
-                <Link href={item.href} className="hover:text-[var(--color-ink)] transition-colors">
+                <Link href={item.href} className="max-md:inline-flex max-md:min-h-[44px] max-md:items-center hover:text-[var(--color-ink)] transition-colors">
                   {item.label}
                 </Link>
               )}

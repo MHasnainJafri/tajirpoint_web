@@ -7,7 +7,6 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Tick } from "@/components/marketing/landing/Stroke";
 import { AddonIcon } from "@/components/marketing/addons/AddonIcon";
 import { StatusBadge } from "@/components/marketing/addons/StatusBadge";
-import { ADDON_CONTENT } from "@/content/addons";
 import { addonChrome, type AddonChrome } from "@/content/addons/i18n";
 import { legal, siteConfig, whatsappLink } from "@/lib/config/site";
 import { addonSchema } from "@/lib/marketing/addon-schema";
@@ -24,14 +23,15 @@ export const revalidate = 600;
 export const dynamicParams = true;
 
 /**
- * Every add-on in the catalogue, plus every write-up the site has, so a page
- * is prebuilt even when the API was down at build time (the snapshot covers
- * it). An unknown slug renders a 404 (`getAddon` → notFound).
+ * Every add-on in the catalogue (the snapshot when the API is down at build
+ * time). A write-up whose add-on the backend does not list (Digital Signage
+ * today) is not prebuilt as a 404: once the backend publishes it, the page
+ * renders on first visit (dynamicParams) and the sitemap picks it up. An
+ * unknown slug renders a 404 (`getAddon` → notFound).
  */
 export async function generateStaticParams() {
   const { addons } = await getAddonCatalogue();
-  const slugs = new Set([...addons.map((a) => a.slug), ...Object.keys(ADDON_CONTENT)]);
-  return [...slugs].map((slug) => ({ slug }));
+  return addons.map((a) => ({ slug: a.slug }));
 }
 
 type Params = Promise<{ locale: string; slug: string }>;
@@ -193,13 +193,13 @@ export default async function AddonPage({ params }: { params: Params }) {
         <nav aria-label="Breadcrumb" className="pt-5 text-[12.5px] text-[var(--color-muted)]">
           <ol className="flex flex-wrap items-center gap-2">
             <li>
-              <Link href="/" className="hover:text-[var(--color-ink)]">
+              <Link href="/" className="max-md:inline-flex max-md:min-h-[44px] max-md:items-center hover:text-[var(--color-ink)]">
                 {ch.home}
               </Link>
             </li>
             <li aria-hidden="true">/</li>
             <li>
-              <Link href="/extensions" className="hover:text-[var(--color-ink)]">
+              <Link href="/extensions" className="max-md:inline-flex max-md:min-h-[44px] max-md:items-center hover:text-[var(--color-ink)]">
                 {ch.addons}
               </Link>
             </li>
@@ -275,7 +275,7 @@ export default async function AddonPage({ params }: { params: Params }) {
               <a
                 key={s.id}
                 href={`#${s.id}`}
-                className="rounded-full border border-[var(--color-line-2)] bg-[var(--color-bg-2)] px-[13px] py-[6px] text-[13px] font-semibold text-[var(--color-ink-3)] transition-colors hover:border-[var(--color-mint-line)] hover:text-[var(--color-ink)]"
+                className="inline-flex min-h-[44px] items-center rounded-full border border-[var(--color-line-2)] bg-[var(--color-bg-2)] px-[13px] py-2 text-[13px] font-semibold text-[var(--color-ink-3)] transition-colors hover:border-[var(--color-mint-line)] hover:text-[var(--color-ink)]"
               >
                 {s.label}
               </a>
@@ -478,9 +478,9 @@ export default async function AddonPage({ params }: { params: Params }) {
               {c.faqs.map((faq) => (
                 <details
                   key={faq.q}
-                  className="group rounded-[16px] border border-[var(--color-line-2)] bg-[var(--color-bg-2)] px-5 py-4 open:shadow-[var(--shadow-card)]"
+                  className="group rounded-[16px] border border-[var(--color-line-2)] bg-[var(--color-bg-2)] open:shadow-[var(--shadow-card)]"
                 >
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-[15.5px] font-semibold text-[var(--color-ink)] [&::-webkit-details-marker]:hidden">
+                  <summary className="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-[15.5px] font-semibold text-[var(--color-ink)] [&::-webkit-details-marker]:hidden">
                     {faq.q}
                     <span
                       aria-hidden="true"
@@ -489,7 +489,7 @@ export default async function AddonPage({ params }: { params: Params }) {
                       +
                     </span>
                   </summary>
-                  <p className="mt-3 text-[14.5px] leading-[1.65] text-[var(--color-body)]">
+                  <p className="px-5 pb-4 text-[14.5px] leading-[1.65] text-[var(--color-body)]">
                     {faq.a}
                   </p>
                 </details>
@@ -507,7 +507,7 @@ export default async function AddonPage({ params }: { params: Params }) {
               </h2>
               <Link
                 href="/extensions"
-                className="text-[14px] font-semibold text-[var(--color-mint-2)]"
+                className="inline-flex min-h-[44px] items-center text-[14px] font-semibold text-[var(--color-mint-2)]"
               >
                 {ch.allAddons} <span aria-hidden="true">{ch.arrow}</span>
               </Link>

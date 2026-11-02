@@ -16,8 +16,6 @@ import { canonicalUrl } from "@/lib/seo/metadata";
 export const ORG_ID = `${siteConfig.url}/#organization`;
 export const WEBSITE_ID = `${siteConfig.url}/#website`;
 
-const LANGUAGE_NAMES: Record<string, string> = { en: "en", ur: "ur", ar: "ar" };
-
 export function organizationSchema(): WithContext<Organization> {
   const sameAs = socialProfiles();
   return {
@@ -73,7 +71,12 @@ export function organizationSchema(): WithContext<Organization> {
   };
 }
 
-export function websiteSchema(locale: string = "en"): WithContext<WebSite> {
+/**
+ * One WebSite entity for the whole multilingual site. Pages in every locale
+ * emit the same @id, so it carries every language; per-page language belongs
+ * on page-level nodes (Article, WebPage).
+ */
+export function websiteSchema(): WithContext<WebSite> {
   // No SearchAction: the site has no search page, and a SearchAction that
   // points at a 404 earns a Search Console warning instead of a sitelinks box.
   return {
@@ -83,7 +86,7 @@ export function websiteSchema(locale: string = "en"): WithContext<WebSite> {
     name: siteConfig.name,
     alternateName: [...siteConfig.alternateNames],
     url: siteConfig.url,
-    inLanguage: LANGUAGE_NAMES[locale] ?? "en",
+    inLanguage: ["en", "ur", "ar"],
     publisher: { "@id": ORG_ID } as any,
   };
 }
@@ -137,9 +140,9 @@ export function softwareApplicationSchema(
     description: siteConfig.description,
     url: siteConfig.url,
     image: `${siteConfig.url}${siteConfig.ogImage}`,
-    // Web (any browser), the desktop app and Android — what the
-    // Platforms section and the FAQ say. No iOS app is published.
-    operatingSystem: "Web, Windows, macOS, Linux, Android",
+    // Web (any browser), the Windows desktop app and Android — what the
+    // Platforms section and the FAQ say. No iOS or Linux app is published.
+    operatingSystem: "Web, Windows, Android",
     publisher: { "@id": ORG_ID } as any,
     inLanguage: ["en", "ur", "ar"],
     offers: (plans?.length ? plans : []).map((plan) => planOffer(plan)) as any,
@@ -244,7 +247,7 @@ export function verticalSoftwareSchema({
     description,
     url: `${siteConfig.url}${path}`,
     image: `${siteConfig.url}/og/business-${path.split("/").pop()}.png`,
-    operatingSystem: "Web, Windows, macOS, Linux, Android",
+    operatingSystem: "Web, Windows, Android",
     publisher: { "@id": ORG_ID } as any,
     inLanguage: ["en", "ur", "ar"],
     featureList: features.join(", "),

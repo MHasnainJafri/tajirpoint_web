@@ -147,7 +147,7 @@ export const paperKhata: Comparison = {
     {
       question: "Does it work without internet?",
       answer:
-        "Yes. The shop counter keeps selling offline, including credit sales, and everything syncs when the connection returns.",
+        "Yes. The shop counter keeps selling offline, including credit sales for customers already on the till up to their credit limit, and everything syncs when the connection returns.",
     },
     {
       question: "How much does it cost?",

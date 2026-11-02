@@ -88,7 +88,7 @@ export default async function BusinessPage({ params }: { params: Params }) {
         <nav aria-label={ui.breadcrumbLabel} className="pt-5 text-[12.5px] text-[var(--color-muted)]">
           <ol className="flex flex-wrap items-center gap-2">
             <li>
-              <Link href="/business" className="hover:text-[var(--color-ink)]">
+              <Link href="/business" className="max-md:inline-flex max-md:min-h-[44px] max-md:items-center hover:text-[var(--color-ink)]">
                 {ui.businesses}
               </Link>
             </li>
@@ -152,7 +152,7 @@ export default async function BusinessPage({ params }: { params: Params }) {
               <a
                 key={f.id}
                 href={`#${f.id}`}
-                className="rounded-full border border-[var(--color-line-2)] bg-white px-[14px] py-[7px] text-[13px] font-semibold text-[var(--color-ink-3)] transition-colors hover:border-[var(--color-mint-line)] hover:text-[var(--color-ink)]"
+                className="inline-flex min-h-[44px] items-center rounded-full border border-[var(--color-line-2)] bg-white px-[14px] py-[7px] text-[13px] font-semibold text-[var(--color-ink-3)] transition-colors hover:border-[var(--color-mint-line)] hover:text-[var(--color-ink)]"
               >
                 {f.title}
               </a>
@@ -226,15 +226,15 @@ export default async function BusinessPage({ params }: { params: Params }) {
             {faqs.map((faq) => (
               <details
                 key={faq.q}
-                className="group rounded-[16px] border border-[var(--color-line-2)] bg-white px-5 py-4 open:shadow-[var(--shadow-card)]"
+                className="group rounded-[16px] border border-[var(--color-line-2)] bg-white open:shadow-[var(--shadow-card)]"
               >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-[15.5px] font-semibold text-[var(--color-ink)] [&::-webkit-details-marker]:hidden">
+                <summary className="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-[15.5px] font-semibold text-[var(--color-ink)] [&::-webkit-details-marker]:hidden">
                   {faq.q}
                   <span aria-hidden="true" className="text-[20px] leading-none text-[var(--color-muted)] transition-transform group-open:rotate-45">
                     +
                   </span>
                 </summary>
-                <p className="mt-3 text-[14.5px] leading-[1.65] text-[var(--color-body)]">{faq.a}</p>
+                <p className="px-5 pb-4 text-[14.5px] leading-[1.65] text-[var(--color-body)]">{faq.a}</p>
               </details>
             ))}
           </div>

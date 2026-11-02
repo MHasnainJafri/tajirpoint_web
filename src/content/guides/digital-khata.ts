@@ -3,7 +3,7 @@ import type { Guide } from "./types";
 // TajirPoint claims here are the ones already on /features/khata (live):
 // live ledger from every sale and payment, append-only history, credit limits
 // with alerts, 30/60/90+ aging, PDF statements shared over chat, scheduled
-// reminders, Customer Portal add-on for online payment. Opening balances on
+// reminders, Customer Portal add-on (read-only: balance, bills, payments). Opening balances on
 // import: domains/data_exchange/services/importers/parties.py ("opening"
 // ledger entry, applied once). Supplier side: parties importer covers
 // suppliers with payable balances.
@@ -202,7 +202,7 @@ const guide: Guide = {
             "PDF statements you can share over chat in a tap",
             "Scheduled payment reminders",
             "Supplier balances in the same system",
-            "With the [Customer Portal add-on](/extensions/customer-portal), credit customers can log in, see their balance and pay online",
+            "With the [Customer Portal add-on](/extensions/customer-portal), credit customers can log in to see their own balance, bills and payments",
           ],
         },
         {
@@ -235,7 +235,7 @@ const guide: Guide = {
     },
     {
       q: "Can customers pay their khata online?",
-      a: "With TajirPoint's Customer Portal add-on, credit customers can log in, see their balance and pay online.",
+      a: "Not yet. With TajirPoint's Customer Portal add-on they can see their balance, bills and payments; you record the payment when it comes in.",
     },
   ],
   links: [

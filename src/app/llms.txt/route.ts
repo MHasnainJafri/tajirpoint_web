@@ -58,6 +58,10 @@ ${link("اردو (Urdu home page)", "/ur", "The home page and pricing in Urdu")}
 ${link("العربية (Arabic home page)", "/ar", "The home page and pricing in Arabic")}
 ${link("کھاتہ ایپ (Urdu feature pages)", "/ur/features/khata", "Feature pages (khata, offline, accounting, van sales, e-invoicing), book a demo, call back, contact and about are also in Urdu under /ur")}
 ${link("دفتر الآجل (Arabic feature pages)", "/ar/features/khata", "The same feature, demo, call-back, contact and about pages in Arabic under /ar")}
+${link("کاروبار (Urdu business pages)", "/ur/business", "Every business type page (/ur/business/<type>) in Urdu")}
+${link("الأنشطة (Arabic business pages)", "/ar/business", "Every business type page (/ar/business/<type>) in Arabic")}
+${link("ایڈ آنز (Urdu add-on pages)", "/ur/extensions", "The add-on list and every add-on page (/ur/extensions/<add-on>) in Urdu")}
+${link("الإضافات (Arabic add-on pages)", "/ar/extensions", "The add-on list and every add-on page (/ar/extensions/<add-on>) in Arabic")}
 
 ## By business
 

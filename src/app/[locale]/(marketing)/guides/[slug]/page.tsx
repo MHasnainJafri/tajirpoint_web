@@ -73,13 +73,13 @@ export default async function GuidePage({ params }: { params: Params }) {
         <nav aria-label="Breadcrumb" className="pt-5 text-[12.5px] text-[var(--color-muted)]">
           <ol className="flex flex-wrap items-center gap-2">
             <li>
-              <Link href="/" className="hover:text-[var(--color-ink)]">
+              <Link href="/" className="max-md:inline-flex max-md:min-h-[44px] max-md:items-center hover:text-[var(--color-ink)]">
                 Home
               </Link>
             </li>
             <li aria-hidden="true">/</li>
             <li>
-              <Link href="/guides" className="hover:text-[var(--color-ink)]">
+              <Link href="/guides" className="max-md:inline-flex max-md:min-h-[44px] max-md:items-center hover:text-[var(--color-ink)]">
                 Guides
               </Link>
             </li>
@@ -106,7 +106,7 @@ export default async function GuidePage({ params }: { params: Params }) {
               By{" "}
               <Link
                 href="/about"
-                className="font-semibold text-[var(--color-ink-3)] hover:text-[var(--color-ink)]"
+                className="font-semibold text-[var(--color-ink-3)] hover:text-[var(--color-ink)] max-md:inline-flex max-md:min-h-[44px] max-md:items-center"
               >
                 {siteConfig.name} team
               </Link>
@@ -165,7 +165,7 @@ export default async function GuidePage({ params }: { params: Params }) {
           <article className="min-w-0 max-w-[760px] [overflow-wrap:anywhere]">
             {/* On phones the contents sit above the article, folded. */}
             <details className={`${card} mb-10 p-4 lg:hidden`}>
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-3 text-[15px] font-bold [&::-webkit-details-marker]:hidden">
+              <summary className="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-3 text-[15px] font-bold [&::-webkit-details-marker]:hidden">
                 On this page
                 <ChevronDown
                   className="h-5 w-5 flex-none text-[var(--color-muted)]"
@@ -369,12 +369,12 @@ export default async function GuidePage({ params }: { params: Params }) {
 
 function TocList({ items }: { items: Array<{ id: string; label: string }> }) {
   return (
-    <ol className="mt-3 flex flex-col gap-2 text-[13.5px] leading-[1.45]">
+    <ol className="mt-3 flex flex-col text-[13.5px] leading-[1.45] lg:gap-2">
       {items.map((t) => (
         <li key={t.id}>
           <a
             href={`#${t.id}`}
-            className="text-[var(--color-ink-3)] hover:text-[var(--color-mint-2)]"
+            className="block text-[var(--color-ink-3)] hover:text-[var(--color-mint-2)] max-lg:flex max-lg:min-h-[44px] max-lg:items-center max-lg:py-2"
           >
             {t.label}
           </a>

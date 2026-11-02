@@ -1,5 +1,5 @@
 import { useLocale, useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import { SiteLink as Link } from "@/components/marketing/SiteLink";
 import { Wordmark } from "@/components/brand/Wordmark";
 import { FEATURES } from "@/lib/design/catalog";
 import { BUSINESSES, businessLabel } from "@/lib/marketing/businesses";
@@ -50,7 +50,7 @@ export function Footer() {
               href={legal.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${TAP} text-[var(--color-ink-3)] hover:text-[var(--color-ink)]`}
+              className={`${TAP} gap-1 text-[var(--color-ink-3)] hover:text-[var(--color-ink)]`}
             >
               WhatsApp <span dir="ltr">{legal.whatsappDisplay}</span>
             </a>

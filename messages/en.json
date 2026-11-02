@@ -431,7 +431,7 @@
         },
         "desktop": {
           "name": "Desktop",
-          "sub": "Windows · macOS · Linux; printers & drawers"
+          "sub": "Windows app; printers & drawers"
         },
         "android": {
           "name": "Android",
@@ -546,7 +546,7 @@
             },
             "1": {
               "q": "Which devices does it run on?",
-              "a": "Any browser, a Windows desktop app (macOS and Linux too), and Android phones and tablets. iOS is coming soon. Thermal receipt printers, barcode scanners and cash drawers are supported."
+              "a": "Any browser, a Windows desktop app (a Mac build on request), and Android phones and tablets. iOS is coming soon. Thermal receipt printers, barcode scanners and cash drawers are supported."
             },
             "2": {
               "q": "Which languages are supported?",
@@ -567,7 +567,7 @@
             },
             "1": {
               "q": "Can customers see their own balance?",
-              "a": "With the Customer Portal extension, credit customers log in to see their ledger and invoices and pay online."
+              "a": "With the Customer Portal extension, credit customers log in to see their own balance, bills and payments. You record payments when they come in."
             },
             "2": {
               "q": "Does it handle supplier credit too?",
@@ -885,6 +885,22 @@
     "headline": "The extension",
     "headlineAccent": "marketplace",
     "sub": "Install what your business needs, per location. Availability, pricing and provider support vary by country and plan. Features marked coming soon cannot be installed yet.",
+    "listName": "TajirPoint add-ons",
+    "legend": {
+      "active": "switch it on yourself",
+      "contact_us": "our team sets it up with you",
+      "coming_soon": "ask and we will tell you when"
+    },
+    "browser": {
+      "searchLabel": "Search add-ons",
+      "placeholder": "Search add-ons, e.g. payments, kitchen, Shopify",
+      "all": "All",
+      "filterBy": "Filter by type",
+      "shown": "{count} add-ons shown",
+      "noMatch": "No add-on matches that.",
+      "noMatchBody": "Tell us what you need and we will tell you if {product} can do it.",
+      "askCall": "Ask for a call back"
+    },
     "filterAll": "All",
     "filters": {
       "verticals": "Verticals",
@@ -1012,7 +1028,7 @@
       },
       "customer-portal": {
         "name": "Customer Portal",
-        "desc": "Credit customers view their ledger and pay online."
+        "desc": "Credit customers see their own balance, bills and payments."
       },
       "delivery-aggregator": {
         "name": "Delivery Aggregator",

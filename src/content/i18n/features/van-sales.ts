@@ -55,7 +55,7 @@ export const VAN_SALES_COPY: Localized<FeaturePageCopy> = {
     faqs: [
       {
         question: "Do drivers need internet on the route?",
-        answer: "No. The mobile app sells offline and reconciles when it reconnects.",
+        answer: "Yes, the trip screen needs a connection. If the signal drops, the shop counter POS keeps selling offline.",
       },
       {
         question: "Can I price differently per customer?",
@@ -115,7 +115,7 @@ export const VAN_SALES_COPY: Localized<FeaturePageCopy> = {
     faqs: [
       {
         question: "کیا ڈرائیوروں کو روٹ پر انٹرنیٹ چاہیے؟",
-        answer: "نہیں۔ موبائل ایپ آف لائن بیچتی ہے اور کنکشن ملنے پر حساب ملا دیتی ہے۔",
+        answer: "جی ہاں، ٹرپ والی اسکرین کے لیے کنکشن چاہیے۔ سگنل چلا جائے تو دکان کا کاؤنٹر POS آف لائن بیچتا رہتا ہے۔",
       },
       {
         question: "کیا ہر گاہک کے لیے الگ قیمت رکھ سکتا ہوں؟",
@@ -175,7 +175,7 @@ export const VAN_SALES_COPY: Localized<FeaturePageCopy> = {
     faqs: [
       {
         question: "هل يحتاج السائقون إلى الإنترنت على المسار؟",
-        answer: "لا. تطبيق الجوال يبيع دون اتصال ويطابق الحساب عند عودة الاتصال.",
+        answer: "نعم، شاشة الرحلة تحتاج إلى اتصال. إذا انقطعت الإشارة، تواصل نقطة البيع في المتجر البيع دون اتصال.",
       },
       {
         question: "هل يمكنني تسعير كل عميل بشكل مختلف؟",

@@ -128,9 +128,9 @@ export default async function LocationsHubPage({
             {LOCATIONS_HUB.faqs.map((faq) => (
               <details
                 key={faq.q}
-                className="group rounded-[16px] border border-[var(--color-line-2)] bg-white px-5 py-4 open:shadow-[var(--shadow-card)]"
+                className="group rounded-[16px] border border-[var(--color-line-2)] bg-white open:shadow-[var(--shadow-card)]"
               >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-[15.5px] font-semibold text-[var(--color-ink)] [&::-webkit-details-marker]:hidden">
+                <summary className="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-[15.5px] font-semibold text-[var(--color-ink)] [&::-webkit-details-marker]:hidden">
                   <span className="min-w-0">{faq.q}</span>
                   <span
                     aria-hidden="true"
@@ -139,7 +139,7 @@ export default async function LocationsHubPage({
                     +
                   </span>
                 </summary>
-                <p className="mt-3 text-[14.5px] leading-[1.65] text-[var(--color-body)]">
+                <p className="px-5 pb-4 text-[14.5px] leading-[1.65] text-[var(--color-body)]">
                   {faq.a}
                 </p>
               </details>

@@ -57,7 +57,7 @@ const page: LocationPage = {
     },
     {
       label: "Internet drops",
-      value: "Keeps taking orders offline and syncs when the connection is back.",
+      value: "The counter keeps selling offline and syncs when the connection is back. Offline for tables and the kitchen screen is not released yet.",
     },
   ],
   tax: {
@@ -154,7 +154,7 @@ const page: LocationPage = {
       bullets: [
         "Kitchen display and order board",
         "Table QR ordering and waiter calls",
-        "Works offline if the internet drops",
+        "The counter keeps selling if the internet drops",
       ],
     },
     {

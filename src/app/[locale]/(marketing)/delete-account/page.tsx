@@ -147,7 +147,7 @@ export default async function DeleteAccountPage({
             </ul>
             <p>
               Once the legal retention period ends, these records are deleted too. See the full
-              retention table on our <Link href="/data-privacy">Data Privacy</Link> page.
+              retention table in our <Link href="/privacy">Privacy Policy</Link>.
             </p>
           </LegalSection>
 
@@ -160,8 +160,7 @@ export default async function DeleteAccountPage({
 
           <LegalSection title="More information">
             <p>
-              Read our <Link href="/privacy">Privacy Policy</Link> and{" "}
-              <Link href="/data-privacy">Data Privacy</Link> page for full detail on how we handle
+              Read our <Link href="/privacy">Privacy Policy</Link> for full detail on how we handle
               your data. Questions about deletion can go to <a href={MAILTO}>{DELETION_EMAIL}</a>.
             </p>
           </LegalSection>

@@ -50,7 +50,7 @@ export const loyverse: Comparison = {
     tajirpoint:
       "Choose TajirPoint if you sell on credit (khata), want your accounts and stock in the same system, run deliveries with your own riders, or want a Windows desktop app and Urdu or Arabic screens.",
     other:
-      "Choose Loyverse if you want a POS whose core is free with no time limit, you work on iPhone or iPad, or you need a language other than English, Urdu or Arabic.",
+      "Choose Loyverse if you want a POS whose core is free with no time limit, you work on iPhone or iPad, or you need a language TajirPoint does not offer yet.",
   },
   tajirpointStrengths: [
     "Khata built in: running balances, credit limits, aging and reminders for customers who buy on credit.",
@@ -388,7 +388,7 @@ export const foodics: Comparison = {
       tajirpoint: TP.freeStart,
       other: {
         mark: "info",
-        text: "Saudi price list: Starter 248, Basic 450, Advanced 765 a month per branch, as shown on its KSA page.",
+        text: "Saudi price list in riyals: Starter SAR 248, Basic SAR 450, Advanced SAR 765 a month per branch, as shown on its KSA page.",
         source: 1,
       },
     },

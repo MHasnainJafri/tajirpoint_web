@@ -38,7 +38,7 @@ export default async function GuidesHubPage({ params }: { params: Promise<{ loca
         <nav aria-label="Breadcrumb" className="pt-5 text-[12.5px] text-[var(--color-muted)]">
           <ol className="flex flex-wrap items-center gap-2">
             <li>
-              <Link href="/" className="hover:text-[var(--color-ink)]">
+              <Link href="/" className="max-md:inline-flex max-md:min-h-[44px] max-md:items-center hover:text-[var(--color-ink)]">
                 Home
               </Link>
             </li>
