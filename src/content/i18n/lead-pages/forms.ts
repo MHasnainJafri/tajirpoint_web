@@ -1,6 +1,6 @@
 import { addonInterestMessage } from "@/lib/marketing/addon-names";
 import { BRANCH_OPTIONS, PHONE_ERROR, TIME_OPTIONS } from "@/lib/marketing/demo-options";
-import { pickCopy, type Localized } from "../page-copy";
+import type { Localized } from "../page-copy";
 
 /**
  * Words of the lead forms (book a demo, call me back, contact) and of the

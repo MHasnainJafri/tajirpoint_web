@@ -1,6 +1,7 @@
 import { Link } from "@/i18n/navigation";
 import { Stroke, Tick } from "./Stroke";
 import { PlanBilling } from "./PlanBilling";
+import { PkrPrice } from "./PkrPrice";
 import {
   annualAmount,
   annualMonthsSaved,
@@ -8,6 +9,7 @@ import {
   isContactSalesPlan,
   isFreePlan,
   planPriceLabel,
+  pkrLabel,
   type MarketingPlan,
 } from "@/lib/api/plans";
 
@@ -119,6 +121,7 @@ function PlanCard({
     "data-contact-sales": contactSales ? "1" : "0",
   };
   const periodCls = `text-[14px] font-semibold ${dark ? "text-[var(--color-mint)]" : "text-[var(--color-muted)]"}`;
+  const pkrCls = `relative -mt-2 text-[14px] font-semibold ${dark ? "text-white/80" : "text-[var(--color-ink-3)]"}`;
   const priceCls = (text: string) =>
     `font-extrabold leading-none tracking-[-0.04em] ${
       free && !plan.is_priced && text.length > 8
@@ -171,6 +174,20 @@ function PlanCard({
           </span>
         )}
       </div>
+
+      {/* Visitors in Pakistan also see the PKR price the owner set, for the
+          same cadence as the USD price above. PkrPrice is a small client
+          island; the monthly/yearly switch is the same CSS (data-billing on
+          the PlanBilling wrapper) as the USD price, so this card stays server
+          HTML. Each one renders nothing without a PKR price for its cadence. */}
+      <span className={yearlyAmount !== null ? `contents ${MONTHLY_ONLY}` : "contents"}>
+        <PkrPrice amount={pkrLabel(plan, "monthly")} period={labels.perMonth} className={pkrCls} />
+      </span>
+      {yearlyAmount !== null && (
+        <span className={ANNUAL_ONLY}>
+          <PkrPrice amount={pkrLabel(plan, "annual")} period={labels.perYear} className={pkrCls} />
+        </span>
+      )}
 
       {!contactSales ? (
         <a
