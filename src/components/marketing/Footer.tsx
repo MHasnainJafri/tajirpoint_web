@@ -14,6 +14,7 @@ import {
   locationPath,
 } from "@/content/locations";
 import { guidesNavLabel } from "@/content/guides/labels";
+import { FREE_TOOLS_LABEL } from "@/content/tools/tools";
 
 /**
  * Link columns beside the brand block, then a rule and the fine print.
@@ -80,6 +81,7 @@ export function Footer() {
           <FooterLink href="/pricing">{t("links.pricing")}</FooterLink>
           <FooterLink href="/compare">{COMPARE_LABEL[locale] ?? COMPARE_LABEL.en}</FooterLink>
           <FooterLink href="/guides">{guidesNavLabel(locale).title}</FooterLink>
+          <FooterLink href="/tools">{FREE_TOOLS_LABEL[locale] ?? FREE_TOOLS_LABEL.en}</FooterLink>
         </FooterColumn>
 
         <FooterColumn heading={LOCATIONS_HEADING[labelLocale(locale)]}>

@@ -174,3 +174,23 @@ export function trackBusinessView(slug: string) {
   trackEvent("view_business_page", { business_type: slug });
   pixel("ViewContent", { content_name: "business_page", content_category: slug });
 }
+
+/**
+ * A free tool at /tools was used. `tool` is the tool's slug
+ * ("profit-margin-calculator"), `action` what was done: "calculate" (a first
+ * valid result was shown), "preset" (a tax-rate preset was picked), "print"
+ * (the invoice was printed / saved as PDF), "copy". Never the numbers or
+ * text typed into the tool — those stay in the browser.
+ */
+export function trackToolUse(details: {
+  tool: string;
+  action: "calculate" | "preset" | "print" | "copy";
+  /** A coarse, non-personal label, e.g. the preset id "uk-vat-standard". */
+  label?: string;
+}) {
+  trackEvent("tool_use", {
+    tool: details.tool,
+    tool_action: details.action,
+    label: details.label,
+  });
+}

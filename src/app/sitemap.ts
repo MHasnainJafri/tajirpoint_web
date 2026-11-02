@@ -7,6 +7,7 @@ import { getAddonCatalogue } from "@/lib/marketing/addons";
 import { COMPARE_SLUGS } from "@/content/compare";
 import { LOCATIONS, LOCATIONS_HUB, locationPath } from "@/content/locations";
 import { GUIDES, GUIDES_HUB } from "@/content/guides";
+import { TOOL_SLUGS } from "@/content/tools/tools";
 
 // The add-on pages come from the backend catalogue; refresh with it.
 export const revalidate = 600;
@@ -111,6 +112,19 @@ const GUIDE_PAGES: Page[] = [
   ),
 ];
 
+/** The free tools hub and each tool. */
+const TOOL_PAGES: Page[] = [
+  { path: "/tools", priority: 0.7, changeFrequency: "monthly", updated: "2026-11-02" },
+  ...TOOL_SLUGS.map(
+    (slug): Page => ({
+      path: `/tools/${slug}`,
+      priority: 0.7,
+      changeFrequency: "monthly",
+      updated: "2026-11-02",
+    })
+  ),
+];
+
 const PAGES: Page[] = [
   { path: "/", priority: 1.0, changeFrequency: "weekly", updated: "2026-11-01" },
   { path: "/pricing", priority: 0.9, changeFrequency: "monthly", updated: "2026-11-01" },
@@ -122,6 +136,7 @@ const PAGES: Page[] = [
   ...COMPARE_PAGES,
   ...LOCATION_PAGES,
   ...GUIDE_PAGES,
+  ...TOOL_PAGES,
   ...DOCS_PAGES,
   { path: "/about", priority: 0.6, changeFrequency: "monthly", updated: "2026-11-02" },
   { path: "/contact", priority: 0.6, changeFrequency: "monthly", updated: "2026-11-02" },

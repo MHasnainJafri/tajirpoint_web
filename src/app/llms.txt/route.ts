@@ -6,6 +6,7 @@ import { STATUS_LABEL, getAddonCatalogue, type Addon } from "@/lib/marketing/add
 import { CHECKED, COMPARISONS } from "@/content/compare";
 import { LOCATIONS, LOCATIONS_HUB, locationPath } from "@/content/locations";
 import { GUIDES } from "@/content/guides";
+import { TOOLS } from "@/content/tools/tools";
 
 // Served at /llms.txt — a dotted path, so the next-intl proxy matcher
 // (which excludes `.*\..*`) skips it, same as /og.png.
@@ -86,6 +87,13 @@ ${COMPARISONS.map((c) => link(c.label, `/compare/${c.slug}`, c.blurb)).join("\n"
 
 ${link("Guides", "/guides", "Plain guides for shop and restaurant owners")}
 ${GUIDES.map((g) => link(g.title, `/guides/${g.slug}`, g.summary)).join("\n")}
+
+## Free tools
+
+Free calculators that run in the browser; nothing typed is sent or stored.
+
+${link("Free tools", "/tools", "All free tools for shop and restaurant owners")}
+${TOOLS.map((t) => link(t.heading, `/tools/${t.slug}`, t.summary)).join("\n")}
 
 ## API documentation
 
