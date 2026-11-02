@@ -93,7 +93,9 @@ async function addonPages(): Promise<Page[]> {
       // Pages a shop can act on today rank above the roadmap.
       priority: a.status === "coming_soon" || a.status === "unavailable" ? 0.6 : 0.7,
       changeFrequency: "monthly",
-      updated: "2026-11-01",
+      // Urdu + Arabic write-ups added 2 Nov 2026 (TP-490); translated slugs
+      // are listed once per language with their hreflang cluster below.
+      updated: "2026-11-02",
     })
   );
 }

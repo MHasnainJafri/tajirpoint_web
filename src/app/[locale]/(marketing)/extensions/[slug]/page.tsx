@@ -8,15 +8,11 @@ import { Tick } from "@/components/marketing/landing/Stroke";
 import { AddonIcon } from "@/components/marketing/addons/AddonIcon";
 import { StatusBadge } from "@/components/marketing/addons/StatusBadge";
 import { ADDON_CONTENT } from "@/content/addons";
+import { addonChrome, type AddonChrome } from "@/content/addons/i18n";
 import { legal, siteConfig, whatsappLink } from "@/lib/config/site";
 import { addonSchema } from "@/lib/marketing/addon-schema";
-import {
-  getAddon,
-  getAddonCatalogue,
-  planLine,
-  relatedAddons,
-  type Addon,
-} from "@/lib/marketing/addons";
+import { localizeAddon, planLineFor } from "@/lib/marketing/addon-i18n";
+import { getAddon, getAddonCatalogue, relatedAddons, type Addon } from "@/lib/marketing/addons";
 import { buildMetadata, localeUrl } from "@/lib/seo/metadata";
 import { breadcrumbSchema, faqSchema } from "@/lib/seo/schemas";
 
@@ -41,8 +37,9 @@ type Params = Promise<{ locale: string; slug: string }>;
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const addon = await getAddon(slug);
-  if (!addon) return {};
+  const found = await getAddon(slug);
+  if (!found) return {};
+  const addon = localizeAddon(found, locale);
   return buildMetadata({
     title: addon.content.seoTitle,
     description: addon.content.seoDescription,
@@ -63,17 +60,32 @@ function callHref(addon: Addon) {
   return `/get-a-call?addon=${encodeURIComponent(addon.slug)}`;
 }
 
-function whatsappHref(addon: Addon) {
-  return whatsappLink(`Hi ${legal.product}, I'm interested in the ${addon.name} add-on.`);
+function whatsappHref(addon: Addon, ch: AddonChrome) {
+  return whatsappLink(ch.whatsappMessage(legal.product, addon.name));
 }
 
-function Ctas({ addon, place, onDark = false }: { addon: Addon; place: string; onDark?: boolean }) {
+function Ctas({
+  addon,
+  ch,
+  place,
+  onDark = false,
+}: {
+  addon: Addon;
+  ch: AddonChrome;
+  place: string;
+  onDark?: boolean;
+}) {
   const secondary = onDark
     ? "inline-flex max-w-full items-center justify-center rounded-full border border-white/30 px-6 py-[13px] text-center text-[15px] font-semibold text-white transition-colors hover:bg-white/10"
     : secondaryBtn;
   const wa = (
-    <a href={whatsappHref(addon)} target="_blank" rel="noopener noreferrer" className={secondary}>
-      WhatsApp us
+    <a
+      href={whatsappHref(addon, ch)}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={secondary}
+    >
+      {ch.cta.whatsappUs}
     </a>
   );
 
@@ -85,17 +97,17 @@ function Ctas({ addon, place, onDark = false }: { addon: Addon; place: string; o
       {addon.status === "active" && (
         <>
           <a href={siteConfig.signupUrl} className={primaryBtn}>
-            Start free trial <span aria-hidden="true">→</span>
+            {ch.cta.startTrial} <span aria-hidden="true">{ch.arrow}</span>
           </a>
           <Link href={callHref(addon)} className={secondary}>
-            Ask us a question
+            {ch.cta.askQuestion}
           </Link>
         </>
       )}
       {addon.status === "contact_us" && (
         <>
           <Link href={callHref(addon)} className={primaryBtn}>
-            Ask us to set it up <span aria-hidden="true">→</span>
+            {ch.cta.askSetup} <span aria-hidden="true">{ch.arrow}</span>
           </Link>
           {wa}
         </>
@@ -103,7 +115,7 @@ function Ctas({ addon, place, onDark = false }: { addon: Addon; place: string; o
       {addon.status === "coming_soon" && (
         <>
           <Link href={callHref(addon)} className={primaryBtn}>
-            Tell me when it&apos;s ready <span aria-hidden="true">→</span>
+            {ch.cta.tellMeWhenReady} <span aria-hidden="true">{ch.arrow}</span>
           </Link>
           {wa}
         </>
@@ -111,7 +123,7 @@ function Ctas({ addon, place, onDark = false }: { addon: Addon; place: string; o
       {addon.status === "unavailable" && (
         <>
           <Link href={callHref(addon)} className={primaryBtn}>
-            Ask us about it <span aria-hidden="true">→</span>
+            {ch.cta.askAboutIt} <span aria-hidden="true">{ch.arrow}</span>
           </Link>
           {wa}
         </>
@@ -119,15 +131,6 @@ function Ctas({ addon, place, onDark = false }: { addon: Addon; place: string; o
     </div>
   );
 }
-
-const STATUS_HINT: Record<Addon["status"], string> = {
-  active: "Switch it on yourself from the Add-ons page in the back office.",
-  contact_us:
-    "Our team sets this one up with you. Ask for a call back and we will take it from there.",
-  coming_soon: "Not open to shops yet. Leave your number and we will tell you when it is ready.",
-  unavailable:
-    "Temporarily unavailable. Shops that already use it are not affected. Ask us for details.",
-};
 
 /* ── Page ──────────────────────────────────────────────────────────── */
 
@@ -138,11 +141,15 @@ export default async function AddonPage({ params }: { params: Params }) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  const addon = await getAddon(slug);
-  if (!addon) notFound();
+  const found = await getAddon(slug);
+  if (!found) notFound();
 
+  const ch = addonChrome(locale);
+  const addon = localizeAddon(found, locale);
   const { addons } = await getAddonCatalogue();
-  const related = relatedAddons(addon, addons, 3);
+  const related = relatedAddons(found, addons, 3).map((r) => localizeAddon(r, locale));
+  const statusHint = ch.statusHint[addon.status];
+  const planLine = planLineFor(addon.slug, locale);
   const c = addon.content;
   // Our write-up wins; the API's raw feature list is shown only for an add-on
   // the site has not written up yet (some API lists name things not built).
@@ -150,18 +157,19 @@ export default async function AddonPage({ params }: { params: Params }) {
     c.features.length > 0 ? c.features : addon.apiFeatures.map((f) => ({ title: f, body: "" }));
 
   const sections = [
-    { id: "what-it-is", label: "What it is", show: c.overview.length > 0 },
-    { id: "problems", label: "Problems it solves", show: c.problems.length > 0 },
-    { id: "features", label: "Features", show: features.length > 0 },
-    { id: "how-it-works", label: "How it works", show: c.howItWorks.length > 0 },
-    { id: "pricing", label: "Pricing & setup", show: true },
-    { id: "faq", label: "FAQs", show: c.faqs.length > 0 },
+    { id: "what-it-is", label: ch.sections.whatItIs, show: c.overview.length > 0 },
+    { id: "problems", label: ch.sections.problems, show: c.problems.length > 0 },
+    { id: "features", label: ch.sections.features, show: features.length > 0 },
+    { id: "how-it-works", label: ch.sections.howItWorks, show: c.howItWorks.length > 0 },
+    { id: "pricing", label: ch.sections.pricing, show: true },
+    { id: "faq", label: ch.sections.faq, show: c.faqs.length > 0 },
   ].filter((s) => s.show);
 
   return (
-    // The write-ups are English for now; on /ur and /ar they keep their own
-    // language and direction so they read correctly inside an RTL page.
-    <div lang={locale === "en" ? undefined : "en"} dir={locale === "en" ? undefined : "ltr"}>
+    // Translated on /ur and /ar (src/content/addons/i18n); the page takes
+    // its language and direction from <html>. Add-on names stay in Latin
+    // letters and read correctly inside right-to-left text.
+    <div>
       <JsonLd
         schema={[
           addonSchema(addon, locale),
@@ -169,8 +177,8 @@ export default async function AddonPage({ params }: { params: Params }) {
             ? [faqSchema(c.faqs.map((f) => ({ question: f.q, answer: f.a })))]
             : []),
           breadcrumbSchema([
-            { name: "Home", url: localeUrl("/", locale) },
-            { name: "Add-ons", url: localeUrl("/extensions", locale) },
+            { name: ch.home, url: localeUrl("/", locale) },
+            { name: ch.addons, url: localeUrl("/extensions", locale) },
             { name: addon.name, url: localeUrl(`/extensions/${addon.slug}`, locale) },
           ]),
         ]}
@@ -182,13 +190,13 @@ export default async function AddonPage({ params }: { params: Params }) {
           <ol className="flex flex-wrap items-center gap-2">
             <li>
               <Link href="/" className="hover:text-[var(--color-ink)]">
-                Home
+                {ch.home}
               </Link>
             </li>
             <li aria-hidden="true">/</li>
             <li>
               <Link href="/extensions" className="hover:text-[var(--color-ink)]">
-                Add-ons
+                {ch.addons}
               </Link>
             </li>
             <li aria-hidden="true">/</li>
@@ -204,7 +212,7 @@ export default async function AddonPage({ params }: { params: Params }) {
             <div className="flex flex-wrap items-center gap-3">
               <AddonIcon slug={addon.slug} iconUrl={addon.iconUrl} size={72} priority />
               <div className="flex flex-wrap items-center gap-2">
-                <StatusBadge status={addon.status} />
+                <StatusBadge status={addon.status} label={ch.statusLabel[addon.status]} />
                 <span className="rounded-full border border-[var(--color-line-2)] px-[10px] py-[3px] text-[12px] font-semibold text-[var(--color-ink-3)]">
                   {addon.group.label}
                 </span>
@@ -222,29 +230,29 @@ export default async function AddonPage({ params }: { params: Params }) {
               </p>
             )}
             <div className="mt-7">
-              <Ctas addon={addon} place="hero" />
+              <Ctas addon={addon} ch={ch} place="hero" />
             </div>
           </div>
 
-          <aside aria-label="At a glance" className={`${card} p-5 md:p-6`}>
+          <aside aria-label={ch.atAGlance} className={`${card} p-5 md:p-6`}>
             <dl className="grid gap-4 text-[14px]">
               <div>
-                <dt className="text-[12.5px] font-semibold text-[var(--color-muted)]">Price</dt>
+                <dt className="text-[12.5px] font-semibold text-[var(--color-muted)]">
+                  {ch.price}
+                </dt>
                 <dd className="mt-1 text-[24px] font-extrabold tracking-[-0.02em] text-[var(--color-ink)]">
                   {addon.price}
                 </dd>
-                <dd className="mt-1 text-[13px] text-[var(--color-muted)]">
-                  {planLine(addon.slug)}
-                </dd>
+                <dd className="mt-1 text-[13px] text-[var(--color-muted)]">{planLine}</dd>
               </div>
               <div>
-                <dt className="text-[12.5px] font-semibold text-[var(--color-muted)]">Status</dt>
-                <dd className="mt-1 leading-[1.55] text-[var(--color-body)]">
-                  {STATUS_HINT[addon.status]}
-                </dd>
+                <dt className="text-[12.5px] font-semibold text-[var(--color-muted)]">
+                  {ch.status}
+                </dt>
+                <dd className="mt-1 leading-[1.55] text-[var(--color-body)]">{statusHint}</dd>
               </div>
               <div>
-                <dt className="text-[12.5px] font-semibold text-[var(--color-muted)]">Type</dt>
+                <dt className="text-[12.5px] font-semibold text-[var(--color-muted)]">{ch.type}</dt>
                 <dd className="mt-1 leading-[1.55] text-[var(--color-body)]">
                   {addon.group.label}
                 </dd>
@@ -256,7 +264,7 @@ export default async function AddonPage({ params }: { params: Params }) {
         {/* ── On this page ───────────────────────────────────────── */}
         {sections.length > 2 && (
           <nav
-            aria-label="On this page"
+            aria-label={ch.onThisPage}
             className="flex flex-wrap gap-2 border-y border-[var(--color-line-2)] py-4"
           >
             {sections.map((s) => (
@@ -280,7 +288,7 @@ export default async function AddonPage({ params }: { params: Params }) {
           >
             <div className="min-w-0">
               <h2 id="what-it-is-title" className={h2}>
-                What it is
+                {ch.sections.whatItIs}
               </h2>
               <div className="mt-5 flex flex-col gap-4 text-[16px] leading-[1.7] text-[var(--color-body)]">
                 {c.overview.map((p) => (
@@ -290,7 +298,7 @@ export default async function AddonPage({ params }: { params: Params }) {
             </div>
             {c.whoFor.length > 0 && (
               <div className={`${card} h-fit p-5 md:p-6`}>
-                <h3 className="text-[17px] font-bold tracking-[-0.01em]">Who it&apos;s for</h3>
+                <h3 className="text-[17px] font-bold tracking-[-0.01em]">{ch.whoFor}</h3>
                 <ul className="mt-4 flex flex-col gap-3">
                   {c.whoFor.map((w) => (
                     <li
@@ -317,7 +325,7 @@ export default async function AddonPage({ params }: { params: Params }) {
             className="mt-[clamp(48px,7vw,88px)] scroll-mt-[90px]"
           >
             <h2 id="problems-title" className={h2}>
-              Problems it solves
+              {ch.sections.problems}
             </h2>
             <ul className="mt-6 grid grid-cols-[repeat(auto-fill,minmax(min(100%,300px),1fr))] gap-3">
               {c.problems.map((p) => (
@@ -345,7 +353,7 @@ export default async function AddonPage({ params }: { params: Params }) {
             className="mt-[clamp(48px,7vw,88px)] scroll-mt-[90px]"
           >
             <h2 id="features-title" className={h2}>
-              Key features
+              {ch.keyFeatures}
             </h2>
             <ul className="mt-6 grid grid-cols-[repeat(auto-fill,minmax(min(100%,300px),1fr))] gap-3">
               {features.map((f) => (
@@ -375,7 +383,7 @@ export default async function AddonPage({ params }: { params: Params }) {
             className="mt-[clamp(48px,7vw,88px)] scroll-mt-[90px]"
           >
             <h2 id="how-title" className={h2}>
-              How it works
+              {ch.sections.howItWorks}
             </h2>
             <ol className="mt-6 grid gap-3 md:grid-cols-2 lg:grid-cols-[repeat(auto-fit,minmax(220px,1fr))]">
               {c.howItWorks.map((s, i) => (
@@ -404,7 +412,7 @@ export default async function AddonPage({ params }: { params: Params }) {
           {c.needs.length > 0 && (
             <div className={`${card} p-5 md:p-7`}>
               <h2 className="text-[clamp(20px,2.4vw,26px)] font-bold tracking-[-0.02em]">
-                What you need
+                {ch.whatYouNeed}
               </h2>
               <ul className="mt-4 flex flex-col gap-3">
                 {c.needs.map((n) => (
@@ -426,30 +434,28 @@ export default async function AddonPage({ params }: { params: Params }) {
               id="pricing-title"
               className="text-[clamp(20px,2.4vw,26px)] font-bold tracking-[-0.02em]"
             >
-              Pricing &amp; setup
+              {ch.sections.pricing}
             </h2>
             <p className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
               <span className="text-[28px] font-extrabold tracking-[-0.02em] text-[var(--color-ink)]">
                 {addon.price}
               </span>
-              <span className="text-[13.5px] text-[var(--color-muted)]">
-                {planLine(addon.slug)}
-              </span>
+              <span className="text-[13.5px] text-[var(--color-muted)]">{planLine}</span>
             </p>
             <div className="mt-4 flex flex-col gap-3 text-[14.5px] leading-[1.6] text-[var(--color-body)]">
-              {(c.setup.length ? c.setup : [STATUS_HINT[addon.status]]).map((s) => (
+              {(c.setup.length ? c.setup : [statusHint]).map((s) => (
                 <p key={s}>{s}</p>
               ))}
             </div>
             <p className="mt-4 text-[13px] text-[var(--color-muted)]">
-              See all plans on the{" "}
+              {ch.seePlans[0]}
               <Link
                 href="/pricing"
                 className="font-semibold text-[var(--color-mint-2)] underline underline-offset-2"
               >
-                pricing page
+                {ch.seePlans[1]}
               </Link>
-              .
+              {ch.seePlans[2]}
             </p>
           </div>
         </section>
@@ -462,7 +468,7 @@ export default async function AddonPage({ params }: { params: Params }) {
             className="mx-auto mt-[clamp(48px,7vw,88px)] max-w-[860px] scroll-mt-[90px]"
           >
             <h2 id="faq-title" className={`${h2} text-center`}>
-              Questions about {addon.name}
+              {ch.faqTitle(addon.name)}
             </h2>
             <div className="mt-7 flex flex-col gap-3">
               {c.faqs.map((faq) => (
@@ -493,13 +499,13 @@ export default async function AddonPage({ params }: { params: Params }) {
           <section aria-labelledby="related-title" className="mt-[clamp(48px,7vw,88px)]">
             <div className="flex flex-wrap items-end justify-between gap-3">
               <h2 id="related-title" className={h2}>
-                Related add-ons
+                {ch.relatedAddons}
               </h2>
               <Link
                 href="/extensions"
                 className="text-[14px] font-semibold text-[var(--color-mint-2)]"
               >
-                All add-ons <span aria-hidden="true">→</span>
+                {ch.allAddons} <span aria-hidden="true">{ch.arrow}</span>
               </Link>
             </div>
             <ul className="mt-6 grid grid-cols-[repeat(auto-fill,minmax(min(100%,280px),1fr))] gap-3">
@@ -518,7 +524,7 @@ export default async function AddonPage({ params }: { params: Params }) {
                         {r.summary}
                       </span>
                       <span className="mt-2 flex flex-wrap items-center gap-2">
-                        <StatusBadge status={r.status} />
+                        <StatusBadge status={r.status} label={ch.statusLabel[r.status]} />
                         <span className="text-[12.5px] font-semibold text-[var(--color-ink)]">
                           {r.price}
                         </span>
@@ -537,16 +543,16 @@ export default async function AddonPage({ params }: { params: Params }) {
         <CtaPanel>
           <h2 className="relative mx-auto max-w-[22ch] text-[clamp(26px,3.6vw,42px)] font-extrabold tracking-[-0.03em] text-balance">
             {addon.status === "active"
-              ? `Try ${addon.name} free`
+              ? ch.finalTitle.active(addon.name)
               : addon.status === "coming_soon"
-                ? `Want ${addon.name} when it's ready?`
-                : `Talk to us about ${addon.name}`}
+                ? ch.finalTitle.coming_soon(addon.name)
+                : ch.finalTitle.other(addon.name)}
           </h2>
           <p className="relative mx-auto mt-4 max-w-[48ch] text-[16px] leading-[1.6] text-[var(--color-on-dark-2)]">
-            {STATUS_HINT[addon.status]}
+            {statusHint}
           </p>
           <div className="relative mt-8">
-            <Ctas addon={addon} place="final" onDark />
+            <Ctas addon={addon} ch={ch} place="final" onDark />
           </div>
         </CtaPanel>
       </section>
