@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { ImageResponse } from "next/og";
 import { OG_IMAGE_SIZE, type OgCard } from "./og-cards";
-import { BRAND_HOST, BRAND_NAME, brand } from "@/lib/config/brand";
+import { BRAND_HOST, BRAND_NAME, accentOnDark, brand } from "@/lib/config/brand";
 
 // The real brand mark used in the site header (public/brand/mark/mark-on-dark.svg),
 // embedded so every share card carries the actual logo.
@@ -37,8 +37,8 @@ const MARK_SRC = brand.ownLogo
   : `data:image/svg+xml;base64,${Buffer.from(MARK_SVG).toString("base64")}`;
 
 /** The card's accent and ground: ours, or the brand's colour on its ink. */
-const ACCENT = brand.primary ?? "#00D27A";
-const PILL_BORDER = brand.primary ? `${brand.primary}73` : "rgba(0,210,122,0.45)";
+const ACCENT = brand.primary ? accentOnDark() : "#00D27A";
+const PILL_BORDER = brand.primary ? `${accentOnDark()}73` : "rgba(0,210,122,0.45)";
 const GROUND = brand.primary
   ? `linear-gradient(135deg, ${brand.ink ?? "#111111"} 0%, #0a0a0a 55%, ${brand.ink ?? "#111111"} 100%)`
   : "linear-gradient(135deg, #06140d 0%, #0a0a0a 55%, #07170f 100%)";

@@ -100,6 +100,12 @@ function luminance(colour: string): number {
   return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 }
 
+/** WCAG contrast ratio of two hex colours. */
+function contrast(a: string, b: string): number {
+  const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x) as [number, number];
+  return (hi + 0.05) / (lo + 0.05);
+}
+
 /** Black or white, whichever reads better on `colour`. */
 function onColour(colour: string): "#0a0a0a" | "#ffffff" {
   const l = luminance(colour);
@@ -319,6 +325,10 @@ export function brandThemeCss(): string {
   const ink = brand.ink;
   if (p) {
     const on = onColour(p);
+    // On the always-dark surfaces the accent must still show: a near-black
+    // brand colour (Hey Orders: black and white) turns white there.
+    const pd = accentOnDark();
+    const onDark = onColour(pd);
     const light = [
       `--color-mint: ${p}`,
       `--color-brand: ${p}`,
@@ -333,17 +343,23 @@ export function brandThemeCss(): string {
       `--color-mint-ink: ${on}`,
     ];
     const dark = [
-      `--color-mint: ${p}`,
-      `--color-brand: ${p}`,
-      `--color-mint-2: color-mix(in srgb, ${p} 70%, white)`,
-      `--color-mint-hover: color-mix(in srgb, ${p} 80%, white)`,
-      `--color-brand-hover: color-mix(in srgb, ${p} 80%, white)`,
-      `--color-mint-soft: color-mix(in srgb, ${p} 8%, transparent)`,
-      `--color-mint-line: color-mix(in srgb, ${p} 30%, transparent)`,
-      `--color-on-brand: ${on}`,
-      `--color-mint-ink: ${on}`,
+      `--color-mint: ${pd}`,
+      `--color-brand: ${pd}`,
+      `--color-mint-2: color-mix(in srgb, ${pd} 70%, white)`,
+      `--color-mint-hover: color-mix(in srgb, ${pd} 85%, black)`,
+      `--color-brand-hover: color-mix(in srgb, ${pd} 85%, black)`,
+      `--color-mint-soft: color-mix(in srgb, ${pd} 8%, transparent)`,
+      `--color-mint-line: color-mix(in srgb, ${pd} 30%, transparent)`,
+      `--color-on-brand: ${onDark}`,
+      `--color-mint-ink: ${onDark}`,
     ];
-    rules.push(`:root{${light.join(";")}}`, `.on-dark,.dark{${dark.join(";")}}`);
+    rules.push(
+      `:root{${light.join(";")}}`,
+      `.on-dark,.dark{${dark.join(";")}}`,
+      // Buttons filled with the accent set their text as #0A0A0A (right on
+      // our mint); for another brand it follows --color-on-brand instead.
+      `[class*="bg-[var(--color-mint)]"][class]{color:var(--color-on-brand)}`
+    );
   }
   if (ink) {
     rules.push(
@@ -351,6 +367,15 @@ export function brandThemeCss(): string {
     );
   }
   return rules.join("\n");
+}
+
+/**
+ * The accent as it shows on a dark surface (share cards, dark panels): the
+ * brand colour, or white when the brand colour is too dark to read there.
+ */
+export function accentOnDark(): string {
+  const p = brand.primary ?? "#00D27A";
+  return contrast(p, "#0a0a0a") >= 3 ? p : "#ffffff";
 }
 
 /** Short names for copy: `${BRAND_NAME} keeps your stock…`. */
