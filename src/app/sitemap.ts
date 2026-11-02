@@ -4,6 +4,7 @@ import { isTranslated, localeUrl } from "@/lib/seo/metadata";
 import { RESOURCES } from "@/lib/docs/nav";
 import { BUSINESS_SLUGS } from "@/lib/marketing/businesses";
 import { getAddonCatalogue } from "@/lib/marketing/addons";
+import { TOOL_SLUGS } from "@/content/tools/tools";
 
 // The add-on pages come from the backend catalogue; refresh with it.
 export const revalidate = 600;
@@ -65,6 +66,19 @@ const FEATURE_PAGES: Page[] = ["khata", "offline", "accounting", "van-sales", "e
   })
 );
 
+/** The free tools hub and each tool. */
+const TOOL_PAGES: Page[] = [
+  { path: "/tools", priority: 0.7, changeFrequency: "monthly", updated: "2026-11-02" },
+  ...TOOL_SLUGS.map(
+    (slug): Page => ({
+      path: `/tools/${slug}`,
+      priority: 0.7,
+      changeFrequency: "monthly",
+      updated: "2026-11-02",
+    })
+  ),
+];
+
 const PAGES: Page[] = [
   { path: "/", priority: 1.0, changeFrequency: "weekly", updated: "2026-11-01" },
   { path: "/pricing", priority: 0.9, changeFrequency: "monthly", updated: "2026-11-01" },
@@ -73,6 +87,7 @@ const PAGES: Page[] = [
   ...BUSINESS_PAGES,
   { path: "/extensions", priority: 0.8, changeFrequency: "monthly", updated: "2026-09-10" },
   ...FEATURE_PAGES,
+  ...TOOL_PAGES,
   ...DOCS_PAGES,
   { path: "/about", priority: 0.6, changeFrequency: "monthly", updated: "2026-10-14" },
   { path: "/contact", priority: 0.6, changeFrequency: "monthly", updated: "2026-10-14" },

@@ -3,6 +3,7 @@ import { BUSINESSES } from "@/lib/marketing/businesses";
 import { RESOURCES } from "@/lib/docs/nav";
 import { getPlans, planSummary } from "@/lib/api/plans";
 import { STATUS_LABEL, getAddonCatalogue, type Addon } from "@/lib/marketing/addons";
+import { TOOLS } from "@/content/tools/tools";
 
 // Served at /llms.txt — a dotted path, so the next-intl proxy matcher
 // (which excludes `.*\..*`) skips it, same as /og.png.
@@ -66,6 +67,13 @@ ${link("Offline POS", "/features/offline", "How the POS keeps selling with no in
 ${link("Accounting", "/features/accounting", "Double-entry ledger posted from POS activity (Shop plan and above)")}
 ${link("Van sales", "/features/van-sales", "Route selling and day-end reconciliation for distributors")}
 ${link("Tax & e-invoicing", "/features/e-invoicing", "Tax-inclusive pricing, VAT/GST and withholding at checkout; regulatory e-invoicing connectors (e.g. FBR) are not yet released")}
+
+## Free tools
+
+Free calculators that run in the browser; nothing typed is sent or stored.
+
+${link("Free tools", "/tools", "All free tools for shop and restaurant owners")}
+${TOOLS.map((t) => link(t.heading, `/tools/${t.slug}`, t.summary)).join("\n")}
 
 ## API documentation
 

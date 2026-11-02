@@ -4,6 +4,7 @@ import { Wordmark } from "@/components/brand/Wordmark";
 import { FEATURES } from "@/lib/design/catalog";
 import { BUSINESSES, businessLabel } from "@/lib/marketing/businesses";
 import { legal } from "@/lib/config/site";
+import { FREE_TOOLS_LABEL } from "@/content/tools/tools";
 
 /**
  * Link columns beside the brand block, then a rule and the fine print.
@@ -63,6 +64,7 @@ export function Footer() {
           ))}
           <FooterLink href="/extensions">{t("links.allExtensions")}</FooterLink>
           <FooterLink href="/pricing">{t("links.pricing")}</FooterLink>
+          <FooterLink href="/tools">{FREE_TOOLS_LABEL[locale] ?? FREE_TOOLS_LABEL.en}</FooterLink>
         </FooterColumn>
 
         <FooterColumn heading={t("company")}>
