@@ -79,3 +79,23 @@ test("old solution pages redirect permanently", async ({ request }) => {
     expect(res.headers()["location"], from).toBe(to);
   }
 });
+
+test("the Urdu demo page and its errors are in Urdu, right to left", async ({ page }) => {
+  await page.goto("/ur/book-demo");
+  await expect(page.locator("section[lang='ur'][dir='rtl']").first()).toBeVisible();
+  await expect(page.locator("link[rel='canonical']")).toHaveAttribute("href", /\/ur\/book-demo$/);
+  await page.getByRole("button", { name: "میرا مفت ڈیمو بک کریں" }).click();
+  await expect(page.locator("form").getByRole("alert")).toContainText("نشان زدہ خانے");
+  await expect(page.getByText("براہِ کرم اپنا نام لکھیں۔")).toBeVisible();
+  // The code picker + number row stays left to right.
+  await expect(page.getByRole("group", { name: "واٹس ایپ نمبر" })).toHaveAttribute("dir", "ltr");
+});
+
+test("the Arabic khata page is translated and canonical to itself", async ({ page }) => {
+  await page.goto("/ar/features/khata");
+  await expect(page.locator("h1")).toContainText("دفتر الآجل");
+  await expect(page.locator("link[rel='canonical']")).toHaveAttribute(
+    "href",
+    /\/ar\/features\/khata$/
+  );
+});

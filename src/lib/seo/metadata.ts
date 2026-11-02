@@ -22,7 +22,21 @@ export const OG_LOCALE_MAP: Record<string, string> = {
  * copies point their canonical there, carry no hreflang cluster, and stay out
  * of the sitemap. Add a path here the day its body copy is translated.
  */
-export const TRANSLATED_PATHS: ReadonlySet<string> = new Set(["/", "/pricing", "/extensions"]);
+export const TRANSLATED_PATHS: ReadonlySet<string> = new Set([
+  "/",
+  "/pricing",
+  "/extensions",
+  // Feature + lead pages: copy in src/content/i18n/{features,lead-pages}.
+  "/features/khata",
+  "/features/accounting",
+  "/features/e-invoicing",
+  "/features/offline",
+  "/features/van-sales",
+  "/book-demo",
+  "/get-a-call",
+  "/contact",
+  "/about",
+]);
 
 export function isTranslated(path: string): boolean {
   return TRANSLATED_PATHS.has(path);

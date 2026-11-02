@@ -1,9 +1,9 @@
 "use client";
 
 import { useActionState, useEffect, useRef, useState, startTransition } from "react";
+import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { submitContact, type ContactState } from "./actions";
-import { BUSINESS_TYPE_OPTIONS } from "@/lib/marketing/demo";
 import {
   currentAttribution,
   emptyAttribution,
@@ -21,7 +21,20 @@ import {
   textareaCls,
 } from "@/components/forms/styles";
 import { PhoneField } from "@/components/forms/PhoneField";
+import { pickCopy } from "@/content/i18n/page-copy";
+import {
+  CONTACT_FORM_COPY,
+  SHARED_FORM_COPY,
+  businessTypeOptions,
+  localizeError,
+  localizeErrors,
+} from "@/content/i18n/lead-pages/forms";
 
+/**
+ * The contact page's message form. Words follow the page language
+ * (src/content/i18n/lead-pages/forms.ts); the server action answers in
+ * English and `localizeError` translates it.
+ */
 export function ContactForm() {
   const [state, action, pending] = useActionState<ContactState | undefined, FormData>(
     submitContact,
@@ -31,6 +44,9 @@ export function ContactForm() {
   const tracked = useRef(false);
   const doneRef = useRef<HTMLDivElement>(null);
   const errorRef = useRef<HTMLParagraphElement>(null);
+  const locale = useLocale();
+  const { t } = pickCopy(CONTACT_FORM_COPY, locale);
+  const shared = pickCopy(SHARED_FORM_COPY, locale).t;
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- read the stored first touch once, on mount
@@ -55,24 +71,21 @@ export function ContactForm() {
         role="status"
         className="rounded-[18px] border border-[var(--color-mint-line)] bg-[var(--color-mint-soft)] p-7 outline-none"
       >
-        <p className="text-[19px] font-extrabold text-[var(--color-ink)]">
-          Message sent — thank you.
-        </p>
+        <p className="text-[19px] font-extrabold text-[var(--color-ink)]">{t.successTitle}</p>
         <p className="mt-2 text-[14.5px] leading-[1.6] text-[var(--color-body)]">
-          We&apos;ll reply within one working day. Want to see the product sooner?{" "}
+          {t.successBody}{" "}
           <Link
             href="/book-demo"
             className="font-semibold text-[var(--color-mint-2)] underline underline-offset-2"
           >
-            Book a free demo
+            {t.successLink}
           </Link>
-          .
         </p>
       </div>
     );
   }
 
-  const f = state?.fields ?? {};
+  const f = localizeErrors(state?.fields, locale);
   const err = (name: keyof typeof f) =>
     f[name] ? { "aria-invalid": true as const, "aria-describedby": `c-${name}-error` } : {};
 
@@ -85,7 +98,7 @@ export function ContactForm() {
         startTransition(() => action(data));
       }}
       noValidate
-      aria-label="Contact form"
+      aria-label={t.formLabel}
       className="flex flex-col gap-5"
     >
       {state?.error && (
@@ -95,14 +108,14 @@ export function ContactForm() {
           role="alert"
           className="rounded-[12px] border border-[#F3C3BD] bg-[#FEF3F2] px-4 py-3 text-[14px] text-[#B42318] outline-none"
         >
-          {state.error}
+          {localizeError(state.error, locale)}
         </p>
       )}
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div className="flex flex-col gap-2">
           <label htmlFor="c-name" className={labelCls}>
-            Name{" "}
+            {t.name}{" "}
             <span aria-hidden="true" className="text-[#B42318]">
               *
             </span>
@@ -124,7 +137,7 @@ export function ContactForm() {
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="c-email" className={labelCls}>
-            Email{" "}
+            {t.email}{" "}
             <span aria-hidden="true" className="text-[#B42318]">
               *
             </span>
@@ -133,6 +146,7 @@ export function ContactForm() {
             id="c-email"
             name="email"
             type="email"
+            dir="ltr"
             autoComplete="email"
             required
             className={inputCls(!!f.email)}
@@ -147,15 +161,15 @@ export function ContactForm() {
       </div>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        <PhoneField id="c-phone" label="Phone / WhatsApp" optional error={f.phone} />
+        <PhoneField id="c-phone" label={t.phone} optional error={f.phone} />
         <div className="flex flex-col gap-2">
           <label htmlFor="c-business" className={labelCls}>
-            Type of business{" "}
-            <span className="font-normal text-[var(--color-muted)]">(optional)</span>
+            {t.businessType}{" "}
+            <span className="font-normal text-[var(--color-muted)]">{shared.optional}</span>
           </label>
           <select id="c-business" name="business_type" defaultValue="" className={inputCls(false)}>
-            <option value="">Choose one</option>
-            {BUSINESS_TYPE_OPTIONS.map((o) => (
+            <option value="">{shared.chooseOne}</option>
+            {businessTypeOptions(locale).map((o) => (
               <option key={o.value} value={o.value}>
                 {o.label}
               </option>
@@ -166,7 +180,7 @@ export function ContactForm() {
 
       <div className="flex flex-col gap-2">
         <label htmlFor="c-message" className={labelCls}>
-          Message{" "}
+          {t.message}{" "}
           <span aria-hidden="true" className="text-[#B42318]">
             *
           </span>
@@ -176,7 +190,7 @@ export function ContactForm() {
           name="message"
           rows={5}
           required
-          placeholder="How can we help?"
+          placeholder={t.messagePlaceholder}
           className={textareaCls(!!f.message)}
           {...err("message")}
         />
@@ -201,15 +215,15 @@ export function ContactForm() {
           disabled={pending}
           className="inline-flex items-center justify-center gap-[10px] rounded-full bg-[#0A0A0A] px-7 py-[14px] text-[15px] font-bold text-white transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-mint-2)] disabled:translate-y-0 disabled:opacity-60"
         >
-          {pending ? "Sending…" : "Send message"}
+          {pending ? shared.sending : t.submit}
         </button>
         <p className={hintCls}>
-          Want a walkthrough instead?{" "}
+          {t.walkthrough}{" "}
           <Link
             href="/book-demo"
             className="font-semibold text-[var(--color-mint-2)] underline underline-offset-2"
           >
-            Book a demo
+            {t.bookDemo}
           </Link>
         </p>
       </div>
