@@ -1,6 +1,7 @@
 import { Tick } from "@/components/marketing/landing/Stroke";
 import { legal, whatsappLink } from "@/lib/config/site";
 import { CallbackForm } from "./CallbackForm";
+import { BUSINESS_TYPE_OPTIONS } from "@/lib/marketing/demo";
 
 const POINTS = [
   "A real person from our team calls you — no bots, no sales script.",
@@ -63,7 +64,7 @@ export function CallbackSection({ id = "call-back", location }: { id?: string; l
         </div>
 
         <div className="min-w-0 rounded-[22px] border border-[var(--color-line-2)] bg-white p-[clamp(16px,3.4vw,32px)] shadow-[var(--shadow-card)]">
-          <CallbackForm idPrefix={id} location={location} />
+          <CallbackForm idPrefix={id} location={location} typeOptions={BUSINESS_TYPE_OPTIONS} />
         </div>
       </div>
     </section>

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef, useId } from "react";
 import { Menu, X } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { Icon } from "@/components/design/Icon";
 import { Wordmark } from "@/components/brand/Wordmark";
@@ -15,10 +15,22 @@ import {
   EXTENSIONS,
   extensionHref,
 } from "@/lib/design/catalog";
-import { BUSINESSES, businessLabel } from "@/lib/marketing/businesses";
+import type { Business } from "@/lib/marketing/businesses";
 import { siteConfig } from "@/lib/config/site";
 
 type MegaKey = "product" | "businesses" | "extensions" | "resources";
+
+/**
+ * One business row for the menus, already in the page's language. The
+ * marketing layout builds these on the server so the full business catalogue
+ * (every page's copy, FAQs, SEO) is not shipped to the browser with the header.
+ */
+export interface NavBusiness {
+  slug: Business["slug"];
+  icon: Business["icon"];
+  name: string;
+  navLine: string;
+}
 
 /** Pages that exist — nothing in the menu may 404. */
 const RESOURCES = [
@@ -44,12 +56,11 @@ const startFreeCls =
  * it. The mobile drawer carries the same links as accordions, plus Book a
  * demo and Start free.
  */
-export function Nav() {
+export function Nav({ businesses }: { businesses: NavBusiness[] }) {
   const t = useTranslations("nav");
   const tExt = useTranslations("extensions.items");
   const tFeat = useTranslations("nav.megaFeatures.items");
   const tRes = useTranslations("nav.megaResources.items");
-  const locale = useLocale();
   const pathname = usePathname();
   const baseId = useId();
 
@@ -161,29 +172,26 @@ export function Nav() {
         <div>
           <MegaHeading>{t("megaBusinesses.heading")}</MegaHeading>
           <ul className="grid grid-cols-[repeat(2,minmax(0,1fr))] gap-x-4 gap-y-[2px]">
-            {BUSINESSES.map((b) => {
-              const label = businessLabel(b, locale);
-              return (
-                <li key={b.slug}>
-                  <Link
-                    href={`/business/${b.slug}`}
-                    className="-mx-[10px] flex gap-3 rounded-[12px] px-[10px] py-[9px] transition-colors duration-200 hover:bg-[var(--color-surface)] focus-visible:bg-[var(--color-surface)] focus-visible:outline-2 focus-visible:outline-[var(--color-mint-2)]"
-                  >
-                    <span className="grid h-9 w-9 flex-none place-items-center rounded-[10px] bg-[var(--color-mint-soft)]">
-                      <Icon name={b.icon} size={19} />
+            {businesses.map((b) => (
+              <li key={b.slug}>
+                <Link
+                  href={`/business/${b.slug}`}
+                  className="-mx-[10px] flex gap-3 rounded-[12px] px-[10px] py-[9px] transition-colors duration-200 hover:bg-[var(--color-surface)] focus-visible:bg-[var(--color-surface)] focus-visible:outline-2 focus-visible:outline-[var(--color-mint-2)]"
+                >
+                  <span className="grid h-9 w-9 flex-none place-items-center rounded-[10px] bg-[var(--color-mint-soft)]">
+                    <Icon name={b.icon} size={19} />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-[13.5px] font-bold text-[var(--color-ink)]">
+                      {b.name}
                     </span>
-                    <span className="min-w-0">
-                      <span className="block text-[13.5px] font-bold text-[var(--color-ink)]">
-                        {label.name}
-                      </span>
-                      <span className="mt-px block text-[12px] leading-[1.45] text-[var(--color-muted)]">
-                        {label.navLine}
-                      </span>
+                    <span className="mt-px block text-[12px] leading-[1.45] text-[var(--color-muted)]">
+                      {b.navLine}
                     </span>
-                  </Link>
-                </li>
-              );
-            })}
+                  </span>
+                </Link>
+              </li>
+            ))}
           </ul>
           <Link
             href="/business"
@@ -410,12 +418,12 @@ export function Nav() {
             onToggle={() => setMobileSection((s) => (s === "businesses" ? null : "businesses"))}
             id={`${baseId}-m-businesses`}
           >
-            {BUSINESSES.map((b) => (
+            {businesses.map((b) => (
               <MobileSubLink key={b.slug} href={`/business/${b.slug}`} onNavigate={closeAll}>
                 <span className="grid h-8 w-8 flex-none place-items-center rounded-[9px] bg-[var(--color-mint-soft)]">
                   <Icon name={b.icon} size={17} />
                 </span>
-                {businessLabel(b, locale).name}
+                {b.name}
               </MobileSubLink>
             ))}
             <MobileSubLink href="/book-demo?migrate=1" onNavigate={closeAll}>

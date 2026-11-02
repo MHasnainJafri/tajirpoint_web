@@ -32,18 +32,26 @@ const geist = Geist({
   display: "swap",
 });
 
+// Not preloaded: the mono face only sets small labels (eyebrows, chart axes),
+// so it must not compete with the sans text for the first bytes on a slow
+// phone. It still loads as soon as the CSS asks for it, and swaps in.
 const geistMono = Geist_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   variable: "--font-geist-mono",
   display: "swap",
+  preload: false,
 });
 
+// Not preloaded: only Urdu/Arabic pages use it (see fontClasses below), so a
+// preload made every English page download two Arabic font files it never
+// draws. The browser fetches it on ur/ar pages when the text needs it.
 const reemKufi = Reem_Kufi({
   subsets: ["arabic", "latin"],
   weight: ["500", "600", "700"],
   variable: "--font-reem-kufi",
   display: "swap",
+  preload: false,
 });
 
 /** Pre-render every locale at build time instead of rendering per request. */

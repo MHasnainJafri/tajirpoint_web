@@ -2,7 +2,6 @@
 
 import { useActionState, useEffect, useRef, useState, startTransition } from "react";
 import { submitCallbackRequest, type CallbackState } from "./actions";
-import { BUSINESS_TYPE_OPTIONS, preselectType } from "@/lib/marketing/demo";
 import {
   currentAttribution,
   emptyAttribution,
@@ -24,14 +23,18 @@ import { PhoneField } from "@/components/forms/PhoneField";
  * stays for visitors without JavaScript.
  *
  * `idPrefix` keeps ids unique when the form sits inside another page;
- * `location` labels the analytics event.
+ * `location` labels the analytics event. `typeOptions` comes from the server
+ * (BUSINESS_TYPE_OPTIONS): importing it here shipped the whole business
+ * catalogue and zod to the browser on every page with this form.
  */
 export function CallbackForm({
   idPrefix = "cb",
   location,
+  typeOptions,
 }: {
   idPrefix?: string;
   location: string;
+  typeOptions: ReadonlyArray<{ value: string; label: string }>;
 }) {
   const [state, action, pending] = useActionState<CallbackState | undefined, FormData>(
     submitCallbackRequest,
@@ -48,12 +51,16 @@ export function CallbackForm({
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     /* eslint-disable react-hooks/set-state-in-effect -- one-off sync from the URL and the stored first touch on mount */
-    setBusinessType(preselectType(params.get("type")));
+    // The `?type=` value if it names one of the options, else "".
+    const type = (params.get("type") ?? "").trim().toLowerCase();
+    setBusinessType(typeOptions.some((o) => o.value === type) ? type : "");
     // From an add-on page: /get-a-call?addon=<slug>.
     const addon = addonNameFromSlug(params.get("addon"));
     if (addon) setMessage((m) => m || addonInterestMessage(addon));
     setAttribution(readAttribution(sessionStore(), currentAttribution()));
     /* eslint-enable react-hooks/set-state-in-effect */
+    // Mount-only: typeOptions is a fixed list from the server.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -169,7 +176,7 @@ export function CallbackForm({
           className={inputCls(!!f.business_type)}
         >
           <option value="">Choose one</option>
-          {BUSINESS_TYPE_OPTIONS.map((o) => (
+          {typeOptions.map((o) => (
             <option key={o.value} value={o.value}>
               {o.label}
             </option>
