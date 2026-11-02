@@ -2,13 +2,16 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   annualAmount,
   annualMonthsSaved,
+  formatPkr,
   getPricing,
+  hasPkrPrices,
   hasLimits,
   isContactSalesPlan,
   isFreePlan,
   planNames,
   planPriceLabel,
   planSummary,
+  pkrAmount,
   type MarketingPlan,
 } from "@/lib/api/plans";
 
@@ -109,5 +112,44 @@ describe("getPricing", () => {
   it("summarises nothing when there are no plans", () => {
     expect(planSummary(null)).toBeNull();
     expect(planNames([])).toBeNull();
+  });
+});
+
+describe("PKR prices (TP-491)", () => {
+  const usdOnly = OLD_SHAPE.plans[2] as unknown as MarketingPlan;
+  const withPkr = {
+    ...OLD_SHAPE.plans[2],
+    pkr_monthly_price: "4500.0000",
+    pkr_annual_price: "45000.0000",
+    pkr_currency_code: "PKR",
+  } as unknown as MarketingPlan;
+
+  it("reads the PKR price per cadence only when the API sends one", () => {
+    expect(pkrAmount(withPkr, "monthly")).toBe(4500);
+    expect(pkrAmount(withPkr, "annual")).toBe(45000);
+    expect(pkrAmount(usdOnly, "monthly")).toBeNull();
+    expect(pkrAmount(usdOnly, "annual")).toBeNull();
+    expect(hasPkrPrices([usdOnly])).toBe(false);
+    expect(hasPkrPrices([usdOnly, withPkr])).toBe(true);
+  });
+
+  it("never shows PKR on an unpriced plan or a zero price", () => {
+    const free = { ...withPkr, is_priced: false } as MarketingPlan;
+    expect(pkrAmount(free, "monthly")).toBeNull();
+    const zero = { ...withPkr, pkr_annual_price: "0" } as MarketingPlan;
+    expect(pkrAmount(zero, "annual")).toBeNull();
+  });
+
+  it("formats like the backend does", () => {
+    expect(formatPkr(4500)).toBe("Rs 4,500");
+    expect(formatPkr(45000.5)).toBe("Rs 45,000.50");
+  });
+
+  it("parses through getPricing without the PKR keys and with them", async () => {
+    mockFetch({ plans: [OLD_SHAPE.plans[2], { ...OLD_SHAPE.plans[2], id: "9", pkr_monthly_price: "4500.0000", pkr_currency_code: "PKR" }] });
+    const pricing = await getPricing();
+    expect(pricing?.plans[0]?.pkr_monthly_price).toBeUndefined();
+    expect(pricing?.plans[1]?.pkr_monthly_price).toBe("4500.0000");
+    vi.restoreAllMocks();
   });
 });

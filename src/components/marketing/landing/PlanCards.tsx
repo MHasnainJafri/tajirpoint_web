@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { Stroke, Tick } from "./Stroke";
 import { trackPlanSelected } from "@/lib/analytics/events";
+import { PkrPrice } from "./PkrPrice";
 import {
   annualAmount,
   annualMonthsSaved,
@@ -189,6 +190,15 @@ function PlanCard({
           </span>
         )}
       </div>
+
+      {/* Visitors in Pakistan also see the PKR price the owner set, for the
+          same cadence as the USD price above (monthly / yearly toggle). */}
+      <PkrPrice
+        plan={plan}
+        cadence={showYearly ? "annual" : "monthly"}
+        period={showYearly ? labels.perYear : labels.perMonth}
+        className={`relative -mt-2 text-[14px] font-semibold ${dark ? "text-white/80" : "text-[var(--color-ink-3)]"}`}
+      />
 
       {!contactSales ? (
         <a

@@ -1,10 +1,12 @@
 import { getTranslations } from "next-intl/server";
+import type { ReactNode } from "react";
 import { Link } from "@/i18n/navigation";
 import { Stroke, Tick } from "./Stroke";
 import { BASIC_INCLUDES } from "@/lib/design/landing";
 import { siteConfig } from "@/lib/config/site";
 import { getPricing, hasLimits, planPriceLabel, type MarketingPlan } from "@/lib/api/plans";
 import { PlanCards } from "./PlanCards";
+import { PkrPrice } from "./PkrPrice";
 import { getPlanLabels } from "./planLabels";
 
 /**
@@ -68,8 +70,17 @@ function limitCell(value: number | null | undefined, t: T): string {
 }
 
 function CompareTable({ plans, t }: { plans: MarketingPlan[]; t: T }) {
-  const rows: Array<{ label: string; cell: (p: MarketingPlan) => string }> = [
-    { label: t("compare.price"), cell: (p) => `${planPriceLabel(p)}${p.is_priced ? ` ${t("perMonth")}` : ""}` },
+  const rows: Array<{ label: string; cell: (p: MarketingPlan) => ReactNode }> = [
+    {
+      label: t("compare.price"),
+      cell: (p) => (
+        <>
+          {`${planPriceLabel(p)}${p.is_priced ? ` ${t("perMonth")}` : ""}`}
+          {/* PKR for visitors in Pakistan, only when the plan has one. */}
+          <PkrPrice plan={p} cadence="monthly" period={t("perMonth")} className="block text-[13px] text-[var(--color-ink-3)]" />
+        </>
+      ),
+    },
     { label: t("compare.shops"), cell: (p) => limitCell(p.limits?.shops, t) },
     { label: t("compare.users"), cell: (p) => limitCell(p.limits?.users, t) },
     { label: t("compare.products"), cell: (p) => limitCell(p.limits?.products, t) },
