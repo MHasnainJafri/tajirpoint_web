@@ -47,6 +47,8 @@ ${link("Get a call back", "/get-a-call", "Leave a business name and phone number
 ${link("Businesses", "/business", "Every business type TajirPoint is set up for")}
 ${link("Add-ons", "/extensions", "Optional add-ons (extensions) that add features per shop, with status and price")}
 ${link("About", "/about", "Who builds TajirPoint")}
+${link("What's new", "/changelog", "Monthly list of features released to shops, in plain words")}
+${link("Partners", "/partners", "Become a reseller or setup partner; commission is agreed with each partner")}
 ${link("Contact", "/contact", "Email and WhatsApp")}
 ${link("اردو (Urdu home page)", "/ur", "The home page and pricing in Urdu")}
 ${link("العربية (Arabic home page)", "/ar", "The home page and pricing in Arabic")}

@@ -4,6 +4,7 @@ import { isTranslated, localeUrl } from "@/lib/seo/metadata";
 import { RESOURCES } from "@/lib/docs/nav";
 import { BUSINESS_SLUGS } from "@/lib/marketing/businesses";
 import { getAddonCatalogue } from "@/lib/marketing/addons";
+import { CHANGELOG_UPDATED } from "@/content/changelog/entries";
 
 // The add-on pages come from the backend catalogue; refresh with it.
 export const revalidate = 600;
@@ -74,6 +75,8 @@ const PAGES: Page[] = [
   { path: "/extensions", priority: 0.8, changeFrequency: "monthly", updated: "2026-09-10" },
   ...FEATURE_PAGES,
   ...DOCS_PAGES,
+  { path: "/partners", priority: 0.6, changeFrequency: "monthly", updated: "2026-11-02" },
+  { path: "/changelog", priority: 0.5, changeFrequency: "weekly", updated: CHANGELOG_UPDATED },
   { path: "/about", priority: 0.6, changeFrequency: "monthly", updated: "2026-10-14" },
   { path: "/contact", priority: 0.6, changeFrequency: "monthly", updated: "2026-10-14" },
   { path: "/security", priority: 0.4, changeFrequency: "yearly", updated: "2026-10-11" },

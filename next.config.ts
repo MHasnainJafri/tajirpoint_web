@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 import bundleAnalyzer from "@next/bundle-analyzer";
 import createNextIntlPlugin from "next-intl/plugin";
 import { LEGACY_SOLUTION_REDIRECTS } from "./src/lib/marketing/businesses";
+import { indexNowKey, securityHeaders as buildSecurityHeaders } from "./src/lib/security/headers";
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
@@ -9,13 +10,17 @@ const withBundleAnalyzer = bundleAnalyzer({
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
-const securityHeaders = [
-  { key: "X-Content-Type-Options", value: "nosniff" },
-  { key: "X-Frame-Options", value: "SAMEORIGIN" },
-  { key: "X-XSS-Protection", value: "1; mode=block" },
-  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
-];
+// Security headers incl. a report-only Content-Security-Policy; the source
+// list and why each host is allowed are in src/lib/security/headers.ts.
+const securityHeaders = buildSecurityHeaders({
+  apiUrl: process.env.NEXT_PUBLIC_API_URL,
+  reportUri: process.env.CSP_REPORT_URI,
+  dev: process.env.NODE_ENV === "development",
+});
+
+// IndexNow (Bing, Yandex, Seznam…): the key file must be served at
+// /<key>.txt. Only when INDEXNOW_KEY is set; see scripts/indexnow-ping.mjs.
+const INDEXNOW_KEY = indexNowKey(process.env.INDEXNOW_KEY);
 
 /** One permanent redirect per move, for the bare path and its /ur and /ar copies. */
 function pageMoves(moves: ReadonlyArray<readonly [string, string]>) {
@@ -54,6 +59,13 @@ const nextConfig: NextConfig = {
         ],
       },
     ];
+  },
+  async rewrites() {
+    // A dotted path, so the locale proxy skips it; the route answers with the
+    // key (src/app/indexnow-key.txt/route.ts).
+    return INDEXNOW_KEY
+      ? [{ source: `/${INDEXNOW_KEY}.txt`, destination: "/indexnow-key.txt" }]
+      : [];
   },
   async redirects() {
     return [
