@@ -61,21 +61,21 @@ const FEATURE_PAGES: Page[] = ["khata", "offline", "accounting", "van-sales", "e
     path: `/features/${slug}`,
     priority: 0.8,
     changeFrequency: "monthly",
-    updated: "2026-11-01",
+    updated: "2026-11-02",
   })
 );
 
 const PAGES: Page[] = [
   { path: "/", priority: 1.0, changeFrequency: "weekly", updated: "2026-11-01" },
   { path: "/pricing", priority: 0.9, changeFrequency: "monthly", updated: "2026-11-01" },
-  { path: "/book-demo", priority: 0.8, changeFrequency: "monthly", updated: "2026-11-01" },
-  { path: "/get-a-call", priority: 0.8, changeFrequency: "monthly", updated: "2026-11-01" },
+  { path: "/book-demo", priority: 0.8, changeFrequency: "monthly", updated: "2026-11-02" },
+  { path: "/get-a-call", priority: 0.8, changeFrequency: "monthly", updated: "2026-11-02" },
   ...BUSINESS_PAGES,
   { path: "/extensions", priority: 0.8, changeFrequency: "monthly", updated: "2026-09-10" },
   ...FEATURE_PAGES,
   ...DOCS_PAGES,
-  { path: "/about", priority: 0.6, changeFrequency: "monthly", updated: "2026-10-14" },
-  { path: "/contact", priority: 0.6, changeFrequency: "monthly", updated: "2026-10-14" },
+  { path: "/about", priority: 0.6, changeFrequency: "monthly", updated: "2026-11-02" },
+  { path: "/contact", priority: 0.6, changeFrequency: "monthly", updated: "2026-11-02" },
   { path: "/security", priority: 0.4, changeFrequency: "yearly", updated: "2026-10-11" },
   { path: "/privacy", priority: 0.3, changeFrequency: "yearly", updated: "2026-10-11" },
   { path: "/terms", priority: 0.3, changeFrequency: "yearly", updated: "2026-10-11" },

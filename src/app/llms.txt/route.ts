@@ -50,6 +50,8 @@ ${link("About", "/about", "Who builds TajirPoint")}
 ${link("Contact", "/contact", "Email and WhatsApp")}
 ${link("اردو (Urdu home page)", "/ur", "The home page and pricing in Urdu")}
 ${link("العربية (Arabic home page)", "/ar", "The home page and pricing in Arabic")}
+${link("کھاتہ ایپ (Urdu feature pages)", "/ur/features/khata", "Feature pages (khata, offline, accounting, van sales, e-invoicing), book a demo, call back, contact and about are also in Urdu under /ur")}
+${link("دفتر الآجل (Arabic feature pages)", "/ar/features/khata", "The same feature, demo, call-back, contact and about pages in Arabic under /ar")}
 
 ## By business
 

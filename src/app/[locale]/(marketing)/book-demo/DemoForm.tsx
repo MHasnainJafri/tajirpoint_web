@@ -2,13 +2,8 @@
 
 import { useActionState, useEffect, useRef, useState, startTransition } from "react";
 import { submitDemoRequest, type DemoState } from "./actions";
-import {
-  BRANCH_OPTIONS,
-  BUSINESS_TYPE_OPTIONS,
-  TIME_OPTIONS,
-  preselectType,
-  upcomingDays,
-} from "@/lib/marketing/demo";
+import { useLocale } from "next-intl";
+import { preselectType, upcomingDays } from "@/lib/marketing/demo";
 import {
   currentAttribution,
   emptyAttribution,
@@ -28,6 +23,17 @@ import {
 } from "@/components/forms/styles";
 import { Field } from "@/components/forms/Field";
 import { PhoneField } from "@/components/forms/PhoneField";
+import { forwardArrow, pickCopy } from "@/content/i18n/page-copy";
+import {
+  DEMO_FORM_COPY,
+  SHARED_FORM_COPY,
+  branchOptions,
+  dayLabel,
+  localizeError,
+  localizeErrors,
+  timeOptions,
+} from "@/content/i18n/lead-pages/forms";
+import { businessTypeOptions } from "@/content/i18n/lead-pages/business-types";
 
 /**
  * Our own demo booking form (no third-party scheduler). Posts through a server action
@@ -37,6 +43,9 @@ import { PhoneField } from "@/components/forms/PhoneField";
  * Submitted with onSubmit + startTransition rather than a bare `action=`, so
  * React does not reset every field when the server sends back an error. The
  * `action=` stays for visitors without JavaScript.
+ *
+ * Words come from src/content/i18n/lead-pages/forms.ts in the page language;
+ * the server action answers in English and `localizeError` translates it.
  */
 export function DemoForm() {
   const [state, action, pending] = useActionState<DemoState | undefined, FormData>(
@@ -51,6 +60,9 @@ export function DemoForm() {
   const tracked = useRef(false);
   const successRef = useRef<HTMLDivElement>(null);
   const errorRef = useRef<HTMLParagraphElement>(null);
+  const locale = useLocale();
+  const { t, rtl } = pickCopy(DEMO_FORM_COPY, locale);
+  const shared = pickCopy(SHARED_FORM_COPY, locale).t;
 
   // Browser-only inputs: ?type= / ?migrate= preselection, the day list (the
   // page is static, so dates must be computed here) and the stored first touch.
@@ -84,13 +96,11 @@ export function DemoForm() {
         className="rounded-[22px] border border-[var(--color-mint-line)] bg-[var(--color-mint-soft)] p-[clamp(22px,4vw,36px)] outline-none"
       >
         <p className="text-[22px] font-extrabold tracking-[-0.02em] text-[var(--color-ink)]">
-          Thanks — we&apos;ll WhatsApp you within one working day.
+          {t.successTitle}
         </p>
         <p className="mt-3 text-[15px] leading-[1.6] text-[var(--color-body)]">
-          We&apos;ll confirm a time that suits you and set up the demo with your kind of business.
-          {state.summary?.wantsMigration
-            ? " Keep an export from your old POS handy (Excel or CSV is fine) — we'll ask for it."
-            : ""}
+          {t.successBody}
+          {state.summary?.wantsMigration ? t.successMigration : ""}
         </p>
         <a
           href={whatsappLink("Hi TajirPoint, I just booked a demo on your website.")}
@@ -99,14 +109,14 @@ export function DemoForm() {
           data-track="book_demo_success"
           className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#0A0A0A] px-6 py-3 text-[14.5px] font-bold text-white transition-transform duration-200 hover:-translate-y-[2px]"
         >
-          Message us on WhatsApp now
-          <span aria-hidden="true">→</span>
+          {shared.whatsappNow}
+          <span aria-hidden="true">{forwardArrow(rtl)}</span>
         </a>
       </div>
     );
   }
 
-  const f = state?.fields ?? {};
+  const f = localizeErrors(state?.fields, locale);
   const err = (name: keyof typeof f) =>
     f[name] ? { "aria-invalid": true as const, "aria-describedby": `${name}-error` } : {};
 
@@ -120,7 +130,7 @@ export function DemoForm() {
       }}
       noValidate
       className="flex flex-col gap-5"
-      aria-label="Book a demo"
+      aria-label={t.formLabel}
     >
       {state?.error && (
         <p
@@ -129,12 +139,12 @@ export function DemoForm() {
           role="alert"
           className="rounded-[12px] border border-[#F3C3BD] bg-[#FEF3F2] px-4 py-3 text-[14px] text-[#B42318] outline-none"
         >
-          {state.error}
+          {localizeError(state.error, locale)}
         </p>
       )}
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        <Field id="name" label="Your name" required error={f.name}>
+        <Field id="name" label={t.name} required error={f.name}>
           <input
             id="name"
             name="name"
@@ -147,25 +157,26 @@ export function DemoForm() {
         </Field>
         <PhoneField
           id="phone"
-          label="WhatsApp number"
+          label={t.whatsapp}
           required
-          hint="Pick your country, then type your number."
+          hint={t.phoneHint}
           error={f.phone ?? f.country}
         />
       </div>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        <Field id="email" label="Email" optional error={f.email}>
+        <Field id="email" label={t.email} optional error={f.email}>
           <input
             id="email"
             name="email"
             type="email"
+            dir="ltr"
             autoComplete="email"
             className={inputCls(!!f.email)}
             {...err("email")}
           />
         </Field>
-        <Field id="business_name" label="Business name" optional error={f.business_name}>
+        <Field id="business_name" label={t.businessName} optional error={f.business_name}>
           <input
             id="business_name"
             name="business_name"
@@ -178,7 +189,7 @@ export function DemoForm() {
       </div>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        <Field id="business_type" label="Type of business" optional error={f.business_type}>
+        <Field id="business_type" label={t.businessType} optional error={f.business_type}>
           <select
             id="business_type"
             name="business_type"
@@ -186,15 +197,15 @@ export function DemoForm() {
             onChange={(e) => setBusinessType(e.target.value)}
             className={inputCls(!!f.business_type)}
           >
-            <option value="">Choose one</option>
-            {BUSINESS_TYPE_OPTIONS.map((o) => (
+            <option value="">{shared.chooseOne}</option>
+            {businessTypeOptions(locale).map((o) => (
               <option key={o.value} value={o.value}>
                 {o.label}
               </option>
             ))}
           </select>
         </Field>
-        <Field id="city" label="City" optional error={f.city}>
+        <Field id="city" label={t.city} optional error={f.city}>
           <input
             id="city"
             name="city"
@@ -208,11 +219,11 @@ export function DemoForm() {
 
       <fieldset className="flex flex-col gap-2">
         <legend className={labelCls}>
-          How many shops or branches?{" "}
-          <span className="font-normal text-[var(--color-muted)]">(optional)</span>
+          {t.branches}{" "}
+          <span className="font-normal text-[var(--color-muted)]">{shared.optional}</span>
         </legend>
         <div className="mt-2 flex flex-wrap gap-2">
-          {BRANCH_OPTIONS.map((o) => (
+          {branchOptions(locale).map((o) => (
             <label
               key={o.value}
               className="relative inline-flex cursor-pointer items-center gap-2 rounded-full border border-[var(--color-line-3)] bg-white px-4 py-[10px] text-[14px] font-semibold text-[var(--color-ink)] has-[:checked]:border-[var(--color-mint-2)] has-[:checked]:bg-[var(--color-mint-soft)] has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-[rgba(0,210,122,.35)]"
@@ -230,17 +241,12 @@ export function DemoForm() {
         {f.branches && <p className={errorCls}>{f.branches}</p>}
       </fieldset>
 
-      <Field
-        id="current_pos"
-        label="Are you using a POS or software now? Which one?"
-        optional
-        error={f.current_pos}
-      >
+      <Field id="current_pos" label={t.currentPos} optional error={f.current_pos}>
         <input
           id="current_pos"
           name="current_pos"
           type="text"
-          placeholder="e.g. Excel, a register, another POS"
+          placeholder={t.currentPosPlaceholder}
           className={inputCls(!!f.current_pos)}
           {...err("current_pos")}
         />
@@ -256,17 +262,14 @@ export function DemoForm() {
         />
         <span>
           <span className="block text-[14.5px] font-semibold text-[var(--color-ink)]">
-            Move my data for me
+            {t.migrateTitle}
           </span>
-          <span className={`mt-1 block ${hintCls}`}>
-            We load your products, customers, suppliers and credit balances from your old system —
-            free.
-          </span>
+          <span className={`mt-1 block ${hintCls}`}>{t.migrateBody}</span>
         </span>
       </label>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        <Field id="preferred_date" label="Preferred day" optional error={f.preferred_date}>
+        <Field id="preferred_date" label={t.day} optional error={f.preferred_date}>
           <select
             id="preferred_date"
             name="preferred_date"
@@ -274,22 +277,18 @@ export function DemoForm() {
             className={inputCls(!!f.preferred_date)}
             {...err("preferred_date")}
           >
-            <option value="">Any day</option>
+            <option value="">{t.anyDay}</option>
             {days.map((d) => (
               <option key={d.value} value={d.value}>
-                {d.label}
+                {locale === "en" ? d.label : dayLabel(d.value, locale)}
               </option>
             ))}
           </select>
         </Field>
         <Field
           id="preferred_time"
-          label="Preferred time (your local time)"
-          hint={
-            timeZone
-              ? `Time zone: ${timeZone}. We will confirm availability with you.`
-              : "Tell us your time zone in the message below."
-          }
+          label={t.time}
+          hint={timeZone ? t.timeHint(timeZone) : t.timeHintNoZone}
           optional
           error={f.preferred_time}
         >
@@ -300,8 +299,8 @@ export function DemoForm() {
             className={inputCls(!!f.preferred_time)}
             {...err("preferred_time")}
           >
-            <option value="">Any time</option>
-            {TIME_OPTIONS.map((o) => (
+            <option value="">{t.anyTime}</option>
+            {timeOptions(locale).map((o) => (
               <option key={o.value} value={o.value}>
                 {o.label}
               </option>
@@ -310,12 +309,12 @@ export function DemoForm() {
         </Field>
       </div>
 
-      <Field id="message" label="Anything we should know?" optional error={f.message}>
+      <Field id="message" label={t.message} optional error={f.message}>
         <textarea
           id="message"
           name="message"
           rows={4}
-          placeholder="What you sell, what is hard today, what you want to see"
+          placeholder={t.messagePlaceholder}
           className={textareaCls(!!f.message)}
           {...err("message")}
         />
@@ -339,9 +338,9 @@ export function DemoForm() {
           disabled={pending}
           className="inline-flex items-center justify-center gap-[10px] rounded-full bg-[var(--color-mint)] px-7 py-[14px] text-[15.5px] font-bold text-[#0A0A0A] transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(0,210,122,.35)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-mint-2)] disabled:translate-y-0 disabled:opacity-60"
         >
-          {pending ? "Sending…" : "Book my free demo"}
+          {pending ? shared.sending : t.submit}
         </button>
-        <p className={hintCls}>We only use your number to arrange the demo.</p>
+        <p className={hintCls}>{t.privacy}</p>
       </div>
     </form>
   );

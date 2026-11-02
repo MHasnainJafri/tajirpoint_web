@@ -30,6 +30,16 @@ export const TRANSLATED_PATHS: ReadonlySet<string> = new Set([
   // Business pages: Urdu + Arabic copy in src/content/i18n/businesses.{ur,ar}.ts.
   "/business",
   ...BUSINESS_SLUGS.map((slug) => `/business/${slug}`),
+  // Feature + lead pages: copy in src/content/i18n/{features,lead-pages}.
+  "/features/khata",
+  "/features/accounting",
+  "/features/e-invoicing",
+  "/features/offline",
+  "/features/van-sales",
+  "/book-demo",
+  "/get-a-call",
+  "/contact",
+  "/about",
 ]);
 
 export function isTranslated(path: string): boolean {

@@ -1,3 +1,6 @@
+import { useLocale } from "next-intl";
+import { pickCopy } from "@/content/i18n/page-copy";
+import { SHARED_FORM_COPY } from "@/content/i18n/lead-pages/forms";
 import { errorCls, hintCls, labelCls } from "./styles";
 
 /**
@@ -53,6 +56,9 @@ export function RequiredMark() {
   );
 }
 
+/** " (optional)" in the page's language. */
 export function OptionalMark() {
-  return <span className="font-normal text-[var(--color-muted)]"> (optional)</span>;
+  const locale = useLocale();
+  const { optional } = pickCopy(SHARED_FORM_COPY, locale).t;
+  return <span className="font-normal text-[var(--color-muted)]"> {optional}</span>;
 }
