@@ -101,6 +101,18 @@ export const OG_CARDS: Record<string, OgCard> = {
     sub: "Payments, accounting, compliance, e-commerce, shipping and customer tools — per shop.",
     pills: ["Payments", "E-commerce", "Shipping", "Compliance"],
   },
+  changelog: {
+    eyebrow: "What's new",
+    title: "What's new in TajirPoint.",
+    sub: "The features we released each month for shops and restaurants, in plain words.",
+    pills: ["Monthly", "Restaurants", "Shops"],
+  },
+  partners: {
+    eyebrow: "Partners",
+    title: "Sell, set up or support TajirPoint.",
+    sub: "For resellers, setup partners, hardware sellers and accountants. We agree terms with each partner.",
+    pills: ["Resellers", "Setup partners", "Hardware"],
+  },
   docs: {
     eyebrow: "API docs",
     title: "The TajirPoint REST API.",
@@ -156,6 +168,76 @@ export const OG_CARDS: Record<string, OgCard> = {
   ...TOOL_OG_CARDS,
 };
 
+/**
+ * Fallback cards for the add-on pages, one per filter group (ids as in
+ * `groupFor` in lib/marketing/addons.ts). Each add-on the site knows at build
+ * time has its own card (see og-addon-cards.ts); a group card is only used
+ * for an add-on the backend lists after the build. No add-on names or
+ * promises here: whether each add-on is ready is on its own page.
+ */
+export const ADDON_GROUP_CARDS: Record<string, OgCard> = {
+  business: {
+    eyebrow: "Business packs",
+    title: "Add the screens your kind of business needs.",
+    sub: "Packs for restaurants, kitchens, pharmacies and more. Each page says if it is ready.",
+    pills: ["Add-ons", "Per shop"],
+  },
+  payments: {
+    eyebrow: "Payment add-ons",
+    title: "Take the payments your customers use.",
+    sub: "Card and wallet add-ons. Each page says if it is ready or coming soon.",
+    pills: ["Cards", "Wallets", "Per shop"],
+  },
+  "online-stores": {
+    eyebrow: "Online store add-ons",
+    title: "Your website orders and shop stock, together.",
+    sub: "Connect an online store to your POS. Each page says if it is ready or coming soon.",
+    pills: ["Orders", "Stock", "Per shop"],
+  },
+  delivery: {
+    eyebrow: "Delivery add-ons",
+    title: "Delivery apps, couriers and your own riders.",
+    sub: "Bring delivery into your POS. Each page says if it is ready or set up by our team.",
+    pills: ["Delivery apps", "Couriers"],
+  },
+  accounting: {
+    eyebrow: "Accounting add-ons",
+    title: "Books that keep themselves.",
+    sub: "Accounting and cash add-ons for your shop. Each page says if it is ready.",
+    pills: ["Books", "Cash", "Per shop"],
+  },
+  customers: {
+    eyebrow: "Customer add-ons",
+    title: "Offers and tools that bring customers back.",
+    sub: "Discounts, coupons and more. Each page says if it is ready or coming soon.",
+    pills: ["Discounts", "Coupons"],
+  },
+  messaging: {
+    eyebrow: "Chat & call add-ons",
+    title: "Orders by chat and phone.",
+    sub: "Chat and phone ordering add-ons. Each page says if it is ready or coming soon.",
+    pills: ["WhatsApp", "Phone"],
+  },
+  compliance: {
+    eyebrow: "Tax & compliance add-ons",
+    title: "Tax and compliance, built into the sale.",
+    sub: "Tax reporting and sale checks. Each page says if it is ready or coming soon.",
+    pills: ["Tax", "Checks"],
+  },
+  reports: {
+    eyebrow: "Report add-ons",
+    title: "See more in your numbers.",
+    sub: "Report add-ons for your shop. Each page says if it is ready or coming soon.",
+    pills: ["Reports"],
+  },
+  integrations: {
+    eyebrow: "Integrations",
+    title: "Connect TajirPoint to the tools you use.",
+    sub: "Integration add-ons. Each page says if it is ready or coming soon.",
+    pills: ["Add-ons", "Per shop"],
+  },
+};
+
 /** Which card each page path uses. Paths not listed fall back to /og.png. */
 const CARD_BY_PATH: Record<string, string> = {
   "/": "home",
@@ -167,6 +249,8 @@ const CARD_BY_PATH: Record<string, string> = {
   "/contact": "contact",
   "/extensions": "extensions",
   "/docs": "docs",
+  "/changelog": "changelog",
+  "/partners": "partners",
   "/features/khata": "feature-khata",
   "/features/offline": "feature-offline",
   "/features/accounting": "feature-accounting",

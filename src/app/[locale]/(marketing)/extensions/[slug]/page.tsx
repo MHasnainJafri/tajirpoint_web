@@ -14,6 +14,7 @@ import { addonSchema } from "@/lib/marketing/addon-schema";
 import { localizeAddon, planLineFor } from "@/lib/marketing/addon-i18n";
 import { getAddon, getAddonCatalogue, relatedAddons, type Addon } from "@/lib/marketing/addons";
 import { buildMetadata, localeUrl } from "@/lib/seo/metadata";
+import { addonOgImage } from "@/lib/seo/og-addon-cards";
 import { breadcrumbSchema, faqSchema } from "@/lib/seo/schemas";
 
 // Literal for Next's static analysis; keep equal to ADDON_REVALIDATE.
@@ -46,6 +47,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     path: `/extensions/${addon.slug}`,
     locale,
     keywords: addon.content.keywords,
+    // Its own share card (name, status, headline), else its group's.
+    image: addonOgImage(addon.slug, addon.group.id),
+    imageAlt: `${addon.name} add-on for TajirPoint`,
   });
 }
 

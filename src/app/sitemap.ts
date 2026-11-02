@@ -8,6 +8,7 @@ import { COMPARE_SLUGS } from "@/content/compare";
 import { LOCATIONS, LOCATIONS_HUB, locationPath } from "@/content/locations";
 import { GUIDES, GUIDES_HUB } from "@/content/guides";
 import { TOOL_SLUGS } from "@/content/tools/tools";
+import { CHANGELOG_UPDATED } from "@/content/changelog/entries";
 
 // The add-on pages come from the backend catalogue; refresh with it.
 export const revalidate = 600;
@@ -138,6 +139,8 @@ const PAGES: Page[] = [
   ...GUIDE_PAGES,
   ...TOOL_PAGES,
   ...DOCS_PAGES,
+  { path: "/partners", priority: 0.6, changeFrequency: "monthly", updated: "2026-11-02" },
+  { path: "/changelog", priority: 0.5, changeFrequency: "weekly", updated: CHANGELOG_UPDATED },
   { path: "/about", priority: 0.6, changeFrequency: "monthly", updated: "2026-11-02" },
   { path: "/contact", priority: 0.6, changeFrequency: "monthly", updated: "2026-11-02" },
   { path: "/security", priority: 0.4, changeFrequency: "yearly", updated: "2026-10-11" },

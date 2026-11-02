@@ -15,6 +15,7 @@ import {
 } from "@/content/locations";
 import { guidesNavLabel } from "@/content/guides/labels";
 import { FREE_TOOLS_LABEL } from "@/content/tools/tools";
+import { EXTRA_FOOTER_LINKS, footerLabel } from "@/content/extras/footer-links";
 
 /**
  * Link columns beside the brand block, then a rule and the fine print.
@@ -100,6 +101,11 @@ export function Footer() {
           <FooterLink href="/about">{t("links.about")}</FooterLink>
           <FooterLink href="/security">{t("links.security")}</FooterLink>
           <FooterLink href="/docs">{t("links.developers")}</FooterLink>
+          {EXTRA_FOOTER_LINKS.map((l) => (
+            <FooterLink key={l.href} href={l.href}>
+              {footerLabel(l.label, locale)}
+            </FooterLink>
+          ))}
         </FooterColumn>
       </div>
 
