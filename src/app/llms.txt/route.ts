@@ -3,6 +3,7 @@ import { BUSINESSES } from "@/lib/marketing/businesses";
 import { RESOURCES } from "@/lib/docs/nav";
 import { getPlans, planSummary } from "@/lib/api/plans";
 import { STATUS_LABEL, getAddonCatalogue, type Addon } from "@/lib/marketing/addons";
+import { GUIDES } from "@/content/guides";
 
 // Served at /llms.txt — a dotted path, so the next-intl proxy matcher
 // (which excludes `.*\..*`) skips it, same as /og.png.
@@ -66,6 +67,11 @@ ${link("Offline POS", "/features/offline", "How the POS keeps selling with no in
 ${link("Accounting", "/features/accounting", "Double-entry ledger posted from POS activity (Shop plan and above)")}
 ${link("Van sales", "/features/van-sales", "Route selling and day-end reconciliation for distributors")}
 ${link("Tax & e-invoicing", "/features/e-invoicing", "Tax-inclusive pricing, VAT/GST and withholding at checkout; regulatory e-invoicing connectors (e.g. FBR) are not yet released")}
+
+## Guides
+
+${link("Guides", "/guides", "Plain guides for shop and restaurant owners")}
+${GUIDES.map((g) => link(g.title, `/guides/${g.slug}`, g.summary)).join("\n")}
 
 ## API documentation
 

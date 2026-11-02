@@ -17,6 +17,7 @@ import {
 } from "@/lib/design/catalog";
 import { BUSINESSES, businessLabel } from "@/lib/marketing/businesses";
 import { siteConfig } from "@/lib/config/site";
+import { guidesNavLabel } from "@/content/guides/labels";
 
 type MegaKey = "product" | "businesses" | "extensions" | "resources";
 
@@ -302,6 +303,15 @@ export function Nav() {
             </span>
           </Link>
         ))}
+        <Link
+          href="/guides"
+          className="rounded-[14px] border border-[var(--color-line)] p-[14px] transition-colors duration-200 hover:bg-[var(--color-surface)]"
+        >
+          <span className="block text-[14px] font-bold">{guidesNavLabel(locale).title}</span>
+          <span className="mt-[3px] block text-[12px] leading-[1.5] text-[var(--color-muted)]">
+            {guidesNavLabel(locale).sub}
+          </span>
+        </Link>
       </div>
     </MegaPanel>
   );
@@ -456,6 +466,9 @@ export function Nav() {
                 {tRes(`${r.id}.title`)}
               </MobileSubLink>
             ))}
+            <MobileSubLink href="/guides" onNavigate={closeAll}>
+              {guidesNavLabel(locale).title}
+            </MobileSubLink>
           </MobileSection>
         </nav>
 
