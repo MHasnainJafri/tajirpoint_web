@@ -5,10 +5,11 @@ import { PillBadge } from "@/components/design/primitives";
 import { BusinessGrid } from "@/components/marketing/business/BusinessGrid";
 import { MigrationBand } from "@/components/marketing/business/MigrationBand";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { BUSINESSES, OFFER_LINE } from "@/lib/marketing/businesses";
+import { BUSINESSES, businessLabel } from "@/lib/marketing/businesses";
+import { businessUi } from "@/content/i18n/businesses";
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata, canonicalUrl } from "@/lib/seo/metadata";
-import { pageBreadcrumbs } from "@/lib/seo/schemas";
+import { breadcrumbSchema } from "@/lib/seo/schemas";
 
 export async function generateMetadata({
   params,
@@ -16,10 +17,10 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const t = businessUi(locale).index;
   return buildMetadata({
-    title: "POS System for Every Kind of Business",
-    description:
-      "TajirPoint POS for restaurants, cafés, cloud kitchens, clothing, grocery and kiryana stores, pharmacies, mobile shops, salons, distributors and factories.",
+    title: t.metaTitle,
+    description: t.metaDescription,
     path: "/business",
     locale,
   });
@@ -28,51 +29,53 @@ export async function generateMetadata({
 export default async function BusinessIndexPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const ui = businessUi(locale);
+  const t = ui.index;
 
   return (
     <div className="mx-auto max-w-[1240px] px-[clamp(16px,3vw,24px)] pb-[clamp(56px,8vw,104px)]" style={{ overflowX: "clip" }}>
       <JsonLd
         schema={[
-          pageBreadcrumbs(locale, [["Businesses", "/business"]]),
+          breadcrumbSchema([
+            { name: ui.home, url: canonicalUrl("/", locale) },
+            { name: ui.businesses, url: canonicalUrl("/business", locale) },
+          ]),
           {
             "@context": "https://schema.org",
             "@type": "ItemList",
-            name: "TajirPoint by business type",
+            name: t.itemListName,
             itemListElement: BUSINESSES.map((b, i) => ({
               "@type": "ListItem",
               position: i + 1,
-              name: b.name,
+              name: businessLabel(b, locale).name,
               url: canonicalUrl(`/business/${b.slug}`, locale),
             })),
           },
         ]}
       />
       <section className="pb-10 pt-[clamp(36px,7vw,90px)] text-center">
-        <PillBadge>Find your business</PillBadge>
-        <h1 className="mx-auto mt-6 max-w-[20ch] text-[clamp(32px,5vw,60px)] font-extrabold leading-[1.05] tracking-[-0.04em] text-balance">
-          One POS system, shaped around your counter.
+        <PillBadge>{t.badge}</PillBadge>
+        <h1 className="mx-auto mt-6 max-w-[20ch] text-[clamp(32px,5vw,60px)] font-extrabold leading-[1.05] tracking-[-0.04em] text-balance rtl:leading-[1.3] rtl:tracking-normal">
+          {t.headline}
         </h1>
-        <p className="mx-auto mt-5 max-w-[56ch] text-[16.5px] leading-[1.65] text-[var(--color-body)]">
-          Pick your kind of business to see the screens, apps and reports you would use — then book a
-          free demo or start free.
-        </p>
+        <p className="mx-auto mt-5 max-w-[56ch] text-[16.5px] leading-[1.65] text-[var(--color-body)]">{t.sub}</p>
       </section>
 
       <BusinessGrid locale={locale} headingLevel="h2" />
 
       <div className="mt-[clamp(56px,8vw,96px)]">
-        <MigrationBand />
+        <MigrationBand locale={locale} />
       </div>
 
       <section className="mt-[clamp(56px,8vw,96px)] text-center">
-        <h2 className="text-[clamp(24px,3.2vw,36px)] font-bold tracking-[-0.03em]">Not sure which fits?</h2>
-        <p className="mx-auto mt-3 max-w-[52ch] text-[15px] leading-[1.65] text-[var(--color-body)]">{OFFER_LINE}</p>
+        <h2 className="text-[clamp(24px,3.2vw,36px)] font-bold tracking-[-0.03em] rtl:tracking-normal">{t.notSure}</h2>
+        <p className="mx-auto mt-3 max-w-[52ch] text-[15px] leading-[1.65] text-[var(--color-body)]">{ui.offerLine}</p>
         <div className="mt-6 flex flex-wrap justify-center gap-[10px]" data-track="business_index">
           <Link href="/book-demo" className="inline-flex rounded-full bg-[#0A0A0A] px-6 py-3 text-[15px] font-bold text-white">
-            Book a free demo
+            {ui.bookDemo}
           </Link>
           <a href={siteConfig.signupUrl} className="inline-flex rounded-full bg-[var(--color-mint)] px-6 py-3 text-[15px] font-bold text-[#0A0A0A]">
-            Start free — 3 months
+            {ui.startFree}
           </a>
         </div>
       </section>
