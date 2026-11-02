@@ -143,9 +143,11 @@ function PlanCard({
 
       <div className="relative flex items-start justify-between gap-3">
         <div>
-          <h3 className="text-[16px] font-bold tracking-[-0.01em]">{plan.name}</h3>
+          <h3 className="text-[16px] font-bold tracking-[-0.01em]">
+            <bdi>{plan.name}</bdi>
+          </h3>
           <p className="mt-[3px] text-[12.5px] leading-[1.5] text-[var(--color-muted)]">
-            {plan.tagline}
+            <bdi>{plan.tagline}</bdi>
           </p>
         </div>
         {dark && (
@@ -158,7 +160,9 @@ function PlanCard({
       <div className="relative flex flex-wrap items-baseline gap-x-2 gap-y-1">
         {/* Monthly (default). Plans not sold yearly keep this in both modes. */}
         <span className={yearlyAmount !== null ? `contents ${MONTHLY_ONLY}` : "contents"}>
-          <span className={priceCls(price)}>{price}</span>
+          <span className={priceCls(price)}>
+            <bdi>{price}</bdi>
+          </span>
           {period && <span className={periodCls}>{period}</span>}
         </span>
         {/* Yearly: the API's own annual_price, never a computed discount. */}
@@ -199,7 +203,7 @@ function PlanCard({
               : "relative inline-flex items-center justify-center gap-[10px] self-start rounded-full bg-[#0A0A0A] py-3 ps-6 pe-3 text-[14px] font-bold text-white transition-transform duration-200 hover:-translate-y-[2px]"
           }
         >
-          {plan.cta}
+          <bdi>{plan.cta}</bdi>
           <span
             className={`grid h-[26px] w-[26px] place-items-center rounded-full ${
               dark ? "bg-[#0A0A0A] text-[var(--color-mint)]" : "bg-white text-[#0A0A0A]"
@@ -215,17 +219,17 @@ function PlanCard({
           className="relative inline-flex items-center justify-center gap-2 self-start rounded-full border border-[var(--color-line-3)] px-5 py-3 text-[13.5px] font-semibold transition-colors duration-200 hover:bg-[var(--color-surface)]"
         >
           <Stroke name="calendar" size={16} />
-          {plan.cta}
+          <bdi>{plan.cta}</bdi>
         </Link>
       )}
 
-      <ul className="relative mt-auto flex flex-col gap-[9px] pt-1 text-[13.5px]">
+      <ul className="relative flex flex-col gap-[9px] pt-1 text-[13.5px]">
         {bullets.map((bullet) => (
           <li key={bullet} className="flex items-start gap-[9px]">
             <span className={dark ? "text-[var(--color-mint)]" : "text-[var(--color-mint-2)]"}>
               <Tick size={17} />
             </span>
-            {bullet}
+            <bdi>{bullet}</bdi>
           </li>
         ))}
       </ul>
@@ -239,7 +243,7 @@ function PlanCard({
             {plan.not_included.map((item) => (
               <li key={item} className="flex items-start gap-2">
                 <span aria-hidden="true">–</span>
-                {item}
+                <bdi>{item}</bdi>
               </li>
             ))}
           </ul>

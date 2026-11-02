@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { PlanCards } from "@/components/marketing/landing/PlanCards";
 import { getPlanLabels } from "@/components/marketing/landing/planLabels";
 import { getPlans } from "@/lib/api/plans";
+import { localizePlans } from "@/content/i18n/plans";
 import { businessUi } from "@/content/i18n/businesses";
 import { siteConfig } from "@/lib/config/site";
 
@@ -12,20 +13,34 @@ import { siteConfig } from "@/lib/config/site";
  * quotes no paid price.
  */
 export async function PlanTeaser({ id = "plans", locale }: { id?: string; locale?: string }) {
-  const [plans, labels, pageLocale] = await Promise.all([getPlans(), getPlanLabels(), locale ?? getLocale()]);
+  const [plans, labels, pageLocale] = await Promise.all([
+    getPlans(),
+    getPlanLabels(),
+    locale ?? getLocale(),
+  ]);
   const ui = businessUi(pageLocale);
   const t = ui.planTeaser;
   return (
     <section id={id} aria-labelledby={`${id}-title`} className="scroll-mt-[86px]">
       <div className="text-center">
         <div className="eyebrow rtl:tracking-normal">{t.eyebrow}</div>
-        <h2 id={`${id}-title`} className="mx-auto mt-3 max-w-[22ch] text-[clamp(24px,3.2vw,38px)] font-bold leading-[1.12] tracking-[-0.03em] text-balance rtl:tracking-normal">
+        <h2
+          id={`${id}-title`}
+          className="mx-auto mt-3 max-w-[22ch] text-[clamp(24px,3.2vw,38px)] font-bold leading-[1.12] tracking-[-0.03em] text-balance rtl:tracking-normal"
+        >
           {t.headline}
         </h2>
-        <p className="mx-auto mt-3 max-w-[56ch] text-[15px] leading-[1.65] text-[var(--color-body)]">{ui.offerLine}</p>
+        <p className="mx-auto mt-3 max-w-[56ch] text-[15px] leading-[1.65] text-[var(--color-body)]">
+          {ui.offerLine}
+        </p>
       </div>
       {plans ? (
-        <PlanCards plans={plans} labels={labels} signupUrl={siteConfig.signupUrl} compact />
+        <PlanCards
+          plans={localizePlans(plans, pageLocale)}
+          labels={labels}
+          signupUrl={siteConfig.signupUrl}
+          compact
+        />
       ) : (
         <div className="mx-auto mt-7 max-w-[560px] rounded-[22px] border border-[var(--color-line-2)] bg-white p-6 text-center shadow-[var(--shadow-card)]">
           <div className="text-[16px] font-bold">{t.fallbackTitle}</div>
@@ -42,8 +57,14 @@ export async function PlanTeaser({ id = "plans", locale }: { id?: string; locale
         </div>
       )}
       <p className="mt-5 text-center text-[14px]">
-        <Link href="/pricing" className="inline-block py-3 font-semibold text-[var(--color-mint-2)] underline underline-offset-2">
-          {t.compare} <span aria-hidden="true" className="inline-block rtl:-scale-x-100">→</span>
+        <Link
+          href="/pricing"
+          className="inline-block py-3 font-semibold text-[var(--color-mint-2)] underline underline-offset-2"
+        >
+          {t.compare}{" "}
+          <span aria-hidden="true" className="inline-block rtl:-scale-x-100">
+            →
+          </span>
         </Link>
       </p>
     </section>

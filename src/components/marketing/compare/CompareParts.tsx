@@ -19,7 +19,7 @@ const MARK_LABEL: Record<Mark, string> = {
 };
 
 const MARK_STYLE: Record<Mark, string> = {
-  yes: "bg-[var(--color-mint-soft)] text-[var(--color-brand)]",
+  yes: "bg-[var(--color-mint-soft)] text-[var(--color-mint-2)]",
   partial: "bg-[rgba(245,166,35,.14)] text-[var(--color-ink-2)]",
   soon: "bg-[var(--surface-2,rgba(0,0,0,.05))] text-[var(--color-ink-3)]",
   no: "bg-[var(--surface-2,rgba(0,0,0,.05))] text-[var(--color-muted)]",
@@ -58,7 +58,7 @@ function CellBody({ cell }: { cell: Cell }) {
             {" "}
             <a
               href={`#source-${cell.source}`}
-              className="whitespace-nowrap align-super text-[11px] font-semibold text-[var(--color-brand)] underline-offset-2 hover:underline"
+              className="whitespace-nowrap align-super text-[11px] font-semibold text-[var(--color-mint-2)] underline-offset-2 hover:underline"
               aria-label={`Source ${cell.source}`}
             >
               [{cell.source}]
@@ -70,7 +70,7 @@ function CellBody({ cell }: { cell: Cell }) {
             {" "}
             <Link
               href={cell.href}
-              className="whitespace-nowrap text-[12.5px] font-semibold text-[var(--color-brand)] underline-offset-2 hover:underline"
+              className="whitespace-nowrap text-[12.5px] font-semibold text-[var(--color-mint-2)] underline-offset-2 hover:underline"
             >
               More →
             </Link>
@@ -94,7 +94,7 @@ export function CompareTable({ c }: { c: Comparison }) {
             <div className="text-[15px] font-bold text-[var(--color-ink)]">{row.feature}</div>
             <div className="mt-3 grid gap-3">
               <div>
-                <div className="mb-1 text-[11.5px] font-semibold uppercase tracking-[0.08em] text-[var(--color-brand)]">
+                <div className="mb-1 text-[11.5px] font-semibold uppercase tracking-[0.08em] text-[var(--color-mint-2)]">
                   TajirPoint
                 </div>
                 <CellBody cell={row.tajirpoint} />
@@ -123,13 +123,22 @@ export function CompareTable({ c }: { c: Comparison }) {
           </colgroup>
           <thead>
             <tr className="bg-[var(--color-bg-2)]">
-              <th scope="col" className="p-4 text-start text-[13px] font-semibold text-[var(--color-muted)]">
+              <th
+                scope="col"
+                className="p-4 text-start text-[13px] font-semibold text-[var(--color-muted)]"
+              >
                 Feature
               </th>
-              <th scope="col" className="p-4 text-start text-[14px] font-bold text-[var(--color-brand)]">
+              <th
+                scope="col"
+                className="p-4 text-start text-[14px] font-bold text-[var(--color-mint-2)]"
+              >
                 TajirPoint
               </th>
-              <th scope="col" className="p-4 text-start text-[14px] font-bold text-[var(--color-ink)]">
+              <th
+                scope="col"
+                className="p-4 text-start text-[14px] font-bold text-[var(--color-ink)]"
+              >
                 {c.otherName}
               </th>
             </tr>
@@ -137,7 +146,10 @@ export function CompareTable({ c }: { c: Comparison }) {
           <tbody>
             {c.rows.map((row) => (
               <tr key={row.feature} className="border-t border-[var(--color-line-soft)] align-top">
-                <th scope="row" className="p-4 text-start text-[14.5px] font-bold text-[var(--color-ink)]">
+                <th
+                  scope="row"
+                  className="p-4 text-start text-[14.5px] font-bold text-[var(--color-ink)]"
+                >
                   {row.feature}
                 </th>
                 <td className="p-4">
@@ -160,7 +172,10 @@ export function SourcesList({ sources }: { sources: Source[] }) {
   if (!sources.length) return null;
   return (
     <section aria-labelledby="sources-title" className="mt-[clamp(40px,6vw,64px)]">
-      <h2 id="sources-title" className="text-[clamp(20px,2.4vw,24px)] font-extrabold tracking-[-0.02em]">
+      <h2
+        id="sources-title"
+        className="text-[clamp(20px,2.4vw,24px)] font-extrabold tracking-[-0.02em]"
+      >
         Sources
       </h2>
       <p className="mt-2 text-[14px] text-[var(--color-muted)]">
@@ -177,7 +192,7 @@ export function SourcesList({ sources }: { sources: Source[] }) {
                 href={s.url}
                 rel="nofollow noopener noreferrer"
                 target="_blank"
-                className="font-semibold text-[var(--color-brand)] underline-offset-2 hover:underline"
+                className="font-semibold text-[var(--color-mint-2)] underline-offset-2 hover:underline"
               >
                 {s.label}
               </a>{" "}
@@ -193,7 +208,10 @@ export function SourcesList({ sources }: { sources: Source[] }) {
 
 export function FaqList({ faqs, title = "Questions" }: { faqs: readonly Faq[]; title?: string }) {
   return (
-    <section aria-labelledby="faq-title" className="mx-auto mt-[clamp(48px,7vw,88px)] max-w-[820px]">
+    <section
+      aria-labelledby="faq-title"
+      className="mx-auto mt-[clamp(48px,7vw,88px)] max-w-[820px]"
+    >
       <h2
         id="faq-title"
         className="text-center text-[clamp(22px,2.6vw,28px)] font-extrabold tracking-[-0.025em]"
@@ -202,7 +220,11 @@ export function FaqList({ faqs, title = "Questions" }: { faqs: readonly Faq[]; t
       </h2>
       <div className="mt-6">
         {faqs.map((faq, i) => (
-          <details key={faq.question} open={i === 0} className="group border-b border-[var(--color-line-soft)]">
+          <details
+            key={faq.question}
+            open={i === 0}
+            className="group border-b border-[var(--color-line-soft)]"
+          >
             <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-[16.5px] font-bold [&::-webkit-details-marker]:hidden">
               {faq.question}
               <ChevronDown
@@ -231,7 +253,7 @@ export function CompareCard({ c }: { c: Comparison }) {
         {c.label}
       </span>
       <span className="mt-2 text-[14px] leading-[1.55] text-[var(--color-body)]">{c.blurb}</span>
-      <span className="mt-auto pt-4 text-[13.5px] font-bold text-[var(--color-brand)]">
+      <span className="mt-auto pt-4 text-[13.5px] font-bold text-[var(--color-mint-2)]">
         Read the comparison <span aria-hidden="true">→</span>
       </span>
     </Link>
@@ -243,7 +265,10 @@ export function RelatedComparisons({ slugs }: { slugs: string[] }) {
   if (!items.length) return null;
   return (
     <section aria-labelledby="related-title" className="mt-[clamp(48px,7vw,88px)]">
-      <h2 id="related-title" className="text-[clamp(20px,2.4vw,26px)] font-extrabold tracking-[-0.02em]">
+      <h2
+        id="related-title"
+        className="text-[clamp(20px,2.4vw,26px)] font-extrabold tracking-[-0.02em]"
+      >
         More comparisons
       </h2>
       <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -252,7 +277,7 @@ export function RelatedComparisons({ slugs }: { slugs: string[] }) {
         ))}
       </div>
       <p className="mt-5 text-[14px]">
-        <Link href="/compare" className="font-semibold text-[var(--color-brand)] hover:underline">
+        <Link href="/compare" className="font-semibold text-[var(--color-mint-2)] hover:underline">
           See all comparisons →
         </Link>
       </p>
