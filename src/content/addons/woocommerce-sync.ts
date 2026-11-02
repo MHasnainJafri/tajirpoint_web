@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/woocommerce (WooSyncService.push_product: simple product, or
 // variable parent + variations when a product has several variants;
@@ -21,9 +22,9 @@ const content: AddonContent = {
   schemaSubCategory: "WooCommerce integration add-on for POS",
   headline: "One stock count for your WooCommerce website and your shop.",
   overview: [
-    "WooCommerce is the free shop plugin for WordPress websites, used by many shops that built their own site. WooCommerce Sync will connect that website to TajirPoint so your products, stock and orders stay in step.",
-    "You will send items from TajirPoint to WooCommerce with their price and stock. Products with sizes or colours go up as one product with options, the way WooCommerce shows them. After that, every time stock changes in TajirPoint, the new count can be sent to your website on its own.",
-    "Orders from your website come into TajirPoint as real sales, with stock taken off and the money booked the right way. Cancelled orders are cancelled in TajirPoint too, and refunds are flagged for you to check.",
+    `WooCommerce is the free shop plugin for WordPress websites, used by many shops that built their own site. WooCommerce Sync will connect that website to ${BRAND_NAME} so your products, stock and orders stay in step.`,
+    `You will send items from ${BRAND_NAME} to WooCommerce with their price and stock. Products with sizes or colours go up as one product with options, the way WooCommerce shows them. After that, every time stock changes in ${BRAND_NAME}, the new count can be sent to your website on its own.`,
+    `Orders from your website come into ${BRAND_NAME} as real sales, with stock taken off and the money booked the right way. Cancelled orders are cancelled in ${BRAND_NAME} too, and refunds are flagged for you to check.`,
   ],
   whoFor: [
     "Shops with a WordPress website running WooCommerce",
@@ -34,11 +35,11 @@ const content: AddonContent = {
   problems: [
     {
       problem: "The website says in stock, but the last one sold in the shop this morning.",
-      fix: "When stock changes in TajirPoint, the new count is sent to WooCommerce automatically. You can turn this off if you prefer.",
+      fix: `When stock changes in ${BRAND_NAME}, the new count is sent to WooCommerce automatically. You can turn this off if you prefer.`,
     },
     {
       problem: "Website orders are copied into the till by hand.",
-      fix: "Each WooCommerce order will arrive in TajirPoint once, as a real sale matched to your items.",
+      fix: `Each WooCommerce order will arrive in ${BRAND_NAME} once, as a real sale matched to your items.`,
     },
     {
       problem: "Products with sizes are a pain to set up twice.",
@@ -56,7 +57,7 @@ const content: AddonContent = {
     },
     {
       title: "Stock follows every sale",
-      body: "Each stock change in TajirPoint sends the new count to WooCommerce. Items you do not count are shown as always in stock.",
+      body: `Each stock change in ${BRAND_NAME} sends the new count to WooCommerce. Items you do not count are shown as always in stock.`,
     },
     {
       title: "Website orders become real sales",
@@ -82,7 +83,7 @@ const content: AddonContent = {
     },
     {
       title: "Create access keys in WooCommerce",
-      body: "We show you how to create access keys in your WooCommerce settings, and we connect them to TajirPoint with you.",
+      body: `We show you how to create access keys in your WooCommerce settings, and we connect them to ${BRAND_NAME} with you.`,
     },
     {
       title: "Send your products",
@@ -90,13 +91,13 @@ const content: AddonContent = {
     },
     {
       title: "Let orders flow in",
-      body: "WooCommerce is set to send new orders to TajirPoint, where they become sales. Stock updates go back on their own.",
+      body: `WooCommerce is set to send new orders to ${BRAND_NAME}, where they become sales. Stock updates go back on their own.`,
     },
   ],
   needs: [
     "A WordPress website with WooCommerce installed",
     "Admin access to create WooCommerce access keys",
-    "A TajirPoint account on the Shop plan or above",
+    `A ${BRAND_NAME} account on the Shop plan or above`,
     "Item codes on your products help orders match cleanly",
   ],
   setup: [
@@ -111,7 +112,7 @@ const content: AddonContent = {
     },
     {
       q: "Does stock update on my website by itself?",
-      a: "Yes. When stock changes in TajirPoint, the new count is sent to WooCommerce. You can switch this off if you only want to update by hand.",
+      a: `Yes. When stock changes in ${BRAND_NAME}, the new count is sent to WooCommerce. You can switch this off if you only want to update by hand.`,
     },
     {
       q: "Can it handle sizes and colours?",
@@ -122,7 +123,7 @@ const content: AddonContent = {
       a: "They come in as sales that are owed, under a WooCommerce customer, so you can record the cash when the courier hands it over.",
     },
     {
-      q: "Can I bring my existing WooCommerce products into TajirPoint?",
+      q: `Can I bring my existing WooCommerce products into ${BRAND_NAME}?`,
       a: "Yes. The product import in the back office reads a WooCommerce product export file, and that works without this add-on.",
     },
     {

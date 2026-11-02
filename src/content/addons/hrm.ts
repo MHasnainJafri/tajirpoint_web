@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/hrm (handler.py seeds a General department and Casual/Sick/
 // Annual/Unpaid leave types; models employee/shift/holiday/attendance/leave/
@@ -24,7 +25,7 @@ const content: AddonContent = {
   schemaSubCategory: "HR and payroll add-on for POS",
   headline: "Staff records, attendance, leave and monthly pay in the same place as your sales.",
   overview: [
-    "HR & Payroll keeps your team in TajirPoint: who works for you, their pay, their bank details and who to call in an emergency. Add employees by hand or bring in people who already log in to your shop.",
+    `HR & Payroll keeps your team in ${BRAND_NAME}: who works for you, their pay, their bank details and who to call in an emergency. Add employees by hand or bring in people who already log in to your shop.`,
     "Mark attendance each day, one person at a time or the whole team at once, and see the month on one sheet. Staff leave requests go to a manager to approve, and leave balances keep count for you.",
     "At the end of the month, create a payroll run. Pay is worked out from attendance, leave and overtime, with a payslip for each person. When you finalise the run, the salary cost is recorded as an expense, and posted to your books if you use the Accounting add-on.",
   ],
@@ -106,7 +107,7 @@ const content: AddonContent = {
     },
   ],
   needs: [
-    "A TajirPoint account on the Shop plan or above",
+    `A ${BRAND_NAME} account on the Shop plan or above`,
     "Each employee's pay and basic details",
     "Optional: the Accounting & General Ledger add-on, to post salaries to your books",
   ],

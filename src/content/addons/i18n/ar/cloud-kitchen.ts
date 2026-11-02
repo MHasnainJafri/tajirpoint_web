@@ -1,4 +1,5 @@
 import type { AddonTranslation } from "../types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Arabic write-up for "cloud-kitchen". Same facts as ../../cloud-kitchen.ts; awaiting
 // native review (TP-490). A field left out falls back to English.
@@ -95,7 +96,7 @@ const t: AddonTranslation = {
     },
   ],
   needs: [
-    "حساب TajirPoint على خطة Shop أو أعلى",
+    `حساب ${BRAND_NAME} على خطة Shop أو أعلى`,
     "إضافة Restaurant مفعّلة",
     "شعار لكل علامة (اختياري لكنه موصى به)",
     "حسابات تطبيقات التوصيل لديك، إن أردت وسم طلباتها حسب العلامة",

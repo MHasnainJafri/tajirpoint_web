@@ -1,0 +1,31 @@
+{
+  "nav": {
+    "megaBusinesses": {
+      "demoSub": "We show you Hey Orders with your own menu, tables and delivery area."
+    },
+    "megaResources": {
+      "items": {
+        "contact": {
+          "sub": "Email us — we reply within one working day."
+        }
+      }
+    }
+  },
+  "landing": {
+    "meta": {
+      "title": "Hey Orders: Restaurant POS, Online Ordering & Delivery",
+      "description": "Restaurant POS and back office in one: tables, kitchen display, waiter app, online orders, delivery and stock. Built for restaurants, takeaways and cloud kitchens."
+    },
+    "hero": {
+      "badge": "Restaurant POS & online ordering",
+      "sub": "Run the counter, tables, kitchen, online orders and delivery in one place, with stock and reports behind them and a POS that keeps selling offline."
+    },
+    "faq": {
+      "sub": "Still unsure? Write to us or book a free demo."
+    }
+  },
+  "footer": {
+    "tagline": "Point of sale, online ordering and delivery for restaurants.",
+    "copyright": "© 2026 Hey Orders"
+  }
+}

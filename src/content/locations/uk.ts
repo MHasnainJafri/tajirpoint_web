@@ -1,4 +1,5 @@
 import type { LocationPage } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Facts checked 2 Nov 2026 against the backend (origin/main):
 //  - UK hospitality VAT rulebook (eat-in / hot takeaway / cold takeaway /
@@ -22,8 +23,7 @@ const page: LocationPage = {
     "EPOS for UK takeaways, restaurants and cafés: eat-in and takeaway VAT rules, 9-box VAT figures, Stripe card payments and delivery-app orders.",
   seo: {
     title: "EPOS for UK Takeaways and Restaurants",
-    description:
-      "TajirPoint EPOS for UK takeaways and restaurants: eat-in and takeaway VAT rules, 9-box VAT figures, Stripe cards, kitchen screen and delivery-app orders.",
+    description: `${BRAND_NAME} EPOS for UK takeaways and restaurants: eat-in and takeaway VAT rules, 9-box VAT figures, Stripe cards, kitchen screen and delivery-app orders.`,
     keywords: [
       "takeaway epos uk",
       "restaurant epos system uk",
@@ -57,11 +57,12 @@ const page: LocationPage = {
     },
     {
       label: "Internet drops",
-      value: "The counter keeps selling offline and syncs when the connection is back. Offline for tables and the kitchen screen is not released yet.",
+      value:
+        "The counter keeps selling offline and syncs when the connection is back. Offline for tables and the kitchen screen is not released yet.",
     },
   ],
   tax: {
-    heading: "VAT and HMRC: what TajirPoint does, and what it does not",
+    heading: `VAT and HMRC: what ${BRAND_NAME} does, and what it does not`,
     intro:
       "In the UK, VAT is collected by HMRC. Food VAT depends on how it leaves the shop, and VAT-registered businesses file returns through Making Tax Digital software.",
     rows: [
@@ -85,7 +86,7 @@ const page: LocationPage = {
         name: "Making Tax Digital filing",
         covers: "Sending the VAT return to HMRC.",
         ours: { tone: "no", label: "Not built" },
-        note: "TajirPoint does not file to HMRC. Copy the figures into your MTD software, or give them to your accountant.",
+        note: `${BRAND_NAME} does not file to HMRC. Copy the figures into your MTD software, or give them to your accountant.`,
       },
     ],
     note: "Rates and rules are HMRC's, and they change. Check HMRC's guidance on catering and takeaway food, or ask your accountant, before relying on any setup. You choose which group each item goes in.",
@@ -115,7 +116,7 @@ const page: LocationPage = {
     },
   ],
   businesses: {
-    heading: "UK food businesses TajirPoint is set up for",
+    heading: `UK food businesses ${BRAND_NAME} is set up for`,
     items: [
       {
         slug: "restaurants",
@@ -137,7 +138,7 @@ const page: LocationPage = {
       heading: "Eat in or take away: the VAT question, in plain words",
       paragraphs: [
         "Food eaten on your premises is standard-rated. Hot takeaway food is standard-rated too. Most cold takeaway food, like sandwiches and salads, is zero-rated. Some items, such as alcohol, confectionery, crisps and soft drinks, are standard-rated however they leave.",
-        "In TajirPoint you put each item into one of three groups once. After that, the till charges the right rate from the order type: a table order or a QR order from the table counts as eaten in, and a delivery does not.",
+        `In ${BRAND_NAME} you put each item into one of three groups once. After that, the till charges the right rate from the order type: a table order or a QR order from the table counts as eaten in, and a delivery does not.`,
       ],
       bullets: [
         "Standard-rated wherever it is eaten",
@@ -167,12 +168,12 @@ const page: LocationPage = {
   ],
   faqs: [
     {
-      q: "Does TajirPoint handle hot and cold takeaway VAT?",
+      q: `Does ${BRAND_NAME} handle hot and cold takeaway VAT?`,
       a: "Yes. Apply the UK hospitality tax rules, put each item in a group (standard, zero-rated food, or always standard) and the till charges the right rate for eat-in, hot takeaway or cold takeaway. Check your groups with HMRC guidance or your accountant.",
     },
     {
-      q: "Is TajirPoint Making Tax Digital (MTD) software?",
-      a: "No. TajirPoint gives you the 9-box VAT return figures and a Z report, but does not file to HMRC. Copy the figures into your MTD software or hand them to your accountant.",
+      q: `Is ${BRAND_NAME} Making Tax Digital (MTD) software?`,
+      a: `No. ${BRAND_NAME} gives you the 9-box VAT return figures and a Z report, but does not file to HMRC. Copy the figures into your MTD software or hand them to your accountant.`,
     },
     {
       q: "Can it take orders from Uber Eats, Deliveroo and Just Eat?",
@@ -182,7 +183,7 @@ const page: LocationPage = {
     {
       q: "How do I take card payments?",
       a: (status) =>
-        `With the Stripe add-on (${status("stripe-payments")}). You connect your own Stripe account from the back office, and TajirPoint lists anything Stripe still needs from you in plain words. Card payments are marked paid when Stripe confirms them.`,
+        `With the Stripe add-on (${status("stripe-payments")}). You connect your own Stripe account from the back office, and ${BRAND_NAME} lists anything Stripe still needs from you in plain words. Card payments are marked paid when Stripe confirms them.`,
     },
     {
       q: "What happens if the internet goes down mid-service?",
@@ -190,7 +191,7 @@ const page: LocationPage = {
     },
   ],
   cta: {
-    headline: "See TajirPoint run your takeaway.",
+    headline: `See ${BRAND_NAME} run your takeaway.`,
     sub: "Book a free demo, or start free for 3 months. No card needed, and we move your menu for free.",
   },
   related: ["pakistan"],

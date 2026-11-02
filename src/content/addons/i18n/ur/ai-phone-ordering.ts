@@ -1,4 +1,5 @@
 import type { AddonTranslation } from "../types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Urdu write-up for "ai-phone-ordering". Same facts as ../../ai-phone-ordering.ts; awaiting
 // native review (TP-490). A field left out falls back to English.
@@ -91,8 +92,8 @@ const t: AddonTranslation = {
     },
   ],
   needs: [
-    "Shop پلان یا اس سے اوپر پر TajirPoint اکاؤنٹ",
-    "آپ کا مینیو TajirPoint آن لائن آرڈر پیج پر سیٹ ہو",
+    `Shop پلان یا اس سے اوپر پر ${BRAND_NAME} اکاؤنٹ`,
+    `آپ کا مینیو ${BRAND_NAME} آن لائن آرڈر پیج پر سیٹ ہو`,
     "لائن کے لیے Twilio فون نمبر (آپ کا اپنا اکاؤنٹ)",
     "آپ کا اپنا ایک فون نمبر جس پر کالیں آگے ملائی جائیں",
   ],

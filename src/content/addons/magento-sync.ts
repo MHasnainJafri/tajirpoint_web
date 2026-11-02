@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/magento (package docstring: "working foundation, not a
 // production-ready integration yet"; MagentoSyncService.push_product: every
@@ -22,8 +23,8 @@ const content: AddonContent = {
   schemaSubCategory: "Magento integration add-on for POS",
   headline: "Bring your Magento web orders and your shop stock together.",
   overview: [
-    "Magento (now also sold as Adobe Commerce) is a powerful online store system, usually run by larger retailers with their own web team. Magento Sync will link a Magento 2 store to TajirPoint, so web orders land in the same books as your counter sales.",
-    "You will send items from TajirPoint to Magento with their name, selling price and current stock. Orders that Magento has accepted for processing come back into TajirPoint as real sales, with stock taken off and the money booked the right way.",
+    `Magento (now also sold as Adobe Commerce) is a powerful online store system, usually run by larger retailers with their own web team. Magento Sync will link a Magento 2 store to ${BRAND_NAME}, so web orders land in the same books as your counter sales.`,
+    `You will send items from ${BRAND_NAME} to Magento with their name, selling price and current stock. Orders that Magento has accepted for processing come back into ${BRAND_NAME} as real sales, with stock taken off and the money booked the right way.`,
     "The first version keeps things simple: every item goes to Magento as a plain product. Stores with complex product setups, such as configurable products with many options, will need extra mapping work, which we will scope with you.",
   ],
   whoFor: [
@@ -35,11 +36,11 @@ const content: AddonContent = {
   problems: [
     {
       problem: "Web orders are re-typed into the shop system every day.",
-      fix: "Processed Magento orders will come into TajirPoint as real sales, once each, matched to your items.",
+      fix: `Processed Magento orders will come into ${BRAND_NAME} as real sales, once each, matched to your items.`,
     },
     {
       problem: "New products have to be created in two systems.",
-      fix: "Create the item once in TajirPoint, then send it to Magento with its price and stock from the connector screen.",
+      fix: `Create the item once in ${BRAND_NAME}, then send it to Magento with its price and stock from the connector screen.`,
     },
     {
       problem: "Cash on delivery money is hard to track.",
@@ -47,7 +48,7 @@ const content: AddonContent = {
     },
     {
       problem: "Cancelled web orders still sit in the sales report.",
-      fix: "When Magento marks an order cancelled, the sale in TajirPoint is cancelled too. Refunds are flagged for you to check.",
+      fix: `When Magento marks an order cancelled, the sale in ${BRAND_NAME} is cancelled too. Refunds are flagged for you to check.`,
     },
   ],
   features: [
@@ -78,8 +79,8 @@ const content: AddonContent = {
       body: "Tell us your store address, roughly how many products you have, and which way you want things to sync.",
     },
     {
-      title: "Give TajirPoint access to Magento",
-      body: "Your web team creates an access key for TajirPoint in Magento, and sets Magento to send new orders to us. We help with both.",
+      title: `Give ${BRAND_NAME} access to Magento`,
+      body: `Your web team creates an access key for ${BRAND_NAME} in Magento, and sets Magento to send new orders to us. We help with both.`,
     },
     {
       title: "Send your products",
@@ -87,19 +88,19 @@ const content: AddonContent = {
     },
     {
       title: "Sell online and in store",
-      body: "Processed Magento orders arrive in TajirPoint as sales; anything that needs a look waits on a list.",
+      body: `Processed Magento orders arrive in ${BRAND_NAME} as sales; anything that needs a look waits on a list.`,
     },
   ],
   needs: [
     "A Magento 2 or Adobe Commerce store with admin access",
     "A way for Magento to send out new orders: Adobe Commerce's own module (2.4.6 or newer) or a similar plugin",
     "An item code on every product you send (Magento requires one)",
-    "A TajirPoint account on the Shop plan or above",
+    `A ${BRAND_NAME} account on the Shop plan or above`,
   ],
   setup: [
     "Once it is live, our team sets it up with you and your web team.",
     "Your Magento hosting, plugins and payment fees stay with your own providers.",
-    "Your existing TajirPoint sales and stock are not changed by connecting.",
+    `Your existing ${BRAND_NAME} sales and stock are not changed by connecting.`,
   ],
   faqs: [
     {
@@ -116,7 +117,7 @@ const content: AddonContent = {
     },
     {
       q: "Why does every product need an item code?",
-      a: "Magento identifies products by their code. TajirPoint uses the same code to match Magento orders back to your items.",
+      a: `Magento identifies products by their code. ${BRAND_NAME} uses the same code to match Magento orders back to your items.`,
     },
     {
       q: "What happens to an order that does not match?",

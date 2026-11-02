@@ -4,6 +4,7 @@ import { setRequestLocale } from "next-intl/server";
 import { CodeBlock } from "@/components/marketing/CodeBlock";
 import { API_BASE } from "@/lib/docs/examples";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 export async function generateMetadata({
   params,
@@ -12,10 +13,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "Pagination — TajirPoint API",
+    title: `Pagination — ${BRAND_NAME} API`,
     absoluteTitle: true,
-    description:
-      "TajirPoint API list endpoints are cursor-paginated: 50 items by default, 200 at most. Follow the opaque next URL rather than building cursors yourself.",
+    description: `${BRAND_NAME} API list endpoints are cursor-paginated: 50 items by default, 200 at most. Follow the opaque next URL rather than building cursors yourself.`,
     path: "/docs/pagination",
     locale,
   });

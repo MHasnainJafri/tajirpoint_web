@@ -1,4 +1,5 @@
 import type { Guide } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // TajirPoint claims here are the ones already on /features/khata (live):
 // live ledger from every sale and payment, append-only history, credit limits
@@ -182,17 +183,17 @@ const guide: Guide = {
         },
         {
           type: "p",
-          text: "With TajirPoint you can send us that list in Excel or CSV and we load it for you, free. Opening balances are added once, so loading the same file twice never doubles a balance. See our guide to [moving from Excel or paper to a POS](/guides/excel-to-pos).",
+          text: `With ${BRAND_NAME} you can send us that list in Excel or CSV and we load it for you, free. Opening balances are added once, so loading the same file twice never doubles a balance. See our guide to [moving from Excel or paper to a POS](/guides/excel-to-pos).`,
         },
       ],
     },
     {
       id: "tajirpoint-khata",
-      heading: "How the TajirPoint khata works",
+      heading: `How the ${BRAND_NAME} khata works`,
       blocks: [
         {
           type: "p",
-          text: "In TajirPoint the khata is part of the POS, not a separate app. Every credit sale, payment and adjustment posts to the customer's ledger with a running balance. History is append-only: corrections are new entries, never silent changes.",
+          text: `In ${BRAND_NAME} the khata is part of the POS, not a separate app. Every credit sale, payment and adjustment posts to the customer's ledger with a running balance. History is append-only: corrections are new entries, never silent changes.`,
         },
         {
           type: "list",
@@ -227,15 +228,15 @@ const guide: Guide = {
     },
     {
       q: "Can I keep a supplier khata in the same app?",
-      a: "In TajirPoint, yes. Customers and suppliers each have their own balances, and you can import both with their opening balances.",
+      a: `In ${BRAND_NAME}, yes. Customers and suppliers each have their own balances, and you can import both with their opening balances.`,
     },
     {
       q: "Do I lose my old balances when I switch?",
-      a: "No. You enter each customer's current balance as an opening balance. TajirPoint's team can load them from your Excel or CSV list for free.",
+      a: `No. You enter each customer's current balance as an opening balance. ${BRAND_NAME}'s team can load them from your Excel or CSV list for free.`,
     },
     {
       q: "Can customers pay their khata online?",
-      a: "Not yet. With TajirPoint's Customer Portal add-on they can see their balance, bills and payments; you record the payment when it comes in.",
+      a: `Not yet. With ${BRAND_NAME}'s Customer Portal add-on they can see their balance, bills and payments; you record the payment when it comes in.`,
     },
   ],
   links: [

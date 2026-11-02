@@ -1,4 +1,5 @@
 import type { Guide } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Facts below come ONLY from FBR's own documents (see `sources`), read on
 // 2 Nov 2026: the POS booklet (2025) for the current Sales Tax Act text
@@ -34,7 +35,7 @@ const guide: Guide = {
     "The steps from sales tax registration to the first FBR invoice",
     "What to do when the internet or power goes off",
     "The penalties for not integrating, with the sections of the law",
-    "Where TajirPoint stands: our FBR integration is coming soon",
+    `Where ${BRAND_NAME} stands: our FBR integration is coming soon`,
   ],
   sections: [
     {
@@ -238,13 +239,13 @@ const guide: Guide = {
     },
     {
       id: "tajirpoint",
-      heading: "Where TajirPoint stands",
+      heading: `Where ${BRAND_NAME} stands`,
       blocks: [
         {
           type: "note",
           tone: "warn",
           title: "Coming soon",
-          text: "TajirPoint's FBR integration is built and in final testing. It is **not open to shops yet**, and we have no fixed date. If you must be integrated today, do not wait for us.",
+          text: `${BRAND_NAME}'s FBR integration is built and in final testing. It is **not open to shops yet**, and we have no fixed date. If you must be integrated today, do not wait for us.`,
         },
         {
           type: "p",
@@ -252,7 +253,7 @@ const guide: Guide = {
         },
         {
           type: "p",
-          text: "Today, TajirPoint already records tax on every sale, prints itemised receipts and keeps your sales history and tax reports. See [tax handling](/features/e-invoicing), and the [offline POS](/features/offline) that keeps selling when the internet drops.",
+          text: `Today, ${BRAND_NAME} already records tax on every sale, prints itemised receipts and keeps your sales history and tax reports. See [tax handling](/features/e-invoicing), and the [offline POS](/features/offline) that keeps selling when the internet drops.`,
         },
         {
           type: "p",
@@ -283,7 +284,7 @@ const guide: Guide = {
       a: "By scanning the QR code or checking the FBR invoice number with FBR's Tax Asaan app. FBR's prize scheme rewards customers who report receipts that do not verify.",
     },
     {
-      q: "Is TajirPoint FBR integrated?",
+      q: `Is ${BRAND_NAME} FBR integrated?`,
       a: "Not yet. Our FBR integration is built and in final testing, but it is not open to shops yet and has no fixed date. Ask us for a call back and we will tell you when it is ready.",
     },
   ],

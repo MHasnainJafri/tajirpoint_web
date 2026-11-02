@@ -1,4 +1,6 @@
 import type { Localized } from "../page-copy";
+import { BRAND_EMAIL, BRAND_NAME } from "@/lib/config/brand";
+import { legal } from "@/lib/config/site";
 
 /**
  * Page copy (outside the forms) of /book-demo, /get-a-call, /contact and
@@ -42,12 +44,11 @@ export const BOOK_DEMO_COPY: Localized<BookDemoCopy> = {
   en: {
     meta: {
       title: "Book a Free POS Demo",
-      description:
-        "See TajirPoint with your own kind of business. Book a free demo — we WhatsApp you within one working day, and we can move your data from your old POS for free.",
+      description: `See ${BRAND_NAME} with your own kind of business. Book a free demo — we WhatsApp you within one working day, and we can move your data from your old POS for free.`,
     },
     breadcrumb: "Book a demo",
     badge: "Free demo · no obligation",
-    headline: { before: "See TajirPoint run ", accent: "your", after: " business." },
+    headline: { before: `See ${BRAND_NAME} run `, accent: "your", after: " business." },
     sub: "Tell us a little about your shop and we'll WhatsApp you within one working day to fix a time.",
     formTitle: "Book your free demo",
     points: [
@@ -78,12 +79,11 @@ export const BOOK_DEMO_COPY: Localized<BookDemoCopy> = {
   ur: {
     meta: {
       title: "مفت POS ڈیمو بک کریں",
-      description:
-        "TajirPoint کو اپنے کاروبار کے ساتھ دیکھیں۔ مفت ڈیمو بک کریں — ہم ایک کاروباری دن کے اندر واٹس ایپ کریں گے، اور پرانے POS سے آپ کا ڈیٹا مفت منتقل کر سکتے ہیں۔",
+      description: `${BRAND_NAME} کو اپنے کاروبار کے ساتھ دیکھیں۔ مفت ڈیمو بک کریں — ہم ایک کاروباری دن کے اندر واٹس ایپ کریں گے، اور پرانے POS سے آپ کا ڈیٹا مفت منتقل کر سکتے ہیں۔`,
     },
     breadcrumb: "ڈیمو بک کریں",
     badge: "مفت ڈیمو · کوئی پابندی نہیں",
-    headline: { before: "TajirPoint کو ", accent: "اپنا", after: " کاروبار چلاتے دیکھیں۔" },
+    headline: { before: `${BRAND_NAME} کو `, accent: "اپنا", after: " کاروبار چلاتے دیکھیں۔" },
     sub: "اپنی دکان کے بارے میں تھوڑا سا بتائیں، ہم ایک کاروباری دن کے اندر واٹس ایپ پر وقت طے کر لیں گے۔",
     formTitle: "اپنا مفت ڈیمو بک کریں",
     points: [
@@ -114,12 +114,11 @@ export const BOOK_DEMO_COPY: Localized<BookDemoCopy> = {
   ar: {
     meta: {
       title: "احجز عرضًا مجانيًا لنظام نقاط البيع",
-      description:
-        "شاهد TajirPoint مع نوع نشاطك. احجز عرضًا مجانيًا — نراسلك على واتساب خلال يوم عمل واحد، ويمكننا نقل بياناتك من نظامك القديم مجانًا.",
+      description: `شاهد ${BRAND_NAME} مع نوع نشاطك. احجز عرضًا مجانيًا — نراسلك على واتساب خلال يوم عمل واحد، ويمكننا نقل بياناتك من نظامك القديم مجانًا.`,
     },
     breadcrumb: "احجز عرضًا توضيحيًا",
     badge: "عرض مجاني · دون التزام",
-    headline: { before: "شاهد TajirPoint يدير ", accent: "نشاطك", after: " التجاري." },
+    headline: { before: `شاهد ${BRAND_NAME} يدير `, accent: "نشاطك", after: " التجاري." },
     sub: "أخبرنا قليلًا عن متجرك وسنراسلك على واتساب خلال يوم عمل واحد لتحديد موعد.",
     formTitle: "احجز عرضك المجاني",
     points: [
@@ -172,8 +171,7 @@ export const GET_A_CALL_COPY: Localized<GetACallCopy> = {
   en: {
     meta: {
       title: "Get a Free Call Back from Our POS Team",
-      description:
-        "Interested in TajirPoint POS? Leave your business name and phone number and a person from our team calls you within one working day to answer your questions.",
+      description: `Interested in ${BRAND_NAME} POS? Leave your business name and phone number and a person from our team calls you within one working day to answer your questions.`,
     },
     breadcrumb: "Get a call back",
     badge: "Free · no obligation",
@@ -184,7 +182,7 @@ export const GET_A_CALL_COPY: Localized<GetACallCopy> = {
     points: [
       {
         title: "A person, not a bot",
-        body: "Someone from the TajirPoint team calls you on the number you give.",
+        body: `Someone from the ${BRAND_NAME} team calls you on the number you give.`,
       },
       {
         title: "Your questions answered",
@@ -205,8 +203,7 @@ export const GET_A_CALL_COPY: Localized<GetACallCopy> = {
   ur: {
     meta: {
       title: "ہماری POS ٹیم سے مفت کال بیک لیں",
-      description:
-        "TajirPoint POS میں دلچسپی ہے؟ اپنے کاروبار کا نام اور فون نمبر دیں، ہماری ٹیم کا ایک بندہ ایک کاروباری دن کے اندر آپ کو کال کر کے آپ کے سوالوں کا جواب دے گا۔",
+      description: `${BRAND_NAME} POS میں دلچسپی ہے؟ اپنے کاروبار کا نام اور فون نمبر دیں، ہماری ٹیم کا ایک بندہ ایک کاروباری دن کے اندر آپ کو کال کر کے آپ کے سوالوں کا جواب دے گا۔`,
     },
     breadcrumb: "کال بیک لیں",
     badge: "مفت · کوئی پابندی نہیں",
@@ -217,7 +214,7 @@ export const GET_A_CALL_COPY: Localized<GetACallCopy> = {
     points: [
       {
         title: "انسان، بوٹ نہیں",
-        body: "TajirPoint ٹیم کا کوئی بندہ آپ کے دیے ہوئے نمبر پر کال کرتا ہے۔",
+        body: `${BRAND_NAME} ٹیم کا کوئی بندہ آپ کے دیے ہوئے نمبر پر کال کرتا ہے۔`,
       },
       {
         title: "آپ کے سوالوں کے جواب",
@@ -237,9 +234,8 @@ export const GET_A_CALL_COPY: Localized<GetACallCopy> = {
   },
   ar: {
     meta: {
-      title: "اطلب اتصالًا مجانيًا من فريق TajirPoint",
-      description:
-        "مهتم بنظام TajirPoint لنقاط البيع؟ اترك اسم نشاطك ورقم هاتفك وسيتصل بك أحد أفراد فريقنا خلال يوم عمل واحد للإجابة عن أسئلتك.",
+      title: `اطلب اتصالًا مجانيًا من فريق ${BRAND_NAME}`,
+      description: `مهتم بنظام ${BRAND_NAME} لنقاط البيع؟ اترك اسم نشاطك ورقم هاتفك وسيتصل بك أحد أفراد فريقنا خلال يوم عمل واحد للإجابة عن أسئلتك.`,
     },
     breadcrumb: "اطلب اتصالًا",
     badge: "مجاني · دون التزام",
@@ -250,7 +246,7 @@ export const GET_A_CALL_COPY: Localized<GetACallCopy> = {
     points: [
       {
         title: "شخص حقيقي، لا روبوت",
-        body: "يتصل بك أحد أفراد فريق TajirPoint على الرقم الذي تقدّمه.",
+        body: `يتصل بك أحد أفراد فريق ${BRAND_NAME} على الرقم الذي تقدّمه.`,
       },
       {
         title: "إجابات عن أسئلتك",
@@ -294,13 +290,12 @@ export interface ContactCopy {
 export const CONTACT_COPY: Localized<ContactCopy> = {
   en: {
     meta: {
-      title: "Contact TajirPoint: Sales, Support & WhatsApp",
-      description:
-        "Email hello@tajirpoint.com or WhatsApp +92 344 6800893. Ask about pricing, switching from another POS or support — we reply within one working day.",
+      title: `Contact ${BRAND_NAME}: Sales, Support & WhatsApp`,
+      description: `Email ${BRAND_EMAIL}${legal.whatsappUrl ? ` or WhatsApp ${legal.whatsappDisplay}` : ""}. Ask about pricing, switching from another POS or support — we reply within one working day.`,
     },
     breadcrumb: "Contact",
     badge: "Get in touch",
-    headline: "Talk to the TajirPoint team.",
+    headline: `Talk to the ${BRAND_NAME} team.`,
     sub: "Questions about pricing, switching from another POS, or help with your account — WhatsApp or email us and we'll reply within one working day.",
     waysLabel: "Ways to reach us",
     whatsapp: "WhatsApp",
@@ -312,19 +307,18 @@ export const CONTACT_COPY: Localized<ContactCopy> = {
     demoLink: "Book a demo",
     formHeading: "Or send us a message",
     formBody: (email) =>
-      `Every message goes to ${email} and is answered by the team that builds TajirPoint.`,
+      `Every message goes to ${email} and is answered by the team that builds ${BRAND_NAME}.`,
     operatedBy: (operator, city, country) =>
-      `TajirPoint is operated by ${operator}, ${city}, ${country}.`,
+      `${BRAND_NAME} is operated by ${operator}, ${city}, ${country}.`,
   },
   ur: {
     meta: {
-      title: "TajirPoint سے رابطہ: سیلز، سپورٹ اور واٹس ایپ",
-      description:
-        "hello@tajirpoint.com پر ای میل کریں یا ‎+92 344 6800893 پر واٹس ایپ کریں۔ قیمتیں، دوسرے POS سے منتقلی یا سپورٹ — ہم ایک کاروباری دن کے اندر جواب دیتے ہیں۔",
+      title: `${BRAND_NAME} سے رابطہ: سیلز، سپورٹ اور واٹس ایپ`,
+      description: `${BRAND_EMAIL} پر ای میل کریں یا ‎${legal.whatsappDisplay} پر واٹس ایپ کریں۔ قیمتیں، دوسرے POS سے منتقلی یا سپورٹ — ہم ایک کاروباری دن کے اندر جواب دیتے ہیں۔`,
     },
     breadcrumb: "رابطہ",
     badge: "رابطہ کریں",
-    headline: "TajirPoint ٹیم سے بات کریں۔",
+    headline: `${BRAND_NAME} ٹیم سے بات کریں۔`,
     sub: "قیمتوں، کسی اور POS سے منتقلی یا اپنے اکاؤنٹ میں مدد کے بارے میں سوال؟ واٹس ایپ یا ای میل کریں، ہم ایک کاروباری دن کے اندر جواب دیں گے۔",
     waysLabel: "ہم سے رابطے کے طریقے",
     whatsapp: "واٹس ایپ",
@@ -336,19 +330,18 @@ export const CONTACT_COPY: Localized<ContactCopy> = {
     demoLink: "ڈیمو بک کریں",
     formHeading: "یا ہمیں پیغام بھیجیں",
     formBody: (email) =>
-      `ہر پیغام ${email} پر آتا ہے اور اس کا جواب وہی ٹیم دیتی ہے جو TajirPoint بناتی ہے۔`,
+      `ہر پیغام ${email} پر آتا ہے اور اس کا جواب وہی ٹیم دیتی ہے جو ${BRAND_NAME} بناتی ہے۔`,
     operatedBy: (operator, city, country) =>
-      `TajirPoint کو ${operator}، ${ur(city)}، ${ur(country)} چلاتی ہے۔`,
+      `${BRAND_NAME} کو ${operator}، ${ur(city)}، ${ur(country)} چلاتی ہے۔`,
   },
   ar: {
     meta: {
-      title: "تواصل مع TajirPoint: المبيعات والدعم وواتساب",
-      description:
-        "راسلنا على hello@tajirpoint.com أو واتساب ‎+92 344 6800893. اسأل عن الأسعار أو الانتقال من نظام آخر أو الدعم — نرد خلال يوم عمل واحد.",
+      title: `تواصل مع ${BRAND_NAME}: المبيعات والدعم وواتساب`,
+      description: `راسلنا على ${BRAND_EMAIL} أو واتساب ‎${legal.whatsappDisplay}. اسأل عن الأسعار أو الانتقال من نظام آخر أو الدعم — نرد خلال يوم عمل واحد.`,
     },
     breadcrumb: "تواصل معنا",
     badge: "تواصل معنا",
-    headline: "تحدّث مع فريق TajirPoint.",
+    headline: `تحدّث مع فريق ${BRAND_NAME}.`,
     sub: "أسئلة عن الأسعار، أو الانتقال من نظام نقاط بيع آخر، أو مساعدة في حسابك — راسلنا على واتساب أو البريد وسنرد خلال يوم عمل واحد.",
     waysLabel: "طرق التواصل معنا",
     whatsapp: "واتساب",
@@ -359,9 +352,9 @@ export const CONTACT_COPY: Localized<ContactCopy> = {
     demoBody: "شاهده مع نوع نشاطك. ويمكننا نقل بياناتك مجانًا.",
     demoLink: "احجز عرضًا توضيحيًا",
     formHeading: "أو أرسل لنا رسالة",
-    formBody: (email) => `كل رسالة تصل إلى ${email} ويرد عليها الفريق الذي يبني TajirPoint.`,
+    formBody: (email) => `كل رسالة تصل إلى ${email} ويرد عليها الفريق الذي يبني ${BRAND_NAME}.`,
     operatedBy: (operator, city, country) =>
-      `يُشغّل TajirPoint شركة ${operator}، ${ar(city)}، ${ar(country)}.`,
+      `يُشغّل ${BRAND_NAME} شركة ${operator}، ${ar(city)}، ${ar(country)}.`,
   },
 };
 
@@ -390,9 +383,8 @@ export interface AboutCopy {
 export const ABOUT_COPY: Localized<AboutCopy> = {
   en: {
     meta: {
-      title: "About TajirPoint: POS & Back Office for Merchants",
-      description:
-        "TajirPoint connects point of sale, inventory, customer credit and accounting for stores, restaurants and distributors. Available on web, desktop and Android.",
+      title: `About ${BRAND_NAME}: POS & Back Office for Merchants`,
+      description: `${BRAND_NAME} connects point of sale, inventory, customer credit and accounting for stores, restaurants and distributors. Available on web, desktop and Android.`,
     },
     breadcrumb: "About",
     badge: "About us",
@@ -436,9 +428,8 @@ export const ABOUT_COPY: Localized<AboutCopy> = {
   },
   ur: {
     meta: {
-      title: "TajirPoint کے بارے میں: تاجروں کے لیے POS اور بیک آفس",
-      description:
-        "TajirPoint دکانوں، ریسٹورنٹس اور ڈسٹری بیوٹرز کے لیے پوائنٹ آف سیل، اسٹاک، گاہک کا اُدھار اور اکاؤنٹنگ ایک جگہ جوڑتا ہے۔ ویب، ڈیسک ٹاپ اور اینڈرائیڈ پر دستیاب۔",
+      title: `${BRAND_NAME} کے بارے میں: تاجروں کے لیے POS اور بیک آفس`,
+      description: `${BRAND_NAME} دکانوں، ریسٹورنٹس اور ڈسٹری بیوٹرز کے لیے پوائنٹ آف سیل، اسٹاک، گاہک کا اُدھار اور اکاؤنٹنگ ایک جگہ جوڑتا ہے۔ ویب، ڈیسک ٹاپ اور اینڈرائیڈ پر دستیاب۔`,
     },
     breadcrumb: "ہمارے بارے میں",
     badge: "ہمارے بارے میں",
@@ -482,9 +473,8 @@ export const ABOUT_COPY: Localized<AboutCopy> = {
   },
   ar: {
     meta: {
-      title: "عن TajirPoint: نقطة بيع ومكتب خلفي للتجار",
-      description:
-        "يربط TajirPoint نقطة البيع والمخزون وآجل العملاء والمحاسبة للمتاجر والمطاعم والموزعين في نظام واحد. متاح على الويب وسطح المكتب وأندرويد.",
+      title: `عن ${BRAND_NAME}: نقطة بيع ومكتب خلفي للتجار`,
+      description: `يربط ${BRAND_NAME} نقطة البيع والمخزون وآجل العملاء والمحاسبة للمتاجر والمطاعم والموزعين في نظام واحد. متاح على الويب وسطح المكتب وأندرويد.`,
     },
     breadcrumb: "من نحن",
     badge: "من نحن",

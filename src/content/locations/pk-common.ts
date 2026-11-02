@@ -1,4 +1,5 @@
 import type { AddonBlock, LocationFact, LocationFaq, TaxRow } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Facts shared by every Pakistani page, checked 2 Nov 2026 against the backend:
 //  - currency PKR, whole-rupee cash rounding by default:
@@ -52,7 +53,7 @@ export const FBR_ROW: TaxRow = {
   name: "Federal Board of Revenue",
   covers: "Federal sales tax on goods, and the POS link FBR asks Tier-1 retailers to use.",
   addon: "fbr-integration",
-  note: "When the FBR add-on is live, each sale goes to FBR and the receipt prints the FBR invoice number and QR code. Until then TajirPoint records the tax on every bill and gives you tax reports, but does not send invoices to FBR.",
+  note: `When the FBR add-on is live, each sale goes to FBR and the receipt prints the FBR invoice number and QR code. Until then ${BRAND_NAME} records the tax on every bill and gives you tax reports, but does not send invoices to FBR.`,
 };
 
 export const PRA_ROW: TaxRow = {
@@ -60,7 +61,7 @@ export const PRA_ROW: TaxRow = {
   name: "Punjab Revenue Authority",
   covers: "Sales tax on services in Punjab, which includes restaurants.",
   ours: { tone: "no", label: "Not connected" },
-  note: "TajirPoint cannot send invoices to PRA. If PRA asks your business to report invoices to its system, tell us before you switch.",
+  note: `${BRAND_NAME} cannot send invoices to PRA. If PRA asks your business to report invoices to its system, tell us before you switch.`,
 };
 
 export const SRB_ROW: TaxRow = {
@@ -68,7 +69,7 @@ export const SRB_ROW: TaxRow = {
   name: "Sindh Revenue Board",
   covers: "Sales tax on services in Sindh, which includes restaurants.",
   ours: { tone: "no", label: "Not connected" },
-  note: "TajirPoint cannot send invoices to SRB. If SRB asks your business to report invoices to its system, tell us before you switch.",
+  note: `${BRAND_NAME} cannot send invoices to SRB. If SRB asks your business to report invoices to its system, tell us before you switch.`,
 };
 
 export const KPRA_ROW: TaxRow = {
@@ -76,7 +77,7 @@ export const KPRA_ROW: TaxRow = {
   name: "Khyber Pakhtunkhwa Revenue Authority",
   covers: "Sales tax on services in Khyber Pakhtunkhwa.",
   ours: { tone: "no", label: "Not connected" },
-  note: "No KPRA link. TajirPoint records the tax on each bill; reporting to KPRA stays with you or your adviser.",
+  note: `No KPRA link. ${BRAND_NAME} records the tax on each bill; reporting to KPRA stays with you or your adviser.`,
 };
 
 export const BRA_ROW: TaxRow = {
@@ -84,11 +85,10 @@ export const BRA_ROW: TaxRow = {
   name: "Balochistan Revenue Authority",
   covers: "Sales tax on services in Balochistan.",
   ours: { tone: "no", label: "Not connected" },
-  note: "No BRA link. TajirPoint records the tax on each bill; reporting to BRA stays with you or your adviser.",
+  note: `No BRA link. ${BRAND_NAME} records the tax on each bill; reporting to BRA stays with you or your adviser.`,
 };
 
-export const PK_TAX_NOTE =
-  "Tax rules change, and which ones apply depends on your business. Check with the authority or your tax adviser. We will tell you honestly what TajirPoint can and cannot do for your case.";
+export const PK_TAX_NOTE = `Tax rules change, and which ones apply depends on your business. Check with the authority or your tax adviser. We will tell you honestly what ${BRAND_NAME} can and cannot do for your case.`;
 
 /** Payments for any Pakistani page. */
 export const PK_PAYMENTS: AddonBlock = {
@@ -109,8 +109,7 @@ export const PK_PAYMENTS: AddonBlock = {
 export const PK_DELIVERY: AddonBlock = {
   id: "delivery",
   heading: "Delivery and couriers",
-  intro:
-    "Your own riders work today with the TajirPoint rider app. Booking parcels with courier companies from the POS is on the way; the status below is live.",
+  intro: `Your own riders work today with the ${BRAND_NAME} rider app. Booking parcels with courier companies from the POS is on the way; the status below is live.`,
   now: [
     "Rider app on Android: jobs, directions, cash collected, delivery confirmed",
     "Your own online order page and website for customers to order from",
@@ -122,7 +121,7 @@ export const PK_DELIVERY: AddonBlock = {
 export const PK_FAQ_FBR: LocationFaq = {
   q: "Is the FBR integration ready?",
   a: (status) =>
-    `The FBR add-on is ${status("fbr-integration")}. Until it is live, TajirPoint records the tax on every bill, prints your NTN and STRN on invoices and gives you tax reports, but it does not send invoices to FBR. If you are a Tier-1 retailer who must be connected to FBR today, talk to us before you switch.`,
+    `The FBR add-on is ${status("fbr-integration")}. Until it is live, ${BRAND_NAME} records the tax on every bill, prints your NTN and STRN on invoices and gives you tax reports, but it does not send invoices to FBR. If you are a Tier-1 retailer who must be connected to FBR today, talk to us before you switch.`,
 };
 
 export const PK_FAQ_WALLETS: LocationFaq = {

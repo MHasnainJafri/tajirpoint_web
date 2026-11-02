@@ -12,6 +12,7 @@ import {
   PK_UPDATED,
   SRB_ROW,
 } from "./pk-common";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 const page: LocationPage = {
   slug: "karachi",
@@ -24,8 +25,7 @@ const page: LocationPage = {
     "Wholesalers and distributors, restaurants and delivery kitchens, mobile shops and kiryana stores in Karachi; FBR for goods and SRB for services.",
   seo: {
     title: "POS System in Karachi for Shops and Restaurants",
-    description:
-      "TajirPoint POS for Karachi wholesalers, distributors, restaurants and delivery kitchens: price lists, khata, riders, offline billing, an honest SRB note.",
+    description: `${BRAND_NAME} POS for Karachi wholesalers, distributors, restaurants and delivery kitchens: price lists, khata, riders, offline billing, an honest SRB note.`,
     keywords: [
       "pos system karachi",
       "pos software karachi",
@@ -50,8 +50,7 @@ const page: LocationPage = {
     PK_FACT_LANGUAGE,
     {
       label: "Tax in Karachi",
-      value:
-        "Goods: FBR. Services, including restaurants: Sindh Revenue Board (SRB). TajirPoint is not connected to SRB.",
+      value: `Goods: FBR. Services, including restaurants: Sindh Revenue Board (SRB). ${BRAND_NAME} is not connected to SRB.`,
     },
     PK_FACT_POWER,
   ],
@@ -60,11 +59,11 @@ const page: LocationPage = {
     intro:
       "Karachi is in Sindh. Sales tax on goods is federal and goes to FBR. Sales tax on services, which includes restaurants, goes to the Sindh Revenue Board.",
     rows: [FBR_ROW, SRB_ROW],
-    note: `If you run a restaurant in Karachi, ask SRB or your tax adviser whether you must report each invoice to SRB's system. TajirPoint cannot do that today. ${PK_TAX_NOTE}`,
+    note: `If you run a restaurant in Karachi, ask SRB or your tax adviser whether you must report each invoice to SRB's system. ${BRAND_NAME} cannot do that today. ${PK_TAX_NOTE}`,
   },
   blocks: [PK_PAYMENTS, PK_DELIVERY],
   businesses: {
-    heading: "Karachi businesses TajirPoint is set up for",
+    heading: `Karachi businesses ${BRAND_NAME} is set up for`,
     items: [
       {
         slug: "distributors-wholesale",
@@ -117,8 +116,8 @@ const page: LocationPage = {
   ],
   faqs: [
     {
-      q: "Does TajirPoint connect to SRB for my Karachi restaurant?",
-      a: "Not yet. TajirPoint records the tax on every bill and gives you tax reports, but it does not send invoices to the Sindh Revenue Board. If SRB requires your restaurant to report invoices to its system, talk to us before you switch.",
+      q: `Does ${BRAND_NAME} connect to SRB for my Karachi restaurant?`,
+      a: `Not yet. ${BRAND_NAME} records the tax on every bill and gives you tax reports, but it does not send invoices to the Sindh Revenue Board. If SRB requires your restaurant to report invoices to its system, talk to us before you switch.`,
     },
     PK_FAQ_FBR,
     {
@@ -128,12 +127,12 @@ const page: LocationPage = {
     {
       q: "Can I book TCS, Leopards or PostEx from the POS?",
       a: (status) =>
-        `Not yet from inside TajirPoint: TCS is ${status("courier-tcs")}, Leopards is ${status("courier-leopards")} and PostEx is ${status("courier-postex")}. Your own riders work today with the rider app.`,
+        `Not yet from inside ${BRAND_NAME}: TCS is ${status("courier-tcs")}, Leopards is ${status("courier-leopards")} and PostEx is ${status("courier-postex")}. Your own riders work today with the rider app.`,
     },
     PK_FAQ_WALLETS,
   ],
   cta: {
-    headline: "Run your Karachi business on TajirPoint.",
+    headline: `Run your Karachi business on ${BRAND_NAME}.`,
     sub: "Book a free demo, or start free for 3 months. No card needed, and we move your data for free.",
   },
   related: ["pakistan", "lahore", "islamabad-rawalpindi", "faisalabad"],

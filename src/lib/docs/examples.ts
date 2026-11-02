@@ -1,6 +1,7 @@
 import type { ApiField, ApiOperation } from "./types";
+import { brand } from "@/lib/config/brand";
 
-export const API_BASE = "https://api.tajirpoint.com/api/v1";
+export const API_BASE = brand.apiBase;
 
 const SHOP_ID = "8f1c2d3e-4b5a-6c7d-8e9f-0a1b2c3d4e5f";
 
@@ -92,7 +93,7 @@ const BY_NAME: Record<string, unknown> = {
 const NAME_SUFFIX_FALLBACK: Array<[RegExp, string]> = [
   [/_name$/, "Main Store"],
   [/_no$/, "DOC-00001"],
-  [/_url$/, "https://media.tajirpoint.com/products/nescafe.jpg"],
+  [/_url$/, `https://${brand.mediaHost}/products/nescafe.jpg`],
   [/_code$/, "MAIN"],
   // Anything date-ish gets a date, whatever the serializer declared its type
   // as — "cheque_issue_date": "cheque issue date" helps nobody.
@@ -174,7 +175,7 @@ export function curlExample(op: ApiOperation): string {
     op.method === "GET"
       ? `curl ${API_BASE}${path} \\`
       : `curl -X ${op.method} ${API_BASE}${path} \\`,
-    `  -H "Authorization: Bearer $TAJIR_TOKEN" \\`,
+    `  -H "Authorization: Bearer $${brand.apiEnvPrefix}_TOKEN" \\`,
     `  -H "X-Shop-Id: ${SHOP_ID}"`,
   ];
 

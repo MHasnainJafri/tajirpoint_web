@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/payments (gateways/paypal_gateway.py approval on PayPal's
 // own site, sandbox/live; registry.py; services/gateway_service.py, where a
@@ -8,8 +9,7 @@ import type { AddonContent } from "./types";
 const content: AddonContent = {
   slug: "paypal-payments",
   seoTitle: "PayPal Payments for Your Online Shop",
-  seoDescription:
-    "Let customers pay with PayPal on your TajirPoint website. They approve the payment on PayPal's own site and the money goes to your PayPal Business account.",
+  seoDescription: `Let customers pay with PayPal on your ${BRAND_NAME} website. They approve the payment on PayPal's own site and the money goes to your PayPal Business account.`,
   keywords: [
     "paypal for online shop",
     "accept paypal payments website",
@@ -20,8 +20,8 @@ const content: AddonContent = {
   schemaSubCategory: "Online payments add-on",
   headline: "Let customers pay with PayPal, with the money going to your PayPal Business account.",
   overview: [
-    "PayPal Payments will let customers pay with PayPal on your TajirPoint website. The customer is taken to PayPal's own site, approves the payment there, and is brought back to your shop.",
-    "The money goes to your own PayPal Business account. TajirPoint never sees the customer's card or bank details; PayPal handles all of that.",
+    `PayPal Payments will let customers pay with PayPal on your ${BRAND_NAME} website. The customer is taken to PayPal's own site, approves the payment there, and is brought back to your shop.`,
+    `The money goes to your own PayPal Business account. ${BRAND_NAME} never sees the customer's card or bank details; PayPal handles all of that.`,
     "PayPal decides which ways to pay the customer sees, depending on their country and their PayPal account.",
   ],
   whoFor: [
@@ -32,15 +32,15 @@ const content: AddonContent = {
   problems: [
     {
       problem: "Some customers will only pay online with PayPal.",
-      fix: "Offer PayPal as a payment option on your TajirPoint website.",
+      fix: `Offer PayPal as a payment option on your ${BRAND_NAME} website.`,
     },
     {
       problem: "You do not want to handle customers' card details.",
-      fix: "Customers approve the payment on PayPal's own site, so their card and bank details never reach TajirPoint.",
+      fix: `Customers approve the payment on PayPal's own site, so their card and bank details never reach ${BRAND_NAME}.`,
     },
     {
       problem: "PayPal money and your online orders sit in different places.",
-      fix: "Payments are started from your TajirPoint order and the money lands in your own PayPal Business account.",
+      fix: `Payments are started from your ${BRAND_NAME} order and the money lands in your own PayPal Business account.`,
     },
   ],
   features: [
@@ -50,7 +50,7 @@ const content: AddonContent = {
     },
     {
       title: "Money to your PayPal account",
-      body: "Payments go into your own PayPal Business account. TajirPoint does not hold your money.",
+      body: `Payments go into your own PayPal Business account. ${BRAND_NAME} does not hold your money.`,
     },
     {
       title: "Ways to pay chosen by PayPal",
@@ -77,8 +77,8 @@ const content: AddonContent = {
   ],
   needs: [
     "A PayPal Business account",
-    "A TajirPoint website or order page to take online orders",
-    "TajirPoint on the Shop plan or above",
+    `A ${BRAND_NAME} website or order page to take online orders`,
+    `${BRAND_NAME} on the Shop plan or above`,
   ],
   setup: [
     "This add-on is not open to shops yet.",
@@ -88,7 +88,7 @@ const content: AddonContent = {
   faqs: [
     {
       q: "When will it be ready?",
-      a: "Most of it is built, but we are still finishing the step that marks a paid PayPal order as paid in TajirPoint automatically. We will not open it until that works, and we do not have a date to share. Send us a request and we will tell you when it is ready.",
+      a: `Most of it is built, but we are still finishing the step that marks a paid PayPal order as paid in ${BRAND_NAME} automatically. We will not open it until that works, and we do not have a date to share. Send us a request and we will tell you when it is ready.`,
     },
     {
       q: "Do I need a PayPal Business account?",
@@ -96,11 +96,11 @@ const content: AddonContent = {
     },
     {
       q: "Where does the money go?",
-      a: "Into your PayPal Business account. TajirPoint never holds the money. PayPal charges its own fees.",
+      a: `Into your PayPal Business account. ${BRAND_NAME} never holds the money. PayPal charges its own fees.`,
     },
     {
-      q: "Does TajirPoint see my customers' card details?",
-      a: "No. Customers approve the payment on PayPal's own site. TajirPoint only learns whether the payment went through.",
+      q: `Does ${BRAND_NAME} see my customers' card details?`,
+      a: `No. Customers approve the payment on PayPal's own site. ${BRAND_NAME} only learns whether the payment went through.`,
     },
     {
       q: "Will it work in my country?",

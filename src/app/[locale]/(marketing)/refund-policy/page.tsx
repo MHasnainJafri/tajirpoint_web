@@ -6,11 +6,12 @@ import {
   LegalPage,
   LegalSection,
   MailLink,
-  WhatsAppLink,
+  WhatsAppClause,
   defineSections,
 } from "@/components/legal/LegalPage";
 import { legal } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 export async function generateMetadata({
   params,
@@ -20,8 +21,7 @@ export async function generateMetadata({
   const { locale } = await params;
   return buildMetadata({
     title: "Refund & Cancellation Policy",
-    description:
-      "How to cancel a TajirPoint subscription, the 15-day refund window for subscription payments, annual plans, extensions and how refunds are paid.",
+    description: `How to cancel a ${BRAND_NAME} subscription, the 15-day refund window for subscription payments, annual plans, extensions and how refunds are paid.`,
     path: "/refund-policy",
     locale,
   });
@@ -80,9 +80,9 @@ export default async function RefundPolicyPage({
       <LegalSection {...S.cancel}>
         <p>
           You can cancel a paid plan at any time from the billing screen in the app, or by
-          contacting us at <MailLink subject="Cancel my plan" /> or on WhatsApp at <WhatsAppLink />.
-          Your plan stays active until the end of the period you have already paid for and does not
-          renew after that.
+          contacting us at <MailLink subject="Cancel my plan" />
+          <WhatsAppClause before=" or on WhatsApp at " />. Your plan stays active until the end of
+          the period you have already paid for and does not renew after that.
         </p>
         <p>
           When the paid period ends, the account returns to Light. Because Light is free only for
@@ -119,9 +119,10 @@ export default async function RefundPolicyPage({
 
       <LegalSection {...S.request}>
         <p>
-          Email <MailLink subject="Refund request" /> from the email address on your account, or
-          message us on WhatsApp at <WhatsAppLink />. Please include your business name, the date
-          and amount of the payment, and the reason for the request if you are happy to share it.
+          Email <MailLink subject="Refund request" /> from the email address on your account
+          <WhatsAppClause before=", or message us on WhatsApp at " />. Please include your business
+          name, the date and amount of the payment, and the reason for the request if you are happy
+          to share it.
         </p>
       </LegalSection>
 

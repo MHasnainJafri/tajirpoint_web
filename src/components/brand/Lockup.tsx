@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils/cn";
 import { Mark } from "./Mark";
 import { cva, type VariantProps } from "class-variance-authority";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 const lockupVariants = cva("inline-flex items-center gap-[11px] leading-none", {
   variants: {
@@ -17,14 +18,13 @@ const lockupVariants = cva("inline-flex items-center gap-[11px] leading-none", {
 });
 
 export interface LockupProps
-  extends React.HTMLAttributes<HTMLSpanElement>,
-    VariantProps<typeof lockupVariants> {}
+  extends React.HTMLAttributes<HTMLSpanElement>, VariantProps<typeof lockupVariants> {}
 
 export function Lockup({ className, size, variant, ...props }: LockupProps) {
   return (
     <span
       className={cn(lockupVariants({ size, variant }), className)}
-      aria-label="TajirPoint"
+      aria-label={`${BRAND_NAME}`}
       {...props}
     >
       <Mark

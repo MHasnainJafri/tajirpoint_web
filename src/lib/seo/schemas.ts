@@ -7,8 +7,10 @@ import type {
   WithContext,
 } from "schema-dts";
 import { legal, siteConfig, socialProfiles } from "@/lib/config/site";
+import { brand } from "@/lib/config/brand";
 import { isContactSalesPlan, isFreePlan, type MarketingPlan } from "@/lib/api/plans";
 import { canonicalUrl } from "@/lib/seo/metadata";
+import { routing } from "@/i18n/routing";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -16,8 +18,16 @@ import { canonicalUrl } from "@/lib/seo/metadata";
 export const ORG_ID = `${siteConfig.url}/#organization`;
 export const WEBSITE_ID = `${siteConfig.url}/#website`;
 
+/** Language names for `availableLanguage`, kept to the languages this build has. */
+const LANGUAGE_CODES: Record<string, string> = { English: "en", Urdu: "ur", Arabic: "ar" };
+function spoken(names: string[]): string[] {
+  return names.filter((n) => (routing.locales as readonly string[]).includes(LANGUAGE_CODES[n]!));
+}
+
 export function organizationSchema(): WithContext<Organization> {
   const sameAs = socialProfiles();
+  // No WhatsApp line (another brand's build): no telephone, never an empty one.
+  const phone = legal.whatsappE164 ? { telephone: legal.whatsappE164 } : {};
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -31,8 +41,8 @@ export function organizationSchema(): WithContext<Organization> {
     // there is deliberately no LocalBusiness markup (it requires one).
     address: {
       "@type": "PostalAddress",
-      addressLocality: legal.city,
-      addressCountry: "PK",
+      ...(legal.city && { addressLocality: legal.city }),
+      addressCountry: brand.country,
     } as any,
     email: legal.email,
     // A raster logo: Google's logo guidelines want at least 112×112 and
@@ -50,24 +60,24 @@ export function organizationSchema(): WithContext<Organization> {
       {
         "@type": "ContactPoint",
         contactType: "sales",
-        telephone: legal.whatsappE164,
+        ...phone,
         email: legal.email,
         url: `${siteConfig.url}/contact`,
-        availableLanguage: ["English", "Urdu", "Arabic"],
+        availableLanguage: spoken(["English", "Urdu", "Arabic"]),
       },
       {
         "@type": "ContactPoint",
         contactType: "customer support",
-        telephone: legal.whatsappE164,
+        ...phone,
         email: legal.email,
         url: `${siteConfig.url}/contact`,
-        availableLanguage: ["English", "Urdu"],
+        availableLanguage: spoken(["English", "Urdu"]),
       },
     ] as any,
     // The product is sold generally; naming three countries told search
     // engines it was unavailable everywhere else.
     areaServed: { "@type": "Place", name: "Worldwide" } as any,
-    foundingDate: "2022",
+    ...(brand.founded && { foundingDate: brand.founded }),
   };
 }
 
@@ -86,7 +96,7 @@ export function websiteSchema(): WithContext<WebSite> {
     name: siteConfig.name,
     alternateName: [...siteConfig.alternateNames],
     url: siteConfig.url,
-    inLanguage: ["en", "ur", "ar"],
+    inLanguage: [...routing.locales],
     publisher: { "@id": ORG_ID } as any,
   };
 }
@@ -144,7 +154,7 @@ export function softwareApplicationSchema(
     // Platforms section and the FAQ say. No iOS or Linux app is published.
     operatingSystem: "Web, Windows, Android",
     publisher: { "@id": ORG_ID } as any,
-    inLanguage: ["en", "ur", "ar"],
+    inLanguage: [...routing.locales],
     offers: (plans?.length ? plans : []).map((plan) => planOffer(plan)) as any,
   };
 }
@@ -249,7 +259,7 @@ export function verticalSoftwareSchema({
     image: `${siteConfig.url}/og/business-${path.split("/").pop()}.png`,
     operatingSystem: "Web, Windows, Android",
     publisher: { "@id": ORG_ID } as any,
-    inLanguage: ["en", "ur", "ar"],
+    inLanguage: [...routing.locales],
     featureList: features.join(", "),
     // Same Offers as the home page, from the same API rows — never a
     // hardcoded plan name or price.

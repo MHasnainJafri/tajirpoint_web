@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/payments (gateways/hbl_gateway.py HBLPay hosted card page
 // with 3D Secure, result on the return to your site, sandbox/live, refund only
@@ -20,8 +21,8 @@ const content: AddonContent = {
   headline: "Take card payments in Pakistan through HBL's own secure payment page.",
   overview: [
     "HBLPay will let customers in Pakistan pay by card through Habib Bank Limited. The customer is taken to HBL's secure payment page, enters their card details there, passes the bank's card check, and is brought back to your site.",
-    "The money goes to your own HBL merchant account, in rupees. TajirPoint records the payment against the sale or order but never sees or stores the card number.",
-    "It is for shops that already have, or are opening, an HBL merchant account and want card payments on their TajirPoint website or at the POS.",
+    `The money goes to your own HBL merchant account, in rupees. ${BRAND_NAME} records the payment against the sale or order but never sees or stores the card number.`,
+    `It is for shops that already have, or are opening, an HBL merchant account and want card payments on their ${BRAND_NAME} website or at the POS.`,
   ],
   whoFor: [
     "Shops and restaurants in Pakistan",
@@ -36,11 +37,11 @@ const content: AddonContent = {
     },
     {
       problem: "You worry about handling customers' card details.",
-      fix: "Card details are entered on HBL's own page. They never pass through TajirPoint.",
+      fix: `Card details are entered on HBL's own page. They never pass through ${BRAND_NAME}.`,
     },
     {
       problem: "Card payments and sales are tracked in different places.",
-      fix: "The result comes back to TajirPoint and is recorded against the sale or order it was for.",
+      fix: `The result comes back to ${BRAND_NAME} and is recorded against the sale or order it was for.`,
     },
   ],
   features: [
@@ -49,12 +50,12 @@ const content: AddonContent = {
       body: "Customers enter their card details on HBL's own payment page, including the bank's 3D Secure check.",
     },
     {
-      title: "Result recorded in TajirPoint",
+      title: `Result recorded in ${BRAND_NAME}`,
       body: "When the customer comes back from HBL, the outcome of the payment is recorded against the sale or order.",
     },
     {
       title: "Money to your HBL account",
-      body: "Payments go into your own HBL merchant account in rupees. TajirPoint does not hold your money.",
+      body: `Payments go into your own HBL merchant account in rupees. ${BRAND_NAME} does not hold your money.`,
     },
     {
       title: "Tested before going live",
@@ -75,20 +76,20 @@ const content: AddonContent = {
       body: "The customer is taken to HBL's secure page, pays by card, and is brought back to your site.",
     },
     {
-      title: "TajirPoint records the result",
+      title: `${BRAND_NAME} records the result`,
       body: "The payment is recorded against the sale or order it was for.",
     },
   ],
   needs: [
     "A business in Pakistan taking payments in rupees",
     "An HBL merchant account and the onboarding details HBL sends you",
-    "TajirPoint on the Shop plan or above",
+    `${BRAND_NAME} on the Shop plan or above`,
   ],
   setup: [
     "This add-on is not open to shops yet.",
     "Once it is live, our team sets it up with you; you do not enter any settings yourself.",
     "HBL charges its own fees under your merchant agreement with them.",
-    "Refunds are made from your HBLPay merchant portal, not from TajirPoint.",
+    `Refunds are made from your HBLPay merchant portal, not from ${BRAND_NAME}.`,
   ],
   faqs: [
     {
@@ -100,16 +101,16 @@ const content: AddonContent = {
       a: "Yes. Payments go to your own HBL merchant account, so you need one from HBL, along with the onboarding details they send you.",
     },
     {
-      q: "Does TajirPoint see the card number?",
-      a: "No. The customer enters their card details on HBL's own page. TajirPoint only receives the result of the payment.",
+      q: `Does ${BRAND_NAME} see the card number?`,
+      a: `No. The customer enters their card details on HBL's own page. ${BRAND_NAME} only receives the result of the payment.`,
     },
     {
       q: "Where does the money go?",
-      a: "Into your HBL merchant account. TajirPoint records the payment but never holds the money. HBL charges its own fees.",
+      a: `Into your HBL merchant account. ${BRAND_NAME} records the payment but never holds the money. HBL charges its own fees.`,
     },
     {
-      q: "Can I refund a card payment from TajirPoint?",
-      a: "No. HBLPay refunds are made from your HBLPay merchant portal. You can then record the refund in TajirPoint.",
+      q: `Can I refund a card payment from ${BRAND_NAME}?`,
+      a: `No. HBLPay refunds are made from your HBLPay merchant portal. You can then record the refund in ${BRAND_NAME}.`,
     },
     {
       q: "Which plan will I need?",

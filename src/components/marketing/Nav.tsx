@@ -7,7 +7,7 @@ import { usePathname } from "@/i18n/navigation";
 import { SiteLink as Link } from "@/components/marketing/SiteLink";
 import { Icon } from "@/components/design/Icon";
 import { Wordmark } from "@/components/brand/Wordmark";
-import { LocaleMenu } from "@/components/marketing/LocaleMenu";
+import { HAS_LOCALE_MENU, LocaleMenu } from "@/components/marketing/LocaleMenu";
 import {
   FEATURES,
   MEGA_EXT_VERTICALS,
@@ -18,6 +18,7 @@ import {
 } from "@/lib/design/catalog";
 import type { Business } from "@/lib/marketing/businesses";
 import { siteConfig } from "@/lib/config/site";
+import { isPageShown } from "@/lib/config/pages";
 import { uxCopy } from "@/content/ux/copy";
 import { guidesNavLabel } from "@/content/guides/labels";
 
@@ -35,14 +36,16 @@ export interface NavBusiness {
   navLine: string;
 }
 
-/** Pages that exist — nothing in the menu may 404. */
-const RESOURCES = [
-  { id: "demo", href: "/book-demo" },
-  { id: "contact", href: "/contact" },
-  { id: "security", href: "/security" },
-  { id: "about", href: "/about" },
-  { id: "docs", href: "/docs" },
-] as const;
+/** Pages that exist — nothing in the menu may 404 (nor link a page this build leaves out). */
+const RESOURCES = (
+  [
+    { id: "demo", href: "/book-demo" },
+    { id: "contact", href: "/contact" },
+    { id: "security", href: "/security" },
+    { id: "about", href: "/about" },
+    { id: "docs", href: "/docs" },
+  ] as const
+).filter((r) => isPageShown(r.href));
 
 const linkBase =
   "inline-flex items-center gap-[5px] whitespace-nowrap rounded-full px-[14px] py-[9px] text-[13.5px] font-semibold text-[var(--color-ink)] transition-colors duration-200 hover:bg-[var(--color-surface)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-mint-2)]";
@@ -149,25 +152,27 @@ export function Nav({ businesses }: { businesses: NavBusiness[] }) {
             />
           ))}
         </MegaColumn>
-        <Link
-          href="/features/khata"
-          className="flex min-h-[220px] flex-col justify-between gap-5 rounded-[16px] bg-[#0A0A0A] p-5 text-white transition-transform duration-[250ms] hover:-translate-y-[3px]"
-        >
-          <span className="font-[family-name:var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--color-mint)]">
-            {t("megaFeatures.badge")}
-          </span>
-          <span>
-            <span className="block text-[21px] font-bold leading-[1.15] tracking-[-0.03em]">
-              {t("megaFeatures.title")}
+        {isPageShown("/features/khata") && (
+          <Link
+            href="/features/khata"
+            className="flex min-h-[220px] flex-col justify-between gap-5 rounded-[16px] bg-[#0A0A0A] p-5 text-white transition-transform duration-[250ms] hover:-translate-y-[3px]"
+          >
+            <span className="font-[family-name:var(--font-mono)] text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--color-mint)]">
+              {t("megaFeatures.badge")}
             </span>
-            <span className="mt-2 block text-[12.5px] leading-[1.55] text-[#B5B9C2]">
-              {t("megaFeatures.desc")}
+            <span>
+              <span className="block text-[21px] font-bold leading-[1.15] tracking-[-0.03em]">
+                {t("megaFeatures.title")}
+              </span>
+              <span className="mt-2 block text-[12.5px] leading-[1.55] text-[#B5B9C2]">
+                {t("megaFeatures.desc")}
+              </span>
             </span>
-          </span>
-          <span className="text-[12.5px] font-semibold text-[var(--color-mint)]">
-            {t("megaFeatures.cta")} →
-          </span>
-        </Link>
+            <span className="text-[12.5px] font-semibold text-[var(--color-mint)]">
+              {t("megaFeatures.cta")} →
+            </span>
+          </Link>
+        )}
       </div>
     </MegaPanel>
   );
@@ -325,15 +330,17 @@ export function Nav({ businesses }: { businesses: NavBusiness[] }) {
             </span>
           </Link>
         ))}
-        <Link
-          href="/guides"
-          className="rounded-[14px] border border-[var(--color-line)] p-[14px] transition-colors duration-200 hover:bg-[var(--color-surface)]"
-        >
-          <span className="block text-[14px] font-bold">{guidesNavLabel(locale).title}</span>
-          <span className="mt-[3px] block text-[12px] leading-[1.5] text-[var(--color-muted)]">
-            {guidesNavLabel(locale).sub}
-          </span>
-        </Link>
+        {isPageShown("/guides") && (
+          <Link
+            href="/guides"
+            className="rounded-[14px] border border-[var(--color-line)] p-[14px] transition-colors duration-200 hover:bg-[var(--color-surface)]"
+          >
+            <span className="block text-[14px] font-bold">{guidesNavLabel(locale).title}</span>
+            <span className="mt-[3px] block text-[12px] leading-[1.5] text-[var(--color-muted)]">
+              {guidesNavLabel(locale).sub}
+            </span>
+          </Link>
+        )}
       </div>
     </MegaPanel>
   );
@@ -381,9 +388,7 @@ export function Nav({ businesses }: { businesses: NavBusiness[] }) {
 
         {/* ── Right rail ────────────────────────────────────────────── */}
         <div className="flex flex-none items-center gap-2">
-          <div className="hidden md:block">
-            <LocaleMenu />
-          </div>
+          <div className="hidden md:block">{HAS_LOCALE_MENU && <LocaleMenu />}</div>
 
           <a
             href={siteConfig.dashboardUrl}
@@ -493,9 +498,11 @@ export function Nav({ businesses }: { businesses: NavBusiness[] }) {
                 {tRes(`${r.id}.title`)}
               </MobileSubLink>
             ))}
-            <MobileSubLink href="/guides" onNavigate={closeAll}>
-              {guidesNavLabel(locale).title}
-            </MobileSubLink>
+            {isPageShown("/guides") && (
+              <MobileSubLink href="/guides" onNavigate={closeAll}>
+                {guidesNavLabel(locale).title}
+              </MobileSubLink>
+            )}
           </MobileSection>
         </nav>
 
@@ -519,7 +526,7 @@ export function Nav({ businesses }: { businesses: NavBusiness[] }) {
         </div>
 
         <div className="mt-4 flex flex-wrap items-center gap-[10px] border-t border-[var(--color-line)] pt-4">
-          <LocaleMenu compact />
+          {HAS_LOCALE_MENU && <LocaleMenu compact />}
           <a
             href={siteConfig.dashboardUrl}
             className="shrink grow basis-[140px] rounded-full border border-[var(--color-line-2)] px-[18px] py-3 text-center text-[14px] font-semibold"

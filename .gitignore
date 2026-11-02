@@ -40,3 +40,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# brand files copied in by scripts/build-brand-site.sh
+/public/brands/
+# a brand build's real env file (the .env.example next to it is committed)
+/scripts/brands/*.env

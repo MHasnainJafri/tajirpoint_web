@@ -3,6 +3,7 @@ import { setRequestLocale } from "next-intl/server";
 
 import { CodeBlock } from "@/components/marketing/CodeBlock";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 export async function generateMetadata({
   params,
@@ -11,10 +12,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "Errors — TajirPoint API",
+    title: `Errors — ${BRAND_NAME} API`,
     absoluteTitle: true,
-    description:
-      "Every TajirPoint API error uses the same envelope: an HTTP status code, a readable message and a details object naming each field that failed validation.",
+    description: `Every ${BRAND_NAME} API error uses the same envelope: an HTTP status code, a readable message and a details object naming each field that failed validation.`,
     path: "/docs/errors",
     locale,
   });

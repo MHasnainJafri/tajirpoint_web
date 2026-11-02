@@ -1,4 +1,5 @@
 import type { Guide } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // TajirPoint claims are the ones on /business/restaurants (live): counter POS
 // with modifiers and deals, split bills, service charge and tax, receipts in
@@ -189,11 +190,11 @@ const guide: Guide = {
     },
     {
       id: "tajirpoint",
-      heading: "Where TajirPoint fits",
+      heading: `Where ${BRAND_NAME} fits`,
       blocks: [
         {
           type: "p",
-          text: "TajirPoint is built for restaurants first. Here is how it maps to the checklist, honestly:",
+          text: `${BRAND_NAME} is built for restaurants first. Here is how it maps to the checklist, honestly:`,
         },
         {
           type: "list",
@@ -238,7 +239,7 @@ const guide: Guide = {
       a: "For most restaurants a few days: load the menu and modifiers, set up tables and kitchen stations, train staff, then go live on a quiet day.",
     },
     {
-      q: "Does TajirPoint work for takeaways and cloud kitchens?",
+      q: `Does ${BRAND_NAME} work for takeaways and cloud kitchens?`,
       a: "Yes. Fast counter ordering, your own online order page, an order board, a packer screen and a rider app all come in the same system.",
     },
   ],

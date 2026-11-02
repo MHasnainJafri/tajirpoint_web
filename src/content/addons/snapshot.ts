@@ -1,4 +1,5 @@
 import type { ApiAddonRow } from "@/lib/marketing/addons";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 /**
  * Snapshot of `GET /api/v1/public/extensions/` taken 1 Nov 2026 (36 add-ons).
@@ -174,8 +175,7 @@ export const ADDON_SNAPSHOT: ApiAddonRow[] = [
     category: "business_vertical",
     category_label: "Business Vertical",
     tagline: "Pharmacist workflow: drug schedule, molecule tagging, FEFO, expiry alerts, Rx log.",
-    description:
-      "Turn TajirPoint into a pharmacist-opinionated POS. Classify every SKU as OTC, Prescription or Controlled substance; tag molecules and generic names to drive the low-stock-by-molecule view. FEFO is enforced on batched inventory by default, and expiry alerts fire at 90 / 60 / 30 days so nothing wastes on the shelf. Attach prescription references (doctor, Rx#, patient) to any Rx or controlled sale — ready for regulator or insurance audit.",
+    description: `Turn ${BRAND_NAME} into a pharmacist-opinionated POS. Classify every SKU as OTC, Prescription or Controlled substance; tag molecules and generic names to drive the low-stock-by-molecule view. FEFO is enforced on batched inventory by default, and expiry alerts fire at 90 / 60 / 30 days so nothing wastes on the shelf. Attach prescription references (doctor, Rx#, patient) to any Rx or controlled sale — ready for regulator or insurance audit.`,
     icon_url: "https://media.tajirpoint.com/extension-icons/pharmacy-pack.webp",
     is_free: true,
     billing_type: "free",
@@ -256,8 +256,7 @@ export const ADDON_SNAPSHOT: ApiAddonRow[] = [
     category_label: "Business Vertical",
     tagline:
       "Truck loading, delivery tracking, cash reconciliation and per-shop udhaar for mills, distributors and route-sales businesses.",
-    description:
-      "Run a van-sales / route-delivery operation from inside TajirPoint. Load a truck from a source warehouse, let the driver log cash and udhaar deliveries at each shop, add new shops on the fly, return remaining stock, and reconcile the day's cash against expected with a variance-override workflow. Perfect for flour mills, FMCG distributors, beverage suppliers, and wholesalers who ship goods to retailer shops.",
+    description: `Run a van-sales / route-delivery operation from inside ${BRAND_NAME}. Load a truck from a source warehouse, let the driver log cash and udhaar deliveries at each shop, add new shops on the fly, return remaining stock, and reconcile the day's cash against expected with a variance-override workflow. Perfect for flour mills, FMCG distributors, beverage suppliers, and wholesalers who ship goods to retailer shops.`,
     icon_url: "https://media.tajirpoint.com/extension-icons/route-dispatch.webp",
     is_free: true,
     billing_type: "free",
@@ -547,8 +546,7 @@ export const ADDON_SNAPSHOT: ApiAddonRow[] = [
     category: "integration",
     category_label: "Integration",
     tagline: "PayPal hosted checkout for global card payments.",
-    description:
-      "Accept payments globally via PayPal Checkout. Customers approve on paypal.com using saved cards, Venmo, Pay-in-4, or bank accounts; funds land in your PayPal merchant account. Refunds and reconciliation flow back to the POS via webhook events. Your PayPal account holds funds — TajirPoint never touches card data.",
+    description: `Accept payments globally via PayPal Checkout. Customers approve on paypal.com using saved cards, Venmo, Pay-in-4, or bank accounts; funds land in your PayPal merchant account. Refunds and reconciliation flow back to the POS via webhook events. Your PayPal account holds funds — ${BRAND_NAME} never touches card data.`,
     icon_url: "https://media.tajirpoint.com/extension-icons/paypal-payments.png",
     is_free: true,
     billing_type: "free",
@@ -595,8 +593,7 @@ export const ADDON_SNAPSHOT: ApiAddonRow[] = [
     category: "integration",
     category_label: "Integration",
     tagline: "Two-way sync for catalog, inventory, and orders with Shopify.",
-    description:
-      "Stop reconciling inventory between your Shopify storefront and your POS by hand. Install this extension and connect your Shopify store — product catalog and stock levels are pushed from TajirPoint automatically, and every Shopify order flows into the POS as a sale so fulfilment + accounting stay on one ledger.",
+    description: `Stop reconciling inventory between your Shopify storefront and your POS by hand. Install this extension and connect your Shopify store — product catalog and stock levels are pushed from ${BRAND_NAME} automatically, and every Shopify order flows into the POS as a sale so fulfilment + accounting stay on one ledger.`,
     icon_url: "https://media.tajirpoint.com/extension-icons/shopify-sync.png",
     is_free: false,
     billing_type: "recurring",
@@ -644,8 +641,7 @@ export const ADDON_SNAPSHOT: ApiAddonRow[] = [
     category: "integration",
     category_label: "Integration",
     tagline: "In-page card payments via the Stripe SDK, with webhook reconciliation.",
-    description:
-      "Accept card payments in your POS and on your website using Stripe's SDK. The card form is a Stripe-hosted field embedded in your own page, so the customer never gets redirected away — and card data never touches TajirPoint's servers. Refunds and reconciliation flow back into your POS automatically via a per-shop webhook.",
+    description: `Accept card payments in your POS and on your website using Stripe's SDK. The card form is a Stripe-hosted field embedded in your own page, so the customer never gets redirected away — and card data never touches ${BRAND_NAME}'s servers. Refunds and reconciliation flow back into your POS automatically via a per-shop webhook.`,
     icon_url: "https://media.tajirpoint.com/extension-icons/stripe-payments.png",
     is_free: true,
     billing_type: "free",
@@ -716,8 +712,7 @@ export const ADDON_SNAPSHOT: ApiAddonRow[] = [
     category: "integration",
     category_label: "Integration",
     tagline: "Two-way WooCommerce sync (products, inventory, orders).",
-    description:
-      "Bidirectional sync between TajirPoint and a WooCommerce store. Push your POS catalog out to WooCommerce; pull online orders back in as POS sales (idempotently). Inventory levels sync on stock movements. Mirrors the Shopify integration pattern.",
+    description: `Bidirectional sync between ${BRAND_NAME} and a WooCommerce store. Push your POS catalog out to WooCommerce; pull online orders back in as POS sales (idempotently). Inventory levels sync on stock movements. Mirrors the Shopify integration pattern.`,
     icon_url: "https://media.tajirpoint.com/extension-icons/woocommerce-sync.png",
     is_free: false,
     billing_type: "recurring",
@@ -764,8 +759,7 @@ export const ADDON_SNAPSHOT: ApiAddonRow[] = [
     category: "shipping",
     category_label: "Shipping",
     tagline: "Leopards Courier booking + label printing + tracking.",
-    description:
-      "Book shipments directly with Leopards Courier from the POS, auto-generate air-waybill labels, and track status without leaving TajirPoint. Status refreshes every 10 minutes via polling (Leopards does not push webhooks).",
+    description: `Book shipments directly with Leopards Courier from the POS, auto-generate air-waybill labels, and track status without leaving ${BRAND_NAME}. Status refreshes every 10 minutes via polling (Leopards does not push webhooks).`,
     icon_url: "https://media.tajirpoint.com/extension-icons/courier-leopards.png",
     is_free: true,
     billing_type: "free",

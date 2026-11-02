@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/payments (gateways/jazzcash_gateway.py MWALLET wallet push,
 // optional CNIC field, sandbox/live, refund only from the JazzCash portal;
@@ -21,8 +22,8 @@ const content: AddonContent = {
   headline: "Let customers pay from their JazzCash wallet, at the counter or online.",
   overview: [
     "JazzCash Payments will let customers pay from their JazzCash mobile wallet. They give their JazzCash number, approve the payment on their phone, and the money goes to your own JazzCash merchant account.",
-    "It is for shops in Pakistan taking payments in rupees. It will work for sales at the POS and, when you switch it on in your website settings, for orders on your TajirPoint website.",
-    "When JazzCash confirms a payment, the sale or order is marked paid in TajirPoint. Once a day, TajirPoint also asks JazzCash about any payment still waiting for an answer from the last three days, so a payment whose confirmation went missing is not left hanging.",
+    `It is for shops in Pakistan taking payments in rupees. It will work for sales at the POS and, when you switch it on in your website settings, for orders on your ${BRAND_NAME} website.`,
+    `When JazzCash confirms a payment, the sale or order is marked paid in ${BRAND_NAME}. Once a day, ${BRAND_NAME} also asks JazzCash about any payment still waiting for an answer from the last three days, so a payment whose confirmation went missing is not left hanging.`,
   ],
   whoFor: [
     "Shops and restaurants in Pakistan",
@@ -33,11 +34,11 @@ const content: AddonContent = {
   problems: [
     {
       problem: "Customers send money by wallet and you check your phone to see if it arrived.",
-      fix: "The payment is started from TajirPoint and the sale is marked paid when JazzCash confirms it, so there is nothing to check by hand.",
+      fix: `The payment is started from ${BRAND_NAME} and the sale is marked paid when JazzCash confirms it, so there is nothing to check by hand.`,
     },
     {
       problem: "A wallet payment goes through but the confirmation never arrives.",
-      fix: "Once a day, TajirPoint asks JazzCash about any payment still waiting and marks it paid or failed.",
+      fix: `Once a day, ${BRAND_NAME} asks JazzCash about any payment still waiting and marks it paid or failed.`,
     },
     {
       problem:
@@ -52,15 +53,15 @@ const content: AddonContent = {
     },
     {
       title: "At the POS and on your website",
-      body: "Use it for counter sales, and offer it as a payment option on your TajirPoint website when you switch it on there.",
+      body: `Use it for counter sales, and offer it as a payment option on your ${BRAND_NAME} website when you switch it on there.`,
     },
     {
       title: "Marked paid for you",
-      body: "Successful and failed payments are updated in TajirPoint as soon as JazzCash confirms them.",
+      body: `Successful and failed payments are updated in ${BRAND_NAME} as soon as JazzCash confirms them.`,
     },
     {
       title: "Daily check for missing answers",
-      body: "Every night TajirPoint checks any JazzCash payment that is still waiting, from the last three days, and updates it.",
+      body: `Every night ${BRAND_NAME} checks any JazzCash payment that is still waiting, from the last three days, and updates it.`,
     },
     {
       title: "Optional CNIC check",
@@ -68,7 +69,7 @@ const content: AddonContent = {
     },
     {
       title: "Money goes to your account",
-      body: "Payments go to your own JazzCash merchant account. TajirPoint does not hold your money.",
+      body: `Payments go to your own JazzCash merchant account. ${BRAND_NAME} does not hold your money.`,
     },
   ],
   howItWorks: [
@@ -85,20 +86,20 @@ const content: AddonContent = {
       body: "At the counter or on your website, the customer gives their JazzCash number and approves the payment on their phone.",
     },
     {
-      title: "TajirPoint marks it paid",
+      title: `${BRAND_NAME} marks it paid`,
       body: "The sale or order is marked paid when JazzCash confirms, and a daily check catches anything missed.",
     },
   ],
   needs: [
     "A business in Pakistan taking payments in rupees",
     "A JazzCash merchant account (your merchant details come from JazzCash)",
-    "TajirPoint on the Shop plan or above",
+    `${BRAND_NAME} on the Shop plan or above`,
   ],
   setup: [
     "This add-on is not open to shops yet.",
     "Once it is live, our team sets it up with you; you do not enter any settings yourself.",
     "JazzCash charges its own fees under your merchant agreement with them.",
-    "Refunds are made from your JazzCash merchant portal, not from TajirPoint.",
+    `Refunds are made from your JazzCash merchant portal, not from ${BRAND_NAME}.`,
   ],
   faqs: [
     {
@@ -111,15 +112,15 @@ const content: AddonContent = {
     },
     {
       q: "Where does the money go?",
-      a: "Straight to your JazzCash merchant account. TajirPoint records the payment but never holds the money. JazzCash charges its own fees.",
+      a: `Straight to your JazzCash merchant account. ${BRAND_NAME} records the payment but never holds the money. JazzCash charges its own fees.`,
     },
     {
-      q: "Can I refund a JazzCash payment from TajirPoint?",
-      a: "No. JazzCash refunds are made from your JazzCash merchant portal. You can then record the refund in TajirPoint.",
+      q: `Can I refund a JazzCash payment from ${BRAND_NAME}?`,
+      a: `No. JazzCash refunds are made from your JazzCash merchant portal. You can then record the refund in ${BRAND_NAME}.`,
     },
     {
       q: "What if a payment is stuck as waiting?",
-      a: "Once a day TajirPoint asks JazzCash about payments still waiting from the last three days and marks them paid or failed.",
+      a: `Once a day ${BRAND_NAME} asks JazzCash about payments still waiting from the last three days and marks them paid or failed.`,
     },
     {
       q: "Which plan will I need?",

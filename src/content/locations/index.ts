@@ -7,6 +7,7 @@ import karachi from "./karachi";
 import islamabadRawalpindi from "./islamabad-rawalpindi";
 import faisalabad from "./faisalabad";
 import uk from "./uk";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 export type * from "./types";
 export { LOCATION_SLUGS } from "./types";
@@ -41,42 +42,41 @@ export const LOCATIONS_HUB = {
   updated: "2026-11-02",
   seo: {
     title: "POS System for Pakistan and the UK",
-    description:
-      "Where TajirPoint POS fits: Pakistani cities and UK takeaways. Currency, tax authority and our honest status, payments and languages for each place.",
+    description: `Where ${BRAND_NAME} POS fits: Pakistani cities and UK takeaways. Currency, tax authority and our honest status, payments and languages for each place.`,
     keywords: ["pos system pakistan", "takeaway epos uk", "pos by city", "pos software locations"],
   },
   og: {
-    eyebrow: "TajirPoint by location",
-    title: "What TajirPoint does where you are.",
+    eyebrow: `${BRAND_NAME} by location`,
+    title: `What ${BRAND_NAME} does where you are.`,
     sub: "Pakistan and its main cities, and UK takeaways: tax, payments and languages, honestly.",
     pills: ["Pakistan", "Lahore", "Karachi", "UK"],
   },
   hero: {
-    eyebrow: "TajirPoint by location",
-    headline: "What TajirPoint does where you are.",
+    eyebrow: `${BRAND_NAME} by location`,
+    headline: `What ${BRAND_NAME} does where you are.`,
     sub: "Tax, payments, language and power are different in every place. Pick yours to see what works today, what is coming, and what we have not built yet.",
   },
   gulf: {
     heading: "The UAE and Saudi Arabia: not ready yet",
     paragraphs: [
-      "The app works in Arabic, a shop can trade in dirhams or riyals, and Stripe supports businesses in the UAE. But we have not built UAE e-invoicing, and we do not issue Saudi ZATCA (FATOORA) e-invoices. A VAT-registered business in Saudi Arabia needs ZATCA-compliant invoices, so TajirPoint is not the right choice there today.",
-      "If you are in the Gulf and want to talk it through, message us. We will tell you honestly whether TajirPoint fits.",
+      `The app works in Arabic, a shop can trade in dirhams or riyals, and Stripe supports businesses in the UAE. But we have not built UAE e-invoicing, and we do not issue Saudi ZATCA (FATOORA) e-invoices. A VAT-registered business in Saudi Arabia needs ZATCA-compliant invoices, so ${BRAND_NAME} is not the right choice there today.`,
+      `If you are in the Gulf and want to talk it through, message us. We will tell you honestly whether ${BRAND_NAME} fits.`,
     ],
   },
   elsewhere: {
     heading: "Somewhere else?",
     paragraphs: [
-      "TajirPoint runs in the browser, as a Windows app and on Android, so it works in most countries. Set your own currency and tax rates. Country-specific tax reporting is not built outside the places above, so check with us first if you must report invoices to a tax authority.",
+      `${BRAND_NAME} runs in the browser, as a Windows app and on Android, so it works in most countries. Set your own currency and tax rates. Country-specific tax reporting is not built outside the places above, so check with us first if you must report invoices to a tax authority.`,
     ],
   },
   faqs: [
     {
-      q: "Can I use TajirPoint outside Pakistan and the UK?",
+      q: `Can I use ${BRAND_NAME} outside Pakistan and the UK?`,
       a: "Yes. It works in most countries with your own currency and tax rates, but tax-authority reporting (FBR, ZATCA, UAE e-invoicing, Making Tax Digital) is not built yet.",
     },
     {
       q: "Do you have offices in these cities?",
-      a: "No. TajirPoint is operated from Islamabad, Pakistan, and there are no city offices. Setup, training and support are done over WhatsApp, email and video call.",
+      a: `No. ${BRAND_NAME} is operated from Islamabad, Pakistan, and there are no city offices. Setup, training and support are done over WhatsApp, email and video call.`,
     },
   ],
 } as const;

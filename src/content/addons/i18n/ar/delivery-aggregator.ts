@@ -1,16 +1,16 @@
 import type { AddonTranslation } from "../types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Arabic write-up for "delivery-aggregator". Same facts as ../../delivery-aggregator.ts; awaiting
 // native review (TP-490). A field left out falls back to English.
 const t: AddonTranslation = {
   slug: "delivery-aggregator",
   seoTitle: "مجمّع التوصيل: طلبات Foodpanda وTalabat وCareem",
-  seoDescription:
-    "قريبًا: صندوق وارد واحد في TajirPoint لطلبات Foodpanda وTalabat وCareem وBykea وDeliveroo وUber Eats وJust Eat، تتحول إلى مبيعات وتُعاد حالتها للتطبيق.",
+  seoDescription: `قريبًا: صندوق وارد واحد في ${BRAND_NAME} لطلبات Foodpanda وTalabat وCareem وBykea وDeliveroo وUber Eats وJust Eat، تتحول إلى مبيعات وتُعاد حالتها للتطبيق.`,
   schemaSubCategory: "إضافة تكامل تطبيقات توصيل الطعام لنقاط البيع",
   headline: "صندوق وارد واحد لطلبات تطبيقات التوصيل، مباشرة إلى نقطة البيع.",
   overview: [
-    "ستجمع إضافة Delivery Aggregator طلبات تطبيقات توصيل الطعام في صندوق وارد واحد في TajirPoint، فلا يضطر أحد لإعادة كتابتها في الصندوق. تُبنى لـ Foodpanda وTalabat وCareem وBykea وDeliveroo وUber Eats وJust Eat.",
+    `ستجمع إضافة Delivery Aggregator طلبات تطبيقات توصيل الطعام في صندوق وارد واحد في ${BRAND_NAME}، فلا يضطر أحد لإعادة كتابتها في الصندوق. تُبنى لـ Foodpanda وTalabat وCareem وBykea وDeliveroo وUber Eats وJust Eat.`,
     "تُطابَق أصناف كل تطبيق مع أصنافك مرة واحدة. بعدها يصبح الطلب المقبول بيعًا حقيقيًا، مع تذكرة مطبخ إن كنت تستخدم إضافة Restaurant، وتُرسل تغييرات الحالة مثل جاهز واستُلم وسُلّم إلى التطبيق.",
     "هي غير متاحة للمتاجر بعد. ما زال الربط مع كل تطبيق يحتاج إلى اختبار على حسابات حقيقية. عند إطلاقها سيُعدّها فريقنا معك.",
   ],
@@ -41,7 +41,7 @@ const t: AddonTranslation = {
   features: [
     {
       title: "صندوق وارد واحد لكل تطبيقات التوصيل",
-      body: "ستصل طلبات Foodpanda وTalabat وCareem وBykea وDeliveroo وUber Eats وJust Eat إلى قائمة واحدة في TajirPoint.",
+      body: `ستصل طلبات Foodpanda وTalabat وCareem وBykea وDeliveroo وUber Eats وJust Eat إلى قائمة واحدة في ${BRAND_NAME}.`,
     },
     {
       title: "طابق أصنافهم مع أصنافك",
@@ -53,7 +53,7 @@ const t: AddonTranslation = {
     },
     {
       title: "إرسال الحالة إلى التطبيق",
-      body: "تُرسل حالات القبول والجاهزية والاستلام والتسليم والإلغاء إلى التطبيق. وإن لم يرد التطبيق يعيد TajirPoint المحاولة.",
+      body: `تُرسل حالات القبول والجاهزية والاستلام والتسليم والإلغاء إلى التطبيق. وإن لم يرد التطبيق يعيد ${BRAND_NAME} المحاولة.`,
     },
     {
       title: "قبول تلقائي عند اكتمال المطابقة",
@@ -83,7 +83,7 @@ const t: AddonTranslation = {
     },
   ],
   needs: [
-    "حساب TajirPoint على خطة Shop أو أعلى",
+    `حساب ${BRAND_NAME} على خطة Shop أو أعلى`,
     "حساب تاجر في كل تطبيق توصيل تبيع عليه",
     "الوصول إلى بيانات ربط الشركاء لكل تطبيق (نساعدك في إيجادها)",
     "إضافة Restaurant إن أردت تذاكر المطبخ",
@@ -112,7 +112,7 @@ const t: AddonTranslation = {
     },
     {
       q: "هل ستظهر طلبات التطبيقات في تقاريري؟",
-      a: "نعم. كل طلب مقبول يصبح بيعًا عاديًا في TajirPoint.",
+      a: `نعم. كل طلب مقبول يصبح بيعًا عاديًا في ${BRAND_NAME}.`,
     },
     {
       q: "هل هي مضمّنة في خطة Light المجانية؟",

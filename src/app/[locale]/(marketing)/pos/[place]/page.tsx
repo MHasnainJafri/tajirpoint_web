@@ -5,6 +5,7 @@ import { LocationView } from "@/components/marketing/locations/LocationView";
 import { LOCATION_SLUGS, getLocation, locationPath } from "@/content/locations";
 import { getAddonCatalogue } from "@/lib/marketing/addons";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { assertPageShown, isPageShown } from "@/lib/config/pages";
 
 /** Only the listed places exist; anything else is a 404, not a render. */
 export const dynamicParams = false;
@@ -14,7 +15,7 @@ export const dynamicParams = false;
 export const revalidate = 600;
 
 export function generateStaticParams() {
-  return LOCATION_SLUGS.map((place) => ({ place }));
+  return LOCATION_SLUGS.filter((place) => isPageShown(`/pos/${place}`)).map((place) => ({ place }));
 }
 
 type Params = Promise<{ locale: string; place: string }>;
@@ -35,6 +36,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 export default async function LocationPageRoute({ params }: { params: Params }) {
   const { locale, place } = await params;
   setRequestLocale(locale);
+  // Left out of builds for another market or business type (src/lib/config/pages.ts).
+  assertPageShown(`/pos/${place}`);
   const page = getLocation(place);
   if (!page) notFound();
 

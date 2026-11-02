@@ -5,6 +5,7 @@ import { CALLBACK_SECTION_COPY } from "@/content/i18n/lead-pages/pages";
 import { pickCopy } from "@/content/i18n/page-copy";
 import { CallbackForm } from "./CallbackForm";
 import { businessTypeOptions } from "@/content/i18n/lead-pages/business-types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 /**
  * "Interested? We'll call you" band for the bottom of the home and pricing
@@ -47,22 +48,28 @@ export function CallbackSection({ id = "call-back", location }: { id?: string; l
               </li>
             ))}
           </ul>
-          <p className="mt-6 text-[14px] text-[var(--color-body)]">
-            {t.prefer}{" "}
-            <a
-              href={whatsappLink("Hi TajirPoint, I'm interested in your POS.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-track={`${location}_callback_aside`}
-              className="font-semibold text-[var(--color-mint-2)] underline underline-offset-2"
-            >
-              {t.whatsapp} <span dir="ltr">{legal.whatsappDisplay}</span>
-            </a>
-          </p>
+          {legal.whatsappUrl && (
+            <p className="mt-6 text-[14px] text-[var(--color-body)]">
+              {t.prefer}{" "}
+              <a
+                href={whatsappLink(`Hi ${BRAND_NAME}, I'm interested in your POS.`)}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-track={`${location}_callback_aside`}
+                className="font-semibold text-[var(--color-mint-2)] underline underline-offset-2"
+              >
+                {t.whatsapp} <span dir="ltr">{legal.whatsappDisplay}</span>
+              </a>
+            </p>
+          )}
         </div>
 
         <div className="min-w-0 rounded-[22px] border border-[var(--color-line-2)] bg-white p-[clamp(16px,3.4vw,32px)] shadow-[var(--shadow-card)]">
-          <CallbackForm idPrefix={id} location={location} typeOptions={businessTypeOptions(locale)} />
+          <CallbackForm
+            idPrefix={id}
+            location={location}
+            typeOptions={businessTypeOptions(locale)}
+          />
         </div>
       </div>
     </section>

@@ -10,6 +10,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 import { CONTACT_COPY } from "@/content/i18n/lead-pages/pages";
 import { forwardArrow, pickCopy } from "@/content/i18n/page-copy";
 import { ContactForm } from "./ContactForm";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 export async function generateMetadata({
   params,
@@ -57,24 +58,26 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
         aria-label={t.waysLabel}
         className="mx-auto grid max-w-[1080px] grid-cols-[repeat(auto-fit,minmax(min(100%,240px),1fr))] gap-4"
       >
-        <a
-          href={whatsappLink("Hi TajirPoint")}
-          target="_blank"
-          rel="noopener noreferrer"
-          data-track="contact_card"
-          className={cardCls}
-        >
-          <span className="grid h-11 w-11 place-items-center rounded-[12px] bg-[var(--color-mint-soft)] text-[var(--color-mint-2)]">
-            <MessageCircle size={22} strokeWidth={1.8} aria-hidden="true" />
-          </span>
-          <span className="text-[17px] font-bold text-[var(--color-ink)]">{t.whatsapp}</span>
-          <span className="text-[14px] text-[var(--color-body)]" dir="ltr">
-            {legal.whatsappDisplay}
-          </span>
-          <span className="mt-auto text-[13.5px] font-semibold text-[var(--color-mint-2)]">
-            {t.startChat} {arrow}
-          </span>
-        </a>
+        {legal.whatsappUrl && (
+          <a
+            href={whatsappLink(`Hi ${BRAND_NAME}`)}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-track="contact_card"
+            className={cardCls}
+          >
+            <span className="grid h-11 w-11 place-items-center rounded-[12px] bg-[var(--color-mint-soft)] text-[var(--color-mint-2)]">
+              <MessageCircle size={22} strokeWidth={1.8} aria-hidden="true" />
+            </span>
+            <span className="text-[17px] font-bold text-[var(--color-ink)]">{t.whatsapp}</span>
+            <span className="text-[14px] text-[var(--color-body)]" dir="ltr">
+              {legal.whatsappDisplay}
+            </span>
+            <span className="mt-auto text-[13.5px] font-semibold text-[var(--color-mint-2)]">
+              {t.startChat} {arrow}
+            </span>
+          </a>
+        )}
         <a href={`mailto:${legal.email}`} className={cardCls}>
           <span className="grid h-11 w-11 place-items-center rounded-[12px] bg-[var(--color-mint-soft)] text-[var(--color-mint-2)]">
             <Mail size={22} strokeWidth={1.8} aria-hidden="true" />

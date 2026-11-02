@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/restaurants/models/kitchen_brand.py (name, slogan, logo,
 // colour, default station, printer), domains/ghost_kitchen (brand_menu.py
@@ -107,7 +108,7 @@ const content: AddonContent = {
     },
   ],
   needs: [
-    "A TajirPoint account on the Shop plan or above",
+    `A ${BRAND_NAME} account on the Shop plan or above`,
     "The Restaurant add-on switched on",
     "A logo for each brand (optional but recommended)",
     "Your delivery app accounts, if you want their orders tagged by brand",

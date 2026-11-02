@@ -11,6 +11,7 @@ import {
 } from "@/components/legal/LegalPage";
 import { legal } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { BRAND_HOST, BRAND_NAME } from "@/lib/config/brand";
 
 export async function generateMetadata({
   params,
@@ -20,8 +21,7 @@ export async function generateMetadata({
   const { locale } = await params;
   return buildMetadata({
     title: "Privacy Policy",
-    description:
-      "How TajirPoint collects, uses, shares and protects personal data for merchants, their customers, riders and site visitors, and how to exercise your rights.",
+    description: `How ${BRAND_NAME} collects, uses, shares and protects personal data for merchants, their customers, riders and site visitors, and how to exercise your rights.`,
     path: "/privacy",
     locale,
   });
@@ -43,7 +43,7 @@ const S = defineSections({
   rights: "Your rights",
   gdpr: "EU and UK users (GDPR)",
   pakistan: "Pakistan",
-  "merchant-customers": "If you are a customer of a shop that uses TajirPoint",
+  "merchant-customers": `If you are a customer of a shop that uses ${BRAND_NAME}`,
   children: "Children",
   cookies: "Cookies",
   changes: "Changes to this policy",
@@ -109,8 +109,8 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
             {legal.product}, including through its order page or shop website;
           </li>
           <li>
-            <strong>Visitors and leads</strong> — people who visit tajirpoint.com, book a demo or
-            contact us.
+            <strong>Visitors and leads</strong>
+            {` — people who visit ${BRAND_HOST}, book a demo or contact us.`}
           </li>
         </ul>
       </LegalSection>
@@ -193,10 +193,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
 
       <LegalSection {...S["marketing-site"]}>
         <p>
-          On tajirpoint.com we may use Google Analytics and Google Tag Manager to understand how the
-          site is used, and the Meta Pixel to measure our Facebook and Instagram ads. During a visit
-          we remember the campaign parameters you arrived with, so that if you book a demo we know
-          which ad or link brought you. Details, and how to opt out, are in our{" "}
+          {`On ${BRAND_HOST} we may use Google Analytics and Google Tag Manager to understand how the site is used, and the Meta Pixel to measure our Facebook and Instagram ads. During a visit we remember the campaign parameters you arrived with, so that if you book a demo we know which ad or link brought you. Details, and how to opt out, are in our`}{" "}
           <Link href="/cookies">Cookie Policy</Link>.
         </p>
       </LegalSection>
@@ -434,8 +431,12 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
           {legal.operator}, {legal.city}, {legal.country}
           <br />
           Email: <MailLink email={legal.privacyEmail} />
-          <br />
-          WhatsApp: <WhatsAppLink />
+          {legal.whatsappUrl && (
+            <>
+              <br />
+              WhatsApp: <WhatsAppLink />
+            </>
+          )}
         </p>
       </LegalSection>
     </LegalPage>

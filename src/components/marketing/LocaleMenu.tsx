@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocale } from "next-intl";
 import { useRouter, usePathname } from "@/i18n/navigation";
 import { Stroke } from "@/components/marketing/landing/Stroke";
-import type { Locale } from "@/i18n/routing";
+import { routing, type Locale } from "@/i18n/routing";
 
 /**
  * Language picker.
@@ -18,11 +18,16 @@ import type { Locale } from "@/i18n/routing";
 
 type Entry = { code: Locale; native: string; english: string };
 
-const LOCALES: Entry[] = [
-  { code: "en", native: "English", english: "English" },
-  { code: "ur", native: "اردو", english: "Urdu" },
-  { code: "ar", native: "العربية", english: "Arabic" },
-];
+const LOCALES: Entry[] = (
+  [
+    { code: "en", native: "English", english: "English" },
+    { code: "ur", native: "اردو", english: "Urdu" },
+    { code: "ar", native: "العربية", english: "Arabic" },
+  ] satisfies Entry[]
+).filter((l) => (routing.locales as readonly string[]).includes(l.code));
+
+/** False when the build has one language: there is nothing to switch to. */
+export const HAS_LOCALE_MENU = LOCALES.length > 1;
 
 export function LocaleMenu({ compact = false }: { compact?: boolean }) {
   const locale = useLocale() as Locale;

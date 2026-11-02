@@ -1,6 +1,8 @@
 "use server";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://api.tajirpoint.com";
+import { brand } from "@/lib/config/brand";
+
+const API_BASE = brand.apiOrigin;
 
 export type SubscribeState = { ok?: boolean; error?: string };
 

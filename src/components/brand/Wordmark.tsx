@@ -1,3 +1,5 @@
+import { brand } from "@/lib/config/brand";
+
 /**
  * The header/footer lockup, drawn inline.
  *
@@ -7,6 +9,27 @@
  * for anywhere the mark has to travel as a file (OG images, email, print).
  */
 export function Wordmark({ size = 32, text = 21 }: { size?: number; text?: number }) {
+  // Another brand's build (NEXT_PUBLIC_BRAND_LOGO): its own mark and its name.
+  if (brand.ownLogo) {
+    return (
+      <>
+        {/* eslint-disable-next-line @next/next/no-img-element -- a small static mark, any host */}
+        <img
+          src={brand.logo}
+          alt=""
+          width={size}
+          height={size}
+          style={{ width: size, height: size, flex: "none", borderRadius: Math.round(size / 5) }}
+        />
+        <span
+          className="whitespace-nowrap font-extrabold leading-none tracking-[-0.03em]"
+          style={{ fontSize: text }}
+        >
+          {brand.name}
+        </span>
+      </>
+    );
+  }
   return (
     <>
       <svg

@@ -15,11 +15,12 @@ import {
   LegalPage,
   LegalSection,
   MailLink,
-  WhatsAppLink,
+  WhatsAppClause,
   defineSections,
 } from "@/components/legal/LegalPage";
 import { legal } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 export async function generateMetadata({
   params,
@@ -29,8 +30,7 @@ export async function generateMetadata({
   const { locale } = await params;
   return buildMetadata({
     title: "Security: How We Protect Your Data",
-    description:
-      "How TajirPoint protects your business data: encrypted connections, hashed passwords, staff logins and roles, activity logs, backups and responsible disclosure.",
+    description: `How ${BRAND_NAME} protects your business data: encrypted connections, hashed passwords, staff logins and roles, activity logs, backups and responsible disclosure.`,
     path: "/security",
     locale,
   });
@@ -93,7 +93,7 @@ export default async function SecurityPage({ params }: { params: Promise<{ local
 
   return (
     <LegalPage
-      title="Security at TajirPoint"
+      title={`Security at ${BRAND_NAME}`}
       intro={
         <p>
           Your sales, stock and customer records are the heart of your business. This page explains,
@@ -175,7 +175,8 @@ export default async function SecurityPage({ params }: { params: Promise<{ local
         <p>
           If a security incident affects merchants’ personal data, we will investigate, take steps
           to contain it, and notify affected merchants without undue delay where the law requires.
-          You can reach us any time at <MailLink /> or on WhatsApp at <WhatsAppLink />.
+          You can reach us any time at <MailLink />
+          <WhatsAppClause before=" or on WhatsApp at " />.
         </p>
       </LegalSection>
     </LegalPage>

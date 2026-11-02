@@ -8,6 +8,7 @@ import { siteConfig } from "@/lib/config/site";
 import { guidesHubSchema } from "@/lib/marketing/guide-schema";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { pageBreadcrumbs } from "@/lib/seo/schemas";
+import { assertPageShown } from "@/lib/config/pages";
 
 export async function generateMetadata({
   params,
@@ -26,6 +27,8 @@ export async function generateMetadata({
 export default async function GuidesHubPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  // Left out of builds for another market or business type (src/lib/config/pages.ts).
+  assertPageShown("/guides");
 
   return (
     // English copy; keep its own language and direction on /ur and /ar.
@@ -38,7 +41,10 @@ export default async function GuidesHubPage({ params }: { params: Promise<{ loca
         <nav aria-label="Breadcrumb" className="pt-5 text-[12.5px] text-[var(--color-muted)]">
           <ol className="flex flex-wrap items-center gap-2">
             <li>
-              <Link href="/" className="max-md:inline-flex max-md:min-h-[44px] max-md:items-center hover:text-[var(--color-ink)]">
+              <Link
+                href="/"
+                className="max-md:inline-flex max-md:min-h-[44px] max-md:items-center hover:text-[var(--color-ink)]"
+              >
                 Home
               </Link>
             </li>

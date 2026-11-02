@@ -6,6 +6,7 @@ import { SHOWCASE, type ShowcaseBusiness, type ShowcaseProduct } from "@/lib/des
 import { ProductArt, ProductArtDefs } from "./ProductArt";
 import { Stroke } from "./Stroke";
 import { Enter, EnterScope } from "./Enter";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 /**
  * The hero demo: a live till and the invoice it produces.
@@ -192,7 +193,7 @@ export function HeroShowcase() {
         <div
           className="mb-3 flex flex-wrap items-center gap-x-2 gap-y-2"
           role="tablist"
-          aria-label="See TajirPoint in your kind of business"
+          aria-label={`See ${BRAND_NAME} in your kind of business`}
         >
           <span className="mr-1 w-full text-[11px] font-semibold uppercase tracking-[0.12em] text-[#8A8F98] @[560px]:w-auto">
             Built for

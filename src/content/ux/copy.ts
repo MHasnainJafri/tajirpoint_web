@@ -1,3 +1,5 @@
+import { BRAND_NAME } from "@/lib/config/brand";
+
 /**
  * Short UI strings for the site-wide contact button and the extra nav / page
  * links added in the user-friendliness pass (TP-485).
@@ -42,11 +44,12 @@ const COPY: Record<UxLocale, UxCopy> = {
     contactGroup: "Talk to us",
     whatsapp: "Chat on WhatsApp",
     callMeBack: "Call me back",
-    whatsappMessage: "Hi TajirPoint, I'm interested in your POS.",
+    whatsappMessage: `Hi ${BRAND_NAME}, I'm interested in your POS.`,
     startFree: "Start free",
     bookDemo: "Book a demo",
     nextStepTitle: "Ready when you are",
-    nextStepBody: "Start free in a few minutes, or let our team call you and answer your questions.",
+    nextStepBody:
+      "Start free in a few minutes, or let our team call you and answer your questions.",
     home: "Home",
   },
   ur: {
@@ -56,7 +59,7 @@ const COPY: Record<UxLocale, UxCopy> = {
     contactGroup: "ہم سے بات کریں",
     whatsapp: "واٹس ایپ پر بات کریں",
     callMeBack: "مجھے کال کریں",
-    whatsappMessage: "Hi TajirPoint, I'm interested in your POS.",
+    whatsappMessage: `Hi ${BRAND_NAME}, I'm interested in your POS.`,
     startFree: "مفت شروع کریں",
     bookDemo: "ڈیمو بک کریں",
     nextStepTitle: "جب آپ تیار ہوں",
@@ -70,7 +73,7 @@ const COPY: Record<UxLocale, UxCopy> = {
     contactGroup: "تحدث إلينا",
     whatsapp: "تحدث عبر واتساب",
     callMeBack: "اتصلوا بي",
-    whatsappMessage: "Hi TajirPoint, I'm interested in your POS.",
+    whatsappMessage: `Hi ${BRAND_NAME}, I'm interested in your POS.`,
     startFree: "ابدأ مجانًا",
     bookDemo: "احجز عرضًا توضيحيًا",
     nextStepTitle: "جاهزون متى كنت جاهزًا",

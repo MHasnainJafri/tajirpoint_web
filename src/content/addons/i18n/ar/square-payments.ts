@@ -1,17 +1,17 @@
 import type { AddonTranslation } from "../types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Arabic write-up for "square-payments". Same facts as ../../square-payments.ts; awaiting
 // native review (TP-490). A field left out falls back to English.
 const t: AddonTranslation = {
   slug: "square-payments",
   seoTitle: "مدفوعات البطاقات عبر Square لمتجرك الإلكتروني",
-  seoDescription:
-    "دع العملاء يدفعون بالبطاقة عبر Square على موقع TajirPoint الخاص بك. يدفعون على صفحة Square الآمنة ويذهب المال إلى حسابك الخاص على Square.",
+  seoDescription: `دع العملاء يدفعون بالبطاقة عبر Square على موقع ${BRAND_NAME} الخاص بك. يدفعون على صفحة Square الآمنة ويذهب المال إلى حسابك الخاص على Square.`,
   schemaSubCategory: "إضافة مدفوعات البطاقات",
   headline: "استقبل مدفوعات البطاقات عبر Square، مباشرة إلى حسابك على Square.",
   overview: [
-    "ستتيح Square Payments للعملاء الدفع بالبطاقة عبر Square. لكل دفعة يُنشئ TajirPoint رابط دفع Square للطلب؛ يدفع العميل على صفحة Square الآمنة ثم يعود إلى متجرك.",
-    "يذهب المال إلى حسابك الخاص على Square، للموقع الذي تختاره في Square. وتُدخل بيانات البطاقة في صفحة Square، فلا تصل إلى TajirPoint أبدًا.",
+    `ستتيح Square Payments للعملاء الدفع بالبطاقة عبر Square. لكل دفعة يُنشئ ${BRAND_NAME} رابط دفع Square للطلب؛ يدفع العميل على صفحة Square الآمنة ثم يعود إلى متجرك.`,
+    `يذهب المال إلى حسابك الخاص على Square، للموقع الذي تختاره في Square. وتُدخل بيانات البطاقة في صفحة Square، فلا تصل إلى ${BRAND_NAME} أبدًا.`,
     "هي للمتاجر التي تستخدم Square بالفعل في بلد يعمل فيه Square، مثل المملكة المتحدة. وSquare غير متاح في باكستان أو الخليج.",
   ],
   whoFor: [
@@ -22,11 +22,11 @@ const t: AddonTranslation = {
   problems: [
     {
       problem: "أموال البطاقات لديك في Square، لكن طلباتك في مكان آخر.",
-      fix: "تبدأ المدفوعات من طلب TajirPoint، ويصل المال إلى حسابك على Square.",
+      fix: `تبدأ المدفوعات من طلب ${BRAND_NAME}، ويصل المال إلى حسابك على Square.`,
     },
     {
       problem: "لا تريد التعامل مع بيانات بطاقات العملاء.",
-      fix: "يدفع العملاء على صفحة Square نفسها، فلا تصل بيانات بطاقاتهم إلى TajirPoint أبدًا.",
+      fix: `يدفع العملاء على صفحة Square نفسها، فلا تصل بيانات بطاقاتهم إلى ${BRAND_NAME} أبدًا.`,
     },
     {
       problem: "لديك أكثر من موقع في Square وتريد المال في الموقع الصحيح.",
@@ -40,11 +40,11 @@ const t: AddonTranslation = {
     },
     {
       title: "الدفع إلى موقعك في Square",
-      body: "تذهب المدفوعات إلى حسابك الخاص على Square، للموقع الذي تختاره. لا يحتفظ TajirPoint بأموالك.",
+      body: `تذهب المدفوعات إلى حسابك الخاص على Square، للموقع الذي تختاره. لا يحتفظ ${BRAND_NAME} بأموالك.`,
     },
     {
       title: "مرتبطة بطلباتك",
-      body: "يُنشأ كل رابط دفع من طلب TajirPoint الذي يخصه، مع ملء المبلغ تلقائيًا.",
+      body: `يُنشأ كل رابط دفع من طلب ${BRAND_NAME} الذي يخصه، مع ملء المبلغ تلقائيًا.`,
     },
     {
       title: "اختبار قبل الإطلاق",
@@ -68,7 +68,7 @@ const t: AddonTranslation = {
   needs: [
     "حساب على Square في بلد يعمل فيه Square",
     "موقع Square الذي يجب أن يستلم المدفوعات",
-    "TajirPoint على خطة Shop أو أعلى",
+    `${BRAND_NAME} على خطة Shop أو أعلى`,
   ],
   setup: [
     "هذه الإضافة غير متاحة للمتاجر بعد.",
@@ -90,11 +90,11 @@ const t: AddonTranslation = {
     },
     {
       q: "إلى أين يذهب المال؟",
-      a: "إلى حسابك على Square، للموقع الذي اخترته. لا يحتفظ TajirPoint بالمال أبدًا. ويفرض Square رسومه.",
+      a: `إلى حسابك على Square، للموقع الذي اخترته. لا يحتفظ ${BRAND_NAME} بالمال أبدًا. ويفرض Square رسومه.`,
     },
     {
-      q: "هل يرى TajirPoint أرقام بطاقات عملائي؟",
-      a: "لا. يدفع العملاء على صفحة Square نفسها. ولا يعرف TajirPoint إلا نتيجة الدفع.",
+      q: `هل يرى ${BRAND_NAME} أرقام بطاقات عملائي؟`,
+      a: `لا. يدفع العملاء على صفحة Square نفسها. ولا يعرف ${BRAND_NAME} إلا نتيجة الدفع.`,
     },
     {
       q: "ما الخطة التي سأحتاجها؟",

@@ -1,4 +1,5 @@
 import { headers } from "next/headers";
+import { brand } from "@/lib/config/brand";
 
 /**
  * Shared plumbing for the lead forms' server actions (book a demo, call me
@@ -7,7 +8,7 @@ import { headers } from "next/headers";
  *
  * Server-side so there is no CORS and the backend URL stays out of the bundle.
  */
-export const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://api.tajirpoint.com";
+export const API_BASE = brand.apiOrigin;
 
 export async function forwardHeaders(): Promise<Record<string, string>> {
   const h = await headers();
@@ -41,5 +42,4 @@ export async function fieldErrorsFromResponse<K extends string>(
 }
 
 /** The message shown when the lead could not be stored. */
-export const LEAD_FAILED =
-  "We could not save your request just now. Please message us on WhatsApp at +92 344 6800893 or email hello@tajirpoint.com.";
+export { LEAD_FAILED } from "./contact-fallback";

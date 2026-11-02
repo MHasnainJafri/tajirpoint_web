@@ -5,6 +5,7 @@ import { AlertTriangle, RefreshCw } from "lucide-react";
 import { CodeBlock } from "@/components/marketing/CodeBlock";
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { BRAND_NAME, brand } from "@/lib/config/brand";
 
 export async function generateMetadata({
   params,
@@ -13,7 +14,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "Webhooks — TajirPoint API",
+    title: `Webhooks — ${BRAND_NAME} API`,
     absoluteTitle: true,
     description:
       "Register an HTTPS endpoint and get signed POSTs on sale, refund, payment, purchase or low-stock events. HMAC-SHA256 signatures, 5 retries with backoff.",
@@ -64,10 +65,10 @@ const VERIFY = `import crypto from "node:crypto";
 
 // Verify against the RAW body. Parsing to JSON and re-serialising changes the
 // bytes — key order, whitespace — and the signature will not match.
-app.post("/tajir-webhook", express.raw({ type: "application/json" }), (req, res) => {
+app.post("/${brand.apiEnvPrefix.toLowerCase().replace(/_/g, "-")}-webhook", express.raw({ type: "application/json" }), (req, res) => {
   const expected =
     "sha256=" +
-    crypto.createHmac("sha256", process.env.TAJIR_WEBHOOK_SECRET)
+    crypto.createHmac("sha256", process.env.${brand.apiEnvPrefix}_WEBHOOK_SECRET)
           .update(req.body)
           .digest("hex");
 

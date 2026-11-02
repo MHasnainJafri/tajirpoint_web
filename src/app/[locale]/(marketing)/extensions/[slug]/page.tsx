@@ -15,6 +15,8 @@ import { getAddon, getAddonCatalogue, relatedAddons, type Addon } from "@/lib/ma
 import { buildMetadata, localeUrl } from "@/lib/seo/metadata";
 import { addonOgImage } from "@/lib/seo/og-addon-cards";
 import { breadcrumbSchema, faqSchema } from "@/lib/seo/schemas";
+import { BRAND_NAME } from "@/lib/config/brand";
+import { assertPageShown } from "@/lib/config/pages";
 
 // Literal for Next's static analysis; keep equal to ADDON_REVALIDATE.
 export const revalidate = 600;
@@ -49,7 +51,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     keywords: addon.content.keywords,
     // Its own share card (name, status, headline), else its group's.
     image: addonOgImage(addon.slug, addon.group.id),
-    imageAlt: `${addon.name} add-on for TajirPoint`,
+    imageAlt: `${addon.name} add-on for ${BRAND_NAME}`,
   });
 }
 
@@ -82,7 +84,7 @@ function Ctas({
   const secondary = onDark
     ? "inline-flex max-w-full items-center justify-center rounded-full border border-white/30 px-6 py-[13px] text-center text-[15px] font-semibold text-white transition-colors hover:bg-white/10"
     : secondaryBtn;
-  const wa = (
+  const wa = legal.whatsappUrl && (
     <a
       href={whatsappHref(addon, ch)}
       target="_blank"
@@ -144,6 +146,8 @@ const card = "rounded-[20px] border border-[var(--color-line-2)] bg-[var(--color
 export default async function AddonPage({ params }: { params: Params }) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
+  // Left out of builds for another market or business type (src/lib/config/pages.ts).
+  assertPageShown(`/extensions/${slug}`);
 
   const found = await getAddon(slug);
   if (!found) notFound();
@@ -193,13 +197,19 @@ export default async function AddonPage({ params }: { params: Params }) {
         <nav aria-label="Breadcrumb" className="pt-5 text-[12.5px] text-[var(--color-muted)]">
           <ol className="flex flex-wrap items-center gap-2">
             <li>
-              <Link href="/" className="max-md:inline-flex max-md:min-h-[44px] max-md:items-center hover:text-[var(--color-ink)]">
+              <Link
+                href="/"
+                className="max-md:inline-flex max-md:min-h-[44px] max-md:items-center hover:text-[var(--color-ink)]"
+              >
                 {ch.home}
               </Link>
             </li>
             <li aria-hidden="true">/</li>
             <li>
-              <Link href="/extensions" className="max-md:inline-flex max-md:min-h-[44px] max-md:items-center hover:text-[var(--color-ink)]">
+              <Link
+                href="/extensions"
+                className="max-md:inline-flex max-md:min-h-[44px] max-md:items-center hover:text-[var(--color-ink)]"
+              >
                 {ch.addons}
               </Link>
             </li>

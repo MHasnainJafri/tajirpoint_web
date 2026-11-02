@@ -1,5 +1,7 @@
 "use client";
 
+import { ERROR_REACH } from "@/lib/marketing/contact-fallback";
+
 export default function GlobalError({
   error,
   reset,
@@ -66,8 +68,8 @@ export default function GlobalError({
               color: "#4B5058",
             }}
           >
-            The page could not load. Please try again — if it keeps happening, WhatsApp us at +92 344
-            6800893.{error.digest ? ` (ref ${error.digest})` : ""}
+            {`The page could not load. Please try again — if it keeps happening, ${ERROR_REACH}`}
+            {error.digest ? ` (ref ${error.digest})` : ""}
           </p>
           <button
             onClick={reset}

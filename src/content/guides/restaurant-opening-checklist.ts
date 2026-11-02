@@ -1,4 +1,5 @@
 import type { Guide } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // UK facts checked on gov.uk on 2 Nov 2026: food business registration at
 // least 28 days before trading (gov.uk/food-business-registration); VAT
@@ -187,11 +188,11 @@ const guide: Guide = {
     },
     {
       id: "tajirpoint",
-      heading: "Setting up your systems with TajirPoint",
+      heading: `Setting up your systems with ${BRAND_NAME}`,
       blocks: [
         {
           type: "p",
-          text: "TajirPoint covers the systems part of this list in one place: a counter POS, tables and a waiter app, kitchen screens or printed tickets, your own online order page, an order board, a rider app, recipes and kitchen stock, and day-end reports. It runs on web, Windows and Android and keeps selling offline.",
+          text: `${BRAND_NAME} covers the systems part of this list in one place: a counter POS, tables and a waiter app, kitchen screens or printed tickets, your own online order page, an order board, a rider app, recipes and kitchen stock, and day-end reports. It runs on web, Windows and Android and keeps selling offline.`,
         },
         {
           type: "p",

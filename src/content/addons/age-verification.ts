@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/compliance (models/age_verification_audit.py: method
 // dob_entered / id_scanned / override, override_reason, id_reference = last
@@ -91,7 +92,7 @@ const content: AddonContent = {
     },
   ],
   needs: [
-    "A TajirPoint account on the Shop plan or above",
+    `A ${BRAND_NAME} account on the Shop plan or above`,
     "Optional: a barcode scanner that can read the barcode on customer IDs",
     "Your local rules on minimum ages for the products you sell",
   ],

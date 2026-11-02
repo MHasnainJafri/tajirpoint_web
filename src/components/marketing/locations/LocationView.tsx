@@ -6,7 +6,7 @@ import { Tick } from "@/components/marketing/landing/Stroke";
 import { StatusBadge } from "@/components/marketing/addons/StatusBadge";
 import { BUSINESSES, OFFER_LINE } from "@/lib/marketing/businesses";
 import type { Addon } from "@/lib/marketing/addons";
-import { siteConfig, whatsappLink } from "@/lib/config/site";
+import { legal, siteConfig, whatsappLink } from "@/lib/config/site";
 import { canonicalUrl } from "@/lib/seo/metadata";
 import { WEBSITE_ID, faqSchema } from "@/lib/seo/schemas";
 import {
@@ -18,6 +18,7 @@ import {
   type StatusPhrase,
   type SupportTone,
 } from "@/content/locations";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 const TONE: Record<SupportTone, { bg: string; fg: string; dot: string }> = {
   ready: { bg: "#E4FAEF", fg: "#05603A", dot: "#00A862" },
@@ -76,7 +77,7 @@ export function LocationView({
   const faqs = resolveFaqs(page.faqs, statusPhrase(addons));
   const parent = page.parent ? getLocation(page.parent) : undefined;
   const track = `location_${page.slug.replace(/-/g, "_")}`;
-  const waText = `Hi, I'd like to know how TajirPoint works for my business in ${page.kind === "city" ? page.name : page.slug === "uk" ? "the UK" : page.name}.`;
+  const waText = `Hi, I'd like to know how ${BRAND_NAME} works for my business in ${page.kind === "city" ? page.name : page.slug === "uk" ? "the UK" : page.name}.`;
 
   const crumbs = [
     { label: "Locations", href: "/pos" },
@@ -438,14 +439,16 @@ export function LocationView({
             >
               Book a free demo
             </Link>
-            <a
-              href={whatsappLink(waText)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center rounded-full border border-white/30 px-7 py-[14px] text-[15.5px] font-semibold text-white transition-colors hover:bg-white/10"
-            >
-              Ask on WhatsApp
-            </a>
+            {legal.whatsappUrl && (
+              <a
+                href={whatsappLink(waText)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center rounded-full border border-white/30 px-7 py-[14px] text-[15.5px] font-semibold text-white transition-colors hover:bg-white/10"
+              >
+                Ask on WhatsApp
+              </a>
+            )}
           </div>
         </CtaPanel>
       </section>

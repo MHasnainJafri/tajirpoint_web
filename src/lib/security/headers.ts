@@ -5,6 +5,8 @@
  * plain functions of the environment at build time.
  */
 
+import { brand } from "../config/brand";
+
 /** The origin of a URL, or "" when it is not a valid http(s) URL. */
 export function originOf(url: string | undefined): string {
   if (!url) return "";
@@ -55,8 +57,8 @@ export function contentSecurityPolicy(env: {
   reportUri?: string;
   dev?: boolean;
 }): string {
-  const api = originOf(env.apiUrl) || "https://api.tajirpoint.com";
-  const media = "https://media.tajirpoint.com";
+  const api = originOf(env.apiUrl) || brand.apiOrigin;
+  const media = `https://${brand.mediaHost}`;
   const google = [
     "https://www.googletagmanager.com",
     "https://*.google-analytics.com",

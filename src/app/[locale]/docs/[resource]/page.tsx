@@ -6,6 +6,7 @@ import { EndpointBlock } from "@/components/docs/EndpointBlock";
 import { MethodBadge } from "@/components/docs/ParamTable";
 import { getResource, RESOURCES } from "@/lib/docs/nav";
 import { buildMetadata, fitDescription } from "@/lib/seo/metadata";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 /** Every documented resource, in every locale, prerendered at build time. */
 export function generateStaticParams() {
@@ -22,14 +23,14 @@ export async function generateMetadata({
   if (!r) return buildMetadata({ title: "Not found", path: "/docs", locale });
 
   return buildMetadata({
-    title: `${r.title} API Reference — TajirPoint`,
+    title: `${r.title} API Reference — ${BRAND_NAME}`,
     absoluteTitle: true,
     // Some intros are one short line; pad them to a full snippet without
     // ever going past 160 characters.
     description: fitDescription(
       r.intro,
-      `Endpoints, parameters and example requests for ${r.title.toLowerCase()} in the TajirPoint REST API.`,
-      "Part of the TajirPoint REST API reference.",
+      `Endpoints, parameters and example requests for ${r.title.toLowerCase()} in the ${BRAND_NAME} REST API.`,
+      `Part of the ${BRAND_NAME} REST API reference.`,
       "JSON over HTTPS with bearer auth."
     ),
     path: `/docs/${r.slug}`,

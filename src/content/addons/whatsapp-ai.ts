@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/whatsapp_ai (WhatsAppAccount on Meta's WhatsApp Cloud;
 // AIEmployee role/tone/language/tools/credential; LLMCredential providers
@@ -28,7 +29,7 @@ const content: AddonContent = {
   headline:
     "An assistant on your WhatsApp that knows your prices and stock, and steps aside when you step in.",
   overview: [
-    "Customers message your shop on WhatsApp all day asking the same things: is this in stock, how much is it, are you open. WhatsApp AI Assistant will put an AI helper on your WhatsApp Business number that answers those questions using your real TajirPoint items, prices and stock, not guesses.",
+    `Customers message your shop on WhatsApp all day asking the same things: is this in stock, how much is it, are you open. WhatsApp AI Assistant will put an AI helper on your WhatsApp Business number that answers those questions using your real ${BRAND_NAME} items, prices and stock, not guesses.`,
     "You set up one or more assistants, each with a name, a role, a tone and a language: Roman Urdu, Urdu or English. Every chat shows up live in an inbox in your back office. Tap Take over and the AI goes quiet straight away so a person can reply; hand it back when you are done. If the AI cannot help, it passes the chat to your staff.",
     "The AI runs on your own account with an AI company: OpenAI, Google Gemini, Anthropic (Claude) or OpenRouter. You add your key once, and that company bills you directly for what the assistant uses. If you sell online, you can also let the assistant take orders in the chat.",
   ],
@@ -42,7 +43,7 @@ const content: AddonContent = {
   problems: [
     {
       problem: "Customers wait hours for a reply about price or stock.",
-      fix: "The assistant answers straight away, looking up the item's real price and stock in TajirPoint.",
+      fix: `The assistant answers straight away, looking up the item's real price and stock in ${BRAND_NAME}.`,
     },
     {
       problem: "Chatbots make up prices or say things you never agreed to.",
@@ -116,13 +117,13 @@ const content: AddonContent = {
   needs: [
     "A WhatsApp Business number on Meta's official WhatsApp Business service, ideally with your business verified by Meta",
     "An account and key with OpenAI, Google Gemini, Anthropic (Claude) or OpenRouter",
-    "Your items and prices in TajirPoint",
+    `Your items and prices in ${BRAND_NAME}`,
     "For chat ordering: online ordering set up, with your menu, delivery areas and payment options",
-    "A TajirPoint account on the Shop plan or above",
+    `A ${BRAND_NAME} account on the Shop plan or above`,
   ],
   setup: [
     "Once it is live, our team sets up the WhatsApp connection with you.",
-    "AI usage is billed to you by the AI company whose key you use, not by TajirPoint.",
+    `AI usage is billed to you by the AI company whose key you use, not by ${BRAND_NAME}.`,
     "Any WhatsApp messaging charges are set by Meta under its own pricing.",
     "Chat ordering, order updates and payment reminders are each off until you switch them on.",
   ],
@@ -133,7 +134,7 @@ const content: AddonContent = {
     },
     {
       q: "Do I need my own AI key?",
-      a: "Yes, normally. Each shop adds its own key from OpenAI, Google Gemini, Anthropic (Claude) or OpenRouter, and that company bills you for what is used. In some cases our team can run it on a TajirPoint key instead; ask us.",
+      a: `Yes, normally. Each shop adds its own key from OpenAI, Google Gemini, Anthropic (Claude) or OpenRouter, and that company bills you for what is used. In some cases our team can run it on a ${BRAND_NAME} key instead; ask us.`,
     },
     {
       q: "What happens if my key stops working?",
@@ -141,7 +142,7 @@ const content: AddonContent = {
     },
     {
       q: "Can it make up prices or offers?",
-      a: "It is told to use only what your data returns. Prices, stock and order totals come from TajirPoint, and an order is placed only after the customer confirms the total in a later message.",
+      a: `It is told to use only what your data returns. Prices, stock and order totals come from ${BRAND_NAME}, and an order is placed only after the customer confirms the total in a later message.`,
     },
     {
       q: "Can I use my normal WhatsApp Business app number?",

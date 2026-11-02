@@ -12,10 +12,11 @@ import {
   type Attribution,
 } from "@/lib/marketing/utm";
 import { trackCallbackRequest } from "@/lib/analytics/events";
-import { whatsappLink } from "@/lib/config/site";
+import { legal, whatsappLink } from "@/lib/config/site";
 import { hintCls, honeypotStyle, inputCls, textareaCls } from "@/components/forms/styles";
 import { Field } from "@/components/forms/Field";
 import { PhoneField } from "@/components/forms/PhoneField";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 /**
  * The short partner enquiry on /partners. Same mechanics as the call-back
@@ -62,16 +63,18 @@ export function PartnerForm({ idPrefix = "pt" }: { idPrefix?: string }) {
         <p className="mt-3 text-[15px] leading-[1.6] text-[var(--color-body)]">
           We will talk about the shops you work with and how a partnership could work.
         </p>
-        <a
-          href={whatsappLink("Hi TajirPoint, I just sent a partner enquiry on your website.")}
-          target="_blank"
-          rel="noopener noreferrer"
-          data-track="partners_success"
-          className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#0A0A0A] px-6 py-3 text-[14.5px] font-bold text-white transition-transform duration-200 hover:-translate-y-[2px]"
-        >
-          Message us on WhatsApp now
-          <span aria-hidden="true">→</span>
-        </a>
+        {legal.whatsappUrl && (
+          <a
+            href={whatsappLink(`Hi ${BRAND_NAME}, I just sent a partner enquiry on your website.`)}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-track="partners_success"
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#0A0A0A] px-6 py-3 text-[14.5px] font-bold text-white transition-transform duration-200 hover:-translate-y-[2px]"
+          >
+            Message us on WhatsApp now
+            <span aria-hidden="true">→</span>
+          </a>
+        )}
       </div>
     );
   }

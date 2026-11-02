@@ -1,6 +1,9 @@
 import { addonInterestMessage } from "@/lib/marketing/addon-names";
 import { BRANCH_OPTIONS, PHONE_ERROR, TIME_OPTIONS } from "@/lib/marketing/demo-options";
 import type { Localized } from "../page-copy";
+import { LEAD_FAILED, SEND_FAILED, SERVER_UNREACHABLE } from "@/lib/marketing/contact-fallback";
+import { legal } from "@/lib/config/site";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 /**
  * Words of the lead forms (book a demo, call me back, contact) and of the
@@ -104,14 +107,14 @@ export const SHARED_FORM_COPY: Localized<SharedFormCopy> = {
 };
 
 /** The English messages the server actions send back. Keep in step with them. */
-const LEAD_FAILED_EN =
-  "We could not save your request just now. Please message us on WhatsApp at +92 344 6800893 or email hello@tajirpoint.com.";
+const LEAD_FAILED_EN = LEAD_FAILED;
+const wa = legal.whatsappDisplay;
+const email = legal.email;
 
 const ERRORS: Record<"ur" | "ar", Record<string, string>> = {
   ur: {
     "Please check the highlighted fields.": "براہِ کرم نشان زدہ خانے دیکھ لیں۔",
-    [LEAD_FAILED_EN]:
-      "ابھی آپ کی درخواست محفوظ نہیں ہو سکی۔ براہِ کرم واٹس ایپ ‎+92 344 6800893 پر میسج کریں یا hello@tajirpoint.com پر ای میل کریں۔",
+    [LEAD_FAILED_EN]: `ابھی آپ کی درخواست محفوظ نہیں ہو سکی۔ براہِ کرم واٹس ایپ ‎${wa} پر میسج کریں یا ${email} پر ای میل کریں۔`,
     [PHONE_ERROR]: "ملک کا کوڈ منتخب کریں اور اپنا نمبر لکھیں (7 سے 15 ہندسے)۔",
     "Please enter your name.": "براہِ کرم اپنا نام لکھیں۔",
     "Please enter your business name.": "براہِ کرم اپنے کاروبار کا نام لکھیں۔",
@@ -122,15 +125,12 @@ const ERRORS: Record<"ur" | "ar", Record<string, string>> = {
     "Pick how many shops you run.": "بتائیں آپ کی کتنی دکانیں ہیں۔",
     "Pick a day from the list.": "فہرست میں سے ایک دن منتخب کریں۔",
     "Pick a time of day.": "دن کا کوئی وقت منتخب کریں۔",
-    "Could not send your message. Please email hello@tajirpoint.com or WhatsApp +92 344 6800893.":
-      "آپ کا پیغام نہیں بھیجا جا سکا۔ براہِ کرم hello@tajirpoint.com پر ای میل کریں یا واٹس ایپ ‎+92 344 6800893 پر میسج کریں۔",
-    "Could not reach the server. Please email hello@tajirpoint.com or WhatsApp +92 344 6800893.":
-      "سرور سے رابطہ نہیں ہو سکا۔ براہِ کرم hello@tajirpoint.com پر ای میل کریں یا واٹس ایپ ‎+92 344 6800893 پر میسج کریں۔",
+    [SEND_FAILED]: `آپ کا پیغام نہیں بھیجا جا سکا۔ براہِ کرم ${email} پر ای میل کریں یا واٹس ایپ ‎${wa} پر میسج کریں۔`,
+    [SERVER_UNREACHABLE]: `سرور سے رابطہ نہیں ہو سکا۔ براہِ کرم ${email} پر ای میل کریں یا واٹس ایپ ‎${wa} پر میسج کریں۔`,
   },
   ar: {
     "Please check the highlighted fields.": "يُرجى مراجعة الحقول المحدَّدة.",
-    [LEAD_FAILED_EN]:
-      "تعذّر حفظ طلبك الآن. يُرجى مراسلتنا على واتساب ‎+92 344 6800893 أو عبر البريد hello@tajirpoint.com.",
+    [LEAD_FAILED_EN]: `تعذّر حفظ طلبك الآن. يُرجى مراسلتنا على واتساب ‎${wa} أو عبر البريد ${email}.`,
     [PHONE_ERROR]: "اختر رمز الدولة وأدخل رقمك (من 7 إلى 15 رقمًا).",
     "Please enter your name.": "يُرجى إدخال اسمك.",
     "Please enter your business name.": "يُرجى إدخال اسم نشاطك التجاري.",
@@ -141,10 +141,8 @@ const ERRORS: Record<"ur" | "ar", Record<string, string>> = {
     "Pick how many shops you run.": "اختر عدد المتاجر التي تديرها.",
     "Pick a day from the list.": "اختر يومًا من القائمة.",
     "Pick a time of day.": "اختر وقتًا من اليوم.",
-    "Could not send your message. Please email hello@tajirpoint.com or WhatsApp +92 344 6800893.":
-      "تعذّر إرسال رسالتك. يُرجى مراسلتنا عبر البريد hello@tajirpoint.com أو واتساب ‎+92 344 6800893.",
-    "Could not reach the server. Please email hello@tajirpoint.com or WhatsApp +92 344 6800893.":
-      "تعذّر الاتصال بالخادم. يُرجى مراسلتنا عبر البريد hello@tajirpoint.com أو واتساب ‎+92 344 6800893.",
+    [SEND_FAILED]: `تعذّر إرسال رسالتك. يُرجى مراسلتنا عبر البريد ${email} أو واتساب ‎${wa}.`,
+    [SERVER_UNREACHABLE]: `تعذّر الاتصال بالخادم. يُرجى مراسلتنا عبر البريد ${email} أو واتساب ‎${wa}.`,
   },
 };
 
@@ -372,7 +370,7 @@ export const CALLBACK_FORM_COPY: Localized<CallbackFormCopy> = {
     message: "What would you like to know?",
     messagePlaceholder: "Prices, switching from your old system, hardware…",
     submit: "Call me back",
-    privacy: "We only use your number to call you about TajirPoint.",
+    privacy: `We only use your number to call you about ${BRAND_NAME}.`,
     successTitle: "Thanks — our team will call you within one working day.",
     successBody: "Keep your phone close. If you would rather not wait, message us on WhatsApp now.",
   },
@@ -386,7 +384,7 @@ export const CALLBACK_FORM_COPY: Localized<CallbackFormCopy> = {
     message: "آپ کیا جاننا چاہتے ہیں؟",
     messagePlaceholder: "قیمتیں، پرانے سسٹم سے منتقلی، ہارڈ ویئر…",
     submit: "مجھے کال کریں",
-    privacy: "ہم آپ کا نمبر صرف TajirPoint کے بارے میں کال کرنے کے لیے استعمال کرتے ہیں۔",
+    privacy: `ہم آپ کا نمبر صرف ${BRAND_NAME} کے بارے میں کال کرنے کے لیے استعمال کرتے ہیں۔`,
     successTitle: "شکریہ — ہماری ٹیم ایک کاروباری دن کے اندر آپ کو کال کرے گی۔",
     successBody: "فون پاس رکھیں۔ انتظار نہیں کرنا چاہتے تو ابھی واٹس ایپ پر میسج کریں۔",
   },
@@ -400,7 +398,7 @@ export const CALLBACK_FORM_COPY: Localized<CallbackFormCopy> = {
     message: "ماذا تودّ أن تعرف؟",
     messagePlaceholder: "الأسعار، الانتقال من نظامك القديم، الأجهزة…",
     submit: "اتصلوا بي",
-    privacy: "نستخدم رقمك فقط للاتصال بك بخصوص TajirPoint.",
+    privacy: `نستخدم رقمك فقط للاتصال بك بخصوص ${BRAND_NAME}.`,
     successTitle: "شكرًا — سيتصل بك فريقنا خلال يوم عمل واحد.",
     successBody: "أبقِ هاتفك قريبًا. وإن لم ترغب في الانتظار، راسلنا على واتساب الآن.",
   },

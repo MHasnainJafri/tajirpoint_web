@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/shipping (models CourierAccount/Shipment statuses,
 // services/courier_service book/cancel/poll, ship_from_store_service (inline
@@ -8,8 +9,7 @@ import type { AddonContent } from "./types";
 const content: AddonContent = {
   slug: "courier-leopards",
   seoTitle: "Leopards Courier Add-on: Book and Track From Your POS",
-  seoDescription:
-    "Coming soon: book Leopards Courier parcels straight from a TajirPoint sale, print the booking slip, collect cash on delivery and follow every parcel's status.",
+  seoDescription: `Coming soon: book Leopards Courier parcels straight from a ${BRAND_NAME} sale, print the booking slip, collect cash on delivery and follow every parcel's status.`,
   keywords: [
     "Leopards Courier booking software",
     "Leopards Courier POS integration",
@@ -20,8 +20,8 @@ const content: AddonContent = {
   schemaSubCategory: "Courier booking add-on for POS",
   headline: "Book a Leopards parcel from the sale, without retyping a single address.",
   overview: [
-    "The Leopards Courier add-on will let you book a parcel with Leopards straight from a sale in TajirPoint. Type the customer's address at the till, or use one already saved, and the booking goes to Leopards with the tracking number and booking slip saved on the sale.",
-    "For cash on delivery, the amount to collect is filled in from what the customer still owes on the sale, so the cashier never types it by hand. TajirPoint then checks the parcel's status with Leopards every 10 minutes until it is delivered or returned.",
+    `The Leopards Courier add-on will let you book a parcel with Leopards straight from a sale in ${BRAND_NAME}. Type the customer's address at the till, or use one already saved, and the booking goes to Leopards with the tracking number and booking slip saved on the sale.`,
+    `For cash on delivery, the amount to collect is filled in from what the customer still owes on the sale, so the cashier never types it by hand. ${BRAND_NAME} then checks the parcel's status with Leopards every 10 minutes until it is delivered or returned.`,
     "It is not open to shops yet: the connection still has to be tested against a real Leopards account. Once it is live, our team will set it up with you.",
   ],
   whoFor: [
@@ -41,7 +41,7 @@ const content: AddonContent = {
     },
     {
       problem: "Staff keep checking the courier site to see where parcels are.",
-      fix: "Each parcel's status is updated in TajirPoint every 10 minutes, from booked to delivered or returned.",
+      fix: `Each parcel's status is updated in ${BRAND_NAME} every 10 minutes, from booked to delivered or returned.`,
     },
   ],
   features: [
@@ -67,11 +67,11 @@ const content: AddonContent = {
     },
     {
       title: "Status every 10 minutes",
-      body: "TajirPoint checks with Leopards every 10 minutes and keeps every status change: picked up, in transit, delivered, returned.",
+      body: `${BRAND_NAME} checks with Leopards every 10 minutes and keeps every status change: picked up, in transit, delivered, returned.`,
     },
     {
       title: "Cancel a booking",
-      body: "Cancel a parcel that has not gone yet, straight from TajirPoint.",
+      body: `Cancel a parcel that has not gone yet, straight from ${BRAND_NAME}.`,
     },
   ],
   howItWorks: [
@@ -93,7 +93,7 @@ const content: AddonContent = {
     },
   ],
   needs: [
-    "A TajirPoint account on the Shop plan or above",
+    `A ${BRAND_NAME} account on the Shop plan or above`,
     "A Leopards Courier merchant account with its connection details",
     "A printer for booking slips",
   ],
@@ -121,7 +121,7 @@ const content: AddonContent = {
     },
     {
       q: "Can I cancel a booking?",
-      a: "Yes, you can cancel a parcel from TajirPoint before it is delivered.",
+      a: `Yes, you can cancel a parcel from ${BRAND_NAME} before it is delivered.`,
     },
     {
       q: "Is it included in the free Light plan?",

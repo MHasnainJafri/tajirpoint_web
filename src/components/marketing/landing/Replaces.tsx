@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Stroke } from "./Stroke";
+import { brand } from "@/lib/config/brand";
 
 /** The five things the product stands in for, struck through. */
 const REPLACED = ["till", "notebook", "excel", "ledger", "whatsapp"] as const;
@@ -43,7 +44,13 @@ export function Replaces() {
           style={{ "--i": 14 } as React.CSSProperties}
           className="rounded-full bg-[#0A0A0A] px-[18px] py-[10px] text-[13.5px] font-bold tracking-[-0.02em] text-white"
         >
-          tajir point<span className="text-[var(--color-mint)]">.</span>
+          {brand.ownLogo ? (
+            brand.name
+          ) : (
+            <>
+              tajir point<span className="text-[var(--color-mint)]">.</span>
+            </>
+          )}
         </span>
       </div>
 

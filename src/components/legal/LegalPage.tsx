@@ -1,5 +1,6 @@
 import { PillBadge } from "@/components/design/primitives";
 import { legal } from "@/lib/config/site";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 /**
  * Shared layout for the legal and trust pages (Terms, Privacy, Cookies,
@@ -144,12 +145,28 @@ export function MailLink({ subject, email = legal.email }: { subject?: string; e
   return <a href={href}>{email}</a>;
 }
 
-/** WhatsApp link showing the display number. */
+/** WhatsApp link showing the display number; nothing for a brand without WhatsApp. */
 export function WhatsAppLink() {
+  if (!legal.whatsappUrl) return null;
   return (
     <a href={legal.whatsappUrl} target="_blank" rel="noopener noreferrer">
       {legal.whatsappDisplay}
     </a>
+  );
+}
+
+/**
+ * `before` + the WhatsApp link + `after`, or nothing for a brand without a
+ * WhatsApp line, so a sentence can offer WhatsApp only when there is one.
+ */
+export function WhatsAppClause({ before = "", after = "" }: { before?: string; after?: string }) {
+  if (!legal.whatsappUrl) return null;
+  return (
+    <>
+      {before}
+      <WhatsAppLink />
+      {after}
+    </>
   );
 }
 
@@ -159,10 +176,11 @@ export function LegalContactBox() {
     <aside className="mt-10 rounded-[20px] border border-[var(--color-line-2)] bg-[var(--color-surface)] p-5 text-[15.5px] leading-[1.7] text-[var(--color-body)] [overflow-wrap:anywhere] sm:p-7 [&_a]:font-semibold [&_a]:text-[var(--color-mint-2)] [&_a:hover]:underline">
       <p className="text-[17px] font-bold text-[var(--color-ink)]">Questions?</p>
       <p className="mt-2">
-        Email <MailLink /> or WhatsApp <WhatsAppLink />.
+        Email <MailLink />
+        <WhatsAppClause before=" or WhatsApp " />.
       </p>
       <p className="mt-3 text-[14px] text-[var(--color-muted)]">
-        TajirPoint is a product of{" "}
+        {`${BRAND_NAME} is a product of`}{" "}
         <a href={legal.operatorUrl} target="_blank" rel="noopener noreferrer">
           {legal.operator}
         </a>

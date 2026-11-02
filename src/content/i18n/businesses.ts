@@ -19,6 +19,7 @@ import {
 import type { BusinessUiCopy, BusinessesTranslation } from "./businesses.types";
 import ur from "./businesses.ur";
 import ar from "./businesses.ar";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 const TRANSLATIONS: Record<string, BusinessesTranslation> = { ur, ar };
 
@@ -38,13 +39,12 @@ export const EN_BUSINESS_UI: BusinessUiCopy = {
   illustration: (title) => `${title} — feature illustration`,
   index: {
     metaTitle: "POS System for Every Kind of Business",
-    metaDescription:
-      "TajirPoint POS for restaurants, cafés, cloud kitchens, clothing, grocery and kiryana stores, pharmacies, mobile shops, salons, distributors and factories.",
+    metaDescription: `${BRAND_NAME} POS for restaurants, cafés, cloud kitchens, clothing, grocery and kiryana stores, pharmacies, mobile shops, salons, distributors and factories.`,
     badge: "Find your business",
     headline: "One POS system, shaped around your counter.",
     sub: "Pick your kind of business to see the screens, apps and reports you would use — then book a free demo or start free.",
     notSure: "Not sure which fits?",
-    itemListName: "TajirPoint by business type",
+    itemListName: `${BRAND_NAME} by business type`,
   },
   planTeaser: {
     eyebrow: "Pricing",

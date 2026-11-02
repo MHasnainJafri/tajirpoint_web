@@ -1,5 +1,8 @@
+import fs from "node:fs";
+import path from "node:path";
 import { ImageResponse } from "next/og";
 import { OG_IMAGE_SIZE, type OgCard } from "./og-cards";
+import { BRAND_HOST, BRAND_NAME, brand } from "@/lib/config/brand";
 
 // The real brand mark used in the site header (public/brand/mark/mark-on-dark.svg),
 // embedded so every share card carries the actual logo.
@@ -18,7 +21,27 @@ const MARK_SVG = `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
   <circle cx="138" cy="160" r="5" fill="#00D27A"></circle>
 </svg>`;
 
-const MARK_SRC = `data:image/svg+xml;base64,${Buffer.from(MARK_SVG).toString("base64")}`;
+/**
+ * Another brand's build draws its own logo (NEXT_PUBLIC_BRAND_LOGO): a file
+ * under public/ is embedded, an https URL is fetched by the renderer.
+ */
+function brandLogoSrc(): string {
+  if (/^https:\/\//.test(brand.logoOnDark)) return brand.logoOnDark;
+  const file = path.join(process.cwd(), "public", brand.logoOnDark);
+  const type = brand.logoOnDark.endsWith(".svg") ? "image/svg+xml" : "image/png";
+  return `data:${type};base64,${fs.readFileSync(file).toString("base64")}`;
+}
+
+const MARK_SRC = brand.ownLogo
+  ? brandLogoSrc()
+  : `data:image/svg+xml;base64,${Buffer.from(MARK_SVG).toString("base64")}`;
+
+/** The card's accent and ground: ours, or the brand's colour on its ink. */
+const ACCENT = brand.primary ?? "#00D27A";
+const PILL_BORDER = brand.primary ? `${brand.primary}73` : "rgba(0,210,122,0.45)";
+const GROUND = brand.primary
+  ? `linear-gradient(135deg, ${brand.ink ?? "#111111"} 0%, #0a0a0a 55%, ${brand.ink ?? "#111111"} 100%)`
+  : "linear-gradient(135deg, #06140d 0%, #0a0a0a 55%, #07170f 100%)";
 
 /** Shorter titles get bigger type; every title stays readable as a phone thumbnail. */
 function titleSize(title: string): number {
@@ -42,7 +65,7 @@ export function renderOgCard(card: OgCard): ImageResponse {
         flexDirection: "column",
         justifyContent: "space-between",
         padding: "64px 76px",
-        background: "linear-gradient(135deg, #06140d 0%, #0a0a0a 55%, #07170f 100%)",
+        background: GROUND,
         fontFamily: "sans-serif",
       }}
     >
@@ -59,7 +82,7 @@ export function renderOgCard(card: OgCard): ImageResponse {
             letterSpacing: "-1px",
           }}
         >
-          TajirPoint
+          {`${BRAND_NAME}`}
         </div>
       </div>
 
@@ -69,7 +92,7 @@ export function renderOgCard(card: OgCard): ImageResponse {
           style={{
             display: "flex",
             fontSize: 28,
-            color: "#00D27A",
+            color: ACCENT,
             fontWeight: 600,
             letterSpacing: "0.5px",
             marginBottom: 18,
@@ -107,7 +130,7 @@ export function renderOgCard(card: OgCard): ImageResponse {
       {/* Footer row */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ display: "flex", fontSize: 26, color: "#ffffff", fontWeight: 600 }}>
-          tajirpoint.com
+          {`${BRAND_HOST}`}
         </div>
         <div style={{ display: "flex", gap: "10px" }}>
           {card.pills.slice(0, 4).map((pill) => (
@@ -117,7 +140,7 @@ export function renderOgCard(card: OgCard): ImageResponse {
                 display: "flex",
                 fontSize: 20,
                 color: "rgba(255,255,255,0.9)",
-                border: "1px solid rgba(0,210,122,0.45)",
+                border: `1px solid ${PILL_BORDER}`,
                 borderRadius: 999,
                 padding: "7px 18px",
               }}

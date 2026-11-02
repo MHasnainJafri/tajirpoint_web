@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { OG_CARDS } from "@/lib/seo/og-cards";
+import { OG_CARDS, isOgCardShown } from "@/lib/seo/og-cards";
 import { addonCardIds, addonOgCard } from "@/lib/seo/og-addon-cards";
 import { renderOgCard } from "@/lib/seo/og-image";
 
@@ -12,13 +12,16 @@ export const dynamic = "force-static";
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return [...Object.keys(OG_CARDS), ...addonCardIds()].map((id) => ({ image: `${id}.png` }));
+  return [...Object.keys(OG_CARDS), ...addonCardIds()]
+    .filter(isOgCardShown)
+    .map((id) => ({ image: `${id}.png` }));
 }
 
 export async function GET(_request: Request, { params }: { params: Promise<{ image: string }> }) {
   const { image } = await params;
   if (!image.endsWith(".png")) notFound();
   const id = image.slice(0, -4);
+  if (!isOgCardShown(id)) notFound();
   const card = OG_CARDS[id] ?? (await addonOgCard(id));
   if (!card) notFound();
   return renderOgCard(card);

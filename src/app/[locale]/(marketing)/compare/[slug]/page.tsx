@@ -16,12 +16,14 @@ import { getPlans, planSummary } from "@/lib/api/plans";
 import { legal, siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { faqSchema, pageBreadcrumbs } from "@/lib/seo/schemas";
+import { BRAND_NAME } from "@/lib/config/brand";
+import { assertPageShown, isPageShown } from "@/lib/config/pages";
 
 /** Only the listed comparisons exist; anything else is a 404. */
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return COMPARE_SLUGS.map((slug) => ({ slug }));
+  return COMPARE_SLUGS.filter((slug) => isPageShown(`/compare/${slug}`)).map((slug) => ({ slug }));
 }
 
 type Params = Promise<{ locale: string; slug: string }>;
@@ -45,6 +47,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 export default async function ComparisonPage({ params }: { params: Params }) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
+  // Left out of builds for another market or business type (src/lib/config/pages.ts).
+  assertPageShown(`/compare/${slug}`);
   const c = getComparison(slug);
   if (!c) notFound();
 
@@ -130,7 +134,7 @@ export default async function ComparisonPage({ params }: { params: Params }) {
           <div className="mt-5 grid gap-4 md:grid-cols-2">
             <div className="rounded-[18px] border border-[var(--color-mint-line)] bg-[var(--color-mint-soft)] p-5">
               <div className="text-[13px] font-bold text-[var(--color-mint-2)]">
-                TajirPoint is a better fit if…
+                {`${BRAND_NAME} is a better fit if…`}
               </div>
               <p className="mt-2 text-[15px] leading-[1.6] text-[var(--color-ink-2)]">
                 {c.verdict.tajirpoint}
@@ -158,7 +162,7 @@ export default async function ComparisonPage({ params }: { params: Params }) {
           <div className="mt-5 grid gap-6 md:grid-cols-2">
             <div>
               <h3 className="text-[16px] font-bold text-[var(--color-ink)]">
-                Where TajirPoint helps
+                {`Where ${BRAND_NAME} helps`}
               </h3>
               <ul className="mt-3 flex flex-col gap-3">
                 {c.tajirpointStrengths.map((s) => (
@@ -201,7 +205,7 @@ export default async function ComparisonPage({ params }: { params: Params }) {
             id="table-title"
             className="text-[clamp(22px,2.8vw,30px)] font-extrabold tracking-[-0.025em]"
           >
-            {`TajirPoint vs ${c.otherName}, feature by feature`}
+            {`${BRAND_NAME} vs ${c.otherName}, feature by feature`}
           </h2>
           <p className="mb-5 mt-2 max-w-[70ch] text-[14px] leading-[1.6] text-[var(--color-muted)]">
             “Partly” means on a higher plan, with an add-on or with a limit. “Coming soon” means
@@ -212,12 +216,17 @@ export default async function ComparisonPage({ params }: { params: Params }) {
           </p>
           <CompareTable c={c} />
           <p className="mt-4 text-[13.5px] leading-[1.6] text-[var(--color-muted)]">
-            {tpPlans ? <>TajirPoint plans today: {tpPlans}. </> : null}
+            {tpPlans ? (
+              <>
+                {`${BRAND_NAME} plans today: `}
+                {tpPlans}.{" "}
+              </>
+            ) : null}
             <Link
               href="/pricing"
               className="font-semibold text-[var(--color-mint-2)] hover:underline"
             >
-              See TajirPoint pricing
+              {`See ${BRAND_NAME} pricing`}
             </Link>
             .
           </p>
@@ -242,7 +251,7 @@ export default async function ComparisonPage({ params }: { params: Params }) {
           ))}
           <section className="mt-8">
             <h2 className="text-[clamp(20px,2.4vw,26px)] font-extrabold tracking-[-0.02em]">
-              Switching to TajirPoint
+              {`Switching to ${BRAND_NAME}`}
             </h2>
             <p className="mt-3 text-[16px] leading-[1.7] text-[var(--color-body)]">
               Send us an export from your current system or your sheets (Excel or CSV is fine) and
@@ -282,7 +291,7 @@ export default async function ComparisonPage({ params }: { params: Params }) {
       <section className="px-[clamp(16px,3vw,24px)] pb-[110px] pt-[clamp(48px,7vw,88px)]">
         <CtaPanel>
           <h2 className="relative text-[clamp(26px,3.6vw,44px)] font-extrabold tracking-[-0.03em]">
-            Try TajirPoint free for 3 months.
+            {`Try ${BRAND_NAME} free for 3 months.`}
           </h2>
           <p className="relative mx-auto mt-4 max-w-[460px] text-[16px] leading-[1.6] text-[var(--color-muted)]">
             No card needed. We move your data for free.

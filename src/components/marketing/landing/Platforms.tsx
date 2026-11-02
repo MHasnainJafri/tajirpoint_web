@@ -50,29 +50,31 @@ export function Platforms() {
 
         {/* App access — the store link the previous site carried. */}
         <div className="mt-[14px] flex flex-wrap items-center gap-[10px]">
-          <a
-            href={APP_LINKS.android}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-[11px] rounded-[14px] bg-[#0A0A0A] px-[18px] py-[10px] text-white transition-transform duration-200 hover:-translate-y-[2px]"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              className="h-[19px] w-[19px]"
-              fill="currentColor"
+          {APP_LINKS.android && (
+            <a
+              href={APP_LINKS.android}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-[11px] rounded-[14px] bg-[#0A0A0A] px-[18px] py-[10px] text-white transition-transform duration-200 hover:-translate-y-[2px]"
             >
-              <path d="M4.2 2.3a1 1 0 0 0-.5.9v17.6a1 1 0 0 0 .5.9l9.4-9.7-9.4-9.7zm10.7 8.4 2.9-3-9.1-5.2 6.2 8.2zm0 2.6-6.2 8.2 9.1-5.2-2.9-3zm1.3-1.3 3.3-1.9c.7-.4.7-1.4 0-1.8l-3.3-1.9-2 2.8 2 2.8z" />
-            </svg>
-            <span>
-              <span className="block text-[9.5px] font-semibold tracking-[0.5px] opacity-65">
-                {t("app.getItOn")}
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                className="h-[19px] w-[19px]"
+                fill="currentColor"
+              >
+                <path d="M4.2 2.3a1 1 0 0 0-.5.9v17.6a1 1 0 0 0 .5.9l9.4-9.7-9.4-9.7zm10.7 8.4 2.9-3-9.1-5.2 6.2 8.2zm0 2.6-6.2 8.2 9.1-5.2-2.9-3zm1.3-1.3 3.3-1.9c.7-.4.7-1.4 0-1.8l-3.3-1.9-2 2.8 2 2.8z" />
+              </svg>
+              <span>
+                <span className="block text-[9.5px] font-semibold tracking-[0.5px] opacity-65">
+                  {t("app.getItOn")}
+                </span>
+                <span className="mt-px block text-[15.5px] font-extrabold">
+                  {t("app.googlePlay")}
+                </span>
               </span>
-              <span className="mt-px block text-[15.5px] font-extrabold">
-                {t("app.googlePlay")}
-              </span>
-            </span>
-          </a>
+            </a>
+          )}
           <span className="text-[12.5px] text-[var(--color-muted)]">{t("app.note")}</span>
         </div>
 

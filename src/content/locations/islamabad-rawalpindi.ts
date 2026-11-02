@@ -12,6 +12,7 @@ import {
   PK_UPDATED,
   PRA_ROW,
 } from "./pk-common";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 const page: LocationPage = {
   slug: "islamabad-rawalpindi",
@@ -28,8 +29,7 @@ const page: LocationPage = {
     "Cafés, restaurants and shops in the twin cities, where services are taxed by FBR in Islamabad but by PRA in Rawalpindi.",
   seo: {
     title: "POS System in Islamabad and Rawalpindi",
-    description:
-      "TajirPoint POS for cafés, restaurants and shops in Islamabad and Rawalpindi: one system for both cities, Urdu screens, khata, offline billing, honest tax notes.",
+    description: `${BRAND_NAME} POS for cafés, restaurants and shops in Islamabad and Rawalpindi: one system for both cities, Urdu screens, khata, offline billing, honest tax notes.`,
     keywords: [
       "pos system islamabad",
       "pos system rawalpindi",
@@ -54,8 +54,7 @@ const page: LocationPage = {
     PK_FACT_LANGUAGE,
     {
       label: "Tax here",
-      value:
-        "Goods: FBR in both cities. Services: FBR in Islamabad, PRA in Rawalpindi. TajirPoint sends invoices to neither yet.",
+      value: `Goods: FBR in both cities. Services: FBR in Islamabad, PRA in Rawalpindi. ${BRAND_NAME} sends invoices to neither yet.`,
     },
     PK_FACT_POWER,
   ],
@@ -70,7 +69,7 @@ const page: LocationPage = {
         name: "FBR, Islamabad Capital Territory services",
         covers: "Sales tax on services in Islamabad, including restaurants and cafés.",
         ours: { tone: "no", label: "Not connected" },
-        note: "TajirPoint records the tax on each bill and gives you tax reports, but does not report service invoices to FBR.",
+        note: `${BRAND_NAME} records the tax on each bill and gives you tax reports, but does not report service invoices to FBR.`,
       },
       {
         ...PRA_ROW,
@@ -81,7 +80,7 @@ const page: LocationPage = {
   },
   blocks: [PK_PAYMENTS],
   businesses: {
-    heading: "Twin-city businesses TajirPoint is set up for",
+    heading: `Twin-city businesses ${BRAND_NAME} is set up for`,
     items: [
       {
         slug: "cafes-bakeries",
@@ -114,7 +113,7 @@ const page: LocationPage = {
       id: "branches",
       heading: "A branch in each city",
       paragraphs: [
-        "Many businesses here have a branch on each side. In TajirPoint each branch keeps its own stock, sales and staff, and the owner sees every branch from one login. Move stock between branches when one runs short.",
+        `Many businesses here have a branch on each side. In ${BRAND_NAME} each branch keeps its own stock, sales and staff, and the owner sees every branch from one login. Move stock between branches when one runs short.`,
       ],
       bullets: [
         "Each branch with its own stock and till",
@@ -133,7 +132,7 @@ const page: LocationPage = {
   faqs: [
     {
       q: "My café is in Islamabad and my second branch is in Rawalpindi. Which tax authority applies?",
-      a: "Usually FBR for services in Islamabad and PRA for services in Rawalpindi, and FBR for goods in both. Confirm with your tax adviser. TajirPoint records the tax on each bill in both branches, but does not report invoices to FBR or PRA yet.",
+      a: `Usually FBR for services in Islamabad and PRA for services in Rawalpindi, and FBR for goods in both. Confirm with your tax adviser. ${BRAND_NAME} records the tax on each bill in both branches, but does not report invoices to FBR or PRA yet.`,
     },
     PK_FAQ_FBR,
     {
@@ -144,7 +143,7 @@ const page: LocationPage = {
     PK_FAQ_URDU,
   ],
   cta: {
-    headline: "Run your twin-city business on TajirPoint.",
+    headline: `Run your twin-city business on ${BRAND_NAME}.`,
     sub: "Book a free demo, or start free for 3 months. No card needed, and we move your data for free.",
   },
   related: ["pakistan", "lahore", "karachi", "faisalabad"],

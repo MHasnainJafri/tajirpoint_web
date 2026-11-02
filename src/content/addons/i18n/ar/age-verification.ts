@@ -1,4 +1,5 @@
 import type { AddonTranslation } from "../types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Arabic write-up for "age-verification". Same facts as ../../age-verification.ts; awaiting
 // native review (TP-490). A field left out falls back to English.
@@ -79,7 +80,7 @@ const t: AddonTranslation = {
     },
   ],
   needs: [
-    "حساب TajirPoint على خطة Shop أو أعلى",
+    `حساب ${BRAND_NAME} على خطة Shop أو أعلى`,
     "اختياري: ماسح رموز شريطية يقرأ الرمز على هويات العملاء",
     "قواعدك المحلية للحد الأدنى للعمر للمنتجات التي تبيعها",
   ],

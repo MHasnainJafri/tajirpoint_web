@@ -5,9 +5,11 @@ import { z } from "zod";
 import { getBusiness } from "@/lib/marketing/businesses";
 import { attributionFromForm, normalizePhone } from "@/lib/marketing/demo";
 import { phoneFromForm } from "@/lib/marketing/phone";
+import { brand } from "@/lib/config/brand";
+import { SEND_FAILED, SERVER_UNREACHABLE } from "@/lib/marketing/contact-fallback";
 
 // Server-side so there's no CORS and the backend URL stays out of the bundle.
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://api.tajirpoint.com";
+const API_BASE = brand.apiOrigin;
 
 export type ContactState = {
   ok?: boolean;
@@ -87,15 +89,13 @@ export async function submitContact(
     });
     if (!res.ok) {
       return {
-        error:
-          "Could not send your message. Please email hello@tajirpoint.com or WhatsApp +92 344 6800893.",
+        error: SEND_FAILED,
       };
     }
     return { ok: true, businessType };
   } catch {
     return {
-      error:
-        "Could not reach the server. Please email hello@tajirpoint.com or WhatsApp +92 344 6800893.",
+      error: SERVER_UNREACHABLE,
     };
   }
 }

@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/payments (gateways/stripe_gateway.py card fields with no
 // redirect, registry.py, connect/ onboarding + countries.py + requirements.py,
@@ -20,28 +21,28 @@ const content: AddonContent = {
   schemaSubCategory: "Card payments add-on for POS",
   headline: "Take card payments at the till and on your website, paid into your Stripe account.",
   overview: [
-    "Stripe Payments lets customers pay by card in TajirPoint: at the counter, and on your TajirPoint website or order page. The card form is Stripe's own secure field shown inside your page, so the customer is not sent to another site, and TajirPoint never stores card numbers.",
-    "Most shops connect their Stripe account themselves: press Connect, fill in Stripe's own sign-up form, and TajirPoint shows in plain words anything Stripe still needs from you. If you would rather use your own Stripe keys, our team sets that up with you.",
-    "When a payment goes through, Stripe tells TajirPoint and the sale or online order is marked paid. Refunds, including ones made in your Stripe dashboard, are recorded back against the payment in TajirPoint.",
+    `Stripe Payments lets customers pay by card in ${BRAND_NAME}: at the counter, and on your ${BRAND_NAME} website or order page. The card form is Stripe's own secure field shown inside your page, so the customer is not sent to another site, and ${BRAND_NAME} never stores card numbers.`,
+    `Most shops connect their Stripe account themselves: press Connect, fill in Stripe's own sign-up form, and ${BRAND_NAME} shows in plain words anything Stripe still needs from you. If you would rather use your own Stripe keys, our team sets that up with you.`,
+    `When a payment goes through, Stripe tells ${BRAND_NAME} and the sale or online order is marked paid. Refunds, including ones made in your Stripe dashboard, are recorded back against the payment in ${BRAND_NAME}.`,
   ],
   whoFor: [
     "Shops and restaurants in the UK, the UAE and other countries where Stripe works",
-    "Businesses that sell through a TajirPoint website or order page",
+    `Businesses that sell through a ${BRAND_NAME} website or order page`,
     "Owners who want card payments recorded against the sale automatically",
     "Shops that already use Stripe and want it linked to their POS",
   ],
   problems: [
     {
       problem: "Online orders come in and you are never sure they were paid.",
-      fix: "Stripe confirms each payment to TajirPoint, and the order is marked paid on its own. A failed payment is marked failed.",
+      fix: `Stripe confirms each payment to ${BRAND_NAME}, and the order is marked paid on its own. A failed payment is marked failed.`,
     },
     {
       problem: "A refund made in one place never shows up in the other.",
-      fix: "Refund from TajirPoint or from your Stripe dashboard; either way the refund is recorded against the original payment in TajirPoint.",
+      fix: `Refund from ${BRAND_NAME} or from your Stripe dashboard; either way the refund is recorded against the original payment in ${BRAND_NAME}.`,
     },
     {
       problem: "Setting up a card account means forms full of terms you do not understand.",
-      fix: "You sign up on Stripe's own form, and TajirPoint lists anything Stripe still needs in plain words, such as a support phone number or confirming your directors.",
+      fix: `You sign up on Stripe's own form, and ${BRAND_NAME} lists anything Stripe still needs in plain words, such as a support phone number or confirming your directors.`,
     },
     {
       problem: "Customers give up when a payment page sends them to another website.",
@@ -51,27 +52,27 @@ const content: AddonContent = {
   features: [
     {
       title: "Cards at the counter and online",
-      body: "Take card payments in the POS and on your TajirPoint website or order page. You choose which payment options your website shows.",
+      body: `Take card payments in the POS and on your ${BRAND_NAME} website or order page. You choose which payment options your website shows.`,
     },
     {
       title: "Stripe's secure card field, no redirect",
-      body: "Customers type their card details into Stripe's own secure field inside your page. Card numbers go to Stripe, never to TajirPoint.",
+      body: `Customers type their card details into Stripe's own secure field inside your page. Card numbers go to Stripe, never to ${BRAND_NAME}.`,
     },
     {
       title: "Connect your Stripe account yourself",
-      body: "Start Stripe's sign-up from the back office. TajirPoint checks first that Stripe supports businesses in your country, so you do not get stuck halfway.",
+      body: `Start Stripe's sign-up from the back office. ${BRAND_NAME} checks first that Stripe supports businesses in your country, so you do not get stuck halfway.`,
     },
     {
       title: "A plain-English to-do list",
-      body: "If Stripe still needs something before you can take payments, such as ID or a business address, TajirPoint shows it as a simple list.",
+      body: `If Stripe still needs something before you can take payments, such as ID or a business address, ${BRAND_NAME} shows it as a simple list.`,
     },
     {
       title: "Marked paid for you",
-      body: "Successful and failed payments are updated in TajirPoint as soon as Stripe confirms them, for till sales and online orders alike.",
+      body: `Successful and failed payments are updated in ${BRAND_NAME} as soon as Stripe confirms them, for till sales and online orders alike.`,
     },
     {
       title: "Refunds recorded both ways",
-      body: "Refund a card payment from TajirPoint, or from your Stripe dashboard. The refund shows against the sale in TajirPoint either way.",
+      body: `Refund a card payment from ${BRAND_NAME}, or from your Stripe dashboard. The refund shows against the sale in ${BRAND_NAME} either way.`,
     },
     {
       title: "Your own Stripe keys, set up with us",
@@ -89,7 +90,7 @@ const content: AddonContent = {
     },
     {
       title: "Finish anything Stripe asks for",
-      body: "If Stripe needs more details, TajirPoint lists them in plain words until your account is ready to take payments.",
+      body: `If Stripe needs more details, ${BRAND_NAME} lists them in plain words until your account is ready to take payments.`,
     },
     {
       title: "Turn on card payments",
@@ -97,11 +98,11 @@ const content: AddonContent = {
     },
     {
       title: "Get paid",
-      body: "Payments are marked paid in TajirPoint, and Stripe pays you out to your bank on your Stripe payout schedule.",
+      body: `Payments are marked paid in ${BRAND_NAME}, and Stripe pays you out to your bank on your Stripe payout schedule.`,
     },
   ],
   needs: [
-    "TajirPoint on the Shop plan or above",
+    `${BRAND_NAME} on the Shop plan or above`,
     "A business based in a country where Stripe works, such as the UK or the UAE (Stripe does not support businesses based in Pakistan)",
     "Your business details and ID for Stripe's sign-up form",
     "A bank account for Stripe to pay you into",
@@ -109,8 +110,8 @@ const content: AddonContent = {
   setup: [
     "You switch it on and connect your Stripe account yourself from the Add-ons page.",
     "Want to use your own Stripe keys instead? Send us a request from the Add-ons page and our team sets it up with you.",
-    "Stripe charges its own fees on each card payment. Ask us whether a TajirPoint service fee applies to card payments on your account.",
-    "Your money is paid out by Stripe on your Stripe payout schedule, not by TajirPoint.",
+    `Stripe charges its own fees on each card payment. Ask us whether a ${BRAND_NAME} service fee applies to card payments on your account.`,
+    `Your money is paid out by Stripe on your Stripe payout schedule, not by ${BRAND_NAME}.`,
   ],
   faqs: [
     {
@@ -118,12 +119,12 @@ const content: AddonContent = {
       a: "Into your Stripe account, and from there to your bank on your Stripe payout schedule. Stripe takes its own fees on each payment.",
     },
     {
-      q: "Does TajirPoint see my customers' card numbers?",
-      a: "No. Customers type their card details into Stripe's own secure field. The card number goes to Stripe, and TajirPoint only receives the result of the payment.",
+      q: `Does ${BRAND_NAME} see my customers' card numbers?`,
+      a: `No. Customers type their card details into Stripe's own secure field. The card number goes to Stripe, and ${BRAND_NAME} only receives the result of the payment.`,
     },
     {
       q: "Can I use Stripe in Pakistan?",
-      a: "Stripe does not open accounts for businesses based in Pakistan, so TajirPoint tells you before you start if your country is not supported. JazzCash, Easypaisa and HBLPay add-ons for Pakistan are coming soon.",
+      a: `Stripe does not open accounts for businesses based in Pakistan, so ${BRAND_NAME} tells you before you start if your country is not supported. JazzCash, Easypaisa and HBLPay add-ons for Pakistan are coming soon.`,
     },
     {
       q: "Can I use my own Stripe keys instead of connecting?",
@@ -131,11 +132,11 @@ const content: AddonContent = {
     },
     {
       q: "Can I refund a card payment?",
-      a: "Yes. Refund it from TajirPoint, or from your Stripe dashboard. Either way the refund is recorded against the sale in TajirPoint.",
+      a: `Yes. Refund it from ${BRAND_NAME}, or from your Stripe dashboard. Either way the refund is recorded against the sale in ${BRAND_NAME}.`,
     },
     {
       q: "What if Stripe still needs details from me?",
-      a: "TajirPoint shows what Stripe is asking for in plain words, and you can reopen Stripe's form to finish it. You can take payments once Stripe has what it needs.",
+      a: `${BRAND_NAME} shows what Stripe is asking for in plain words, and you can reopen Stripe's form to finish it. You can take payments once Stripe has what it needs.`,
     },
     {
       q: "Which plan do I need?",

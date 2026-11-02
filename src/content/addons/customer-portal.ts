@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/parties/api/portal (auth.py: sign-up only for a customer the
 // shop already has, matched by phone, proved with a one-time text code, own
@@ -20,7 +21,7 @@ const content: AddonContent = {
   schemaSubCategory: "Customer self-service portal add-on",
   headline: "Your credit customers check their own balance, bills and payments.",
   overview: [
-    "Customer Portal gives the customers you sell to on credit their own login. They see the same account you keep for them in TajirPoint: what they owe, their bills, and the payments they have made.",
+    `Customer Portal gives the customers you sell to on credit their own login. They see the same account you keep for them in ${BRAND_NAME}: what they owe, their bills, and the payments they have made.`,
     "Only customers you have already added can sign up. They enter the phone number you have on file, get a one-time code by text message to prove it is theirs, and choose a password. From then on they log in with their phone and password.",
     "The portal is view-only. Customers cannot change anything, and they only ever see their own account. It works on its own for any business with credit customers, and fits well with Route Dispatch for distributors.",
   ],
@@ -55,7 +56,7 @@ const content: AddonContent = {
     },
     {
       title: "Full account history",
-      body: "Every entry on their account, with the running balance, just as you see it in TajirPoint.",
+      body: `Every entry on their account, with the running balance, just as you see it in ${BRAND_NAME}.`,
     },
     {
       title: "Bills and payments",
@@ -85,14 +86,14 @@ const content: AddonContent = {
     },
   ],
   needs: [
-    "A TajirPoint account on the Shop plan or above",
-    "Your credit customers added in TajirPoint, each with their phone number",
+    `A ${BRAND_NAME} account on the Shop plan or above`,
+    `Your credit customers added in ${BRAND_NAME}, each with their phone number`,
     "Customers need a phone that can receive a text message to sign up",
   ],
   setup: [
     "You switch it on yourself from the Add-ons page.",
     "Needs the Shop plan or above.",
-    "If you switch it off, customers can no longer log in; their accounts in TajirPoint are not changed.",
+    `If you switch it off, customers can no longer log in; their accounts in ${BRAND_NAME} are not changed.`,
   ],
   faqs: [
     {

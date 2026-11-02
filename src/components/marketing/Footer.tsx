@@ -4,6 +4,8 @@ import { Wordmark } from "@/components/brand/Wordmark";
 import { FEATURES } from "@/lib/design/catalog";
 import { BUSINESSES, businessLabel } from "@/lib/marketing/businesses";
 import { legal } from "@/lib/config/site";
+import { brand } from "@/lib/config/brand";
+import { isPageShown } from "@/lib/config/pages";
 import { uxCopy } from "@/content/ux/copy";
 import { COMPARE_LABEL } from "@/content/compare/label";
 import {
@@ -46,14 +48,16 @@ export function Footer() {
           </p>
           <div className="mt-4 flex flex-col items-start gap-[6px] text-[13px] max-md:gap-0">
             <span className="font-semibold text-[var(--color-ink)]">{t("reach")}</span>
-            <a
-              href={legal.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${TAP} gap-1 text-[var(--color-ink-3)] hover:text-[var(--color-ink)]`}
-            >
-              WhatsApp <span dir="ltr">{legal.whatsappDisplay}</span>
-            </a>
+            {legal.whatsappUrl && (
+              <a
+                href={legal.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${TAP} gap-1 text-[var(--color-ink-3)] hover:text-[var(--color-ink)]`}
+              >
+                WhatsApp <span dir="ltr">{legal.whatsappDisplay}</span>
+              </a>
+            )}
             <a
               href={`mailto:${legal.email}`}
               className={`${TAP} [overflow-wrap:anywhere] text-[var(--color-ink-3)] hover:text-[var(--color-ink)]`}
@@ -85,14 +89,16 @@ export function Footer() {
           <FooterLink href="/tools">{FREE_TOOLS_LABEL[locale] ?? FREE_TOOLS_LABEL.en}</FooterLink>
         </FooterColumn>
 
-        <FooterColumn heading={LOCATIONS_HEADING[labelLocale(locale)]}>
-          {LOCATIONS.map((l) => (
-            <FooterLink key={l.slug} href={locationPath(l.slug)}>
-              {l.label[labelLocale(locale)]}
-            </FooterLink>
-          ))}
-          <FooterLink href="/pos">{ALL_LOCATIONS_LABEL[labelLocale(locale)]}</FooterLink>
-        </FooterColumn>
+        {isPageShown("/pos") && (
+          <FooterColumn heading={LOCATIONS_HEADING[labelLocale(locale)]}>
+            {LOCATIONS.map((l) => (
+              <FooterLink key={l.slug} href={locationPath(l.slug)}>
+                {l.label[labelLocale(locale)]}
+              </FooterLink>
+            ))}
+            <FooterLink href="/pos">{ALL_LOCATIONS_LABEL[labelLocale(locale)]}</FooterLink>
+          </FooterColumn>
+        )}
 
         <FooterColumn heading={t("company")}>
           <FooterLink href="/book-demo">{t("links.bookDemo")}</FooterLink>
@@ -110,7 +116,7 @@ export function Footer() {
       </div>
 
       <div className="mt-10 flex flex-wrap items-center justify-between gap-[14px] border-t border-[var(--color-line)] pt-5 text-[12px] text-[var(--color-muted)]">
-        <span>{t("copyright")}</span>
+        <span>{brand.copyright ?? t("copyright")}</span>
         <span className="flex flex-wrap gap-x-4 gap-y-2 max-md:gap-y-0">
           <Link href="/terms" className={`${TAP} hover:text-[var(--color-ink)]`}>
             {t("links.terms")}
@@ -149,7 +155,9 @@ function FooterColumn({ heading, children }: { heading: string; children: React.
   );
 }
 
+/** A page this build leaves out (src/lib/config/pages.ts) gets no link. */
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
+  if (!isPageShown(href)) return null;
   return (
     <Link
       href={href}

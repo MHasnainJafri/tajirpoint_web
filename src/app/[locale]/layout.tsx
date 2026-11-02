@@ -13,6 +13,7 @@ import { verificationMetadata } from "@/lib/seo/verification";
 import { routing, isRtl, type Locale } from "@/i18n/routing";
 import { AnalyticsProvider } from "@/components/analytics/AnalyticsProvider";
 import { SiteTracking } from "@/components/analytics/SiteTracking";
+import { BRAND_APP_HOST, brand, brandThemeCss } from "@/lib/config/brand";
 
 export const viewport: Viewport = {
   // Matches the page background in each colour scheme, so the browser bar
@@ -69,6 +70,9 @@ const reemKufiLatin = localFont({
   preload: false,
 });
 
+/** brand.ts only accepts hex colours, so this CSS cannot carry anything else. */
+const BRAND_THEME_CSS = brandThemeCss();
+
 /** Pre-render every locale at build time instead of rendering per request. */
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -117,15 +121,18 @@ export async function generateMetadata({
     // Keep phone numbers in copy from turning into iOS tel: links we did not
     // write (the real ones are explicit links, which are tracked).
     formatDetection: { telephone: false, email: false, address: false },
-    icons: {
-      icon: [
-        { url: "/favicon.svg", type: "image/svg+xml" },
-        { url: "/brand/png/icon-48.png", sizes: "48x48", type: "image/png" },
-        { url: "/brand/png/icon-192.png", sizes: "192x192", type: "image/png" },
-      ],
-      // iOS ignores SVG touch icons: a 180×180 PNG, full-bleed (iOS rounds it).
-      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
-    },
+    icons: brand.ownLogo
+      ? // Another brand's build: its favicon and its square icon, nothing of ours.
+        { icon: [{ url: brand.favicon }], apple: [{ url: brand.icon }] }
+      : {
+          icon: [
+            { url: "/favicon.svg", type: "image/svg+xml" },
+            { url: "/brand/png/icon-48.png", sizes: "48x48", type: "image/png" },
+            { url: "/brand/png/icon-192.png", sizes: "192x192", type: "image/png" },
+          ],
+          // iOS ignores SVG touch icons: a 180×180 PNG, full-bleed (iOS rounds it).
+          apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+        },
     manifest: "/manifest.webmanifest",
     appleWebApp: {
       capable: true,
@@ -192,8 +199,10 @@ export default async function LocaleLayout({
     >
       <head>
         {/* DNS only: a full preconnect to the app went unused on first load (Lighthouse). */}
-        <link rel="dns-prefetch" href="https://app.tajirpoint.com" />
+        <link rel="dns-prefetch" href={`https://${BRAND_APP_HOST}`} />
         <JsonLd schema={[organizationSchema(), websiteSchema()]} />
+        {/* A brand's own colours over the globals.css palette (none for TajirPoint). */}
+        {BRAND_THEME_CSS && <style dangerouslySetInnerHTML={{ __html: BRAND_THEME_CSS }} />}
       </head>
       <body className="min-h-screen bg-[var(--color-bg)] text-[var(--color-ink)]">
         <SiteTracking />

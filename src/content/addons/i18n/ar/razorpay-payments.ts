@@ -1,4 +1,5 @@
 import type { AddonTranslation } from "../types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Arabic write-up for "razorpay-payments". Same facts as ../../razorpay-payments.ts; awaiting
 // native review (TP-490). A field left out falls back to English.
@@ -12,7 +13,7 @@ const t: AddonTranslation = {
   overview: [
     "ستتيح Razorpay Payments للعملاء في الهند الدفع عبر صفحة الدفع الآمنة لدى Razorpay، بالطرق التي يقدّمها Razorpay مثل البطاقات وUPI والخدمات المصرفية عبر الإنترنت. ويذهب المال إلى حسابك الخاص على Razorpay.",
     "Razorpay شركة دفع هندية وتعمل للأعمال في الهند التي تستلم المدفوعات بالروبية الهندية (INR). وليست للمتاجر في باكستان أو المملكة المتحدة أو الخليج؛ لهؤلاء راجع إضافات الدفع الأخرى.",
-    "يُدخل العملاء بيانات الدفع في صفحة Razorpay، لا في TajirPoint، فلا يرى TajirPoint أبدًا أرقام البطاقات أو بيانات الدخول البنكية.",
+    `يُدخل العملاء بيانات الدفع في صفحة Razorpay، لا في ${BRAND_NAME}، فلا يرى ${BRAND_NAME} أبدًا أرقام البطاقات أو بيانات الدخول البنكية.`,
   ],
   whoFor: [
     "المتاجر والمطاعم في الهند",
@@ -26,11 +27,11 @@ const t: AddonTranslation = {
     },
     {
       problem: "لا تريد التعامل مع بيانات دفع العملاء.",
-      fix: "يدفع العملاء على صفحة الدفع الآمنة لدى Razorpay، فلا تصل بياناتهم إلى TajirPoint أبدًا.",
+      fix: `يدفع العملاء على صفحة الدفع الآمنة لدى Razorpay، فلا تصل بياناتهم إلى ${BRAND_NAME} أبدًا.`,
     },
     {
       problem: "المدفوعات الإلكترونية والطلبات في أماكن مختلفة.",
-      fix: "تبدأ كل دفعة من طلب TajirPoint الذي تخصه، ويصل المال إلى حسابك على Razorpay.",
+      fix: `تبدأ كل دفعة من طلب ${BRAND_NAME} الذي تخصه، ويصل المال إلى حسابك على Razorpay.`,
     },
   ],
   features: [
@@ -40,11 +41,11 @@ const t: AddonTranslation = {
     },
     {
       title: "مرتبطة بطلباتك",
-      body: "تبدأ كل دفعة Razorpay من طلب TajirPoint الذي تخصه، مع ملء مبلغ الطلب تلقائيًا.",
+      body: `تبدأ كل دفعة Razorpay من طلب ${BRAND_NAME} الذي تخصه، مع ملء مبلغ الطلب تلقائيًا.`,
     },
     {
       title: "المال إلى حسابك على Razorpay",
-      body: "تذهب المدفوعات إلى حسابك الخاص على Razorpay. لا يحتفظ TajirPoint بأموالك.",
+      body: `تذهب المدفوعات إلى حسابك الخاص على Razorpay. لا يحتفظ ${BRAND_NAME} بأموالك.`,
     },
     {
       title: "اختبار قبل الإطلاق",
@@ -68,7 +69,7 @@ const t: AddonTranslation = {
   needs: [
     "نشاط تجاري في الهند يستلم المدفوعات بالروبية الهندية (INR)",
     "حساب على Razorpay",
-    "TajirPoint على خطة Shop أو أعلى",
+    `${BRAND_NAME} على خطة Shop أو أعلى`,
   ],
   setup: [
     "هذه الإضافة غير متاحة للمتاجر بعد.",
@@ -90,11 +91,11 @@ const t: AddonTranslation = {
     },
     {
       q: "إلى أين يذهب المال؟",
-      a: "إلى حسابك على Razorpay. لا يحتفظ TajirPoint بالمال أبدًا. ويفرض Razorpay رسومه.",
+      a: `إلى حسابك على Razorpay. لا يحتفظ ${BRAND_NAME} بالمال أبدًا. ويفرض Razorpay رسومه.`,
     },
     {
-      q: "هل يرى TajirPoint بيانات دفع عملائي؟",
-      a: "لا. يدفع العملاء على صفحة Razorpay. ولا يعرف TajirPoint إلا نتيجة الدفع.",
+      q: `هل يرى ${BRAND_NAME} بيانات دفع عملائي؟`,
+      a: `لا. يدفع العملاء على صفحة Razorpay. ولا يعرف ${BRAND_NAME} إلا نتيجة الدفع.`,
     },
     {
       q: "ما الخطة التي سأحتاجها؟",

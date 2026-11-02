@@ -6,11 +6,13 @@ import {
   LegalPage,
   LegalSection,
   MailLink,
+  WhatsAppClause,
   WhatsAppLink,
   defineSections,
 } from "@/components/legal/LegalPage";
 import { legal, siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { BRAND_APP_HOST, BRAND_NAME } from "@/lib/config/brand";
 
 export async function generateMetadata({
   params,
@@ -20,8 +22,7 @@ export async function generateMetadata({
   const { locale } = await params;
   return buildMetadata({
     title: "Terms of Service",
-    description:
-      "The terms for using TajirPoint: the free Light plan, paid plans and billing, cancellation and refunds, acceptable use, your data, liability and governing law.",
+    description: `The terms for using ${BRAND_NAME}: the free Light plan, paid plans and billing, cancellation and refunds, acceptable use, your data, liability and governing law.`,
     path: "/terms",
     locale,
   });
@@ -89,10 +90,9 @@ export default async function TermsPage({ params }: { params: Promise<{ locale: 
 
       <LegalSection {...S.acceptance}>
         <p>
-          By creating an account, signing in, or otherwise using {legal.product} (including our web
-          app at app.tajirpoint.com, our Windows desktop app, our Android apps, and the order pages
-          and shop websites we host for you), you agree to these Terms on behalf of yourself and the
-          business you represent (“you”). If you do not agree, do not use {legal.product}.
+          By creating an account, signing in, or otherwise using {legal.product}
+          {` (including our web app at ${BRAND_APP_HOST}, our Windows desktop app, our Android apps, and the order pages and shop websites we host for you), you agree to these Terms on behalf of yourself and the business you represent (“you”). If you do not agree, do not use `}
+          {legal.product}.
         </p>
       </LegalSection>
 
@@ -102,8 +102,8 @@ export default async function TermsPage({ params }: { params: Promise<{ locale: 
           <a href={legal.operatorUrl} target="_blank" rel="noopener noreferrer">
             {legal.operator}
           </a>
-          , a company based in {legal.city}, {legal.country}. You can reach us at <MailLink /> or on
-          WhatsApp at <WhatsAppLink />.
+          , a company based in {legal.city}, {legal.country}. You can reach us at <MailLink />
+          <WhatsAppClause before=" or on WhatsApp at " />.
         </p>
       </LegalSection>
 
@@ -442,9 +442,13 @@ export default async function TermsPage({ params }: { params: Promise<{ locale: 
           <br />
           Email: <MailLink />
           <br />
-          WhatsApp: <WhatsAppLink />
-          <br />
-          Web app: <a href={siteConfig.dashboardUrl}>app.tajirpoint.com</a>
+          {legal.whatsappUrl && (
+            <>
+              WhatsApp: <WhatsAppLink />
+              <br />
+            </>
+          )}
+          Web app: <a href={siteConfig.dashboardUrl}>{`${BRAND_APP_HOST}`}</a>
         </p>
       </LegalSection>
     </LegalPage>

@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/delivery (couriers/registry + network courier adapter,
 // services/ladder_service, cash_fence, network_drivers, courier_live,
@@ -20,7 +21,7 @@ const content: AddonContent = {
   headline: "Extra drivers for the card-paid deliveries your own riders cannot take.",
   overview: [
     "Network drivers is one connection that brings many courier companies together. When your own riders are busy, a delivery can be handed to a driver from the network instead of making the customer wait.",
-    "You can pick a network driver yourself when assigning a delivery, or let TajirPoint try your own riders first and hand the job on automatically if none of them takes it. Staff see the driver, the vehicle and where they are, and the job closes itself when the driver reports the drop.",
+    `You can pick a network driver yourself when assigning a delivery, or let ${BRAND_NAME} try your own riders first and hand the job on automatically if none of them takes it. Staff see the driver, the vehicle and where they are, and the job closes itself when the driver reports the drop.`,
     "Cash orders are never sent to the network: only your own riders carry cash. Our team sets this up with you, because it connects to an outside courier account.",
   ],
   whoFor: [
@@ -32,7 +33,7 @@ const content: AddonContent = {
   problems: [
     {
       problem: "At dinner rush every rider is out and orders go cold on the pass.",
-      fix: "Hand the delivery to a network driver, or let TajirPoint do it automatically after your own riders have had their chance.",
+      fix: `Hand the delivery to a network driver, or let ${BRAND_NAME} do it automatically after your own riders have had their chance.`,
     },
     {
       problem: "Handing a job to an outside courier means losing sight of it.",
@@ -96,8 +97,8 @@ const content: AddonContent = {
     },
   ],
   needs: [
-    "A TajirPoint account on the Shop plan or above",
-    "Delivery set up in TajirPoint, with your own riders if you have them",
+    `A ${BRAND_NAME} account on the Shop plan or above`,
+    `Delivery set up in ${BRAND_NAME}, with your own riders if you have them`,
     "Online card payments for the orders you want to send to the network",
     "Network drivers covering your area (we check this with you)",
   ],

@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/compliance (handler.py seeds the expiry alert setting, 30 days
 // by default; models/prescription_ref.py doctor, licence, Rx number, patient,
@@ -25,7 +26,7 @@ const content: AddonContent = {
   headline:
     "A pharmacy counter that knows which medicines need a prescription and which batches expire next.",
   overview: [
-    "The Pharmacy Pack adds what a medical store or chemist needs on top of the TajirPoint till. Mark each medicine as over-the-counter, prescription-only or controlled, and record its generic name and active molecule.",
+    `The Pharmacy Pack adds what a medical store or chemist needs on top of the ${BRAND_NAME} till. Mark each medicine as over-the-counter, prescription-only or controlled, and record its generic name and active molecule.`,
     "When a prescription or controlled medicine is sold, the till asks for the prescription number and will not finish the sale without it. The doctor, patient and prescription details are kept in a prescription log you can search and show when asked.",
     "With batch and expiry tracking, the batch that expires first is sold first. An expiry screen shows what has expired and what expires within 30 or 90 days, and owners and managers get an alert in the app before stock runs out of date.",
   ],
@@ -103,8 +104,8 @@ const content: AddonContent = {
     },
   ],
   needs: [
-    "A TajirPoint account (any plan, including Light)",
-    "Your medicines in TajirPoint with their schedule, generic name and molecule",
+    `A ${BRAND_NAME} account (any plan, including Light)`,
+    `Your medicines in ${BRAND_NAME} with their schedule, generic name and molecule`,
     "Batch numbers and expiry dates when you receive stock",
     "A barcode scanner is helpful but not required",
   ],

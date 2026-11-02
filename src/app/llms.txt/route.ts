@@ -7,6 +7,9 @@ import { CHECKED, COMPARISONS } from "@/content/compare";
 import { LOCATIONS, LOCATIONS_HUB, locationPath } from "@/content/locations";
 import { GUIDES } from "@/content/guides";
 import { TOOLS } from "@/content/tools/tools";
+import { BRAND_NAME, brand } from "@/lib/config/brand";
+import { isPageHidden } from "@/lib/config/pages";
+import { routing } from "@/i18n/routing";
 
 // Served at /llms.txt — a dotted path, so the next-intl proxy matcher
 // (which excludes `.*\..*`) skips it, same as /og.png.
@@ -27,30 +30,85 @@ function link(name: string, path: string, description: string) {
   return `- [${name}](${url(path)}): ${description}`;
 }
 
-function body(pricing: string, addons: Addon[]): string {
-  return `# TajirPoint
+const LANGUAGE_NAMES: Record<string, string> = { en: "English", ur: "Urdu", ar: "Arabic" };
 
-> TajirPoint is a point-of-sale and back-office system for shops, restaurants,
+/** "A, B and C". */
+function andList(items: string[]): string {
+  return items.length < 2
+    ? (items[0] ?? "")
+    : `${items.slice(0, -1).join(", ")} and ${items.at(-1)}`;
+}
+
+/** The two summary paragraphs: ours, or one built from what another brand's build has. */
+function summary(): string {
+  const operated = [legal.operator, legal.city, legal.country].filter(Boolean).join(", ");
+  const contact = legal.whatsappUrl
+    ? `Contact: ${legal.email}, WhatsApp ${legal.whatsappDisplay}.`
+    : `Contact: ${legal.email}.`;
+  if (brand.isPakistan) {
+    return `> ${BRAND_NAME} is a point-of-sale and back-office system for shops, restaurants,
 > pharmacies, distributors and other small and medium businesses — POS,
 > inventory, khata (customer and supplier credit), purchasing, staff, online
 > ordering and delivery, in English, Urdu and Arabic. The Light plan is free
 > for 3 months with no card; Shop and Business are the paid plans.
 
-TajirPoint keeps selling while offline and syncs when the connection returns.
+${BRAND_NAME} keeps selling while offline and syncs when the connection returns.
 It runs in the browser, as a Windows desktop app and on Android. Switching from
 another POS is free: the team loads your products, customers, suppliers and
-khata balances for you. Operated by ${legal.operator}, ${legal.city}, ${legal.country}.
-Contact: ${legal.email}, WhatsApp ${legal.whatsappDisplay}.
+khata balances for you. Operated by ${operated}.
+${contact}`;
+  }
+  const who = andList(BUSINESSES.map((b) => b.name.toLowerCase()));
+  const languages = andList(routing.locales.map((l) => LANGUAGE_NAMES[l] ?? l));
+  return `> ${BRAND_NAME} is a point-of-sale and back-office system for ${who} — POS,
+> inventory, purchasing, staff, online ordering and delivery, in ${languages}.
+
+${BRAND_NAME} keeps selling while offline and syncs when the connection returns.
+It runs in the browser, as a Windows desktop app and on Android. Operated by
+${operated}. ${contact}`;
+}
+
+/**
+ * Leaves out every link to a page this build does not have (another market,
+ * business type or language) and any section left with no links.
+ */
+function onlyShownPages(text: string): string {
+  const origin = siteConfig.url;
+  const hidden = (line: string) => {
+    const m = /^- \[[^\]]*\]\(([^)]+)\)/.exec(line);
+    if (!m || !m[1]!.startsWith(origin)) return false;
+    const path = m[1]!.slice(origin.length) || "/";
+    const [, first, rest] = /^\/([^/]*)(.*)$/.exec(path) ?? [];
+    const isLocale = first === "ur" || first === "ar";
+    if (isLocale && !(routing.locales as readonly string[]).includes(first!)) return true;
+    return isPageHidden(isLocale ? rest || "/" : path);
+  };
+  const sections = text.split(/\n(?=## )/);
+  return sections
+    .map((sec) =>
+      sec
+        .split("\n")
+        .filter((l) => !hidden(l))
+        .join("\n")
+    )
+    .filter((sec, i) => i === 0 || /^- \[/m.test(sec))
+    .join("\n");
+}
+
+function body(pricing: string, addons: Addon[]): string {
+  return onlyShownPages(`# ${BRAND_NAME}
+
+${summary()}
 
 ## Core pages
 
-${link("Home", "/", "Product overview — what TajirPoint does and who it is for")}
+${link("Home", "/", `Product overview — what ${BRAND_NAME} does and who it is for`)}
 ${link("Pricing", "/pricing", pricing)}
 ${link("Book a demo", "/book-demo", "Book a free demo; optional free data migration from your old POS")}
 ${link("Get a call back", "/get-a-call", "Leave a business name and phone number; the team calls within one working day")}
-${link("Businesses", "/business", "Every business type TajirPoint is set up for")}
+${link("Businesses", "/business", `Every business type ${BRAND_NAME} is set up for`)}
 ${link("Add-ons", "/extensions", "Optional add-ons (extensions) that add features per shop, with status and price")}
-${link("About", "/about", "Who builds TajirPoint")}
+${link("About", "/about", `Who builds ${BRAND_NAME}`)}
 ${link("What's new", "/changelog", "Monthly list of features released to shops, in plain words")}
 ${link("Partners", "/partners", "Become a reseller or setup partner; commission is agreed with each partner")}
 ${link("Contact", "/contact", "Email and WhatsApp")}
@@ -113,7 +171,7 @@ ${RESOURCES.map((r) => link(r.title, `/docs/${r.slug}`, `${r.title} API referenc
 
 ## Legal
 
-${link("Terms of service", "/terms", "Terms governing use of TajirPoint")}
+${link("Terms of service", "/terms", `Terms governing use of ${BRAND_NAME}`)}
 ${link("Privacy policy", "/privacy", "How personal and business data is handled")}
 ${link("Cookie policy", "/cookies", "Cookies and similar technologies on the website and apps")}
 ${link("Refund policy", "/refund-policy", "Cancellations and the 15-day refund window")}
@@ -124,7 +182,7 @@ ${link("Delete your account", "/delete-account", "How to request account and dat
 
 - [Merchant app](${siteConfig.dashboardUrl}): the logged-in application (not public)
 - [Sign up](${siteConfig.signupUrl}): start the free Light plan
-`;
+`);
 }
 
 export async function GET() {

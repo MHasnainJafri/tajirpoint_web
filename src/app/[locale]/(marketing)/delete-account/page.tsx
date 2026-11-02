@@ -3,6 +3,7 @@ import { setRequestLocale } from "next-intl/server";
 import Link from "next/link";
 import { MintButton, PillBadge } from "@/components/design/primitives";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { BRAND_EMAIL, BRAND_NAME } from "@/lib/config/brand";
 
 export async function generateMetadata({
   params,
@@ -12,24 +13,23 @@ export async function generateMetadata({
   const { locale } = await params;
   return buildMetadata({
     title: "Delete Your Account",
-    description:
-      "How to delete your TajirPoint account and data from the POS, Business, Order Desk, Rider and Store apps: the steps, what is deleted, what is kept and when.",
+    description: `How to delete your ${BRAND_NAME} account and data from the POS, Business, Order Desk, Rider and Store apps: the steps, what is deleted, what is kept and when.`,
     path: "/delete-account",
     locale,
   });
 }
 
-const DELETION_EMAIL = "hello@tajirpoint.com";
+const DELETION_EMAIL = `${BRAND_EMAIL}`;
 const DELETION_SUBJECT = "Delete my account";
 const MAILTO = `mailto:${DELETION_EMAIL}?subject=${encodeURIComponent(DELETION_SUBJECT)}`;
 
 /** Names as they appear on the Google Play listings. */
 const APPS = [
-  { name: "TajirPoint POS", who: "Shop owners and staff" },
-  { name: "TajirPoint Business", who: "Shop owners and managers" },
-  { name: "TajirPoint Order Desk", who: "Shop staff taking orders (“Order Desk”)" },
-  { name: "TajirPoint Rider", who: "Delivery riders" },
-  { name: "TajirPoint Store", who: "Customers ordering from a shop" },
+  { name: `${BRAND_NAME} POS`, who: "Shop owners and staff" },
+  { name: `${BRAND_NAME} Business`, who: "Shop owners and managers" },
+  { name: `${BRAND_NAME} Order Desk`, who: "Shop staff taking orders (“Order Desk”)" },
+  { name: `${BRAND_NAME} Rider`, who: "Delivery riders" },
+  { name: `${BRAND_NAME} Store`, who: "Customers ordering from a shop" },
 ];
 
 export default async function DeleteAccountPage({
@@ -53,12 +53,10 @@ export default async function DeleteAccountPage({
         <PillBadge>Account deletion</PillBadge>
 
         <h1 className="mt-6 text-[clamp(36px,5.4vw,64px)] font-extrabold leading-[1.04] tracking-[-0.035em] text-[var(--color-ink)]">
-          Delete your TajirPoint account
+          {`Delete your ${BRAND_NAME} account`}
         </h1>
         <p className="mt-5 max-w-[620px] text-[17.5px] leading-[1.65] text-[var(--color-muted)]">
-          You can ask TajirPoint to delete your account and the personal data linked to it at any
-          time. This page explains how to request it, what we delete, what we must keep by law, and
-          how long it takes.
+          {`You can ask ${BRAND_NAME} to delete your account and the personal data linked to it at any time. This page explains how to request it, what we delete, what we must keep by law, and how long it takes.`}
         </p>
         <div className="mt-8">
           <MintButton href={MAILTO} external>
@@ -69,8 +67,7 @@ export default async function DeleteAccountPage({
         <div className="mt-14 flex flex-col gap-6">
           <LegalSection title="Which apps this covers">
             <p>
-              One TajirPoint account is used across all of our Android apps. Deleting it removes
-              your access to every one of them:
+              {`One ${BRAND_NAME} account is used across all of our Android apps. Deleting it removes your access to every one of them:`}
             </p>
             <ul>
               {APPS.map((app) => (
@@ -100,19 +97,19 @@ export default async function DeleteAccountPage({
               </li>
             </ol>
             <p>
-              <strong>Staff and rider accounts</strong> can also ask their shop owner to remove
-              them. The owner can do this in the TajirPoint POS app under{" "}
+              <strong>Staff and rider accounts</strong>
+              {` can also ask their shop owner to remove them. The owner can do this in the ${BRAND_NAME} POS app under`}{" "}
               <strong>Settings → Users</strong>. To delete your personal data as well, email us as
               described above.
             </p>
             <p>
-              <strong>Customers of a shop</strong> (TajirPoint Store app) can delete their account
-              themselves, straight away: open <strong>Account</strong> in the app and choose{" "}
-              <strong>Delete my account</strong>, then confirm. On the shop&rsquo;s online order
-              page it is the same: <strong>Your account</strong>, then{" "}
-              <strong>Delete my account</strong>. Each shop also has its own page at{" "}
-              <strong>/delete-account</strong> on its order page address. If you can no longer sign
-              in, email us with the phone number you ordered with.
+              <strong>Customers of a shop</strong>
+              {` (${BRAND_NAME} Store app) can delete their account themselves, straight away: open `}
+              <strong>Account</strong> in the app and choose <strong>Delete my account</strong>,
+              then confirm. On the shop&rsquo;s online order page it is the same:{" "}
+              <strong>Your account</strong>, then <strong>Delete my account</strong>. Each shop also
+              has its own page at <strong>/delete-account</strong> on its order page address. If you
+              can no longer sign in, email us with the phone number you ordered with.
             </p>
           </LegalSection>
 

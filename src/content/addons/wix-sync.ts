@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/wix (WixSyncService.push_product: simple products, name cut
 // to 80 chars, trackInventory flag only, wix_variant_id stored empty so
@@ -21,9 +22,9 @@ const content: AddonContent = {
   schemaSubCategory: "Wix Stores integration add-on for POS",
   headline: "Your Wix website orders, straight into your shop's books.",
   overview: [
-    "Wix is a website builder that many small shops use to get online quickly, and Wix Stores is its built-in online shop. Wix Sync will connect that shop to TajirPoint, so you stop copying orders across by hand.",
-    "From TajirPoint you will send items to your Wix store with their name, item code and selling price. When a customer pays for an order on Wix, it comes into TajirPoint as a real sale: stock is taken off your shop count and the money is booked the right way.",
-    "The first version is kept simple. Each item goes to Wix as a single product without size or colour options, and orders flow one way, from Wix into TajirPoint.",
+    `Wix is a website builder that many small shops use to get online quickly, and Wix Stores is its built-in online shop. Wix Sync will connect that shop to ${BRAND_NAME}, so you stop copying orders across by hand.`,
+    `From ${BRAND_NAME} you will send items to your Wix store with their name, item code and selling price. When a customer pays for an order on Wix, it comes into ${BRAND_NAME} as a real sale: stock is taken off your shop count and the money is booked the right way.`,
+    `The first version is kept simple. Each item goes to Wix as a single product without size or colour options, and orders flow one way, from Wix into ${BRAND_NAME}.`,
   ],
   whoFor: [
     "Small shops with a website built on Wix",
@@ -34,19 +35,19 @@ const content: AddonContent = {
   problems: [
     {
       problem: "Wix orders are copied into the till one by one.",
-      fix: "Paid Wix orders will come into TajirPoint once each, as real sales matched to your items.",
+      fix: `Paid Wix orders will come into ${BRAND_NAME} once each, as real sales matched to your items.`,
     },
     {
       problem: "Web sales never show up in the shop's stock.",
-      fix: "An imported Wix order takes the stock off in TajirPoint, the same as a counter sale.",
+      fix: `An imported Wix order takes the stock off in ${BRAND_NAME}, the same as a counter sale.`,
     },
     {
       problem: "Listing products on Wix takes an evening every time.",
-      fix: "Pick items in TajirPoint and send them to Wix with their name, code and price.",
+      fix: `Pick items in ${BRAND_NAME} and send them to Wix with their name, code and price.`,
     },
     {
       problem: "A cancelled Wix order still counts as a sale.",
-      fix: "When Wix says an order is cancelled, the sale in TajirPoint is cancelled too. Refunds are flagged for you to check.",
+      fix: `When Wix says an order is cancelled, the sale in ${BRAND_NAME} is cancelled too. Refunds are flagged for you to check.`,
     },
   ],
   features: [
@@ -86,19 +87,19 @@ const content: AddonContent = {
     },
     {
       title: "Take orders online",
-      body: "Wix sends paid orders to TajirPoint, where they become sales in your reports.",
+      body: `Wix sends paid orders to ${BRAND_NAME}, where they become sales in your reports.`,
     },
   ],
   needs: [
     "A Wix website with Wix Stores (a Wix plan that allows online selling)",
     "Access to your Wix account to create an access key",
-    "A TajirPoint account on the Shop plan or above",
+    `A ${BRAND_NAME} account on the Shop plan or above`,
     "Item codes on your products help orders match cleanly",
   ],
   setup: [
     "Once it is live, our team sets it up with you; you do not switch it on alone.",
     "Your Wix plan and payment fees stay with Wix.",
-    "Your existing TajirPoint sales and stock are not changed by connecting.",
+    `Your existing ${BRAND_NAME} sales and stock are not changed by connecting.`,
   ],
   faqs: [
     {

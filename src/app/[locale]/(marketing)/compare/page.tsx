@@ -7,6 +7,8 @@ import { CHECKED, CHECKED_ISO, COMPARE_HUB, COMPARISONS } from "@/content/compar
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata, canonicalUrl } from "@/lib/seo/metadata";
 import { faqSchema, pageBreadcrumbs } from "@/lib/seo/schemas";
+import { BRAND_NAME } from "@/lib/config/brand";
+import { assertPageShown } from "@/lib/config/pages";
 
 export async function generateMetadata({
   params,
@@ -34,7 +36,7 @@ const GROUPS = [
   },
   {
     id: "pos",
-    title: "TajirPoint vs other POS systems",
+    title: `${BRAND_NAME} vs other POS systems`,
     sub: `Fair, side-by-side, with a source and the date (${CHECKED}) for every fact about the other product.`,
     kind: "competitor" as const,
   },
@@ -43,6 +45,8 @@ const GROUPS = [
 export default async function CompareHubPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  // Left out of builds for another market or business type (src/lib/config/pages.ts).
+  assertPageShown("/compare");
 
   return (
     <div lang={locale === "en" ? undefined : "en"} dir={locale === "en" ? undefined : "ltr"}>
@@ -53,7 +57,7 @@ export default async function CompareHubPage({ params }: { params: Promise<{ loc
           {
             "@context": "https://schema.org",
             "@type": "ItemList",
-            name: "TajirPoint comparisons",
+            name: `${BRAND_NAME} comparisons`,
             itemListElement: COMPARISONS.map((c, i) => ({
               "@type": "ListItem",
               position: i + 1,
@@ -64,11 +68,14 @@ export default async function CompareHubPage({ params }: { params: Promise<{ loc
         ]}
       />
 
-      <div className="mx-auto max-w-[1140px] px-[clamp(16px,3vw,24px)]" style={{ overflowX: "clip" }}>
+      <div
+        className="mx-auto max-w-[1140px] px-[clamp(16px,3vw,24px)]"
+        style={{ overflowX: "clip" }}
+      >
         <section className="pb-[clamp(24px,4vw,40px)] pt-[clamp(40px,6vw,72px)]">
           <div className="eyebrow">Compare</div>
           <h1 className="mt-4 max-w-[20ch] text-[clamp(32px,4.6vw,54px)] font-extrabold leading-[1.06] tracking-[-0.035em] text-balance">
-            Is TajirPoint right for you? An honest comparison.
+            {`Is ${BRAND_NAME} right for you? An honest comparison.`}
           </h1>
           <p className="mt-5 max-w-[62ch] text-[16.5px] leading-[1.65] text-[var(--color-body)]">
             See how {siteConfig.name} compares with a paper khata, Excel, a cash register and other
@@ -82,11 +89,20 @@ export default async function CompareHubPage({ params }: { params: Promise<{ loc
         </section>
 
         {GROUPS.map((g) => (
-          <section key={g.id} aria-labelledby={`${g.id}-title`} className="mt-[clamp(32px,5vw,56px)]">
-            <h2 id={`${g.id}-title`} className="text-[clamp(22px,2.8vw,30px)] font-extrabold tracking-[-0.025em]">
+          <section
+            key={g.id}
+            aria-labelledby={`${g.id}-title`}
+            className="mt-[clamp(32px,5vw,56px)]"
+          >
+            <h2
+              id={`${g.id}-title`}
+              className="text-[clamp(22px,2.8vw,30px)] font-extrabold tracking-[-0.025em]"
+            >
               {g.title}
             </h2>
-            <p className="mt-2 max-w-[70ch] text-[15px] leading-[1.6] text-[var(--color-muted)]">{g.sub}</p>
+            <p className="mt-2 max-w-[70ch] text-[15px] leading-[1.6] text-[var(--color-muted)]">
+              {g.sub}
+            </p>
             <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {COMPARISONS.filter((c) => c.kind === g.kind).map((c) => (
                 <CompareCard key={c.slug} c={c} />
@@ -96,12 +112,18 @@ export default async function CompareHubPage({ params }: { params: Promise<{ loc
         ))}
 
         <section aria-labelledby="how-title" className="mt-[clamp(40px,6vw,72px)] max-w-[760px]">
-          <h2 id="how-title" className="text-[clamp(20px,2.4vw,26px)] font-extrabold tracking-[-0.02em]">
+          <h2
+            id="how-title"
+            className="text-[clamp(20px,2.4vw,26px)] font-extrabold tracking-[-0.02em]"
+          >
             How we compare
           </h2>
           <ul className="mt-3 flex list-disc flex-col gap-2 ps-5 text-[15.5px] leading-[1.65] text-[var(--color-body)]">
-            <li>Our side lists only what works in TajirPoint today. Anything not released says “coming soon”.</li>
-            <li>Their side uses only their own public pages, linked on each comparison with the date we read them.</li>
+            <li>{`Our side lists only what works in ${BRAND_NAME} today. Anything not released says “coming soon”.`}</li>
+            <li>
+              Their side uses only their own public pages, linked on each comparison with the date
+              we read them.
+            </li>
             <li>If we could not confirm something on their site, we say so instead of guessing.</li>
             <li>Every page has a section on where the other option is the better choice.</li>
           </ul>

@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/cash_management (CashAccount kinds drawer/safe/petty/other,
 // CashTransaction categories, CashTransfer, CashCount with expected/variance,
@@ -19,7 +20,7 @@ const content: AddonContent = {
   headline: "Know where every note is: drawers, safe and petty cash in one place.",
   overview: [
     "Cash Management gives each pile of cash in your business its own account: the till drawer, the safe, petty cash, or anything else you keep money in. Every movement in or out is written down with who did it and why.",
-    "When you count a drawer, you enter how many of each note and coin you have. TajirPoint works out the total, compares it with what should be there, and shows the difference straight away, so short or extra cash is spotted the same day, not at month end.",
+    `When you count a drawer, you enter how many of each note and coin you have. ${BRAND_NAME} works out the total, compares it with what should be there, and shows the difference straight away, so short or extra cash is spotted the same day, not at month end.`,
     "It works with your register shifts: the opening float and the closing handover are recorded against the drawer. If you also use the Accounting add-on, cash movements are posted to your books for you.",
   ],
   whoFor: [
@@ -87,11 +88,11 @@ const content: AddonContent = {
     },
     {
       title: "Count and compare",
-      body: "At closing, count the drawer by notes and coins. TajirPoint shows the difference and keeps the count on record.",
+      body: `At closing, count the drawer by notes and coins. ${BRAND_NAME} shows the difference and keeps the count on record.`,
     },
   ],
   needs: [
-    "A TajirPoint account (any plan, including Light)",
+    `A ${BRAND_NAME} account (any plan, including Light)`,
     "Nothing else: no extra hardware or outside account",
   ],
   setup: [

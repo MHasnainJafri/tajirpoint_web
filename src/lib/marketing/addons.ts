@@ -5,6 +5,8 @@ import { ADDON_SNAPSHOT } from "@/content/addons/snapshot";
 import type { AddonFaq, AddonFeatureCopy, AddonProblem, AddonStep } from "@/content/addons/types";
 import { formatMoney } from "@/lib/api/plans";
 import { deriveStatus, type AddonStatus } from "./addon-status";
+import { brand } from "@/lib/config/brand";
+import { isPageShown } from "@/lib/config/pages";
 
 /**
  * The add-on catalogue for the marketing site (owner, 1 Nov 2026: "the
@@ -22,7 +24,7 @@ import { deriveStatus, type AddonStatus } from "./addon-status";
  * and a page is never empty.
  */
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://api.tajirpoint.com";
+const API_BASE = brand.apiOrigin;
 
 /** Seconds between background refreshes of the catalogue (ISR). */
 export const ADDON_REVALIDATE = 600;
@@ -197,7 +199,7 @@ export interface Addon {
   hasWriteUp: boolean;
 }
 
-const ALLOWED_ICON_HOSTS = new Set(["media.tajirpoint.com"]);
+const ALLOWED_ICON_HOSTS = new Set([brand.mediaHost]);
 
 /** Only https icons from our media host: next/image refuses any other host. */
 function safeIcon(url: string | null | undefined): string | null {
@@ -307,6 +309,12 @@ export interface AddonCatalogue {
  * non-200, bad JSON, empty list) falls back to the snapshot.
  */
 export const getAddonCatalogue = cache(async (): Promise<AddonCatalogue> => {
+  const { addons, source } = await readAddonCatalogue();
+  // Add-on pages a build for another market leaves out (src/lib/config/pages.ts).
+  return { addons: addons.filter((a) => isPageShown(`/extensions/${a.slug}`)), source };
+});
+
+async function readAddonCatalogue(): Promise<AddonCatalogue> {
   try {
     const res = await fetch(`${API_BASE}/api/v1/public/extensions/`, {
       next: { revalidate: ADDON_REVALIDATE, tags: ["addons"] },
@@ -319,8 +327,13 @@ export const getAddonCatalogue = cache(async (): Promise<AddonCatalogue> => {
   } catch {
     // Fall through to the snapshot.
   }
-  return { addons: buildCatalogue({ results: ADDON_SNAPSHOT }), source: "snapshot" };
-});
+  // The snapshot is our own server's catalogue: another brand's build never
+  // shows it (its icons and prices are ours); it shows no add-ons instead.
+  return {
+    addons: brand.isDefault ? buildCatalogue({ results: ADDON_SNAPSHOT }) : [],
+    source: "snapshot",
+  };
+}
 
 export async function getAddon(slug: string): Promise<Addon | undefined> {
   const { addons } = await getAddonCatalogue();

@@ -11,6 +11,7 @@ import { BOOK_DEMO_COPY } from "@/content/i18n/lead-pages/pages";
 import { SHARED_FORM_COPY } from "@/content/i18n/lead-pages/forms";
 import { pickCopy } from "@/content/i18n/page-copy";
 import { DemoForm } from "./DemoForm";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 export async function generateMetadata({
   params,
@@ -94,18 +95,20 @@ export default async function BookDemoPage({ params }: { params: Promise<{ local
           </ul>
 
           <div className="mt-8 flex flex-col gap-3 border-t border-[var(--color-line-2)] pt-6 text-[14px] text-[var(--color-body)]">
-            <p>
-              {t.hurry}{" "}
-              <a
-                href={whatsappLink("Hi TajirPoint, I'd like a demo.")}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-track="book_demo_aside"
-                className="font-semibold text-[var(--color-mint-2)] underline underline-offset-2"
-              >
-                {t.whatsappUs} <span dir="ltr">{legal.whatsappDisplay}</span>
-              </a>
-            </p>
+            {legal.whatsappUrl && (
+              <p>
+                {t.hurry}{" "}
+                <a
+                  href={whatsappLink(`Hi ${BRAND_NAME}, I'd like a demo.`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-track="book_demo_aside"
+                  className="font-semibold text-[var(--color-mint-2)] underline underline-offset-2"
+                >
+                  {t.whatsappUs} <span dir="ltr">{legal.whatsappDisplay}</span>
+                </a>
+              </p>
+            )}
             <p>
               {t.justTalk}{" "}
               <Link

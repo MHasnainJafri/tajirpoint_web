@@ -1,3 +1,5 @@
+import { BRAND_NAME } from "@/lib/config/brand";
+
 /**
  * The free tools at /tools — copy, SEO fields and FAQs, in one place.
  *
@@ -103,8 +105,7 @@ export const TOOLS: ToolInfo[] = [
           "No. The calculator runs in your browser. What you type is not sent to us or stored anywhere.",
       },
     ],
-    inProduct:
-      "TajirPoint records the cost of each item you buy and shows the margin you actually made on what you sold — after returns.",
+    inProduct: `${BRAND_NAME} records the cost of each item you buy and shows the margin you actually made on what you sold — after returns.`,
     forBusinesses: [
       { label: "Retail & fashion", href: "/business/retail-fashion" },
       { label: "Grocery & kiryana", href: "/business/grocery-kiryana" },
@@ -162,8 +163,7 @@ export const TOOLS: ToolInfo[] = [
         answer: "No. The calculator runs in your browser and nothing you type is sent or stored.",
       },
     ],
-    inProduct:
-      "TajirPoint adds tax at checkout — on prices with or without tax — and shows it on every receipt and in your sales reports.",
+    inProduct: `${BRAND_NAME} adds tax at checkout — on prices with or without tax — and shows it on every receipt and in your sales reports.`,
     forBusinesses: [
       { label: "Restaurants", href: "/business/restaurants" },
       { label: "Retail & fashion", href: "/business/retail-fashion" },
@@ -213,12 +213,10 @@ export const TOOLS: ToolInfo[] = [
       },
       {
         question: "Can I add my logo?",
-        answer:
-          "Not in this free tool. In TajirPoint your receipts and invoices carry your shop's name and details automatically.",
+        answer: `Not in this free tool. In ${BRAND_NAME} your receipts and invoices carry your shop's name and details automatically.`,
       },
     ],
-    inProduct:
-      "In TajirPoint every sale already has its receipt or invoice, with your shop's details, ready to print or share — no retyping.",
+    inProduct: `In ${BRAND_NAME} every sale already has its receipt or invoice, with your shop's details, ready to print or share — no retyping.`,
     forBusinesses: [
       { label: "Distributors & wholesale", href: "/business/distributors-wholesale" },
       { label: "Salons & services", href: "/business/salons-services" },
@@ -274,8 +272,7 @@ export const TOOLS: ToolInfo[] = [
         answer: "No. The calculator runs in your browser and nothing you type is sent or stored.",
       },
     ],
-    inProduct:
-      "TajirPoint shows sales, cost of goods and margin for any dates you pick, so you can see how close each month is to break-even.",
+    inProduct: `${BRAND_NAME} shows sales, cost of goods and margin for any dates you pick, so you can see how close each month is to break-even.`,
     forBusinesses: [
       { label: "Restaurants", href: "/business/restaurants" },
       { label: "Cafés & bakeries", href: "/business/cafes-bakeries" },
@@ -334,8 +331,7 @@ export const TOOLS: ToolInfo[] = [
         answer: "No. The calculator runs in your browser and nothing you type is sent or stored.",
       },
     ],
-    inProduct:
-      "TajirPoint costs each recipe from your ingredient prices and shows the cost per portion and food cost % next to the menu price.",
+    inProduct: `${BRAND_NAME} costs each recipe from your ingredient prices and shows the cost per portion and food cost % next to the menu price.`,
     forBusinesses: [
       { label: "Restaurants", href: "/business/restaurants" },
       { label: "Cafés & bakeries", href: "/business/cafes-bakeries" },

@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/shipping (models CourierAccount/Shipment statuses,
 // services/courier_service book/cancel/poll, ship_from_store_service (inline
@@ -9,8 +10,7 @@ import type { AddonContent } from "./types";
 const content: AddonContent = {
   slug: "courier-postex",
   seoTitle: "PostEx Add-on: Book COD Orders and Track From Your POS",
-  seoDescription:
-    "Coming soon: book PostEx orders straight from a TajirPoint sale, with the cash to collect filled in and status updates arriving as PostEx moves the parcel.",
+  seoDescription: `Coming soon: book PostEx orders straight from a ${BRAND_NAME} sale, with the cash to collect filled in and status updates arriving as PostEx moves the parcel.`,
   keywords: [
     "PostEx booking software",
     "PostEx POS integration",
@@ -19,10 +19,10 @@ const content: AddonContent = {
     "parcel tracking in POS",
   ],
   schemaSubCategory: "Courier booking add-on for POS",
-  headline: "Book PostEx orders from the sale and watch them move without leaving TajirPoint.",
+  headline: `Book PostEx orders from the sale and watch them move without leaving ${BRAND_NAME}.`,
   overview: [
-    "The PostEx add-on will let you book an order with PostEx straight from a sale in TajirPoint. Use the customer's saved address or type it in at the till, and the tracking number and booking slip come back onto the sale.",
-    "For cash on delivery, the amount PostEx collects is taken from what the customer still owes on the sale. PostEx sends status changes to TajirPoint as they happen, and TajirPoint also checks every 10 minutes in case one is missed.",
+    `The PostEx add-on will let you book an order with PostEx straight from a sale in ${BRAND_NAME}. Use the customer's saved address or type it in at the till, and the tracking number and booking slip come back onto the sale.`,
+    `For cash on delivery, the amount PostEx collects is taken from what the customer still owes on the sale. PostEx sends status changes to ${BRAND_NAME} as they happen, and ${BRAND_NAME} also checks every 10 minutes in case one is missed.`,
     "It is not open to shops yet: the connection still has to be tested against a real PostEx account. Once it is live, our team will set it up with you.",
   ],
   whoFor: [
@@ -42,7 +42,7 @@ const content: AddonContent = {
     },
     {
       problem: "You only find out about a returned parcel days later.",
-      fix: "Status changes arrive from PostEx as they happen, so a parcel out for delivery, delivered or returned shows in TajirPoint straight away.",
+      fix: `Status changes arrive from PostEx as they happen, so a parcel out for delivery, delivered or returned shows in ${BRAND_NAME} straight away.`,
     },
   ],
   features: [
@@ -60,15 +60,15 @@ const content: AddonContent = {
     },
     {
       title: "Updates as they happen",
-      body: "PostEx sends each status change to TajirPoint, and every update is checked to make sure it really came from PostEx.",
+      body: `PostEx sends each status change to ${BRAND_NAME}, and every update is checked to make sure it really came from PostEx.`,
     },
     {
       title: "A 10-minute safety check",
-      body: "TajirPoint also asks PostEx for the latest status every 10 minutes, so a missed update is caught.",
+      body: `${BRAND_NAME} also asks PostEx for the latest status every 10 minutes, so a missed update is caught.`,
     },
     {
       title: "Cancel an order",
-      body: "Cancel a PostEx order that has not gone yet, straight from TajirPoint.",
+      body: `Cancel a PostEx order that has not gone yet, straight from ${BRAND_NAME}.`,
     },
   ],
   howItWorks: [
@@ -90,7 +90,7 @@ const content: AddonContent = {
     },
   ],
   needs: [
-    "A TajirPoint account on the Shop plan or above",
+    `A ${BRAND_NAME} account on the Shop plan or above`,
     "A PostEx merchant account with access to its dashboard",
     "A printer for booking slips",
   ],
@@ -110,7 +110,7 @@ const content: AddonContent = {
     },
     {
       q: "How quickly will I see status changes?",
-      a: "PostEx sends them as they happen. TajirPoint also checks every 10 minutes in case one is missed.",
+      a: `PostEx sends them as they happen. ${BRAND_NAME} also checks every 10 minutes in case one is missed.`,
     },
     {
       q: "Can I book a parcel for a walk-in sale?",
@@ -118,7 +118,7 @@ const content: AddonContent = {
     },
     {
       q: "Can I cancel an order?",
-      a: "Yes, you can cancel a PostEx order from TajirPoint before it is delivered.",
+      a: `Yes, you can cancel a PostEx order from ${BRAND_NAME} before it is delivered.`,
     },
     {
       q: "Is it included in the free Light plan?",

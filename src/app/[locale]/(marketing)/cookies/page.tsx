@@ -6,6 +6,7 @@ import { legal } from "@/lib/config/site";
 import { CookieChoicesButton } from "@/components/analytics/CookieChoicesButton";
 import { CONSENT_STORAGE_KEY } from "@/lib/analytics/consent";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { BRAND_APP_HOST, BRAND_HOST, BRAND_NAME } from "@/lib/config/brand";
 
 export async function generateMetadata({
   params,
@@ -15,8 +16,7 @@ export async function generateMetadata({
   const { locale } = await params;
   return buildMetadata({
     title: "Cookie Policy",
-    description:
-      "Which cookies and similar storage TajirPoint uses on its website, web app and order pages, what each one does, and how to accept, refuse or remove them.",
+    description: `Which cookies and similar storage ${BRAND_NAME} uses on its website, web app and order pages, what each one does, and how to accept, refuse or remove them.`,
     path: "/cookies",
     locale,
   });
@@ -24,8 +24,8 @@ export async function generateMetadata({
 
 const S = defineSections({
   what: "What cookies and similar storage are",
-  website: "Our website (tajirpoint.com)",
-  app: "The TajirPoint web app",
+  website: `Our website (${BRAND_HOST})`,
+  app: `The ${BRAND_NAME} web app`,
   "order-pages": "Order pages and shop websites",
   consent: "Consent",
   control: "How to control cookies",
@@ -142,10 +142,7 @@ export default async function CookiesPage({ params }: { params: Promise<{ locale
 
       <LegalSection {...S.app}>
         <p>
-          The web app at app.tajirpoint.com uses strictly necessary storage only: a sign-in session
-          so you stay logged in, and local storage and IndexedDB on your device so the point of sale
-          can keep working offline and sync later. Clearing this storage signs you out and may
-          remove offline sales that have not synced yet — sync before clearing.
+          {`The web app at ${BRAND_APP_HOST} uses strictly necessary storage only: a sign-in session so you stay logged in, and local storage and IndexedDB on your device so the point of sale can keep working offline and sync later. Clearing this storage signs you out and may remove offline sales that have not synced yet — sync before clearing.`}
         </p>
       </LegalSection>
 

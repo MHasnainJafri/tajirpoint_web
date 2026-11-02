@@ -12,7 +12,7 @@ import {
   type Attribution,
 } from "@/lib/marketing/utm";
 import { trackDemoRequest } from "@/lib/analytics/events";
-import { whatsappLink } from "@/lib/config/site";
+import { legal, whatsappLink } from "@/lib/config/site";
 import {
   errorCls,
   hintCls,
@@ -34,6 +34,7 @@ import {
   timeOptions,
 } from "@/content/i18n/lead-pages/forms";
 import { businessTypeOptions } from "@/content/i18n/lead-pages/business-types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 /**
  * Our own demo booking form (no third-party scheduler). Posts through a server action
@@ -102,16 +103,18 @@ export function DemoForm() {
           {t.successBody}
           {state.summary?.wantsMigration ? t.successMigration : ""}
         </p>
-        <a
-          href={whatsappLink("Hi TajirPoint, I just booked a demo on your website.")}
-          target="_blank"
-          rel="noopener noreferrer"
-          data-track="book_demo_success"
-          className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#0A0A0A] px-6 py-3 text-[14.5px] font-bold text-white transition-transform duration-200 hover:-translate-y-[2px]"
-        >
-          {shared.whatsappNow}
-          <span aria-hidden="true">{forwardArrow(rtl)}</span>
-        </a>
+        {legal.whatsappUrl && (
+          <a
+            href={whatsappLink(`Hi ${BRAND_NAME}, I just booked a demo on your website.`)}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-track="book_demo_success"
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#0A0A0A] px-6 py-3 text-[14.5px] font-bold text-white transition-transform duration-200 hover:-translate-y-[2px]"
+          >
+            {shared.whatsappNow}
+            <span aria-hidden="true">{forwardArrow(rtl)}</span>
+          </a>
+        )}
       </div>
     );
   }

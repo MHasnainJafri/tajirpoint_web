@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { isPakistanVisitor, readVisitorHints } from "@/lib/marketing/pk-visitor";
+import { brand } from "@/lib/config/brand";
 
 /**
  * True once hydrated in a browser that looks like Pakistan. Always false on
@@ -40,7 +41,8 @@ export function PkrPrice({
   className?: string;
 }) {
   const pk = usePakistanVisitor();
-  if (!pk || amount === null) return null;
+  // A build for another market never shows rupees.
+  if (!brand.isPakistan || !pk || amount === null) return null;
   return (
     <span className={className}>
       {/* The amount stays left-to-right inside Urdu/Arabic text. */}

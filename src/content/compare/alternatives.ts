@@ -1,5 +1,6 @@
 import type { Comparison } from "./types";
 import { TP } from "./tajirpoint";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 /**
  * "TajirPoint vs the way you do it now": the paper khata, Excel and a basic
@@ -11,11 +12,11 @@ export const paperKhata: Comparison = {
   slug: "tajirpoint-vs-paper-khata",
   kind: "alternative",
   otherName: "Paper khata",
-  label: "TajirPoint vs paper khata",
+  label: `${BRAND_NAME} vs paper khata`,
   blurb: "Your credit register, without lost pages, sums by hand or arguments over who owes what.",
   audience: "Shops that sell on credit",
   seo: {
-    title: "TajirPoint vs Paper Khata: Digital Credit Book",
+    title: `${BRAND_NAME} vs Paper Khata: Digital Credit Book`,
     description:
       "Paper khata or a digital credit book? See what changes when every sale and payment posts to a live ledger with limits, reminders and statements. Honest guide.",
     keywords: [
@@ -34,13 +35,12 @@ export const paperKhata: Comparison = {
     pills: ["Running balance", "Credit limits", "Reminders", "Statements"],
   },
   hero: {
-    eyebrow: "TajirPoint vs paper khata",
-    h1: "Paper khata or TajirPoint: which is right for your shop?",
+    eyebrow: `${BRAND_NAME} vs paper khata`,
+    h1: `Paper khata or ${BRAND_NAME}: which is right for your shop?`,
     sub: "Every shop that sells on credit keeps a register. Here is an honest look at what a digital khata changes, and when a notebook is still enough.",
   },
   verdict: {
-    tajirpoint:
-      "Choose TajirPoint if many customers buy on credit, more than one person writes in the register, or you lose track of who owes what.",
+    tajirpoint: `Choose ${BRAND_NAME} if many customers buy on credit, more than one person writes in the register, or you lose track of who owes what.`,
     other:
       "Keep the paper khata if only a few trusted customers buy on credit and you alone write every entry. It costs almost nothing and needs no phone.",
   },
@@ -81,7 +81,10 @@ export const paperKhata: Comparison = {
     },
     {
       feature: "Sale and credit in one step",
-      tajirpoint: { mark: "yes", text: "A credit sale at the counter posts to the khata at the same time." },
+      tajirpoint: {
+        mark: "yes",
+        text: "A credit sale at the counter posts to the khata at the same time.",
+      },
       other: { mark: "no", text: "Write the bill, then write the khata again." },
     },
     {
@@ -101,7 +104,10 @@ export const paperKhata: Comparison = {
     },
     {
       feature: "Needs a phone or computer",
-      tajirpoint: { mark: "info", text: "Yes: a PC, laptop or Android phone. Keeps working offline." },
+      tajirpoint: {
+        mark: "info",
+        text: "Yes: a PC, laptop or Android phone. Keeps working offline.",
+      },
       other: { mark: "info", text: "No." },
     },
     {
@@ -119,11 +125,11 @@ export const paperKhata: Comparison = {
       ],
     },
     {
-      heading: "What changes with TajirPoint",
+      heading: `What changes with ${BRAND_NAME}`,
       paragraphs: [
         "When you sell on credit at the counter, the sale goes straight into that customer's ledger. When they pay, the payment goes in too, and the balance updates on its own.",
         "You can set a credit limit for each customer and see who has owed money the longest. When it is time to ask for payment, you send them a statement instead of reading out old pages.",
-        "TajirPoint is also a full POS: the same app does your bills, stock and purchases, so the khata is not a separate job.",
+        `${BRAND_NAME} is also a full POS: the same app does your bills, stock and purchases, so the khata is not a separate job.`,
       ],
     },
     {
@@ -135,9 +141,8 @@ export const paperKhata: Comparison = {
   ],
   faqs: [
     {
-      question: "Can I keep my paper khata and use TajirPoint as well?",
-      answer:
-        "Yes. Many shops start by entering each customer's current balance as an opening balance, then record new credit sales and payments in TajirPoint. You can keep the old book for history.",
+      question: `Can I keep my paper khata and use ${BRAND_NAME} as well?`,
+      answer: `Yes. Many shops start by entering each customer's current balance as an opening balance, then record new credit sales and payments in ${BRAND_NAME}. You can keep the old book for history.`,
     },
     {
       question: "Is my customers' credit data safe?",
@@ -163,11 +168,11 @@ export const excel: Comparison = {
   slug: "tajirpoint-vs-excel",
   kind: "alternative",
   otherName: "Excel / spreadsheets",
-  label: "TajirPoint vs Excel",
+  label: `${BRAND_NAME} vs Excel`,
   blurb: "Stop copying sales into a sheet at night. Keep the exports for your accountant.",
   audience: "Shops and distributors running on spreadsheets",
   seo: {
-    title: "TajirPoint vs Excel for Shop Stock and Sales",
+    title: `${BRAND_NAME} vs Excel for Shop Stock and Sales`,
     description:
       "Running your shop on Excel or Google Sheets? An honest look at what a POS does better, where a spreadsheet is still fine, and how to move your sheets for free.",
     keywords: [
@@ -185,13 +190,12 @@ export const excel: Comparison = {
     pills: ["Live stock", "Khata", "Reports", "Free data move"],
   },
   hero: {
-    eyebrow: "TajirPoint vs Excel",
-    h1: "Excel or TajirPoint for your sales, stock and credit?",
+    eyebrow: `${BRAND_NAME} vs Excel`,
+    h1: `Excel or ${BRAND_NAME} for your sales, stock and credit?`,
     sub: "Excel is a brilliant tool and many shops start with it. This page is about the day it starts to cost you time, and what a POS does instead.",
   },
   verdict: {
-    tajirpoint:
-      "Choose TajirPoint if you type sales into a sheet after the shop closes, your stock numbers never match the shelf, or more than one person edits the file.",
+    tajirpoint: `Choose ${BRAND_NAME} if you type sales into a sheet after the shop closes, your stock numbers never match the shelf, or more than one person edits the file.`,
     other:
       "Stay with Excel if you have very few sales a day, one person does all the entries, and you mainly need a list or a budget.",
   },
@@ -206,13 +210,16 @@ export const excel: Comparison = {
   otherStrengths: [
     "You may already have it, and you can shape a sheet any way you like.",
     "Great for one-off sums, budgets and planning.",
-    "Your accountant probably works in it. You can still export from TajirPoint for them.",
+    `Your accountant probably works in it. You can still export from ${BRAND_NAME} for them.`,
     "No new system to learn.",
   ],
   rows: [
     {
       feature: "Recording a sale",
-      tajirpoint: { mark: "yes", text: "At the counter, with a printed receipt. Stock goes down by itself." },
+      tajirpoint: {
+        mark: "yes",
+        text: "At the counter, with a printed receipt. Stock goes down by itself.",
+      },
       other: { mark: "partial", text: "Typed into a row, often at the end of the day." },
     },
     {
@@ -233,11 +240,17 @@ export const excel: Comparison = {
     {
       feature: "Several people at once",
       tajirpoint: TP.staff,
-      other: { mark: "partial", text: "Shared files can clash; anyone with the file can change any cell." },
+      other: {
+        mark: "partial",
+        text: "Shared files can clash; anyone with the file can change any cell.",
+      },
     },
     {
       feature: "Barcode scanner and receipt printer",
-      tajirpoint: { mark: "yes", text: "Works with USB, Bluetooth and network printers and scanners." },
+      tajirpoint: {
+        mark: "yes",
+        text: "Works with USB, Bluetooth and network printers and scanners.",
+      },
       other: { mark: "no", text: "Not built for a counter." },
     },
     {
@@ -265,16 +278,16 @@ export const excel: Comparison = {
       ],
     },
     {
-      heading: "What TajirPoint does instead",
+      heading: `What ${BRAND_NAME} does instead`,
       paragraphs: [
-        "The sale is recorded once, at the counter. From that one entry TajirPoint updates stock, the customer's credit balance and your daily reports, and with the Accounting add-on it posts to your books too.",
+        `The sale is recorded once, at the counter. From that one entry ${BRAND_NAME} updates stock, the customer's credit balance and your daily reports, and with the Accounting add-on it posts to your books too.`,
         "Purchases from suppliers add stock the same way. You see what sold, what is running low and who owes you, without building any formulas.",
       ],
     },
     {
       heading: "Keep Excel for what it is good at",
       paragraphs: [
-        "You don't have to give up spreadsheets. Use them for planning and for your accountant, and let TajirPoint handle the day-to-day counter, stock and credit.",
+        `You don't have to give up spreadsheets. Use them for planning and for your accountant, and let ${BRAND_NAME} handle the day-to-day counter, stock and credit.`,
         "To switch, send us your product list, customer list and credit balances as Excel or CSV. Our team loads them for free before you go live.",
       ],
     },
@@ -304,11 +317,12 @@ export const cashRegister: Comparison = {
   slug: "tajirpoint-vs-cash-register",
   kind: "alternative",
   otherName: "Basic cash register",
-  label: "TajirPoint vs a cash register",
-  blurb: "A till rings up sales. A POS also knows your stock, your credit customers and your profit.",
+  label: `${BRAND_NAME} vs a cash register`,
+  blurb:
+    "A till rings up sales. A POS also knows your stock, your credit customers and your profit.",
   audience: "Shops and cafés with a simple till",
   seo: {
-    title: "TajirPoint vs a Cash Register: Is a POS Worth It?",
+    title: `${BRAND_NAME} vs a Cash Register: Is a POS Worth It?`,
     description:
       "A basic cash register or a POS system? An honest comparison of cost, stock, customer credit, reports and staff control, and when a simple till is still enough.",
     keywords: [
@@ -326,13 +340,12 @@ export const cashRegister: Comparison = {
     pills: ["Stock", "Khata", "Reports", "Staff logins"],
   },
   hero: {
-    eyebrow: "TajirPoint vs a cash register",
-    h1: "A basic cash register or TajirPoint: what do you need?",
+    eyebrow: `${BRAND_NAME} vs a cash register`,
+    h1: `A basic cash register or ${BRAND_NAME}: what do you need?`,
     sub: "A simple till takes money and prints a slip. A POS does that and also tracks stock, credit and profit. Here is when each one makes sense.",
   },
   verdict: {
-    tajirpoint:
-      "Choose TajirPoint if you want to know your stock, sell on credit, see profit by item, or check the shop from your phone when you are away.",
+    tajirpoint: `Choose ${BRAND_NAME} if you want to know your stock, sell on credit, see profit by item, or check the shop from your phone when you are away.`,
     other:
       "Keep a basic till if you sell a few items, never sell on credit, and only need the day's cash total.",
   },
@@ -353,7 +366,10 @@ export const cashRegister: Comparison = {
   rows: [
     {
       feature: "Take payment and print a receipt",
-      tajirpoint: { mark: "yes", text: "Cash, card (from your bank terminal) or both, with a printed receipt." },
+      tajirpoint: {
+        mark: "yes",
+        text: "Cash, card (from your bank terminal) or both, with a printed receipt.",
+      },
       other: { mark: "yes", text: "Yes." },
     },
     {
@@ -368,12 +384,18 @@ export const cashRegister: Comparison = {
     },
     {
       feature: "Reports",
-      tajirpoint: { mark: "yes", text: "Day-end report, sales by item and staff, tax by rate; profit and loss with the Accounting add-on." },
+      tajirpoint: {
+        mark: "yes",
+        text: "Day-end report, sales by item and staff, tax by rate; profit and loss with the Accounting add-on.",
+      },
       other: { mark: "partial", text: "Usually a daily total printout." },
     },
     {
       feature: "Staff control",
-      tajirpoint: { mark: "yes", text: "Own login per cashier; voids and discounts are recorded with who did them." },
+      tajirpoint: {
+        mark: "yes",
+        text: "Own login per cashier; voids and discounts are recorded with who did them.",
+      },
       other: { mark: "partial", text: "Depends on the model." },
     },
     {
@@ -413,21 +435,20 @@ export const cashRegister: Comparison = {
       heading: "What it can't tell you",
       paragraphs: [
         "A till doesn't know which items are running out, which customers owe you money, or which products make you the most profit. It also can't show you today's sales when you are not in the shop.",
-        "TajirPoint records the same sale, but also lowers stock, updates the customer's khata if they bought on credit, and adds it to reports you can open on your phone.",
+        `${BRAND_NAME} records the same sale, but also lowers stock, updates the customer's khata if they bought on credit, and adds it to reports you can open on your phone.`,
       ],
     },
     {
       heading: "If you need FBR today",
       paragraphs: [
-        "Some businesses in Pakistan must send each sale to FBR. TajirPoint's FBR connector is coming soon and is not live yet. If you need it today, ask us for the expected date before you switch.",
+        `Some businesses in Pakistan must send each sale to FBR. ${BRAND_NAME}'s FBR connector is coming soon and is not live yet. If you need it today, ask us for the expected date before you switch.`,
       ],
     },
   ],
   faqs: [
     {
       question: "Do I need to buy new hardware?",
-      answer:
-        "Usually not. TajirPoint runs in a browser, as a Windows desktop app and on Android, including Android POS terminals with a built-in printer. Receipt printers connect over USB, Bluetooth or the network.",
+      answer: `Usually not. ${BRAND_NAME} runs in a browser, as a Windows desktop app and on Android, including Android POS terminals with a built-in printer. Receipt printers connect over USB, Bluetooth or the network.`,
     },
     {
       question: "Is a POS hard to learn?",

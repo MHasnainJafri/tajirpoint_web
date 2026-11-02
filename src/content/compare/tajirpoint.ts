@@ -1,4 +1,5 @@
 import type { Cell } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 /**
  * TajirPoint's side of the tables, written once so every page says the same
@@ -106,7 +107,7 @@ export const TP = {
   },
   cardProcessing: {
     mark: "info",
-    text: "We don't process cards. Record card sales from your bank's terminal; take online payments through the Stripe add-on. No transaction fee from TajirPoint.",
+    text: `We don't process cards. Record card sales from your bank's terminal; take online payments through the Stripe add-on. No transaction fee from ${BRAND_NAME}.`,
   },
   hardware: {
     mark: "info",

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { brand } from "@/lib/config/brand";
 
 /**
  * The published pricing table, read from the POS backend so plans can be
@@ -12,7 +13,7 @@ import { z } from "zod";
  * messages/*.json — a pricing section is never allowed to render empty.
  */
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "https://api.tajirpoint.com";
+const API_BASE = brand.apiOrigin;
 
 const PlanSchema = z.object({
   id: z.string(),
@@ -136,7 +137,9 @@ export function pkrLabel(plan: MarketingPlan, cadence: "monthly" | "annual"): st
 
 /** True when any plan carries a PKR price. */
 export function hasPkrPrices(plans: MarketingPlan[] | null | undefined): boolean {
-  return Boolean(plans?.some((p) => pkrAmount(p, "monthly") !== null || pkrAmount(p, "annual") !== null));
+  return Boolean(
+    plans?.some((p) => pkrAmount(p, "monthly") !== null || pkrAmount(p, "annual") !== null)
+  );
 }
 
 /** "Rs 4,500" — the same style the backend uses for PKR (`_format_price`). */

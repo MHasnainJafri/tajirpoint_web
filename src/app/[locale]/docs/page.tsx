@@ -6,6 +6,7 @@ import { Boxes, KeyRound, Webhook, Zap } from "lucide-react";
 import { CodeBlock } from "@/components/marketing/CodeBlock";
 import { API_BASE } from "@/lib/docs/examples";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { BRAND_NAME, brand } from "@/lib/config/brand";
 
 export async function generateMetadata({
   params,
@@ -14,18 +15,18 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "TajirPoint API Documentation",
+    title: `${BRAND_NAME} API Documentation`,
     absoluteTitle: true,
     description:
       "REST API for products, inventory, sales, khata, and payments. JSON over HTTPS, bearer auth, cursor pagination, idempotent writes, and signed webhooks.",
     path: "/docs",
-    keywords: ["TajirPoint API", "POS API", "REST API", "developer documentation"],
+    keywords: [`${BRAND_NAME} API`, "POS API", "REST API", "developer documentation"],
     locale,
   });
 }
 
 const FIRST_CALL = `curl ${API_BASE}/catalog/products/ \\
-  -H "Authorization: Bearer $TAJIR_TOKEN" \\
+  -H "Authorization: Bearer $${brand.apiEnvPrefix}_TOKEN" \\
   -H "X-Shop-Id: 8f1c2d3e-4b5a-6c7d-8e9f-0a1b2c3d4e5f"`;
 
 const HEADERS = [
@@ -59,7 +60,7 @@ export default async function DocsIndexPage({ params }: { params: Promise<{ loca
     <div className="flex max-w-[860px] flex-col gap-12">
       <header className="flex flex-col gap-4">
         <h1 className="text-[40px] font-extrabold leading-[1.1] tracking-[-0.04em] text-[var(--color-ink)]">
-          TajirPoint API
+          {`${BRAND_NAME} API`}
         </h1>
         <p className="text-[16.5px] leading-[1.7] text-[var(--color-muted)]">
           A REST API over your shop: products, stock, sales, khata, and payments. Predictable

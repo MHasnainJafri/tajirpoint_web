@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 interface Segment {
   id: string;
@@ -43,8 +44,7 @@ export function WhoItsFor() {
           </h2>
         </div>
         <p className="max-w-[42ch] text-[14.5px] leading-[1.65] text-[var(--color-body)]">
-          Whether you run one counter, five city branches, a wholesale warehouse or a fleet of
-          delivery vans, TajirPoint adapts to your exact scale.
+          {`Whether you run one counter, five city branches, a wholesale warehouse or a fleet of delivery vans, ${BRAND_NAME} adapts to your exact scale.`}
         </p>
       </div>
 

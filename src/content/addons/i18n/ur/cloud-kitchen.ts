@@ -1,4 +1,5 @@
 import type { AddonTranslation } from "../types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Urdu write-up for "cloud-kitchen". Same facts as ../../cloud-kitchen.ts; awaiting
 // native review (TP-490). A field left out falls back to English.
@@ -95,7 +96,7 @@ const t: AddonTranslation = {
     },
   ],
   needs: [
-    "Shop پلان یا اس سے اوپر پر TajirPoint اکاؤنٹ",
+    `Shop پلان یا اس سے اوپر پر ${BRAND_NAME} اکاؤنٹ`,
     "Restaurant ایڈ آن آن ہو",
     "ہر برانڈ کا لوگو (اختیاری مگر بہتر ہے)",
     "آپ کے ڈیلیوری ایپ اکاؤنٹس، اگر آپ ان کے آرڈرز پر برانڈ کا نشان چاہتے ہیں",

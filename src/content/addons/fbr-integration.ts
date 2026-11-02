@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/fbr (extensions/services/handlers/fbr_handler.py queues each
 // completed sale; tasks.py submit_to_fbr with retries, waits while the add-on
@@ -24,8 +25,8 @@ const content: AddonContent = {
   schemaSubCategory: "FBR tax reporting add-on for POS (Pakistan)",
   headline: "Every sale reported to FBR, with the FBR number and QR code on the receipt.",
   overview: [
-    "FBR Integration is for businesses in Pakistan that must report their sales to the Federal Board of Revenue as they happen. Once it is set up, each completed sale in TajirPoint will be sent to FBR's POS system automatically.",
-    "FBR sends back its own invoice number for the sale. TajirPoint will print that number on the receipt with a QR code your customer can scan with FBR's app to check the invoice is real.",
+    `FBR Integration is for businesses in Pakistan that must report their sales to the Federal Board of Revenue as they happen. Once it is set up, each completed sale in ${BRAND_NAME} will be sent to FBR's POS system automatically.`,
+    `FBR sends back its own invoice number for the sale. ${BRAND_NAME} will print that number on the receipt with a QR code your customer can scan with FBR's app to check the invoice is real.`,
     "If FBR's system is slow or down, nothing is lost. The sale is kept in a queue and sent again automatically, and anything that still fails shows up on an FBR submissions screen where you can see why and send it again.",
   ],
   whoFor: [
@@ -63,7 +64,7 @@ const content: AddonContent = {
     },
     {
       title: "Automatic retries",
-      body: "If sending fails, TajirPoint tries again a few times, waiting longer each time. A check every few minutes picks up anything still waiting.",
+      body: `If sending fails, ${BRAND_NAME} tries again a few times, waiting longer each time. A check every few minutes picks up anything still waiting.`,
     },
     {
       title: "Submissions screen",
@@ -71,7 +72,7 @@ const content: AddonContent = {
     },
     {
       title: "Correct tax codes per item",
-      body: "Each tax rate in TajirPoint can carry its FBR code, so every line goes to FBR with the right code.",
+      body: `Each tax rate in ${BRAND_NAME} can carry its FBR code, so every line goes to FBR with the right code.`,
     },
     {
       title: "Test first, then go live",
@@ -97,7 +98,7 @@ const content: AddonContent = {
     },
   ],
   needs: [
-    "A TajirPoint account on the Shop plan or above, for a business in Pakistan",
+    `A ${BRAND_NAME} account on the Shop plan or above, for a business in Pakistan`,
     "Your NTN or STRN",
     "Your POS ID from FBR's IRIS portal, and the access details FBR gives you for it",
     "A receipt printer for the FBR number and QR code",

@@ -1,4 +1,5 @@
 import type { AddonTranslation } from "../types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Arabic write-up for "route-dispatch". Same facts as ../../route-dispatch.ts; awaiting
 // native review (TP-490). A field left out falls back to English.
@@ -23,7 +24,7 @@ const t: AddonTranslation = {
   problems: [
     {
       problem: "لا أحد يعرف بالضبط ما حُمّل على الشاحنة وما عاد.",
-      fix: "ينقل التحميل المخزون من مستودعك إلى المركبة. وفي النهاية يعود ما تبقّى، ويطابق TajirPoint المحمَّل مع المباع والمرتجع.",
+      fix: `ينقل التحميل المخزون من مستودعك إلى المركبة. وفي النهاية يعود ما تبقّى، ويطابق ${BRAND_NAME} المحمَّل مع المباع والمرتجع.`,
     },
     {
       problem: "يعود السائقون بنقد ناقص وتتغير القصة كل يوم.",
@@ -41,7 +42,7 @@ const t: AddonTranslation = {
   features: [
     {
       title: "رحلات بسائق ومركبة ومستودع",
-      body: "خطّط للرحلة، وأضف ما يُحمَّل، وعلّمها جاهزة. يتحقق TajirPoint من وجود المخزون في المستودع قبل نقل أي شيء.",
+      body: `خطّط للرحلة، وأضف ما يُحمَّل، وعلّمها جاهزة. يتحقق ${BRAND_NAME} من وجود المخزون في المستودع قبل نقل أي شيء.`,
     },
     {
       title: "نقد افتتاحي للسائق",
@@ -95,8 +96,8 @@ const t: AddonTranslation = {
     },
   ],
   needs: [
-    "حساب TajirPoint (أي خطة، بما فيها Light)",
-    "منتجاتك ومخزونك في TajirPoint، في مستودع تُحمَّل منه",
+    `حساب ${BRAND_NAME} (أي خطة، بما فيها Light)`,
+    `منتجاتك ومخزونك في ${BRAND_NAME}، في مستودع تُحمَّل منه`,
     "المتاجر التي تشتري منك مضافة كعملاء",
     "هاتف أو جهاز لوحي لكل سائق لتسجيل المبيعات",
   ],

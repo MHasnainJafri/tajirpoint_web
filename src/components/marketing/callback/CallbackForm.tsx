@@ -11,7 +11,7 @@ import {
   type Attribution,
 } from "@/lib/marketing/utm";
 import { trackCallbackRequest } from "@/lib/analytics/events";
-import { whatsappLink } from "@/lib/config/site";
+import { legal, whatsappLink } from "@/lib/config/site";
 import { addonNameFromSlug } from "@/lib/marketing/addon-names";
 import { hintCls, honeypotStyle, inputCls, textareaCls } from "@/components/forms/styles";
 import { Field } from "@/components/forms/Field";
@@ -24,6 +24,7 @@ import {
   localizeError,
   localizeErrors,
 } from "@/content/i18n/lead-pages/forms";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 /**
  * The short "Interested? We'll call you" form. Same mechanics as the demo
@@ -101,16 +102,18 @@ export function CallbackForm({
           {t.successTitle}
         </p>
         <p className="mt-3 text-[15px] leading-[1.6] text-[var(--color-body)]">{t.successBody}</p>
-        <a
-          href={whatsappLink("Hi TajirPoint, I just asked for a call back on your website.")}
-          target="_blank"
-          rel="noopener noreferrer"
-          data-track="callback_success"
-          className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#0A0A0A] px-6 py-3 text-[14.5px] font-bold text-white transition-transform duration-200 hover:-translate-y-[2px]"
-        >
-          {shared.whatsappNow}
-          <span aria-hidden="true">{forwardArrow(rtl)}</span>
-        </a>
+        {legal.whatsappUrl && (
+          <a
+            href={whatsappLink(`Hi ${BRAND_NAME}, I just asked for a call back on your website.`)}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-track="callback_success"
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#0A0A0A] px-6 py-3 text-[14.5px] font-bold text-white transition-transform duration-200 hover:-translate-y-[2px]"
+          >
+            {shared.whatsappNow}
+            <span aria-hidden="true">{forwardArrow(rtl)}</span>
+          </a>
+        )}
       </div>
     );
   }

@@ -1,3 +1,5 @@
+import { brand } from "@/lib/config/brand";
+
 /**
  * Structure for the redesigned homepage.
  *
@@ -339,7 +341,8 @@ export const PLATFORMS = [
  * deliberately not a link.
  */
 export const APP_LINKS = {
-  android: "https://play.google.com/store/apps/details?id=com.tajirpoint.pos",
+  /** The brand's Play Store listing; "" (no button) when a brand has none yet. */
+  android: brand.androidAppUrl,
 } as const;
 
 /**

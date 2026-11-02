@@ -13,11 +13,13 @@ import { siteConfig } from "@/lib/config/site";
 import { guideArticleSchema } from "@/lib/marketing/guide-schema";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { faqSchema, pageBreadcrumbs } from "@/lib/seo/schemas";
+import { BRAND_NAME } from "@/lib/config/brand";
+import { assertPageShown, isPageShown } from "@/lib/config/pages";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return GUIDE_SLUGS.map((slug) => ({ slug }));
+  return GUIDE_SLUGS.filter((slug) => isPageShown(`/guides/${slug}`)).map((slug) => ({ slug }));
 }
 
 type Params = Promise<{ locale: string; slug: string }>;
@@ -42,6 +44,8 @@ const card = "rounded-[20px] border border-[var(--color-line-2)] bg-[var(--color
 export default async function GuidePage({ params }: { params: Params }) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
+  // Left out of builds for another market or business type (src/lib/config/pages.ts).
+  assertPageShown(`/guides/${slug}`);
   const guide = getGuide(slug);
   if (!guide) notFound();
 
@@ -73,13 +77,19 @@ export default async function GuidePage({ params }: { params: Params }) {
         <nav aria-label="Breadcrumb" className="pt-5 text-[12.5px] text-[var(--color-muted)]">
           <ol className="flex flex-wrap items-center gap-2">
             <li>
-              <Link href="/" className="max-md:inline-flex max-md:min-h-[44px] max-md:items-center hover:text-[var(--color-ink)]">
+              <Link
+                href="/"
+                className="max-md:inline-flex max-md:min-h-[44px] max-md:items-center hover:text-[var(--color-ink)]"
+              >
                 Home
               </Link>
             </li>
             <li aria-hidden="true">/</li>
             <li>
-              <Link href="/guides" className="max-md:inline-flex max-md:min-h-[44px] max-md:items-center hover:text-[var(--color-ink)]">
+              <Link
+                href="/guides"
+                className="max-md:inline-flex max-md:min-h-[44px] max-md:items-center hover:text-[var(--color-ink)]"
+              >
                 Guides
               </Link>
             </li>
@@ -270,7 +280,7 @@ export default async function GuidePage({ params }: { params: Params }) {
               </nav>
               <div className={`${card} p-5`}>
                 <p className="text-[15px] font-bold leading-[1.35]">
-                  Try TajirPoint free for 3 months
+                  {`Try ${BRAND_NAME} free for 3 months`}
                 </p>
                 <p className="mt-2 text-[13.5px] leading-[1.55] text-[var(--color-body)]">
                   No card needed. We move your data from Excel or your old POS for free.

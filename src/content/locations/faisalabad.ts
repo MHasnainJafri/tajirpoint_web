@@ -12,6 +12,7 @@ import {
   PK_UPDATED,
   PRA_ROW,
 } from "./pk-common";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 const page: LocationPage = {
   slug: "faisalabad",
@@ -24,8 +25,7 @@ const page: LocationPage = {
     "Cloth traders, mills, distributors and shops in Faisalabad: dealer khata, price lists, units of measure, and FBR and PRA explained.",
   seo: {
     title: "POS System in Faisalabad for Shops and Traders",
-    description:
-      "TajirPoint POS for Faisalabad cloth traders, mills, distributors and shops: dealer khata with credit limits, price lists, offline billing, honest FBR notes.",
+    description: `${BRAND_NAME} POS for Faisalabad cloth traders, mills, distributors and shops: dealer khata with credit limits, price lists, offline billing, honest FBR notes.`,
     keywords: [
       "pos system faisalabad",
       "billing software faisalabad",
@@ -50,8 +50,7 @@ const page: LocationPage = {
     PK_FACT_LANGUAGE,
     {
       label: "Tax in Faisalabad",
-      value:
-        "Goods: FBR. Services: Punjab Revenue Authority (PRA). TajirPoint sends invoices to neither yet.",
+      value: `Goods: FBR. Services: Punjab Revenue Authority (PRA). ${BRAND_NAME} sends invoices to neither yet.`,
     },
     PK_FACT_POWER,
   ],
@@ -60,11 +59,11 @@ const page: LocationPage = {
     intro:
       "Faisalabad is in Punjab. Most trade here is in goods, taxed federally by FBR. Services, including restaurants, go to the Punjab Revenue Authority.",
     rows: [FBR_ROW, PRA_ROW],
-    note: `Traders and mills usually care most about FBR. If you sell to registered buyers, keep your NTN and STRN on the invoice: TajirPoint prints both. ${PK_TAX_NOTE}`,
+    note: `Traders and mills usually care most about FBR. If you sell to registered buyers, keep your NTN and STRN on the invoice: ${BRAND_NAME} prints both. ${PK_TAX_NOTE}`,
   },
   blocks: [PK_PAYMENTS, PK_DELIVERY],
   businesses: {
-    heading: "Faisalabad businesses TajirPoint is set up for",
+    heading: `Faisalabad businesses ${BRAND_NAME} is set up for`,
     items: [
       {
         slug: "factories-mills",
@@ -97,7 +96,7 @@ const page: LocationPage = {
       id: "credit",
       heading: "Credit is how trade works here",
       paragraphs: [
-        "Most business between traders, mills and dealers is on credit. TajirPoint gives every dealer and supplier a khata that updates with each sale, purchase and payment, so the balance is never a guess.",
+        `Most business between traders, mills and dealers is on credit. ${BRAND_NAME} gives every dealer and supplier a khata that updates with each sale, purchase and payment, so the balance is never a guess.`,
         "Set a credit limit per dealer, see who has owed you the longest, and send statements and reminders. Record cheques as they come in.",
       ],
       bullets: [
@@ -126,13 +125,13 @@ const page: LocationPage = {
       a: "Yes. Set up units of measure with conversions, give each unit its own price, and stock stays correct whichever unit you buy or sell in.",
     },
     {
-      q: "Does TajirPoint connect to PRA?",
-      a: "No, not yet. TajirPoint records the tax on every bill and gives you tax reports, but does not send invoices to the Punjab Revenue Authority.",
+      q: `Does ${BRAND_NAME} connect to PRA?`,
+      a: `No, not yet. ${BRAND_NAME} records the tax on every bill and gives you tax reports, but does not send invoices to the Punjab Revenue Authority.`,
     },
     PK_FAQ_URDU,
   ],
   cta: {
-    headline: "Run your Faisalabad business on TajirPoint.",
+    headline: `Run your Faisalabad business on ${BRAND_NAME}.`,
     sub: "Book a free demo, or start free for 3 months. No card needed, and we move your data for free.",
   },
   related: ["pakistan", "lahore", "karachi", "islamabad-rawalpindi"],

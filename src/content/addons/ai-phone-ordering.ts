@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/voice_ai (handler.py, models phone_line Language en/ur/mixed,
 // settings CodConfirmation link/auto + LinkChannel sms/whatsapp, call_session
@@ -101,8 +102,8 @@ const content: AddonContent = {
     },
   ],
   needs: [
-    "A TajirPoint account on the Shop plan or above",
-    "Your menu set up on your TajirPoint online order page",
+    `A ${BRAND_NAME} account on the Shop plan or above`,
+    `Your menu set up on your ${BRAND_NAME} online order page`,
     "A Twilio phone number (your own account) for the line",
     "A phone number of your own to put callers through to",
   ],

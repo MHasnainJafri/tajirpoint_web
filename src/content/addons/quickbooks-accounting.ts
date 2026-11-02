@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/quickbooks (QBOSyncService.run: customers, completed sales
 // as invoices with every line on one fallback item, completed payments,
@@ -23,8 +24,8 @@ const content: AddonContent = {
   headline: "Your shop's sales and expenses in QuickBooks, without the re-typing.",
   overview: [
     "QuickBooks Online is the accounting software used by many small businesses and their accountants, including in the UK. If your accountant works in QuickBooks, someone today is copying your shop's sales into it by hand. This add-on will do that copying for you.",
-    "Once connected, TajirPoint will send your customers, completed sales (as invoices), completed payments and expenses to QuickBooks Online. It runs every hour on its own, and you can press Sync now whenever you want it straight away.",
-    "It works one way: from TajirPoint to QuickBooks. Changes made in QuickBooks do not come back into TajirPoint. The first version keeps the mapping simple, so your accountant may want to tidy accounts and tax in QuickBooks; details are in the questions below.",
+    `Once connected, ${BRAND_NAME} will send your customers, completed sales (as invoices), completed payments and expenses to QuickBooks Online. It runs every hour on its own, and you can press Sync now whenever you want it straight away.`,
+    `It works one way: from ${BRAND_NAME} to QuickBooks. Changes made in QuickBooks do not come back into ${BRAND_NAME}. The first version keeps the mapping simple, so your accountant may want to tidy accounts and tax in QuickBooks; details are in the questions below.`,
   ],
   whoFor: [
     "Shops whose accountant or bookkeeper works in QuickBooks Online",
@@ -39,11 +40,11 @@ const content: AddonContent = {
     },
     {
       problem: "Shop expenses never make it into the books.",
-      fix: "Expenses recorded in TajirPoint are sent to QuickBooks as cash purchases.",
+      fix: `Expenses recorded in ${BRAND_NAME} are sent to QuickBooks as cash purchases.`,
     },
     {
       problem: "Customer lists are different in the shop and in the books.",
-      fix: "Your TajirPoint customers are created in QuickBooks, and updated when they change.",
+      fix: `Your ${BRAND_NAME} customers are created in QuickBooks, and updated when they change.`,
     },
     {
       problem: "Nobody knows if the books are up to date.",
@@ -61,7 +62,7 @@ const content: AddonContent = {
     },
     {
       title: "Customers kept in step",
-      body: "Customers are created in QuickBooks with their name, email and phone, and updated when you change them in TajirPoint.",
+      body: `Customers are created in QuickBooks with their name, email and phone, and updated when you change them in ${BRAND_NAME}.`,
     },
     {
       title: "Hourly, plus Sync now",
@@ -69,7 +70,7 @@ const content: AddonContent = {
     },
     {
       title: "No duplicates",
-      body: "TajirPoint remembers what it already sent, so a record sent again updates the same entry in QuickBooks instead of making a copy.",
+      body: `${BRAND_NAME} remembers what it already sent, so a record sent again updates the same entry in QuickBooks instead of making a copy.`,
     },
     {
       title: "Problems shown, not hidden",
@@ -83,11 +84,11 @@ const content: AddonContent = {
     },
     {
       title: "Sign in to QuickBooks",
-      body: "With our help you sign in to QuickBooks Online from TajirPoint and approve the connection to your company.",
+      body: `With our help you sign in to QuickBooks Online from ${BRAND_NAME} and approve the connection to your company.`,
     },
     {
       title: "Check the first sync with your accountant",
-      body: "The first sync sends what is already in TajirPoint. Look it over in QuickBooks with your accountant.",
+      body: `The first sync sends what is already in ${BRAND_NAME}. Look it over in QuickBooks with your accountant.`,
     },
     {
       title: "Let it run",
@@ -97,13 +98,13 @@ const content: AddonContent = {
   needs: [
     "A QuickBooks Online subscription (QuickBooks Desktop is not supported)",
     "Permission to connect apps to your QuickBooks company",
-    "A TajirPoint account on the Shop plan or above",
+    `A ${BRAND_NAME} account on the Shop plan or above`,
     "Ideally your accountant on hand for the first sync",
   ],
   setup: [
     "Once it is live, our team sets it up with you and, if you like, your accountant.",
     "Your QuickBooks subscription is paid to Intuit, not to us.",
-    "Your sales in TajirPoint are not changed; data only goes out to QuickBooks.",
+    `Your sales in ${BRAND_NAME} are not changed; data only goes out to QuickBooks.`,
   ],
   faqs: [
     {
@@ -112,7 +113,7 @@ const content: AddonContent = {
     },
     {
       q: "Does it work both ways?",
-      a: "No. It sends from TajirPoint to QuickBooks only. Edits made in QuickBooks do not come back.",
+      a: `No. It sends from ${BRAND_NAME} to QuickBooks only. Edits made in QuickBooks do not come back.`,
     },
     {
       q: "Will my products appear in QuickBooks?",
@@ -124,7 +125,7 @@ const content: AddonContent = {
     },
     {
       q: "Will my old sales be sent?",
-      a: "Yes. The first sync sends the completed sales, payments, expenses and customers already in TajirPoint, then only what changes after that. Plan it with your accountant.",
+      a: `Yes. The first sync sends the completed sales, payments, expenses and customers already in ${BRAND_NAME}, then only what changes after that. Plan it with your accountant.`,
     },
     {
       q: "Do I need the Accounting add-on as well?",

@@ -1,3 +1,5 @@
+import { BRAND_NAME } from "@/lib/config/brand";
+
 /**
  * "What's new" — the public changelog at /changelog.
  *
@@ -103,7 +105,7 @@ export const CHANGELOG: ChangelogMonth[] = [
       {
         audience: "Everyone",
         title: "A security review",
-        body: "We reviewed TajirPoint for security problems and fixed the issues that affect shops; the rest are scheduled.",
+        body: `We reviewed ${BRAND_NAME} for security problems and fixed the issues that affect shops; the rest are scheduled.`,
       },
       {
         audience: "Restaurants",

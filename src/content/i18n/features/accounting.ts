@@ -1,5 +1,6 @@
 import type { Localized } from "../page-copy";
 import type { FeaturePageCopy } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 /** /features/accounting. Audiences: Retail, Distribution, Services. */
 export const ACCOUNTING_COPY: Localized<FeaturePageCopy> = {
@@ -59,8 +60,7 @@ export const ACCOUNTING_COPY: Localized<FeaturePageCopy> = {
       },
       {
         question: "Can I connect QuickBooks?",
-        answer:
-          "A QuickBooks Online extension is coming soon. Until then your accountant can export the ledgers and reports from TajirPoint.",
+        answer: `A QuickBooks Online extension is coming soon. Until then your accountant can export the ledgers and reports from ${BRAND_NAME}.`,
       },
     ],
     cta: {
@@ -126,8 +126,7 @@ export const ACCOUNTING_COPY: Localized<FeaturePageCopy> = {
       },
       {
         question: "کیا میں QuickBooks جوڑ سکتا ہوں؟",
-        answer:
-          "QuickBooks Online ایکسٹینشن جلد آ رہی ہے۔ تب تک آپ کا اکاؤنٹنٹ TajirPoint سے لیجر اور رپورٹس ایکسپورٹ کر سکتا ہے۔",
+        answer: `QuickBooks Online ایکسٹینشن جلد آ رہی ہے۔ تب تک آپ کا اکاؤنٹنٹ ${BRAND_NAME} سے لیجر اور رپورٹس ایکسپورٹ کر سکتا ہے۔`,
       },
     ],
     cta: {
@@ -192,8 +191,7 @@ export const ACCOUNTING_COPY: Localized<FeaturePageCopy> = {
       },
       {
         question: "هل يمكنني ربط QuickBooks؟",
-        answer:
-          "إضافة QuickBooks Online قادمة قريبًا. وحتى ذلك الحين يمكن لمحاسبك تصدير الدفاتر والتقارير من TajirPoint.",
+        answer: `إضافة QuickBooks Online قادمة قريبًا. وحتى ذلك الحين يمكن لمحاسبك تصدير الدفاتر والتقارير من ${BRAND_NAME}.`,
       },
     ],
     cta: {

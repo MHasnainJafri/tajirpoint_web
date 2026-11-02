@@ -2,6 +2,7 @@ import { legal } from "@/lib/config/site";
 import type { Comparison } from "./types";
 import { cashRegister, excel, paperKhata } from "./alternatives";
 import { cornPos, foodics, loyverse, square } from "./competitors";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 export { CHECKED, CHECKED_ISO } from "./types";
 export type { Cell, Comparison, Faq, Mark, Row, Source } from "./types";
@@ -27,9 +28,8 @@ export { COMPARE_LABEL } from "./label";
 
 export const COMPARE_HUB = {
   seo: {
-    title: "Compare TajirPoint with Other POS Options",
-    description:
-      "Honest comparisons of TajirPoint with paper khata, Excel, a cash register, Loyverse, Square, Foodics and CORN POS. Sources and dates on every competitor fact.",
+    title: `Compare ${BRAND_NAME} with Other POS Options`,
+    description: `Honest comparisons of ${BRAND_NAME} with paper khata, Excel, a cash register, Loyverse, Square, Foodics and CORN POS. Sources and dates on every competitor fact.`,
     keywords: [
       "POS comparison",
       "POS alternatives",
@@ -40,15 +40,14 @@ export const COMPARE_HUB = {
   },
   og: {
     eyebrow: "Compare",
-    title: "Compare TajirPoint, honestly.",
+    title: `Compare ${BRAND_NAME}, honestly.`,
     sub: "Paper khata, Excel, a cash register and other POS systems, with sources and dates.",
     pills: ["Paper khata", "Excel", "Loyverse", "Square"],
   },
   faqs: [
     {
       question: "Who wrote these comparisons?",
-      answer:
-        "The TajirPoint team. We are not neutral, so every fact about another company links to that company's own page and shows the date we read it. Where they are stronger, we say so.",
+      answer: `The ${BRAND_NAME} team. We are not neutral, so every fact about another company links to that company's own page and shows the date we read it. Where they are stronger, we say so.`,
     },
     {
       question: "How often are they updated?",
@@ -57,8 +56,7 @@ export const COMPARE_HUB = {
     },
     {
       question: "I found a mistake. What do I do?",
-      answer:
-        `Email ${legal.email} with the page and the correction. We fix factual errors as soon as we can confirm them.`,
+      answer: `Email ${legal.email} with the page and the correction. We fix factual errors as soon as we can confirm them.`,
     },
   ],
 } as const;

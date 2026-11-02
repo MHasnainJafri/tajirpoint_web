@@ -1,4 +1,5 @@
 import type { AddonTranslation } from "../types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Urdu write-up for "delivery-aggregator". Same facts as ../../delivery-aggregator.ts; awaiting
 // native review (TP-490). A field left out falls back to English.
@@ -10,7 +11,7 @@ const t: AddonTranslation = {
   schemaSubCategory: "POS کے لیے فوڈ ڈیلیوری ایپ انٹیگریشن ایڈ آن",
   headline: "آپ کے ڈیلیوری ایپ آرڈرز کے لیے ایک ان باکس، سیدھا POS میں۔",
   overview: [
-    "Delivery Aggregator فوڈ ڈیلیوری ایپس کے آرڈرز TajirPoint کے ایک ان باکس میں لائے گا، تاکہ کسی کو انہیں ٹِل میں دوبارہ ٹائپ نہ کرنا پڑے۔ یہ Foodpanda، Talabat، Careem، Bykea، Deliveroo، Uber Eats اور Just Eat کے لیے بنایا جا رہا ہے۔",
+    `Delivery Aggregator فوڈ ڈیلیوری ایپس کے آرڈرز ${BRAND_NAME} کے ایک ان باکس میں لائے گا، تاکہ کسی کو انہیں ٹِل میں دوبارہ ٹائپ نہ کرنا پڑے۔ یہ Foodpanda، Talabat، Careem، Bykea، Deliveroo، Uber Eats اور Just Eat کے لیے بنایا جا رہا ہے۔`,
     "ہر ایپ کے آئٹمز ایک بار آپ کے آئٹمز سے ملائے جاتے ہیں۔ اس کے بعد قبول شدہ آرڈر اصل سیل بن جاتا ہے، Restaurant ایڈ آن ہو تو کچن ٹکٹ کے ساتھ، اور تیار، اٹھا لیا گیا اور ڈیلیور ہو گیا جیسی صورتحال کی تبدیلیاں ایپ کو واپس بھیجی جاتی ہیں۔",
     "یہ ابھی دکانوں کے لیے کھلا نہیں۔ ہر ایپ کے کنکشن کو ابھی اصل اکاؤنٹس پر ٹیسٹ ہونا ہے۔ لائیو ہونے پر ہماری ٹیم اسے آپ کے ساتھ سیٹ کرے گی۔",
   ],
@@ -41,7 +42,7 @@ const t: AddonTranslation = {
   features: [
     {
       title: "ہر ڈیلیوری ایپ کے لیے ایک ان باکس",
-      body: "Foodpanda، Talabat، Careem، Bykea، Deliveroo، Uber Eats اور Just Eat کے آرڈرز TajirPoint کی ایک فہرست میں آئیں گے۔",
+      body: `Foodpanda، Talabat، Careem، Bykea، Deliveroo، Uber Eats اور Just Eat کے آرڈرز ${BRAND_NAME} کی ایک فہرست میں آئیں گے۔`,
     },
     {
       title: "ان کے آئٹمز اپنے آئٹمز سے ملائیں",
@@ -53,7 +54,7 @@ const t: AddonTranslation = {
     },
     {
       title: "صورتحال ایپ کو واپس",
-      body: "قبول، تیار، اٹھا لیا گیا، ڈیلیور ہو گیا اور منسوخ ایپ کو واپس بھیجے جاتے ہیں۔ اگر ایپ جواب نہ دے تو TajirPoint دوبارہ کوشش کرتا ہے۔",
+      body: `قبول، تیار، اٹھا لیا گیا، ڈیلیور ہو گیا اور منسوخ ایپ کو واپس بھیجے جاتے ہیں۔ اگر ایپ جواب نہ دے تو ${BRAND_NAME} دوبارہ کوشش کرتا ہے۔`,
     },
     {
       title: "سب کچھ ملے تو خود قبول",
@@ -83,7 +84,7 @@ const t: AddonTranslation = {
     },
   ],
   needs: [
-    "Shop پلان یا اس سے اوپر پر TajirPoint اکاؤنٹ",
+    `Shop پلان یا اس سے اوپر پر ${BRAND_NAME} اکاؤنٹ`,
     "ہر اس ڈیلیوری ایپ کا مرچنٹ اکاؤنٹ جس پر آپ بیچتے ہیں",
     "ہر ایپ کی پارٹنر کنکشن تفصیلات تک رسائی (ڈھونڈنے میں ہم مدد کرتے ہیں)",
     "کچن ٹکٹ چاہییں تو Restaurant ایڈ آن",
@@ -112,7 +113,7 @@ const t: AddonTranslation = {
     },
     {
       q: "کیا ایپ آرڈرز میری رپورٹس میں نظر آئیں گے؟",
-      a: "جی ہاں۔ ہر قبول شدہ آرڈر TajirPoint میں عام سیل بن جاتا ہے۔",
+      a: `جی ہاں۔ ہر قبول شدہ آرڈر ${BRAND_NAME} میں عام سیل بن جاتا ہے۔`,
     },
     {
       q: "کیا یہ مفت Light پلان میں شامل ہے؟",

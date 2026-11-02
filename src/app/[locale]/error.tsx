@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Container } from "@/components/shared/Container";
+import { ERROR_REACH } from "@/lib/marketing/contact-fallback";
 
 export default function ErrorPage({
   error,
@@ -25,7 +26,8 @@ export default function ErrorPage({
             Something went wrong
           </h1>
           <p className="mx-auto mt-5 max-w-[480px] text-[17px] leading-[1.6] text-[var(--color-muted)]">
-            An unexpected error occurred. Please try again — if it keeps happening, WhatsApp us at +92 344 6800893.{error.digest ? ` (ref ${error.digest})` : ""}
+            {`An unexpected error occurred. Please try again — if it keeps happening, ${ERROR_REACH}`}
+            {error.digest ? ` (ref ${error.digest})` : ""}
           </p>
           <div className="mt-9 flex flex-wrap justify-center gap-4">
             <button

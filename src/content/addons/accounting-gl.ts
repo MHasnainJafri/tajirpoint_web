@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/accounting (handler.py seeds the default chart of accounts,
 // account mappings and the current month's period; signals.py auto-posts sales,
@@ -23,7 +24,7 @@ const content: AddonContent = {
   schemaSubCategory: "Accounting and general ledger add-on for POS",
   headline: "Real books that keep themselves up to date as you sell, buy and pay.",
   overview: [
-    "Accounting & General Ledger turns the day-to-day work in TajirPoint into proper double-entry books. Every sale, return, purchase, payment, refund, expense and stock adjustment is posted to the right accounts for you, so your accountant gets a full ledger instead of a pile of receipts.",
+    `Accounting & General Ledger turns the day-to-day work in ${BRAND_NAME} into proper double-entry books. Every sale, return, purchase, payment, refund, expense and stock adjustment is posted to the right accounts for you, so your accountant gets a full ledger instead of a pile of receipts.`,
     "When you switch it on, a ready-made chart of accounts is set up for a retail business, along with the links that decide which account each kind of entry goes to. You can add your own accounts and change those links at any time.",
     "From the books you get a trial balance, profit and loss, balance sheet and cash flow statement whenever you want them. Close a month when it is done so nobody can post into it by mistake, and reopen it if you need to correct something.",
   ],
@@ -75,7 +76,7 @@ const content: AddonContent = {
     },
     {
       title: "Owner money and opening balances",
-      body: "Record money the owner puts in or takes out, and enter opening balances when you move your books to TajirPoint.",
+      body: `Record money the owner puts in or takes out, and enter opening balances when you move your books to ${BRAND_NAME}.`,
     },
     {
       title: "Bank accounts and matching",
@@ -105,7 +106,7 @@ const content: AddonContent = {
     },
   ],
   needs: [
-    "A TajirPoint account on the Shop plan or above",
+    `A ${BRAND_NAME} account on the Shop plan or above`,
     "Your opening balances (cash, bank, stock, what customers owe you and what you owe suppliers) if you are moving from another system",
     "Ideally, an accountant to check your setup and month-end figures",
   ],
@@ -133,7 +134,7 @@ const content: AddonContent = {
     },
     {
       q: "Can I import my bank statement?",
-      a: "Not yet. Today you record bank transactions in TajirPoint and match them to payments, by hand or with automatic matching by amount and date.",
+      a: `Not yet. Today you record bank transactions in ${BRAND_NAME} and match them to payments, by hand or with automatic matching by amount and date.`,
     },
     {
       q: "Does it work with Cash Management?",

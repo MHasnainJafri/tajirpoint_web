@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/payments (gateways/square_gateway.py Square-hosted payment
 // link for one Square location, sandbox/production; registry.py) and
@@ -6,8 +7,7 @@ import type { AddonContent } from "./types";
 const content: AddonContent = {
   slug: "square-payments",
   seoTitle: "Square Card Payments for Your Online Shop",
-  seoDescription:
-    "Let customers pay by card through Square on your TajirPoint website. They pay on Square's secure page and the money goes to your own Square account.",
+  seoDescription: `Let customers pay by card through Square on your ${BRAND_NAME} website. They pay on Square's secure page and the money goes to your own Square account.`,
   keywords: [
     "square payments integration",
     "square online checkout",
@@ -18,8 +18,8 @@ const content: AddonContent = {
   schemaSubCategory: "Card payments add-on",
   headline: "Take card payments through Square, paid into your own Square account.",
   overview: [
-    "Square Payments will let customers pay by card through Square. For each payment, TajirPoint makes a Square payment link for the order; the customer pays on Square's secure page and comes back to your shop.",
-    "The money goes to your own Square account, for the Square location you choose. Card details are entered on Square's page, so they never reach TajirPoint.",
+    `Square Payments will let customers pay by card through Square. For each payment, ${BRAND_NAME} makes a Square payment link for the order; the customer pays on Square's secure page and comes back to your shop.`,
+    `The money goes to your own Square account, for the Square location you choose. Card details are entered on Square's page, so they never reach ${BRAND_NAME}.`,
     "It is for shops that already use Square in a country where Square works, such as the UK. Square is not available in Pakistan or the Gulf.",
   ],
   whoFor: [
@@ -30,11 +30,11 @@ const content: AddonContent = {
   problems: [
     {
       problem: "Your card money is in Square, but your orders are somewhere else.",
-      fix: "Payments are started from the TajirPoint order, and the money lands in your Square account.",
+      fix: `Payments are started from the ${BRAND_NAME} order, and the money lands in your Square account.`,
     },
     {
       problem: "You do not want to handle customers' card details.",
-      fix: "Customers pay on Square's own page, so their card details never reach TajirPoint.",
+      fix: `Customers pay on Square's own page, so their card details never reach ${BRAND_NAME}.`,
     },
     {
       problem: "You have more than one Square location and need the money in the right one.",
@@ -48,11 +48,11 @@ const content: AddonContent = {
     },
     {
       title: "Paid into your Square location",
-      body: "Payments go into your own Square account, for the location you pick. TajirPoint does not hold your money.",
+      body: `Payments go into your own Square account, for the location you pick. ${BRAND_NAME} does not hold your money.`,
     },
     {
       title: "Linked to your orders",
-      body: "Each payment link is made from the TajirPoint order it is for, with the amount filled in.",
+      body: `Each payment link is made from the ${BRAND_NAME} order it is for, with the amount filled in.`,
     },
     {
       title: "Tested before going live",
@@ -76,7 +76,7 @@ const content: AddonContent = {
   needs: [
     "A Square account in a country where Square works",
     "The Square location that should take the payments",
-    "TajirPoint on the Shop plan or above",
+    `${BRAND_NAME} on the Shop plan or above`,
   ],
   setup: [
     "This add-on is not open to shops yet.",
@@ -98,11 +98,11 @@ const content: AddonContent = {
     },
     {
       q: "Where does the money go?",
-      a: "Into your Square account, for the location you chose. TajirPoint never holds the money. Square charges its own fees.",
+      a: `Into your Square account, for the location you chose. ${BRAND_NAME} never holds the money. Square charges its own fees.`,
     },
     {
-      q: "Does TajirPoint see my customers' card numbers?",
-      a: "No. Customers pay on Square's own page. TajirPoint only learns the result of the payment.",
+      q: `Does ${BRAND_NAME} see my customers' card numbers?`,
+      a: `No. Customers pay on Square's own page. ${BRAND_NAME} only learns the result of the payment.`,
     },
     {
       q: "Which plan will I need?",

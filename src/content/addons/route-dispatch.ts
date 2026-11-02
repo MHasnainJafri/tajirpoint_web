@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/dispatch (handler.py seeds the Driver role; models/trip.py
 // statuses draft/ready/in_progress/ended/closed/cancelled; services/trip_service.py
@@ -35,7 +36,7 @@ const content: AddonContent = {
   problems: [
     {
       problem: "Nobody knows exactly what was loaded on the van and what came back.",
-      fix: "Loading moves stock from your warehouse onto the vehicle. At the end, what is left goes back, and TajirPoint checks loaded against sold and returned.",
+      fix: `Loading moves stock from your warehouse onto the vehicle. At the end, what is left goes back, and ${BRAND_NAME} checks loaded against sold and returned.`,
     },
     {
       problem: "Drivers come back short on cash and the story changes every day.",
@@ -53,7 +54,7 @@ const content: AddonContent = {
   features: [
     {
       title: "Trips with a driver, vehicle and warehouse",
-      body: "Plan a trip, add what to load, and mark it ready. TajirPoint checks the warehouse has the stock before anything moves.",
+      body: `Plan a trip, add what to load, and mark it ready. ${BRAND_NAME} checks the warehouse has the stock before anything moves.`,
     },
     {
       title: "Opening cash for the driver",
@@ -107,8 +108,8 @@ const content: AddonContent = {
     },
   ],
   needs: [
-    "A TajirPoint account (any plan, including Light)",
-    "Your products and stock in TajirPoint, in a warehouse to load from",
+    `A ${BRAND_NAME} account (any plan, including Light)`,
+    `Your products and stock in ${BRAND_NAME}, in a warehouse to load from`,
     "Your customer shops added as customers",
     "A phone or tablet for each driver to record sales",
   ],

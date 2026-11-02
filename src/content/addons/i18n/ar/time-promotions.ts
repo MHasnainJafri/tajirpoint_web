@@ -1,4 +1,5 @@
 import type { AddonTranslation } from "../types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Arabic write-up for "time-promotions". Same facts as ../../time-promotions.ts; awaiting
 // native review (TP-490). A field left out falls back to English.
@@ -79,8 +80,8 @@ const t: AddonTranslation = {
     },
   ],
   needs: [
-    "حساب TajirPoint (أي خطة، بما فيها Light)",
-    "منتجاتك وفئاتك مُعدّة في TajirPoint",
+    `حساب ${BRAND_NAME} (أي خطة، بما فيها Light)`,
+    `منتجاتك وفئاتك مُعدّة في ${BRAND_NAME}`,
     "اختياري: Coupons & Discounts إن أردت أيضًا رموز قسائم مؤقتة",
   ],
   setup: [

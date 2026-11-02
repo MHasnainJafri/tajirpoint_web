@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/signage (handler.py seeds a default Main Menu Board layout;
 // models/layout.py categories/sections, price list, price style, sold-out
@@ -11,8 +12,7 @@ import type { AddonContent } from "./types";
 const content: AddonContent = {
   slug: "digital-signage",
   seoTitle: "Digital Menu Boards That Update From Your POS",
-  seoDescription:
-    "Show your menu on TVs and wall screens. Dishes, photos and prices come from your TajirPoint menu, so the board matches the till and sold-out dishes drop off.",
+  seoDescription: `Show your menu on TVs and wall screens. Dishes, photos and prices come from your ${BRAND_NAME} menu, so the board matches the till and sold-out dishes drop off.`,
   keywords: [
     "digital menu board",
     "menu board software for restaurants",
@@ -23,7 +23,7 @@ const content: AddonContent = {
   schemaSubCategory: "Digital menu board add-on for restaurant POS",
   headline: "Menu boards on the wall that change the moment your menu does.",
   overview: [
-    "Digital Signage puts your menu on TVs and wall screens without anyone redesigning a board. Each screen shows your categories, dishes, photos and prices straight from the menu you already keep in TajirPoint.",
+    `Digital Signage puts your menu on TVs and wall screens without anyone redesigning a board. Each screen shows your categories, dishes, photos and prices straight from the menu you already keep in ${BRAND_NAME}.`,
     "Prices on the board come from the same place the till gets them, so the wall and the receipt always agree. When a dish sells out it drops off the board on its own, or stays on marked as unavailable if you prefer a steady layout.",
     "Each screen gets its own board link. Paste it into your signage provider as a web page, or use the data feed if your provider designs its own layout. You can turn any screen's link off in one click, and it goes dark on its next refresh.",
   ],
@@ -44,7 +44,7 @@ const content: AddonContent = {
     },
     {
       problem: "Every menu change means paying someone to redesign the board.",
-      fix: "The board is built from your menu. Add a dish or change a photo in TajirPoint and the screens follow.",
+      fix: `The board is built from your menu. Add a dish or change a photo in ${BRAND_NAME} and the screens follow.`,
     },
     {
       problem: "We cannot stop an old screen or a former supplier from showing our menu.",
@@ -54,7 +54,7 @@ const content: AddonContent = {
   features: [
     {
       title: "Built from your menu",
-      body: "Categories, dishes, descriptions, photos and prices come from your TajirPoint menu. Show every category, or pick the ones a screen should show and the order they appear in.",
+      body: `Categories, dishes, descriptions, photos and prices come from your ${BRAND_NAME} menu. Show every category, or pick the ones a screen should show and the order they appear in.`,
     },
     {
       title: "Same prices as the till",
@@ -100,9 +100,9 @@ const content: AddonContent = {
     },
   ],
   needs: [
-    "A TajirPoint account on the Shop plan or above",
+    `A ${BRAND_NAME} account on the Shop plan or above`,
     "A TV or screen for each board, run by a signage provider or player that can show a web page",
-    "Your menu in TajirPoint, ideally with photos",
+    `Your menu in ${BRAND_NAME}, ideally with photos`,
   ],
   setup: [
     "You switch it on yourself from the Add-ons page.",

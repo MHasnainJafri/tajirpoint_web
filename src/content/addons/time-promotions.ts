@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/promotions (models/discount.py time_of_day_start/end,
 // day_of_week_mask, ramadan_calendar_linked = stored flag only, "future
@@ -91,8 +92,8 @@ const content: AddonContent = {
     },
   ],
   needs: [
-    "A TajirPoint account (any plan, including Light)",
-    "Your products and categories set up in TajirPoint",
+    `A ${BRAND_NAME} account (any plan, including Light)`,
+    `Your products and categories set up in ${BRAND_NAME}`,
     "Optional: Coupons & Discounts, if you also want timed coupon codes",
   ],
   setup: [

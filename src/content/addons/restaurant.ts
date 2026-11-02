@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/restaurants (handler.py seeds Main Floor, Main Kitchen station,
 // default void reasons, waiter/kitchen roles, TERM_MAP en/ur; models ticket,
@@ -10,8 +11,7 @@ import type { AddonContent } from "./types";
 const content: AddonContent = {
   slug: "restaurant",
   seoTitle: "Restaurant POS Add-on: Tables, Kitchen Screen and Tickets",
-  seoDescription:
-    "Turn TajirPoint into a restaurant POS: tables, kitchen display, kitchen ticket printing, modifiers, courses and split bills for dine-in, takeaway and delivery.",
+  seoDescription: `Turn ${BRAND_NAME} into a restaurant POS: tables, kitchen display, kitchen ticket printing, modifiers, courses and split bills for dine-in, takeaway and delivery.`,
   keywords: [
     "restaurant POS software",
     "kitchen display system",
@@ -21,9 +21,9 @@ const content: AddonContent = {
     "cafe POS system",
   ],
   schemaSubCategory: "Restaurant POS add-on",
-  headline: "Tables, kitchen screen and kitchen tickets added to your TajirPoint till.",
+  headline: `Tables, kitchen screen and kitchen tickets added to your ${BRAND_NAME} till.`,
   overview: [
-    "The Restaurant add-on turns TajirPoint into a restaurant POS. Orders become tickets for dine-in, takeaway or delivery, and the words on screen change to suit a restaurant: menu items, tickets and Send to Kitchen.",
+    `The Restaurant add-on turns ${BRAND_NAME} into a restaurant POS. Orders become tickets for dine-in, takeaway or delivery, and the words on screen change to suit a restaurant: menu items, tickets and Send to Kitchen.`,
     "Each ticket goes to the right kitchen station, shows on the kitchen display as it happens and prints on the station's kitchen printer. Dishes can have modifier groups like sizes, toppings and spice level, and toppings can take their own ingredients from stock.",
     "For dine-in, set up your floor and tables, fire starters, mains and desserts as courses, and split the bill equally, by item, by seat or by amount. Guests can also order from a QR code on the table, and call a waiter from their phone.",
   ],
@@ -109,7 +109,7 @@ const content: AddonContent = {
     },
   ],
   needs: [
-    "A TajirPoint account (any plan, including Light)",
+    `A ${BRAND_NAME} account (any plan, including Light)`,
     "A screen or tablet in the kitchen for the kitchen display (optional)",
     "A network thermal printer for kitchen tickets (optional)",
     "Your menu, with sizes and toppings if you have them",
@@ -123,7 +123,7 @@ const content: AddonContent = {
   faqs: [
     {
       q: "Do I need a kitchen display screen?",
-      a: "No. You can print kitchen tickets only, use the kitchen screen only, or both. Any screen or tablet that can open TajirPoint works as a kitchen display.",
+      a: `No. You can print kitchen tickets only, use the kitchen screen only, or both. Any screen or tablet that can open ${BRAND_NAME} works as a kitchen display.`,
     },
     {
       q: "Which printers work for kitchen tickets?",
@@ -143,7 +143,7 @@ const content: AddonContent = {
     },
     {
       q: "What is the difference between Restaurant and Restaurant Toolbox?",
-      a: "Restaurant adds tables, the kitchen display and kitchen printing to TajirPoint. Restaurant Toolbox is a separate full-screen restaurant terminal. Both are included with Light, so you can try both.",
+      a: `Restaurant adds tables, the kitchen display and kitchen printing to ${BRAND_NAME}. Restaurant Toolbox is a separate full-screen restaurant terminal. Both are included with Light, so you can try both.`,
     },
     {
       q: "Is it included in the free Light plan?",

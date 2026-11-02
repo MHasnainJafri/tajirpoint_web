@@ -10,7 +10,7 @@ import { Tick } from "@/components/marketing/landing/Stroke";
 import { MigrationBand } from "@/components/marketing/business/MigrationBand";
 import { PlanTeaser } from "@/components/marketing/business/PlanTeaser";
 import { BusinessView } from "@/components/marketing/business/BusinessView";
-import { BUSINESS_SLUGS, getBusiness, type Business } from "@/lib/marketing/businesses";
+import { SHOWN_BUSINESS_SLUGS, getBusiness, type Business } from "@/lib/marketing/businesses";
 import { businessUi, localizeApp, localizeBusiness } from "@/content/i18n/businesses";
 import type { BusinessUiCopy } from "@/content/i18n/businesses.types";
 import { getPlans } from "@/lib/api/plans";
@@ -22,7 +22,7 @@ import { breadcrumbSchema, faqSchema, verticalSoftwareSchema } from "@/lib/seo/s
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return BUSINESS_SLUGS.map((slug) => ({ slug }));
+  return SHOWN_BUSINESS_SLUGS.map((slug) => ({ slug }));
 }
 
 type Params = Promise<{ locale: string; slug: string }>;

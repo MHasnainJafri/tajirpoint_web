@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/hubrise (services/order_ingest, receiver_bridge, catalog_service,
 // channel_prices, marketplace_menu, charges_owner, problems; signals.py: no
@@ -19,9 +20,9 @@ const content: AddonContent = {
   schemaSubCategory: "Delivery marketplace integration add-on for POS",
   headline: "Delivery app orders arrive in your POS and kitchen, not on a pile of tablets.",
   overview: [
-    "HubRise is a service that links a restaurant to delivery apps such as Uber Eats, Deliveroo, Just Eat and Glovo. This add-on connects your HubRise location to TajirPoint, so orders from every app connected there arrive in your POS as real sales.",
+    `HubRise is a service that links a restaurant to delivery apps such as Uber Eats, Deliveroo, Just Eat and Glovo. This add-on connects your HubRise location to ${BRAND_NAME}, so orders from every app connected there arrive in your POS as real sales.`,
     "Each order rings on your Order Desk like any online order, goes to the kitchen screen and printers once it is accepted, and every move you make (accepted, ready, picked up, cancelled) is sent back to HubRise and on to the app.",
-    "You also publish your menu from TajirPoint: one price for all delivery apps, or a different price for each one, with items you can hide on some apps. Our team connects your HubRise location with you and checks the first orders.",
+    `You also publish your menu from ${BRAND_NAME}: one price for all delivery apps, or a different price for each one, with items you can hide on some apps. Our team connects your HubRise location with you and checks the first orders.`,
   ],
   whoFor: [
     "Restaurants and takeaways selling on Uber Eats, Deliveroo, Just Eat or Glovo",
@@ -33,7 +34,7 @@ const content: AddonContent = {
   problems: [
     {
       problem: "Every delivery app has its own tablet, and orders get missed.",
-      fix: "All orders from your HubRise location ring on the TajirPoint Order Desk and show on the kitchen screen, in one place.",
+      fix: `All orders from your HubRise location ring on the ${BRAND_NAME} Order Desk and show on the kitchen screen, in one place.`,
     },
     {
       problem: "Staff re-type app orders into the till, with mistakes.",
@@ -41,7 +42,7 @@ const content: AddonContent = {
     },
     {
       problem: "Changing a price means editing it in every app.",
-      fix: "Set your delivery app prices in TajirPoint and publish the menu. Give an app its own price, or raise one app's prices by a percentage in one go.",
+      fix: `Set your delivery app prices in ${BRAND_NAME} and publish the menu. Give an app its own price, or raise one app's prices by a percentage in one go.`,
     },
     {
       problem: "When something goes wrong, nobody knows why.",
@@ -101,7 +102,7 @@ const content: AddonContent = {
     },
   ],
   needs: [
-    "A TajirPoint account on the Shop plan or above",
+    `A ${BRAND_NAME} account on the Shop plan or above`,
     "A HubRise account and location, with your delivery apps connected to it",
     "Your HubRise account in the same currency as your shop",
     "The Order Desk on a tablet or computer, and kitchen printers or a kitchen screen if you use them",
@@ -118,7 +119,7 @@ const content: AddonContent = {
     },
     {
       q: "Do I need my own HubRise account?",
-      a: "Yes. HubRise is the link between TajirPoint and the delivery apps. If you do not have one yet, tell us when you contact us and we will talk you through it.",
+      a: `Yes. HubRise is the link between ${BRAND_NAME} and the delivery apps. If you do not have one yet, tell us when you contact us and we will talk you through it.`,
     },
     {
       q: "Does my menu update on the apps by itself?",
@@ -129,12 +130,12 @@ const content: AddonContent = {
       a: "Yes. Each item has one price for all delivery apps, and you can give any app its own price. You can also raise one app's prices by a percentage in one go.",
     },
     {
-      q: "What if an order has a dish TajirPoint does not recognise?",
+      q: `What if an order has a dish ${BRAND_NAME} does not recognise?`,
       a: "The order is kept safe and shown as waiting. Once the dish is matched, it can be retried and goes through as normal.",
     },
     {
       q: "Do the orders show in my reports?",
-      a: "Yes. Every accepted order is a normal sale in TajirPoint, so it counts in your takings, stock and reports, marked with the app it came from.",
+      a: `Yes. Every accepted order is a normal sale in ${BRAND_NAME}, so it counts in your takings, stock and reports, marked with the app it came from.`,
     },
     {
       q: "Is it included in the free Light plan?",

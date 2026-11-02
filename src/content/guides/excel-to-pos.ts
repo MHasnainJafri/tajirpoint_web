@@ -1,4 +1,5 @@
 import type { Guide } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Free data migration: the demo form ("Move my data for me ... free") and
 // MIGRATION in lib/marketing/businesses.ts (live site).
@@ -27,8 +28,7 @@ const guide: Guide = {
   ],
   summary:
     "Excel and paper get you started, but they cannot keep up with a growing shop. Here is how to move to a POS without losing data or closing for a day.",
-  shortAnswer:
-    "To move from Excel or paper to a POS, make three clean lists: products (name, price, barcode, stock), customers and suppliers (name, phone, balance owed). Import them, check a few items, count your opening stock, and go live on a quiet day. With TajirPoint, our team loads your lists for you, free.",
+  shortAnswer: `To move from Excel or paper to a POS, make three clean lists: products (name, price, barcode, stock), customers and suppliers (name, phone, balance owed). Import them, check a few items, count your opening stock, and go live on a quiet day. With ${BRAND_NAME}, our team loads your lists for you, free.`,
   keyPoints: [
     "Signs it is time to leave Excel or paper",
     "The three lists you need, with the columns",
@@ -217,11 +217,11 @@ const guide: Guide = {
     },
     {
       id: "tajirpoint",
-      heading: "Moving to TajirPoint: free data migration",
+      heading: `Moving to ${BRAND_NAME}: free data migration`,
       blocks: [
         {
           type: "p",
-          text: "Send us your lists, or an export from your old POS, in Excel or CSV. **Our team loads them into TajirPoint for you, free**, before you go live:",
+          text: `Send us your lists, or an export from your old POS, in Excel or CSV. **Our team loads them into ${BRAND_NAME} for you, free**, before you go live:`,
         },
         {
           type: "list",
@@ -246,7 +246,7 @@ const guide: Guide = {
   faqs: [
     {
       q: "Can I import my products from Excel?",
-      a: "Yes. TajirPoint reads Excel (.xlsx) and CSV files. Old .xls files need saving as .xlsx or CSV first. Or send the file to our team and we load it for you, free.",
+      a: `Yes. ${BRAND_NAME} reads Excel (.xlsx) and CSV files. Old .xls files need saving as .xlsx or CSV first. Or send the file to our team and we load it for you, free.`,
     },
     {
       q: "What if I only have a paper register?",
@@ -261,12 +261,12 @@ const guide: Guide = {
       a: "No. Load your lists beforehand, count opening stock after closing or before opening, and start selling on the POS the next morning.",
     },
     {
-      q: "Is data migration really free with TajirPoint?",
+      q: `Is data migration really free with ${BRAND_NAME}?`,
       a: "Yes. Our team loads your products, customers, suppliers, credit balances and opening stock from your Excel or CSV files at no charge.",
     },
     {
       q: "Can I bring my data from another POS?",
-      a: "Yes. Export products, customers and suppliers from the old system as Excel or CSV. TajirPoint also reads product exports from Shopify, WooCommerce, Loyverse, Square, Lightspeed and Odoo.",
+      a: `Yes. Export products, customers and suppliers from the old system as Excel or CSV. ${BRAND_NAME} also reads product exports from Shopify, WooCommerce, Loyverse, Square, Lightspeed and Odoo.`,
     },
   ],
   links: [

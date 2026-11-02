@@ -6,6 +6,7 @@ import { CHANGELOG, type ChangelogAudience } from "@/content/changelog/entries";
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { pageBreadcrumbs } from "@/lib/seo/schemas";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 export async function generateMetadata({
   params,
@@ -14,9 +15,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "What's New in TajirPoint POS: Monthly Updates",
-    description:
-      "What changed in TajirPoint this month: new features for shops and restaurants, in plain words. Only work that is already live for every shop is listed here.",
+    title: `What's New in ${BRAND_NAME} POS: Monthly Updates`,
+    description: `What changed in ${BRAND_NAME} this month: new features for shops and restaurants, in plain words. Only work that is already live for every shop is listed here.`,
     path: "/changelog",
     locale,
   });
@@ -41,7 +41,7 @@ export default async function ChangelogPage({ params }: { params: Promise<{ loca
       <section className="px-4 pb-10 pt-[clamp(48px,8vw,96px)] text-center sm:px-7 md:px-10">
         <PillBadge>What&apos;s new</PillBadge>
         <h1 className="mx-auto mt-6 max-w-[820px] text-[clamp(32px,5vw,58px)] font-extrabold leading-[1.06] tracking-[-0.035em] text-balance text-[var(--color-ink)]">
-          What&apos;s new in TajirPoint
+          {`What's new in ${BRAND_NAME}`}
         </h1>
         <p className="mx-auto mt-5 max-w-[620px] text-[17px] leading-[1.65] text-[var(--color-body)]">
           The changes we shipped each month, in plain words. Only things that are already live for

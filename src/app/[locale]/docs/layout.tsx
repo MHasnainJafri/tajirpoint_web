@@ -3,6 +3,7 @@ import { setRequestLocale } from "next-intl/server";
 
 import { DocsSidebar } from "@/components/docs/DocsSidebar";
 import { siteConfig } from "@/lib/config/site";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 export default async function DocsLayout({
   children,
@@ -31,7 +32,7 @@ export default async function DocsLayout({
               href="/"
               className="inline-flex min-h-[44px] items-center text-[16px] font-extrabold tracking-[-0.02em] text-[var(--color-ink)]"
             >
-              TajirPoint
+              {`${BRAND_NAME}`}
             </Link>
             <span className="text-[var(--color-muted-3)]">/</span>
             <Link

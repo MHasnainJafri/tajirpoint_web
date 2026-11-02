@@ -1,4 +1,5 @@
 import type { Guide } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // TajirPoint claims: stock per branch/warehouse, stock movements history,
 // adjustments with a reason and maker-checker approval (owner/manager may
@@ -199,7 +200,7 @@ const guide: Guide = {
     },
     {
       id: "tajirpoint",
-      heading: "How TajirPoint helps",
+      heading: `How ${BRAND_NAME} helps`,
       blocks: [
         {
           type: "list",
@@ -239,7 +240,7 @@ const guide: Guide = {
       a: "For a full count, yes, because you need their help. Spot checks of a few items work best without warning. Either way, the person counting should not see the expected number.",
     },
     {
-      q: "How do I record a stock difference in TajirPoint?",
+      q: `How do I record a stock difference in ${BRAND_NAME}?`,
       a: "Make a stock adjustment with the counted quantity and a reason. If a staff member makes it, an owner or manager approves it before stock changes.",
     },
   ],

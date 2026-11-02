@@ -1,18 +1,18 @@
 import type { Localized } from "../page-copy";
 import type { FeaturePageCopy } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 /** /features/offline. Audiences: Retail, Restaurant, Distribution. */
 export const OFFLINE_COPY: Localized<FeaturePageCopy> = {
   en: {
     meta: {
       title: "Offline POS: Keep Selling Without Internet",
-      description:
-        "Power cuts and dropped internet should never stop a sale. TajirPoint's offline POS saves every sale on the device first and syncs later with no duplicates.",
+      description: `Power cuts and dropped internet should never stop a sale. ${BRAND_NAME}'s offline POS saves every sale on the device first and syncs later with no duplicates.`,
     },
     breadcrumb: "Offline POS",
     badge: "Offline-First",
     headline: ["An offline POS that keeps", "selling when the internet drops."],
-    sub: "Power cuts and dead connections should never stop a sale. TajirPoint keeps billing and syncs safely later.",
+    sub: `Power cuts and dead connections should never stop a sale. ${BRAND_NAME} keeps billing and syncs safely later.`,
     mock: {
       title: "POS · Offline",
       rows: [
@@ -67,13 +67,12 @@ export const OFFLINE_COPY: Localized<FeaturePageCopy> = {
   ur: {
     meta: {
       title: "آف لائن POS: انٹرنیٹ کے بغیر فروخت جاری",
-      description:
-        "بجلی جائے یا انٹرنیٹ بند ہو، فروخت نہیں رکنی چاہیے۔ TajirPoint کا آف لائن POS ہر فروخت پہلے ڈیوائس پر محفوظ کرتا ہے اور بعد میں بغیر ڈبل انٹری کے سنک کرتا ہے۔",
+      description: `بجلی جائے یا انٹرنیٹ بند ہو، فروخت نہیں رکنی چاہیے۔ ${BRAND_NAME} کا آف لائن POS ہر فروخت پہلے ڈیوائس پر محفوظ کرتا ہے اور بعد میں بغیر ڈبل انٹری کے سنک کرتا ہے۔`,
     },
     breadcrumb: "آف لائن POS",
     badge: "آف لائن پہلے",
     headline: ["آف لائن POS جو انٹرنیٹ جانے پر", "بھی فروخت جاری رکھے۔"],
-    sub: "لوڈ شیڈنگ اور بند انٹرنیٹ سے فروخت کبھی نہیں رکنی چاہیے۔ TajirPoint بل بناتا رہتا ہے اور بعد میں محفوظ طریقے سے سنک کرتا ہے۔",
+    sub: `لوڈ شیڈنگ اور بند انٹرنیٹ سے فروخت کبھی نہیں رکنی چاہیے۔ ${BRAND_NAME} بل بناتا رہتا ہے اور بعد میں محفوظ طریقے سے سنک کرتا ہے۔`,
     mock: {
       title: "POS · آف لائن",
       rows: [
@@ -127,13 +126,12 @@ export const OFFLINE_COPY: Localized<FeaturePageCopy> = {
   ar: {
     meta: {
       title: "نقطة بيع تعمل دون إنترنت",
-      description:
-        "انقطاع الكهرباء أو الإنترنت يجب ألا يوقف أي بيع. نقطة بيع TajirPoint تحفظ كل عملية على الجهاز أولًا ثم تزامنها لاحقًا دون أي تكرار في المبيعات.",
+      description: `انقطاع الكهرباء أو الإنترنت يجب ألا يوقف أي بيع. نقطة بيع ${BRAND_NAME} تحفظ كل عملية على الجهاز أولًا ثم تزامنها لاحقًا دون أي تكرار في المبيعات.`,
     },
     breadcrumb: "البيع دون إنترنت",
     badge: "يعمل دون إنترنت",
     headline: ["نقطة بيع تواصل البيع", "حين ينقطع الإنترنت."],
-    sub: "انقطاع الكهرباء والاتصال يجب ألا يوقف أي عملية بيع. يواصل TajirPoint إصدار الفواتير ويزامن بأمان لاحقًا.",
+    sub: `انقطاع الكهرباء والاتصال يجب ألا يوقف أي عملية بيع. يواصل ${BRAND_NAME} إصدار الفواتير ويزامن بأمان لاحقًا.`,
     mock: {
       title: "نقطة البيع · دون اتصال",
       rows: [

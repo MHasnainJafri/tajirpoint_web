@@ -12,6 +12,7 @@ import {
   PRA_ROW,
   SRB_ROW,
 } from "./pk-common";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 const page: LocationPage = {
   slug: "pakistan",
@@ -23,8 +24,7 @@ const page: LocationPage = {
     "Rupees, Urdu screens and receipts, khata, offline billing through power cuts, and an honest view of FBR and provincial tax.",
   seo: {
     title: "POS System in Pakistan: Urdu, Khata and Offline",
-    description:
-      "TajirPoint POS for Pakistani shops and restaurants: rupees, Urdu screens and receipts, khata, and billing through power cuts. FBR link coming soon.",
+    description: `${BRAND_NAME} POS for Pakistani shops and restaurants: rupees, Urdu screens and receipts, khata, and billing through power cuts. FBR link coming soon.`,
     keywords: [
       "pos system pakistan",
       "pos software in pakistan",
@@ -47,9 +47,8 @@ const page: LocationPage = {
   },
   facts: PK_FACTS,
   tax: {
-    heading: "Tax in Pakistan, and where TajirPoint stands",
-    intro:
-      "Goods are taxed federally by FBR. Services, including restaurants, are taxed by the province, and in Islamabad by FBR. Here is each authority and what TajirPoint does with it today.",
+    heading: `Tax in Pakistan, and where ${BRAND_NAME} stands`,
+    intro: `Goods are taxed federally by FBR. Services, including restaurants, are taxed by the province, and in Islamabad by FBR. Here is each authority and what ${BRAND_NAME} does with it today.`,
     rows: [FBR_ROW, PRA_ROW, SRB_ROW, KPRA_ROW, BRA_ROW],
     note: PK_TAX_NOTE,
   },
@@ -120,8 +119,8 @@ const page: LocationPage = {
   faqs: [
     ...PK_COMMON_FAQS,
     {
-      q: "Does TajirPoint connect to PRA, SRB, KPRA or BRA?",
-      a: "No, not yet. TajirPoint records the tax on every bill and gives you tax reports, but it does not send invoices to any provincial revenue authority. If your province requires your restaurant or service business to report invoices to its system, tell us before you switch.",
+      q: `Does ${BRAND_NAME} connect to PRA, SRB, KPRA or BRA?`,
+      a: `No, not yet. ${BRAND_NAME} records the tax on every bill and gives you tax reports, but it does not send invoices to any provincial revenue authority. If your province requires your restaurant or service business to report invoices to its system, tell us before you switch.`,
     },
     {
       q: "Does it work during load-shedding?",
@@ -133,7 +132,7 @@ const page: LocationPage = {
     },
   ],
   cta: {
-    headline: "See TajirPoint on your own shop.",
+    headline: `See ${BRAND_NAME} on your own shop.`,
     sub: "Book a free demo in Urdu or English, or start free for 3 months. We move your data for free.",
   },
   related: ["lahore", "karachi", "islamabad-rawalpindi", "faisalabad"],

@@ -21,6 +21,10 @@
  * hosted video instead of a local file.
  */
 
+// The brand's name (src/lib/config/brand.ts). Read here, not imported: this
+// file must stay free of runtime imports (see the header).
+const BRAND_NAME = process.env.NEXT_PUBLIC_BRAND_NAME || "TajirPoint";
+
 /* ── Apps ─────────────────────────────────────────────────────────── */
 
 export type AppId =
@@ -239,7 +243,7 @@ export const OFFER_LINE = "Free for 3 months, then choose Shop or Business. No c
 export const MIGRATION = {
   eyebrow: "Switching is free",
   headline: "Switching from another POS? We move your data for you.",
-  sub: "Send us an export from your old system — Excel or CSV is fine — and our team loads it into TajirPoint before you go live.",
+  sub: `Send us an export from your old system — Excel or CSV is fine — and our team loads it into ${BRAND_NAME} before you go live.`,
   points: [
     "Products, prices, barcodes and categories",
     "Customers and suppliers, with their opening credit balances",
@@ -251,7 +255,7 @@ export const MIGRATION = {
 
 export const COMMON_FAQS: Faq[] = [
   {
-    q: "Is TajirPoint really free for 3 months?",
+    q: `Is ${BRAND_NAME} really free for 3 months?`,
     a: "Yes. The Light plan is free for 90 days from the day you sign up, with no card required. It covers one shop, two staff logins, 30 products and 100 orders a day. When the 90 days end, choose Shop or Business to keep selling — your data stays safe and you can still sign in, view and export it.",
   },
   {
@@ -262,10 +266,16 @@ export const COMMON_FAQS: Faq[] = [
     q: "Which devices does it run on?",
     a: "Any modern browser, a Windows desktop app and Android — including Android POS terminals with a built-in printer. Receipt printers connect over USB, Bluetooth or the network.",
   },
-  {
-    q: "Is it available in Urdu and Arabic?",
-    a: "Yes. The app works in English, Urdu and Arabic, with right-to-left screens, and receipts can be printed in Urdu and Arabic.",
-  },
+  // Only where the site itself is in Urdu (NEXT_PUBLIC_LOCALES; read here,
+  // not from brand.ts, because this file has no runtime imports).
+  ...(!process.env.NEXT_PUBLIC_LOCALES?.trim() || process.env.NEXT_PUBLIC_LOCALES.includes("ur")
+    ? [
+        {
+          q: "Is it available in Urdu and Arabic?",
+          a: "Yes. The app works in English, Urdu and Arabic, with right-to-left screens, and receipts can be printed in Urdu and Arabic.",
+        },
+      ]
+    : []),
 ];
 
 /* ── The catalog ──────────────────────────────────────────────────── */
@@ -277,7 +287,10 @@ const restaurants: Business = {
   icon: "restaurant",
   localized: {
     ur: { name: "ریسٹورنٹس", navLine: "ٹیبلز، کچن ڈسپلے، ویٹر ایپ، آن لائن آرڈرز اور ڈیلیوری۔" },
-    ar: { name: "المطاعم", navLine: "الطاولات، شاشة المطبخ، تطبيق النادل، الطلبات أونلاين والتوصيل." },
+    ar: {
+      name: "المطاعم",
+      navLine: "الطاولات، شاشة المطبخ، تطبيق النادل، الطلبات أونلاين والتوصيل.",
+    },
   },
   contactLabel: "Restaurant / Food",
   seo: {
@@ -304,16 +317,27 @@ const restaurants: Business = {
     media: {
       slot: "hero",
       expect: "video",
-      alt: "TajirPoint restaurant POS showing the floor plan, an open table and the kitchen display",
+      alt: `${BRAND_NAME} restaurant POS showing the floor plan, an open table and the kitchen display`,
     },
   },
-  apps: ["pos", "kds", "waiter", "receiver", "packer", "orderPage", "riderApp", "customerApp", "backOffice"],
+  apps: [
+    "pos",
+    "kds",
+    "waiter",
+    "receiver",
+    "packer",
+    "orderPage",
+    "riderApp",
+    "customerApp",
+    "backOffice",
+  ],
   features: [
     {
       id: "pos",
       icon: "pos",
       title: "A counter POS built for food",
-      benefit: "Ring up dine-in, takeaway and delivery from one screen, with the modifiers and deals your menu actually has.",
+      benefit:
+        "Ring up dine-in, takeaway and delivery from one screen, with the modifiers and deals your menu actually has.",
       bullets: [
         "Modifiers and add-ons per dish (size, spice, extras)",
         "Deals and combos, discounts with manager permission",
@@ -321,13 +345,18 @@ const restaurants: Business = {
         "Service charge and tax handled on every bill",
         "Receipts in English, Urdu or Arabic",
       ],
-      media: { slot: "pos", expect: "video", alt: "Restaurant counter screen taking a takeaway order with modifiers" },
+      media: {
+        slot: "pos",
+        expect: "video",
+        alt: "Restaurant counter screen taking a takeaway order with modifiers",
+      },
     },
     {
       id: "tables",
       icon: "restaurant",
       title: "Floor plan and tables",
-      benefit: "See every table at a glance — who is seated, what is open and which bill is waiting.",
+      benefit:
+        "See every table at a glance — who is seated, what is open and which bill is waiting.",
       bullets: [
         "Floors and tables laid out the way your hall is",
         "Open, move and merge tables",
@@ -340,59 +369,80 @@ const restaurants: Business = {
       id: "kds",
       icon: "monitor",
       title: "Kitchen display (KDS)",
-      benefit: "Orders go to the right station's screen the moment they are sent — grill, tandoor, drinks — so nothing is lost on paper.",
+      benefit:
+        "Orders go to the right station's screen the moment they are sent — grill, tandoor, drinks — so nothing is lost on paper.",
       bullets: [
         "One screen per station, or one for the whole kitchen",
         "Mark items and tickets ready with a tap",
         "Expo view to check a table's order before it goes out",
         "Prefer paper? Print kitchen tickets per station instead",
       ],
-      media: { slot: "kds", expect: "video", alt: "Kitchen display screen with tickets grouped by station" },
+      media: {
+        slot: "kds",
+        expect: "video",
+        alt: "Kitchen display screen with tickets grouped by station",
+      },
     },
     {
       id: "courses",
       icon: "receipt",
       title: "Kitchen tickets by course",
-      benefit: "Send starters now and hold the mains until the table is ready, so food arrives hot and in order.",
+      benefit:
+        "Send starters now and hold the mains until the table is ready, so food arrives hot and in order.",
       bullets: [
         "Courses set up for your menu",
         "Fire the next course when the table is ready",
         "Add rounds to an open table without a new bill",
         "Voids are recorded, not hidden",
       ],
-      media: { slot: "courses", expect: "image", alt: "A table's ticket split into starters and mains with a fire button" },
+      media: {
+        slot: "courses",
+        expect: "image",
+        alt: "A table's ticket split into starters and mains with a fire button",
+      },
     },
     {
       id: "waiter",
       icon: "users",
       title: "Waiter app",
-      benefit: "Waiters take the order at the table on a phone and it reaches the kitchen before they are back at the pass.",
+      benefit:
+        "Waiters take the order at the table on a phone and it reaches the kitchen before they are back at the pass.",
       bullets: [
         "Runs on Android phones and tablets",
         "Same menu, modifiers and prices as the counter",
         "Each waiter signs in with their own login",
         "Request the bill from the table",
       ],
-      media: { slot: "waiter", expect: "phone", alt: "Waiter app on a phone taking an order for table 7" },
+      media: {
+        slot: "waiter",
+        expect: "phone",
+        alt: "Waiter app on a phone taking an order for table 7",
+      },
     },
     {
       id: "receiver",
       icon: "alarmpct",
       title: "Order receiver board",
-      benefit: "Every online order rings on one screen until someone accepts it, so orders don't slip through on a busy night.",
+      benefit:
+        "Every online order rings on one screen until someone accepts it, so orders don't slip through on a busy night.",
       bullets: [
         "Loud ring for new orders until they are accepted",
         "Accept or decline, then it goes to the kitchen",
         "Packer screen to check bags before handover",
         "Works in the browser on any tablet or PC",
       ],
-      media: { slot: "receiver", expect: "video", alt: "Order receiver board ringing with a new delivery order" },
+      media: {
+        slot: "receiver",
+        expect: "video",
+        alt: "Order receiver board ringing with a new delivery order",
+      },
     },
     {
       id: "order-page",
       icon: "globe",
       title: "Your own online order page, with deals",
-      benefit: "Customers order delivery, pickup or dine-in from your own link — share it on Instagram, Facebook and WhatsApp.",
+      benefit:
+        "Customers order delivery, pickup or dine-in from your own link — share it on Instagram, Facebook and WhatsApp.",
       bullets: [
         "Menu with photos, modifiers and deals",
         "Banners and time-limited deals you control",
@@ -400,20 +450,29 @@ const restaurants: Business = {
         "Cash on delivery, or online payment with a connected gateway",
         "Optional customer verification to cut fake orders",
       ],
-      media: { slot: "order-page", expect: "phone", alt: "Online order page on a phone showing deals and a cart" },
+      media: {
+        slot: "order-page",
+        expect: "phone",
+        alt: "Online order page on a phone showing deals and a cart",
+      },
       plan: SHOP_PLAN_NOTE,
     },
     {
       id: "delivery",
       icon: "scooter",
       title: "Delivery with your riders",
-      benefit: "Hand each delivery to a rider, follow it on the map and settle the cash they collected at the end of the shift.",
+      benefit:
+        "Hand each delivery to a rider, follow it on the map and settle the cash they collected at the end of the shift.",
       bullets: [
         "Rider app for Android: jobs, navigation, proof of delivery",
         "Live rider location while on shift",
         "Rider cash and pay tracked per shift",
       ],
-      media: { slot: "delivery", expect: "phone", alt: "Rider app showing a delivery job and route" },
+      media: {
+        slot: "delivery",
+        expect: "phone",
+        alt: "Rider app showing a delivery job and route",
+      },
     },
     {
       id: "customer-app",
@@ -425,21 +484,30 @@ const restaurants: Business = {
         "Same menu and deals as your order page",
         "Built and published for you",
       ],
-      media: { slot: "customer-app", expect: "phone", alt: "Branded customer ordering app on a phone" },
+      media: {
+        slot: "customer-app",
+        expect: "phone",
+        alt: "Branded customer ordering app on a phone",
+      },
       status: "soon",
     },
     {
       id: "reports",
       icon: "chart",
       title: "Reports that close the day",
-      benefit: "Know what you sold, what you collected and what the kitchen used — by day, by shift and by branch.",
+      benefit:
+        "Know what you sold, what you collected and what the kitchen used — by day, by shift and by branch.",
       bullets: [
         "Z-report and takings per register",
         "Item sales and best sellers",
         "Tax and VAT by rate",
         "Profit and loss with the accounting add-on (Shop plan and above)",
       ],
-      media: { slot: "reports", expect: "image", alt: "Restaurant day-end report with takings and best sellers" },
+      media: {
+        slot: "reports",
+        expect: "image",
+        alt: "Restaurant day-end report with takings and best sellers",
+      },
     },
   ],
   faqs: [
@@ -449,7 +517,7 @@ const restaurants: Business = {
     },
     {
       q: "Do I need special hardware for the kitchen display?",
-      a: "No. Any tablet, Android TV box or PC with a browser works as a kitchen screen. If your kitchen prefers paper, TajirPoint prints tickets to a kitchen printer per station.",
+      a: `No. Any tablet, Android TV box or PC with a browser works as a kitchen screen. If your kitchen prefers paper, ${BRAND_NAME} prints tickets to a kitchen printer per station.`,
     },
     {
       q: "Can I take online orders without paying commission to an app?",
@@ -457,7 +525,7 @@ const restaurants: Business = {
     },
   ],
   cta: {
-    headline: "See your restaurant running on TajirPoint.",
+    headline: `See your restaurant running on ${BRAND_NAME}.`,
     sub: "Book a demo and we'll walk you through the floor, the kitchen screen and online orders using your own menu.",
   },
 };
@@ -468,7 +536,10 @@ const cafesBakeries: Business = {
   navLine: "Fast counter, modifiers, loyalty, recipes and pre-orders.",
   icon: "utensils",
   localized: {
-    ur: { name: "کیفے اور بیکریاں", navLine: "تیز کاؤنٹر، موڈیفائرز، لائلٹی، ترکیبیں اور پیشگی آرڈرز۔" },
+    ur: {
+      name: "کیفے اور بیکریاں",
+      navLine: "تیز کاؤنٹر، موڈیفائرز، لائلٹی، ترکیبیں اور پیشگی آرڈرز۔",
+    },
     ar: { name: "المقاهي والمخابز", navLine: "كاشير سريع، إضافات، ولاء، وصفات وطلبات مسبقة." },
   },
   contactLabel: "Restaurant / Food",
@@ -483,7 +554,11 @@ const cafesBakeries: Business = {
     eyebrow: "Café & bakery POS",
     headline: "Keep the queue moving, from the first coffee to the last cake.",
     sub: "A fast counter with the modifiers your drinks need, loyalty for your regulars, recipes that keep ingredient stock honest, and pre-orders for cakes and catering.",
-    media: { slot: "hero", expect: "video", alt: "Café counter taking a coffee order with milk and size options" },
+    media: {
+      slot: "hero",
+      expect: "video",
+      alt: "Café counter taking a coffee order with milk and size options",
+    },
   },
   apps: ["pos", "customerDisplay", "kds", "orderPage", "backOffice", "ownerApp"],
   features: [
@@ -504,7 +579,8 @@ const cafesBakeries: Business = {
       id: "kitchen",
       icon: "monitor",
       title: "Orders to the bar and the kitchen",
-      benefit: "Drinks go to the bar screen and food to the kitchen, so each team only sees its own work.",
+      benefit:
+        "Drinks go to the bar screen and food to the kitchen, so each team only sees its own work.",
       bullets: [
         "Station screens for bar and kitchen",
         "Or print tickets to a station printer",
@@ -522,50 +598,70 @@ const cafesBakeries: Business = {
         "Coupons and time-based deals, e.g. a morning offer",
         "Customer history on the counter",
       ],
-      media: { slot: "loyalty", expect: "image", alt: "Customer profile with loyalty points balance" },
+      media: {
+        slot: "loyalty",
+        expect: "image",
+        alt: "Customer profile with loyalty points balance",
+      },
     },
     {
       id: "recipes",
       icon: "calculator",
       title: "Recipes and ingredient stock",
-      benefit: "Each sale deducts the flour, milk and beans it used, so you know what to reorder and what each item really costs.",
+      benefit:
+        "Each sale deducts the flour, milk and beans it used, so you know what to reorder and what each item really costs.",
       bullets: [
         "Recipes per item and per size",
         "Ingredient stock deducted as you sell",
         "Low-stock alerts and reorder suggestions",
       ],
-      media: { slot: "recipes", expect: "image", alt: "Recipe screen listing ingredients for a cappuccino" },
+      media: {
+        slot: "recipes",
+        expect: "image",
+        alt: "Recipe screen listing ingredients for a cappuccino",
+      },
     },
     {
       id: "batches",
       icon: "package",
       title: "Batches and expiry for baked goods",
-      benefit: "Track batches and expiry dates so the oldest stock sells first and nothing past date reaches the counter.",
+      benefit:
+        "Track batches and expiry dates so the oldest stock sells first and nothing past date reaches the counter.",
       bullets: [
         "Batch and expiry on stock",
         "Oldest-first selling (FEFO)",
         "Near-expiry list to clear stock before it is wasted",
       ],
-      media: { slot: "batches", expect: "image", alt: "Batch list with expiry dates for baked goods" },
+      media: {
+        slot: "batches",
+        expect: "image",
+        alt: "Batch list with expiry dates for baked goods",
+      },
     },
     {
       id: "preorders",
       icon: "calendar",
       title: "Online orders and pre-orders",
-      benefit: "Take cake and catering orders for a later time from your own order page, and see them before the day starts.",
+      benefit:
+        "Take cake and catering orders for a later time from your own order page, and see them before the day starts.",
       bullets: [
         "Scheduled orders for a chosen date and time",
         "Pickup or delivery",
         "Deals and banners on your order page",
       ],
-      media: { slot: "preorders", expect: "phone", alt: "Order page on a phone scheduling a cake pickup" },
+      media: {
+        slot: "preorders",
+        expect: "phone",
+        alt: "Order page on a phone scheduling a cake pickup",
+      },
       plan: SHOP_PLAN_NOTE,
     },
     {
       id: "reports",
       icon: "chart",
       title: "Day-end in minutes",
-      benefit: "Close the register, count the cash and see the day's best sellers without a spreadsheet.",
+      benefit:
+        "Close the register, count the cash and see the day's best sellers without a spreadsheet.",
       bullets: [
         "Register open and close with cash count",
         "Item sales by hour and by day",
@@ -586,7 +682,7 @@ const cafesBakeries: Business = {
   ],
   cta: {
     headline: "Serve faster. Waste less.",
-    sub: "Book a demo and see your menu, recipes and loyalty set up on TajirPoint.",
+    sub: `Book a demo and see your menu, recipes and loyalty set up on ${BRAND_NAME}.`,
   },
 };
 
@@ -604,14 +700,23 @@ const cloudKitchens: Business = {
     title: "Cloud Kitchen POS: Many Brands, One Kitchen",
     description:
       "Cloud kitchen POS: online ordering for each delivery brand, one order board, kitchen display, packer screen, rider app and reports per brand. Free for 3 months.",
-    keywords: ["cloud kitchen POS", "ghost kitchen software", "dark kitchen POS", "delivery kitchen software"],
+    keywords: [
+      "cloud kitchen POS",
+      "ghost kitchen software",
+      "dark kitchen POS",
+      "delivery kitchen software",
+    ],
   },
   schemaSubCategory: "Cloud kitchen management",
   hero: {
     eyebrow: "Cloud kitchen POS software",
     headline: "Several brands. One kitchen. One order board.",
     sub: "Give each brand its own menu on your online order page, receive every order on one board, cook from one kitchen screen and pack each bag against its ticket.",
-    media: { slot: "hero", expect: "video", alt: "Order board receiving orders for three brands from one kitchen" },
+    media: {
+      slot: "hero",
+      expect: "video",
+      alt: "Order board receiving orders for three brands from one kitchen",
+    },
   },
   apps: ["receiver", "kds", "packer", "orderPage", "riderApp", "backOffice", "ownerApp"],
   features: [
@@ -619,7 +724,8 @@ const cloudKitchens: Business = {
       id: "brands",
       icon: "layers",
       title: "Several brands from one kitchen",
-      benefit: "Set up each brand with its own name and menu while sharing one kitchen, one stock and one team.",
+      benefit:
+        "Set up each brand with its own name and menu while sharing one kitchen, one stock and one team.",
       bullets: [
         "Kitchen brands with their own menus",
         "Shared ingredient stock across brands",
@@ -632,7 +738,8 @@ const cloudKitchens: Business = {
       id: "order-pages",
       icon: "globe",
       title: "Online ordering for every brand",
-      benefit: "Put each brand's menu and deals on your online order page and take delivery and pickup orders for all of them.",
+      benefit:
+        "Put each brand's menu and deals on your online order page and take delivery and pickup orders for all of them.",
       bullets: [
         "Delivery and pickup",
         "Deals and banners per brand",
@@ -647,37 +754,48 @@ const cloudKitchens: Business = {
       icon: "alarmpct",
       title: "One board for every order",
       benefit: "Orders for every brand ring on one screen until they are accepted.",
-      bullets: [
-        "Brand shown on every order",
-        "Accept or decline in one tap",
-      ],
-      media: { slot: "receiver", expect: "video", alt: "Order receiver board with orders from several brands" },
+      bullets: ["Brand shown on every order", "Accept or decline in one tap"],
+      media: {
+        slot: "receiver",
+        expect: "video",
+        alt: "Order receiver board with orders from several brands",
+      },
     },
     {
       id: "kds",
       icon: "monitor",
       title: "Kitchen display by station",
       benefit: "Cooks see what to make, station by station, whichever brand it was ordered from.",
-      bullets: ["Station screens or printed tickets", "Mark items ready", "Expo check before packing"],
-      media: { slot: "kds", expect: "image", alt: "Kitchen display with tickets from several brands" },
+      bullets: [
+        "Station screens or printed tickets",
+        "Mark items ready",
+        "Expo check before packing",
+      ],
+      media: {
+        slot: "kds",
+        expect: "image",
+        alt: "Kitchen display with tickets from several brands",
+      },
     },
     {
       id: "packer",
       icon: "package",
       title: "Packer screen",
       benefit: "Pack each bag against its ticket so the right food goes in the right brand's bag.",
-      bullets: ["Item checklist per order", "Ready-for-rider status", "Fewer missing-item complaints"],
+      bullets: [
+        "Item checklist per order",
+        "Ready-for-rider status",
+        "Fewer missing-item complaints",
+      ],
       media: { slot: "packer", expect: "image", alt: "Packer screen with an item checklist" },
     },
     {
       id: "riders",
       icon: "scooter",
       title: "Riders and delivery",
-      benefit: "Assign orders to your riders, follow them live and settle their cash at the end of the shift.",
-      bullets: [
-        "Rider app for Android",
-        "Live location and proof of delivery",
-      ],
+      benefit:
+        "Assign orders to your riders, follow them live and settle their cash at the end of the shift.",
+      bullets: ["Rider app for Android", "Live location and proof of delivery"],
       media: { slot: "riders", expect: "phone", alt: "Rider app with a delivery job" },
     },
     {
@@ -717,7 +835,13 @@ const retailFashion: Business = {
     title: "Clothing & Retail POS with Barcodes & Variants",
     description:
       "POS for clothing, shoe and retail stores: size and colour variants with barcodes, label printing, exchanges, loyalty, multi-branch stock and an online store.",
-    keywords: ["clothing store POS", "fashion retail POS", "boutique POS", "retail POS", "barcode label printing"],
+    keywords: [
+      "clothing store POS",
+      "fashion retail POS",
+      "boutique POS",
+      "retail POS",
+      "barcode label printing",
+    ],
   },
   schemaSubCategory: "Retail point of sale",
   hero: {
@@ -738,21 +862,30 @@ const retailFashion: Business = {
         "Stock per variant and per branch",
         "Brands, categories and custom fields",
       ],
-      media: { slot: "variants", expect: "image", alt: "Product with a size and colour variant grid" },
+      media: {
+        slot: "variants",
+        expect: "image",
+        alt: "Product with a size and colour variant grid",
+      },
     },
     {
       id: "labels",
       icon: "barcode",
       title: "Barcodes and label printing",
       benefit: "Print price labels for new stock and scan them at the counter.",
-      bullets: ["Label printing from the back office", "Scan to sell", "Price changes reach every counter"],
+      bullets: [
+        "Label printing from the back office",
+        "Scan to sell",
+        "Price changes reach every counter",
+      ],
       media: { slot: "labels", expect: "image", alt: "Barcode label sheet ready to print" },
     },
     {
       id: "returns",
       icon: "refresh",
       title: "Returns and exchanges",
-      benefit: "Take a return against the original sale, with a reason, and put the item straight back into stock.",
+      benefit:
+        "Take a return against the original sale, with a reason, and put the item straight back into stock.",
       bullets: [
         "Return against the original receipt",
         "Return reasons recorded",
@@ -773,7 +906,11 @@ const retailFashion: Business = {
       icon: "store",
       title: "Multi-branch stock",
       benefit: "See stock in every branch and move it to where it sells.",
-      bullets: ["Stock transfers between branches", "Stock counts and adjustments", "Reports per branch"],
+      bullets: [
+        "Stock transfers between branches",
+        "Stock counts and adjustments",
+        "Reports per branch",
+      ],
       media: { slot: "branches", expect: "image", alt: "Stock transfer between two branches" },
       plan: SHOP_PLAN_NOTE,
     },
@@ -782,23 +919,39 @@ const retailFashion: Business = {
       icon: "book",
       title: "Credit accounts for regular customers",
       benefit: "Sell on credit to customers you trust and always know who owes what.",
-      bullets: ["Customer credit with limits", "Statements to share", "Customer portal to see their balance (Shop plan and above)"],
-      media: { slot: "khata", expect: "image", alt: "Customer credit account with balance and history" },
+      bullets: [
+        "Customer credit with limits",
+        "Statements to share",
+        "Customer portal to see their balance (Shop plan and above)",
+      ],
+      media: {
+        slot: "khata",
+        expect: "image",
+        alt: "Customer credit account with balance and history",
+      },
     },
     {
       id: "online-store",
       icon: "globe",
       title: "An online store from the same stock",
-      benefit: "Publish your products on a shop website built from templates — stock and prices come from TajirPoint.",
-      bullets: ["Website builder with templates", "Products and prices synced", "Shopify and WooCommerce sync coming soon"],
-      media: { slot: "online-store", expect: "image", alt: "Fashion store website built with TajirPoint" },
+      benefit: `Publish your products on a shop website built from templates — stock and prices come from ${BRAND_NAME}.`,
+      bullets: [
+        "Website builder with templates",
+        "Products and prices synced",
+        "Shopify and WooCommerce sync coming soon",
+      ],
+      media: {
+        slot: "online-store",
+        expect: "image",
+        alt: `Fashion store website built with ${BRAND_NAME}`,
+      },
       plan: SHOP_PLAN_NOTE,
     },
   ],
   faqs: [
     {
       q: "Can I print barcode labels for my own products?",
-      a: "Yes. Give each product or variant a barcode (or let TajirPoint create one) and print labels from the back office to a label or receipt printer.",
+      a: `Yes. Give each product or variant a barcode (or let ${BRAND_NAME} create one) and print labels from the back office to a label or receipt printer.`,
     },
     {
       q: "Does the counter work if the internet drops?",
@@ -818,21 +971,34 @@ const groceryKiryana: Business = {
   icon: "store",
   localized: {
     ur: { name: "گروسری اور کریانہ", navLine: "بارکوڈ چیک آؤٹ، کھاتہ، کارٹن سے عدد، آف لائن بھی۔" },
-    ar: { name: "البقالة والسوبرماركت", navLine: "دفع بالباركود، دفتر آجل، من الكرتون للقطعة، يعمل دون إنترنت." },
+    ar: {
+      name: "البقالة والسوبرماركت",
+      navLine: "دفع بالباركود، دفتر آجل، من الكرتون للقطعة، يعمل دون إنترنت.",
+    },
   },
   contactLabel: "General retail / Kiryana",
   seo: {
     title: "Grocery & Kiryana Store POS with Khata",
     description:
       "Grocery, kiryana and supermarket POS: fast barcode checkout, sell by carton, kg or piece, a digital khata for credit, low-stock alerts and offline selling.",
-    keywords: ["grocery POS", "supermarket POS", "convenience store POS", "customer credit ledger", "offline POS"],
+    keywords: [
+      "grocery POS",
+      "supermarket POS",
+      "convenience store POS",
+      "customer credit ledger",
+      "offline POS",
+    ],
   },
   schemaSubCategory: "Grocery point of sale",
   hero: {
     eyebrow: "Grocery & kiryana store POS",
     headline: "Fast checkout, honest credit books, and it keeps selling offline.",
     sub: "Scan and sell in seconds, sell by carton, kg or piece, and keep every customer's credit in a digital ledger instead of a paper register.",
-    media: { slot: "hero", expect: "video", alt: "Grocery counter scanning items and adding a sale to a customer's credit account" },
+    media: {
+      slot: "hero",
+      expect: "video",
+      alt: "Grocery counter scanning items and adding a sale to a customer's credit account",
+    },
   },
   apps: ["pos", "customerDisplay", "backOffice", "ownerApp", "website"],
   features: [
@@ -841,7 +1007,12 @@ const groceryKiryana: Business = {
       icon: "barcode",
       title: "Barcode checkout",
       benefit: "Scan, total and print in seconds, even on a cheap Android till.",
-      bullets: ["USB or Bluetooth barcode scanners", "Cash, card or split payment", "Hold a sale and serve the next customer", "Receipts in English, Urdu or Arabic"],
+      bullets: [
+        "USB or Bluetooth barcode scanners",
+        "Cash, card or split payment",
+        "Hold a sale and serve the next customer",
+        "Receipts in English, Urdu or Arabic",
+      ],
       media: { slot: "checkout", expect: "video", alt: "Scanning groceries at the counter" },
     },
     {
@@ -849,16 +1020,30 @@ const groceryKiryana: Business = {
       icon: "package",
       title: "Cartons, kilos and pieces",
       benefit: "Buy by the carton, sell by the piece or the kilo — stock converts automatically.",
-      bullets: ["Units of measure with conversions", "Different prices per unit", "Price lists for retail and wholesale customers"],
+      bullets: [
+        "Units of measure with conversions",
+        "Different prices per unit",
+        "Price lists for retail and wholesale customers",
+      ],
       media: { slot: "units", expect: "image", alt: "Product with carton and piece units" },
     },
     {
       id: "khata",
       icon: "book",
       title: "Digital credit ledger",
-      benefit: "Every customer's credit in one place — with limits, history and a balance they can see.",
-      bullets: ["Credit sales straight to the customer's account", "Credit limits per customer", "Payments received against the balance", "Customer portal to see their own balance (Shop plan and above)"],
-      media: { slot: "khata", expect: "video", alt: "Customer credit account with running balance" },
+      benefit:
+        "Every customer's credit in one place — with limits, history and a balance they can see.",
+      bullets: [
+        "Credit sales straight to the customer's account",
+        "Credit limits per customer",
+        "Payments received against the balance",
+        "Customer portal to see their own balance (Shop plan and above)",
+      ],
+      media: {
+        slot: "khata",
+        expect: "video",
+        alt: "Customer credit account with running balance",
+      },
     },
     {
       id: "suppliers",
@@ -880,15 +1065,21 @@ const groceryKiryana: Business = {
       id: "offline",
       icon: "refresh",
       title: "Keeps selling offline",
-      benefit: "When the internet or power-backup router drops, the counter keeps ringing up sales and syncs later.",
-      bullets: ["Offline sales queue and sync automatically", "Offline receipts are numbered separately", "Credit sales offline up to each customer’s limit"],
+      benefit:
+        "When the internet or power-backup router drops, the counter keeps ringing up sales and syncs later.",
+      bullets: [
+        "Offline sales queue and sync automatically",
+        "Offline receipts are numbered separately",
+        "Credit sales offline up to each customer’s limit",
+      ],
       media: { slot: "offline", expect: "image", alt: "Offline banner with queued sales" },
     },
     {
       id: "dayend",
       icon: "cash",
       title: "Cash and day-end",
-      benefit: "Open and close the register with a cash count and see any difference straight away.",
+      benefit:
+        "Open and close the register with a cash count and see any difference straight away.",
       bullets: ["Register sessions with cash count", "Z-report", "Expenses and petty cash"],
       media: { slot: "dayend", expect: "image", alt: "Register close with cash count" },
     },
@@ -896,7 +1087,7 @@ const groceryKiryana: Business = {
   faqs: [
     {
       q: "Can I use it on an Android POS terminal with a built-in printer?",
-      a: "Yes. TajirPoint runs on Android and prints to the built-in printers on Sunmi and iMin terminals, as well as USB, Bluetooth and network printers.",
+      a: `Yes. ${BRAND_NAME} runs on Android and prints to the built-in printers on Sunmi and iMin terminals, as well as USB, Bluetooth and network printers.`,
     },
     {
       q: "Can my customers see what they owe?",
@@ -916,21 +1107,34 @@ const pharmacy: Business = {
   icon: "pill",
   localized: {
     ur: { name: "فارمیسیز", navLine: "بیچ اور میعاد، FEFO، جنرک تلاش، نسخہ لاگ۔" },
-    ar: { name: "الصيدليات", navLine: "التشغيلات والانتهاء، FEFO، بحث بالاسم العلمي، سجل الوصفات." },
+    ar: {
+      name: "الصيدليات",
+      navLine: "التشغيلات والانتهاء، FEFO، بحث بالاسم العلمي، سجل الوصفات.",
+    },
   },
   contactLabel: "General retail / Kiryana",
   seo: {
     title: "Pharmacy POS with Batch & Expiry Tracking",
     description:
       "Pharmacy and medical store POS: batch and expiry tracking, oldest-first (FEFO) selling, near-expiry reports, search by generic name and a prescription log.",
-    keywords: ["pharmacy POS", "pharmacy software", "medical store software", "batch expiry tracking", "FEFO"],
+    keywords: [
+      "pharmacy POS",
+      "pharmacy software",
+      "medical store software",
+      "batch expiry tracking",
+      "FEFO",
+    ],
   },
   schemaSubCategory: "Pharmacy point of sale",
   hero: {
     eyebrow: "Pharmacy POS & medical store software",
     headline: "Sell safely. Sell the oldest stock first.",
     sub: "Every strip linked to its batch and expiry, the oldest stock sold first, and a near-expiry list before stock turns into a loss.",
-    media: { slot: "hero", expect: "video", alt: "Pharmacy counter selling a medicine with its batch and expiry" },
+    media: {
+      slot: "hero",
+      expect: "video",
+      alt: "Pharmacy counter selling a medicine with its batch and expiry",
+    },
   },
   apps: ["pos", "backOffice", "ownerApp"],
   features: [
@@ -939,7 +1143,11 @@ const pharmacy: Business = {
       icon: "package",
       title: "Batch and expiry tracking",
       benefit: "Receive stock with its batch number and expiry date, and see it at the counter.",
-      bullets: ["Batch and expiry recorded on purchase", "Stock per batch", "Expired stock kept out of sale"],
+      bullets: [
+        "Batch and expiry recorded on purchase",
+        "Stock per batch",
+        "Expired stock kept out of sale",
+      ],
       media: { slot: "batches", expect: "image", alt: "Batch list with expiry dates" },
     },
     {
@@ -1001,15 +1209,26 @@ const electronicsMobile: Business = {
   navLine: "IMEI and serial tracking, variants, quotations and credit.",
   icon: "phone",
   localized: {
-    ur: { name: "الیکٹرانکس اور موبائل", navLine: "IMEI اور سیریل ٹریکنگ، ویریئنٹس، کوٹیشنز اور کھاتہ۔" },
-    ar: { name: "الإلكترونيات والجوالات", navLine: "تتبع IMEI والأرقام التسلسلية، المتغيرات، عروض الأسعار والآجل." },
+    ur: {
+      name: "الیکٹرانکس اور موبائل",
+      navLine: "IMEI اور سیریل ٹریکنگ، ویریئنٹس، کوٹیشنز اور کھاتہ۔",
+    },
+    ar: {
+      name: "الإلكترونيات والجوالات",
+      navLine: "تتبع IMEI والأرقام التسلسلية، المتغيرات، عروض الأسعار والآجل.",
+    },
   },
   contactLabel: "Electronics / Mobile",
   seo: {
     title: "Mobile Shop POS with IMEI & Serial Tracking",
     description:
       "POS for mobile phone and electronics shops: IMEI and serial number tracking from purchase to sale, storage variants, quotations, customer and supplier credit.",
-    keywords: ["mobile shop POS", "IMEI tracking software", "electronics store POS", "serial number tracking"],
+    keywords: [
+      "mobile shop POS",
+      "IMEI tracking software",
+      "electronics store POS",
+      "serial number tracking",
+    ],
   },
   schemaSubCategory: "Electronics retail point of sale",
   hero: {
@@ -1025,7 +1244,11 @@ const electronicsMobile: Business = {
       icon: "scan",
       title: "IMEI and serial numbers",
       benefit: "Know which exact unit you bought, from whom, and who you sold it to.",
-      bullets: ["Serials captured on purchase", "Scan the IMEI at the counter", "Find a sale by serial number"],
+      bullets: [
+        "Serials captured on purchase",
+        "Scan the IMEI at the counter",
+        "Find a sale by serial number",
+      ],
       media: { slot: "serials", expect: "video", alt: "Serial number list for a phone model" },
     },
     {
@@ -1033,14 +1256,23 @@ const electronicsMobile: Business = {
       icon: "tag",
       title: "Colours and storage as variants",
       benefit: "One model, every colour and storage size, each with its own stock and price.",
-      bullets: ["Variants with their own barcodes", "Brands and categories", "Accessories as normal products"],
-      media: { slot: "variants", expect: "image", alt: "Phone model with colour and storage variants" },
+      bullets: [
+        "Variants with their own barcodes",
+        "Brands and categories",
+        "Accessories as normal products",
+      ],
+      media: {
+        slot: "variants",
+        expect: "image",
+        alt: "Phone model with colour and storage variants",
+      },
     },
     {
       id: "quotations",
       icon: "receipt",
       title: "Quotations",
-      benefit: "Send a quote for a bulk or corporate order and turn it into a sale when they agree.",
+      benefit:
+        "Send a quote for a bulk or corporate order and turn it into a sale when they agree.",
       bullets: ["Printable quotations", "Convert a quote to a sale", "Customer details saved"],
       media: { slot: "quotations", expect: "image", alt: "Quotation for five laptops" },
     },
@@ -1048,7 +1280,8 @@ const electronicsMobile: Business = {
       id: "khata",
       icon: "book",
       title: "Customer and supplier credit",
-      benefit: "Sell on credit to trusted customers and keep track of what you owe each distributor.",
+      benefit:
+        "Sell on credit to trusted customers and keep track of what you owe each distributor.",
       bullets: ["Customer credit with limits", "Supplier ledgers", "Payments against balances"],
       media: { slot: "khata", expect: "image", alt: "Supplier ledger for a distributor" },
     },
@@ -1080,8 +1313,14 @@ const salonsServices: Business = {
   navLine: "Services and products at one counter, client history, loyalty.",
   icon: "calendar",
   localized: {
-    ur: { name: "سیلون اور سروسز", navLine: "ایک کاؤنٹر پر سروسز اور مصنوعات، کلائنٹ ہسٹری، لائلٹی۔" },
-    ar: { name: "الصالونات والخدمات", navLine: "خدمات ومنتجات على كاشير واحد، سجل العملاء، الولاء." },
+    ur: {
+      name: "سیلون اور سروسز",
+      navLine: "ایک کاؤنٹر پر سروسز اور مصنوعات، کلائنٹ ہسٹری، لائلٹی۔",
+    },
+    ar: {
+      name: "الصالونات والخدمات",
+      navLine: "خدمات ومنتجات على كاشير واحد، سجل العملاء، الولاء.",
+    },
   },
   contactLabel: "Services / Salon",
   seo: {
@@ -1104,7 +1343,11 @@ const salonsServices: Business = {
       icon: "pos",
       title: "Services and products on one bill",
       benefit: "Sell services, packages and retail products together at one counter.",
-      bullets: ["Services as products with their own prices", "Retail stock for products you sell", "Cash, card or split payment"],
+      bullets: [
+        "Services as products with their own prices",
+        "Retail stock for products you sell",
+        "Cash, card or split payment",
+      ],
       media: { slot: "services", expect: "image", alt: "Bill with a haircut and a hair product" },
     },
     {
@@ -1112,7 +1355,11 @@ const salonsServices: Business = {
       icon: "users",
       title: "Client history",
       benefit: "See what each client had last time and what they spent.",
-      bullets: ["Customer profiles", "Visit and payment history", "Credit accounts for clients who pay later"],
+      bullets: [
+        "Customer profiles",
+        "Visit and payment history",
+        "Credit accounts for clients who pay later",
+      ],
       media: { slot: "clients", expect: "image", alt: "Client profile with visit history" },
     },
     {
@@ -1128,14 +1375,18 @@ const salonsServices: Business = {
       icon: "idcard",
       title: "Staff logins and roles",
       benefit: "Each staff member signs in with their own login, so you know who did what.",
-      bullets: ["Roles and permissions", "Sales by staff member", "HR and payroll add-on (Shop plan and above)"],
+      bullets: [
+        "Roles and permissions",
+        "Sales by staff member",
+        "HR and payroll add-on (Shop plan and above)",
+      ],
       media: { slot: "staff", expect: "image", alt: "Staff list with roles" },
     },
     {
       id: "booking",
       icon: "calendar",
       title: "Booking requests from your website",
-      benefit: "Let clients request a booking from your TajirPoint website.",
+      benefit: `Let clients request a booking from your ${BRAND_NAME} website.`,
       bullets: ["Booking form on your website", "Services listed with prices"],
       media: { slot: "booking", expect: "phone", alt: "Booking form on a salon website" },
       plan: SHOP_PLAN_NOTE,
@@ -1152,8 +1403,8 @@ const salonsServices: Business = {
   ],
   faqs: [
     {
-      q: "Can I manage appointments in TajirPoint?",
-      a: "Clients can request bookings through your TajirPoint website today. A full appointment calendar in the back office is coming soon — ask us about it in your demo.",
+      q: `Can I manage appointments in ${BRAND_NAME}?`,
+      a: `Clients can request bookings through your ${BRAND_NAME} website today. A full appointment calendar in the back office is coming soon — ask us about it in your demo.`,
     },
   ],
   cta: {
@@ -1168,15 +1419,27 @@ const distributorsWholesale: Business = {
   navLine: "Van sales, routes, price lists, warehouses and credit control.",
   icon: "truck",
   localized: {
-    ur: { name: "ڈسٹری بیوٹرز اور ہول سیل", navLine: "وین سیلز، روٹس، پرائس لسٹیں، گودام اور اُدھار کنٹرول۔" },
-    ar: { name: "الموزعون والجملة", navLine: "البيع المتنقل، المسارات، قوائم الأسعار، المستودعات وضبط الآجل." },
+    ur: {
+      name: "ڈسٹری بیوٹرز اور ہول سیل",
+      navLine: "وین سیلز، روٹس، پرائس لسٹیں، گودام اور اُدھار کنٹرول۔",
+    },
+    ar: {
+      name: "الموزعون والجملة",
+      navLine: "البيع المتنقل، المسارات، قوائم الأسعار، المستودعات وضبط الآجل.",
+    },
   },
   contactLabel: "Distributor / Wholesale",
   seo: {
     title: "Distribution Software for Van Sales & Routes",
     description:
       "Distribution and wholesale software: route dispatch, van sales, day-end reconciliation, dealer price lists, multi-warehouse stock, credit limits and ledgers.",
-    keywords: ["distribution software", "van sales app", "route sales software", "wholesale POS", "order booker app"],
+    keywords: [
+      "distribution software",
+      "van sales app",
+      "route sales software",
+      "wholesale POS",
+      "order booker app",
+    ],
   },
   schemaSubCategory: "Distribution and wholesale management",
   hero: {
@@ -1192,15 +1455,24 @@ const distributorsWholesale: Business = {
       icon: "route",
       title: "Route dispatch and van sales",
       benefit: "Plan a trip, load the van and sell from it stop by stop.",
-      bullets: ["Trips with stops and load lists", "Sell, collect and take returns on the route", "Load list for every trip"],
+      bullets: [
+        "Trips with stops and load lists",
+        "Sell, collect and take returns on the route",
+        "Load list for every trip",
+      ],
       media: { slot: "trips", expect: "video", alt: "Trip screen with stops and a loaded van" },
     },
     {
       id: "reconcile",
       icon: "cash",
       title: "Day-end reconciliation",
-      benefit: "When the van returns, match the cash, the goods sold and the goods returned in one screen.",
-      bullets: ["Cash collected vs sales", "Returns recorded per trip", "Differences shown per trip"],
+      benefit:
+        "When the van returns, match the cash, the goods sold and the goods returned in one screen.",
+      bullets: [
+        "Cash collected vs sales",
+        "Returns recorded per trip",
+        "Differences shown per trip",
+      ],
       media: { slot: "reconcile", expect: "image", alt: "Trip reconciliation screen" },
     },
     {
@@ -1208,7 +1480,11 @@ const distributorsWholesale: Business = {
       icon: "percent",
       title: "Dealer price lists",
       benefit: "Different prices for retailers, wholesalers and dealers, applied automatically.",
-      bullets: ["Price lists per customer group", "Units of measure (carton, dozen, piece)", "Quotations"],
+      bullets: [
+        "Price lists per customer group",
+        "Units of measure (carton, dozen, piece)",
+        "Quotations",
+      ],
       media: { slot: "pricing", expect: "image", alt: "Price list for dealers" },
     },
     {
@@ -1216,7 +1492,11 @@ const distributorsWholesale: Business = {
       icon: "book",
       title: "Credit limits and balances",
       benefit: "Know each shop's balance before you sell to them again.",
-      bullets: ["Credit limits per customer", "Ageing of what is owed", "Payments collected on the route"],
+      bullets: [
+        "Credit limits per customer",
+        "Ageing of what is owed",
+        "Payments collected on the route",
+      ],
       media: { slot: "credit", expect: "image", alt: "Customer balance with ageing" },
     },
     {
@@ -1255,22 +1535,38 @@ const transportDelivery: Business = {
   navLine: "Routes, drivers, proof of delivery, fuel and profit per trip.",
   icon: "truck",
   localized: {
-    ur: { name: "ٹرانسپورٹ اور ڈیلیوری فلیٹس", navLine: "روٹس، ڈرائیور، ڈیلیوری کا ثبوت، ایندھن اور فی سفر منافع۔" },
-    ar: { name: "النقل وأساطيل التوصيل", navLine: "المسارات، السائقون، إثبات التسليم، الوقود وربح كل رحلة." },
+    ur: {
+      name: "ٹرانسپورٹ اور ڈیلیوری فلیٹس",
+      navLine: "روٹس، ڈرائیور، ڈیلیوری کا ثبوت، ایندھن اور فی سفر منافع۔",
+    },
+    ar: {
+      name: "النقل وأساطيل التوصيل",
+      navLine: "المسارات، السائقون، إثبات التسليم، الوقود وربح كل رحلة.",
+    },
   },
   contactLabel: "Distributor / Wholesale",
   seo: {
     title: "Fleet & Delivery Software: Routes & Drivers",
     description:
       "Trucking and delivery fleet software: route and stop planning, driver dispatch, proof of delivery, cash collected on the road, fuel checks and profit per trip.",
-    keywords: ["fleet management software", "delivery fleet software", "trucking software", "route dispatch software", "driver cash reconciliation"],
+    keywords: [
+      "fleet management software",
+      "delivery fleet software",
+      "trucking software",
+      "route dispatch software",
+      "driver cash reconciliation",
+    ],
   },
   schemaSubCategory: "Fleet and delivery management",
   hero: {
     eyebrow: "Fleet & delivery management software",
     headline: "Know what every trip really earned.",
     sub: "Plan the route, dispatch the vehicle and driver, collect proof of delivery and cash on the road — then see the profit after fuel, trip by trip.",
-    media: { slot: "hero", expect: "video", alt: "Dispatch screen with a vehicle, driver and stops" },
+    media: {
+      slot: "hero",
+      expect: "video",
+      alt: "Dispatch screen with a vehicle, driver and stops",
+    },
   },
   apps: ["vanSales", "riderApp", "backOffice", "ownerApp"],
   features: [
@@ -1279,14 +1575,23 @@ const transportDelivery: Business = {
       icon: "route",
       title: "Routes and dispatch",
       benefit: "Plan stops, assign a vehicle and a driver, and send the trip out.",
-      bullets: ["Trips with stops and load lists", "Vehicles and drivers on every trip", "Stops completed as the driver goes"],
-      media: { slot: "dispatch", expect: "video", alt: "Trip planned with stops, a vehicle and a driver" },
+      bullets: [
+        "Trips with stops and load lists",
+        "Vehicles and drivers on every trip",
+        "Stops completed as the driver goes",
+      ],
+      media: {
+        slot: "dispatch",
+        expect: "video",
+        alt: "Trip planned with stops, a vehicle and a driver",
+      },
     },
     {
       id: "proof",
       icon: "receipt",
       title: "Proof of delivery",
-      benefit: "Every drop confirmed on the driver's phone, so there is nothing to argue about later.",
+      benefit:
+        "Every drop confirmed on the driver's phone, so there is nothing to argue about later.",
       bullets: ["Delivery confirmed per stop", "Returns and damages recorded"],
       media: { slot: "proof", expect: "phone", alt: "Driver confirming a delivery on a phone" },
     },
@@ -1295,7 +1600,11 @@ const transportDelivery: Business = {
       icon: "cash",
       title: "Cash collected on the road",
       benefit: "Drivers collect payment at the door; you match it to the trip when they return.",
-      bullets: ["Cash and credit sales per trip", "Day-end reconciliation", "Any shortfall on the driver's account"],
+      bullets: [
+        "Cash and credit sales per trip",
+        "Day-end reconciliation",
+        "Any shortfall on the driver's account",
+      ],
       media: { slot: "cash", expect: "image", alt: "Trip reconciliation with cash collected" },
     },
     {
@@ -1320,7 +1629,11 @@ const transportDelivery: Business = {
       icon: "ledgerbook",
       title: "Books that follow the trips",
       benefit: "Collections, expenses and customer balances post to the ledger without re-typing.",
-      bullets: ["Double-entry books posted automatically", "Customer balances and statements", "Cash drawers and petty cash"],
+      bullets: [
+        "Double-entry books posted automatically",
+        "Customer balances and statements",
+        "Cash drawers and petty cash",
+      ],
       media: { slot: "books", expect: "image", alt: "Ledger entries created from delivery trips" },
     },
   ],
@@ -1342,15 +1655,27 @@ const factoriesMills: Business = {
   navLine: "Raw-material purchasing, warehouses, batches, dealer pricing and credit.",
   icon: "warehouse",
   localized: {
-    ur: { name: "فیکٹریاں اور ملز", navLine: "خام مال کی خریداری، گودام، بیچز، ڈیلر قیمتیں اور اُدھار۔" },
-    ar: { name: "المصانع والمطاحن", navLine: "شراء المواد الخام، المستودعات، الدفعات، أسعار الموزعين والآجل." },
+    ur: {
+      name: "فیکٹریاں اور ملز",
+      navLine: "خام مال کی خریداری، گودام، بیچز، ڈیلر قیمتیں اور اُدھار۔",
+    },
+    ar: {
+      name: "المصانع والمطاحن",
+      navLine: "شراء المواد الخام، المستودعات، الدفعات، أسعار الموزعين والآجل.",
+    },
   },
   contactLabel: "Distributor / Wholesale",
   seo: {
     title: "Factory & Mill Software: Stock, Dealers, Credit",
     description:
       "Factory and mill software for selling to dealers: raw-material purchasing, batch stock in every warehouse, dealer price lists, credit limits, auto-posted books.",
-    keywords: ["factory inventory software", "mill software", "manufacturer sales software", "wholesale distribution software", "dealer price list software"],
+    keywords: [
+      "factory inventory software",
+      "mill software",
+      "manufacturer sales software",
+      "wholesale distribution software",
+      "dealer price list software",
+    ],
   },
   schemaSubCategory: "Manufacturer inventory, sales and accounting",
   hero: {
@@ -1367,14 +1692,22 @@ const factoriesMills: Business = {
       title: "Raw-material purchasing",
       benefit: "Purchase orders, goods received and supplier balances in one place.",
       bullets: ["Purchase orders and goods receipt", "Supplier ledgers", "Purchase returns"],
-      media: { slot: "purchasing", expect: "image", alt: "Purchase order and goods receipt screen" },
+      media: {
+        slot: "purchasing",
+        expect: "image",
+        alt: "Purchase order and goods receipt screen",
+      },
     },
     {
       id: "warehouses",
       icon: "warehouse",
       title: "Warehouses and batches",
       benefit: "Know what is in every warehouse and which batch it came from.",
-      bullets: ["Multiple warehouses and transfers", "Batch tracking", "Stock counts and adjustments"],
+      bullets: [
+        "Multiple warehouses and transfers",
+        "Batch tracking",
+        "Stock counts and adjustments",
+      ],
       media: { slot: "warehouses", expect: "image", alt: "Stock by warehouse and batch" },
       plan: SHOP_PLAN_NOTE,
     },
@@ -1383,7 +1716,11 @@ const factoriesMills: Business = {
       icon: "percent",
       title: "Dealer and bulk pricing",
       benefit: "Different prices for dealers, wholesalers and retailers, applied automatically.",
-      bullets: ["Price lists per customer group", "Units of measure (carton, dozen, piece)", "Quotations"],
+      bullets: [
+        "Price lists per customer group",
+        "Units of measure (carton, dozen, piece)",
+        "Quotations",
+      ],
       media: { slot: "pricing", expect: "image", alt: "Dealer price list" },
     },
     {
@@ -1398,8 +1735,13 @@ const factoriesMills: Business = {
       id: "costing",
       icon: "calculator",
       title: "Costing and books",
-      benefit: "Stock valued with the costing method you choose, and every movement posts to the ledger.",
-      bullets: ["Costing methods", "Double-entry books posted automatically", "Trial balance, P&L and balance sheet"],
+      benefit:
+        "Stock valued with the costing method you choose, and every movement posts to the ledger.",
+      bullets: [
+        "Costing methods",
+        "Double-entry books posted automatically",
+        "Trial balance, P&L and balance sheet",
+      ],
       media: { slot: "costing", expect: "image", alt: "Profit and loss report" },
     },
     {
@@ -1407,14 +1749,18 @@ const factoriesMills: Business = {
       icon: "truck",
       title: "Dispatch to dealers",
       benefit: "Send finished goods out on your own vehicles and reconcile each trip.",
-      bullets: ["Trips with stops and load lists", "Cash collected per trip", "Day-end reconciliation"],
+      bullets: [
+        "Trips with stops and load lists",
+        "Cash collected per trip",
+        "Day-end reconciliation",
+      ],
       media: { slot: "delivery", expect: "image", alt: "Delivery trip for dealer orders" },
     },
   ],
   faqs: [
     {
       q: "Does it plan production or manage bills of materials?",
-      a: "Not today. TajirPoint covers the buying, stock, selling, credit and accounting around your factory. Tell us what you need on a demo call and we will say plainly whether it fits.",
+      a: `Not today. ${BRAND_NAME} covers the buying, stock, selling, credit and accounting around your factory. Tell us what you need on a demo call and we will say plainly whether it fits.`,
     },
   ],
   cta: {
@@ -1437,14 +1783,23 @@ const furnitureHome: Business = {
     title: "Furniture Store POS with Quotations & Delivery",
     description:
       "Furniture and home store POS: quotations that turn into sales, fabric and finish variants, dimensions as custom fields, customer credit, stock and delivery.",
-    keywords: ["furniture store POS", "furniture shop software", "home decor POS", "quotation software"],
+    keywords: [
+      "furniture store POS",
+      "furniture shop software",
+      "home decor POS",
+      "quotation software",
+    ],
   },
   schemaSubCategory: "Furniture retail point of sale",
   hero: {
     eyebrow: "Furniture store POS",
     headline: "Quote it, sell it, deliver it — and get paid in full.",
-    sub: "Big-ticket sales need quotations, balances and delivery. TajirPoint keeps all three on the same customer record.",
-    media: { slot: "hero", expect: "image", alt: "Furniture showroom with a quotation on a tablet" },
+    sub: `Big-ticket sales need quotations, balances and delivery. ${BRAND_NAME} keeps all three on the same customer record.`,
+    media: {
+      slot: "hero",
+      expect: "image",
+      alt: "Furniture showroom with a quotation on a tablet",
+    },
   },
   apps: ["pos", "backOffice", "website", "ownerApp"],
   features: [
@@ -1462,15 +1817,28 @@ const furnitureHome: Business = {
       title: "Variants and custom fields",
       benefit: "Fabric, colour and finish as variants; dimensions and material as custom fields.",
       bullets: ["Variants with their own stock", "Custom fields on products", "Photos on products"],
-      media: { slot: "variants", expect: "image", alt: "Product with fabric variants and dimension fields" },
+      media: {
+        slot: "variants",
+        expect: "image",
+        alt: "Product with fabric variants and dimension fields",
+      },
     },
     {
       id: "credit",
       icon: "book",
       title: "Balances and credit",
-      benefit: "Take part payment now and keep the balance on the customer's account until delivery.",
-      bullets: ["Part payment at the counter", "Balance on the customer's account", "Statements to share"],
-      media: { slot: "credit", expect: "image", alt: "Customer account showing an outstanding balance" },
+      benefit:
+        "Take part payment now and keep the balance on the customer's account until delivery.",
+      bullets: [
+        "Part payment at the counter",
+        "Balance on the customer's account",
+        "Statements to share",
+      ],
+      media: {
+        slot: "credit",
+        expect: "image",
+        alt: "Customer account showing an outstanding balance",
+      },
     },
     {
       id: "warehouse",
@@ -1486,14 +1854,17 @@ const furnitureHome: Business = {
       icon: "truck",
       title: "Delivery",
       benefit: "Plan deliveries to customers with your own vehicles and drivers.",
-      bullets: ["Delivery trips with stops", "Balance collected on delivery goes to the customer's account"],
+      bullets: [
+        "Delivery trips with stops",
+        "Balance collected on delivery goes to the customer's account",
+      ],
       media: { slot: "delivery", expect: "image", alt: "Delivery trip for furniture orders" },
     },
     {
       id: "website",
       icon: "globe",
       title: "Your catalogue online",
-      benefit: "Show your range on a website built from your TajirPoint products.",
+      benefit: `Show your range on a website built from your ${BRAND_NAME} products.`,
       bullets: ["Website builder with templates", "Products and photos synced"],
       media: { slot: "website", expect: "image", alt: "Furniture store website" },
       plan: SHOP_PLAN_NOTE,
@@ -1511,7 +1882,7 @@ const furnitureHome: Business = {
   },
 };
 
-export const BUSINESSES: readonly Business[] = [
+const ALL_BUSINESSES: readonly Business[] = [
   restaurants,
   cafesBakeries,
   cloudKitchens,
@@ -1525,6 +1896,43 @@ export const BUSINESSES: readonly Business[] = [
   factoriesMills,
   furnitureHome,
 ];
+
+/**
+ * The backend `Shop.BusinessType` values each page is for. A server that
+ * serves only some types (NEXT_PUBLIC_BUSINESS_TYPES, the web build's twin of
+ * the backend's PLATFORM_BUSINESS_TYPES; Hey Orders: "restaurant") shows only
+ * the pages for those types, everywhere the catalogue is listed.
+ */
+export const BUSINESS_PLATFORM_TYPES: Record<BusinessSlug, readonly string[]> = {
+  restaurants: ["restaurant"],
+  "cafes-bakeries": ["cafe", "bakery"],
+  "cloud-kitchens": ["restaurant"],
+  "retail-fashion": ["retail", "apparel"],
+  "grocery-kiryana": ["grocery", "kiryana"],
+  pharmacy: ["pharmacy"],
+  "electronics-mobile": ["electronics", "laptop_shop", "mobile_shop"],
+  "salons-services": ["salon"],
+  "distributors-wholesale": ["distribution", "wholesale"],
+  "transport-delivery": ["distribution"],
+  "factories-mills": ["wholesale", "distribution"],
+  "furniture-home": ["retail"],
+};
+
+// Read here, not from brand.ts: this file must stay free of runtime imports.
+const SERVED_TYPES = (process.env.NEXT_PUBLIC_BUSINESS_TYPES ?? "")
+  .split(",")
+  .map((t) => t.trim().toLowerCase())
+  .filter(Boolean);
+
+/** The business pages this build has, in menu order (every one when no type filter is set). */
+export const BUSINESSES: readonly Business[] = SERVED_TYPES.length
+  ? ALL_BUSINESSES.filter((b) =>
+      BUSINESS_PLATFORM_TYPES[b.slug].some((t) => SERVED_TYPES.includes(t))
+    )
+  : ALL_BUSINESSES;
+
+/** Slugs of the business pages this build has. */
+export const SHOWN_BUSINESS_SLUGS: readonly BusinessSlug[] = BUSINESSES.map((b) => b.slug);
 
 export function getBusiness(slug: string): Business | undefined {
   return BUSINESSES.find((b) => b.slug === slug);
@@ -1566,7 +1974,11 @@ export function facebookAdLink(origin: string, slug: BusinessSlug): string {
 }
 
 /** Every media slot on every business page, for docs and tests. */
-export function allMediaSlots(): Array<{ business: BusinessSlug; section: string; media: MediaRef }> {
+export function allMediaSlots(): Array<{
+  business: BusinessSlug;
+  section: string;
+  media: MediaRef;
+}> {
   return BUSINESSES.flatMap((b) => [
     { business: b.slug, section: "Hero", media: b.hero.media },
     ...b.features.map((f) => ({ business: b.slug, section: f.title, media: f.media })),

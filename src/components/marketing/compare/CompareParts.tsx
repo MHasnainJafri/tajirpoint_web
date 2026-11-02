@@ -2,6 +2,7 @@ import { Check, ChevronDown, Clock, Minus, X } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import type { Cell, Comparison, Faq, Mark, Source } from "@/content/compare";
 import { CHECKED, CHECKED_ISO, getComparison } from "@/content/compare";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 /**
  * Building blocks of the /compare pages. Server components only: no client JS.
@@ -95,7 +96,7 @@ export function CompareTable({ c }: { c: Comparison }) {
             <div className="mt-3 grid gap-3">
               <div>
                 <div className="mb-1 text-[11.5px] font-semibold uppercase tracking-[0.08em] text-[var(--color-mint-2)]">
-                  TajirPoint
+                  {`${BRAND_NAME}`}
                 </div>
                 <CellBody cell={row.tajirpoint} />
               </div>
@@ -114,7 +115,7 @@ export function CompareTable({ c }: { c: Comparison }) {
       <div className="hidden overflow-hidden rounded-[18px] border border-[var(--color-line)] md:block">
         <table className="w-full table-fixed border-collapse text-start">
           <caption className="sr-only">
-            {`TajirPoint compared with ${c.otherName}, feature by feature`}
+            {`${BRAND_NAME} compared with ${c.otherName}, feature by feature`}
           </caption>
           <colgroup>
             <col className="w-[26%]" />
@@ -133,7 +134,7 @@ export function CompareTable({ c }: { c: Comparison }) {
                 scope="col"
                 className="p-4 text-start text-[14px] font-bold text-[var(--color-mint-2)]"
               >
-                TajirPoint
+                {`${BRAND_NAME}`}
               </th>
               <th
                 scope="col"

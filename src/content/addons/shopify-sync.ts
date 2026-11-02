@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/shopify (ShopifySyncService.push_product: one Shopify
 // product per TajirPoint item; ingest_shopify_order via
@@ -23,8 +24,8 @@ const content: AddonContent = {
   headline: "Your Shopify store and your shop counter, on one set of books.",
   overview: [
     "Shopify is the online store builder many shops use to sell on their own website. If you sell in a shop as well, you end up typing products in twice and copying web orders into your till by hand. Shopify Sync will join the two.",
-    "From TajirPoint you will pick which items to send to Shopify, with their name, description, brand and selling price. When a customer orders on Shopify, the order comes into TajirPoint as a proper sale: stock is taken off, the cost is recorded, and the money is booked the right way.",
-    "If an order is later cancelled on Shopify, the sale in TajirPoint is cancelled too. A refund is flagged for you to check rather than changed silently.",
+    `From ${BRAND_NAME} you will pick which items to send to Shopify, with their name, description, brand and selling price. When a customer orders on Shopify, the order comes into ${BRAND_NAME} as a proper sale: stock is taken off, the cost is recorded, and the money is booked the right way.`,
+    `If an order is later cancelled on Shopify, the sale in ${BRAND_NAME} is cancelled too. A refund is flagged for you to check rather than changed silently.`,
   ],
   whoFor: [
     "Shops that sell in store and on a Shopify website",
@@ -35,11 +36,11 @@ const content: AddonContent = {
   problems: [
     {
       problem: "Every Shopify order has to be typed into the till again.",
-      fix: "Orders will arrive in TajirPoint as real sales on their own, matched to your items, with the stock taken off.",
+      fix: `Orders will arrive in ${BRAND_NAME} as real sales on their own, matched to your items, with the stock taken off.`,
     },
     {
       problem: "Adding a new product means doing it twice.",
-      fix: "Add it once in TajirPoint, then send it to Shopify with its name, description and price from the connector screen.",
+      fix: `Add it once in ${BRAND_NAME}, then send it to Shopify with its name, description and price from the connector screen.`,
     },
     {
       problem: "Cash on delivery orders get lost between the website and the shop.",
@@ -47,7 +48,7 @@ const content: AddonContent = {
     },
     {
       problem: "A cancelled web order still shows as a sale.",
-      fix: "When Shopify says an order is cancelled, the matching sale in TajirPoint is cancelled too.",
+      fix: `When Shopify says an order is cancelled, the matching sale in ${BRAND_NAME} is cancelled too.`,
     },
   ],
   features: [
@@ -65,7 +66,7 @@ const content: AddonContent = {
     },
     {
       title: "Cancellations follow through",
-      body: "A cancel on Shopify cancels the sale in TajirPoint. Refunds are flagged for you to review.",
+      body: `A cancel on Shopify cancels the sale in ${BRAND_NAME}. Refunds are flagged for you to review.`,
     },
     {
       title: "Problem orders are kept, not lost",
@@ -83,7 +84,7 @@ const content: AddonContent = {
     },
     {
       title: "Connect your Shopify store",
-      body: "With our help you approve TajirPoint inside Shopify, and we set Shopify to send new orders to your account.",
+      body: `With our help you approve ${BRAND_NAME} inside Shopify, and we set Shopify to send new orders to your account.`,
     },
     {
       title: "Send your products",
@@ -91,18 +92,18 @@ const content: AddonContent = {
     },
     {
       title: "Sell in both places",
-      body: "Shopify orders arrive in TajirPoint as sales. Anything that needs a look waits on a list for you.",
+      body: `Shopify orders arrive in ${BRAND_NAME} as sales. Anything that needs a look waits on a list for you.`,
     },
   ],
   needs: [
     "A Shopify store (your .myshopify.com address)",
-    "A TajirPoint account on the Shop plan or above",
+    `A ${BRAND_NAME} account on the Shop plan or above`,
     "Item codes on your products help orders match cleanly",
   ],
   setup: [
     "Once it is live, our team sets it up with you; you do not switch it on alone.",
     "Your Shopify subscription and payment fees stay with Shopify.",
-    "Your existing TajirPoint sales and stock are not changed by connecting.",
+    `Your existing ${BRAND_NAME} sales and stock are not changed by connecting.`,
   ],
   faqs: [
     {
@@ -111,7 +112,7 @@ const content: AddonContent = {
     },
     {
       q: "Will my stock levels update on Shopify by themselves?",
-      a: "Not in the first version. Products and prices go up from TajirPoint, and orders come back down. Keeping Shopify's stock count updated after every sale is still being finished.",
+      a: `Not in the first version. Products and prices go up from ${BRAND_NAME}, and orders come back down. Keeping Shopify's stock count updated after every sale is still being finished.`,
     },
     {
       q: "What about items with sizes or colours?",
@@ -122,7 +123,7 @@ const content: AddonContent = {
       a: "It is not lost. It waits on a list with the reason, so you can fix the item and import it again.",
     },
     {
-      q: "Can I bring my existing Shopify products into TajirPoint?",
+      q: `Can I bring my existing Shopify products into ${BRAND_NAME}?`,
       a: "Yes. The product import in the back office reads a Shopify product export file, and that works without this add-on.",
     },
     {

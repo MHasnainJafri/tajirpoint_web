@@ -3,6 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { CtaPanel, GhostButton, MintButton } from "@/components/design/primitives";
 import { siteConfig } from "@/lib/config/site";
 import { TOOLS, type ToolFaq, type ToolInfo } from "@/content/tools/tools";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 /** Server-rendered pieces shared by /tools and every /tools/<slug> page. */
 
@@ -32,7 +33,10 @@ export function ToolBreadcrumbs({ trail }: { trail: ReadonlyArray<readonly [stri
                 {name}
               </span>
             ) : (
-              <Link href={href} className="max-md:inline-flex max-md:min-h-[44px] max-md:items-center hover:text-[var(--color-ink)]">
+              <Link
+                href={href}
+                className="max-md:inline-flex max-md:min-h-[44px] max-md:items-center hover:text-[var(--color-ink)]"
+              >
                 {name}
               </Link>
             )}
@@ -123,12 +127,13 @@ export function ToolCta({ tool }: { tool?: ToolInfo }) {
       </h2>
       <p className="relative mx-auto mt-4 max-w-[52ch] text-[16px] leading-[1.6] text-[var(--color-muted)]">
         {tool?.inProduct ??
-          "TajirPoint keeps your sales, stock, costs and tax in one place, so the numbers are always ready."}{" "}
+          `${BRAND_NAME} keeps your sales, stock, costs and tax in one place, so the numbers are always ready.`}{" "}
         Free for 3 months, no card needed.
       </p>
       <div className="relative mt-8 flex flex-wrap justify-center gap-[14px]">
         <MintButton href={siteConfig.signupUrl} external>
-          Try TajirPoint free <span aria-hidden="true">→</span>
+          {`Try ${BRAND_NAME} free `}
+          <span aria-hidden="true">→</span>
         </MintButton>
         <GhostButton href="/pricing">See pricing</GhostButton>
       </div>

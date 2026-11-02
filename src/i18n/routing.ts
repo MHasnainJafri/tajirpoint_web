@@ -1,7 +1,9 @@
 import { defineRouting } from "next-intl/routing";
+import { brand, type BrandLocale } from "@/lib/config/brand";
 
 export const routing = defineRouting({
-  locales: ["en", "ur", "ar"],
+  // en, ur, ar; a brand can switch Urdu and Arabic off (NEXT_PUBLIC_LOCALES).
+  locales: brand.locales as readonly BrandLocale[],
   defaultLocale: "en",
 
   // `as-needed`: English stays on the bare path (`/pricing`), Urdu and Arabic

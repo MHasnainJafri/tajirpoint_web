@@ -5,6 +5,7 @@ import { AlertTriangle } from "lucide-react";
 import { CodeBlock } from "@/components/marketing/CodeBlock";
 import { API_BASE } from "@/lib/docs/examples";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { BRAND_NAME, brand } from "@/lib/config/brand";
 
 export async function generateMetadata({
   params,
@@ -13,17 +14,16 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "Idempotency — TajirPoint API",
+    title: `Idempotency — ${BRAND_NAME} API`,
     absoluteTitle: true,
-    description:
-      "Send an Idempotency-Key header on sales and payments so a retried request cannot create a duplicate. TajirPoint keeps each key for 24 hours.",
+    description: `Send an Idempotency-Key header on sales and payments so a retried request cannot create a duplicate. ${BRAND_NAME} keeps each key for 24 hours.`,
     path: "/docs/idempotency",
     locale,
   });
 }
 
 const SNIPPET = `curl -X POST ${API_BASE}/sales/sales/ \\
-  -H "Authorization: Bearer $TAJIR_TOKEN" \\
+  -H "Authorization: Bearer $${brand.apiEnvPrefix}_TOKEN" \\
   -H "X-Shop-Id: 8f1c2d3e-…" \\
   -H "Idempotency-Key: sale-till3-2026-07-11-000148" \\
   -H "Content-Type: application/json" \\

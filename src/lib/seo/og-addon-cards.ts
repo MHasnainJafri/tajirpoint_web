@@ -21,6 +21,7 @@ import { ADDON_SNAPSHOT } from "@/content/addons/snapshot";
 import { getAddonCatalogue, groupFor } from "@/lib/marketing/addons";
 import { deriveStatus, type AddonStatus } from "@/lib/marketing/addon-status";
 import { ADDON_GROUP_CARDS, type OgCard } from "./og-cards";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 const ADDON_PREFIX = "addon-";
 const GROUP_PREFIX = "addons-";
@@ -76,7 +77,7 @@ function buildCard(input: {
   return {
     eyebrow: note ? `${input.groupLabel} add-on · ${note}` : `${input.groupLabel} add-on`,
     title: input.name,
-    sub: clip(content?.headline || input.fallbackLine || "An add-on for your TajirPoint shop."),
+    sub: clip(content?.headline || input.fallbackLine || `An add-on for your ${BRAND_NAME} shop.`),
     pills: pills.length ? pills : [input.groupLabel],
   };
 }

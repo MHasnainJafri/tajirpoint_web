@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/config/site";
+import { BRAND_NAME, brand } from "@/lib/config/brand";
 
 /**
  * Web app manifest. Chrome on Android wants PNG icons at 192 and 512 (SVG
@@ -10,7 +11,7 @@ import { siteConfig } from "@/lib/config/site";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     id: "/",
-    name: "TajirPoint — POS & Back Office",
+    name: `${BRAND_NAME} — POS & Back Office`,
     short_name: siteConfig.name,
     description: siteConfig.description,
     lang: "en",
@@ -19,18 +20,20 @@ export default function manifest(): MetadataRoute.Manifest {
     scope: "/",
     display: "standalone",
     background_color: "#ffffff",
-    theme_color: "#0a0a0a",
+    theme_color: brand.ink ?? "#0a0a0a",
     categories: ["business", "productivity", "finance"],
-    icons: [
-      { src: "/brand/png/icon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
-      { src: "/brand/png/icon-512.png", sizes: "512x512", type: "image/png", purpose: "any" },
-      {
-        src: "/brand/png/maskable-512.png",
-        sizes: "512x512",
-        type: "image/png",
-        purpose: "maskable",
-      },
-      { src: "/favicon.svg", sizes: "any", type: "image/svg+xml", purpose: "any" },
-    ],
+    icons: brand.ownLogo
+      ? [{ src: brand.icon, sizes: "512x512", type: "image/png", purpose: "any" }]
+      : [
+          { src: "/brand/png/icon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
+          { src: "/brand/png/icon-512.png", sizes: "512x512", type: "image/png", purpose: "any" },
+          {
+            src: "/brand/png/maskable-512.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "maskable",
+          },
+          { src: "/favicon.svg", sizes: "any", type: "image/svg+xml", purpose: "any" },
+        ],
   };
 }

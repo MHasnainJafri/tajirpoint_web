@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/bigcommerce (BCSyncService.push_product: every variant a
 // simple physical product with inventory_level; push_inventory exists but no
@@ -22,9 +23,9 @@ const content: AddonContent = {
   schemaSubCategory: "BigCommerce integration add-on for POS",
   headline: "Paid BigCommerce orders, booked in your shop like any other sale.",
   overview: [
-    "BigCommerce is an online store platform used by growing online retailers in many countries, including the UK. BigCommerce Sync will link your BigCommerce store to TajirPoint, so web orders and shop sales share one stock count and one set of books.",
-    "You will send items from TajirPoint to BigCommerce with their name, item code, selling price and stock on hand. When an order's payment is confirmed on BigCommerce, it comes into TajirPoint as a real sale, with stock taken off and the money booked the right way.",
-    "TajirPoint only books orders once BigCommerce confirms the payment. Orders still awaiting payment are skipped, and come in the moment they are paid. Part-refunded or disputed orders are set aside for you to settle by hand.",
+    `BigCommerce is an online store platform used by growing online retailers in many countries, including the UK. BigCommerce Sync will link your BigCommerce store to ${BRAND_NAME}, so web orders and shop sales share one stock count and one set of books.`,
+    `You will send items from ${BRAND_NAME} to BigCommerce with their name, item code, selling price and stock on hand. When an order's payment is confirmed on BigCommerce, it comes into ${BRAND_NAME} as a real sale, with stock taken off and the money booked the right way.`,
+    `${BRAND_NAME} only books orders once BigCommerce confirms the payment. Orders still awaiting payment are skipped, and come in the moment they are paid. Part-refunded or disputed orders are set aside for you to settle by hand.`,
   ],
   whoFor: [
     "Retailers selling online through a BigCommerce store",
@@ -35,7 +36,7 @@ const content: AddonContent = {
   problems: [
     {
       problem: "Online orders are typed into the shop system by hand.",
-      fix: "Paid BigCommerce orders will arrive in TajirPoint as real sales, once each, matched to your items.",
+      fix: `Paid BigCommerce orders will arrive in ${BRAND_NAME} as real sales, once each, matched to your items.`,
     },
     {
       problem: "Unpaid checkouts get counted as sales.",
@@ -43,11 +44,11 @@ const content: AddonContent = {
     },
     {
       problem: "Listing products on the website means doing it twice.",
-      fix: "Send items from TajirPoint to BigCommerce with their price and current stock.",
+      fix: `Send items from ${BRAND_NAME} to BigCommerce with their price and current stock.`,
     },
     {
       problem: "Cancelled orders stay in the shop's sales.",
-      fix: "When BigCommerce marks an order cancelled, the sale in TajirPoint is cancelled too. Refunds are flagged for you to check.",
+      fix: `When BigCommerce marks an order cancelled, the sale in ${BRAND_NAME} is cancelled too. Refunds are flagged for you to check.`,
     },
   ],
   features: [
@@ -61,7 +62,7 @@ const content: AddonContent = {
     },
     {
       title: "Full order details checked",
-      body: "TajirPoint reads the full order from your store before booking it, and the total must match what BigCommerce charged.",
+      body: `${BRAND_NAME} reads the full order from your store before booking it, and the total must match what BigCommerce charged.`,
     },
     {
       title: "Offline payments recorded as owed",
@@ -83,7 +84,7 @@ const content: AddonContent = {
     },
     {
       title: "Connect your BigCommerce store",
-      body: "We help you create an access key in your BigCommerce control panel and connect it to TajirPoint.",
+      body: `We help you create an access key in your BigCommerce control panel and connect it to ${BRAND_NAME}.`,
     },
     {
       title: "Send your products",
@@ -91,18 +92,18 @@ const content: AddonContent = {
     },
     {
       title: "Sell online and in store",
-      body: "BigCommerce tells TajirPoint about new and changed orders; paid ones become sales in your reports.",
+      body: `BigCommerce tells ${BRAND_NAME} about new and changed orders; paid ones become sales in your reports.`,
     },
   ],
   needs: [
     "A BigCommerce store with access to its control panel",
-    "A TajirPoint account on the Shop plan or above",
+    `A ${BRAND_NAME} account on the Shop plan or above`,
     "Item codes on your products help orders match cleanly",
   ],
   setup: [
     "Once it is live, our team sets it up with you; you do not switch it on alone.",
     "Your BigCommerce plan and payment fees stay with BigCommerce.",
-    "Your existing TajirPoint sales and stock are not changed by connecting.",
+    `Your existing ${BRAND_NAME} sales and stock are not changed by connecting.`,
   ],
   faqs: [
     {

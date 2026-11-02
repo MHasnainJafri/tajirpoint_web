@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/storefront (handler.py creates the site, hours, blocks and
 // subdomain on install and unpublishes on uninstall; models/website.py
@@ -23,9 +24,9 @@ const content: AddonContent = {
   schemaSubCategory: "Online store and website builder add-on for POS",
   headline: "A website that already knows your products, prices and opening hours.",
   overview: [
-    "Website Builder gives your business its own website, built from what is already in TajirPoint: your products or menu, prices, photos, opening hours and contact details. When you change a price at the till, the website shows the new price.",
+    `Website Builder gives your business its own website, built from what is already in ${BRAND_NAME}: your products or menu, prices, photos, opening hours and contact details. When you change a price at the till, the website shows the new price.`,
     "Pick a design made for your kind of business: several restaurant designs, grocery, electronics, services and bill pay, a mix of products and services, or a simple general shop. Set your colours and logo, edit sections, and publish when you are happy. Changes stay a draft until you publish them.",
-    "Customers can order through a cart and checkout, by WhatsApp, or both. Online orders arrive in TajirPoint, and you choose whether you take them all day or only during opening hours. You get a free web address on our domain, and you can connect your own domain too.",
+    `Customers can order through a cart and checkout, by WhatsApp, or both. Online orders arrive in ${BRAND_NAME}, and you choose whether you take them all day or only during opening hours. You get a free web address on our domain, and you can connect your own domain too.`,
   ],
   whoFor: [
     "Restaurants, cafes and bakeries that want online orders without marketplace commission",
@@ -37,11 +38,11 @@ const content: AddonContent = {
   problems: [
     {
       problem: "Our website shows old prices and items we no longer sell.",
-      fix: "The website reads your products and prices from TajirPoint, so it stays up to date with your till.",
+      fix: `The website reads your products and prices from ${BRAND_NAME}, so it stays up to date with your till.`,
     },
     {
       problem: "WhatsApp orders come in as messy messages.",
-      fix: "Customers build their order on your website and it arrives in TajirPoint. If you prefer WhatsApp, the site opens a chat with the order already typed in.",
+      fix: `Customers build their order on your website and it arrives in ${BRAND_NAME}. If you prefer WhatsApp, the site opens a chat with the order already typed in.`,
     },
     {
       problem: "We get orders from areas we cannot deliver to.",
@@ -55,7 +56,7 @@ const content: AddonContent = {
   features: [
     {
       title: "Filled from your POS",
-      body: "Products or menu, prices, photos, opening hours and contact details come from TajirPoint. A fill-in tool can complete empty sections from your shop details and a stock photo library.",
+      body: `Products or menu, prices, photos, opening hours and contact details come from ${BRAND_NAME}. A fill-in tool can complete empty sections from your shop details and a stock photo library.`,
     },
     {
       title: "Designs for your type of business",
@@ -71,7 +72,7 @@ const content: AddonContent = {
     },
     {
       title: "Your own address",
-      body: "A free subdomain is included. Connect your own domain and TajirPoint checks it and sets up the secure padlock for you.",
+      body: `A free subdomain is included. Connect your own domain and ${BRAND_NAME} checks it and sets up the secure padlock for you.`,
     },
     {
       title: "Draft and publish",
@@ -105,12 +106,12 @@ const content: AddonContent = {
     },
     {
       title: "Take orders",
-      body: "Online orders arrive in TajirPoint alongside your other sales.",
+      body: `Online orders arrive in ${BRAND_NAME} alongside your other sales.`,
     },
   ],
   needs: [
-    "A TajirPoint account on the Shop plan or above",
-    "Your products or menu in TajirPoint, ideally with photos",
+    `A ${BRAND_NAME} account on the Shop plan or above`,
+    `Your products or menu in ${BRAND_NAME}, ideally with photos`,
     "Optional: your own domain name, if you want to use it instead of the free subdomain",
     "Optional: a payment add-on such as Stripe, JazzCash or Easypaisa if you want customers to pay online",
   ],
@@ -123,11 +124,11 @@ const content: AddonContent = {
   faqs: [
     {
       q: "Do I have to add my products again for the website?",
-      a: "No. The website uses the products, prices and photos you already have in TajirPoint.",
+      a: `No. The website uses the products, prices and photos you already have in ${BRAND_NAME}.`,
     },
     {
       q: "Can I use my own domain?",
-      a: "Yes. A subdomain is included, and you can connect a domain you own. Once it points to us, TajirPoint checks it and switches on the secure padlock automatically.",
+      a: `Yes. A subdomain is included, and you can connect a domain you own. Once it points to us, ${BRAND_NAME} checks it and switches on the secure padlock automatically.`,
     },
     {
       q: "Can customers pay online?",

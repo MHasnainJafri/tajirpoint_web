@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/shipping (models CourierAccount/Shipment statuses,
 // services/courier_service book/cancel/poll, ship_from_store_service (inline
@@ -8,8 +9,7 @@ import type { AddonContent } from "./types";
 const content: AddonContent = {
   slug: "courier-tcs",
   seoTitle: "TCS Express Add-on: Book COD Parcels From Your POS",
-  seoDescription:
-    "Coming soon: book TCS consignments straight from a TajirPoint sale, overnight or standard, with cash on delivery filled in and status checked every 10 minutes.",
+  seoDescription: `Coming soon: book TCS consignments straight from a ${BRAND_NAME} sale, overnight or standard, with cash on delivery filled in and status checked every 10 minutes.`,
   keywords: [
     "TCS courier booking software",
     "TCS POS integration",
@@ -20,8 +20,8 @@ const content: AddonContent = {
   schemaSubCategory: "Courier booking add-on for POS",
   headline: "Send TCS parcels from the sale, with the cash to collect filled in for you.",
   overview: [
-    "The TCS Express add-on will let you create a TCS consignment straight from a sale in TajirPoint. Use the customer's saved address or type it in at the till, choose overnight or standard, and the tracking number comes back onto the sale.",
-    "For cash on delivery, the amount TCS collects is taken from what the customer still owes on the sale, so nobody types it by hand. TajirPoint then checks each consignment's status with TCS every 10 minutes until it is delivered or returned.",
+    `The TCS Express add-on will let you create a TCS consignment straight from a sale in ${BRAND_NAME}. Use the customer's saved address or type it in at the till, choose overnight or standard, and the tracking number comes back onto the sale.`,
+    `For cash on delivery, the amount TCS collects is taken from what the customer still owes on the sale, so nobody types it by hand. ${BRAND_NAME} then checks each consignment's status with TCS every 10 minutes until it is delivered or returned.`,
     "It is not open to shops yet: the connection still has to be tested against a real TCS account. Once it is live, our team will set it up with you.",
   ],
   whoFor: [
@@ -41,7 +41,7 @@ const content: AddonContent = {
     },
     {
       problem: "Nobody knows which parcels are still out.",
-      fix: "Each consignment's status is updated in TajirPoint every 10 minutes, from booked to delivered or returned.",
+      fix: `Each consignment's status is updated in ${BRAND_NAME} every 10 minutes, from booked to delivered or returned.`,
     },
   ],
   features: [
@@ -63,11 +63,11 @@ const content: AddonContent = {
     },
     {
       title: "Status every 10 minutes",
-      body: "TajirPoint checks with TCS every 10 minutes and keeps every status change on the consignment.",
+      body: `${BRAND_NAME} checks with TCS every 10 minutes and keeps every status change on the consignment.`,
     },
     {
       title: "Cancel a consignment",
-      body: "Cancel a consignment that has not gone yet, straight from TajirPoint.",
+      body: `Cancel a consignment that has not gone yet, straight from ${BRAND_NAME}.`,
     },
   ],
   howItWorks: [
@@ -89,7 +89,7 @@ const content: AddonContent = {
     },
   ],
   needs: [
-    "A TajirPoint account on the Shop plan or above",
+    `A ${BRAND_NAME} account on the Shop plan or above`,
     "A TCS merchant account with its connection details",
     "A printer for parcel labels",
   ],

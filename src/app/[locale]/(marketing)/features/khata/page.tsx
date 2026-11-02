@@ -5,6 +5,7 @@ import { FeatureDetailPage } from "@/components/marketing/features/FeatureDetail
 import { KHATA_COPY } from "@/content/i18n/features/khata";
 import { pickCopy } from "@/content/i18n/page-copy";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { assertPageShown } from "@/lib/config/pages";
 
 const PATH = "/features/khata";
 
@@ -44,6 +45,8 @@ export default async function KhataFeaturePage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  // Left out of builds for another market or business type (src/lib/config/pages.ts).
+  assertPageShown("/features/khata");
 
   return (
     <FeatureDetailPage

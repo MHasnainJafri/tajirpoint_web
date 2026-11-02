@@ -1,17 +1,17 @@
 import type { AddonTranslation } from "../types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Arabic write-up for "courier-leopards". Same facts as ../../courier-leopards.ts; awaiting
 // native review (TP-490). A field left out falls back to English.
 const t: AddonTranslation = {
   slug: "courier-leopards",
   seoTitle: "إضافة Leopards Courier: احجز وتتبّع من نقطة البيع",
-  seoDescription:
-    "قريبًا: احجز شحنات Leopards Courier مباشرة من بيع في TajirPoint، واطبع إيصال الحجز، وحصّل الدفع عند الاستلام، وتابع حالة كل شحنة.",
+  seoDescription: `قريبًا: احجز شحنات Leopards Courier مباشرة من بيع في ${BRAND_NAME}، واطبع إيصال الحجز، وحصّل الدفع عند الاستلام، وتابع حالة كل شحنة.`,
   schemaSubCategory: "إضافة حجز شحنات البريد السريع لنقاط البيع",
   headline: "احجز شحنة Leopards من البيع نفسه، دون إعادة كتابة أي عنوان.",
   overview: [
-    "ستتيح لك إضافة Leopards Courier حجز شحنة مع Leopards مباشرة من بيع في TajirPoint. اكتب عنوان العميل عند الصندوق أو استخدم عنوانًا محفوظًا، فيُرسل الحجز إلى Leopards ويُحفظ رقم التتبع وإيصال الحجز مع البيع.",
-    "للدفع عند الاستلام، يُملأ المبلغ المطلوب تحصيله مما بقي على العميل في البيع، فلا يكتبه الكاشير يدويًا أبدًا. ثم يتحقق TajirPoint من حالة الشحنة لدى Leopards كل 10 دقائق حتى تُسلَّم أو تُعاد.",
+    `ستتيح لك إضافة Leopards Courier حجز شحنة مع Leopards مباشرة من بيع في ${BRAND_NAME}. اكتب عنوان العميل عند الصندوق أو استخدم عنوانًا محفوظًا، فيُرسل الحجز إلى Leopards ويُحفظ رقم التتبع وإيصال الحجز مع البيع.`,
+    `للدفع عند الاستلام، يُملأ المبلغ المطلوب تحصيله مما بقي على العميل في البيع، فلا يكتبه الكاشير يدويًا أبدًا. ثم يتحقق ${BRAND_NAME} من حالة الشحنة لدى Leopards كل 10 دقائق حتى تُسلَّم أو تُعاد.`,
     "هي غير متاحة للمتاجر بعد: ما زال يجب اختبار الربط على حساب Leopards حقيقي. عند إطلاقها سيُعدّها فريقنا معك.",
   ],
   whoFor: [
@@ -31,7 +31,7 @@ const t: AddonTranslation = {
     },
     {
       problem: "الموظفون يراجعون موقع الشحن باستمرار لمعرفة مكان الشحنات.",
-      fix: "تتحدّث حالة كل شحنة في TajirPoint كل 10 دقائق، من الحجز حتى التسليم أو الإرجاع.",
+      fix: `تتحدّث حالة كل شحنة في ${BRAND_NAME} كل 10 دقائق، من الحجز حتى التسليم أو الإرجاع.`,
     },
   ],
   features: [
@@ -57,11 +57,11 @@ const t: AddonTranslation = {
     },
     {
       title: "الحالة كل 10 دقائق",
-      body: "يتحقق TajirPoint لدى Leopards كل 10 دقائق ويحتفظ بكل تغيير في الحالة: استُلمت، في الطريق، سُلّمت، أُعيدت.",
+      body: `يتحقق ${BRAND_NAME} لدى Leopards كل 10 دقائق ويحتفظ بكل تغيير في الحالة: استُلمت، في الطريق، سُلّمت، أُعيدت.`,
     },
     {
       title: "إلغاء الحجز",
-      body: "ألغِ شحنة لم تُرسل بعد، مباشرة من TajirPoint.",
+      body: `ألغِ شحنة لم تُرسل بعد، مباشرة من ${BRAND_NAME}.`,
     },
   ],
   howItWorks: [
@@ -83,7 +83,7 @@ const t: AddonTranslation = {
     },
   ],
   needs: [
-    "حساب TajirPoint على خطة Shop أو أعلى",
+    `حساب ${BRAND_NAME} على خطة Shop أو أعلى`,
     "حساب تاجر لدى Leopards Courier مع بيانات الربط",
     "طابعة لإيصالات الحجز",
   ],
@@ -111,7 +111,7 @@ const t: AddonTranslation = {
     },
     {
       q: "هل يمكنني إلغاء حجز؟",
-      a: "نعم، يمكنك إلغاء الشحنة من TajirPoint قبل تسليمها.",
+      a: `نعم، يمكنك إلغاء الشحنة من ${BRAND_NAME} قبل تسليمها.`,
     },
     {
       q: "هل هي مضمّنة في خطة Light المجانية؟",

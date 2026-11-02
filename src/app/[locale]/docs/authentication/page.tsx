@@ -6,6 +6,7 @@ import { CodeBlock } from "@/components/marketing/CodeBlock";
 import { siteConfig } from "@/lib/config/site";
 import { API_BASE } from "@/lib/docs/examples";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 export async function generateMetadata({
   params,
@@ -14,10 +15,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "API Authentication — TajirPoint API",
+    title: `API Authentication — ${BRAND_NAME} API`,
     absoluteTitle: true,
-    description:
-      "Authenticate against the TajirPoint API: exchange your credentials for a bearer token, send the X-Shop-Id header and refresh it before the 30-minute expiry.",
+    description: `Authenticate against the ${BRAND_NAME} API: exchange your credentials for a bearer token, send the X-Shop-Id header and refresh it before the 30-minute expiry.`,
     path: "/docs/authentication",
     locale,
   });

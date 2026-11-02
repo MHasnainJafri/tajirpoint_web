@@ -7,6 +7,7 @@ import { PartnerForm } from "@/components/marketing/partners/PartnerForm";
 import { legal, whatsappLink } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { faqSchema, pageBreadcrumbs } from "@/lib/seo/schemas";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 export async function generateMetadata({
   params,
@@ -15,9 +16,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   return buildMetadata({
-    title: "Become a TajirPoint Reseller or Setup Partner",
-    description:
-      "Sell, set up or support TajirPoint POS for the shops and restaurants you already work with. Tell us about your work and we will call you to talk it through.",
+    title: `Become a ${BRAND_NAME} Reseller or Setup Partner`,
+    description: `Sell, set up or support ${BRAND_NAME} POS for the shops and restaurants you already work with. Tell us about your work and we will call you to talk it through.`,
     path: "/partners",
     locale,
   });
@@ -37,11 +37,11 @@ const WHO: string[] = [
 const WAYS: Array<[string, string]> = [
   [
     "Reseller",
-    "You introduce TajirPoint to shops and restaurants you know, and help them choose a plan.",
+    `You introduce ${BRAND_NAME} to shops and restaurants you know, and help them choose a plan.`,
   ],
   [
     "Setup partner",
-    "You set TajirPoint up for a business: products, printers, staff, and a little training.",
+    `You set ${BRAND_NAME} up for a business: products, printers, staff, and a little training.`,
   ],
   [
     "Local support",
@@ -56,7 +56,7 @@ const STEPS: Array<[string, string]> = [
     "We agree the terms",
     "Commission, your area and who supports which shop — we agree these with you on the call.",
   ],
-  ["You start", "We show you TajirPoint in depth, and you bring in your first business."],
+  ["You start", `We show you ${BRAND_NAME} in depth, and you bring in your first business.`],
 ];
 
 const FAQS: Array<{ q: string; a: string }> = [
@@ -88,9 +88,7 @@ export default async function PartnersPage({ params }: { params: Promise<{ local
               <span className="text-[var(--color-mint-2)]">Grow with your shops.</span>
             </h1>
             <p className="mt-5 max-w-[46ch] text-[16.5px] leading-[1.65] text-[var(--color-body)]">
-              Already selling to, setting up or helping shops and restaurants? Become a TajirPoint
-              reseller or setup partner. Our partner programme is new, so we agree the terms with
-              each partner — including commission.
+              {`Already selling to, setting up or helping shops and restaurants? Become a ${BRAND_NAME} reseller or setup partner. Our partner programme is new, so we agree the terms with each partner — including commission.`}
             </p>
           </div>
 
@@ -123,18 +121,22 @@ export default async function PartnersPage({ params }: { params: Promise<{ local
                 </li>
               ))}
             </ul>
-            <p className="mt-8 border-t border-[var(--color-line-2)] pt-6 text-[14px] text-[var(--color-body)]">
-              Rather talk now?{" "}
-              <a
-                href={whatsappLink("Hi TajirPoint, I'd like to talk about becoming a partner.")}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-track="partners_aside"
-                className="font-semibold text-[var(--color-mint-2)] underline underline-offset-2"
-              >
-                WhatsApp us at <span dir="ltr">{legal.whatsappDisplay}</span>
-              </a>
-            </p>
+            {legal.whatsappUrl && (
+              <p className="mt-8 border-t border-[var(--color-line-2)] pt-6 text-[14px] text-[var(--color-body)]">
+                Rather talk now?{" "}
+                <a
+                  href={whatsappLink(
+                    `Hi ${BRAND_NAME}, I'd like to talk about becoming a partner.`
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-track="partners_aside"
+                  className="font-semibold text-[var(--color-mint-2)] underline underline-offset-2"
+                >
+                  WhatsApp us at <span dir="ltr">{legal.whatsappDisplay}</span>
+                </a>
+              </p>
+            )}
           </div>
         </div>
       </section>

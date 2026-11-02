@@ -3,6 +3,7 @@ import bundleAnalyzer from "@next/bundle-analyzer";
 import createNextIntlPlugin from "next-intl/plugin";
 import { LEGACY_SOLUTION_REDIRECTS } from "./src/lib/marketing/businesses";
 import { indexNowKey, securityHeaders as buildSecurityHeaders } from "./src/lib/security/headers";
+import { brand } from "./src/lib/config/brand";
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
@@ -43,8 +44,8 @@ const nextConfig: NextConfig = {
     // /public cache header below.
     minimumCacheTTL: 604800,
     // Add-on icons come from the backend catalogue (`icon_url`), hosted on
-    // our media host. Only that host: next/image refuses everything else.
-    remotePatterns: [{ protocol: "https", hostname: "media.tajirpoint.com", pathname: "/**" }],
+    // the brand's media host. Only that host: next/image refuses everything else.
+    remotePatterns: [{ protocol: "https", hostname: brand.mediaHost, pathname: "/**" }],
   },
   async headers() {
     return [

@@ -6,9 +6,11 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { LOCATIONS, LOCATIONS_HUB, locationPath } from "@/content/locations";
 import { OFFER_LINE } from "@/lib/marketing/businesses";
-import { siteConfig, whatsappLink } from "@/lib/config/site";
+import { legal, siteConfig, whatsappLink } from "@/lib/config/site";
 import { buildMetadata, canonicalUrl } from "@/lib/seo/metadata";
 import { faqSchema } from "@/lib/seo/schemas";
+import { BRAND_NAME } from "@/lib/config/brand";
+import { assertPageShown } from "@/lib/config/pages";
 
 export async function generateMetadata({
   params,
@@ -36,6 +38,8 @@ export default async function LocationsHubPage({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  // Left out of builds for another market or business type (src/lib/config/pages.ts).
+  assertPageShown("/pos");
 
   const pakistan = LOCATIONS.filter((l) => l.countryCode === "PK");
   const uk = LOCATIONS.filter((l) => l.countryCode === "GB");
@@ -48,7 +52,7 @@ export default async function LocationsHubPage({
           {
             "@context": "https://schema.org",
             "@type": "ItemList",
-            name: "TajirPoint by location",
+            name: `${BRAND_NAME} by location`,
             itemListElement: LOCATIONS.map((l, i) => ({
               "@type": "ListItem",
               position: i + 1,
@@ -90,17 +94,19 @@ export default async function LocationsHubPage({
               {p}
             </p>
           ))}
-          <a
-            href={whatsappLink(
-              "Hi, I have a business in the Gulf and want to know if TajirPoint fits."
-            )}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-track="locations_gulf"
-            className="mt-5 inline-flex items-center rounded-full border border-[var(--color-line-2)] bg-white px-5 py-[11px] text-[14.5px] font-semibold text-[var(--color-ink)]"
-          >
-            Ask us on WhatsApp
-          </a>
+          {legal.whatsappUrl && (
+            <a
+              href={whatsappLink(
+                `Hi, I have a business in the Gulf and want to know if ${BRAND_NAME} fits.`
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-track="locations_gulf"
+              className="mt-5 inline-flex items-center rounded-full border border-[var(--color-line-2)] bg-white px-5 py-[11px] text-[14.5px] font-semibold text-[var(--color-ink)]"
+            >
+              Ask us on WhatsApp
+            </a>
+          )}
         </section>
 
         <section

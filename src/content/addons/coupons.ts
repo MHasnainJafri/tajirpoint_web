@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/promotions (models/discount.py types percentage/fixed/bogo,
 // scopes cart/product/category, dates, usage_limit, max_discount;
@@ -23,7 +24,7 @@ const content: AddonContent = {
   headline: "Run discounts that the till applies for you, plus coupon codes you can hand out.",
   overview: [
     "Coupons & Discounts lets you save your offers as rules instead of asking cashiers to remember them. A rule can take a percentage or a fixed amount off, or give buy one get one free, on chosen products or whole categories, between the dates you set.",
-    "Product and category rules are applied by TajirPoint when the sale is rung up, so every cashier gives the same discount and nobody gives more than you allowed. If more than one rule fits an item, the customer gets the best one; rules do not stack.",
+    `Product and category rules are applied by ${BRAND_NAME} when the sale is rung up, so every cashier gives the same discount and nobody gives more than you allowed. If more than one rule fits an item, the customer gets the best one; rules do not stack.`,
     "Coupon codes are for offers you hand out: a code on a flyer, a thank-you for a regular, a code on social media. Each code points to a rule, with its own dates and a limit on how many times it can be used, and the discount is only given when the code is entered.",
   ],
   whoFor: [
@@ -95,8 +96,8 @@ const content: AddonContent = {
     },
   ],
   needs: [
-    "A TajirPoint account (any plan, including Light)",
-    "Your products and categories set up in TajirPoint",
+    `A ${BRAND_NAME} account (any plan, including Light)`,
+    `Your products and categories set up in ${BRAND_NAME}`,
   ],
   setup: [
     "You switch it on yourself from the Add-ons page; it takes a minute.",

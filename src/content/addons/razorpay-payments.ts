@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/payments (gateways/razorpay_gateway.py Razorpay order +
 // Razorpay-hosted checkout page, test/live keys; registry.py regions IN,
@@ -22,7 +23,7 @@ const content: AddonContent = {
   overview: [
     "Razorpay Payments will let customers in India pay through Razorpay's secure checkout, using the ways Razorpay offers, such as cards, UPI and netbanking. The money goes to your own Razorpay account.",
     "Razorpay is an Indian payment company and works for businesses in India taking payments in rupees (INR). It is not for shops in Pakistan, the UK or the Gulf; for those, see the other payment add-ons.",
-    "Customers enter their payment details on Razorpay's checkout, not in TajirPoint, so TajirPoint never sees card numbers or bank logins.",
+    `Customers enter their payment details on Razorpay's checkout, not in ${BRAND_NAME}, so ${BRAND_NAME} never sees card numbers or bank logins.`,
   ],
   whoFor: [
     "Shops and restaurants based in India",
@@ -36,11 +37,11 @@ const content: AddonContent = {
     },
     {
       problem: "You do not want to handle customers' payment details.",
-      fix: "Customers pay on Razorpay's secure checkout, so their details never reach TajirPoint.",
+      fix: `Customers pay on Razorpay's secure checkout, so their details never reach ${BRAND_NAME}.`,
     },
     {
       problem: "Online payments and orders sit in different places.",
-      fix: "Each payment is started from the TajirPoint order it belongs to, and the money lands in your Razorpay account.",
+      fix: `Each payment is started from the ${BRAND_NAME} order it belongs to, and the money lands in your Razorpay account.`,
     },
   ],
   features: [
@@ -50,11 +51,11 @@ const content: AddonContent = {
     },
     {
       title: "Linked to your orders",
-      body: "Every Razorpay payment is started from the TajirPoint order it is for, with the order amount filled in.",
+      body: `Every Razorpay payment is started from the ${BRAND_NAME} order it is for, with the order amount filled in.`,
     },
     {
       title: "Money to your Razorpay account",
-      body: "Payments go into your own Razorpay account. TajirPoint does not hold your money.",
+      body: `Payments go into your own Razorpay account. ${BRAND_NAME} does not hold your money.`,
     },
     {
       title: "Tested before going live",
@@ -78,7 +79,7 @@ const content: AddonContent = {
   needs: [
     "A business in India taking payments in rupees (INR)",
     "A Razorpay account",
-    "TajirPoint on the Shop plan or above",
+    `${BRAND_NAME} on the Shop plan or above`,
   ],
   setup: [
     "This add-on is not open to shops yet.",
@@ -100,11 +101,11 @@ const content: AddonContent = {
     },
     {
       q: "Where does the money go?",
-      a: "Into your Razorpay account. TajirPoint never holds the money. Razorpay charges its own fees.",
+      a: `Into your Razorpay account. ${BRAND_NAME} never holds the money. Razorpay charges its own fees.`,
     },
     {
-      q: "Does TajirPoint see my customers' payment details?",
-      a: "No. Customers pay on Razorpay's checkout. TajirPoint only learns the result of the payment.",
+      q: `Does ${BRAND_NAME} see my customers' payment details?`,
+      a: `No. Customers pay on Razorpay's checkout. ${BRAND_NAME} only learns the result of the payment.`,
     },
     {
       q: "Which plan will I need?",

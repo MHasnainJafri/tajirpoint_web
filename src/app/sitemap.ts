@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
 import { routing } from "@/i18n/routing";
+import { isPageShown } from "@/lib/config/pages";
 import { isTranslated, localeUrl } from "@/lib/seo/metadata";
 import { RESOURCES } from "@/lib/docs/nav";
-import { BUSINESS_SLUGS } from "@/lib/marketing/businesses";
+import { SHOWN_BUSINESS_SLUGS } from "@/lib/marketing/businesses";
 import { getAddonCatalogue } from "@/lib/marketing/addons";
 import { COMPARE_SLUGS } from "@/content/compare";
 import { LOCATIONS, LOCATIONS_HUB, locationPath } from "@/content/locations";
@@ -51,7 +52,7 @@ const DOCS_PAGES: Page[] = [
 
 const BUSINESS_PAGES: Page[] = [
   { path: "/business", priority: 0.9, changeFrequency: "weekly", updated: "2026-11-02" },
-  ...BUSINESS_SLUGS.map(
+  ...SHOWN_BUSINESS_SLUGS.map(
     (slug): Page => ({
       path: `/business/${slug}`,
       priority: 0.9,
@@ -168,7 +169,8 @@ async function addonPages(): Promise<Page[]> {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const pages = [...PAGES, ...(await addonPages())];
+  // Only the pages this build has (src/lib/config/pages.ts).
+  const pages = [...PAGES, ...(await addonPages())].filter((p) => isPageShown(p.path));
   // Only canonical URLs. A translated page is listed once per language, each
   // entry carrying the full hreflang cluster. An untranslated page is listed
   // once, in English: its /ur and /ar copies canonicalise to the English URL

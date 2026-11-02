@@ -1,4 +1,5 @@
 import type { AddonTranslation } from "../types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Urdu write-up for "age-verification". Same facts as ../../age-verification.ts; awaiting
 // native review (TP-490). A field left out falls back to English.
@@ -80,7 +81,7 @@ const t: AddonTranslation = {
     },
   ],
   needs: [
-    "Shop پلان یا اس سے اوپر پر TajirPoint اکاؤنٹ",
+    `Shop پلان یا اس سے اوپر پر ${BRAND_NAME} اکاؤنٹ`,
     "اختیاری: ایسا بارکوڈ اسکینر جو گاہک کے شناختی کارڈ کا بارکوڈ پڑھ سکے",
     "آپ کی بیچی جانے والی چیزوں کے لیے کم از کم عمر کے مقامی قواعد",
   ],

@@ -20,6 +20,8 @@ import { COMPARE_HUB, COMPARISONS } from "@/content/compare";
 import { LOCATIONS, LOCATIONS_HUB, locationPath } from "@/content/locations";
 import { GUIDE_CARD_BY_PATH, GUIDE_OG_CARDS } from "@/content/guides/og";
 import { TOOL_CARD_BY_PATH, TOOL_OG_CARDS } from "@/content/tools/og";
+import { BRAND_NAME } from "@/lib/config/brand";
+import { isPageHidden } from "@/lib/config/pages";
 
 export const OG_IMAGE_SIZE = { width: 1200, height: 630 } as const;
 
@@ -73,7 +75,7 @@ export const OG_CARDS: Record<string, OgCard> = {
   },
   "book-demo": {
     eyebrow: "Free demo",
-    title: "See TajirPoint run your business.",
+    title: `See ${BRAND_NAME} run your business.`,
     sub: "A free demo on your own kind of business — and we move your data from your old POS.",
     pills: ["Free", "Your products", "Free data move"],
   },
@@ -84,14 +86,14 @@ export const OG_CARDS: Record<string, OgCard> = {
     pills: ["A real person", "Prices", "Hardware", "Switching"],
   },
   about: {
-    eyebrow: "About TajirPoint",
+    eyebrow: `About ${BRAND_NAME}`,
     title: "A simple, honest system for businesses that work hard.",
     sub: "POS, stock, credit and accounting on web, Windows and Android — in English, Urdu and Arabic.",
     pills: ["Web", "Windows", "Android"],
   },
   contact: {
     eyebrow: "Contact",
-    title: "Talk to the TajirPoint team.",
+    title: `Talk to the ${BRAND_NAME} team.`,
     sub: "Pricing, switching from another POS or support — we reply within one working day.",
     pills: ["WhatsApp", "Email"],
   },
@@ -103,19 +105,19 @@ export const OG_CARDS: Record<string, OgCard> = {
   },
   changelog: {
     eyebrow: "What's new",
-    title: "What's new in TajirPoint.",
+    title: `What's new in ${BRAND_NAME}.`,
     sub: "The features we released each month for shops and restaurants, in plain words.",
     pills: ["Monthly", "Restaurants", "Shops"],
   },
   partners: {
     eyebrow: "Partners",
-    title: "Sell, set up or support TajirPoint.",
+    title: `Sell, set up or support ${BRAND_NAME}.`,
     sub: "For resellers, setup partners, hardware sellers and accountants. We agree terms with each partner.",
     pills: ["Resellers", "Setup partners", "Hardware"],
   },
   docs: {
     eyebrow: "API docs",
-    title: "The TajirPoint REST API.",
+    title: `The ${BRAND_NAME} REST API.`,
     sub: "Products, stock, sales, customers, khata and webhooks — with examples.",
     pills: ["REST", "Webhooks", "Idempotency"],
   },
@@ -232,7 +234,7 @@ export const ADDON_GROUP_CARDS: Record<string, OgCard> = {
   },
   integrations: {
     eyebrow: "Integrations",
-    title: "Connect TajirPoint to the tools you use.",
+    title: `Connect ${BRAND_NAME} to the tools you use.`,
     sub: "Integration add-ons. Each page says if it is ready or coming soon.",
     pills: ["Add-ons", "Per shop"],
   },
@@ -264,6 +266,21 @@ const CARD_BY_PATH: Record<string, string> = {
   ...GUIDE_CARD_BY_PATH,
   ...TOOL_CARD_BY_PATH,
 };
+
+/** Cards of pages this build leaves out (src/lib/config/pages.ts): not rendered. */
+const HIDDEN_CARD_IDS = new Set(
+  Object.entries(CARD_BY_PATH)
+    .filter(([path]) => isPageHidden(path))
+    .map(([, id]) => id)
+);
+
+/** False for the card of a page this build leaves out (add-on cards: "addon-<slug>"). */
+export function isOgCardShown(id: string): boolean {
+  if (id.startsWith("addon-") && isPageHidden(`/extensions/${id.slice("addon-".length)}`)) {
+    return false;
+  }
+  return !HIDDEN_CARD_IDS.has(id);
+}
 
 /** The share image path for a page, or undefined when it has no card of its own. */
 export function ogImageForPath(path: string): string | undefined {

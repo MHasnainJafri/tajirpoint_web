@@ -1,40 +1,45 @@
+import { brand } from "./brand";
+
 // The canonical origin. Every canonical tag, hreflang, OG url, JSON-LD `url`
 // and sitemap <loc> is built from this, so it must NEVER silently fall back to
 // localhost in a production build — that ships `<link rel="canonical"
 // href="http://localhost:3000">` on every page and tells Google the whole site
 // is a duplicate of an unreachable URL. Deploys should still set
 // NEXT_PUBLIC_SITE_URL explicitly; this is the seatbelt for when they don't.
-export const PRODUCTION_URL = "https://tajirpoint.com";
+export const PRODUCTION_URL = brand.website;
 
 const resolvedUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
   (process.env.NODE_ENV === "production" ? PRODUCTION_URL : "http://localhost:3000");
 
 /**
- * Who operates TajirPoint, and how to reach them. ONE place for the legal
+ * Who operates the service, and how to reach them (from the brand layer,
+ * src/lib/config/brand.ts). ONE place for the legal
  * identity: the Terms, Privacy, Cookie and Refund policies, the contact page,
  * the footer and the Organization JSON-LD all read from here.
  *
- * Owner decision (10 Oct 2026): the operator is Anssol (SMC-Private) Limited,
- * Islamabad, Pakistan. No street address, no other offices, no certification
- * claims. Change a mailbox here only once it actually receives mail.
+ * Owner decision (10 Oct 2026): TajirPoint's operator is Anssol (SMC-Private)
+ * Limited, Islamabad, Pakistan (brand.ts defaults). No street address, no
+ * other offices, no certification claims. Change a mailbox only once it
+ * actually receives mail.
  */
 export const legal = {
   /** The legal entity that provides the service. */
-  operator: "Anssol (SMC-Private) Limited",
-  operatorUrl: "https://anssol.com",
-  city: "Islamabad",
-  country: "Pakistan",
+  operator: brand.legalName,
+  operatorUrl: brand.legalUrl,
+  city: brand.city,
+  country: brand.countryName,
   /** The product name used in legal copy. */
-  product: "TajirPoint",
+  product: brand.name,
   /** Every enquiry — sales, support, privacy, legal — goes to this mailbox. */
-  email: "hello@tajirpoint.com",
-  privacyEmail: "hello@tajirpoint.com",
-  whatsappDisplay: "+92 344 6800893",
-  whatsappE164: "+923446800893",
-  whatsappUrl: "https://wa.me/923446800893",
-  governingLaw: "the laws of Pakistan",
-  courts: "the courts at Islamabad, Pakistan",
+  email: brand.email,
+  privacyEmail: brand.privacyEmail,
+  /** Empty when the brand has no WhatsApp line (leave the link out then). */
+  whatsappDisplay: brand.whatsappDisplay,
+  whatsappE164: brand.whatsappE164,
+  whatsappUrl: brand.whatsappUrl,
+  governingLaw: brand.governingLaw,
+  courts: brand.courts,
   /** Shown on every legal page. */
   lastUpdated: "10 October 2026",
   copyrightYear: 2026,
@@ -60,22 +65,21 @@ export const siteConfig = {
    * form is kept as an alternate name in the Organization markup so a search
    * for "Tajir Point" still resolves to the same entity.
    */
-  name: "TajirPoint",
-  alternateNames: ["Tajir Point", "Tajir Point POS", "TajirPoint POS"],
+  name: brand.name,
+  alternateNames: brand.alternateNames,
   url: resolvedUrl,
-  description:
-    "Point of sale, inventory, customer credit and accounting for stores, restaurants and distributors. Multi-currency support on web, desktop and Android. Free for 3 months.",
-  tagline: "Run your shop. Everywhere.",
+  description: brand.description,
+  tagline: brand.tagline,
   locale: "en",
 
   ogImage: "/og.png",
   /** Raster logo for structured data and the web manifest (generated from the mark SVG). */
-  logo: "/brand/png/logo-512.png",
+  logo: brand.icon,
 
   // External links
-  dashboardUrl: "https://app.tajirpoint.com",
+  dashboardUrl: brand.appUrl,
   /** The POS web app's public sign-up route (Tajir-Point-Web `/register`). */
-  signupUrl: "https://app.tajirpoint.com/register",
+  signupUrl: `${brand.appUrl}/register`,
   /** Our own booking form. `/demo` redirects here with the query string. */
   demoPath: "/book-demo",
   docsUrl: "/docs",
@@ -113,7 +117,8 @@ export function socialProfiles(): string[] {
 
 export type SiteConfig = typeof siteConfig;
 
-/** `wa.me` link with an optional prefilled message. */
+/** `wa.me` link with an optional prefilled message; "" when the brand has no WhatsApp. */
 export function whatsappLink(text?: string): string {
+  if (!legal.whatsappUrl) return "";
   return text ? `${legal.whatsappUrl}?text=${encodeURIComponent(text)}` : legal.whatsappUrl;
 }

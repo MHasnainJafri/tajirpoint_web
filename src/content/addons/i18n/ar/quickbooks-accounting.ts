@@ -1,4 +1,5 @@
 import type { AddonTranslation } from "../types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Arabic write-up for "quickbooks-accounting". Same facts as ../../quickbooks-accounting.ts; awaiting
 // native review (TP-490). A field left out falls back to English.
@@ -11,8 +12,8 @@ const t: AddonTranslation = {
   headline: "مبيعات متجرك ومصروفاته في QuickBooks، دون إعادة كتابة.",
   overview: [
     "QuickBooks Online برنامج المحاسبة الذي تستخدمه أعمال صغيرة كثيرة ومحاسبوها، منها في المملكة المتحدة. إن كان محاسبك يعمل على QuickBooks، فهناك اليوم من ينسخ مبيعات متجرك إليه يدويًا. ستقوم هذه الإضافة بالنسخ عنك.",
-    "بعد الربط سيرسل TajirPoint عملاءك ومبيعاتك المكتملة (كفواتير) ومدفوعاتك المكتملة ومصروفاتك إلى QuickBooks Online. تعمل تلقائيًا كل ساعة، ويمكنك الضغط على Sync now متى أردتها فورًا.",
-    "تعمل في اتجاه واحد: من TajirPoint إلى QuickBooks. التغييرات في QuickBooks لا تعود إلى TajirPoint. والنسخة الأولى تُبقي المطابقة بسيطة، فقد يرغب محاسبك في ترتيب الحسابات والضرائب في QuickBooks؛ والتفاصيل في الأسئلة أدناه.",
+    `بعد الربط سيرسل ${BRAND_NAME} عملاءك ومبيعاتك المكتملة (كفواتير) ومدفوعاتك المكتملة ومصروفاتك إلى QuickBooks Online. تعمل تلقائيًا كل ساعة، ويمكنك الضغط على Sync now متى أردتها فورًا.`,
+    `تعمل في اتجاه واحد: من ${BRAND_NAME} إلى QuickBooks. التغييرات في QuickBooks لا تعود إلى ${BRAND_NAME}. والنسخة الأولى تُبقي المطابقة بسيطة، فقد يرغب محاسبك في ترتيب الحسابات والضرائب في QuickBooks؛ والتفاصيل في الأسئلة أدناه.`,
   ],
   whoFor: [
     "المتاجر التي يعمل محاسبها أو ماسك دفاترها على QuickBooks Online",
@@ -27,11 +28,11 @@ const t: AddonTranslation = {
     },
     {
       problem: "مصروفات المتجر لا تصل أبدًا إلى الدفاتر.",
-      fix: "تُرسل المصروفات المسجّلة في TajirPoint إلى QuickBooks كمشتريات نقدية.",
+      fix: `تُرسل المصروفات المسجّلة في ${BRAND_NAME} إلى QuickBooks كمشتريات نقدية.`,
     },
     {
       problem: "قوائم العملاء مختلفة بين المتجر والدفاتر.",
-      fix: "يُنشأ عملاؤك في TajirPoint داخل QuickBooks، ويُحدَّثون عند تغييرهم.",
+      fix: `يُنشأ عملاؤك في ${BRAND_NAME} داخل QuickBooks، ويُحدَّثون عند تغييرهم.`,
     },
     {
       problem: "لا أحد يعرف إن كانت الدفاتر محدّثة.",
@@ -49,7 +50,7 @@ const t: AddonTranslation = {
     },
     {
       title: "العملاء متوافقون",
-      body: "يُنشأ العملاء في QuickBooks بأسمائهم وبريدهم وهواتفهم، ويُحدَّثون حين تغيّرهم في TajirPoint.",
+      body: `يُنشأ العملاء في QuickBooks بأسمائهم وبريدهم وهواتفهم، ويُحدَّثون حين تغيّرهم في ${BRAND_NAME}.`,
     },
     {
       title: "كل ساعة، مع Sync now",
@@ -57,7 +58,7 @@ const t: AddonTranslation = {
     },
     {
       title: "لا تكرار",
-      body: "يتذكر TajirPoint ما أرسله، فالسجل المُرسل مجددًا يحدّث القيد نفسه في QuickBooks بدل إنشاء نسخة.",
+      body: `يتذكر ${BRAND_NAME} ما أرسله، فالسجل المُرسل مجددًا يحدّث القيد نفسه في QuickBooks بدل إنشاء نسخة.`,
     },
     {
       title: "المشكلات تُعرض ولا تُخفى",
@@ -71,11 +72,11 @@ const t: AddonTranslation = {
     },
     {
       title: "سجّل الدخول إلى QuickBooks",
-      body: "بمساعدتنا تسجّل الدخول إلى QuickBooks Online من TajirPoint وتوافق على ربط شركتك.",
+      body: `بمساعدتنا تسجّل الدخول إلى QuickBooks Online من ${BRAND_NAME} وتوافق على ربط شركتك.`,
     },
     {
       title: "راجع المزامنة الأولى مع محاسبك",
-      body: "ترسل المزامنة الأولى ما هو موجود بالفعل في TajirPoint. راجعه في QuickBooks مع محاسبك.",
+      body: `ترسل المزامنة الأولى ما هو موجود بالفعل في ${BRAND_NAME}. راجعه في QuickBooks مع محاسبك.`,
     },
     {
       title: "دعها تعمل",
@@ -85,13 +86,13 @@ const t: AddonTranslation = {
   needs: [
     "اشتراك في QuickBooks Online (QuickBooks Desktop غير مدعوم)",
     "صلاحية ربط التطبيقات بشركتك على QuickBooks",
-    "حساب TajirPoint على خطة Shop أو أعلى",
+    `حساب ${BRAND_NAME} على خطة Shop أو أعلى`,
     "يُفضَّل حضور محاسبك عند المزامنة الأولى",
   ],
   setup: [
     "عند الإطلاق يُعدّها فريقنا معك، ومع محاسبك إن أردت.",
     "يُدفع اشتراك QuickBooks لشركة Intuit، لا لنا.",
-    "لا تتغير مبيعاتك في TajirPoint؛ البيانات تخرج إلى QuickBooks فقط.",
+    `لا تتغير مبيعاتك في ${BRAND_NAME}؛ البيانات تخرج إلى QuickBooks فقط.`,
   ],
   faqs: [
     {
@@ -100,7 +101,7 @@ const t: AddonTranslation = {
     },
     {
       q: "هل تعمل في الاتجاهين؟",
-      a: "لا. ترسل من TajirPoint إلى QuickBooks فقط. والتعديلات في QuickBooks لا تعود.",
+      a: `لا. ترسل من ${BRAND_NAME} إلى QuickBooks فقط. والتعديلات في QuickBooks لا تعود.`,
     },
     {
       q: "هل ستظهر منتجاتي في QuickBooks؟",
@@ -112,7 +113,7 @@ const t: AddonTranslation = {
     },
     {
       q: "هل ستُرسل مبيعاتي القديمة؟",
-      a: "نعم. ترسل المزامنة الأولى المبيعات والمدفوعات والمصروفات المكتملة والعملاء الموجودين في TajirPoint، ثم ما يتغير بعد ذلك فقط. خطّط لذلك مع محاسبك.",
+      a: `نعم. ترسل المزامنة الأولى المبيعات والمدفوعات والمصروفات المكتملة والعملاء الموجودين في ${BRAND_NAME}، ثم ما يتغير بعد ذلك فقط. خطّط لذلك مع محاسبك.`,
     },
     {
       q: "هل أحتاج إلى إضافة المحاسبة أيضًا؟",

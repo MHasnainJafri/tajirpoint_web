@@ -1,5 +1,6 @@
 import type { Comparison } from "./types";
 import { TP } from "./tajirpoint";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 /**
  * TajirPoint vs another company's product.
@@ -19,13 +20,13 @@ export const loyverse: Comparison = {
   slug: "tajirpoint-vs-loyverse",
   kind: "competitor",
   otherName: "Loyverse",
-  label: "TajirPoint vs Loyverse",
-  blurb: "A free POS for phones and tablets, or a POS with khata, accounting and delivery built in.",
+  label: `${BRAND_NAME} vs Loyverse`,
+  blurb:
+    "A free POS for phones and tablets, or a POS with khata, accounting and delivery built in.",
   audience: "Small shops and cafés",
   seo: {
-    title: "TajirPoint vs Loyverse: Free POS Compared",
-    description:
-      "Loyverse or TajirPoint? A fair look at price, offline selling, khata, accounting, delivery and devices, with sources. See where each one is the better choice.",
+    title: `${BRAND_NAME} vs Loyverse: Free POS Compared`,
+    description: `Loyverse or ${BRAND_NAME}? A fair look at price, offline selling, khata, accounting, delivery and devices, with sources. See where each one is the better choice.`,
     keywords: [
       "Loyverse alternative",
       "Loyverse vs",
@@ -37,20 +38,18 @@ export const loyverse: Comparison = {
   },
   og: {
     eyebrow: "Compare",
-    title: "TajirPoint vs Loyverse.",
+    title: `${BRAND_NAME} vs Loyverse.`,
     sub: "Price, offline, khata, accounting and delivery, compared fairly with sources.",
     pills: ["Free start", "Khata", "Accounting", "Windows app"],
   },
   hero: {
-    eyebrow: "TajirPoint vs Loyverse",
-    h1: "TajirPoint vs Loyverse: which POS fits your shop?",
-    sub: "Loyverse is a popular free POS for phones and tablets. TajirPoint adds customer credit, accounting and delivery to the POS. Here is a fair side-by-side.",
+    eyebrow: `${BRAND_NAME} vs Loyverse`,
+    h1: `${BRAND_NAME} vs Loyverse: which POS fits your shop?`,
+    sub: `Loyverse is a popular free POS for phones and tablets. ${BRAND_NAME} adds customer credit, accounting and delivery to the POS. Here is a fair side-by-side.`,
   },
   verdict: {
-    tajirpoint:
-      "Choose TajirPoint if you sell on credit (khata), want your accounts and stock in the same system, run deliveries with your own riders, or want a Windows desktop app and Urdu or Arabic screens.",
-    other:
-      "Choose Loyverse if you want a POS whose core is free with no time limit, you work on iPhone or iPad, or you need a language TajirPoint does not offer yet.",
+    tajirpoint: `Choose ${BRAND_NAME} if you sell on credit (khata), want your accounts and stock in the same system, run deliveries with your own riders, or want a Windows desktop app and Urdu or Arabic screens.`,
+    other: `Choose Loyverse if you want a POS whose core is free with no time limit, you work on iPhone or iPad, or you need a language ${BRAND_NAME} does not offer yet.`,
   },
   tajirpointStrengths: [
     "Khata built in: running balances, credit limits, aging and reminders for customers who buy on credit.",
@@ -61,8 +60,8 @@ export const loyverse: Comparison = {
     "Our team moves your data from Excel or another POS for free.",
   ],
   otherStrengths: [
-    "The core POS is free with no time limit; TajirPoint's free Light plan lasts 3 months.",
-    "Works on iOS and Android; TajirPoint's iOS app is still coming soon.",
+    `The core POS is free with no time limit; ${BRAND_NAME}'s free Light plan lasts 3 months.`,
+    `Works on iOS and Android; ${BRAND_NAME}'s iOS app is still coming soon.`,
     "Kitchen display, customer display, loyalty and multi-store are in the free core.",
     "Offered in 30+ languages, with help tutorials in 17.",
     "A large user base: it says 350,000+ active merchants in 170+ countries.",
@@ -75,7 +74,11 @@ export const loyverse: Comparison = {
     },
     {
       feature: "Paid extras",
-      tajirpoint: { mark: "info", text: "Monthly plans, plus optional add-ons per shop.", href: "/pricing" },
+      tajirpoint: {
+        mark: "info",
+        text: "Monthly plans, plus optional add-ons per shop.",
+        href: "/pricing",
+      },
       other: {
         mark: "info",
         text: "Unlimited sales history $5 per store a month; employee management $5 per employee a month; advanced inventory $25 per store a month.",
@@ -90,7 +93,11 @@ export const loyverse: Comparison = {
     {
       feature: "Devices",
       tajirpoint: TP.devices,
-      other: { mark: "info", text: "iOS and Android phones and tablets, supported Android POS devices; back office in a browser.", source: 2 },
+      other: {
+        mark: "info",
+        text: "iOS and Android phones and tablets, supported Android POS devices; back office in a browser.",
+        source: 2,
+      },
     },
     {
       feature: "Kitchen display",
@@ -110,12 +117,20 @@ export const loyverse: Comparison = {
     {
       feature: "Stock",
       tajirpoint: TP.stock,
-      other: { mark: "partial", text: "Essential stock tracking free; advanced inventory is a paid add-on.", source: 1 },
+      other: {
+        mark: "partial",
+        text: "Essential stock tracking free; advanced inventory is a paid add-on.",
+        source: 1,
+      },
     },
     {
       feature: "Accounting",
       tajirpoint: TP.accounting,
-      other: { mark: "partial", text: "Connects to accounting tools through integrations.", source: 1 },
+      other: {
+        mark: "partial",
+        text: "Connects to accounting tools through integrations.",
+        source: 1,
+      },
     },
     {
       feature: "Customer credit (khata)",
@@ -125,7 +140,11 @@ export const loyverse: Comparison = {
     {
       feature: "Own riders and online order page",
       tajirpoint: TP.riders,
-      other: { mark: "info", text: "Not listed on its pricing page; integrations for e-commerce.", source: 1 },
+      other: {
+        mark: "info",
+        text: "Not listed on its pricing page; integrations for e-commerce.",
+        source: 1,
+      },
     },
     {
       feature: "Languages",
@@ -138,20 +157,20 @@ export const loyverse: Comparison = {
       heading: "Price: free core vs a free start",
       paragraphs: [
         "Loyverse's core POS is free, and you pay only for the add-ons you choose. That is a real advantage for a very small shop.",
-        "TajirPoint's Light plan is free for 3 months with no card, then you move to a paid plan. In return, the paid plans include things a small shop in Pakistan or the Gulf often needs: khata, purchasing and reports, with accounting and delivery available on top.",
+        `${BRAND_NAME}'s Light plan is free for 3 months with no card, then you move to a paid plan. In return, the paid plans include things a small shop in Pakistan or the Gulf often needs: khata, purchasing and reports, with accounting and delivery available on top.`,
       ],
     },
     {
       heading: "Credit customers and accounts",
       paragraphs: [
-        "If customers buy on credit, TajirPoint keeps each one's balance, warns you at their limit and shows who is late paying. With the Accounting add-on, sales and purchases post to proper double-entry books.",
+        `If customers buy on credit, ${BRAND_NAME} keeps each one's balance, warns you at their limit and shows who is late paying. With the Accounting add-on, sales and purchases post to proper double-entry books.`,
         "Loyverse lists accounting through integrations with other tools. If you don't sell on credit and an outside accounting app suits you, that may be all you need.",
       ],
     },
     {
       heading: "Devices",
       paragraphs: [
-        "Loyverse runs on iOS and Android. TajirPoint runs in any browser, as a Windows desktop app and on Android; the iOS app is coming soon. If your counter is an iPad, Loyverse fits today.",
+        `Loyverse runs on iOS and Android. ${BRAND_NAME} runs in any browser, as a Windows desktop app and on Android; the iOS app is coming soon. If your counter is an iPad, Loyverse fits today.`,
       ],
     },
   ],
@@ -162,19 +181,18 @@ export const loyverse: Comparison = {
         "Loyverse's pricing page lists its core POS as free, with paid add-ons such as unlimited sales history, employee management and advanced inventory (checked 1 Nov 2026).",
     },
     {
-      question: "Is TajirPoint free?",
+      question: `Is ${BRAND_NAME} free?`,
       answer:
         "The Light plan is free for 3 months with no card. It covers one shop, two staff logins, 30 products and 100 orders a day. After that you choose a paid plan.",
     },
     {
-      question: "Can I move from Loyverse to TajirPoint?",
+      question: `Can I move from Loyverse to ${BRAND_NAME}?`,
       answer:
         "Yes. Export your items and customers to a CSV file and send it to us. Our team loads your products, customers and opening stock for free.",
     },
     {
       question: "Which one works offline?",
-      answer:
-        "Both keep selling at the counter offline and sync later. TajirPoint's offline mode for restaurant tables and the kitchen screen is not released yet.",
+      answer: `Both keep selling at the counter offline and sync later. ${BRAND_NAME}'s offline mode for restaurant tables and the kitchen screen is not released yet.`,
     },
   ],
   sources: [
@@ -188,13 +206,13 @@ export const square: Comparison = {
   slug: "tajirpoint-vs-square",
   kind: "competitor",
   otherName: "Square",
-  label: "TajirPoint vs Square",
-  blurb: "Card payments and hardware from one company, or a POS with khata and accounting that works with your own bank.",
+  label: `${BRAND_NAME} vs Square`,
+  blurb:
+    "Card payments and hardware from one company, or a POS with khata and accounting that works with your own bank.",
   audience: "UK shops, cafés and restaurants",
   seo: {
-    title: "TajirPoint vs Square POS for UK Shops",
-    description:
-      "Square or TajirPoint for your UK shop or restaurant? A fair comparison of plans, card fees, hardware, kitchen display, credit and accounting, with sources.",
+    title: `${BRAND_NAME} vs Square POS for UK Shops`,
+    description: `Square or ${BRAND_NAME} for your UK shop or restaurant? A fair comparison of plans, card fees, hardware, kitchen display, credit and accounting, with sources.`,
     keywords: [
       "Square alternative UK",
       "Square POS alternative",
@@ -206,23 +224,22 @@ export const square: Comparison = {
   },
   og: {
     eyebrow: "Compare",
-    title: "TajirPoint vs Square.",
+    title: `${BRAND_NAME} vs Square.`,
     sub: "Plans, card fees, hardware and back office, compared fairly with sources.",
     pills: ["No card fees", "Khata", "Accounting", "Windows app"],
   },
   hero: {
-    eyebrow: "TajirPoint vs Square",
-    h1: "TajirPoint vs Square: which POS suits your business?",
-    sub: "Square bundles card payments, hardware and a POS. TajirPoint is a POS and back office that works with the bank or card terminal you already use. Here is a fair side-by-side for UK owners.",
+    eyebrow: `${BRAND_NAME} vs Square`,
+    h1: `${BRAND_NAME} vs Square: which POS suits your business?`,
+    sub: `Square bundles card payments, hardware and a POS. ${BRAND_NAME} is a POS and back office that works with the bank or card terminal you already use. Here is a fair side-by-side for UK owners.`,
   },
   verdict: {
-    tajirpoint:
-      "Choose TajirPoint if you want to keep your own bank's card terminal, sell on account to regular customers, keep double-entry books in the same system, or run on a Windows PC.",
+    tajirpoint: `Choose ${BRAND_NAME} if you want to keep your own bank's card terminal, sell on account to regular customers, keep double-entry books in the same system, or run on a Windows PC.`,
     other:
       "Choose Square if you want card payments, card readers and the POS from one company, a free plan with no time limit, or an AI assistant for your sales data today.",
   },
   tajirpointStrengths: [
-    "We don't process your cards, so TajirPoint takes no transaction fee. Keep the bank terminal and rates you have.",
+    `We don't process your cards, so ${BRAND_NAME} takes no transaction fee. Keep the bank terminal and rates you have.`,
     "Customer credit (khata) with limits, aging and statements for customers who pay later.",
     "Double-entry accounting posted from sales and purchases (Accounting add-on).",
     "Kitchen display included with the restaurant tools, on any tablet or PC.",
@@ -240,7 +257,11 @@ export const square: Comparison = {
     {
       feature: "Monthly plans",
       tajirpoint: TP.freeStart,
-      other: { mark: "info", text: "Free £0; Plus from £29; Premium custom (all plus card fees).", source: 1 },
+      other: {
+        mark: "info",
+        text: "Free £0; Plus from £29; Premium custom (all plus card fees).",
+        source: 1,
+      },
     },
     {
       feature: "Card payment fees",
@@ -250,12 +271,20 @@ export const square: Comparison = {
     {
       feature: "Hardware",
       tajirpoint: TP.hardware,
-      other: { mark: "info", text: "Sells its own: £19 reader up to £699 register, plus VAT.", source: 1 },
+      other: {
+        mark: "info",
+        text: "Sells its own: £19 reader up to £699 register, plus VAT.",
+        source: 1,
+      },
     },
     {
       feature: "Kitchen display",
       tajirpoint: TP.kds,
-      other: { mark: "partial", text: "From £15 per device a month; included on its restaurants plan.", source: 1 },
+      other: {
+        mark: "partial",
+        text: "From £15 per device a month; included on its restaurants plan.",
+        source: 1,
+      },
     },
     {
       feature: "AI assistant",
@@ -270,7 +299,11 @@ export const square: Comparison = {
     {
       feature: "Devices",
       tajirpoint: TP.devices,
-      other: { mark: "info", text: "Its own Reader, Terminal, Stand, Kiosk, Handheld and Register.", source: 1 },
+      other: {
+        mark: "info",
+        text: "Its own Reader, Terminal, Stand, Kiosk, Handheld and Register.",
+        source: 1,
+      },
     },
   ],
   sections: [
@@ -278,20 +311,20 @@ export const square: Comparison = {
       heading: "Card payments: built in, or your own bank",
       paragraphs: [
         "Square's model is simple: you use its card readers and pay a fee on each card payment. For many small UK businesses, that is the easiest way to start.",
-        "TajirPoint does not process cards. You record card sales from whichever terminal you already have, and online payments go through the Stripe add-on. TajirPoint itself charges no transaction fee. If you already have a good rate with your bank, this keeps it.",
+        `${BRAND_NAME} does not process cards. You record card sales from whichever terminal you already have, and online payments go through the Stripe add-on. ${BRAND_NAME} itself charges no transaction fee. If you already have a good rate with your bank, this keeps it.`,
       ],
     },
     {
       heading: "Back office",
       paragraphs: [
-        "TajirPoint was built for shops that sell on credit and want their books in the same place as their till: customer balances, credit limits, purchases from suppliers and double-entry accounting.",
+        `${BRAND_NAME} was built for shops that sell on credit and want their books in the same place as their till: customer balances, credit limits, purchases from suppliers and double-entry accounting.`,
         "Square offers a wide range of tools and add-ons of its own. Check its site for the exact features on the plan you are considering.",
       ],
     },
     {
       heading: "Making Tax Digital",
       paragraphs: [
-        "TajirPoint keeps tax on every bill and gives you tax reports. It does not submit VAT returns to HMRC for you, so you or your accountant still file them.",
+        `${BRAND_NAME} keeps tax on every bill and gives you tax reports. It does not submit VAT returns to HMRC for you, so you or your accountant still file them.`,
       ],
     },
   ],
@@ -302,17 +335,15 @@ export const square: Comparison = {
         "Square's UK pricing page lists 1.75% for in-person UK card payments and 1.4% + 25p online (checked 1 Nov 2026). Check its site for the current rates.",
     },
     {
-      question: "Does TajirPoint charge card fees?",
-      answer:
-        "No. TajirPoint doesn't process cards and charges no transaction fee. Your card terminal provider or online gateway sets its own processing fees.",
+      question: `Does ${BRAND_NAME} charge card fees?`,
+      answer: `No. ${BRAND_NAME} doesn't process cards and charges no transaction fee. Your card terminal provider or online gateway sets its own processing fees.`,
     },
     {
-      question: "Can I use my existing card terminal with TajirPoint?",
-      answer:
-        "Yes. Take the payment on your terminal as you do now and record it as a card sale in TajirPoint, so it lands in your reports.",
+      question: `Can I use my existing card terminal with ${BRAND_NAME}?`,
+      answer: `Yes. Take the payment on your terminal as you do now and record it as a card sale in ${BRAND_NAME}, so it lands in your reports.`,
     },
     {
-      question: "Does TajirPoint file my VAT return?",
+      question: `Does ${BRAND_NAME} file my VAT return?`,
       answer:
         "No. It records VAT on every bill and gives you tax reports, but it does not submit returns to HMRC.",
     },
@@ -335,13 +366,13 @@ export const foodics: Comparison = {
   slug: "tajirpoint-vs-foodics",
   kind: "competitor",
   otherName: "Foodics",
-  label: "TajirPoint vs Foodics",
-  blurb: "A Gulf restaurant platform with hardware and payments, or one system for restaurants and shops.",
+  label: `${BRAND_NAME} vs Foodics`,
+  blurb:
+    "A Gulf restaurant platform with hardware and payments, or one system for restaurants and shops.",
   audience: "Restaurants in the Gulf",
   seo: {
-    title: "TajirPoint vs Foodics for Restaurants",
-    description:
-      "Foodics or TajirPoint for your restaurant? A fair comparison of pricing, hardware, kitchen display, delivery, e-invoicing and Arabic support, with sources.",
+    title: `${BRAND_NAME} vs Foodics for Restaurants`,
+    description: `Foodics or ${BRAND_NAME} for your restaurant? A fair comparison of pricing, hardware, kitchen display, delivery, e-invoicing and Arabic support, with sources.`,
     keywords: [
       "Foodics alternative",
       "Foodics vs",
@@ -353,18 +384,17 @@ export const foodics: Comparison = {
   },
   og: {
     eyebrow: "Compare",
-    title: "TajirPoint vs Foodics.",
+    title: `${BRAND_NAME} vs Foodics.`,
     sub: "Pricing, hardware, kitchen, delivery and e-invoicing, compared fairly with sources.",
     pills: ["Restaurants", "Kitchen display", "Riders", "Arabic"],
   },
   hero: {
-    eyebrow: "TajirPoint vs Foodics",
-    h1: "TajirPoint vs Foodics: which restaurant POS fits you?",
-    sub: "Foodics is a leading restaurant platform in the Gulf. TajirPoint runs restaurants and shops in one system. Here is an honest side-by-side, including where Foodics is ahead.",
+    eyebrow: `${BRAND_NAME} vs Foodics`,
+    h1: `${BRAND_NAME} vs Foodics: which restaurant POS fits you?`,
+    sub: `Foodics is a leading restaurant platform in the Gulf. ${BRAND_NAME} runs restaurants and shops in one system. Here is an honest side-by-side, including where Foodics is ahead.`,
   },
   verdict: {
-    tajirpoint:
-      "Choose TajirPoint if you run a restaurant and a shop (or several kinds of business), deliver with your own riders, sell on credit to regular customers, or want to start free and bring your own devices.",
+    tajirpoint: `Choose ${BRAND_NAME} if you run a restaurant and a shop (or several kinds of business), deliver with your own riders, sell on credit to regular customers, or want to start free and bring your own devices.`,
     other:
       "Choose Foodics if you are in Saudi Arabia and need its e-invoicing (e-Fatoora) set-up today, want hardware included in a per-branch price, or want its own payments service.",
   },
@@ -376,7 +406,7 @@ export const foodics: Comparison = {
     "App and receipts in Arabic, Urdu and English.",
   ],
   otherStrengths: [
-    "Saudi e-invoicing: it publishes a guide to turning on e-Fatoora in the Foodics POS. TajirPoint does not support Saudi e-invoicing yet.",
+    `Saudi e-invoicing: it publishes a guide to turning on e-Fatoora in the Foodics POS. ${BRAND_NAME} does not support Saudi e-invoicing yet.`,
     "Hardware included in the per-branch price, with no upfront payment (Saudi price list).",
     "Its own payments service, Foodics Pay, licensed by the Saudi Central Bank (SAMA).",
     "Self ordering, pay at table and AI & BI analytics on its plans.",
@@ -400,7 +430,11 @@ export const foodics: Comparison = {
     {
       feature: "Saudi e-invoicing (ZATCA / e-Fatoora)",
       tajirpoint: TP.zatca,
-      other: { mark: "yes", text: "Publishes a guide to activating e-Fatoora in its POS.", source: 3 },
+      other: {
+        mark: "yes",
+        text: "Publishes a guide to activating e-Fatoora in its POS.",
+        source: 3,
+      },
     },
     {
       feature: "Kitchen display",
@@ -425,12 +459,20 @@ export const foodics: Comparison = {
     {
       feature: "Card payments",
       tajirpoint: TP.cardProcessing,
-      other: { mark: "yes", text: "Foodics Pay, licensed by the Saudi Central Bank (SAMA).", source: 2 },
+      other: {
+        mark: "yes",
+        text: "Foodics Pay, licensed by the Saudi Central Bank (SAMA).",
+        source: 2,
+      },
     },
     {
       feature: "Inventory and recipes",
       tajirpoint: TP.recipes,
-      other: { mark: "partial", text: "Inventory with costing and purchasing from the Basic plan.", source: 1 },
+      other: {
+        mark: "partial",
+        text: "Inventory with costing and purchasing from the Basic plan.",
+        source: 1,
+      },
     },
     {
       feature: "Accounting",
@@ -440,7 +482,11 @@ export const foodics: Comparison = {
     {
       feature: "AI and analytics",
       tajirpoint: TP.ai,
-      other: { mark: "partial", text: "Foodics AI & BI Analytics on the Advanced plan.", source: 1 },
+      other: {
+        mark: "partial",
+        text: "Foodics AI & BI Analytics on the Advanced plan.",
+        source: 1,
+      },
     },
     {
       feature: "Shops as well as restaurants",
@@ -452,43 +498,44 @@ export const foodics: Comparison = {
     {
       heading: "If you are in Saudi Arabia",
       paragraphs: [
-        "Saudi businesses must issue e-invoices under ZATCA rules. Foodics publishes a guide to turning on e-Fatoora in its POS. TajirPoint does not support Saudi e-invoicing yet, so if you need it today, Foodics or another ZATCA-ready system is the safer choice.",
+        `Saudi businesses must issue e-invoices under ZATCA rules. Foodics publishes a guide to turning on e-Fatoora in its POS. ${BRAND_NAME} does not support Saudi e-invoicing yet, so if you need it today, Foodics or another ZATCA-ready system is the safer choice.`,
       ],
     },
     {
       heading: "One system for more than one kind of business",
       paragraphs: [
-        "Foodics is built for food and beverage. TajirPoint runs restaurants and also shops, groceries, pharmacies and distributors, so a group with a restaurant and a store can use one login, one set of reports and one khata.",
+        `Foodics is built for food and beverage. ${BRAND_NAME} runs restaurants and also shops, groceries, pharmacies and distributors, so a group with a restaurant and a store can use one login, one set of reports and one khata.`,
       ],
     },
     {
       heading: "Delivery with your own riders",
       paragraphs: [
-        "TajirPoint has an order board that rings for new online orders, a packer screen and a rider app with live location and rider cash per shift. Your own order page takes delivery, pickup and dine-in orders with no commission to an app.",
+        `${BRAND_NAME} has an order board that rings for new online orders, a packer screen and a rider app with live location and rider cash per shift. Your own order page takes delivery, pickup and dine-in orders with no commission to an app.`,
       ],
     },
   ],
   faqs: [
     {
-      question: "Does TajirPoint support ZATCA e-invoicing?",
-      answer:
-        "Not yet. TajirPoint records tax on every bill and gives you tax reports, but it does not send e-invoices to ZATCA. If you need that today, choose a ZATCA-ready system.",
+      question: `Does ${BRAND_NAME} support ZATCA e-invoicing?`,
+      answer: `Not yet. ${BRAND_NAME} records tax on every bill and gives you tax reports, but it does not send e-invoices to ZATCA. If you need that today, choose a ZATCA-ready system.`,
     },
     {
-      question: "Is TajirPoint available in Arabic?",
+      question: `Is ${BRAND_NAME} available in Arabic?`,
       answer:
         "Yes. The app works in Arabic with right-to-left screens, and receipts can be printed in Arabic.",
     },
     {
-      question: "Do I need to buy hardware from TajirPoint?",
-      answer:
-        "No. TajirPoint runs on a PC, laptop, Android phone or tablet, or an Android POS with a built-in printer. Any tablet, TV box or PC with a browser can be a kitchen screen.",
+      question: `Do I need to buy hardware from ${BRAND_NAME}?`,
+      answer: `No. ${BRAND_NAME} runs on a PC, laptop, Android phone or tablet, or an Android POS with a built-in printer. Any tablet, TV box or PC with a browser can be a kitchen screen.`,
     },
   ],
   sources: [
     { label: "Foodics pricing, Saudi Arabia", url: "https://www.foodics.com/foodics-pricing-ksa/" },
     { label: "Foodics home page", url: "https://www.foodics.com/" },
-    { label: "Foodics: activating e-Fatoora (ZATCA)", url: "https://www.foodics.com/zatca-phase-2/" },
+    {
+      label: "Foodics: activating e-Fatoora (ZATCA)",
+      url: "https://www.foodics.com/zatca-phase-2/",
+    },
   ],
   related: ["tajirpoint-vs-corn-pos", "tajirpoint-vs-square", "tajirpoint-vs-loyverse"],
 };
@@ -497,13 +544,13 @@ export const cornPos: Comparison = {
   slug: "tajirpoint-vs-corn-pos",
   kind: "competitor",
   otherName: "CORN POS",
-  label: "TajirPoint vs CORN POS",
-  blurb: "A Pakistani restaurant POS with FBR and provincial tax links, or one system for restaurants and shops.",
+  label: `${BRAND_NAME} vs CORN POS`,
+  blurb:
+    "A Pakistani restaurant POS with FBR and provincial tax links, or one system for restaurants and shops.",
   audience: "Restaurants in Pakistan",
   seo: {
-    title: "TajirPoint vs CORN POS for Restaurants in Pakistan",
-    description:
-      "CORN POS or TajirPoint for your restaurant in Pakistan? A fair look at FBR and provincial tax, offline mode, kitchen display, riders and pricing, with sources.",
+    title: `${BRAND_NAME} vs CORN POS for Restaurants in Pakistan`,
+    description: `CORN POS or ${BRAND_NAME} for your restaurant in Pakistan? A fair look at FBR and provincial tax, offline mode, kitchen display, riders and pricing, with sources.`,
     keywords: [
       "CORN POS alternative",
       "CORN POS vs",
@@ -515,18 +562,17 @@ export const cornPos: Comparison = {
   },
   og: {
     eyebrow: "Compare",
-    title: "TajirPoint vs CORN POS.",
+    title: `${BRAND_NAME} vs CORN POS.`,
     sub: "Tax, offline, kitchen, riders and pricing for Pakistani restaurants, with sources.",
     pills: ["Restaurants", "Kitchen display", "Riders", "Khata"],
   },
   hero: {
-    eyebrow: "TajirPoint vs CORN POS",
-    h1: "TajirPoint vs CORN POS: a fair look for Pakistani restaurants",
-    sub: "CORN POS is a Lahore-based restaurant POS with FBR and provincial tax links. TajirPoint runs restaurants and shops in one system. Here is where each one is stronger.",
+    eyebrow: `${BRAND_NAME} vs CORN POS`,
+    h1: `${BRAND_NAME} vs CORN POS: a fair look for Pakistani restaurants`,
+    sub: `CORN POS is a Lahore-based restaurant POS with FBR and provincial tax links. ${BRAND_NAME} runs restaurants and shops in one system. Here is where each one is stronger.`,
   },
   verdict: {
-    tajirpoint:
-      "Choose TajirPoint if you also run a shop, bakery counter or distribution business, want khata and double-entry accounting in the same system, or want to start free for 3 months on your own devices.",
+    tajirpoint: `Choose ${BRAND_NAME} if you also run a shop, bakery counter or distribution business, want khata and double-entry accounting in the same system, or want to start free for 3 months on your own devices.`,
     other:
       "Choose CORN POS if you must send sales to FBR, PRA, SRB or KPRA today, need full offline mode at the tables, or want an iPad-based setup.",
   },
@@ -538,17 +584,21 @@ export const cornPos: Comparison = {
     "Your own online order page with no commission to an app (Shop plan and above).",
   ],
   otherStrengths: [
-    "Tax links today: its site lists FBR, SRB, PRA and KPRA integration. TajirPoint's FBR connector is coming soon and provincial links are not built.",
-    "Full offline mode, with data on a local server and its live server. TajirPoint's offline mode for restaurant tables and the kitchen screen is not released yet.",
-    "Apps for iPad and iOS as well as Android. TajirPoint's iOS app is coming soon.",
-    "A branded customer ordering app for iOS and Android. TajirPoint's branded customer app is coming soon.",
+    `Tax links today: its site lists FBR, SRB, PRA and KPRA integration. ${BRAND_NAME}'s FBR connector is coming soon and provincial links are not built.`,
+    `Full offline mode, with data on a local server and its live server. ${BRAND_NAME}'s offline mode for restaurant tables and the kitchen screen is not released yet.`,
+    `Apps for iPad and iOS as well as Android. ${BRAND_NAME}'s iOS app is coming soon.`,
+    `A branded customer ordering app for iOS and Android. ${BRAND_NAME}'s branded customer app is coming soon.`,
     "Built for restaurants, with plans from new restaurants up to multi-location chains and franchises.",
   ],
   rows: [
     {
       feature: "Price",
       tajirpoint: TP.freeStart,
-      other: { mark: "info", text: "Starter $50 and Pro $130 per branch a month; Elite by quote.", source: 2 },
+      other: {
+        mark: "info",
+        text: "Starter $50 and Pro $130 per branch a month; Elite by quote.",
+        source: 2,
+      },
     },
     {
       feature: "FBR (federal sales tax)",
@@ -563,7 +613,11 @@ export const cornPos: Comparison = {
     {
       feature: "Works offline",
       tajirpoint: TP.offlineRetail,
-      other: { mark: "yes", text: "Advanced offline mode; data on a local server and its live server.", source: 1 },
+      other: {
+        mark: "yes",
+        text: "Advanced offline mode; data on a local server and its live server.",
+        source: 1,
+      },
     },
     {
       feature: "Kitchen display",
@@ -578,7 +632,11 @@ export const cornPos: Comparison = {
     {
       feature: "Online ordering",
       tajirpoint: TP.orderPage,
-      other: { mark: "yes", text: "Branded website with live menu sync and an iOS / Android ordering app.", source: 2 },
+      other: {
+        mark: "yes",
+        text: "Branded website with live menu sync and an iOS / Android ordering app.",
+        source: 2,
+      },
     },
     {
       feature: "Devices",
@@ -605,35 +663,34 @@ export const cornPos: Comparison = {
     {
       heading: "If you must send sales to FBR or your province today",
       paragraphs: [
-        "Many restaurants in Pakistan must report sales to FBR or to a provincial authority (PRA in Punjab, SRB in Sindh, KPRA in KP). CORN POS lists all four. TajirPoint's FBR connector is coming soon and the provincial links are not built yet. If this is a must for you today, ask us for dates before you switch.",
+        `Many restaurants in Pakistan must report sales to FBR or to a provincial authority (PRA in Punjab, SRB in Sindh, KPRA in KP). CORN POS lists all four. ${BRAND_NAME}'s FBR connector is coming soon and the provincial links are not built yet. If this is a must for you today, ask us for dates before you switch.`,
       ],
     },
     {
       heading: "Restaurants plus other businesses",
       paragraphs: [
-        "CORN POS is built for restaurants. TajirPoint runs a restaurant and also a shop, bakery counter, pharmacy or distribution business in the same system, with one set of reports, one khata and double-entry accounting.",
+        `CORN POS is built for restaurants. ${BRAND_NAME} runs a restaurant and also a shop, bakery counter, pharmacy or distribution business in the same system, with one set of reports, one khata and double-entry accounting.`,
       ],
     },
     {
       heading: "Price",
       paragraphs: [
-        "CORN POS lists Starter and Pro prices per branch per month on its pricing page. TajirPoint starts free for 3 months with no card, then moves to a monthly plan; the Business plan covers more than one shop. See both pricing pages for current numbers.",
+        `CORN POS lists Starter and Pro prices per branch per month on its pricing page. ${BRAND_NAME} starts free for 3 months with no card, then moves to a monthly plan; the Business plan covers more than one shop. See both pricing pages for current numbers.`,
       ],
     },
   ],
   faqs: [
     {
-      question: "Is TajirPoint FBR integrated?",
-      answer:
-        "Not yet. The FBR connector is coming soon. TajirPoint already records tax on every bill and gives tax reports. PRA, SRB and KPRA links are not built yet.",
+      question: `Is ${BRAND_NAME} FBR integrated?`,
+      answer: `Not yet. The FBR connector is coming soon. ${BRAND_NAME} already records tax on every bill and gives tax reports. PRA, SRB and KPRA links are not built yet.`,
     },
     {
-      question: "Does TajirPoint work offline in a restaurant?",
+      question: `Does ${BRAND_NAME} work offline in a restaurant?`,
       answer:
         "The counter keeps selling offline today. Full offline mode for restaurant tables and the kitchen display is being finished and is not released yet, so plan on a stable connection for table service for now.",
     },
     {
-      question: "Can I try TajirPoint before paying?",
+      question: `Can I try ${BRAND_NAME} before paying?`,
       answer:
         "Yes. The Light plan is free for 3 months with no card. You can also book a free demo with your own menu.",
     },

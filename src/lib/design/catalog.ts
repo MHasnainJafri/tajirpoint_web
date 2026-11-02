@@ -8,6 +8,8 @@
  * are chrome rather than prose and are deliberately not translated.
  */
 
+import { isPageShown } from "@/lib/config/pages";
+
 /* ── Industries ───────────────────────────────────────────────────── */
 
 export const VERTICALS = [
@@ -28,7 +30,7 @@ export type VerticalId = (typeof VERTICALS)[number]["id"];
  * `id` keys the `nav.megaFeatures.items.*` and `footer.links.*` translations,
  * so renaming one here means renaming it in all three message files.
  */
-export const FEATURES = [
+const ALL_FEATURES = [
   { id: "khata", icon: "ledgerbook", href: "/features/khata", group: "money" },
   { id: "accounting", icon: "calculator", href: "/features/accounting", group: "money" },
   { id: "eInvoicing", icon: "receipt", href: "/features/e-invoicing", group: "money" },
@@ -36,7 +38,10 @@ export const FEATURES = [
   { id: "vanSales", icon: "truck", href: "/features/van-sales", group: "ops" },
 ] as const;
 
-export type FeatureId = (typeof FEATURES)[number]["id"];
+export type FeatureId = (typeof ALL_FEATURES)[number]["id"];
+
+/** The feature pages this build has (src/lib/config/pages.ts). */
+export const FEATURES = ALL_FEATURES.filter((f) => isPageShown(f.href));
 
 /** Each industry section names its feature-grid entries by index. */
 export const VERTICAL_FEATURE_COUNT = 6;
@@ -57,7 +62,7 @@ export const EXTENSION_CATEGORIES = [
 export type ExtensionCategory = (typeof EXTENSION_CATEGORIES)[number];
 
 /** `note` keys map to `extensions.notes.*` — omitted when there is no badge. */
-export const EXTENSIONS = [
+const ALL_EXTENSIONS = [
   { id: "restaurant", icon: "extension-restaurant", cat: "verticals" },
   { id: "route-dispatch", icon: "extension-route-dispatch", cat: "verticals" },
   { id: "pharmacy", icon: "extension-pharmacy", cat: "verticals" },
@@ -107,13 +112,11 @@ export const EXTENSIONS = [
   note?: string;
 }>;
 
-export const EXTENSION_COUNT = EXTENSIONS.length; // 31
-
 /**
  * The backend catalogue slug (`/extensions/<slug>` detail page) for each id
  * above whose id differs from it. Ids not listed use their own id as slug.
  */
-const EXTENSION_SLUG_OVERRIDES: Partial<Record<(typeof EXTENSIONS)[number]["id"], string>> = {
+const EXTENSION_SLUG_OVERRIDES: Partial<Record<(typeof ALL_EXTENSIONS)[number]["id"], string>> = {
   pharmacy: "pharmacy-pack",
   "hr-payroll": "hrm",
   stripe: "stripe-payments",
@@ -142,6 +145,11 @@ export function extensionHref(id: string): string {
   const slug = EXTENSION_SLUG_OVERRIDES[id as keyof typeof EXTENSION_SLUG_OVERRIDES] ?? id;
   return `/extensions/${slug}`;
 }
+
+/** The marketplace entries whose page this build has (src/lib/config/pages.ts). */
+export const EXTENSIONS = ALL_EXTENSIONS.filter((e) => isPageShown(extensionHref(e.id)));
+
+export const EXTENSION_COUNT = EXTENSIONS.length; // 31 on tajirpoint.com
 
 /* ── Landing: "one platform instead of five tools" ────────────────── */
 
@@ -275,7 +283,7 @@ export const MARQUEE_BRANDS = [
 
 /* ── Nav: extensions mega menu ────────────────────────────────────── */
 
-export const MEGA_EXT_VERTICALS = [
+const ALL_MEGA_EXT_VERTICALS = [
   "restaurant",
   "route-dispatch",
   "pharmacy",
@@ -284,7 +292,11 @@ export const MEGA_EXT_VERTICALS = [
   "website-builder",
 ] as const;
 
-export const MEGA_EXT_PAYMENTS = [
+export const MEGA_EXT_VERTICALS = ALL_MEGA_EXT_VERTICALS.filter((id) =>
+  isPageShown(extensionHref(id))
+);
+
+const ALL_MEGA_EXT_PAYMENTS = [
   { id: "stripe", icon: "brand-stripe", live: true },
   { id: "jazzcash", icon: "brand-jazzcash", live: true },
   { id: "easypaisa", icon: "brand-easypaisa", live: false },
@@ -294,15 +306,22 @@ export const MEGA_EXT_PAYMENTS = [
   { id: "square", icon: "brand-square", live: false },
 ] as const;
 
-export const MEGA_EXT_INTEGRATIONS = [
-  { id: "quickbooks", icon: "brand-quickbooks" },
-  { id: "shopify", icon: "brand-shopify" },
-  { id: "woocommerce", icon: "brand-woocommerce" },
-  { id: "couriers", icon: "truck" },
-  { id: "delivery-aggregator", icon: "scooter" },
-  { id: "whatsapp-ai", icon: "brand-whatsapp" },
-  { id: "fbr", icon: "brand-fbr" },
+export const MEGA_EXT_PAYMENTS = ALL_MEGA_EXT_PAYMENTS.filter((p) =>
+  isPageShown(extensionHref(p.id))
+);
+
+/** Chips, not links; `page` is the add-on page each one stands for. */
+const ALL_MEGA_EXT_INTEGRATIONS = [
+  { id: "quickbooks", icon: "brand-quickbooks", page: "/extensions/quickbooks-accounting" },
+  { id: "shopify", icon: "brand-shopify", page: "/extensions/shopify-sync" },
+  { id: "woocommerce", icon: "brand-woocommerce", page: "/extensions/woocommerce-sync" },
+  { id: "couriers", icon: "truck", page: "/extensions/courier-tcs" },
+  { id: "delivery-aggregator", icon: "scooter", page: "/extensions/delivery-aggregator" },
+  { id: "whatsapp-ai", icon: "brand-whatsapp", page: "/extensions/whatsapp-ai" },
+  { id: "fbr", icon: "brand-fbr", page: "/extensions/fbr-integration" },
 ] as const;
+
+export const MEGA_EXT_INTEGRATIONS = ALL_MEGA_EXT_INTEGRATIONS.filter((m) => isPageShown(m.page));
 
 /* ═══════════════════════════════════════════════════════════════════
    Product-mock data — chrome inside simulated app screenshots.

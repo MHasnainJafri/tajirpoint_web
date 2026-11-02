@@ -12,6 +12,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 import { GET_A_CALL_COPY } from "@/content/i18n/lead-pages/pages";
 import { SHARED_FORM_COPY } from "@/content/i18n/lead-pages/forms";
 import { pickCopy } from "@/content/i18n/page-copy";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 export async function generateMetadata({
   params,
@@ -65,7 +66,11 @@ export default async function GetACallPage({ params }: { params: Promise<{ local
           <p className="mb-6 mt-1 text-[13.5px] text-[var(--color-muted)]">
             {shared.requiredBefore} <span className="text-[#B42318]">*</span> {shared.requiredAfter}
           </p>
-          <CallbackForm idPrefix="cb" location="get_a_call" typeOptions={businessTypeOptions(locale)} />
+          <CallbackForm
+            idPrefix="cb"
+            location="get_a_call"
+            typeOptions={businessTypeOptions(locale)}
+          />
         </div>
 
         <div className="lg:col-start-1 lg:row-start-2 lg:mt-8">
@@ -91,18 +96,20 @@ export default async function GetACallPage({ params }: { params: Promise<{ local
           </ul>
 
           <div className="mt-8 flex flex-col gap-3 border-t border-[var(--color-line-2)] pt-6 text-[14px] text-[var(--color-body)]">
-            <p>
-              {t.hurry}{" "}
-              <a
-                href={whatsappLink("Hi TajirPoint, I'm interested in your POS.")}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-track="get_a_call_aside"
-                className="font-semibold text-[var(--color-mint-2)] underline underline-offset-2"
-              >
-                {t.whatsappUs} <span dir="ltr">{legal.whatsappDisplay}</span>
-              </a>
-            </p>
+            {legal.whatsappUrl && (
+              <p>
+                {t.hurry}{" "}
+                <a
+                  href={whatsappLink(`Hi ${BRAND_NAME}, I'm interested in your POS.`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-track="get_a_call_aside"
+                  className="font-semibold text-[var(--color-mint-2)] underline underline-offset-2"
+                >
+                  {t.whatsappUs} <span dir="ltr">{legal.whatsappDisplay}</span>
+                </a>
+              </p>
+            )}
             <p>
               {t.seeIt}{" "}
               <Link

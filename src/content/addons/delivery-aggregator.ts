@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/integrations (models AggregatorAccount providers, AggregatorOrder
 // statuses, AggregatorProductMap; services/aggregator_order_service,
@@ -7,8 +8,7 @@ import type { AddonContent } from "./types";
 const content: AddonContent = {
   slug: "delivery-aggregator",
   seoTitle: "Delivery Aggregator: Foodpanda, Talabat & Careem Orders",
-  seoDescription:
-    "Coming soon: one inbox in TajirPoint for Foodpanda, Talabat, Careem, Bykea, Deliveroo, Uber Eats and Just Eat orders, turned into sales with status sent back.",
+  seoDescription: `Coming soon: one inbox in ${BRAND_NAME} for Foodpanda, Talabat, Careem, Bykea, Deliveroo, Uber Eats and Just Eat orders, turned into sales with status sent back.`,
   keywords: [
     "Foodpanda POS integration",
     "Talabat orders in POS",
@@ -20,7 +20,7 @@ const content: AddonContent = {
   schemaSubCategory: "Food delivery app integration add-on for POS",
   headline: "One inbox for your delivery app orders, straight into the POS.",
   overview: [
-    "Delivery Aggregator will bring orders from food delivery apps into one inbox in TajirPoint, so nobody has to re-type them into the till. It is being built for Foodpanda, Talabat, Careem, Bykea, Deliveroo, Uber Eats and Just Eat.",
+    `Delivery Aggregator will bring orders from food delivery apps into one inbox in ${BRAND_NAME}, so nobody has to re-type them into the till. It is being built for Foodpanda, Talabat, Careem, Bykea, Deliveroo, Uber Eats and Just Eat.`,
     "Each app's items are matched to yours once. After that, an accepted order becomes a real sale, with a kitchen ticket if you use the Restaurant add-on, and status changes such as ready, picked up and delivered are sent back to the app.",
     "It is not open to shops yet. The connections to each app still need testing against real accounts. Once it is live, our team will set it up with you.",
   ],
@@ -51,7 +51,7 @@ const content: AddonContent = {
   features: [
     {
       title: "One inbox for every delivery app",
-      body: "Orders from Foodpanda, Talabat, Careem, Bykea, Deliveroo, Uber Eats and Just Eat will land in one list in TajirPoint.",
+      body: `Orders from Foodpanda, Talabat, Careem, Bykea, Deliveroo, Uber Eats and Just Eat will land in one list in ${BRAND_NAME}.`,
     },
     {
       title: "Match their items to yours",
@@ -63,7 +63,7 @@ const content: AddonContent = {
     },
     {
       title: "Status sent back to the app",
-      body: "Accepted, ready, picked up, delivered and cancelled are sent back to the app. If the app does not answer, TajirPoint tries again.",
+      body: `Accepted, ready, picked up, delivered and cancelled are sent back to the app. If the app does not answer, ${BRAND_NAME} tries again.`,
     },
     {
       title: "Accept automatically when everything matches",
@@ -93,7 +93,7 @@ const content: AddonContent = {
     },
   ],
   needs: [
-    "A TajirPoint account on the Shop plan or above",
+    `A ${BRAND_NAME} account on the Shop plan or above`,
     "A merchant account with each delivery app you sell on",
     "Access to each app's partner connection details (we help you find them)",
     "The Restaurant add-on if you want kitchen tickets",
@@ -122,7 +122,7 @@ const content: AddonContent = {
     },
     {
       q: "Will app orders show in my reports?",
-      a: "Yes. Every accepted order becomes a normal sale in TajirPoint.",
+      a: `Yes. Every accepted order becomes a normal sale in ${BRAND_NAME}.`,
     },
     {
       q: "Is it included in the free Light plan?",

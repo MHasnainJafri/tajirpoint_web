@@ -12,6 +12,7 @@ import {
   PK_UPDATED,
   PRA_ROW,
 } from "./pk-common";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 const page: LocationPage = {
   slug: "lahore",
@@ -24,8 +25,7 @@ const page: LocationPage = {
     "Restaurants and cafés, clothing shops and electronics dealers in Lahore; FBR for goods and PRA for services, with our honest status for each.",
   seo: {
     title: "POS System in Lahore for Shops and Restaurants",
-    description:
-      "TajirPoint POS for Lahore restaurants, cafés, clothing shops and electronics dealers: Urdu screens, khata, offline billing and an honest note on PRA.",
+    description: `${BRAND_NAME} POS for Lahore restaurants, cafés, clothing shops and electronics dealers: Urdu screens, khata, offline billing and an honest note on PRA.`,
     keywords: [
       "pos system lahore",
       "restaurant pos lahore",
@@ -50,8 +50,7 @@ const page: LocationPage = {
     PK_FACT_LANGUAGE,
     {
       label: "Tax in Lahore",
-      value:
-        "Goods: FBR. Services, including restaurants: Punjab Revenue Authority (PRA). TajirPoint is not connected to PRA.",
+      value: `Goods: FBR. Services, including restaurants: Punjab Revenue Authority (PRA). ${BRAND_NAME} is not connected to PRA.`,
     },
     PK_FACT_POWER,
   ],
@@ -60,11 +59,11 @@ const page: LocationPage = {
     intro:
       "Lahore is in Punjab. Sales tax on goods is federal and goes to FBR. Sales tax on services, which includes restaurants and cafés, goes to the Punjab Revenue Authority.",
     rows: [FBR_ROW, PRA_ROW],
-    note: `If you run a restaurant or café in Lahore, ask PRA or your tax adviser whether you must report each invoice to PRA's system. TajirPoint cannot do that today, and we would rather you know now than after you switch. ${PK_TAX_NOTE}`,
+    note: `If you run a restaurant or café in Lahore, ask PRA or your tax adviser whether you must report each invoice to PRA's system. ${BRAND_NAME} cannot do that today, and we would rather you know now than after you switch. ${PK_TAX_NOTE}`,
   },
   blocks: [PK_PAYMENTS],
   businesses: {
-    heading: "Lahore businesses TajirPoint is set up for",
+    heading: `Lahore businesses ${BRAND_NAME} is set up for`,
     items: [
       {
         slug: "restaurants",
@@ -116,8 +115,8 @@ const page: LocationPage = {
   ],
   faqs: [
     {
-      q: "Does TajirPoint connect to PRA for my Lahore restaurant?",
-      a: "Not yet. TajirPoint records the tax on every bill and gives you tax reports, but it does not send invoices to the Punjab Revenue Authority. If PRA requires your restaurant to report invoices to its system, talk to us before you switch.",
+      q: `Does ${BRAND_NAME} connect to PRA for my Lahore restaurant?`,
+      a: `Not yet. ${BRAND_NAME} records the tax on every bill and gives you tax reports, but it does not send invoices to the Punjab Revenue Authority. If PRA requires your restaurant to report invoices to its system, talk to us before you switch.`,
     },
     PK_FAQ_FBR,
     PK_FAQ_WALLETS,
@@ -128,7 +127,7 @@ const page: LocationPage = {
     PK_FAQ_URDU,
   ],
   cta: {
-    headline: "Run your Lahore shop or restaurant on TajirPoint.",
+    headline: `Run your Lahore shop or restaurant on ${BRAND_NAME}.`,
     sub: "Book a free demo, or start free for 3 months. No card needed, and we move your data for free.",
   },
   related: ["pakistan", "islamabad-rawalpindi", "faisalabad", "karachi"],

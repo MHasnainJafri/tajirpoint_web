@@ -1,4 +1,5 @@
 import type { AddonContent } from "./types";
+import { BRAND_NAME } from "@/lib/config/brand";
 
 // Source: domains/restaurant_toolbox (handler.py seeds 2 floors / 9 tables,
 // settings prep target, mark table for cleaning on settle, recent orders rail;
@@ -26,8 +27,8 @@ const content: AddonContent = {
   headline: "One full-screen workspace for the counter: menu, tickets, tables, kitchen and orders.",
   overview: [
     "Restaurant Toolbox is a restaurant terminal that opens in its own full-screen workspace, separate from the shop till. The counter gets everything on one screen: the menu, the ticket being built, the tables, the kitchen board and the list of orders.",
-    "The menu comes from your TajirPoint products, laid out as a grid with deals, sizes, add-ons and extras. A dine-in table keeps one ticket open across several rounds, so the second round of drinks joins the same bill instead of starting a new one.",
-    "The kitchen board shows every order with a prep timer and flags the ones running late. When the guest pays, the ticket is settled as a normal TajirPoint sale, so stock, khata and your reports stay exactly as they are everywhere else.",
+    `The menu comes from your ${BRAND_NAME} products, laid out as a grid with deals, sizes, add-ons and extras. A dine-in table keeps one ticket open across several rounds, so the second round of drinks joins the same bill instead of starting a new one.`,
+    `The kitchen board shows every order with a prep timer and flags the ones running late. When the guest pays, the ticket is settled as a normal ${BRAND_NAME} sale, so stock, khata and your reports stay exactly as they are everywhere else.`,
   ],
   whoFor: [
     "Fast food, pizza and burger outlets with a busy counter",
@@ -110,7 +111,7 @@ const content: AddonContent = {
     },
   ],
   needs: [
-    "A TajirPoint account (any plan, including Light)",
+    `A ${BRAND_NAME} account (any plan, including Light)`,
     "A laptop, desktop or tablet at the counter, ideally with a large screen",
     "A thermal printer for kitchen tickets and bills (optional; the terminal can show or browser-print them without one)",
   ],
@@ -123,7 +124,7 @@ const content: AddonContent = {
   faqs: [
     {
       q: "Do I need to build a separate menu for the terminal?",
-      a: "No. The menu grid uses your TajirPoint products. You only add restaurant extras like sizes, add-ons, deals and prep time.",
+      a: `No. The menu grid uses your ${BRAND_NAME} products. You only add restaurant extras like sizes, add-ons, deals and prep time.`,
     },
     {
       q: "Can a table order more than once on the same bill?",
@@ -139,7 +140,7 @@ const content: AddonContent = {
     },
     {
       q: "What is the difference between Restaurant Toolbox and the Restaurant add-on?",
-      a: "Restaurant Toolbox is an all-in-one restaurant terminal in its own screen. The Restaurant add-on adds tables, the kitchen display and kitchen printing to TajirPoint itself. Both are included with Light.",
+      a: `Restaurant Toolbox is an all-in-one restaurant terminal in its own screen. The Restaurant add-on adds tables, the kitchen display and kitchen printing to ${BRAND_NAME} itself. Both are included with Light.`,
     },
     {
       q: "Can I take bookings?",
