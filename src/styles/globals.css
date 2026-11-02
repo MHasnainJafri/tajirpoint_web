@@ -55,13 +55,15 @@
   --animate-pulse-dot: tpPulse 2s infinite;
   --animate-float: tpFloat 6s ease-in-out infinite;
 
+  /* Hero entrances (tpFadeUp, tpRise) move but never fade: they run on the
+     page's first, largest text, and text that starts at opacity 0 is not
+     counted as painted (LCP) until the fade ends. A rise alone keeps the
+     motion and lets the first frame count. */
   @keyframes tpFadeUp {
     from {
-      opacity: 0;
-      transform: translateY(28px);
+      transform: translateY(14px);
     }
     to {
-      opacity: 1;
       transform: translateY(0);
     }
   }
@@ -103,11 +105,9 @@
   }
   @keyframes tpRise {
     from {
-      opacity: 0;
-      transform: translateY(26px);
+      transform: translateY(14px);
     }
     to {
-      opacity: 1;
       transform: none;
     }
   }

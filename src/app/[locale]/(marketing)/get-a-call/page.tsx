@@ -6,6 +6,7 @@ import { Check } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { PillBadge } from "@/components/design/primitives";
 import { CallbackForm } from "@/components/marketing/callback/CallbackForm";
+import { BUSINESS_TYPE_OPTIONS } from "@/lib/marketing/demo";
 import { legal, siteConfig, whatsappLink } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 
@@ -67,7 +68,7 @@ export default async function GetACallPage({ params }: { params: Promise<{ local
           <p className="mb-6 mt-1 text-[13.5px] text-[var(--color-muted)]">
             Fields marked <span className="text-[#B42318]">*</span> are required.
           </p>
-          <CallbackForm idPrefix="cb" location="get_a_call" />
+          <CallbackForm idPrefix="cb" location="get_a_call" typeOptions={BUSINESS_TYPE_OPTIONS} />
         </div>
 
         <div className="lg:col-start-1 lg:row-start-2 lg:mt-8">

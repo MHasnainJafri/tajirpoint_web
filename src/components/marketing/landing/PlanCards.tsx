@@ -1,9 +1,6 @@
-"use client";
-
-import { useState } from "react";
 import { Link } from "@/i18n/navigation";
 import { Stroke, Tick } from "./Stroke";
-import { trackPlanSelected } from "@/lib/analytics/events";
+import { PlanBilling } from "./PlanBilling";
 import {
   annualAmount,
   annualMonthsSaved,
@@ -29,8 +26,10 @@ export interface PlanCardLabels {
 }
 
 /**
- * The plan cards, straight from the plans API. Client-side only for the
- * monthly/annual switch, which appears only when some plan is sold yearly.
+ * The plan cards, straight from the plans API. Server HTML: every card renders
+ * its monthly price and, when the plan is sold yearly, its yearly price too.
+ * The small client island PlanBilling flips between them, so the cards never
+ * hydrate and the page ships no plan parsing to the browser.
  */
 export function PlanCards({
   plans,
@@ -45,38 +44,15 @@ export function PlanCards({
   compact?: boolean;
 }) {
   const showToggle = !compact && plans.some((p) => annualAmount(p) !== null);
-  const [yearly, setYearly] = useState(false);
 
   return (
-    <div>
-      {showToggle && (
-        <div className="mt-6 flex justify-center">
-          <div
-            role="radiogroup"
-            aria-label={labels.billingLabel}
-            className="inline-flex rounded-full border border-[var(--color-line-2)] bg-[var(--color-surface)] p-1"
-          >
-            {[
-              { on: !yearly, label: labels.monthly, value: false },
-              { on: yearly, label: labels.annual, value: true },
-            ].map((opt) => (
-              <button
-                key={opt.label}
-                type="button"
-                role="radio"
-                aria-checked={opt.on}
-                onClick={() => setYearly(opt.value)}
-                className={`cursor-pointer rounded-full px-5 py-2 text-[13.5px] font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-mint-2)] ${
-                  opt.on ? "bg-[#0A0A0A] text-white" : "text-[var(--color-ink-3)] hover:text-[var(--color-ink)]"
-                }`}
-              >
-                {opt.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
-
+    <PlanBilling
+      showToggle={showToggle}
+      billingLabel={labels.billingLabel}
+      monthlyLabel={labels.monthly}
+      annualLabel={labels.annual}
+      location={compact ? "plan_teaser" : "pricing"}
+    >
       <div
         className={`mt-[28px] grid items-stretch gap-[14px] ${
           compact
@@ -88,26 +64,28 @@ export function PlanCards({
           <PlanCard
             key={plan.id}
             plan={plan}
-            yearly={yearly}
             labels={labels}
             signupUrl={signupUrl}
             compact={compact}
           />
         ))}
       </div>
-    </div>
+    </PlanBilling>
   );
 }
 
+/** Shown while the wrapper's billing is monthly (the default, and without JS). */
+const MONTHLY_ONLY = "group-data-[billing=annual]/billing:hidden";
+/** Shown only once the visitor switches to yearly. */
+const ANNUAL_ONLY = "hidden group-data-[billing=annual]/billing:contents";
+
 function PlanCard({
   plan,
-  yearly,
   labels,
   signupUrl,
   compact,
 }: {
   plan: MarketingPlan;
-  yearly: boolean;
   labels: PlanCardLabels;
   signupUrl: string;
   compact: boolean;
@@ -116,16 +94,13 @@ function PlanCard({
   const free = isFreePlan(plan);
   const contactSales = isContactSalesPlan(plan);
   const yearlyAmount = annualAmount(plan);
-  const showYearly = yearly && yearlyAmount !== null;
-  const saved = showYearly ? annualMonthsSaved(plan) : 0;
+  const saved = yearlyAmount !== null ? annualMonthsSaved(plan) : 0;
 
-  const price = showYearly ? formatMoney(yearlyAmount, plan.currency_code) : planPriceLabel(plan);
+  const price = planPriceLabel(plan);
   // Older backends send "Free" with no period; Light is free for 3 months, so
   // say so rather than imply it never ends.
   const period = plan.is_priced
-    ? showYearly
-      ? labels.perYear
-      : labels.perMonth
+    ? labels.perMonth
     : free && !plan.price_display
       ? labels.freePeriod
       : null;
@@ -136,13 +111,20 @@ function PlanCard({
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, "_")
       .replace(/^_+|_+$/g, "") || plan.tier;
-  const onSelect = () =>
-    trackPlanSelected({
-      plan: planSlug,
-      billing: showYearly ? "annual" : "monthly",
-      location: compact ? "plan_teaser" : "pricing",
-      contactSales,
-    });
+  // Read by PlanBilling's click listener for the select_plan event.
+  const trackData = {
+    "data-track": `plan_${planSlug}`,
+    "data-plan": planSlug,
+    "data-annual": yearlyAmount !== null ? "1" : "0",
+    "data-contact-sales": contactSales ? "1" : "0",
+  };
+  const periodCls = `text-[14px] font-semibold ${dark ? "text-[var(--color-mint)]" : "text-[var(--color-muted)]"}`;
+  const priceCls = (text: string) =>
+    `font-extrabold leading-none tracking-[-0.04em] ${
+      free && !plan.is_priced && text.length > 8
+        ? "text-[clamp(24px,2.6vw,30px)]"
+        : "text-[clamp(30px,3.4vw,42px)]"
+    }`;
 
   return (
     <div
@@ -159,7 +141,9 @@ function PlanCard({
       <div className="relative flex items-start justify-between gap-3">
         <div>
           <h3 className="text-[16px] font-bold tracking-[-0.01em]">{plan.name}</h3>
-          <p className="mt-[3px] text-[12.5px] leading-[1.5] text-[var(--color-muted)]">{plan.tagline}</p>
+          <p className="mt-[3px] text-[12.5px] leading-[1.5] text-[var(--color-muted)]">
+            {plan.tagline}
+          </p>
         </div>
         {dark && (
           <span className="whitespace-nowrap rounded-full bg-[var(--color-mint)] px-[10px] py-[4px] text-[11px] font-bold text-[#0A0A0A]">
@@ -169,23 +153,21 @@ function PlanCard({
       </div>
 
       <div className="relative flex flex-wrap items-baseline gap-x-2 gap-y-1">
-        <span
-          className={`font-extrabold leading-none tracking-[-0.04em] ${
-            free && !plan.is_priced && price.length > 8
-              ? "text-[clamp(24px,2.6vw,30px)]"
-              : "text-[clamp(30px,3.4vw,42px)]"
-          }`}
-        >
-          {price}
+        {/* Monthly (default). Plans not sold yearly keep this in both modes. */}
+        <span className={yearlyAmount !== null ? `contents ${MONTHLY_ONLY}` : "contents"}>
+          <span className={priceCls(price)}>{price}</span>
+          {period && <span className={periodCls}>{period}</span>}
         </span>
-        {period && (
-          <span className={`text-[14px] font-semibold ${dark ? "text-[var(--color-mint)]" : "text-[var(--color-muted)]"}`}>
-            {period}
-          </span>
-        )}
-        {saved > 0 && (
-          <span className="rounded-full bg-[var(--color-mint-soft)] px-2 py-[3px] text-[11px] font-bold text-[var(--color-mint-2)]">
-            {labels.save.replace("{n}", String(saved))}
+        {/* Yearly: the API's own annual_price, never a computed discount. */}
+        {yearlyAmount !== null && (
+          <span className={ANNUAL_ONLY}>
+            <span className={priceCls("")}>{formatMoney(yearlyAmount, plan.currency_code)}</span>
+            <span className={periodCls}>{labels.perYear}</span>
+            {saved > 0 && (
+              <span className="rounded-full bg-[var(--color-mint-soft)] px-2 py-[3px] text-[11px] font-bold text-[var(--color-mint-2)]">
+                {labels.save.replace("{n}", String(saved))}
+              </span>
+            )}
           </span>
         )}
       </div>
@@ -193,8 +175,7 @@ function PlanCard({
       {!contactSales ? (
         <a
           href={signupUrl}
-          data-track={`plan_${planSlug}`}
-          onClick={onSelect}
+          {...trackData}
           className={
             dark
               ? "relative inline-flex items-center justify-center gap-[10px] self-start rounded-full bg-[var(--color-mint)] py-3 pl-6 pr-3 text-[14px] font-bold text-[#0A0A0A] transition-transform duration-200 hover:-translate-y-[2px]"
@@ -213,8 +194,7 @@ function PlanCard({
       ) : (
         <Link
           href="/book-demo"
-          data-track={`plan_${planSlug}`}
-          onClick={onSelect}
+          {...trackData}
           className="relative inline-flex items-center justify-center gap-2 self-start rounded-full border border-[var(--color-line-3)] px-5 py-3 text-[13.5px] font-semibold transition-colors duration-200 hover:bg-[var(--color-surface)]"
         >
           <Stroke name="calendar" size={16} />

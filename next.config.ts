@@ -26,8 +26,17 @@ function pageMoves(moves: ReadonlyArray<readonly [string, string]>) {
 }
 
 const nextConfig: NextConfig = {
+  // No "X-Powered-By: Next.js" on every response: a few bytes, and no need to
+  // advertise the stack.
+  poweredByHeader: false,
+
   images: {
     formats: ["image/avif", "image/webp"],
+    // Optimised images (/_next/image) are cached for a week instead of the
+    // 4-hour default: the sources in /public and the add-on icons rarely
+    // change, and each re-optimisation costs the server CPU. Same week as the
+    // /public cache header below.
+    minimumCacheTTL: 604800,
     // Add-on icons come from the backend catalogue (`icon_url`), hosted on
     // our media host. Only that host: next/image refuses everything else.
     remotePatterns: [{ protocol: "https", hostname: "media.tajirpoint.com", pathname: "/**" }],
