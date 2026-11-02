@@ -5,6 +5,7 @@ import { RESOURCES } from "@/lib/docs/nav";
 import { BUSINESS_SLUGS } from "@/lib/marketing/businesses";
 import { getAddonCatalogue } from "@/lib/marketing/addons";
 import { COMPARE_SLUGS } from "@/content/compare";
+import { LOCATIONS, LOCATIONS_HUB, locationPath } from "@/content/locations";
 
 // The add-on pages come from the backend catalogue; refresh with it.
 export const revalidate = 600;
@@ -79,6 +80,24 @@ const COMPARE_PAGES: Page[] = [
   ),
 ];
 
+/** Location pages: the /pos hub, then one page per country or city. */
+const LOCATION_PAGES: Page[] = [
+  {
+    path: LOCATIONS_HUB.path,
+    priority: 0.7,
+    changeFrequency: "monthly",
+    updated: LOCATIONS_HUB.updated,
+  },
+  ...LOCATIONS.map(
+    (l): Page => ({
+      path: locationPath(l.slug),
+      priority: 0.7,
+      changeFrequency: "monthly",
+      updated: l.updated,
+    })
+  ),
+];
+
 const PAGES: Page[] = [
   { path: "/", priority: 1.0, changeFrequency: "weekly", updated: "2026-11-01" },
   { path: "/pricing", priority: 0.9, changeFrequency: "monthly", updated: "2026-11-01" },
@@ -88,6 +107,7 @@ const PAGES: Page[] = [
   { path: "/extensions", priority: 0.8, changeFrequency: "monthly", updated: "2026-09-10" },
   ...FEATURE_PAGES,
   ...COMPARE_PAGES,
+  ...LOCATION_PAGES,
   ...DOCS_PAGES,
   { path: "/about", priority: 0.6, changeFrequency: "monthly", updated: "2026-11-02" },
   { path: "/contact", priority: 0.6, changeFrequency: "monthly", updated: "2026-11-02" },

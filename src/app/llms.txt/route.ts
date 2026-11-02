@@ -4,6 +4,7 @@ import { RESOURCES } from "@/lib/docs/nav";
 import { getPlans, planSummary } from "@/lib/api/plans";
 import { STATUS_LABEL, getAddonCatalogue, type Addon } from "@/lib/marketing/addons";
 import { CHECKED, COMPARISONS } from "@/content/compare";
+import { LOCATIONS, LOCATIONS_HUB, locationPath } from "@/content/locations";
 
 // Served at /llms.txt — a dotted path, so the next-intl proxy matcher
 // (which excludes `.*\..*`) skips it, same as /og.png.
@@ -57,6 +58,11 @@ ${link("دفتر الآجل (Arabic feature pages)", "/ar/features/khata", "The 
 ## By business
 
 ${BUSINESSES.map((b) => link(b.name, `/business/${b.slug}`, b.navLine)).join("\n")}
+
+## Locations
+
+${link("Locations", LOCATIONS_HUB.path, "Pakistan and its main cities, and UK takeaways: currency, tax authority and our honest status, payments and languages for each place. Not available yet for the UAE or Saudi Arabia (no UAE e-invoicing or ZATCA)")}
+${LOCATIONS.map((l) => link(l.seo.title, locationPath(l.slug), l.summary)).join("\n")}
 
 ## Add-ons
 

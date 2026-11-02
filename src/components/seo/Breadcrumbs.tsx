@@ -22,8 +22,8 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
     <>
       <JsonLd schema={breadcrumbSchema(schemaItems)} />
-      <nav aria-label="Breadcrumb" className="mx-auto max-w-[1320px] px-7 lg:px-10 pt-5">
-        <ol className="flex items-center gap-2 text-[12px] text-[var(--color-muted-2)]">
+      <nav aria-label="Breadcrumb" className="mx-auto max-w-[1320px] px-4 pt-5 sm:px-7 lg:px-10">
+        <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] text-[var(--color-muted-2)]">
           {allItems.map((item, index) => (
             <li key={item.href} className="flex items-center gap-2">
               {index > 0 && <span aria-hidden="true" className="text-[var(--color-line-2)]">/</span>}
