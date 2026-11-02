@@ -4,6 +4,7 @@ import { isTranslated, localeUrl } from "@/lib/seo/metadata";
 import { RESOURCES } from "@/lib/docs/nav";
 import { BUSINESS_SLUGS } from "@/lib/marketing/businesses";
 import { getAddonCatalogue } from "@/lib/marketing/addons";
+import { LOCATIONS, LOCATIONS_HUB, locationPath } from "@/content/locations";
 
 // The add-on pages come from the backend catalogue; refresh with it.
 export const revalidate = 600;
@@ -65,6 +66,24 @@ const FEATURE_PAGES: Page[] = ["khata", "offline", "accounting", "van-sales", "e
   })
 );
 
+/** Location pages: the /pos hub, then one page per country or city. */
+const LOCATION_PAGES: Page[] = [
+  {
+    path: LOCATIONS_HUB.path,
+    priority: 0.7,
+    changeFrequency: "monthly",
+    updated: LOCATIONS_HUB.updated,
+  },
+  ...LOCATIONS.map(
+    (l): Page => ({
+      path: locationPath(l.slug),
+      priority: 0.7,
+      changeFrequency: "monthly",
+      updated: l.updated,
+    })
+  ),
+];
+
 const PAGES: Page[] = [
   { path: "/", priority: 1.0, changeFrequency: "weekly", updated: "2026-11-01" },
   { path: "/pricing", priority: 0.9, changeFrequency: "monthly", updated: "2026-11-01" },
@@ -73,6 +92,7 @@ const PAGES: Page[] = [
   ...BUSINESS_PAGES,
   { path: "/extensions", priority: 0.8, changeFrequency: "monthly", updated: "2026-09-10" },
   ...FEATURE_PAGES,
+  ...LOCATION_PAGES,
   ...DOCS_PAGES,
   { path: "/about", priority: 0.6, changeFrequency: "monthly", updated: "2026-10-14" },
   { path: "/contact", priority: 0.6, changeFrequency: "monthly", updated: "2026-10-14" },

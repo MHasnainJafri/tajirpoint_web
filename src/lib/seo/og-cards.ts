@@ -16,6 +16,7 @@
  * shaping, and a broken Urdu card is worse than an English one.
  */
 import { BUSINESSES } from "@/lib/marketing/businesses";
+import { LOCATIONS, LOCATIONS_HUB, locationPath } from "@/content/locations";
 
 export const OG_IMAGE_SIZE = { width: 1200, height: 630 } as const;
 
@@ -144,6 +145,8 @@ export const OG_CARDS: Record<string, OgCard> = {
       } satisfies OgCard,
     ])
   ),
+  pos: { ...LOCATIONS_HUB.og, pills: [...LOCATIONS_HUB.og.pills] },
+  ...Object.fromEntries(LOCATIONS.map((l) => [`pos-${l.slug}`, l.og satisfies OgCard])),
 };
 
 /** Which card each page path uses. Paths not listed fall back to /og.png. */
@@ -163,6 +166,8 @@ const CARD_BY_PATH: Record<string, string> = {
   "/features/van-sales": "feature-van-sales",
   "/features/e-invoicing": "feature-e-invoicing",
   ...Object.fromEntries(BUSINESSES.map((b) => [`/business/${b.slug}`, `business-${b.slug}`])),
+  [LOCATIONS_HUB.path]: "pos",
+  ...Object.fromEntries(LOCATIONS.map((l) => [locationPath(l.slug), `pos-${l.slug}`])),
 };
 
 /** The share image path for a page, or undefined when it has no card of its own. */
