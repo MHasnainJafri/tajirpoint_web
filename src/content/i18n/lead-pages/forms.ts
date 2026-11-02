@@ -1,5 +1,11 @@
 import { addonInterestMessage } from "@/lib/marketing/addon-names";
-import { BRANCH_OPTIONS, PHONE_ERROR, TIME_OPTIONS } from "@/lib/marketing/demo-options";
+import {
+  BRANCHES_ERROR,
+  BRANCH_OPTIONS,
+  PHONE_ERROR,
+  PLACE,
+  TIME_OPTIONS,
+} from "@/lib/marketing/demo-options";
 import type { Localized } from "../page-copy";
 import { LEAD_FAILED, SEND_FAILED, SERVER_UNREACHABLE } from "@/lib/marketing/contact-fallback";
 import { legal } from "@/lib/config/site";
@@ -122,7 +128,7 @@ const ERRORS: Record<"ur" | "ar", Record<string, string>> = {
     "Please enter a valid email address.": "براہِ کرم درست ای میل ایڈریس لکھیں۔",
     "Please check the phone number.": "براہِ کرم فون نمبر دیکھ لیں۔",
     "Please write a short message.": "براہِ کرم ایک مختصر پیغام لکھیں۔",
-    "Pick how many shops you run.": "بتائیں آپ کی کتنی دکانیں ہیں۔",
+    [BRANCHES_ERROR]: "بتائیں آپ کی کتنی دکانیں ہیں۔",
     "Pick a day from the list.": "فہرست میں سے ایک دن منتخب کریں۔",
     "Pick a time of day.": "دن کا کوئی وقت منتخب کریں۔",
     [SEND_FAILED]: `آپ کا پیغام نہیں بھیجا جا سکا۔ براہِ کرم ${email} پر ای میل کریں یا واٹس ایپ ‎${wa} پر میسج کریں۔`,
@@ -138,7 +144,7 @@ const ERRORS: Record<"ur" | "ar", Record<string, string>> = {
     "Please enter a valid email address.": "يُرجى إدخال بريد إلكتروني صحيح.",
     "Please check the phone number.": "يُرجى التحقق من رقم الهاتف.",
     "Please write a short message.": "يُرجى كتابة رسالة قصيرة.",
-    "Pick how many shops you run.": "اختر عدد المتاجر التي تديرها.",
+    [BRANCHES_ERROR]: "اختر عدد المتاجر التي تديرها.",
     "Pick a day from the list.": "اختر يومًا من القائمة.",
     "Pick a time of day.": "اختر وقتًا من اليوم.",
     [SEND_FAILED]: `تعذّر إرسال رسالتك. يُرجى مراسلتنا عبر البريد ${email} أو واتساب ‎${wa}.`,
@@ -254,13 +260,14 @@ export const DEMO_FORM_COPY: Localized<DemoFormCopy> = {
   en: {
     formLabel: "Book a demo",
     name: "Your name",
-    whatsapp: "WhatsApp number",
+    // A brand without a WhatsApp line calls back instead.
+    whatsapp: legal.whatsappUrl ? "WhatsApp number" : "Phone number",
     phoneHint: "Pick your country, then type your number.",
     email: "Email",
     businessName: "Business name",
     businessType: "Type of business",
     city: "City",
-    branches: "How many shops or branches?",
+    branches: `How many ${PLACE.many} or branches?`,
     currentPos: "Are you using a POS or software now? Which one?",
     currentPosPlaceholder: "e.g. Excel, a register, another POS",
     migrateTitle: "Move my data for me",
@@ -276,7 +283,9 @@ export const DEMO_FORM_COPY: Localized<DemoFormCopy> = {
     messagePlaceholder: "What you sell, what is hard today, what you want to see",
     submit: "Book my free demo",
     privacy: "We only use your number to arrange the demo.",
-    successTitle: "Thanks — we'll WhatsApp you within one working day.",
+    successTitle: legal.whatsappUrl
+      ? "Thanks — we'll WhatsApp you within one working day."
+      : "Thanks — we'll call you within one working day.",
     successBody:
       "We'll confirm a time that suits you and set up the demo with your kind of business.",
     successMigration:
@@ -372,7 +381,9 @@ export const CALLBACK_FORM_COPY: Localized<CallbackFormCopy> = {
     submit: "Call me back",
     privacy: `We only use your number to call you about ${BRAND_NAME}.`,
     successTitle: "Thanks — our team will call you within one working day.",
-    successBody: "Keep your phone close. If you would rather not wait, message us on WhatsApp now.",
+    successBody: legal.whatsappUrl
+      ? "Keep your phone close. If you would rather not wait, message us on WhatsApp now."
+      : "Keep your phone close.",
   },
   ur: {
     formLabel: "کال بیک کی درخواست",
@@ -427,7 +438,7 @@ export const CONTACT_FORM_COPY: Localized<ContactFormCopy> = {
     formLabel: "Contact form",
     name: "Name",
     email: "Email",
-    phone: "Phone / WhatsApp",
+    phone: legal.whatsappUrl ? "Phone / WhatsApp" : "Phone",
     businessType: "Type of business",
     message: "Message",
     messagePlaceholder: "How can we help?",

@@ -1,6 +1,17 @@
 import type { Localized } from "../page-copy";
 import { BRAND_EMAIL, BRAND_NAME } from "@/lib/config/brand";
 import { legal } from "@/lib/config/site";
+import { PLACE } from "@/lib/marketing/demo-options";
+import { BUSINESSES, SHOWN_BUSINESS_SLUGS, BUSINESS_SLUGS } from "@/lib/marketing/businesses";
+
+/**
+ * "Restaurant, shop, pharmacy, distributor", or the kinds of business this
+ * build serves when it serves only some (NEXT_PUBLIC_BUSINESS_TYPES).
+ */
+const KINDS =
+  SHOWN_BUSINESS_SLUGS.length === BUSINESS_SLUGS.length
+    ? "Restaurant, shop, pharmacy, distributor"
+    : BUSINESSES.map((b, i) => (i ? b.name.toLowerCase() : b.name)).join(", ");
 
 /**
  * Page copy (outside the forms) of /book-demo, /get-a-call, /contact and
@@ -44,17 +55,17 @@ export const BOOK_DEMO_COPY: Localized<BookDemoCopy> = {
   en: {
     meta: {
       title: "Book a Free POS Demo",
-      description: `See ${BRAND_NAME} with your own kind of business. Book a free demo — we WhatsApp you within one working day, and we can move your data from your old POS for free.`,
+      description: `See ${BRAND_NAME} with your own kind of business. Book a free demo — we ${legal.whatsappUrl ? "WhatsApp" : "call"} you within one working day, and we can move your data from your old POS for free.`,
     },
     breadcrumb: "Book a demo",
     badge: "Free demo · no obligation",
     headline: { before: `See ${BRAND_NAME} run `, accent: "your", after: " business." },
-    sub: "Tell us a little about your shop and we'll WhatsApp you within one working day to fix a time.",
+    sub: `Tell us a little about your ${PLACE.one} and we'll ${legal.whatsappUrl ? "WhatsApp" : "call"} you within one working day to fix a time.`,
     formTitle: "Book your free demo",
     points: [
       {
         title: "Your kind of business",
-        body: "Restaurant, shop, pharmacy, distributor — we show the screens you will use.",
+        body: `${KINDS} — we show the screens you will use.`,
       },
       {
         title: "Your own products",
@@ -290,13 +301,13 @@ export interface ContactCopy {
 export const CONTACT_COPY: Localized<ContactCopy> = {
   en: {
     meta: {
-      title: `Contact ${BRAND_NAME}: Sales, Support & WhatsApp`,
+      title: `Contact ${BRAND_NAME}: Sales, Support${legal.whatsappUrl ? " & WhatsApp" : " & Demos"}`,
       description: `Email ${BRAND_EMAIL}${legal.whatsappUrl ? ` or WhatsApp ${legal.whatsappDisplay}` : ""}. Ask about pricing, switching from another POS or support — we reply within one working day.`,
     },
     breadcrumb: "Contact",
     badge: "Get in touch",
     headline: `Talk to the ${BRAND_NAME} team.`,
-    sub: "Questions about pricing, switching from another POS, or help with your account — WhatsApp or email us and we'll reply within one working day.",
+    sub: `Questions about pricing, switching from another POS, or help with your account — ${legal.whatsappUrl ? "WhatsApp or email us" : "email us"} and we'll reply within one working day.`,
     waysLabel: "Ways to reach us",
     whatsapp: "WhatsApp",
     startChat: "Start a chat",

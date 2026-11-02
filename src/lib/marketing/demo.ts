@@ -8,6 +8,7 @@ import {
   TIME_OPTIONS,
   type BranchOption,
   type TimeOption,
+  BRANCHES_ERROR,
 } from "./demo-options";
 
 export { normalizePhone };
@@ -66,7 +67,6 @@ export function upcomingDays(from: Date, days = 14): Array<{ value: string; labe
 
 export const text = (max: number) => z.string().trim().max(max).default("");
 
-
 /** Required phone: E.164 from the picker, or a typed "+…" / "00…" number. */
 export const phoneSchema = z
   .string()
@@ -112,10 +112,7 @@ export const DemoRequestSchema = z.object({
     .string()
     .trim()
     .default("")
-    .refine(
-      (v) => v === "" || BRANCH_OPTIONS.some((o) => o.value === v),
-      "Pick how many shops you run."
-    ),
+    .refine((v) => v === "" || BRANCH_OPTIONS.some((o) => o.value === v), BRANCHES_ERROR),
   current_pos: text(120),
   wants_migration: z.boolean().default(false),
   preferred_date: z
