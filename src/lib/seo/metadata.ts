@@ -3,6 +3,7 @@ import { siteConfig } from "@/lib/config/site";
 import { routing } from "@/i18n/routing";
 import { ogImageForPath, OG_IMAGE_SIZE } from "@/lib/seo/og-cards";
 import { BUSINESS_SLUGS } from "@/lib/marketing/businesses";
+import { TRANSLATED_ADDON_SLUGS } from "@/content/addons/i18n";
 
 /** Open Graph locale per site locale (language_TERRITORY, as Facebook expects). */
 export const OG_LOCALE_MAP: Record<string, string> = {
@@ -42,8 +43,21 @@ export const TRANSLATED_PATHS: ReadonlySet<string> = new Set([
   "/about",
 ]);
 
+/**
+ * Translated page families: a path `<prefix><slug>` counts as translated when
+ * `slug` is in the set. Used for pages generated from data, like the add-on
+ * pages, where only the slugs that have translations qualify.
+ */
+export const TRANSLATED_PREFIXES: ReadonlyArray<
+  readonly [prefix: string, slugs: ReadonlySet<string>]
+> = [["/extensions/", TRANSLATED_ADDON_SLUGS]];
+
 export function isTranslated(path: string): boolean {
-  return TRANSLATED_PATHS.has(path);
+  if (TRANSLATED_PATHS.has(path)) return true;
+  for (const [prefix, slugs] of TRANSLATED_PREFIXES) {
+    if (path.startsWith(prefix) && slugs.has(path.slice(prefix.length))) return true;
+  }
+  return false;
 }
 
 /**

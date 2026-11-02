@@ -7,12 +7,17 @@ const STYLES: Record<AddonStatus, { bg: string; fg: string; dot: string }> = {
   unavailable: { bg: "#F2F3F5", fg: "#4B5058", dot: "#8A8F98" },
 };
 
-/** "Available", "Contact us", "Coming soon" or "Unavailable", as the backend says. */
+/**
+ * "Available", "Contact us", "Coming soon" or "Unavailable", as the backend
+ * says. `label` replaces the English word on a translated page.
+ */
 export function StatusBadge({
   status,
+  label,
   className = "",
 }: {
   status: AddonStatus;
+  label?: string;
   className?: string;
 }) {
   const s = STYLES[status];
@@ -26,7 +31,7 @@ export function StatusBadge({
         className="h-[6px] w-[6px] rounded-full"
         style={{ background: s.dot }}
       />
-      {STATUS_LABEL[status]}
+      {label ?? STATUS_LABEL[status]}
     </span>
   );
 }
