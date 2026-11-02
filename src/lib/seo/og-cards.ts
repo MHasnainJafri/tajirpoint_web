@@ -16,6 +16,7 @@
  * shaping, and a broken Urdu card is worse than an English one.
  */
 import { BUSINESSES } from "@/lib/marketing/businesses";
+import { COMPARE_HUB, COMPARISONS } from "@/content/compare";
 
 export const OG_IMAGE_SIZE = { width: 1200, height: 630 } as const;
 
@@ -144,6 +145,8 @@ export const OG_CARDS: Record<string, OgCard> = {
       } satisfies OgCard,
     ])
   ),
+  compare: { ...COMPARE_HUB.og, pills: [...COMPARE_HUB.og.pills] },
+  ...Object.fromEntries(COMPARISONS.map((c) => [`compare-${c.slug}`, c.og satisfies OgCard])),
 };
 
 /** Which card each page path uses. Paths not listed fall back to /og.png. */
@@ -163,6 +166,8 @@ const CARD_BY_PATH: Record<string, string> = {
   "/features/van-sales": "feature-van-sales",
   "/features/e-invoicing": "feature-e-invoicing",
   ...Object.fromEntries(BUSINESSES.map((b) => [`/business/${b.slug}`, `business-${b.slug}`])),
+  "/compare": "compare",
+  ...Object.fromEntries(COMPARISONS.map((c) => [`/compare/${c.slug}`, `compare-${c.slug}`])),
 };
 
 /** The share image path for a page, or undefined when it has no card of its own. */

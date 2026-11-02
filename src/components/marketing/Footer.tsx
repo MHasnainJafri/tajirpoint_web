@@ -5,6 +5,7 @@ import { FEATURES } from "@/lib/design/catalog";
 import { BUSINESSES, businessLabel } from "@/lib/marketing/businesses";
 import { legal } from "@/lib/config/site";
 import { uxCopy } from "@/content/ux/copy";
+import { COMPARE_LABEL } from "@/content/compare/label";
 
 /**
  * Link columns beside the brand block, then a rule and the fine print.
@@ -69,6 +70,7 @@ export function Footer() {
           ))}
           <FooterLink href="/extensions">{ux.addOns}</FooterLink>
           <FooterLink href="/pricing">{t("links.pricing")}</FooterLink>
+          <FooterLink href="/compare">{COMPARE_LABEL[locale] ?? COMPARE_LABEL.en}</FooterLink>
         </FooterColumn>
 
         <FooterColumn heading={t("company")}>
