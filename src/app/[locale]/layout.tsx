@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
-import { Geist, Geist_Mono, Reem_Kufi } from "next/font/google";
+import localFont from "next/font/local";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import "@/styles/globals.css";
@@ -26,8 +26,12 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
-const geist = Geist({
-  subsets: ["latin"],
+// Self-hosted copies of the Google Fonts files (src/app/fonts), not
+// next/font/google: that one downloads the fonts during the build, and a
+// Vercel build without its cache failed whenever that download did.
+const geist = localFont({
+  src: "../fonts/Geist-latin.woff2",
+  weight: "100 900",
   variable: "--font-geist",
   display: "swap",
 });
@@ -35,9 +39,9 @@ const geist = Geist({
 // Not preloaded: the mono face only sets small labels (eyebrows, chart axes),
 // so it must not compete with the sans text for the first bytes on a slow
 // phone. It still loads as soon as the CSS asks for it, and swaps in.
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+const geistMono = localFont({
+  src: "../fonts/GeistMono-latin.woff2",
+  weight: "400 600",
   variable: "--font-geist-mono",
   display: "swap",
   preload: false,
@@ -46,10 +50,21 @@ const geistMono = Geist_Mono({
 // Not preloaded: only Urdu/Arabic pages use it (see fontClasses below), so a
 // preload made every English page download two Arabic font files it never
 // draws. The browser fetches it on ur/ar pages when the text needs it.
-const reemKufi = Reem_Kufi({
-  subsets: ["arabic", "latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-reem-kufi",
+// Two files, as Google serves them: the Arabic letters, then the Latin ones.
+// The Arabic face has no Arial fallback of its own, so Latin characters in
+// ur/ar text fall through to the Latin face (see --font-arabic in globals.css).
+const reemKufiArabic = localFont({
+  src: "../fonts/ReemKufi-arabic.woff2",
+  weight: "500 700",
+  variable: "--font-reem-kufi-arabic",
+  display: "swap",
+  preload: false,
+  adjustFontFallback: false,
+});
+const reemKufiLatin = localFont({
+  src: "../fonts/ReemKufi-latin.woff2",
+  weight: "500 700",
+  variable: "--font-reem-kufi-latin",
   display: "swap",
   preload: false,
 });
@@ -149,7 +164,11 @@ export default async function LocaleLayout({
   const dir = isRtl(locale) ? "rtl" : "ltr";
 
   // Only include the Arabic font variable when it is actually needed.
-  const fontClasses = [geist.variable, geistMono.variable, locale !== "en" ? reemKufi.variable : ""]
+  const fontClasses = [
+    geist.variable,
+    geistMono.variable,
+    ...(locale !== "en" ? [reemKufiArabic.variable, reemKufiLatin.variable] : []),
+  ]
     .filter(Boolean)
     .join(" ");
 

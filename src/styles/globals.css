@@ -16,7 +16,7 @@
   /* ── Fonts ─────────────────────────────────────────────────────── */
   --font-sans: var(--font-geist), system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
-  --font-arabic: var(--font-reem-kufi), system-ui, sans-serif;
+  --font-arabic: var(--font-reem-kufi-arabic), var(--font-reem-kufi-latin), system-ui, sans-serif;
 
   /* ── Radii ─────────────────────────────────────────────────────── */
   --radius-sm: 12px;
