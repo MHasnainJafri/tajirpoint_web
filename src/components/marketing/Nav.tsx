@@ -17,6 +17,7 @@ import {
 } from "@/lib/design/catalog";
 import { BUSINESSES, businessLabel } from "@/lib/marketing/businesses";
 import { siteConfig } from "@/lib/config/site";
+import { uxCopy } from "@/content/ux/copy";
 
 type MegaKey = "product" | "businesses" | "extensions" | "resources";
 
@@ -52,6 +53,8 @@ export function Nav() {
   const locale = useLocale();
   const pathname = usePathname();
   const baseId = useId();
+  // "Add-ons" (the name the add-on pages use) and "Get a call".
+  const ux = uxCopy(locale);
 
   const [mega, setMega] = useState<MegaKey | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -290,6 +293,15 @@ export function Nav() {
   const resourcesPanel = (
     <MegaPanel id={panelId("resources")} open={mega === "resources"} onNavigate={closeAll}>
       <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-[10px]">
+        <Link
+          href="/get-a-call"
+          className="rounded-[14px] border border-[var(--color-mint-line)] bg-[var(--color-mint-soft)] p-[14px] transition-colors duration-200 hover:bg-[#d6f6e6]"
+        >
+          <span className="block text-[14px] font-bold">{ux.getACall}</span>
+          <span className="mt-[3px] block text-[12px] leading-[1.5] text-[var(--color-body)]">
+            {ux.getACallSub}
+          </span>
+        </Link>
         {RESOURCES.map((r) => (
           <Link
             key={r.id}
@@ -316,13 +328,15 @@ export function Nav() {
       className="sticky top-0 z-[60] border-b border-[var(--color-line)] bg-[var(--glass-nav)] backdrop-blur-[16px]"
     >
       <div className="mx-auto flex h-[66px] max-w-[1240px] items-center justify-between gap-3 px-[clamp(14px,3vw,24px)]">
+        {/* No aria-label: the name is the visible wordmark (+ chip) and a
+            hidden "Home", so it contains what is on screen (WCAG 2.5.3). */}
         <Link
           href="/"
-          aria-label="TajirPoint home"
-          className="flex flex-none items-center gap-2 text-[var(--color-ink)]"
+          className="flex min-h-[44px] flex-none items-center gap-2 text-[var(--color-ink)]"
           onMouseEnter={() => setMega(null)}
         >
           <Wordmark />
+          <span className="sr-only">{ux.home}</span>
           <span className="hidden whitespace-nowrap rounded-[6px] bg-[var(--color-surface)] px-[9px] py-1 font-[family-name:var(--font-mono)] text-[9.5px] font-semibold uppercase tracking-[0.12em] text-[var(--color-muted)] tabs:inline nav:hidden">
             {t("chip")}
           </span>
@@ -336,7 +350,7 @@ export function Nav() {
           {productPanel}
           {trigger("businesses", t("businesses"))}
           {businessesPanel}
-          {trigger("extensions", t("extensions"))}
+          {trigger("extensions", ux.addOns)}
           {extensionsPanel}
           <Link href="/pricing" className={linkBase} onMouseEnter={() => setMega(null)}>
             {t("pricing")}
@@ -369,7 +383,7 @@ export function Nav() {
               label pushes the burger past the right edge. */}
           <a
             href={siteConfig.signupUrl}
-            className={`${startFreeCls} px-[14px] py-[9px] text-[13px] nav:hidden`}
+            className={`${startFreeCls} inline-flex min-h-[44px] items-center px-[14px] py-[9px] text-[13px] nav:hidden`}
           >
             {t("startFreeShort")}
           </a>
@@ -386,7 +400,7 @@ export function Nav() {
             aria-label={mobileOpen ? t("closeMenu") : t("openMenu")}
             aria-expanded={mobileOpen}
             aria-controls={`${baseId}-drawer`}
-            className="inline-flex h-[42px] w-[42px] flex-none cursor-pointer items-center justify-center rounded-[12px] border border-[var(--color-line-2)] bg-white text-[var(--color-ink)] nav:hidden"
+            className="inline-flex h-[44px] w-[44px] flex-none cursor-pointer items-center justify-center rounded-[12px] border border-[var(--color-line-2)] bg-white text-[var(--color-ink)] nav:hidden"
           >
             {mobileOpen ? (
               <X size={20} aria-hidden="true" />
@@ -439,10 +453,13 @@ export function Nav() {
           </MobileSection>
 
           <MobileLink href="/extensions" onNavigate={closeAll}>
-            {t("extensions")}
+            {ux.addOns}
           </MobileLink>
           <MobileLink href="/pricing" onNavigate={closeAll}>
             {t("pricing")}
+          </MobileLink>
+          <MobileLink href="/get-a-call" onNavigate={closeAll}>
+            {ux.getACall}
           </MobileLink>
 
           <MobileSection
@@ -655,7 +672,7 @@ function MobileSubLink({
     <Link
       href={href}
       onClick={onNavigate}
-      className="flex items-center gap-3 rounded-[10px] px-2 py-[9px] text-[14.5px] font-medium text-[var(--color-ink)] hover:bg-[var(--color-surface)]"
+      className="flex min-h-[44px] items-center gap-3 rounded-[10px] px-2 py-[9px] text-[14.5px] font-medium text-[var(--color-ink)] hover:bg-[var(--color-surface)]"
     >
       {children}
     </Link>
@@ -675,7 +692,7 @@ function MobileLink({
     <Link
       href={href}
       onClick={onNavigate}
-      className="border-b border-[var(--color-line)] py-[14px] text-[15px] font-semibold text-[var(--color-ink)]"
+      className="flex min-h-[48px] items-center border-b border-[var(--color-line)] py-[14px] text-[15px] font-semibold text-[var(--color-ink)]"
     >
       {children}
     </Link>

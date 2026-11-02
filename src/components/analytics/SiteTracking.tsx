@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import {
   trackBookDemoClick,
   trackContactClick,
+  trackGetACallClick,
   trackSignupClick,
   trackWhatsAppClick,
 } from "@/lib/analytics/events";
@@ -16,7 +17,7 @@ import { siteConfig } from "@/lib/config/site";
  *  1. Remember the landing page's campaign tags (first touch) so a demo
  *     request made pages later is still attributed to the ad.
  *  2. One delegated click listener that reports "Start free", "Book a demo",
- *     WhatsApp, phone and email clicks wherever the link lives — no per-link wiring, so a
+ *     "Get a call", WhatsApp, phone and email clicks wherever the link lives — no per-link wiring, so a
  *     new CTA is tracked the moment it ships. A link can name its location
  *     with `data-track="hero"`; otherwise the nearest section id is used.
  */
@@ -38,6 +39,7 @@ export function SiteTracking() {
       else if (href.includes("wa.me/") || href.includes("api.whatsapp.com"))
         trackWhatsAppClick(location);
       else if (/\/(book-demo|demo)(\?|$|#)/.test(href)) trackBookDemoClick(location);
+      else if (/\/get-a-call(\?|$|#)/.test(href)) trackGetACallClick(location);
       else if (href.startsWith("tel:")) trackContactClick("phone", location);
       else if (href.startsWith("mailto:")) trackContactClick("email", location);
     };

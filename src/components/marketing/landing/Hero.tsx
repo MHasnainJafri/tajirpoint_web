@@ -36,7 +36,7 @@ export function Hero() {
 
         <div className="relative grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,380px)]">
           <div className="relative max-w-[600px]">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.08] py-[6px] pl-[9px] pr-3 text-[12px] text-[#C9CDD6] transition-all duration-200 hover:bg-white/[0.12]">
+            <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.08] py-[6px] ps-[9px] pe-3 text-[12px] text-[#C9CDD6] transition-all duration-200 hover:bg-white/[0.12]">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--color-mint)] opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--color-mint)]" />
@@ -56,7 +56,7 @@ export function Hero() {
             <div className="mt-[26px] flex flex-wrap items-center gap-[10px]" data-track="hero">
               <a
                 href={siteConfig.signupUrl}
-                className="inline-flex items-center gap-[10px] whitespace-nowrap rounded-full bg-[var(--color-mint)] py-3 pl-[22px] pr-3 text-[14px] font-bold text-[#0A0A0A] transition-[transform,box-shadow] duration-[250ms] hover:-translate-y-[2px] hover:shadow-[0_14px_30px_rgba(0,210,122,.35)] motion-safe:animate-[tpPulseGlow_4s_ease-in-out_infinite]"
+                className="inline-flex items-center gap-[10px] whitespace-nowrap rounded-full bg-[var(--color-mint)] py-3 ps-[22px] pe-3 text-[14px] font-bold text-[#0A0A0A] transition-[transform,box-shadow] duration-[250ms] hover:-translate-y-[2px] hover:shadow-[0_14px_30px_rgba(0,210,122,.35)] motion-safe:animate-[tpPulseGlow_4s_ease-in-out_infinite]"
               >
                 {t("ctaPrimary")}
                 <span className="grid h-[26px] w-[26px] place-items-center rounded-full bg-[#0A0A0A] text-[var(--color-mint)]">

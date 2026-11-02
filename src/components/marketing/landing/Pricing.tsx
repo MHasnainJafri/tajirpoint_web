@@ -31,7 +31,9 @@ export async function Pricing({
 
   return (
     <section id="pricing" className="mt-[clamp(64px,9vw,120px)] scroll-mt-[86px]">
-      {/* /pricing renders these three lines as its own <h1> hero. */}
+      {/* /pricing renders these three lines as its own <h1> hero. The plan
+          cards are <h3>s, so a hidden <h2> keeps the outline h1 > h2 > h3. */}
+      {!showHeader && <h2 className="sr-only">{t("eyebrow")}</h2>}
       {showHeader && (
         <div data-reveal className="text-center">
           <div className="eyebrow">{t("eyebrow")}</div>
@@ -125,7 +127,7 @@ function CompareTable({ plans, t }: { plans: MarketingPlan[]; t: T }) {
 
 function FreePlanFallback({ t }: { t: Awaited<ReturnType<typeof getTranslations>> }) {
   return (
-    <div className="mt-[34px] grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] items-stretch gap-[14px] lg:grid-cols-[1.55fr_1fr]">
+    <div className="mt-[34px] grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] items-stretch gap-[14px] lg:grid-cols-[1.55fr_1fr]">
       <div
         data-reveal
         className="on-dark relative flex flex-col gap-[22px] overflow-hidden rounded-[24px] bg-[#0A0A0A] p-[clamp(22px,3vw,38px)] text-white"
@@ -157,7 +159,7 @@ function FreePlanFallback({ t }: { t: Awaited<ReturnType<typeof getTranslations>
 
         <a
           href={siteConfig.signupUrl}
-          className="relative inline-flex items-center justify-center gap-[10px] self-start rounded-full bg-[var(--color-mint)] py-3 pl-6 pr-3 text-[14px] font-bold text-[#0A0A0A] transition-[transform,box-shadow] duration-[250ms] hover:-translate-y-[2px] hover:shadow-[0_14px_30px_rgba(0,210,122,.35)]"
+          className="relative inline-flex items-center justify-center gap-[10px] self-start rounded-full bg-[var(--color-mint)] py-3 ps-6 pe-3 text-[14px] font-bold text-[#0A0A0A] transition-[transform,box-shadow] duration-[250ms] hover:-translate-y-[2px] hover:shadow-[0_14px_30px_rgba(0,210,122,.35)]"
         >
           {t("basic.cta")}
           <span className="grid h-[26px] w-[26px] place-items-center rounded-full bg-[#0A0A0A] text-[var(--color-mint)]">
@@ -169,7 +171,7 @@ function FreePlanFallback({ t }: { t: Awaited<ReturnType<typeof getTranslations>
           <div className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.14em] text-[#8A8F98]">
             {t("basic.includesLabel")}
           </div>
-          <div className="mt-3 grid grid-cols-[repeat(auto-fit,minmax(190px,1fr))] gap-x-5 gap-y-[10px] text-[13.5px]">
+          <div className="mt-3 grid grid-cols-[repeat(auto-fit,minmax(min(100%,190px),1fr))] gap-x-5 gap-y-[10px] text-[13.5px]">
             {BASIC_INCLUDES.map((id) => (
               <div key={id} className="flex items-start gap-[9px]">
                 <span className="text-[var(--color-mint)]">

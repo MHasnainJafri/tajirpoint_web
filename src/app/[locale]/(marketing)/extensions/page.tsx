@@ -5,6 +5,8 @@ import { PillBadge, CtaPanel } from "@/components/design/primitives";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { AddonBrowser, type AddonCard } from "@/components/marketing/addons/AddonBrowser";
 import { getAddonCatalogue } from "@/lib/marketing/addons";
+import { NextStep } from "@/components/shared/NextStep";
+import { uxCopy } from "@/content/ux/copy";
 import { buildMetadata, localeUrl } from "@/lib/seo/metadata";
 
 // The catalogue is read from the backend; refresh it in the background at
@@ -64,7 +66,8 @@ export default async function ExtensionsPage({ params }: { params: Promise<{ loc
       {/* ── Header ──────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden px-4 pb-10 pt-[clamp(48px,9vw,120px)] text-center md:px-10">
         <div
-          className="pointer-events-none absolute left-1/2 top-[-300px] h-[640px] w-[1100px] max-w-none -translate-x-1/2"
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-[-300px] h-[640px] w-[min(1100px,200vw)] max-w-none -translate-x-1/2"
           style={{
             background: "radial-gradient(ellipse at center,rgba(0,210,122,.15),transparent 60%)",
           }}
@@ -79,6 +82,8 @@ export default async function ExtensionsPage({ params }: { params: Promise<{ loc
         <p className="relative mx-auto mt-[22px] max-w-[580px] animate-[tpFadeUp_.8s_.28s_cubic-bezier(.22,1,.36,1)_both] text-[17px] leading-[1.6] text-[var(--color-muted)]">
           {t("sub")}
         </p>
+
+        <NextStep locale={locale} location="extensions_header" className="mt-7" />
 
         <ul
           lang="en"
@@ -114,6 +119,12 @@ export default async function ExtensionsPage({ params }: { params: Promise<{ loc
               className="inline-flex items-center gap-[10px] whitespace-nowrap rounded-full bg-[var(--color-mint)] px-8 py-[15px] text-[16px] font-bold text-[#0A0A0A] transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(0,210,122,.45)]"
             >
               {t("cta.primary")} <span aria-hidden="true">→</span>
+            </Link>
+            <Link
+              href="/get-a-call"
+              className="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full border border-white/[0.22] px-8 py-[15px] text-[16px] font-semibold text-white transition-colors duration-200 hover:bg-white/10"
+            >
+              {uxCopy(locale).getACall}
             </Link>
           </div>
         </CtaPanel>

@@ -26,7 +26,7 @@ export function Solutions() {
   const panels = SOLUTIONS.map((s) => (
     <div
       key={s.id}
-      className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] items-center gap-[clamp(18px,3vw,40px)] rounded-[24px] bg-[var(--color-surface)] p-[clamp(18px,2.6vw,32px)]"
+      className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] items-center gap-[clamp(18px,3vw,40px)] rounded-[24px] bg-[var(--color-surface)] p-[clamp(18px,2.6vw,32px)]"
     >
       <div>
         <div className="font-[family-name:var(--font-mono)] text-[11.5px] uppercase tracking-[0.14em] text-[var(--color-muted)]">
@@ -39,7 +39,7 @@ export function Solutions() {
           {t(`items.${s.id}.blurb`)}
         </p>
 
-        <div className="mt-4 grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-x-[14px] gap-y-2">
+        <div className="mt-4 grid grid-cols-[repeat(auto-fit,minmax(min(100%,180px),1fr))] gap-x-[14px] gap-y-2">
           {Array.from({ length: SOLUTION_BULLETS }, (_, i) => (
             <div
               key={i}

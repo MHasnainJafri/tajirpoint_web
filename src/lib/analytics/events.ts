@@ -106,6 +106,14 @@ export function trackWhatsAppClick(location: string) {
   pixel("Contact", { content_name: "whatsapp", content_category: location });
 }
 
+/**
+ * Click on a link to the "We'll call you" page (/get-a-call) — the visit, not
+ * the request (that is `generate_lead` with form "callback_request").
+ */
+export function trackGetACallClick(location: string) {
+  trackEvent("get_a_call_click", { location });
+}
+
 /** Demo form submitted and stored — fire on success only. */
 export function trackDemoRequest(details: {
   businessType: string;

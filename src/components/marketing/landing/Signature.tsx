@@ -123,7 +123,7 @@ export function Signature() {
               <span className="truncate">{k.detail}</span>
               <span
                 className="text-right font-semibold tabular-nums"
-                style={{ color: k.debit ? "#0A0A0A" : "#00A862" }}
+                style={{ color: k.debit ? "#0A0A0A" : "#007A46" }}
               >
                 {k.amt}
               </span>

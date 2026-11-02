@@ -122,7 +122,7 @@ export function HeroActivity() {
                   </span>
                   <span className="block truncate text-[11.5px] text-[#9AA0AA]">{e.meta}</span>
                 </span>
-                <span className="ml-auto flex-none text-[10.5px] text-[#6B7079]">
+                <span className="ms-auto flex-none text-[10.5px] text-[#6B7079]">
                   {age === 0 ? "now" : `${age * 3}s`}
                 </span>
               </Enter>

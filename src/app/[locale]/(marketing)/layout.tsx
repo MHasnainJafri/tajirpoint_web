@@ -2,6 +2,7 @@ import { setRequestLocale } from "next-intl/server";
 import { Nav } from "@/components/marketing/Nav";
 import { Footer } from "@/components/marketing/Footer";
 import { Reveal } from "@/components/design/Reveal";
+import { FloatingContact } from "@/components/marketing/FloatingContact";
 
 export default async function MarketingLayout({
   children,
@@ -20,6 +21,7 @@ export default async function MarketingLayout({
       <Nav />
       <main id="main-content">{children}</main>
       <Footer />
+      <FloatingContact />
       <Reveal />
     </>
   );
