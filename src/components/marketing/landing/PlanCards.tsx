@@ -56,8 +56,8 @@ export function PlanCards({
       <div
         className={`mt-[28px] grid items-stretch gap-[14px] ${
           compact
-            ? "grid-cols-[repeat(auto-fit,minmax(220px,1fr))]"
-            : "grid-cols-[repeat(auto-fit,minmax(250px,1fr))]"
+            ? "grid-cols-[repeat(auto-fit,minmax(min(100%,220px),1fr))]"
+            : "grid-cols-[repeat(auto-fit,minmax(min(100%,250px),1fr))]"
         }`}
       >
         {plans.map((plan) => (
@@ -178,8 +178,8 @@ function PlanCard({
           {...trackData}
           className={
             dark
-              ? "relative inline-flex items-center justify-center gap-[10px] self-start rounded-full bg-[var(--color-mint)] py-3 pl-6 pr-3 text-[14px] font-bold text-[#0A0A0A] transition-transform duration-200 hover:-translate-y-[2px]"
-              : "relative inline-flex items-center justify-center gap-[10px] self-start rounded-full bg-[#0A0A0A] py-3 pl-6 pr-3 text-[14px] font-bold text-white transition-transform duration-200 hover:-translate-y-[2px]"
+              ? "relative inline-flex items-center justify-center gap-[10px] self-start rounded-full bg-[var(--color-mint)] py-3 ps-6 pe-3 text-[14px] font-bold text-[#0A0A0A] transition-transform duration-200 hover:-translate-y-[2px]"
+              : "relative inline-flex items-center justify-center gap-[10px] self-start rounded-full bg-[#0A0A0A] py-3 ps-6 pe-3 text-[14px] font-bold text-white transition-transform duration-200 hover:-translate-y-[2px]"
           }
         >
           {plan.cta}

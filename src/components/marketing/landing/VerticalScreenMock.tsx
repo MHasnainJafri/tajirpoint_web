@@ -20,7 +20,7 @@ export function VerticalScreenMock({ id, screenTitle, rows }: VerticalScreenMock
           <span className="font-mono text-[11px] font-bold text-[#0A0A0A]">{screenTitle}</span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="inline-flex items-center gap-1 rounded-full bg-[#E4FAEF] px-2 py-0.5 text-[10.5px] font-bold text-[#00A862]">
+          <span className="inline-flex items-center gap-1 rounded-full bg-[#E4FAEF] px-2 py-0.5 text-[10.5px] font-bold text-[#007A46]">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#00D27A]" />
             ACTIVE TERMINAL
           </span>
@@ -34,19 +34,19 @@ export function VerticalScreenMock({ id, screenTitle, rows }: VerticalScreenMock
             {/* Visual Table Floor Plan */}
             <div className="flex items-center justify-between text-[11px] font-bold text-[#4B5058]">
               <span>Floor Plan · Main Dining Room</span>
-              <span className="text-[10px] text-[#8A8F98]">Kitchen Station 2 Active</span>
+              <span className="text-[10px] text-[#6B7079]">Kitchen Station 2 Active</span>
             </div>
             <div className="grid grid-cols-4 gap-2">
               <div className="rounded-xl border border-[#00D27A] bg-[#E4FAEF] p-2 text-center">
-                <div className="text-[10px] font-extrabold text-[#00A862]">T-07 · 6p</div>
+                <div className="text-[10px] font-extrabold text-[#007A46]">T-07 · 6p</div>
                 <div className="mt-0.5 text-[10.5px] font-semibold text-[#0A0A0A]">$24.00</div>
-                <span className="mt-1 inline-block rounded-full bg-[#00D27A] px-1.5 py-0.2 text-[10px] font-bold text-white">
+                <span className="mt-1 inline-block rounded-full bg-[#00D27A] px-1.5 py-0.2 text-[10px] font-bold text-[#0A0A0A]">
                   12m KDS
                 </span>
               </div>
               <div className="rounded-xl border border-[#E3E5EA] bg-[#F7F8FA] p-2 text-center">
                 <div className="text-[10px] font-bold text-[#6B7079]">T-01 · 2p</div>
-                <div className="mt-0.5 text-[10.5px] font-medium text-[#8A8F98]">Free</div>
+                <div className="mt-0.5 text-[10.5px] font-medium text-[#6B7079]">Free</div>
                 <span className="mt-1 inline-block rounded-full bg-[#E3E5EA] px-1.5 py-0.2 text-[10px] font-semibold text-[#6B7079]">
                   Available
                 </span>
@@ -60,7 +60,7 @@ export function VerticalScreenMock({ id, screenTitle, rows }: VerticalScreenMock
               </div>
               <div className="rounded-xl border border-[#E3E5EA] bg-[#F7F8FA] p-2 text-center">
                 <div className="text-[10px] font-bold text-[#6B7079]">T-05 · 4p</div>
-                <div className="mt-0.5 text-[10.5px] font-medium text-[#8A8F98]">Free</div>
+                <div className="mt-0.5 text-[10.5px] font-medium text-[#6B7079]">Free</div>
                 <span className="mt-1 inline-block rounded-full bg-[#E3E5EA] px-1.5 py-0.2 text-[10px] font-semibold text-[#6B7079]">
                   Reserved
                 </span>
@@ -73,11 +73,11 @@ export function VerticalScreenMock({ id, screenTitle, rows }: VerticalScreenMock
           <div className="mb-3 rounded-xl border border-[#E3E5EA] bg-[#F7F8FA] p-2.5">
             <div className="flex items-center justify-between text-[10px]">
               <span className="font-bold text-[#0A0A0A]">IMEI / Serial Lookup Scanner</span>
-              <span className="font-mono text-[#00A862] font-semibold">● Barcode Ready</span>
+              <span className="font-mono text-[#007A46] font-semibold">● Barcode Ready</span>
             </div>
             <div className="mt-1.5 flex items-center justify-between rounded-lg bg-white px-2.5 py-1.5 text-[10.5px] border border-[#ECEEF2]">
               <span className="font-mono font-bold text-[#0A0A0A]">IMEI 35-882109-8472-4</span>
-              <span className="rounded-full bg-[#E4FAEF] px-2 py-0.5 text-[10.5px] font-extrabold text-[#00A862]">
+              <span className="rounded-full bg-[#E4FAEF] px-2 py-0.5 text-[10.5px] font-extrabold text-[#007A46]">
                 WARRANTY ACTIVE
               </span>
             </div>
@@ -99,7 +99,7 @@ export function VerticalScreenMock({ id, screenTitle, rows }: VerticalScreenMock
                   Exp 03/2027 · First Expiry First Out
                 </div>
               </div>
-              <span className="font-mono text-[10px] font-extrabold text-[#00A862]">
+              <span className="font-mono text-[10px] font-extrabold text-[#007A46]">
                 1,240 tabs
               </span>
             </div>
@@ -110,7 +110,7 @@ export function VerticalScreenMock({ id, screenTitle, rows }: VerticalScreenMock
           <div className="mb-3 rounded-xl border border-[#E3E5EA] bg-[#F7F8FA] p-2.5">
             <div className="flex items-center justify-between text-[10px]">
               <span className="font-bold text-[#0A0A0A]">Route Progress · 14 / 18 Stops (78%)</span>
-              <span className="font-mono font-bold text-[#00A862]">$842.00 Cash</span>
+              <span className="font-mono font-bold text-[#007A46]">$842.00 Cash</span>
             </div>
             <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-[#E3E5EA]">
               <div className="h-full rounded-full bg-[#00D27A]" style={{ width: "78%" }} />
@@ -122,7 +122,7 @@ export function VerticalScreenMock({ id, screenTitle, rows }: VerticalScreenMock
           <div className="mb-3 rounded-xl border border-[#E3E5EA] bg-[#F7F8FA] p-2.5">
             <div className="flex items-center justify-between text-[10.5px]">
               <span className="font-bold text-[#0A0A0A]">Trip TRP-0731 · 4 / 6 stops (67%)</span>
-              <span className="font-mono font-bold text-[#00A862]">$1,240.00 billed</span>
+              <span className="font-mono font-bold text-[#007A46]">$1,240.00 billed</span>
             </div>
             <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-[#E3E5EA]">
               <div className="h-full rounded-full bg-[#00D27A]" style={{ width: "67%" }} />
@@ -134,7 +134,7 @@ export function VerticalScreenMock({ id, screenTitle, rows }: VerticalScreenMock
           <div className="mb-3 rounded-xl border border-[#E3E5EA] bg-[#F7F8FA] p-2.5">
             <div className="flex items-center justify-between text-[10.5px]">
               <span className="font-bold text-[#0A0A0A]">Stock by warehouse</span>
-              <span className="font-mono font-bold text-[#00A862]">3 locations</span>
+              <span className="font-mono font-bold text-[#007A46]">3 locations</span>
             </div>
             <div className="mt-1.5 grid grid-cols-3 gap-1.5 text-center text-[10.5px]">
               {[
@@ -155,11 +155,11 @@ export function VerticalScreenMock({ id, screenTitle, rows }: VerticalScreenMock
           <div className="mb-3 rounded-xl border border-[#E3E5EA] bg-[#F7F8FA] p-2.5">
             <div className="flex items-center justify-between text-[10px]">
               <span className="font-bold text-[#0A0A0A]">Recent service sales</span>
-              <span className="font-semibold text-[#00A862]">Client: J. Rivera</span>
+              <span className="font-semibold text-[#007A46]">Client: J. Rivera</span>
             </div>
             <div className="mt-1.5 flex items-center justify-between rounded-lg bg-white px-2.5 py-1.5 text-[10.5px] border border-[#ECEEF2]">
               <span className="font-bold text-[#0A0A0A]">Hair & Beard · Paid</span>
-              <span className="font-mono font-bold text-[#00A862]">$15.00</span>
+              <span className="font-mono font-bold text-[#007A46]">$15.00</span>
             </div>
           </div>
         )}

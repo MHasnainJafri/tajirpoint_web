@@ -3,6 +3,7 @@ import { Nav } from "@/components/marketing/Nav";
 import { Footer } from "@/components/marketing/Footer";
 import { Reveal } from "@/components/design/Reveal";
 import { BUSINESSES, businessLabel } from "@/lib/marketing/businesses";
+import { FloatingContact } from "@/components/marketing/FloatingContact";
 
 export default async function MarketingLayout({
   children,
@@ -28,6 +29,7 @@ export default async function MarketingLayout({
       />
       <main id="main-content">{children}</main>
       <Footer />
+      <FloatingContact />
       <Reveal />
     </>
   );

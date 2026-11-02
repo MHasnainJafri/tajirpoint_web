@@ -105,7 +105,7 @@ export function AddonBrowser({ cards }: { cards: AddonCard[] }) {
                 type="button"
                 onClick={() => setGroup(c.id)}
                 aria-pressed={active}
-                className="cursor-pointer rounded-full border px-[14px] py-[8px] text-[13.5px] font-semibold transition-[background,color,border-color] duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-mint-2)]"
+                className="cursor-pointer rounded-full border px-[14px] py-[8px] text-[13.5px] max-md:min-h-[44px] font-semibold transition-[background,color,border-color] duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-mint-2)]"
                 style={{
                   background: active ? "var(--color-ink)" : "var(--color-bg-2)",
                   color: active ? "var(--color-bg)" : "var(--color-ink-3)",

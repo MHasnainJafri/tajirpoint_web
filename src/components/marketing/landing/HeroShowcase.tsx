@@ -194,7 +194,7 @@ export function HeroShowcase() {
           role="tablist"
           aria-label="See TajirPoint in your kind of business"
         >
-          <span className="mr-1 w-full text-[11px] font-semibold uppercase tracking-[0.12em] text-[#8A8F98] @[560px]:w-auto">
+          <span className="mr-1 w-full text-[11px] font-semibold uppercase tracking-[0.12em] text-[#6B7079] @[560px]:w-auto">
             Built for
           </span>
           {SHOWCASE.map((b, i) => {
@@ -229,7 +229,7 @@ export function HeroShowcase() {
               </button>
             );
           })}
-          <span className="text-[12px] text-[#8A8F98]">
+          <span className="text-[12px] text-[#6B7079]">
             + wholesale, distribution, factories &amp; more
           </span>
         </div>
@@ -351,9 +351,9 @@ function Till({
       <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 border-b border-[#EEF0F3] pb-2.5 text-[12px]">
         <div className="min-w-0">
           <span className="font-bold">{biz.shop}</span>
-          <span className="text-[#8A8F98]"> · {biz.register}</span>
+          <span className="text-[#6B7079]"> · {biz.register}</span>
         </div>
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-[#E4FAEF] px-2.5 py-[3px] text-[11px] font-semibold text-[#00A862]">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-[#E4FAEF] px-2.5 py-[3px] text-[11px] font-semibold text-[#007A46]">
           <span className="h-[6px] w-[6px] animate-pulse rounded-full bg-[#00D27A]" />
           Online · Synced
         </span>
@@ -363,7 +363,7 @@ function Till({
       <div className="mt-3 flex items-center gap-2">
         <label className="relative min-w-0 flex-1">
           <span className="sr-only">Search</span>
-          <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[#8A8F98]">
+          <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[#6B7079]">
             <svg
               width="14"
               height="14"
@@ -464,16 +464,16 @@ function Till({
                   <div className="line-clamp-2 min-h-[2.4em] text-[11px] font-bold leading-[1.2]">
                     {p.name}
                   </div>
-                  <div className="mt-0.5 text-[11.5px] font-extrabold text-[#00A862]">
+                  <div className="mt-0.5 text-[11.5px] font-extrabold text-[#007A46]">
                     {money(p.price)}
                   </div>
-                  <div className="truncate font-mono text-[9.5px] text-[#9AA0A6]">{p.stock}</div>
+                  <div className="truncate font-mono text-[9.5px] text-[#6B7079]">{p.stock}</div>
                 </div>
               </button>
             ))}
           </div>
           {shown.length === 0 && (
-            <div className="py-8 text-center text-[12px] text-[#8A8F98]">
+            <div className="py-8 text-center text-[12px] text-[#6B7079]">
               Nothing matches. Clear the search or pick “All”.
             </div>
           )}
@@ -495,7 +495,7 @@ function Till({
                 >
                   <div className="min-w-0 truncate">
                     <span className="font-semibold">{p.name}</span>
-                    <span className="text-[#8A8F98]"> ×{qty}</span>
+                    <span className="text-[#6B7079]"> ×{qty}</span>
                   </div>
                   <div className="flex flex-none items-center gap-1.5 font-mono font-bold">
                     {money(p.price * qty)}
@@ -511,7 +511,7 @@ function Till({
                 </Enter>
               ))}
               {lines.length === 0 && (
-                <div className="grid min-h-[84px] place-items-center text-center text-[11.5px] text-[#8A8F98]">
+                <div className="grid min-h-[84px] place-items-center text-center text-[11.5px] text-[#6B7079]">
                   Tap an item to start a sale
                 </div>
               )}
@@ -526,7 +526,7 @@ function Till({
             </div>
             <div className="mt-1 flex items-center justify-between text-[14px] font-extrabold">
               <span>Total</span>
-              <span className="font-mono text-[#00A862]">{money(total)}</span>
+              <span className="font-mono text-[#007A46]">{money(total)}</span>
             </div>
 
             <div className="mt-2.5 grid grid-cols-2 gap-1.5">
@@ -550,7 +550,7 @@ function Till({
               type="button"
               onClick={onComplete}
               className={`mt-2 w-full cursor-pointer rounded-[9px] py-2 text-center font-mono text-[12px] font-bold transition-colors active:scale-[0.98] ${
-                paid ? "bg-[#00A862] text-white" : "bg-[#0A0A0A] text-white hover:opacity-90"
+                paid ? "bg-[#007F4A] text-white" : "bg-[#0A0A0A] text-white hover:opacity-90"
               }`}
             >
               {paid ? "✓ Sale completed" : `Complete sale · ${money(total)}`}
@@ -598,15 +598,15 @@ function Invoice({
           </span>
           <div className="min-w-0">
             <div className="truncate text-[12px] font-bold leading-tight">{biz.shop}</div>
-            <div className="truncate text-[10px] text-[#8A8F98]">{biz.place}</div>
+            <div className="truncate text-[10px] text-[#6B7079]">{biz.place}</div>
           </div>
         </div>
         <span
           className={`flex-none rounded-full px-2 py-[3px] text-[10px] font-bold transition-colors duration-300 ${
             paid
               ? settled
-                ? "bg-[#E4FAEF] text-[#00A862]"
-                : "bg-[#FFF3DC] text-[#B36B00]"
+                ? "bg-[#E4FAEF] text-[#007A46]"
+                : "bg-[#FFF3DC] text-[#9A5C00]"
               : "bg-[#F0F2F5] text-[#6B7079]"
           }`}
         >
@@ -616,7 +616,7 @@ function Invoice({
 
       <div className="mt-3 flex items-end justify-between border-t border-dashed border-[#E3E5EA] pt-3">
         <div>
-          <div className="font-mono text-[10px] uppercase tracking-[0.1em] text-[#8A8F98]">
+          <div className="font-mono text-[10px] uppercase tracking-[0.1em] text-[#6B7079]">
             Invoice
           </div>
           <div className="text-[13px] font-extrabold">{biz.invoiceNo}</div>
@@ -636,7 +636,7 @@ function Invoice({
           >
             <span className="min-w-0">
               <span className="font-semibold">{p.name}</span>
-              <span className="block text-[10px] text-[#8A8F98]">
+              <span className="block text-[10px] text-[#6B7079]">
                 {qty} × {money(p.price)}
               </span>
             </span>
@@ -644,7 +644,7 @@ function Invoice({
           </Enter>
         ))}
         {lines.length === 0 && (
-          <div className="grid min-h-[96px] place-items-center text-[11px] text-[#9AA0A6]">
+          <div className="grid min-h-[96px] place-items-center text-[11px] text-[#6B7079]">
             Items appear as they’re sold
           </div>
         )}
@@ -659,7 +659,7 @@ function Invoice({
           <span>Total</span>
           <span className="font-mono">{money(total)}</span>
         </div>
-        <div className="flex justify-between text-[10px] text-[#8A8F98]">
+        <div className="flex justify-between text-[10px] text-[#6B7079]">
           <span>Method</span>
           <span className="font-semibold text-[#4B5058]">{method}</span>
         </div>
@@ -671,7 +671,7 @@ function Invoice({
             as="span"
             key={`${biz.id}-${stamp}`}
             className={`-rotate-[14deg] rounded-[6px] border-[2.5px] px-2.5 py-0.5 text-[15px] font-black tracking-[0.1em] ${
-              settled ? "border-[#00A862] text-[#00A862]" : "border-[#B36B00] text-[#B36B00]"
+              settled ? "border-[#00A862] text-[#007A46]" : "border-[#B36B00] text-[#9A5C00]"
             }`}
             motion="motion-safe:animate-[tpStamp_420ms_cubic-bezier(.2,.9,.3,1.2)_both]"
           >

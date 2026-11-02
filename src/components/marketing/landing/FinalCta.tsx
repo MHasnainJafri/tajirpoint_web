@@ -16,7 +16,7 @@ export function FinalCta() {
       data-reveal
       className="mx-auto mt-[clamp(50px,7vw,90px)] max-w-[1400px] px-[clamp(10px,2vw,20px)]"
     >
-      <div className="on-dark relative grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] items-center gap-[clamp(24px,4vw,56px)] overflow-hidden rounded-[28px] bg-[#0A0A0A] px-[clamp(18px,4vw,60px)] py-[clamp(36px,6vw,80px)] text-white">
+      <div className="on-dark relative grid grid-cols-[repeat(auto-fit,minmax(min(100%,280px),1fr))] items-center gap-[clamp(24px,4vw,56px)] overflow-hidden rounded-[28px] bg-[#0A0A0A] px-[clamp(18px,4vw,60px)] py-[clamp(36px,6vw,80px)] text-white">
         <div className="pointer-events-none absolute -bottom-[200px] -left-[140px] h-[520px] w-[520px] rounded-full border border-[rgba(0,210,122,.16)]" />
         <div className="pointer-events-none absolute -right-[160px] -top-[160px] h-[460px] w-[460px] rounded-full border border-white/[0.07]" />
 
@@ -55,7 +55,7 @@ export function FinalCta() {
                 <div className="text-[14px] font-semibold">{t(`steps.${o.id}.title`)}</div>
                 <div className="mt-px text-[12.5px] text-[#B5B9C2]">{t(`steps.${o.id}.sub`)}</div>
               </div>
-              <span className="ml-auto whitespace-nowrap font-[family-name:var(--font-mono)] text-[11.5px] text-[#8A8F98]">
+              <span className="ms-auto whitespace-nowrap font-[family-name:var(--font-mono)] text-[11.5px] text-[#8A8F98]">
                 {t(`steps.${o.id}.time`)}
               </span>
             </div>

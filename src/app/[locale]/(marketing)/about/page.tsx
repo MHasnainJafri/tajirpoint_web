@@ -10,6 +10,7 @@ import {
   MintButton,
   PillBadge,
 } from "@/components/design/primitives";
+import { NextStep } from "@/components/shared/NextStep";
 import { legal, siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 
@@ -85,6 +86,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           shops, restaurants, pharmacies and distributors. It is built in {legal.country} by{" "}
           {legal.operator}.
         </p>
+
+        <NextStep locale="en" location="about_header" secondary={["demo", "call"]} className="mt-8" />
       </section>
 
       {/* ── Story ───────────────────────────────────────────────────── */}

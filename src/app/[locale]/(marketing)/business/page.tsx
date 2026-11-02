@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { NextStep } from "@/components/shared/NextStep";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { PillBadge } from "@/components/design/primitives";
@@ -56,6 +57,7 @@ export default async function BusinessIndexPage({ params }: { params: Promise<{ 
           Pick your kind of business to see the screens, apps and reports you would use — then book a
           free demo or start free.
         </p>
+        <NextStep locale="en" location="business_index_header" secondary={["demo", "call"]} className="mt-7" />
       </section>
 
       <BusinessGrid locale={locale} headingLevel="h2" />

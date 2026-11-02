@@ -19,7 +19,7 @@ export function ConsentBanner() {
   if (state === "unknown" || (state !== "unset" && !reopened)) return null;
 
   const button =
-    "inline-flex min-h-[40px] cursor-pointer items-center justify-center rounded-full px-5 text-[13.5px] font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-mint-2)]";
+    "inline-flex min-h-[44px] cursor-pointer items-center justify-center rounded-full px-5 text-[13.5px] font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-mint-2)]";
 
   return (
     <section

@@ -63,7 +63,7 @@ export function FaqPanel({ groups }: { groups: FaqGroup[] }) {
                 type="button"
                 aria-expanded={isOpen}
                 onClick={() => setOpen(isOpen ? -1 : i)}
-                className="group flex w-full cursor-pointer items-center justify-between gap-4 border-none bg-transparent py-[18px] text-left text-[15px] font-semibold text-[var(--color-ink)] transition-colors duration-[250ms] hover:text-[var(--color-mint-2)]"
+                className="group flex w-full cursor-pointer items-center justify-between gap-4 border-none bg-transparent py-[18px] text-start text-[15px] font-semibold text-[var(--color-ink)] transition-colors duration-[250ms] hover:text-[var(--color-mint-2)]"
               >
                 <span>{f.q}</span>
                 <span

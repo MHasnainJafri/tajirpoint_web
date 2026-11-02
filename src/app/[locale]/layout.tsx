@@ -150,9 +150,8 @@ export default async function LocaleLayout({
     .join(" ");
 
   // Only the namespaces that client components actually read: Nav (nav,
-  // extensions.items), ExtensionGrid (extensions) and the cookie banner
-  // (consent). Passing the whole catalogue shipped every string into the RSC
-  // payload of every page.
+  // extensions.items) and the cookie banner (consent). Passing the whole
+  // catalogue shipped every string into the RSC payload of every page.
   const messages = await getMessages();
   const clientMessages = {
     nav: messages.nav,
