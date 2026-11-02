@@ -3,7 +3,8 @@
 import { useState, useEffect, useCallback, useRef, useId } from "react";
 import { Menu, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { Link, usePathname } from "@/i18n/navigation";
+import { usePathname } from "@/i18n/navigation";
+import { SiteLink as Link } from "@/components/marketing/SiteLink";
 import { Icon } from "@/components/design/Icon";
 import { Wordmark } from "@/components/brand/Wordmark";
 import { LocaleMenu } from "@/components/marketing/LocaleMenu";
@@ -15,10 +16,24 @@ import {
   EXTENSIONS,
   extensionHref,
 } from "@/lib/design/catalog";
-import { BUSINESSES, businessLabel } from "@/lib/marketing/businesses";
+import type { Business } from "@/lib/marketing/businesses";
 import { siteConfig } from "@/lib/config/site";
+import { uxCopy } from "@/content/ux/copy";
+import { guidesNavLabel } from "@/content/guides/labels";
 
 type MegaKey = "product" | "businesses" | "extensions" | "resources";
+
+/**
+ * One business row for the menus, already in the page's language. The
+ * marketing layout builds these on the server so the full business catalogue
+ * (every page's copy, FAQs, SEO) is not shipped to the browser with the header.
+ */
+export interface NavBusiness {
+  slug: Business["slug"];
+  icon: Business["icon"];
+  name: string;
+  navLine: string;
+}
 
 /** Pages that exist — nothing in the menu may 404. */
 const RESOURCES = [
@@ -44,14 +59,16 @@ const startFreeCls =
  * it. The mobile drawer carries the same links as accordions, plus Book a
  * demo and Start free.
  */
-export function Nav() {
+export function Nav({ businesses }: { businesses: NavBusiness[] }) {
   const t = useTranslations("nav");
   const tExt = useTranslations("extensions.items");
   const tFeat = useTranslations("nav.megaFeatures.items");
   const tRes = useTranslations("nav.megaResources.items");
-  const locale = useLocale();
   const pathname = usePathname();
   const baseId = useId();
+  const locale = useLocale();
+  // "Add-ons" (the name the add-on pages use) and "Get a call".
+  const ux = uxCopy(locale);
 
   const [mega, setMega] = useState<MegaKey | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -161,29 +178,26 @@ export function Nav() {
         <div>
           <MegaHeading>{t("megaBusinesses.heading")}</MegaHeading>
           <ul className="grid grid-cols-[repeat(2,minmax(0,1fr))] gap-x-4 gap-y-[2px]">
-            {BUSINESSES.map((b) => {
-              const label = businessLabel(b, locale);
-              return (
-                <li key={b.slug}>
-                  <Link
-                    href={`/business/${b.slug}`}
-                    className="-mx-[10px] flex gap-3 rounded-[12px] px-[10px] py-[9px] transition-colors duration-200 hover:bg-[var(--color-surface)] focus-visible:bg-[var(--color-surface)] focus-visible:outline-2 focus-visible:outline-[var(--color-mint-2)]"
-                  >
-                    <span className="grid h-9 w-9 flex-none place-items-center rounded-[10px] bg-[var(--color-mint-soft)]">
-                      <Icon name={b.icon} size={19} />
+            {businesses.map((b) => (
+              <li key={b.slug}>
+                <Link
+                  href={`/business/${b.slug}`}
+                  className="-mx-[10px] flex gap-3 rounded-[12px] px-[10px] py-[9px] transition-colors duration-200 hover:bg-[var(--color-surface)] focus-visible:bg-[var(--color-surface)] focus-visible:outline-2 focus-visible:outline-[var(--color-mint-2)]"
+                >
+                  <span className="grid h-9 w-9 flex-none place-items-center rounded-[10px] bg-[var(--color-mint-soft)]">
+                    <Icon name={b.icon} size={19} />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-[13.5px] font-bold text-[var(--color-ink)]">
+                      {b.name}
                     </span>
-                    <span className="min-w-0">
-                      <span className="block text-[13.5px] font-bold text-[var(--color-ink)]">
-                        {label.name}
-                      </span>
-                      <span className="mt-px block text-[12px] leading-[1.45] text-[var(--color-muted)]">
-                        {label.navLine}
-                      </span>
+                    <span className="mt-px block text-[12px] leading-[1.45] text-[var(--color-muted)]">
+                      {b.navLine}
                     </span>
-                  </Link>
-                </li>
-              );
-            })}
+                  </span>
+                </Link>
+              </li>
+            ))}
           </ul>
           <Link
             href="/business"
@@ -290,6 +304,15 @@ export function Nav() {
   const resourcesPanel = (
     <MegaPanel id={panelId("resources")} open={mega === "resources"} onNavigate={closeAll}>
       <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-[10px]">
+        <Link
+          href="/get-a-call"
+          className="rounded-[14px] border border-[var(--color-mint-line)] bg-[var(--color-mint-soft)] p-[14px] transition-colors duration-200 hover:bg-[#d6f6e6]"
+        >
+          <span className="block text-[14px] font-bold">{ux.getACall}</span>
+          <span className="mt-[3px] block text-[12px] leading-[1.5] text-[var(--color-body)]">
+            {ux.getACallSub}
+          </span>
+        </Link>
         {RESOURCES.map((r) => (
           <Link
             key={r.id}
@@ -302,6 +325,15 @@ export function Nav() {
             </span>
           </Link>
         ))}
+        <Link
+          href="/guides"
+          className="rounded-[14px] border border-[var(--color-line)] p-[14px] transition-colors duration-200 hover:bg-[var(--color-surface)]"
+        >
+          <span className="block text-[14px] font-bold">{guidesNavLabel(locale).title}</span>
+          <span className="mt-[3px] block text-[12px] leading-[1.5] text-[var(--color-muted)]">
+            {guidesNavLabel(locale).sub}
+          </span>
+        </Link>
       </div>
     </MegaPanel>
   );
@@ -316,13 +348,15 @@ export function Nav() {
       className="sticky top-0 z-[60] border-b border-[var(--color-line)] bg-[var(--glass-nav)] backdrop-blur-[16px]"
     >
       <div className="mx-auto flex h-[66px] max-w-[1240px] items-center justify-between gap-3 px-[clamp(14px,3vw,24px)]">
+        {/* No aria-label: the name is the visible wordmark (+ chip) and a
+            hidden "Home", so it contains what is on screen (WCAG 2.5.3). */}
         <Link
           href="/"
-          aria-label="TajirPoint home"
-          className="flex flex-none items-center gap-2 text-[var(--color-ink)]"
+          className="flex min-h-[44px] flex-none items-center gap-2 text-[var(--color-ink)]"
           onMouseEnter={() => setMega(null)}
         >
           <Wordmark />
+          <span className="sr-only">{ux.home}</span>
           <span className="hidden whitespace-nowrap rounded-[6px] bg-[var(--color-surface)] px-[9px] py-1 font-[family-name:var(--font-mono)] text-[9.5px] font-semibold uppercase tracking-[0.12em] text-[var(--color-muted)] tabs:inline nav:hidden">
             {t("chip")}
           </span>
@@ -336,7 +370,7 @@ export function Nav() {
           {productPanel}
           {trigger("businesses", t("businesses"))}
           {businessesPanel}
-          {trigger("extensions", t("extensions"))}
+          {trigger("extensions", ux.addOns)}
           {extensionsPanel}
           <Link href="/pricing" className={linkBase} onMouseEnter={() => setMega(null)}>
             {t("pricing")}
@@ -369,7 +403,7 @@ export function Nav() {
               label pushes the burger past the right edge. */}
           <a
             href={siteConfig.signupUrl}
-            className={`${startFreeCls} px-[14px] py-[9px] text-[13px] nav:hidden`}
+            className={`${startFreeCls} inline-flex min-h-[44px] items-center px-[14px] py-[9px] text-[13px] nav:hidden`}
           >
             {t("startFreeShort")}
           </a>
@@ -386,7 +420,7 @@ export function Nav() {
             aria-label={mobileOpen ? t("closeMenu") : t("openMenu")}
             aria-expanded={mobileOpen}
             aria-controls={`${baseId}-drawer`}
-            className="inline-flex h-[42px] w-[42px] flex-none cursor-pointer items-center justify-center rounded-[12px] border border-[var(--color-line-2)] bg-white text-[var(--color-ink)] nav:hidden"
+            className="inline-flex h-[44px] w-[44px] flex-none cursor-pointer items-center justify-center rounded-[12px] border border-[var(--color-line-2)] bg-white text-[var(--color-ink)] nav:hidden"
           >
             {mobileOpen ? (
               <X size={20} aria-hidden="true" />
@@ -410,12 +444,12 @@ export function Nav() {
             onToggle={() => setMobileSection((s) => (s === "businesses" ? null : "businesses"))}
             id={`${baseId}-m-businesses`}
           >
-            {BUSINESSES.map((b) => (
+            {businesses.map((b) => (
               <MobileSubLink key={b.slug} href={`/business/${b.slug}`} onNavigate={closeAll}>
                 <span className="grid h-8 w-8 flex-none place-items-center rounded-[9px] bg-[var(--color-mint-soft)]">
                   <Icon name={b.icon} size={17} />
                 </span>
-                {businessLabel(b, locale).name}
+                {b.name}
               </MobileSubLink>
             ))}
             <MobileSubLink href="/book-demo?migrate=1" onNavigate={closeAll}>
@@ -439,10 +473,13 @@ export function Nav() {
           </MobileSection>
 
           <MobileLink href="/extensions" onNavigate={closeAll}>
-            {t("extensions")}
+            {ux.addOns}
           </MobileLink>
           <MobileLink href="/pricing" onNavigate={closeAll}>
             {t("pricing")}
+          </MobileLink>
+          <MobileLink href="/get-a-call" onNavigate={closeAll}>
+            {ux.getACall}
           </MobileLink>
 
           <MobileSection
@@ -456,6 +493,9 @@ export function Nav() {
                 {tRes(`${r.id}.title`)}
               </MobileSubLink>
             ))}
+            <MobileSubLink href="/guides" onNavigate={closeAll}>
+              {guidesNavLabel(locale).title}
+            </MobileSubLink>
           </MobileSection>
         </nav>
 
@@ -655,7 +695,7 @@ function MobileSubLink({
     <Link
       href={href}
       onClick={onNavigate}
-      className="flex items-center gap-3 rounded-[10px] px-2 py-[9px] text-[14.5px] font-medium text-[var(--color-ink)] hover:bg-[var(--color-surface)]"
+      className="flex min-h-[44px] items-center gap-3 rounded-[10px] px-2 py-[9px] text-[14.5px] font-medium text-[var(--color-ink)] hover:bg-[var(--color-surface)]"
     >
       {children}
     </Link>
@@ -675,7 +715,7 @@ function MobileLink({
     <Link
       href={href}
       onClick={onNavigate}
-      className="border-b border-[var(--color-line)] py-[14px] text-[15px] font-semibold text-[var(--color-ink)]"
+      className="flex min-h-[48px] items-center border-b border-[var(--color-line)] py-[14px] text-[15px] font-semibold text-[var(--color-ink)]"
     >
       {children}
     </Link>

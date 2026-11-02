@@ -2,6 +2,8 @@ import { setRequestLocale } from "next-intl/server";
 import { Nav } from "@/components/marketing/Nav";
 import { Footer } from "@/components/marketing/Footer";
 import { Reveal } from "@/components/design/Reveal";
+import { BUSINESSES, businessLabel } from "@/lib/marketing/businesses";
+import { FloatingContact } from "@/components/marketing/FloatingContact";
 
 export default async function MarketingLayout({
   children,
@@ -17,9 +19,17 @@ export default async function MarketingLayout({
 
   return (
     <>
-      <Nav />
+      {/* Only what the menus show: keeps the business catalogue out of the JS. */}
+      <Nav
+        businesses={BUSINESSES.map((b) => ({
+          slug: b.slug,
+          icon: b.icon,
+          ...businessLabel(b, locale),
+        }))}
+      />
       <main id="main-content">{children}</main>
       <Footer />
+      <FloatingContact />
       <Reveal />
     </>
   );

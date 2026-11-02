@@ -26,7 +26,8 @@ export function Stroke({
       strokeLinecap="round"
       strokeLinejoin="round"
       style={{ width: size, height: size }}
-      className={className}
+      // Arrows point the way the page reads: mirrored in Urdu and Arabic.
+      className={name === "arrowRight" ? `rtl:-scale-x-100 ${className}` : className}
     >
       <path d={ICON[name]} />
     </svg>

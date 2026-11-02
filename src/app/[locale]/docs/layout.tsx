@@ -29,14 +29,14 @@ export default async function DocsLayout({
           <div className="flex min-w-0 items-center gap-2 sm:gap-3">
             <Link
               href="/"
-              className="text-[16px] font-extrabold tracking-[-0.02em] text-[var(--color-ink)]"
+              className="inline-flex min-h-[44px] items-center text-[16px] font-extrabold tracking-[-0.02em] text-[var(--color-ink)]"
             >
               TajirPoint
             </Link>
             <span className="text-[var(--color-muted-3)]">/</span>
             <Link
               href="/docs"
-              className="font-mono text-[13px] uppercase tracking-[1.8px] text-[var(--color-mint-2)] transition-colors hover:text-[var(--color-mint)]"
+              className="inline-flex min-h-[44px] items-center font-mono text-[13px] uppercase tracking-[1.8px] text-[var(--color-mint-2)] transition-colors hover:text-[var(--color-mint)]"
             >
               Docs
             </Link>
@@ -46,7 +46,7 @@ export default async function DocsLayout({
               href={`${siteConfig.dashboardUrl}/settings/api-keys`}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full bg-[var(--color-mint)] px-4 py-2 text-[13.5px] font-bold text-[var(--color-mint-ink)] transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_32px_rgba(0,210,122,.4)]"
+              className="inline-flex min-h-[44px] items-center rounded-full bg-[var(--color-mint)] px-4 py-2 text-[13.5px] font-bold text-[var(--color-mint-ink)] transition-[transform,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-[0_10px_32px_rgba(0,210,122,.4)]"
             >
               Get API key
             </a>

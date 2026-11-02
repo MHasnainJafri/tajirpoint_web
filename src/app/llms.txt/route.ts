@@ -3,6 +3,10 @@ import { BUSINESSES } from "@/lib/marketing/businesses";
 import { RESOURCES } from "@/lib/docs/nav";
 import { getPlans, planSummary } from "@/lib/api/plans";
 import { STATUS_LABEL, getAddonCatalogue, type Addon } from "@/lib/marketing/addons";
+import { CHECKED, COMPARISONS } from "@/content/compare";
+import { LOCATIONS, LOCATIONS_HUB, locationPath } from "@/content/locations";
+import { GUIDES } from "@/content/guides";
+import { TOOLS } from "@/content/tools/tools";
 
 // Served at /llms.txt — a dotted path, so the next-intl proxy matcher
 // (which excludes `.*\..*`) skips it, same as /og.png.
@@ -47,13 +51,26 @@ ${link("Get a call back", "/get-a-call", "Leave a business name and phone number
 ${link("Businesses", "/business", "Every business type TajirPoint is set up for")}
 ${link("Add-ons", "/extensions", "Optional add-ons (extensions) that add features per shop, with status and price")}
 ${link("About", "/about", "Who builds TajirPoint")}
+${link("What's new", "/changelog", "Monthly list of features released to shops, in plain words")}
+${link("Partners", "/partners", "Become a reseller or setup partner; commission is agreed with each partner")}
 ${link("Contact", "/contact", "Email and WhatsApp")}
 ${link("اردو (Urdu home page)", "/ur", "The home page and pricing in Urdu")}
 ${link("العربية (Arabic home page)", "/ar", "The home page and pricing in Arabic")}
+${link("کھاتہ ایپ (Urdu feature pages)", "/ur/features/khata", "Feature pages (khata, offline, accounting, van sales, e-invoicing), book a demo, call back, contact and about are also in Urdu under /ur")}
+${link("دفتر الآجل (Arabic feature pages)", "/ar/features/khata", "The same feature, demo, call-back, contact and about pages in Arabic under /ar")}
+${link("کاروبار (Urdu business pages)", "/ur/business", "Every business type page (/ur/business/<type>) in Urdu")}
+${link("الأنشطة (Arabic business pages)", "/ar/business", "Every business type page (/ar/business/<type>) in Arabic")}
+${link("ایڈ آنز (Urdu add-on pages)", "/ur/extensions", "The add-on list and every add-on page (/ur/extensions/<add-on>) in Urdu")}
+${link("الإضافات (Arabic add-on pages)", "/ar/extensions", "The add-on list and every add-on page (/ar/extensions/<add-on>) in Arabic")}
 
 ## By business
 
 ${BUSINESSES.map((b) => link(b.name, `/business/${b.slug}`, b.navLine)).join("\n")}
+
+## Locations
+
+${link("Locations", LOCATIONS_HUB.path, "Pakistan and its main cities, and UK takeaways: currency, tax authority and our honest status, payments and languages for each place. Not available yet for the UAE or Saudi Arabia (no UAE e-invoicing or ZATCA)")}
+${LOCATIONS.map((l) => link(l.seo.title, locationPath(l.slug), l.summary)).join("\n")}
 
 ## Add-ons
 
@@ -66,6 +83,23 @@ ${link("Offline POS", "/features/offline", "How the POS keeps selling with no in
 ${link("Accounting", "/features/accounting", "Double-entry ledger posted from POS activity (Shop plan and above)")}
 ${link("Van sales", "/features/van-sales", "Route selling and day-end reconciliation for distributors")}
 ${link("Tax & e-invoicing", "/features/e-invoicing", "Tax-inclusive pricing, VAT/GST and withholding at checkout; regulatory e-invoicing connectors (e.g. FBR) are not yet released")}
+
+## Comparisons
+
+${link("Compare", "/compare", `Honest comparisons with paper khata, Excel, a cash register and other POS systems; competitor facts sourced and checked ${CHECKED}`)}
+${COMPARISONS.map((c) => link(c.label, `/compare/${c.slug}`, c.blurb)).join("\n")}
+
+## Guides
+
+${link("Guides", "/guides", "Plain guides for shop and restaurant owners")}
+${GUIDES.map((g) => link(g.title, `/guides/${g.slug}`, g.summary)).join("\n")}
+
+## Free tools
+
+Free calculators that run in the browser; nothing typed is sent or stored.
+
+${link("Free tools", "/tools", "All free tools for shop and restaurant owners")}
+${TOOLS.map((t) => link(t.heading, `/tools/${t.slug}`, t.summary)).join("\n")}
 
 ## API documentation
 

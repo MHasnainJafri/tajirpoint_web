@@ -2,6 +2,13 @@ import { z } from "zod";
 import { BUSINESSES, isBusinessSlug } from "./businesses";
 import { emptyAttribution, type Attribution } from "./utm";
 import { countryByIso, countryForE164, normalizePhone, phoneFromForm } from "./phone";
+import {
+  BRANCH_OPTIONS,
+  PHONE_ERROR,
+  TIME_OPTIONS,
+  type BranchOption,
+  type TimeOption,
+} from "./demo-options";
 
 export { normalizePhone };
 
@@ -13,20 +20,9 @@ export { normalizePhone };
  * form and the unit tests all share one definition.
  */
 
-export const BRANCH_OPTIONS = [
-  { value: "1", label: "1 shop", count: 1 },
-  { value: "2-5", label: "2–5 shops", count: 2 },
-  { value: "6+", label: "6 or more", count: 6 },
-] as const;
-
-export const TIME_OPTIONS = [
-  { value: "morning", label: "Morning (10 am – 1 pm)" },
-  { value: "afternoon", label: "Afternoon (1 pm – 5 pm)" },
-  { value: "evening", label: "Evening (5 pm – 8 pm)" },
-] as const;
-
-export type BranchOption = (typeof BRANCH_OPTIONS)[number]["value"];
-export type TimeOption = (typeof TIME_OPTIONS)[number]["value"];
+// Plain options live in demo-options.ts (no zod) so browser copy can use them.
+export { BRANCH_OPTIONS, TIME_OPTIONS, PHONE_ERROR };
+export type { BranchOption, TimeOption };
 
 /** Business types for the select: the catalog plus "Other". */
 export const BUSINESS_TYPE_OPTIONS = [
@@ -70,7 +66,6 @@ export function upcomingDays(from: Date, days = 14): Array<{ value: string; labe
 
 export const text = (max: number) => z.string().trim().max(max).default("");
 
-export const PHONE_ERROR = "Choose your country code and enter your number (7–15 digits).";
 
 /** Required phone: E.164 from the picker, or a typed "+…" / "00…" number. */
 export const phoneSchema = z

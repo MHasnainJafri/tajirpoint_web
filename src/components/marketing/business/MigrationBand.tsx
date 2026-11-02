@@ -1,9 +1,24 @@
+import { getLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Tick } from "@/components/marketing/landing/Stroke";
-import { MIGRATION, type BusinessSlug } from "@/lib/marketing/businesses";
+import type { BusinessSlug } from "@/lib/marketing/businesses";
+import { businessUi } from "@/content/i18n/businesses";
 
-/** "Switching? We move your data for free" — on the home and business pages. */
-export function MigrationBand({ slug, id = "switching" }: { slug?: BusinessSlug; id?: string }) {
+/**
+ * "Switching? We move your data for free" — on the home, pricing and business
+ * pages, in the page's language (English where no translation exists).
+ */
+export async function MigrationBand({
+  slug,
+  id = "switching",
+  locale,
+}: {
+  slug?: BusinessSlug;
+  id?: string;
+  /** Defaults to the request locale. */
+  locale?: string;
+}) {
+  const MIGRATION = businessUi(locale ?? (await getLocale())).migration;
   const href = `/book-demo?migrate=1${slug ? `&type=${slug}` : ""}`;
   return (
     <section
@@ -13,10 +28,10 @@ export function MigrationBand({ slug, id = "switching" }: { slug?: BusinessSlug;
     >
       <div className="grid items-center gap-[clamp(20px,4vw,48px)] lg:grid-cols-[1.1fr_1fr]">
         <div>
-          <div className="eyebrow">{MIGRATION.eyebrow}</div>
+          <div className="eyebrow rtl:tracking-normal">{MIGRATION.eyebrow}</div>
           <h2
             id={`${id}-title`}
-            className="mt-3 max-w-[22ch] text-[clamp(24px,3.2vw,38px)] font-bold leading-[1.12] tracking-[-0.03em] text-balance text-[var(--color-ink)]"
+            className="mt-3 max-w-[22ch] text-[clamp(24px,3.2vw,38px)] font-bold leading-[1.12] tracking-[-0.03em] text-balance text-[var(--color-ink)] rtl:tracking-normal"
           >
             {MIGRATION.headline}
           </h2>
@@ -25,7 +40,7 @@ export function MigrationBand({ slug, id = "switching" }: { slug?: BusinessSlug;
             href={href}
             className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#0A0A0A] px-6 py-3 text-[14.5px] font-bold text-white transition-transform duration-200 hover:-translate-y-[2px]"
           >
-            {MIGRATION.cta} <span aria-hidden="true">→</span>
+            {MIGRATION.cta} <span aria-hidden="true" className="inline-block rtl:-scale-x-100">→</span>
           </Link>
         </div>
         <ul className="flex flex-col gap-3">

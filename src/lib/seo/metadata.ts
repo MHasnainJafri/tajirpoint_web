@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/lib/config/site";
 import { routing } from "@/i18n/routing";
 import { ogImageForPath, OG_IMAGE_SIZE } from "@/lib/seo/og-cards";
+import { BUSINESS_SLUGS } from "@/lib/marketing/businesses";
+import { TRANSLATED_ADDON_SLUGS } from "@/content/addons/i18n";
+import { TRANSLATED_STATIC_PATHS } from "@/lib/seo/translated-paths";
 
 /** Open Graph locale per site locale (language_TERRITORY, as Facebook expects). */
 export const OG_LOCALE_MAP: Record<string, string> = {
@@ -22,10 +25,28 @@ export const OG_LOCALE_MAP: Record<string, string> = {
  * copies point their canonical there, carry no hreflang cluster, and stay out
  * of the sitemap. Add a path here the day its body copy is translated.
  */
-export const TRANSLATED_PATHS: ReadonlySet<string> = new Set(["/", "/pricing", "/extensions"]);
+export const TRANSLATED_PATHS: ReadonlySet<string> = new Set([
+  // The fixed list lives in translated-paths.ts so the header can share it.
+  ...TRANSLATED_STATIC_PATHS,
+  // Business pages: Urdu + Arabic copy in src/content/i18n/businesses.{ur,ar}.ts.
+  ...BUSINESS_SLUGS.map((slug) => `/business/${slug}`),
+]);
+
+/**
+ * Translated page families: a path `<prefix><slug>` counts as translated when
+ * `slug` is in the set. Used for pages generated from data, like the add-on
+ * pages, where only the slugs that have translations qualify.
+ */
+export const TRANSLATED_PREFIXES: ReadonlyArray<
+  readonly [prefix: string, slugs: ReadonlySet<string>]
+> = [["/extensions/", TRANSLATED_ADDON_SLUGS]];
 
 export function isTranslated(path: string): boolean {
-  return TRANSLATED_PATHS.has(path);
+  if (TRANSLATED_PATHS.has(path)) return true;
+  for (const [prefix, slugs] of TRANSLATED_PREFIXES) {
+    if (path.startsWith(prefix) && slugs.has(path.slice(prefix.length))) return true;
+  }
+  return false;
 }
 
 /**

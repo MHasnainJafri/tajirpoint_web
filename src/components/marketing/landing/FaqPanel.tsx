@@ -12,9 +12,10 @@ export interface FaqGroup {
  * Grouped FAQ: category pills on the left, an accordion on the right.
  *
  * The first answer in each group starts open, and switching group resets to it,
- * so the panel is never blank. Answers animate on `max-height` rather than
- * being unmounted, which keeps every question and answer in the HTML for search
- * engines whether or not it is expanded.
+ * so the panel is never blank. Every group is rendered (inactive ones carry the
+ * `hidden` attribute) and answers animate on `max-height` rather than being
+ * unmounted, so every question and answer the FAQPage JSON-LD lists is in the
+ * server HTML whether or not it is shown.
  */
 export function FaqPanel({ groups }: { groups: FaqGroup[] }) {
   const [tab, setTab] = useState(0);
@@ -42,7 +43,9 @@ export function FaqPanel({ groups }: { groups: FaqGroup[] }) {
                 setTab(i);
                 setOpen(0);
               }}
-              className={`cursor-pointer rounded-full border px-4 py-2 text-[12.5px] transition-all duration-[250ms] ${
+              id={`faq-tab-${g.id}`}
+              aria-controls={`faq-panel-${g.id}`}
+              className={`inline-flex min-h-[44px] cursor-pointer items-center rounded-full border px-4 py-2 text-[12.5px] transition-all duration-[250ms] ${
                 on
                   ? "border-[#0A0A0A] bg-[#0A0A0A] font-semibold text-white"
                   : "border-transparent bg-white font-medium text-[var(--color-ink-3)]"
@@ -55,15 +58,23 @@ export function FaqPanel({ groups }: { groups: FaqGroup[] }) {
       </div>
 
       <div data-reveal className="flex shrink basis-[320px] flex-col" style={{ flexGrow: 3 }}>
-        {group?.items.map((f, i) => {
-          const isOpen = open === i;
+        {groups.map((g, gi) => (
+          <div
+            key={g.id}
+            id={`faq-panel-${g.id}`}
+            role="tabpanel"
+            aria-labelledby={`faq-tab-${g.id}`}
+            hidden={gi !== tab}
+          >
+        {g.items.map((f, i) => {
+          const isOpen = gi === tab && open === i;
           return (
             <div key={f.q} className="border-b border-[var(--color-line-strong)]">
               <button
                 type="button"
                 aria-expanded={isOpen}
                 onClick={() => setOpen(isOpen ? -1 : i)}
-                className="group flex w-full cursor-pointer items-center justify-between gap-4 border-none bg-transparent py-[18px] text-left text-[15px] font-semibold text-[var(--color-ink)] transition-colors duration-[250ms] hover:text-[var(--color-mint-2)]"
+                className="group flex w-full cursor-pointer items-center justify-between gap-4 border-none bg-transparent py-[18px] text-start text-[15px] font-semibold text-[var(--color-ink)] transition-colors duration-[250ms] hover:text-[var(--color-mint-2)]"
               >
                 <span>{f.q}</span>
                 <span
@@ -99,6 +110,8 @@ export function FaqPanel({ groups }: { groups: FaqGroup[] }) {
             </div>
           );
         })}
+          </div>
+        ))}
       </div>
     </div>
   );

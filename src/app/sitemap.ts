@@ -4,6 +4,11 @@ import { isTranslated, localeUrl } from "@/lib/seo/metadata";
 import { RESOURCES } from "@/lib/docs/nav";
 import { BUSINESS_SLUGS } from "@/lib/marketing/businesses";
 import { getAddonCatalogue } from "@/lib/marketing/addons";
+import { COMPARE_SLUGS } from "@/content/compare";
+import { LOCATIONS, LOCATIONS_HUB, locationPath } from "@/content/locations";
+import { GUIDES, GUIDES_HUB } from "@/content/guides";
+import { TOOL_SLUGS } from "@/content/tools/tools";
+import { CHANGELOG_UPDATED } from "@/content/changelog/entries";
 
 // The add-on pages come from the backend catalogue; refresh with it.
 export const revalidate = 600;
@@ -45,13 +50,13 @@ const DOCS_PAGES: Page[] = [
 ];
 
 const BUSINESS_PAGES: Page[] = [
-  { path: "/business", priority: 0.9, changeFrequency: "weekly", updated: "2026-11-01" },
+  { path: "/business", priority: 0.9, changeFrequency: "weekly", updated: "2026-11-02" },
   ...BUSINESS_SLUGS.map(
     (slug): Page => ({
       path: `/business/${slug}`,
       priority: 0.9,
       changeFrequency: "monthly",
-      updated: "2026-11-01",
+      updated: "2026-11-02",
     })
   ),
 ];
@@ -61,21 +66,83 @@ const FEATURE_PAGES: Page[] = ["khata", "offline", "accounting", "van-sales", "e
     path: `/features/${slug}`,
     priority: 0.8,
     changeFrequency: "monthly",
-    updated: "2026-11-01",
+    updated: "2026-11-02",
   })
 );
+
+/** /compare and one page per comparison (src/content/compare). */
+const COMPARE_PAGES: Page[] = [
+  { path: "/compare", priority: 0.7, changeFrequency: "monthly", updated: "2026-11-02" },
+  ...COMPARE_SLUGS.map(
+    (slug): Page => ({
+      path: `/compare/${slug}`,
+      priority: 0.7,
+      changeFrequency: "monthly",
+      updated: "2026-11-02",
+    })
+  ),
+];
+
+/** Location pages: the /pos hub, then one page per country or city. */
+const LOCATION_PAGES: Page[] = [
+  {
+    path: LOCATIONS_HUB.path,
+    priority: 0.7,
+    changeFrequency: "monthly",
+    updated: LOCATIONS_HUB.updated,
+  },
+  ...LOCATIONS.map(
+    (l): Page => ({
+      path: locationPath(l.slug),
+      priority: 0.7,
+      changeFrequency: "monthly",
+      updated: l.updated,
+    })
+  ),
+];
+
+const GUIDE_PAGES: Page[] = [
+  { path: GUIDES_HUB.path, priority: 0.7, changeFrequency: "weekly", updated: GUIDES_HUB.updated },
+  ...GUIDES.map(
+    (g): Page => ({
+      path: `/guides/${g.slug}`,
+      priority: 0.7,
+      changeFrequency: "monthly",
+      updated: g.dateModified,
+    })
+  ),
+];
+
+/** The free tools hub and each tool. */
+const TOOL_PAGES: Page[] = [
+  { path: "/tools", priority: 0.7, changeFrequency: "monthly", updated: "2026-11-02" },
+  ...TOOL_SLUGS.map(
+    (slug): Page => ({
+      path: `/tools/${slug}`,
+      priority: 0.7,
+      changeFrequency: "monthly",
+      updated: "2026-11-02",
+    })
+  ),
+];
 
 const PAGES: Page[] = [
   { path: "/", priority: 1.0, changeFrequency: "weekly", updated: "2026-11-01" },
   { path: "/pricing", priority: 0.9, changeFrequency: "monthly", updated: "2026-11-01" },
-  { path: "/book-demo", priority: 0.8, changeFrequency: "monthly", updated: "2026-11-01" },
-  { path: "/get-a-call", priority: 0.8, changeFrequency: "monthly", updated: "2026-11-01" },
+  { path: "/book-demo", priority: 0.8, changeFrequency: "monthly", updated: "2026-11-02" },
+  { path: "/get-a-call", priority: 0.8, changeFrequency: "monthly", updated: "2026-11-02" },
   ...BUSINESS_PAGES,
   { path: "/extensions", priority: 0.8, changeFrequency: "monthly", updated: "2026-09-10" },
   ...FEATURE_PAGES,
+  ...COMPARE_PAGES,
+  ...LOCATION_PAGES,
+  ...GUIDE_PAGES,
+  ...TOOL_PAGES,
   ...DOCS_PAGES,
-  { path: "/about", priority: 0.6, changeFrequency: "monthly", updated: "2026-10-14" },
-  { path: "/contact", priority: 0.6, changeFrequency: "monthly", updated: "2026-10-14" },
+  { path: "/partners", priority: 0.6, changeFrequency: "monthly", updated: "2026-11-02" },
+  { path: "/changelog", priority: 0.5, changeFrequency: "weekly", updated: CHANGELOG_UPDATED },
+  { path: "/about", priority: 0.6, changeFrequency: "monthly", updated: "2026-11-02" },
+  { path: "/contact", priority: 0.6, changeFrequency: "monthly", updated: "2026-11-02" },
   { path: "/security", priority: 0.4, changeFrequency: "yearly", updated: "2026-10-11" },
   { path: "/privacy", priority: 0.3, changeFrequency: "yearly", updated: "2026-10-11" },
   { path: "/terms", priority: 0.3, changeFrequency: "yearly", updated: "2026-10-11" },
@@ -93,7 +160,9 @@ async function addonPages(): Promise<Page[]> {
       // Pages a shop can act on today rank above the roadmap.
       priority: a.status === "coming_soon" || a.status === "unavailable" ? 0.6 : 0.7,
       changeFrequency: "monthly",
-      updated: "2026-11-01",
+      // Urdu + Arabic write-ups added 2 Nov 2026 (TP-490); translated slugs
+      // are listed once per language with their hreflang cluster below.
+      updated: "2026-11-02",
     })
   );
 }

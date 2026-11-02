@@ -55,13 +55,15 @@
   --animate-pulse-dot: tpPulse 2s infinite;
   --animate-float: tpFloat 6s ease-in-out infinite;
 
+  /* Hero entrances (tpFadeUp, tpRise) move but never fade: they run on the
+     page's first, largest text, and text that starts at opacity 0 is not
+     counted as painted (LCP) until the fade ends. A rise alone keeps the
+     motion and lets the first frame count. */
   @keyframes tpFadeUp {
     from {
-      opacity: 0;
-      transform: translateY(28px);
+      transform: translateY(14px);
     }
     to {
-      opacity: 1;
       transform: translateY(0);
     }
   }
@@ -103,11 +105,9 @@
   }
   @keyframes tpRise {
     from {
-      opacity: 0;
-      transform: translateY(26px);
+      transform: translateY(14px);
     }
     to {
-      opacity: 1;
       transform: none;
     }
   }
@@ -282,15 +282,17 @@
   --color-line-strong: #e3e5ea;
 
   /* ── Ink ────────────────────────────────────────────────────────
-     Near-black, neutral. #4B5058 is body copy, #6B7079 secondary,
-     #8A8F98 the quietest (mono labels, captions). */
+     Near-black, neutral. #4B5058 is body copy, #6B7079 secondary and the
+     quietest text (mono labels, captions). The design's #8A8F98 was only
+     3.2:1 on white and 3.0:1 on the grey cards (WCAG AA needs 4.5:1 for small
+     text), so the quiet tiers now share #6B7079 (5.0:1 / 4.6:1). */
   --color-ink: #0a0a0a;
   --color-ink-2: #0a0a0a;
   --color-ink-3: #41454f;
   --color-body: #4b5058;
   --color-muted: #6b7079;
-  --color-muted-2: #8a8f98;
-  --color-muted-3: #8a8f98;
+  --color-muted-2: #6b7079;
+  --color-muted-3: #6b7079;
 
   /* On the black panels */
   --color-on-dark: #ffffff;
@@ -299,10 +301,12 @@
 
   /* ── Mint accent ────────────────────────────────────────────────
      #00D27A is the button fill and the dot; it is never text on white.
-     #00A862 is the darkened variant used where mint has to *read* as
-     text or a stroke on a light surface. */
+     --color-mint-2 is the darkened variant used where mint has to *read*
+     as text or a stroke on a light surface. It was #00A862 (3.1:1 on white,
+     too faint for small text); #007F4A keeps the green and reaches 5.1:1 on
+     white and 4.6:1 on the grey and mint-soft fills. */
   --color-mint: #00d27a;
-  --color-mint-2: #00a862;
+  --color-mint-2: #007f4a;
   --color-mint-hover: #00c271;
   --color-mint-soft: #e4faef;
   --color-mint-line: rgba(0, 210, 122, 0.4);
@@ -322,7 +326,7 @@
   --color-cream-line: #eadfcb;
   --color-cream-line-2: #e5d9c3;
   --color-cream-line-3: #d8cbb2;
-  --color-cream-ink: #7a6e5c;
+  --color-cream-ink: #756a58; /* was #7a6e5c: 4.46:1 on cream, now 4.75:1 */
   --color-cream-muted: #9a8e7c;
 
   /* Semantic surfaces / glass */
@@ -705,6 +709,28 @@ body {
   border-radius: 999px;
   font-weight: 700;
   z-index: 100;
+}
+
+/* ── Floating contact buttons (FloatingContact.tsx) ────────────────
+   Bottom corner on the reading-end side: right in English, left in Urdu and
+   Arabic. `max()` keeps them clear of the iPhone home bar and a landscape
+   notch (the insets are 0 everywhere else). */
+.floating-contact {
+  bottom: max(16px, calc(env(safe-area-inset-bottom) + 10px));
+  inset-inline-end: max(16px, calc(env(safe-area-inset-right) + 10px));
+}
+[dir="rtl"] .floating-contact {
+  inset-inline-end: max(16px, calc(env(safe-area-inset-left) + 10px));
+}
+
+/* ── Long words never push the page sideways ───────────────────────
+   A URL, an email address or a long compound word in copy wraps inside its
+   box at 360px instead of widening the page. In the base layer, so any
+   utility on the element still wins. */
+@layer base {
+  main :where(p, li, dd, td, h1, h2, h3, h4, blockquote, figcaption) {
+    overflow-wrap: break-word;
+  }
 }
 
 /* ── Visible focus rings ───────────────────────────────────────── */

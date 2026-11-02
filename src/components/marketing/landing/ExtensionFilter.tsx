@@ -54,7 +54,7 @@ export function ExtensionFilter({
       <div data-reveal className="mt-7 flex flex-col gap-4">
         {/* Search input */}
         <div className="relative max-w-[480px]">
-          <span className="pointer-events-none absolute left-[15px] top-1/2 -translate-y-1/2 text-[var(--color-muted-2)]">
+          <span className="pointer-events-none absolute start-[15px] top-1/2 -translate-y-1/2 text-[var(--color-muted-2)]">
             <svg
               width="17"
               height="17"
@@ -75,13 +75,13 @@ export function ExtensionFilter({
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search extensions (e.g. Stripe, FBR, QuickBooks, Shopify)..."
-            className="w-full rounded-full border border-[var(--color-line-2)] bg-white py-2.5 pl-10 pr-10 text-[16px] font-medium text-[var(--color-ink)] placeholder:text-[var(--color-muted-2)] focus:border-[#0A0A0A] focus:outline-none focus:ring-1 focus:ring-[#0A0A0A]"
+            className="w-full rounded-full border border-[var(--color-line-2)] bg-white py-2.5 ps-10 pe-10 text-[16px] font-medium text-[var(--color-ink)] placeholder:text-[var(--color-muted-2)] focus:border-[#0A0A0A] focus:outline-none focus:ring-1 focus:ring-[#0A0A0A]"
           />
           {searchQuery && (
             <button
               type="button"
               onClick={() => setSearchQuery("")}
-              className="absolute right-1 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center text-[12px] font-bold text-[var(--color-muted-2)] hover:text-[#0A0A0A]"
+              className="absolute end-1 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center text-[12px] font-bold text-[var(--color-muted-2)] hover:text-[#0A0A0A]"
               aria-label="Clear search"
             >
               ✕
@@ -99,7 +99,7 @@ export function ExtensionFilter({
                 type="button"
                 aria-pressed={on}
                 onClick={() => setActive(c.id)}
-                className={`cursor-pointer whitespace-nowrap rounded-full border px-[14px] py-2 text-[12.5px] font-semibold transition-all duration-200 ${
+                className={`max-md:min-h-[44px] cursor-pointer whitespace-nowrap rounded-full border px-[14px] py-2 text-[12.5px] font-semibold transition-all duration-200 ${
                   on
                     ? "border-[#0A0A0A] bg-[#0A0A0A] text-white shadow-sm"
                     : "border-[var(--color-line-2)] bg-white text-[var(--color-ink-3)] hover:border-[#0A0A0A]"
@@ -127,7 +127,7 @@ export function ExtensionFilter({
               setSearchQuery("");
               setActive("all");
             }}
-            className="mt-4 rounded-full bg-[#0A0A0A] px-5 py-2 text-[12.5px] font-semibold text-white hover:bg-neutral-800"
+            className="mt-4 inline-flex min-h-[44px] items-center rounded-full bg-[#0A0A0A] px-5 py-2 text-[12.5px] font-semibold text-white hover:bg-neutral-800"
           >
             Clear filters
           </button>

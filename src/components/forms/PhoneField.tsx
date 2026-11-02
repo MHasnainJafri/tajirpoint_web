@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ChevronDown, Search } from "lucide-react";
+import { useLocale } from "next-intl";
 import {
   COUNTRIES,
   countryByIso,
@@ -11,7 +12,10 @@ import {
   normalizePhone,
   parsePhoneInput,
   searchCountries,
+  type Country,
 } from "@/lib/marketing/phone";
+import { pickCopy } from "@/content/i18n/page-copy";
+import { SHARED_FORM_COPY } from "@/content/i18n/lead-pages/forms";
 import { OptionalMark, RequiredMark } from "./Field";
 import { errorCls, hintCls, inputCls, labelCls } from "./styles";
 
@@ -26,6 +30,13 @@ import { errorCls, hintCls, inputCls, labelCls } from "./styles";
  *
  * A number pasted (or autofilled) with "+" or "00" is taken as it is and the
  * picker switches to its country.
+ *
+ * Urdu / Arabic pages: labels come from SHARED_FORM_COPY, the open picker
+ * shows country names in the page language (Intl.DisplayNames, English when
+ * the browser has none) and matches a search in either language. The code
+ * picker + number row is always left-to-right ("+92 300 1234567"), the way
+ * phone numbers are written in both scripts; label, hint and list follow the
+ * page direction.
  */
 export function PhoneField({
   id,
@@ -34,7 +45,7 @@ export function PhoneField({
   optional,
   hint,
   error,
-  placeholder = "Phone number",
+  placeholder,
 }: {
   id: string;
   label: string;
@@ -51,6 +62,11 @@ export function PhoneField({
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
 
+  const locale = useLocale();
+  const t = pickCopy(SHARED_FORM_COPY, locale).t.phone;
+  const localNames = useLocalCountryNames(locale);
+  const nameOf = (c: Country) => localNames?.(c.iso2) ?? c.name;
+
   const wrapRef = useRef<HTMLDivElement>(null);
   const nativeRef = useRef<HTMLSelectElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -61,7 +77,17 @@ export function PhoneField({
   const optId = (iso: string) => `${id}-opt-${iso}`;
   const selected = countryByIso(country);
   const parsed = parsePhoneInput(local, country);
-  const filtered = useMemo(() => searchCountries(query), [query]);
+  const filtered = useMemo(() => {
+    const base = searchCountries(query);
+    const q = query.trim();
+    if (!localNames || !q) return base;
+    // Also match the country name in the page language ("پاکستان", "باكستان").
+    const seen = new Set(base.map((c) => c.iso2));
+    const extra = COUNTRIES.filter(
+      (c) => !seen.has(c.iso2) && (localNames(c.iso2) ?? "").includes(q)
+    );
+    return [...extra, ...base];
+  }, [query, localNames]);
 
   // Once hydrated: keep anything chosen or typed before JavaScript loaded,
   // else default the country from the time zone / browser language.
@@ -193,7 +219,7 @@ export function PhoneField({
       </label>
 
       <div ref={wrapRef} className="relative min-w-0">
-        <div role="group" aria-labelledby={`${id}-label`} className="flex min-w-0 gap-2">
+        <div role="group" aria-labelledby={`${id}-label`} dir="ltr" className="flex min-w-0 gap-2">
           {enhanced ? (
             <button
               ref={buttonRef}
@@ -201,11 +227,7 @@ export function PhoneField({
               aria-haspopup="listbox"
               aria-expanded={open}
               aria-controls={open ? listId : undefined}
-              aria-label={
-                selected
-                  ? `Country code: ${selected.name} +${selected.dial}. Change country`
-                  : "Choose country code"
-              }
+              aria-label={selected ? t.codeFor(nameOf(selected), selected.dial) : t.chooseCode}
               onClick={() => (open ? setOpen(false) : openPicker())}
               onKeyDown={onButtonKey}
               className={pickerCls}
@@ -218,7 +240,7 @@ export function PhoneField({
                   <span className="tabular-nums">+{selected.dial}</span>
                 </>
               ) : (
-                <span className="text-[var(--color-muted)]">Code</span>
+                <span className="text-[var(--color-muted)]">{t.code}</span>
               )}
               <ChevronDown
                 size={16}
@@ -230,11 +252,11 @@ export function PhoneField({
             <select
               ref={nativeRef}
               name="phone_country"
-              aria-label="Country code"
+              aria-label={t.nativeLabel}
               defaultValue=""
               className={`${pickerCls} w-[128px] min-w-0 font-medium`}
             >
-              <option value="">Country</option>
+              <option value="">{t.nativeEmpty}</option>
               {COUNTRIES.map((c) => (
                 <option key={c.iso2} value={c.iso2}>
                   {c.name} (+{c.dial})
@@ -251,7 +273,7 @@ export function PhoneField({
             inputMode="tel"
             autoComplete="tel"
             required={required}
-            placeholder={placeholder}
+            placeholder={placeholder ?? t.placeholder}
             value={local}
             onChange={(e) => {
               const v = e.target.value;
@@ -285,7 +307,7 @@ export function PhoneField({
               <Search
                 size={16}
                 aria-hidden="true"
-                className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[var(--color-muted)]"
+                className="pointer-events-none absolute start-5 top-1/2 -translate-y-1/2 text-[var(--color-muted)]"
               />
               <input
                 ref={searchRef}
@@ -295,8 +317,8 @@ export function PhoneField({
                 aria-controls={listId}
                 aria-autocomplete="list"
                 aria-activedescendant={activeOpt ? optId(activeOpt.iso2) : undefined}
-                aria-label="Search country or dial code"
-                placeholder="Search country or code"
+                aria-label={t.searchLabel}
+                placeholder={t.searchPlaceholder}
                 autoComplete="off"
                 spellCheck={false}
                 value={query}
@@ -305,13 +327,13 @@ export function PhoneField({
                   setActive(0);
                 }}
                 onKeyDown={onSearchKey}
-                className="h-[42px] w-full min-w-0 rounded-[10px] border border-[var(--color-line-3)] bg-white pl-9 pr-3 text-[16px] text-[var(--color-ink)] placeholder:text-[var(--color-muted-2)] focus:border-[var(--color-mint-2)] focus:outline-none focus:ring-2 focus:ring-[rgba(0,210,122,.25)]"
+                className="h-[42px] w-full min-w-0 rounded-[10px] border border-[var(--color-line-3)] bg-white pe-3 ps-9 text-[16px] text-[var(--color-ink)] placeholder:text-[var(--color-muted-2)] focus:border-[var(--color-mint-2)] focus:outline-none focus:ring-2 focus:ring-[rgba(0,210,122,.25)]"
               />
             </div>
             <ul
               id={listId}
               role="listbox"
-              aria-label="Countries"
+              aria-label={t.listLabel}
               className="max-h-[min(280px,45vh)] overflow-y-auto overscroll-contain py-1"
             >
               {filtered.map((c, i) => (
@@ -331,15 +353,15 @@ export function PhoneField({
                   <span aria-hidden="true" className="text-[18px] leading-none">
                     {flagEmoji(c.iso2)}
                   </span>
-                  <span className="min-w-0 flex-1 truncate">{c.name}</span>
-                  <span className="tabular-nums text-[var(--color-muted)]">+{c.dial}</span>
+                  <span className="min-w-0 flex-1 truncate">{nameOf(c)}</span>
+                  <span dir="ltr" className="tabular-nums text-[var(--color-muted)]">
+                    +{c.dial}
+                  </span>
                 </li>
               ))}
             </ul>
             {filtered.length === 0 && (
-              <p className="px-4 py-3 text-[14px] text-[var(--color-muted)]">
-                No country matches “{query}”.
-              </p>
+              <p className="px-4 py-3 text-[14px] text-[var(--color-muted)]">{t.noMatch(query)}</p>
             )}
           </div>
         )}
@@ -361,4 +383,27 @@ export function PhoneField({
       )}
     </div>
   );
+}
+
+/**
+ * Country names in the page language, or null on English pages (the list
+ * already has English names) and where the browser lacks Intl.DisplayNames.
+ */
+function useLocalCountryNames(locale: string): ((iso2: string) => string | undefined) | null {
+  return useMemo(() => {
+    if (locale === "en" || typeof Intl === "undefined" || !("DisplayNames" in Intl)) return null;
+    try {
+      const names = new Intl.DisplayNames([locale], { type: "region" });
+      return (iso2: string) => {
+        try {
+          const n = names.of(iso2);
+          return n && n !== iso2 ? n : undefined;
+        } catch {
+          return undefined;
+        }
+      };
+    } catch {
+      return null;
+    }
+  }, [locale]);
 }

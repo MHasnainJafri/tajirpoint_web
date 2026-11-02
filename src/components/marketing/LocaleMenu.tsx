@@ -65,15 +65,19 @@ export function LocaleMenu({ compact = false }: { compact?: boolean }) {
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="menu"
         aria-expanded={open}
-        aria-label={`Language: ${current.english}`}
         className={`inline-flex cursor-pointer items-center gap-2 rounded-full font-semibold text-[var(--color-ink)] transition-colors duration-200 hover:bg-[var(--color-surface)] ${
           compact
-            ? "border border-[var(--color-line-2)] px-4 py-3 text-[14px]"
-            : "px-3 py-2 text-[13px]"
+            ? "min-h-[44px] border border-[var(--color-line-2)] px-4 py-3 text-[14px]"
+            : "min-h-[40px] px-3 py-2 text-[13px]"
         } ${open && !compact ? "bg-[var(--color-surface)]" : ""}`}
       >
         <Stroke name="globe" size={16} />
-        <span>{current.native}</span>
+        {/* The accessible name is "Language: <visible name>", so it always
+            contains the text on screen (WCAG 2.5.3). */}
+        <span>
+          <span className="sr-only">Language: </span>
+          {current.native}
+        </span>
         <svg
           viewBox="0 0 24 24"
           aria-hidden="true"
@@ -93,7 +97,7 @@ export function LocaleMenu({ compact = false }: { compact?: boolean }) {
         <div
           role="menu"
           className={`absolute z-[70] min-w-[210px] animate-[tpMenuIn_.18s_ease_both] overflow-hidden rounded-[14px] border border-[var(--color-line)] bg-white p-[6px] shadow-[0_24px_50px_rgba(10,10,10,.16)] ${
-            compact ? "bottom-full left-0 mb-2" : "right-0 top-full mt-2"
+            compact ? "bottom-full start-0 mb-2" : "end-0 top-full mt-2"
           }`}
         >
           {LOCALES.map((l) => {
@@ -106,7 +110,7 @@ export function LocaleMenu({ compact = false }: { compact?: boolean }) {
                 aria-checked={active}
                 onClick={() => pick(l.code)}
                 dir={l.code === "en" ? "ltr" : "rtl"}
-                className={`flex w-full cursor-pointer items-center justify-between gap-3 rounded-[10px] px-3 py-[10px] text-left transition-colors duration-150 ${
+                className={`flex w-full cursor-pointer items-center justify-between gap-3 rounded-[10px] px-3 py-[10px] text-start transition-colors duration-150 ${
                   active ? "bg-[var(--color-surface)]" : "hover:bg-[var(--color-surface)]"
                 }`}
               >

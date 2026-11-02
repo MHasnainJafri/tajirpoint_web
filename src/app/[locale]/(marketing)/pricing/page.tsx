@@ -77,14 +77,22 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
         </section>
 
         <Pricing showHeader={false} showCompare />
-        <div className="mt-[clamp(64px,9vw,120px)]">
-          <MigrationBand />
+        {/* Below the fold on every screen: the browser skips styling and
+            layout for this block until it scrolls near, which keeps the
+            first screen's main-thread work small on low-end phones. The
+            HTML (FAQ answers included) is all still there for search. */}
+        <div className="[contain-intrinsic-size:auto_2400px] [content-visibility:auto]">
+          <div className="mt-[clamp(64px,9vw,120px)]">
+            <MigrationBand />
+          </div>
+          <Faq />
+          <CallbackSection location="pricing" />
         </div>
-        <Faq />
-        <CallbackSection location="pricing" />
       </div>
 
-      <FinalCta />
+      <div className="[contain-intrinsic-size:auto_600px] [content-visibility:auto]">
+        <FinalCta />
+      </div>
     </>
   );
 }

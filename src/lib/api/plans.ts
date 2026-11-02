@@ -56,6 +56,16 @@ const PlanSchema = z.object({
   extensions_restricted: z.boolean().nullish(),
   /** What this plan does NOT include (Light only). */
   not_included: z.array(z.string()).nullish(),
+
+  // ── PKR prices (TP-491). Sent only when the owner has set a PKR price above
+  //    zero, never on a contact-sales row. Shown next to USD to visitors in
+  //    Pakistan only (see PkrPrice.tsx, fed by pkrLabel); absent = nothing changes.
+  /** PKR per month, decimal string. */
+  pkr_monthly_price: z.string().nullish(),
+  /** PKR per year, decimal string. */
+  pkr_annual_price: z.string().nullish(),
+  /** Always "PKR" when either price above is sent. */
+  pkr_currency_code: z.string().nullish(),
 });
 
 const ResponseSchema = z.object({
@@ -103,6 +113,40 @@ export function formatMoney(amount: number, currency: string): string {
   } catch {
     return `${currency} ${amount}`;
   }
+}
+
+/**
+ * The PKR price for one cadence as a number, or null when the API sent none
+ * (or the plan is not priced at all). Never derived from the USD price: a
+ * converted number would be a price nobody set.
+ */
+export function pkrAmount(plan: MarketingPlan, cadence: "monthly" | "annual"): number | null {
+  if (!plan.is_priced) return null;
+  const raw = cadence === "annual" ? plan.pkr_annual_price : plan.pkr_monthly_price;
+  if (raw == null || raw === "") return null;
+  const n = Number(raw);
+  return Number.isFinite(n) && n > 0 ? n : null;
+}
+
+/** "Rs 4,500" for this cadence, or null when the plan has no PKR price (for PkrPrice). */
+export function pkrLabel(plan: MarketingPlan, cadence: "monthly" | "annual"): string | null {
+  const amount = pkrAmount(plan, cadence);
+  return amount === null ? null : formatPkr(amount);
+}
+
+/** True when any plan carries a PKR price. */
+export function hasPkrPrices(plans: MarketingPlan[] | null | undefined): boolean {
+  return Boolean(plans?.some((p) => pkrAmount(p, "monthly") !== null || pkrAmount(p, "annual") !== null));
+}
+
+/** "Rs 4,500" — the same style the backend uses for PKR (`_format_price`). */
+export function formatPkr(amount: number): string {
+  const whole = amount % 1 === 0;
+  const number = new Intl.NumberFormat("en-US", {
+    minimumFractionDigits: whole ? 0 : 2,
+    maximumFractionDigits: whole ? 0 : 2,
+  }).format(amount);
+  return `Rs ${number}`;
 }
 
 /** Months saved by paying yearly, rounded down; 0 when there is no saving. */

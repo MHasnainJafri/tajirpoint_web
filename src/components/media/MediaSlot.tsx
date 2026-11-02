@@ -35,6 +35,8 @@ export interface MediaSlotProps {
   media: MediaRef;
   /** Shown on the placeholder. */
   title: string;
+  /** Screen-reader label of the placeholder, in the page's language. Defaults to "<title> — feature illustration". */
+  placeholderLabel?: string;
   /** Icon name for the placeholder (see components/design/Icon). */
   icon?: string;
   priority?: boolean;
@@ -50,6 +52,7 @@ export function MediaSlot({
   dir,
   media,
   title,
+  placeholderLabel,
   icon = "pos",
   priority = false,
   sizes = "(max-width: 900px) 100vw, 50vw",
@@ -113,7 +116,7 @@ export function MediaSlot({
 
   return (
     <div className={frame} style={{ aspectRatio: ratio }}>
-      <FeatureIllustration title={title} icon={icon} />
+      <FeatureIllustration title={title} icon={icon} label={placeholderLabel} />
     </div>
   );
 }
@@ -150,11 +153,11 @@ const FEATURE_ART: Record<string, string> = {
   refresh: "artwork-integrations",
 };
 
-function FeatureIllustration({ title, icon }: { title: string; icon: string }) {
+function FeatureIllustration({ title, icon, label }: { title: string; icon: string; label?: string }) {
   return (
     <div
       role="img"
-      aria-label={`${title} — feature illustration`}
+      aria-label={label ?? `${title} — feature illustration`}
       className="absolute inset-0 flex flex-col items-center justify-center gap-4 p-5"
       style={{ background: "linear-gradient(145deg, #F5FAF7, #EDF3EF)" }}
     >

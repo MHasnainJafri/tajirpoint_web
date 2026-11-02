@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from "react";
 import { Link } from "@/i18n/navigation";
-import { legal } from "@/lib/config/site";
 import type { AddonStatus } from "@/lib/marketing/addon-status";
 import { AddonIcon } from "./AddonIcon";
 import { StatusBadge } from "./StatusBadge";
@@ -19,6 +18,21 @@ export interface AddonCard {
   groupLabel: string;
 }
 
+/** The browser's words, in the page's language (messages: extensions.browser). */
+export interface AddonBrowserCopy {
+  searchLabel: string;
+  placeholder: string;
+  all: string;
+  filterBy: string;
+  /** "{count} add-ons shown": the raw message; `{count}` is filled in here. */
+  shown: string;
+  noMatch: string;
+  noMatchBody: string;
+  askCall: string;
+  /** Status badge words, by status. */
+  statusLabel: Record<AddonStatus, string>;
+}
+
 const ALL = "all";
 
 function normalise(s: string): string {
@@ -30,7 +44,7 @@ function normalise(s: string): string {
  * each linking to its detail page. Every card is in the server-rendered HTML
  * (filtering only hides cards), so all detail links stay crawlable.
  */
-export function AddonBrowser({ cards }: { cards: AddonCard[] }) {
+export function AddonBrowser({ cards, copy }: { cards: AddonCard[]; copy: AddonBrowserCopy }) {
   const [group, setGroup] = useState<string>(ALL);
   const [query, setQuery] = useState("");
 
@@ -55,24 +69,22 @@ export function AddonBrowser({ cards }: { cards: AddonCard[] }) {
     [cards, group, q]
   );
 
-  const chips = [{ id: ALL, label: "All", count: cards.length }, ...groups];
+  const chips = [{ id: ALL, label: copy.all, count: cards.length }, ...groups];
 
   return (
     <div
-      lang="en"
-      dir="ltr"
       className="mx-auto max-w-[1220px] px-4 pb-[clamp(56px,8vw,90px)] md:px-10"
     >
       {/* ── Search + chips ─────────────────────────────────────────── */}
       <div className="flex flex-col gap-4">
         <div className="relative mx-auto w-full max-w-[520px]">
           <label htmlFor="addon-search" className="sr-only">
-            Search add-ons
+            {copy.searchLabel}
           </label>
           <svg
             aria-hidden="true"
             viewBox="0 0 24 24"
-            className="pointer-events-none absolute left-4 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-[var(--color-muted)]"
+            className="pointer-events-none absolute start-4 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-[var(--color-muted)]"
             fill="none"
             stroke="currentColor"
             strokeWidth="2"
@@ -86,15 +98,15 @@ export function AddonBrowser({ cards }: { cards: AddonCard[] }) {
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search add-ons, e.g. payments, kitchen, Shopify"
+            placeholder={copy.placeholder}
             autoComplete="off"
-            className="w-full rounded-full border border-[var(--color-line-2)] bg-[var(--color-bg-2)] py-[13px] pl-11 pr-4 text-[15px] text-[var(--color-ink)] shadow-[var(--shadow-card)] outline-none placeholder:text-[var(--color-muted-2)] focus:border-[var(--color-mint-line)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-mint-2)]"
+            className="w-full rounded-full border border-[var(--color-line-2)] bg-[var(--color-bg-2)] py-[13px] ps-11 pe-4 text-[15px] text-[var(--color-ink)] shadow-[var(--shadow-card)] outline-none placeholder:text-[var(--color-muted-2)] focus:border-[var(--color-mint-line)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-mint-2)]"
           />
         </div>
 
         <div
           role="group"
-          aria-label="Filter by type"
+          aria-label={copy.filterBy}
           className="flex flex-wrap justify-center gap-2"
         >
           {chips.map((c) => {
@@ -105,7 +117,7 @@ export function AddonBrowser({ cards }: { cards: AddonCard[] }) {
                 type="button"
                 onClick={() => setGroup(c.id)}
                 aria-pressed={active}
-                className="cursor-pointer rounded-full border px-[14px] py-[8px] text-[13.5px] font-semibold transition-[background,color,border-color] duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-mint-2)]"
+                className="cursor-pointer rounded-full border px-[14px] py-[8px] text-[13.5px] max-md:min-h-[44px] font-semibold transition-[background,color,border-color] duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-mint-2)]"
                 style={{
                   background: active ? "var(--color-ink)" : "var(--color-bg-2)",
                   color: active ? "var(--color-bg)" : "var(--color-ink-3)",
@@ -120,7 +132,7 @@ export function AddonBrowser({ cards }: { cards: AddonCard[] }) {
       </div>
 
       <p aria-live="polite" className="sr-only">
-        {visible.length} add-ons shown
+        {copy.shown.replace("{count}", String(visible.length))}
       </p>
 
       {/* ── Cards ──────────────────────────────────────────────────── */}
@@ -136,7 +148,7 @@ export function AddonBrowser({ cards }: { cards: AddonCard[] }) {
               >
                 <span className="flex items-start justify-between gap-3">
                   <AddonIcon slug={c.slug} iconUrl={c.iconUrl} size={52} />
-                  <StatusBadge status={c.status} />
+                  <StatusBadge status={c.status} label={copy.statusLabel[c.status]} />
                 </span>
                 <span className="mt-4 block text-[16.5px] font-bold tracking-[-0.01em] text-[var(--color-ink)]">
                   {c.name}
@@ -157,16 +169,16 @@ export function AddonBrowser({ cards }: { cards: AddonCard[] }) {
       {visible.length === 0 && (
         <div className="mx-auto mt-6 max-w-[460px] rounded-[20px] border border-dashed border-[var(--color-line-3)] p-8 text-center">
           <p className="text-[15.5px] font-semibold text-[var(--color-ink)]">
-            No add-on matches that.
+            {copy.noMatch}
           </p>
           <p className="mt-2 text-[14px] leading-[1.6] text-[var(--color-muted)]">
-            Tell us what you need and we will tell you if {legal.product} can do it.
+            {copy.noMatchBody}
           </p>
           <Link
             href="/get-a-call"
             className="mt-4 inline-flex rounded-full bg-[var(--color-mint)] px-5 py-[10px] text-[14px] font-bold text-[#0A0A0A]"
           >
-            Ask for a call back
+            {copy.askCall}
           </Link>
         </div>
       )}

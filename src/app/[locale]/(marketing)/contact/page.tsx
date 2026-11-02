@@ -7,6 +7,8 @@ import { Link } from "@/i18n/navigation";
 import { PillBadge } from "@/components/design/primitives";
 import { legal, whatsappLink } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { CONTACT_COPY } from "@/content/i18n/lead-pages/pages";
+import { forwardArrow, pickCopy } from "@/content/i18n/page-copy";
 import { ContactForm } from "./ContactForm";
 
 export async function generateMetadata({
@@ -15,11 +17,11 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const { t } = pickCopy(CONTACT_COPY, locale);
   return buildMetadata({
-    title: "Contact TajirPoint: Sales, Support & WhatsApp",
+    title: t.meta.title,
     absoluteTitle: true,
-    description:
-      "Email hello@tajirpoint.com or WhatsApp +92 344 6800893. Ask about pricing, switching from another POS or support — we reply within one working day.",
+    description: t.meta.description,
     path: "/contact",
     locale,
   });
@@ -31,25 +33,28 @@ const cardCls =
 export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const { t, lang, dir, rtl } = pickCopy(CONTACT_COPY, locale);
+  const arrow = forwardArrow(rtl);
 
   return (
-    <div lang="en" dir="ltr" className="px-[clamp(16px,4vw,40px)] pb-[clamp(60px,9vw,110px)]">
-      <JsonLd schema={pageBreadcrumbs(locale, [["Contact", "/contact"]])} />
+    <div lang={lang} dir={dir} className="px-[clamp(16px,4vw,40px)] pb-[clamp(60px,9vw,110px)]">
+      <JsonLd schema={pageBreadcrumbs(locale, [[t.breadcrumb, "/contact"]])} />
       {/* ── Header ──────────────────────────────────────────────────── */}
       <section className="pb-10 pt-[clamp(36px,7vw,90px)] text-center">
-        <PillBadge>Get in touch</PillBadge>
-        <h1 className="mx-auto mt-6 max-w-[18ch] text-[clamp(32px,5vw,60px)] font-extrabold leading-[1.05] tracking-[-0.035em] text-balance">
-          Talk to the TajirPoint team.
+        <PillBadge>{t.badge}</PillBadge>
+        <h1
+          className={`mx-auto mt-6 max-w-[18ch] text-[clamp(32px,5vw,60px)] font-extrabold text-balance ${rtl ? "leading-[1.3] tracking-normal" : "leading-[1.05] tracking-[-0.035em]"}`}
+        >
+          {t.headline}
         </h1>
         <p className="mx-auto mt-5 max-w-[52ch] text-[17px] leading-[1.6] text-[var(--color-body)]">
-          Questions about pricing, switching from another POS, or help with your account — WhatsApp
-          or email us and we&apos;ll reply within one working day.
+          {t.sub}
         </p>
       </section>
 
       {/* ── Ways to reach us ────────────────────────────────────────── */}
       <section
-        aria-label="Ways to reach us"
+        aria-label={t.waysLabel}
         className="mx-auto grid max-w-[1080px] grid-cols-[repeat(auto-fit,minmax(min(100%,240px),1fr))] gap-4"
       >
         <a
@@ -62,34 +67,34 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           <span className="grid h-11 w-11 place-items-center rounded-[12px] bg-[var(--color-mint-soft)] text-[var(--color-mint-2)]">
             <MessageCircle size={22} strokeWidth={1.8} aria-hidden="true" />
           </span>
-          <span className="text-[17px] font-bold text-[var(--color-ink)]">WhatsApp</span>
+          <span className="text-[17px] font-bold text-[var(--color-ink)]">{t.whatsapp}</span>
           <span className="text-[14px] text-[var(--color-body)]" dir="ltr">
             {legal.whatsappDisplay}
           </span>
           <span className="mt-auto text-[13.5px] font-semibold text-[var(--color-mint-2)]">
-            Start a chat →
+            {t.startChat} {arrow}
           </span>
         </a>
         <a href={`mailto:${legal.email}`} className={cardCls}>
           <span className="grid h-11 w-11 place-items-center rounded-[12px] bg-[var(--color-mint-soft)] text-[var(--color-mint-2)]">
             <Mail size={22} strokeWidth={1.8} aria-hidden="true" />
           </span>
-          <span className="text-[17px] font-bold text-[var(--color-ink)]">Email</span>
-          <span className="text-[14px] text-[var(--color-body)]">{legal.email}</span>
+          <span className="text-[17px] font-bold text-[var(--color-ink)]">{t.email}</span>
+          <span className="text-[14px] text-[var(--color-body)]" dir="ltr">
+            {legal.email}
+          </span>
           <span className="mt-auto text-[13.5px] font-semibold text-[var(--color-mint-2)]">
-            Write to us →
+            {t.writeUs} {arrow}
           </span>
         </a>
         <Link href="/book-demo" className={cardCls}>
           <span className="grid h-11 w-11 place-items-center rounded-[12px] bg-[var(--color-mint-soft)] text-[var(--color-mint-2)]">
             <CalendarDays size={22} strokeWidth={1.8} aria-hidden="true" />
           </span>
-          <span className="text-[17px] font-bold text-[var(--color-ink)]">Book a free demo</span>
-          <span className="text-[14px] text-[var(--color-body)]">
-            See it with your own kind of business. We can move your data for free.
-          </span>
+          <span className="text-[17px] font-bold text-[var(--color-ink)]">{t.demoTitle}</span>
+          <span className="text-[14px] text-[var(--color-body)]">{t.demoBody}</span>
           <span className="mt-auto text-[13.5px] font-semibold text-[var(--color-mint-2)]">
-            Book a demo →
+            {t.demoLink} {arrow}
           </span>
         </Link>
       </section>
@@ -98,13 +103,13 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
       <section className="mx-auto mt-[clamp(40px,6vw,72px)] grid max-w-[1080px] items-start gap-[clamp(28px,5vw,64px)] lg:grid-cols-[0.8fr_1.2fr]">
         <div>
           <h2 className="text-[clamp(24px,3vw,34px)] font-bold leading-[1.15] tracking-[-0.03em]">
-            Or send us a message
+            {t.formHeading}
           </h2>
           <p className="mt-3 max-w-[40ch] text-[15px] leading-[1.65] text-[var(--color-body)]">
-            Every message goes to {legal.email} and is answered by the team that builds TajirPoint.
+            {t.formBody(legal.email)}
           </p>
           <p className="mt-6 text-[13.5px] leading-[1.6] text-[var(--color-muted)]">
-            TajirPoint is operated by {legal.operator}, {legal.city}, {legal.country}.
+            {t.operatedBy(legal.operator, legal.city, legal.country)}
           </p>
         </div>
         <div className="min-w-0 rounded-[24px] border border-[var(--color-line-2)] bg-white p-[clamp(18px,3.4vw,36px)] shadow-[var(--shadow-card)]">

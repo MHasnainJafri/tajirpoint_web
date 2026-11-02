@@ -32,18 +32,26 @@ const geist = Geist({
   display: "swap",
 });
 
+// Not preloaded: the mono face only sets small labels (eyebrows, chart axes),
+// so it must not compete with the sans text for the first bytes on a slow
+// phone. It still loads as soon as the CSS asks for it, and swaps in.
 const geistMono = Geist_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   variable: "--font-geist-mono",
   display: "swap",
+  preload: false,
 });
 
+// Not preloaded: only Urdu/Arabic pages use it (see fontClasses below), so a
+// preload made every English page download two Arabic font files it never
+// draws. The browser fetches it on ur/ar pages when the text needs it.
 const reemKufi = Reem_Kufi({
   subsets: ["arabic", "latin"],
   weight: ["500", "600", "700"],
   variable: "--font-reem-kufi",
   display: "swap",
+  preload: false,
 });
 
 /** Pre-render every locale at build time instead of rendering per request. */
@@ -70,6 +78,10 @@ export async function generateMetadata({
 
   return {
     ...base,
+    // No canonical or hreflang by default: a route that does not set its own
+    // (a 404, say) must not claim to be the home page. Every real page sets
+    // them through buildMetadata().
+    alternates: undefined,
     metadataBase: new URL(siteConfig.url),
     title: { default: siteConfig.name, template: `%s | ${siteConfig.name}` },
     applicationName: siteConfig.name,
@@ -142,9 +154,8 @@ export default async function LocaleLayout({
     .join(" ");
 
   // Only the namespaces that client components actually read: Nav (nav,
-  // extensions.items), ExtensionGrid (extensions) and the cookie banner
-  // (consent). Passing the whole catalogue shipped every string into the RSC
-  // payload of every page.
+  // extensions.items) and the cookie banner (consent). Passing the whole
+  // catalogue shipped every string into the RSC payload of every page.
   const messages = await getMessages();
   const clientMessages = {
     nav: messages.nav,
@@ -161,9 +172,9 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Warm up connections to external domains hit on first meaningful interaction */}
-        <link rel="preconnect" href="https://app.tajirpoint.com" />
-        <JsonLd schema={[organizationSchema(), websiteSchema(locale)]} />
+        {/* DNS only: a full preconnect to the app went unused on first load (Lighthouse). */}
+        <link rel="dns-prefetch" href="https://app.tajirpoint.com" />
+        <JsonLd schema={[organizationSchema(), websiteSchema()]} />
       </head>
       <body className="min-h-screen bg-[var(--color-bg)] text-[var(--color-ink)]">
         <SiteTracking />

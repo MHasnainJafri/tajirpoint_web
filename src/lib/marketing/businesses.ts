@@ -8,8 +8,11 @@
  *  - Every claim must be true of what ships today (see KNOWLEDGE-BASE.md).
  *    Anything not shipped is marked `status: "soon"` or left out.
  *  - Anything only on paid plans carries a `plan` note.
- *  - Copy is English-only for now; `localized` holds the few strings shown in
- *    the Urdu/Arabic navigation.
+ *  - English copy lives here. Urdu and Arabic page copy lives in
+ *    `src/content/i18n/businesses.{ur,ar}.ts`, keyed by slug and feature id —
+ *    add a translation there whenever you add or change a feature here (a
+ *    missing one falls back to English). `localized` holds the name and nav
+ *    line used in the Urdu/Arabic navigation.
  *  - This file must stay free of runtime imports: `scripts/media.mjs` imports
  *    it directly with Node's type stripping to write the media READMEs.
  *
@@ -799,7 +802,7 @@ const retailFashion: Business = {
     },
     {
       q: "Does the counter work if the internet drops?",
-      a: "Yes. Sales keep going offline and sync when the connection returns. Credit sales and actions that need a manager’s approval need a connection.",
+      a: "Yes. Sales keep going offline and sync when the connection returns. Credit sales work offline for customers already on the till, up to their credit limit; going over the limit and other manager approvals need a connection.",
     },
   ],
   cta: {
@@ -878,7 +881,7 @@ const groceryKiryana: Business = {
       icon: "refresh",
       title: "Keeps selling offline",
       benefit: "When the internet or power-backup router drops, the counter keeps ringing up sales and syncs later.",
-      bullets: ["Offline sales queue and sync automatically", "Offline receipts are numbered separately", "Credit sales need a connection"],
+      bullets: ["Offline sales queue and sync automatically", "Offline receipts are numbered separately", "Credit sales offline up to each customer’s limit"],
       media: { slot: "offline", expect: "image", alt: "Offline banner with queued sales" },
     },
     {

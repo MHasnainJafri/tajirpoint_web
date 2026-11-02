@@ -77,7 +77,7 @@ export function CodeBlock({ code, label = "Code", className }: CodeBlockProps) {
           type="button"
           onClick={copy}
           className={cn(
-            "inline-flex shrink-0 cursor-pointer items-center gap-1.5 text-[12px] transition-colors",
+            "-my-2 inline-flex min-h-[32px] min-w-[44px] shrink-0 cursor-pointer items-center justify-center gap-1.5 px-2 text-[12px] transition-colors",
             copied
               ? "text-[var(--color-mint-2)]"
               : "text-[var(--color-muted-2)] hover:text-[var(--color-ink)]"
