@@ -18,10 +18,10 @@ const resolvedUrl =
  * identity: the Terms, Privacy, Cookie and Refund policies, the contact page,
  * the footer and the Organization JSON-LD all read from here.
  *
- * Owner decision (10 Oct 2026): TajirPoint's operator is Anssol (SMC-Private)
- * Limited, Islamabad, Pakistan (brand.ts defaults). No street address, no
- * other offices, no certification claims. Change a mailbox only once it
- * actually receives mail.
+ * Owner decision (3 Nov 2026): TajirPoint is a product of, and operated by,
+ * Tajir Point (SMC-Private) Limited (SECP CUIN 0363771), Islamabad, Pakistan
+ * (brand.ts defaults). No street address, no other offices, no certification
+ * claims. Change a mailbox only once it actually receives mail.
  */
 export const legal = {
   /** The legal entity that provides the service. */
@@ -41,7 +41,7 @@ export const legal = {
   governingLaw: brand.governingLaw,
   courts: brand.courts,
   /** Shown on every legal page. */
-  lastUpdated: "10 October 2026",
+  lastUpdated: "3 November 2026",
   copyrightYear: 2026,
 } as const;
 
