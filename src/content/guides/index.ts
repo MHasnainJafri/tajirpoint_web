@@ -5,14 +5,18 @@ import chooseRestaurantPos from "./choose-restaurant-pos";
 import stockCounting from "./stock-counting";
 import restaurantOpeningChecklist from "./restaurant-opening-checklist";
 import excelToPos from "./excel-to-pos";
+import bestPosSoftwarePakistan from "./best-pos-software-pakistan";
+import restaurantFoodCost from "./restaurant-food-cost";
 
 export type { Guide } from "./types";
 
 /** Every guide, in the order the hub lists them. */
 export const GUIDES: readonly Guide[] = [
+  bestPosSoftwarePakistan,
   fbrPosIntegration,
   chooseRestaurantPos,
   restaurantOpeningChecklist,
+  restaurantFoodCost,
   digitalKhata,
   stockCounting,
   excelToPos,

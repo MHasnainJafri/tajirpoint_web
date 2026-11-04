@@ -267,7 +267,12 @@ const guide: Guide = {
     { label: "Add-ons", href: "/extensions", note: "Accounting, payments, delivery and more" },
     { label: "Book a demo", href: "/book-demo", note: "See it run on your own menu" },
   ],
-  related: ["restaurant-opening-checklist", "stock-counting", "excel-to-pos"],
+  related: [
+    "best-pos-software-pakistan",
+    "restaurant-opening-checklist",
+    "stock-counting",
+    "excel-to-pos",
+  ],
   datePublished: "2026-11-02",
   dateModified: "2026-11-02",
   og: {

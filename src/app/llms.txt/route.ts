@@ -3,7 +3,7 @@ import { BUSINESSES } from "@/lib/marketing/businesses";
 import { RESOURCES } from "@/lib/docs/nav";
 import { getPlans, planSummary } from "@/lib/api/plans";
 import { STATUS_LABEL, getAddonCatalogue, type Addon } from "@/lib/marketing/addons";
-import { CHECKED, COMPARISONS } from "@/content/compare";
+import { COMPARISONS } from "@/content/compare";
 import { LOCATIONS, LOCATIONS_HUB, locationPath } from "@/content/locations";
 import { GUIDES } from "@/content/guides";
 import { TOOLS } from "@/content/tools/tools";
@@ -144,7 +144,7 @@ ${link("Tax & e-invoicing", "/features/e-invoicing", "Tax-inclusive pricing, VAT
 
 ## Comparisons
 
-${link("Compare", "/compare", `Honest comparisons with paper khata, Excel, a cash register and other POS systems; competitor facts sourced and checked ${CHECKED}`)}
+${link("Compare", "/compare", `Honest comparisons with paper khata, Excel, a cash register and other POS systems; competitor facts sourced and dated on each page`)}
 ${COMPARISONS.map((c) => link(c.label, `/compare/${c.slug}`, c.blurb)).join("\n")}
 
 ## Guides

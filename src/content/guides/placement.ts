@@ -8,11 +8,19 @@
 export const GUIDE_PLACEMENT: Readonly<Record<string, readonly string[]>> = {
   "/business/restaurants": [
     "choose-restaurant-pos",
+    "restaurant-food-cost",
     "restaurant-opening-checklist",
-    "fbr-pos-integration",
   ],
-  "/business/cafes-bakeries": ["choose-restaurant-pos", "restaurant-opening-checklist"],
-  "/business/cloud-kitchens": ["choose-restaurant-pos", "restaurant-opening-checklist"],
+  "/business/cafes-bakeries": [
+    "restaurant-food-cost",
+    "choose-restaurant-pos",
+    "restaurant-opening-checklist",
+  ],
+  "/business/cloud-kitchens": [
+    "restaurant-food-cost",
+    "choose-restaurant-pos",
+    "restaurant-opening-checklist",
+  ],
   "/business/grocery-kiryana": ["digital-khata", "stock-counting", "excel-to-pos"],
   "/business/retail-fashion": ["stock-counting", "excel-to-pos", "fbr-pos-integration"],
   "/business/pharmacy": ["stock-counting", "fbr-pos-integration"],
@@ -29,23 +37,44 @@ export const GUIDE_PLACEMENT: Readonly<Record<string, readonly string[]>> = {
   "/features/offline": ["choose-restaurant-pos"],
   "/features/van-sales": ["digital-khata", "stock-counting"],
 
-  "/pos/pakistan": ["fbr-pos-integration", "digital-khata", "choose-restaurant-pos"],
-  "/pos/lahore": ["fbr-pos-integration", "digital-khata", "choose-restaurant-pos"],
-  "/pos/karachi": ["fbr-pos-integration", "digital-khata", "choose-restaurant-pos"],
-  "/pos/islamabad-rawalpindi": ["fbr-pos-integration", "digital-khata", "choose-restaurant-pos"],
-  "/pos/faisalabad": ["fbr-pos-integration", "digital-khata", "stock-counting"],
-  "/pos/uk": ["choose-restaurant-pos", "restaurant-opening-checklist", "stock-counting"],
+  "/pos/pakistan": ["best-pos-software-pakistan", "fbr-pos-integration", "digital-khata"],
+  "/pos/lahore": ["best-pos-software-pakistan", "fbr-pos-integration", "digital-khata"],
+  "/pos/karachi": ["best-pos-software-pakistan", "fbr-pos-integration", "digital-khata"],
+  "/pos/islamabad-rawalpindi": [
+    "best-pos-software-pakistan",
+    "fbr-pos-integration",
+    "digital-khata",
+  ],
+  "/pos/faisalabad": ["best-pos-software-pakistan", "fbr-pos-integration", "digital-khata"],
+  "/pos/uk": ["choose-restaurant-pos", "restaurant-food-cost", "restaurant-opening-checklist"],
 
   "/compare/tajirpoint-vs-paper-khata": ["digital-khata", "excel-to-pos"],
   "/compare/tajirpoint-vs-excel": ["excel-to-pos", "stock-counting"],
   "/compare/tajirpoint-vs-cash-register": ["excel-to-pos", "stock-counting"],
-  "/compare/tajirpoint-vs-corn-pos": ["fbr-pos-integration", "choose-restaurant-pos"],
+  "/compare/tajirpoint-vs-corn-pos": [
+    "best-pos-software-pakistan",
+    "fbr-pos-integration",
+    "choose-restaurant-pos",
+  ],
+  "/compare/tajirpoint-vs-oscar": [
+    "best-pos-software-pakistan",
+    "fbr-pos-integration",
+    "choose-restaurant-pos",
+  ],
   "/compare/tajirpoint-vs-foodics": ["choose-restaurant-pos", "restaurant-opening-checklist"],
   "/compare/tajirpoint-vs-loyverse": ["choose-restaurant-pos", "stock-counting"],
   "/compare/tajirpoint-vs-square": ["choose-restaurant-pos", "stock-counting"],
 
+  "/tools/food-cost-calculator": ["restaurant-food-cost", "stock-counting"],
+  "/tools/profit-margin-calculator": ["restaurant-food-cost", "excel-to-pos"],
+  "/tools/break-even-calculator": ["restaurant-food-cost", "restaurant-opening-checklist"],
+
   "/extensions/fbr-integration": ["fbr-pos-integration"],
-  "/extensions/restaurant": ["choose-restaurant-pos", "restaurant-opening-checklist"],
-  "/extensions/restaurant-toolbox": ["choose-restaurant-pos"],
-  "/extensions/cloud-kitchen": ["choose-restaurant-pos"],
+  "/extensions/restaurant": [
+    "choose-restaurant-pos",
+    "restaurant-food-cost",
+    "restaurant-opening-checklist",
+  ],
+  "/extensions/restaurant-toolbox": ["restaurant-food-cost", "choose-restaurant-pos"],
+  "/extensions/cloud-kitchen": ["restaurant-food-cost", "choose-restaurant-pos"],
 };

@@ -262,7 +262,12 @@ const guide: Guide = {
     { label: "Pricing", href: "/pricing", note: "Light is free for 3 months, no card" },
     { label: "Get a call back", href: "/get-a-call", note: "We help you plan your set-up" },
   ],
-  related: ["choose-restaurant-pos", "fbr-pos-integration", "stock-counting"],
+  related: [
+    "restaurant-food-cost",
+    "choose-restaurant-pos",
+    "fbr-pos-integration",
+    "stock-counting",
+  ],
   datePublished: "2026-11-02",
   dateModified: "2026-11-02",
   og: {

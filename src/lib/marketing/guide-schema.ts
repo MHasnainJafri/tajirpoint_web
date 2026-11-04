@@ -4,7 +4,7 @@ import { canonicalUrl } from "@/lib/seo/metadata";
 import { ORG_ID, SOFTWARE_ID, WEBSITE_ID, founderSchema } from "@/lib/seo/schemas";
 import { ogImageForPath } from "@/lib/seo/og-cards";
 import { GUIDES, GUIDES_HUB, guideWordCount, plainText, type Guide } from "@/content/guides";
-import { CHECKED_ISO, type Comparison } from "@/content/compare";
+import { checkedOn, type Comparison } from "@/content/compare";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -81,8 +81,8 @@ export function comparisonArticleSchema(c: Comparison, locale: string): WithCont
     mainEntityOfPage: url,
     image: imageFor(path),
     inLanguage: "en",
-    datePublished: CHECKED_ISO,
-    dateModified: CHECKED_ISO,
+    datePublished: checkedOn(c).iso,
+    dateModified: checkedOn(c).iso,
     author: AUTHOR,
     publisher: { "@id": ORG_ID } as any,
     isPartOf: { "@id": WEBSITE_ID } as any,

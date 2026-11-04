@@ -339,7 +339,12 @@ const guide: Guide = {
       note: "A person from our team calls you within one working day",
     },
   ],
-  related: ["choose-restaurant-pos", "restaurant-opening-checklist", "excel-to-pos"],
+  related: [
+    "best-pos-software-pakistan",
+    "choose-restaurant-pos",
+    "restaurant-opening-checklist",
+    "excel-to-pos",
+  ],
   datePublished: "2026-11-02",
   dateModified: "2026-11-02",
   og: {

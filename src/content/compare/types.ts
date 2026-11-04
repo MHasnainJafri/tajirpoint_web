@@ -80,4 +80,11 @@ export interface Comparison {
   sources: Source[];
   /** Other comparison slugs to link at the bottom. */
   related: string[];
+  /** When this page's competitor facts were read, if not on the shared CHECKED date. */
+  checked?: { label: string; iso: string };
+}
+
+/** The date a comparison's competitor facts were read: its own, else the shared one. */
+export function checkedOn(c: Pick<Comparison, "checked">): { label: string; iso: string } {
+  return c.checked ?? { label: CHECKED, iso: CHECKED_ISO };
 }

@@ -169,7 +169,13 @@ export function CompareTable({ c }: { c: Comparison }) {
 }
 
 /** Numbered list of the public pages behind every competitor fact. */
-export function SourcesList({ sources }: { sources: Source[] }) {
+export function SourcesList({
+  sources,
+  checked = { label: CHECKED, iso: CHECKED_ISO },
+}: {
+  sources: Source[];
+  checked?: { label: string; iso: string };
+}) {
   if (!sources.length) return null;
   return (
     <section aria-labelledby="sources-title" className="mt-[clamp(40px,6vw,64px)]">
@@ -181,8 +187,8 @@ export function SourcesList({ sources }: { sources: Source[] }) {
       </h2>
       <p className="mt-2 text-[14px] text-[var(--color-muted)]">
         Every fact about another company comes from its own public page, read on{" "}
-        <time dateTime={CHECKED_ISO}>{CHECKED}</time>. Prices and features change, so check their
-        site before you decide.
+        <time dateTime={checked.iso}>{checked.label}</time>. Prices and features change, so check
+        their site before you decide.
       </p>
       <ol className="mt-4 flex flex-col gap-2 text-[14px]">
         {sources.map((s, i) => (
@@ -198,7 +204,9 @@ export function SourcesList({ sources }: { sources: Source[] }) {
                 {s.label}
               </a>{" "}
               <span className="break-all text-[12.5px] text-[var(--color-muted)]">({s.url})</span>{" "}
-              <span className="text-[12.5px] text-[var(--color-muted)]">checked {CHECKED}</span>
+              <span className="text-[12.5px] text-[var(--color-muted)]">
+                checked {checked.label}
+              </span>
             </span>
           </li>
         ))}

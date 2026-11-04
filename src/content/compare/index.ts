@@ -2,9 +2,10 @@ import { legal } from "@/lib/config/site";
 import type { Comparison } from "./types";
 import { cashRegister, excel, paperKhata } from "./alternatives";
 import { cornPos, foodics, loyverse, square } from "./competitors";
+import { oscar } from "./oscar";
 import { BRAND_NAME } from "@/lib/config/brand";
 
-export { CHECKED, CHECKED_ISO } from "./types";
+export { CHECKED, CHECKED_ISO, checkedOn } from "./types";
 export type { Cell, Comparison, Faq, Mark, Row, Source } from "./types";
 
 /** Hub order: the ways people run a shop today first, then other POS products. */
@@ -16,6 +17,7 @@ export const COMPARISONS: Comparison[] = [
   square,
   foodics,
   cornPos,
+  oscar,
 ];
 
 export const COMPARE_SLUGS = COMPARISONS.map((c) => c.slug);
@@ -29,7 +31,7 @@ export { COMPARE_LABEL } from "./label";
 export const COMPARE_HUB = {
   seo: {
     title: `Compare ${BRAND_NAME} with Other POS Options`,
-    description: `Honest comparisons of ${BRAND_NAME} with paper khata, Excel, a cash register, Loyverse, Square, Foodics and CORN POS. Sources and dates on every competitor fact.`,
+    description: `Honest comparisons of ${BRAND_NAME} with paper khata, Excel, a cash register, Loyverse, Square, Foodics, CORN POS and Oscar. Sources and dates on every competitor fact.`,
     keywords: [
       "POS comparison",
       "POS alternatives",
