@@ -27,6 +27,8 @@ export const legal = {
   /** The legal entity that provides the service. */
   operator: brand.legalName,
   operatorUrl: brand.legalUrl,
+  /** "SECP CUIN 0363771", or "" when the brand publishes no company number. */
+  registration: brand.companyNumber ? `${brand.companyRegistry} ${brand.companyNumber}` : "",
   city: brand.city,
   country: brand.countryName,
   /** The product name used in legal copy. */
@@ -60,10 +62,10 @@ function xHandle(value: string | undefined): string {
 // Single source of truth for brand, URLs and social.
 export const siteConfig = {
   /**
-   * The brand as it is written everywhere else — the domain, the app names on
-   * Google Play ("TajirPoint POS"), the copy and every page title. The spaced
-   * form is kept as an alternate name in the Organization markup so a search
-   * for "Tajir Point" still resolves to the same entity.
+   * The brand as it is written everywhere: "Tajir Point", the name on the
+   * Google Business Profile and every social profile (owner, 2 Nov 2026). The
+   * one-word form is kept as an alternate name in the Organization markup so
+   * a search for "TajirPoint" still resolves to the same entity.
    */
   name: brand.name,
   alternateNames: brand.alternateNames,
@@ -102,6 +104,7 @@ export const siteConfig = {
     linkedin: profileUrl(process.env.SOCIAL_LINKEDIN_URL),
     youtube: profileUrl(process.env.SOCIAL_YOUTUBE_URL),
     tiktok: profileUrl(process.env.SOCIAL_TIKTOK_URL),
+    googleBusiness: profileUrl(process.env.SOCIAL_GOOGLE_BUSINESS_URL),
     x: xHandle(process.env.SOCIAL_X_HANDLE)
       ? `https://x.com/${xHandle(process.env.SOCIAL_X_HANDLE).slice(1)}`
       : "",

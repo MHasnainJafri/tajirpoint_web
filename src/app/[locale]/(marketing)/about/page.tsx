@@ -66,7 +66,12 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           {t.intro(legal.product, legal.country, legal.operator)}
         </p>
 
-        <NextStep locale={locale} location="about_header" secondary={["demo", "call"]} className="mt-8" />
+        <NextStep
+          locale={locale}
+          location="about_header"
+          secondary={["demo", "call"]}
+          className="mt-8"
+        />
       </section>
 
       {/* ── Story ───────────────────────────────────────────────────── */}
@@ -95,6 +100,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                 >
                   {legal.operator}
                 </a>
+                {legal.registration && <> ({legal.registration})</>}
                 {t.story2After(legal.city, legal.country)}
               </p>
             </div>

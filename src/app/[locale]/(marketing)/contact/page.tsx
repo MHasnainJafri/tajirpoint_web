@@ -113,6 +113,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           </p>
           <p className="mt-6 text-[13.5px] leading-[1.6] text-[var(--color-muted)]">
             {t.operatedBy(legal.operator, legal.city, legal.country)}
+            {legal.registration && <> ({legal.registration})</>}
           </p>
         </div>
         <div className="min-w-0 rounded-[24px] border border-[var(--color-line-2)] bg-white p-[clamp(18px,3.4vw,36px)] shadow-[var(--shadow-card)]">

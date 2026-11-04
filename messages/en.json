@@ -124,7 +124,7 @@
     },
     "hero": {
       "badge": "Point of sale & back office · Built around your business",
-      "headline": "The point of sale that runs",
+      "headline": "The POS software that runs",
       "headlineAccent": "your whole business.",
       "sub": "Run checkout, stock, purchasing, customer credit and accounting in one place. Add the tools your restaurant, store or distribution business needs, with multi-currency support and a POS that keeps selling offline.",
       "ctaPrimary": "Start free — 3 months",
@@ -476,7 +476,7 @@
     },
     "pricing": {
       "eyebrow": "Pricing",
-      "headline": "Simple, published pricing.",
+      "headline": "Simple, published POS pricing.",
       "sub": "Start on Light, free for 3 months with no card. Then choose Shop or Business to keep selling — no transaction fees.",
       "basic": {
         "name": "Light",

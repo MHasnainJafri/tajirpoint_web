@@ -4,6 +4,7 @@ import type {
   SoftwareApplication,
   BreadcrumbList,
   FAQPage,
+  WebPage,
   WithContext,
 } from "schema-dts";
 import { legal, siteConfig, socialProfiles } from "@/lib/config/site";
@@ -17,6 +18,7 @@ import { routing } from "@/i18n/routing";
 /** Stable entity ids, so every page's markup points at the same Organization and WebSite. */
 export const ORG_ID = `${siteConfig.url}/#organization`;
 export const WEBSITE_ID = `${siteConfig.url}/#website`;
+export const SOFTWARE_ID = `${siteConfig.url}/#software`;
 
 /** Language names for `availableLanguage`, kept to the languages this build has. */
 const LANGUAGE_CODES: Record<string, string> = { English: "en", Urdu: "ur", Arabic: "ar" };
@@ -45,6 +47,14 @@ export function organizationSchema(): WithContext<Organization> {
       addressCountry: brand.country,
     } as any,
     email: legal.email,
+    ...phone,
+    ...(brand.companyNumber && {
+      identifier: {
+        "@type": "PropertyValue",
+        propertyID: brand.companyRegistry,
+        value: brand.companyNumber,
+      } as any,
+    }),
     // A raster logo: Google's logo guidelines want at least 112×112 and
     // not every consumer of this markup renders SVG.
     logo: {
@@ -143,7 +153,7 @@ export function softwareApplicationSchema(
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "@id": `${siteConfig.url}/#software`,
+    "@id": SOFTWARE_ID,
     name: siteConfig.name,
     applicationCategory: "BusinessApplication",
     applicationSubCategory: "Point of sale (POS) software",
@@ -231,39 +241,41 @@ export function faqSchema(
   };
 }
 
+/**
+ * A business-type page (/business/restaurants…) as a WebPage about the one
+ * product (`#software`), not a product of its own: as separate
+ * SoftwareApplication nodes the 12 pages read as 36 different products, each
+ * without an @id (SEO audit 4 Nov 2026). The offers live on `#software`.
+ */
 export function verticalSoftwareSchema({
   name,
   applicationSubCategory,
   description,
   path,
   features,
-  plans,
+  locale,
 }: {
   name: string;
   applicationSubCategory: string;
   description: string;
   path: string;
   features: string[];
-  /** The published catalogue from getPlans(). Offers are omitted when it
-   *  could not be read rather than guessed. */
-  plans?: MarketingPlan[] | null;
-}): WithContext<SoftwareApplication> {
+  locale: string;
+}): WithContext<WebPage> {
+  const url = `${siteConfig.url}${path}`;
   return {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
+    "@type": "WebPage",
+    "@id": `${url}#webpage`,
+    url,
     name: `${name} — ${siteConfig.name}`,
-    applicationCategory: "BusinessApplication",
-    applicationSubCategory,
     description,
-    url: `${siteConfig.url}${path}`,
+    inLanguage: locale,
     image: `${siteConfig.url}/og/business-${path.split("/").pop()}.png`,
-    operatingSystem: "Web, Windows, Android",
-    publisher: { "@id": ORG_ID } as any,
-    inLanguage: [...routing.locales],
-    featureList: features.join(", "),
-    // Same Offers as the home page, from the same API rows — never a
-    // hardcoded plan name or price.
-    ...(plans?.length ? { offers: plans.map((plan) => planOffer(plan)) as any } : {}),
+    isPartOf: { "@id": WEBSITE_ID } as any,
+    about: { "@id": SOFTWARE_ID } as any,
+    audience: { "@type": "BusinessAudience", audienceType: applicationSubCategory } as any,
+    mainEntity: { "@id": SOFTWARE_ID, featureList: features.join(", ") } as any,
   };
 }
 

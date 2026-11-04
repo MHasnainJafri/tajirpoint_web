@@ -19,6 +19,7 @@ import {
   type SupportTone,
 } from "@/content/locations";
 import { BRAND_NAME } from "@/lib/config/brand";
+import { RelatedGuides } from "@/components/marketing/guides/RelatedGuides";
 
 const TONE: Record<SupportTone, { bg: string; fg: string; dot: string }> = {
   ready: { bg: "#E4FAEF", fg: "#05603A", dot: "#00A862" },
@@ -419,6 +420,8 @@ export function LocationView({
           </ul>
         </nav>
       </div>
+
+      <RelatedGuides path={path} locale={locale} />
 
       {/* ── Final CTA ──────────────────────────────────────────── */}
       <section className="px-[clamp(12px,3vw,24px)] pb-[clamp(56px,8vw,96px)] pt-[clamp(56px,8vw,96px)]">

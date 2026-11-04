@@ -8,6 +8,7 @@ import { backArrow, forwardArrow, pickCopy } from "@/content/i18n/page-copy";
 import { FEATURE_COMMON } from "@/content/i18n/features/common";
 import type { FeaturePageCopy } from "@/content/i18n/features/types";
 import type { Localized } from "@/content/i18n/page-copy";
+import { RelatedGuides } from "@/components/marketing/guides/RelatedGuides";
 
 /**
  * The shared layout of the five /features/<slug> pages (khata, accounting,
@@ -285,6 +286,8 @@ export function FeatureDetailPage({
           </div>
         </div>
       </section>
+
+      <RelatedGuides path={path} locale={locale} />
 
       {/* ── CTA ─────────────────────────────────────────────────────── */}
       <section className="px-5 pb-[110px] pt-5 md:px-10">
