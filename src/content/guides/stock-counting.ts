@@ -271,7 +271,7 @@ const guide: Guide = {
       note: "Ask how to set up stock for your shop",
     },
   ],
-  related: ["excel-to-pos", "choose-restaurant-pos", "digital-khata"],
+  related: ["restaurant-food-cost", "excel-to-pos", "choose-restaurant-pos", "digital-khata"],
   datePublished: "2026-11-02",
   dateModified: "2026-11-02",
   og: {

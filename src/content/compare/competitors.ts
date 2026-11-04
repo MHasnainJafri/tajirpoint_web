@@ -699,5 +699,5 @@ export const cornPos: Comparison = {
     { label: "CORN POS home page", url: "https://www.cornpos.com/" },
     { label: "CORN POS pricing", url: "https://www.cornpos.com/pricing" },
   ],
-  related: ["tajirpoint-vs-foodics", "tajirpoint-vs-loyverse", "tajirpoint-vs-cash-register"],
+  related: ["tajirpoint-vs-oscar", "tajirpoint-vs-foodics", "tajirpoint-vs-loyverse"],
 };

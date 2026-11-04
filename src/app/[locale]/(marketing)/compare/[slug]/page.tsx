@@ -11,7 +11,7 @@ import {
   RelatedComparisons,
   SourcesList,
 } from "@/components/marketing/compare/CompareParts";
-import { CHECKED, CHECKED_ISO, COMPARE_SLUGS, getComparison } from "@/content/compare";
+import { COMPARE_SLUGS, checkedOn, getComparison } from "@/content/compare";
 import { getPlans, planSummary } from "@/lib/api/plans";
 import { legal, siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -111,8 +111,8 @@ export default async function ComparisonPage({ params }: { params: Params }) {
             {isCompetitor ? (
               <>
                 {" "}
-                Facts about {c.otherName} checked <time dateTime={CHECKED_ISO}>{CHECKED}</time> from
-                its own pages (
+                Facts about {c.otherName} checked{" "}
+                <time dateTime={checkedOn(c).iso}>{checkedOn(c).label}</time> from its own pages (
                 <a href="#sources-title" className="underline underline-offset-2">
                   sources
                 </a>
@@ -273,7 +273,7 @@ export default async function ComparisonPage({ params }: { params: Params }) {
           </section>
         </div>
 
-        <SourcesList sources={c.sources} />
+        <SourcesList sources={c.sources} checked={checkedOn(c)} />
 
         <FaqList faqs={c.faqs} />
 

@@ -16,6 +16,7 @@ import { TOOL_SLUGS, getTool, type ToolSlug } from "@/content/tools/tools";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { faqSchema, pageBreadcrumbs } from "@/lib/seo/schemas";
 import { toolSchema } from "@/lib/seo/tool-schemas";
+import { RelatedGuides } from "@/components/marketing/guides/RelatedGuides";
 
 /** Only the listed tools exist; anything else is a 404, not a render. */
 export const dynamicParams = false;
@@ -127,6 +128,8 @@ export default async function ToolPage({ params }: { params: Params }) {
       <section className="border-t border-[var(--color-line-soft)] px-[clamp(16px,4vw,40px)] py-[clamp(40px,6vw,64px)]">
         <ToolFaqs faqs={tool.faqs} />
       </section>
+
+      <RelatedGuides path={`/tools/${tool.slug}`} locale={locale} />
 
       <section className="border-t border-[var(--color-line-soft)] bg-[var(--color-bg-3)] px-[clamp(16px,4vw,40px)] py-[clamp(40px,6vw,64px)]">
         <div className="mx-auto max-w-[1140px]">

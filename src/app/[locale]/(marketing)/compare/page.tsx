@@ -3,11 +3,11 @@ import { setRequestLocale } from "next-intl/server";
 import { CtaPanel, GhostButton, MintButton } from "@/components/design/primitives";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { CompareCard, FaqList } from "@/components/marketing/compare/CompareParts";
-import { CHECKED, CHECKED_ISO, COMPARE_HUB, COMPARISONS } from "@/content/compare";
+import { COMPARE_HUB, COMPARISONS } from "@/content/compare";
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata, canonicalUrl } from "@/lib/seo/metadata";
 import { faqSchema, pageBreadcrumbs } from "@/lib/seo/schemas";
-import { BRAND_NAME } from "@/lib/config/brand";
+import { BRAND_NAME, brand } from "@/lib/config/brand";
 import { assertPageShown } from "@/lib/config/pages";
 
 export async function generateMetadata({
@@ -37,7 +37,7 @@ const GROUPS = [
   {
     id: "pos",
     title: `${BRAND_NAME} vs other POS systems`,
-    sub: `Fair, side-by-side, with a source and the date (${CHECKED}) for every fact about the other product.`,
+    sub: "Fair, side-by-side, with a source and a date for every fact about the other product.",
     kind: "competitor" as const,
   },
 ];
@@ -83,8 +83,11 @@ export default async function CompareHubPage({ params }: { params: Promise<{ loc
             still coming soon on our side.
           </p>
           <p className="mt-3 text-[13px] text-[var(--color-muted)]">
-            Written by the {siteConfig.name} team. Competitor facts checked{" "}
-            <time dateTime={CHECKED_ISO}>{CHECKED}</time> from each company&rsquo;s own pages.
+            {brand.founderName
+              ? `Written by ${brand.founderName}, ${brand.founderTitle.toLowerCase()} of ${siteConfig.name}.`
+              : `Written by the ${siteConfig.name} team.`}{" "}
+            Competitor facts come from each company&rsquo;s own pages; each comparison shows the
+            date they were checked.
           </p>
         </section>
 
