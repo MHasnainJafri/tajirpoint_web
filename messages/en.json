@@ -88,7 +88,7 @@
         },
         "about": {
           "title": "About us",
-          "sub": "Who builds TajirPoint, and why."
+          "sub": "Who builds Tajir Point, and why."
         },
         "contact": {
           "title": "Contact us",
@@ -103,7 +103,7 @@
       "heading": "Find your business",
       "demoBadge": "Free demo",
       "demoTitle": "Book a free demo",
-      "demoSub": "We show you TajirPoint with your own products — in English or Urdu.",
+      "demoSub": "We show you Tajir Point with your own products — in English or Urdu.",
       "demoCta": "Book a demo",
       "migrateTitle": "We move your data from your old POS",
       "migrateSub": "Send us an Excel or CSV export and our team loads it for you, free.",
@@ -113,7 +113,7 @@
   },
   "landing": {
     "meta": {
-      "title": "TajirPoint: POS System for Shops, Restaurants & Distributors",
+      "title": "Tajir Point: POS for Shops, Restaurants & Distributors",
       "description": "Offline-first POS and back office for shops, restaurants and distributors: stock, khata credit, accounting, delivery and an online store. Free for 3 months."
     },
     "pricingMeta": {
@@ -542,7 +542,7 @@
           "label": "General",
           "items": {
             "0": {
-              "q": "What is TajirPoint?",
+              "q": "What is Tajir Point?",
               "a": "A point-of-sale and complete back office for small and medium businesses: selling, stock, purchasing, customer credit, accounting, staff, delivery and an online store on one login — localised for how shops run in your country."
             },
             "1": {
@@ -658,12 +658,12 @@
   "solutions": {
     "meta": {
       "title": "Solutions — Six industries, one platform",
-      "description": "Retail, restaurants, electronics, pharmacies, distribution and services. Extensions shape TajirPoint around your counter."
+      "description": "Retail, restaurants, electronics, pharmacies, distribution and services. Extensions shape Tajir Point around your counter."
     },
     "badge": "SIX INDUSTRIES · ONE PLATFORM",
     "headline": "Made for",
     "headlineAccent": "your counter",
-    "sub": "Every industry runs differently. Extensions shape TajirPoint around yours — nothing more on screen than your business needs.",
+    "sub": "Every industry runs differently. Extensions shape Tajir Point around yours — nothing more on screen than your business needs.",
     "cta": {
       "headline": "See it shaped around your business",
       "body": "Free for 3 months. No card needed.",
@@ -879,14 +879,14 @@
   },
   "extensions": {
     "meta": {
-      "title": "Extensions — The TajirPoint marketplace",
+      "title": "Extensions — The Tajir Point marketplace",
       "description": "Add-ons you switch on per shop: payments, accounting, delivery, online store, tax and customer tools. See which are ready, which we set up, and what is next."
     },
     "badge": "MARKETPLACE · {count} EXTENSIONS",
     "headline": "The extension",
     "headlineAccent": "marketplace",
     "sub": "Install what your business needs, per location. Availability, pricing and provider support vary by country and plan. Features marked coming soon cannot be installed yet.",
-    "listName": "TajirPoint add-ons",
+    "listName": "Tajir Point add-ons",
     "legend": {
       "active": "switch it on yourself",
       "contact_us": "our team sets it up with you",

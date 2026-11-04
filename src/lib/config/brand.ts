@@ -152,8 +152,8 @@ const env = {
  * number in its JavaScript (scripts/build-brand-site.sh checks that).
  */
 const OURS = {
-  name: "TajirPoint",
-  alternateNames: ["Tajir Point", "Tajir Point POS", "TajirPoint POS"],
+  name: "Tajir Point",
+  alternateNames: ["TajirPoint", "Tajir Point POS", "TajirPoint POS"],
   description:
     "Point of sale, inventory, customer credit and accounting for stores, restaurants and distributors. Multi-currency support on web, desktop and Android. Free for 3 months.",
   tagline: "Run your shop. Everywhere.",
@@ -166,8 +166,11 @@ const OURS = {
   legalName: "Tajir Point (SMC-Private) Limited",
   legalUrl: "https://tajirpoint.com",
   city: "Islamabad",
-  founded: "2022" as string | undefined,
-  androidAppUrl: "https://play.google.com/store/apps/details?id=com.tajirpoint.pos",
+  founded: "2025-03" as string | undefined,
+  // Empty until the Play listing is public: com.tajirpoint.pos is on internal
+  // testing, so its store page 404s for visitors (SEO audit 4 Nov 2026). Put
+  // https://play.google.com/store/apps/details?id=com.tajirpoint.pos back then.
+  androidAppUrl: "",
   apiEnvPrefix: "TAJIR",
 };
 

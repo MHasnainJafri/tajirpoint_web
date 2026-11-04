@@ -40,37 +40,52 @@ describe("business catalog", () => {
     expect(getBusiness("nope")).toBeUndefined();
   });
 
-  it.each(BUSINESSES.map((b) => [b.slug, b] as const))("%s has every required field", (_slug, b) => {
-    expect(b.slug).toMatch(/^[a-z]+(-[a-z]+)*$/);
-    for (const v of [b.name, b.navLine, b.icon, b.seo.title, b.seo.description, b.schemaSubCategory, b.hero.eyebrow, b.hero.headline, b.hero.sub, b.cta.headline, b.cta.sub]) {
-      expect(v.trim().length).toBeGreaterThan(0);
+  it.each(BUSINESSES.map((b) => [b.slug, b] as const))(
+    "%s has every required field",
+    (_slug, b) => {
+      expect(b.slug).toMatch(/^[a-z]+(-[a-z]+)*$/);
+      for (const v of [
+        b.name,
+        b.navLine,
+        b.icon,
+        b.seo.title,
+        b.seo.description,
+        b.schemaSubCategory,
+        b.hero.eyebrow,
+        b.hero.headline,
+        b.hero.sub,
+        b.cta.headline,
+        b.cta.sub,
+      ]) {
+        expect(v.trim().length).toBeGreaterThan(0);
+      }
+      // The page title is `${seo.title} | Tajir Point` and Google shows ~60
+      // characters; the description must fit the ~160 a snippet shows.
+      expect(b.seo.title.length + " | Tajir Point".length).toBeLessThanOrEqual(60);
+      expect(b.seo.description.length).toBeGreaterThanOrEqual(140);
+      expect(b.seo.description.length).toBeLessThanOrEqual(160);
+      expect(new Set(b.seo.keywords).size).toBe(b.seo.keywords.length);
+      expect(b.seo.keywords.length).toBeGreaterThan(0);
+      expect(CONTACT_LABELS).toContain(b.contactLabel);
+      for (const loc of ["ur", "ar"] as const) {
+        expect(b.localized[loc].name.trim()).not.toBe("");
+        expect(b.localized[loc].navLine.trim()).not.toBe("");
+        expect(businessLabel(b, loc).name).toBe(b.localized[loc].name);
+      }
+      expect(businessLabel(b, "en").name).toBe(b.name);
+      expect(b.apps.length).toBeGreaterThan(0);
+      for (const app of b.apps) expect(APPS[app]).toBeDefined();
+      expect(b.features.length).toBeGreaterThanOrEqual(3);
+      expect(new Set(b.features.map((f) => f.id)).size).toBe(b.features.length);
+      for (const f of b.features) {
+        expect(f.id).toMatch(/^[a-z]+(-[a-z]+)*$/);
+        expect(f.title.trim()).not.toBe("");
+        expect(f.benefit.trim()).not.toBe("");
+        expect(f.bullets.length).toBeGreaterThan(0);
+      }
+      expect(b.faqs.length).toBeGreaterThan(0);
     }
-    // The page title is `${seo.title} | TajirPoint` and Google shows ~60
-    // characters; the description must fit the ~160 a snippet shows.
-    expect(b.seo.title.length + " | TajirPoint".length).toBeLessThanOrEqual(60);
-    expect(b.seo.description.length).toBeGreaterThanOrEqual(140);
-    expect(b.seo.description.length).toBeLessThanOrEqual(160);
-    expect(new Set(b.seo.keywords).size).toBe(b.seo.keywords.length);
-    expect(b.seo.keywords.length).toBeGreaterThan(0);
-    expect(CONTACT_LABELS).toContain(b.contactLabel);
-    for (const loc of ["ur", "ar"] as const) {
-      expect(b.localized[loc].name.trim()).not.toBe("");
-      expect(b.localized[loc].navLine.trim()).not.toBe("");
-      expect(businessLabel(b, loc).name).toBe(b.localized[loc].name);
-    }
-    expect(businessLabel(b, "en").name).toBe(b.name);
-    expect(b.apps.length).toBeGreaterThan(0);
-    for (const app of b.apps) expect(APPS[app]).toBeDefined();
-    expect(b.features.length).toBeGreaterThanOrEqual(3);
-    expect(new Set(b.features.map((f) => f.id)).size).toBe(b.features.length);
-    for (const f of b.features) {
-      expect(f.id).toMatch(/^[a-z]+(-[a-z]+)*$/);
-      expect(f.title.trim()).not.toBe("");
-      expect(f.benefit.trim()).not.toBe("");
-      expect(f.bullets.length).toBeGreaterThan(0);
-    }
-    expect(b.faqs.length).toBeGreaterThan(0);
-  });
+  );
 
   it("never repeats a media slot within a business and every slot is described", () => {
     for (const b of BUSINESSES) {
@@ -105,7 +120,8 @@ describe("business catalog", () => {
   });
 
   it("maps every old /solutions page to a real business", () => {
-    for (const to of Object.values(LEGACY_SOLUTION_REDIRECTS)) expect(isBusinessSlug(to)).toBe(true);
+    for (const to of Object.values(LEGACY_SOLUTION_REDIRECTS))
+      expect(isBusinessSlug(to)).toBe(true);
     expect(Object.keys(LEGACY_SOLUTION_REDIRECTS).sort()).toEqual(
       ["distributors", "electronics", "general-retail", "restaurants", "services"].sort()
     );

@@ -23,7 +23,7 @@
 
 // The brand's name (src/lib/config/brand.ts). Read here, not imported: this
 // file must stay free of runtime imports (see the header).
-const BRAND_NAME = process.env.NEXT_PUBLIC_BRAND_NAME || "TajirPoint";
+const BRAND_NAME = process.env.NEXT_PUBLIC_BRAND_NAME || "Tajir Point";
 
 /* ── Apps ─────────────────────────────────────────────────────────── */
 
@@ -1666,7 +1666,7 @@ const factoriesMills: Business = {
   },
   contactLabel: "Distributor / Wholesale",
   seo: {
-    title: "Factory & Mill Software: Stock, Dealers, Credit",
+    title: "Factory & Mill Software: Stock & Dealer Credit",
     description:
       "Factory and mill software for selling to dealers: raw-material purchasing, batch stock in every warehouse, dealer price lists, credit limits, auto-posted books.",
     keywords: [

@@ -5,6 +5,7 @@ import { useLocale } from "next-intl";
 import { useRouter, usePathname } from "@/i18n/navigation";
 import { Stroke } from "@/components/marketing/landing/Stroke";
 import { routing, type Locale } from "@/i18n/routing";
+import { looksTranslated } from "@/lib/seo/translated-paths";
 
 /**
  * Language picker.
@@ -57,10 +58,17 @@ export function LocaleMenu({ compact = false }: { compact?: boolean }) {
 
   const pick = (code: Locale) => {
     close();
-    if (code !== locale)
-      router.replace(`${pathname}${window.location.search}${window.location.hash}`, {
-        locale: code,
-      });
+    if (code === locale) return;
+    // A page with no Urdu or Arabic copy has no URL in that language (the
+    // proxy sends it back to English), so the visitor lands on that
+    // language's home page instead of seeing nothing change.
+    if (code !== routing.defaultLocale && !looksTranslated(pathname)) {
+      router.replace("/", { locale: code });
+      return;
+    }
+    router.replace(`${pathname}${window.location.search}${window.location.hash}`, {
+      locale: code,
+    });
   };
 
   return (

@@ -116,15 +116,14 @@ const nextConfig: NextConfig = {
       // navigates to /ur to change locale, and this rule 308'd it back to /
       // before the middleware could ever see it.
       //
-      // next-intl removes the default /en prefix itself. Keep that redirect
-      // with the locale router rather than duplicating it in config. Only
-      // retired languages need explicit permanent redirects here.
-      //
       // Ordering matters: the bare-prefix rule must come first, otherwise
       // `:path*` (zero-or-more) swallows it.
-      { source: "/:locale(nl|es)", destination: "/", permanent: true },
+      //
+      // `en` is here too: next-intl strips the default prefix with a 307
+      // (temporary); a 308 tells Google the bare URL is the one to keep.
+      { source: "/:locale(nl|es|en)", destination: "/", permanent: true },
       {
-        source: "/:locale(nl|es)/:path*",
+        source: "/:locale(nl|es|en)/:path*",
         destination: "/:path*",
         permanent: true,
       },

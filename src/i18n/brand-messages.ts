@@ -1,7 +1,7 @@
 import { brand } from "@/lib/config/brand";
 
 /**
- * The message catalogues (messages/*.json) say "TajirPoint" and our hosts in
+ * The message catalogues (messages/*.json) say "Tajir Point" and our hosts in
  * plain text. For another brand they are rewritten when they are loaded:
  * the name, the hosts and the mailbox follow the brand layer. A brand can also
  * ship an overlay, messages/brands/<NEXT_PUBLIC_BRAND_MESSAGES>.<locale>.json,
@@ -15,7 +15,7 @@ const REPLACEMENTS: ReadonlyArray<readonly [RegExp, string]> = [
   [/hello@tajirpoint\.com/g, brand.email],
   [/(?<![\w.@-])app\.tajirpoint\.com/g, brand.appHost],
   [/(?<![\w.@-])tajirpoint\.com/g, brand.host],
-  [/TajirPoint/g, brand.name],
+  [/Tajir ?Point/g, brand.name],
 ];
 
 function rewrite(value: unknown): unknown {
