@@ -19,6 +19,7 @@ import { routing } from "@/i18n/routing";
 export const ORG_ID = `${siteConfig.url}/#organization`;
 export const WEBSITE_ID = `${siteConfig.url}/#website`;
 export const SOFTWARE_ID = `${siteConfig.url}/#software`;
+export const FOUNDER_ID = `${siteConfig.url}/about#founder`;
 
 /** Language names for `availableLanguage`, kept to the languages this build has. */
 const LANGUAGE_CODES: Record<string, string> = { English: "en", Urdu: "ur", Arabic: "ar" };
@@ -88,6 +89,20 @@ export function organizationSchema(): WithContext<Organization> {
     // engines it was unavailable everywhere else.
     areaServed: { "@type": "Place", name: "Worldwide" } as any,
     ...(brand.founded && { foundingDate: brand.founded }),
+    ...(brand.founderName && { founder: founderSchema() as any }),
+  };
+}
+
+/** The founder as a Person: the Organization's `founder` and the guides' author. */
+export function founderSchema(): Record<string, unknown> | null {
+  if (!brand.founderName) return null;
+  return {
+    "@type": "Person",
+    "@id": FOUNDER_ID,
+    name: brand.founderName,
+    jobTitle: `${brand.founderTitle}, ${siteConfig.name}`,
+    url: `${siteConfig.url}/about#founder`,
+    worksFor: { "@id": ORG_ID },
   };
 }
 

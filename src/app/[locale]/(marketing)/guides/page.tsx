@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { CtaPanel, GhostButton, MintButton } from "@/components/design/primitives";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { GUIDES, GUIDES_HUB, readMinutes } from "@/content/guides";
+import { brand } from "@/lib/config/brand";
 import { siteConfig } from "@/lib/config/site";
 import { guidesHubSchema } from "@/lib/marketing/guide-schema";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -90,8 +91,11 @@ export default async function GuidesHubPage({ params }: { params: Promise<{ loca
         </ul>
 
         <p className="mt-8 max-w-[70ch] text-[13.5px] leading-[1.6] text-[var(--color-muted)]">
-          Written by the {siteConfig.name} team. Guides that mention laws link to the official
-          source and say when we checked it. They are general information, not legal or tax advice.
+          {brand.founderName
+            ? `Written by ${brand.founderName}, ${brand.founderTitle.toLowerCase()} of ${siteConfig.name}.`
+            : `Written by the ${siteConfig.name} team.`}{" "}
+          Guides that mention laws link to the official source and say when we checked it. They are
+          general information, not legal or tax advice.
         </p>
       </div>
 
