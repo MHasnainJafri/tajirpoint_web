@@ -32,6 +32,13 @@ export const routing = defineRouting({
   // English, /ur/pricing is always Urdu. The language switcher still persists
   // the choice — it navigates to a real URL the visitor can bookmark and share.
   localeDetection: false,
+
+  // No hreflang `Link` header. next-intl's header lists /ur and /ar for every
+  // page, including the English-only ones (guides, compare, tools, docs,
+  // legal), which the HTML and the sitemap rightly leave out. The HTML
+  // <link rel="alternate"> from buildMetadata() already carries the right
+  // clusters (SEO audit 4 Nov 2026).
+  alternateLinks: false,
 });
 
 export type Locale = (typeof routing.locales)[number];

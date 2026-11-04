@@ -23,7 +23,7 @@
 
 // The brand's name (src/lib/config/brand.ts). Read here, not imported: this
 // file must stay free of runtime imports (see the header).
-const BRAND_NAME = process.env.NEXT_PUBLIC_BRAND_NAME || "TajirPoint";
+const BRAND_NAME = process.env.NEXT_PUBLIC_BRAND_NAME || "Tajir Point";
 
 /* ── Apps ─────────────────────────────────────────────────────────── */
 
