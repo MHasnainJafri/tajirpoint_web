@@ -1666,7 +1666,7 @@ const factoriesMills: Business = {
   },
   contactLabel: "Distributor / Wholesale",
   seo: {
-    title: "Factory & Mill Software: Stock, Dealers, Credit",
+    title: "Factory & Mill Software: Stock & Dealer Credit",
     description:
       "Factory and mill software for selling to dealers: raw-material purchasing, batch stock in every warehouse, dealer price lists, credit limits, auto-posted books.",
     keywords: [
