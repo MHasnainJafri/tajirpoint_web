@@ -383,6 +383,8 @@ export interface AboutCopy {
   /** "<product> is built and run by" [operator link] ", a software company in …" */
   story2Before: (product: string) => string;
   story2After: (city: string, country: string) => string;
+  /** "Founded by <name>." under the story; only when the brand names a founder. */
+  founder: (name: string, title: string) => string;
   /** Same order as the page's icons: platforms, languages, offline, Light plan, switching. */
   facts: Point[];
   ctaTitle: (product: string) => string;
@@ -407,6 +409,8 @@ export const ABOUT_COPY: Localized<AboutCopy> = {
     story1: (product) =>
       `We started ${product} in March 2025 to give small and medium businesses one place to run the day: selling at the counter, keeping stock, tracking customer credit (khata), taking online orders and managing deliveries.`,
     story2Before: (product) => `${product} is built and run by `,
+    founder: (name, title) =>
+      `${title}: ${name}, who writes and checks our guides and comparisons.`,
     story2After: (city, country) =>
       `, a software company in ${city}, ${country}. We talk to the shop owners, restaurant managers and distributors who use it, and we keep improving it based on what they tell us.`,
     facts: [
@@ -452,6 +456,7 @@ export const ABOUT_COPY: Localized<AboutCopy> = {
     story1: (product) =>
       `ہم نے مارچ 2025 میں ${product} شروع کیا تاکہ چھوٹے اور درمیانے کاروباروں کو دن بھر کا کام چلانے کے لیے ایک جگہ ملے: کاؤنٹر پر فروخت، اسٹاک کا حساب، گاہکوں کا اُدھار کھاتہ، آن لائن آرڈرز اور ڈیلیوری کا انتظام۔`,
     story2Before: (product) => `${product} کو بناتی اور چلاتی ہے `,
+    founder: (name) => `بانی: ${name}۔ ہماری گائیڈز اور موازنے انہی کے لکھے اور جانچے ہوئے ہیں۔`,
     story2After: (city, country) =>
       `، جو ${ur(city)}، ${ur(country)} کی ایک سافٹ ویئر کمپنی ہے۔ ہم اسے استعمال کرنے والے دکانداروں، ریسٹورنٹ مینیجرز اور ڈسٹری بیوٹرز سے بات کرتے ہیں، اور ان کی باتوں کی بنیاد پر اسے بہتر کرتے رہتے ہیں۔`,
     facts: [
@@ -497,6 +502,7 @@ export const ABOUT_COPY: Localized<AboutCopy> = {
     story1: (product) =>
       `أطلقنا ${product} في مارس 2025 لنمنح المنشآت الصغيرة والمتوسطة مكانًا واحدًا لإدارة يومها: البيع عند الكاشير، ومتابعة المخزون، وتتبّع آجل العملاء، واستقبال الطلبات أونلاين، وإدارة التوصيل.`,
     story2Before: (product) => `يطوّر ${product} ويشغّله `,
+    founder: (name) => `التأسيس: ${name}. الأدلة والمقارنات من إعداد ${name}.`,
     story2After: (city, country) =>
       `، وهي شركة برمجيات في ${ar(city)}، ${ar(country)}. نتحدث مع أصحاب المتاجر ومديري المطاعم والموزعين الذين يستخدمونه، ونواصل تحسينه بناءً على ما يخبروننا به.`,
     facts: [

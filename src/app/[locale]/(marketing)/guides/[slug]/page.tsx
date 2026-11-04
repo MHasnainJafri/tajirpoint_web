@@ -13,7 +13,7 @@ import { siteConfig } from "@/lib/config/site";
 import { guideArticleSchema } from "@/lib/marketing/guide-schema";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { faqSchema, pageBreadcrumbs } from "@/lib/seo/schemas";
-import { BRAND_NAME } from "@/lib/config/brand";
+import { BRAND_NAME, brand } from "@/lib/config/brand";
 import { assertPageShown, isPageShown } from "@/lib/config/pages";
 
 export const dynamicParams = false;
@@ -115,10 +115,12 @@ export default async function GuidePage({ params }: { params: Params }) {
             <span>
               By{" "}
               <Link
-                href="/about"
+                href={brand.founderName ? "/about#founder" : "/about"}
                 className="font-semibold text-[var(--color-ink-3)] hover:text-[var(--color-ink)] max-md:inline-flex max-md:min-h-[44px] max-md:items-center"
               >
-                {siteConfig.name} team
+                {brand.founderName
+                  ? `${brand.founderName}, ${brand.founderTitle}`
+                  : `${siteConfig.name} team`}
               </Link>
             </span>
             <span aria-hidden="true">·</span>

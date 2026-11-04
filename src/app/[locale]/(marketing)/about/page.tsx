@@ -11,6 +11,7 @@ import {
   PillBadge,
 } from "@/components/design/primitives";
 import { NextStep } from "@/components/shared/NextStep";
+import { brand } from "@/lib/config/brand";
 import { legal, siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { ABOUT_COPY } from "@/content/i18n/lead-pages/pages";
@@ -103,6 +104,11 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                 {legal.registration && <> ({legal.registration})</>}
                 {t.story2After(legal.city, legal.country)}
               </p>
+              {brand.founderName && (
+                <p id="founder" className="scroll-mt-24">
+                  {t.founder(brand.founderName, brand.founderTitle)}
+                </p>
+              )}
             </div>
           </div>
 

@@ -16,7 +16,7 @@ import { getPlans, planSummary } from "@/lib/api/plans";
 import { legal, siteConfig } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { faqSchema, pageBreadcrumbs } from "@/lib/seo/schemas";
-import { BRAND_NAME } from "@/lib/config/brand";
+import { BRAND_NAME, brand } from "@/lib/config/brand";
 import { assertPageShown, isPageShown } from "@/lib/config/pages";
 import { RelatedGuides } from "@/components/marketing/guides/RelatedGuides";
 import { comparisonArticleSchema } from "@/lib/marketing/guide-schema";
@@ -105,7 +105,9 @@ export default async function ComparisonPage({ params }: { params: Params }) {
             {c.hero.sub}
           </p>
           <p className="mt-3 text-[13px] text-[var(--color-muted)]">
-            Written by the {siteConfig.name} team.
+            {brand.founderName
+              ? `Written by ${brand.founderName}, ${brand.founderTitle.toLowerCase()} of ${siteConfig.name}.`
+              : `Written by the ${siteConfig.name} team.`}
             {isCompetitor ? (
               <>
                 {" "}

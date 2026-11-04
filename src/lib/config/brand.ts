@@ -168,6 +168,10 @@ const OURS = {
   // the About and Contact pages.
   companyRegistry: "SECP CUIN",
   companyNumber: "0363771",
+  // The person who signs the guides and comparisons and is the
+  // Organization's `founder` (owner, 5 Nov 2026).
+  founderName: "Muhammad Hasnain",
+  founderTitle: "Founder",
   legalUrl: "https://tajirpoint.com",
   city: "Islamabad",
   founded: "2025-03" as string | undefined,
@@ -196,6 +200,8 @@ function clientDefaults(brandName: string): typeof OURS {
     legalName: brandName,
     companyRegistry: "",
     companyNumber: "",
+    founderName: "",
+    founderTitle: "",
     legalUrl: "",
     city: "",
     founded: undefined,
@@ -299,6 +305,9 @@ export const brand = {
   /** Company register and number ("SECP CUIN", "0363771"); "" when not published. */
   companyRegistry: D.companyRegistry,
   companyNumber: D.companyNumber,
+  /** Byline of the guides and comparisons; "" = signed by the team. */
+  founderName: D.founderName,
+  founderTitle: D.founderTitle,
   city: env.city ?? D.city,
   /** Footer fine print; undefined = the catalogue's own line (footer.copyright). */
   copyright: env.copyright,

@@ -1,20 +1,23 @@
 import type { Article, CollectionPage, WithContext } from "schema-dts";
 import { siteConfig } from "@/lib/config/site";
 import { canonicalUrl } from "@/lib/seo/metadata";
-import { ORG_ID, SOFTWARE_ID, WEBSITE_ID } from "@/lib/seo/schemas";
+import { ORG_ID, SOFTWARE_ID, WEBSITE_ID, founderSchema } from "@/lib/seo/schemas";
 import { ogImageForPath } from "@/lib/seo/og-cards";
 import { GUIDES, GUIDES_HUB, guideWordCount, plainText, type Guide } from "@/content/guides";
 import { CHECKED_ISO, type Comparison } from "@/content/compare";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-/** The byline on every guide: the team, as an Organization (no named person). */
-const AUTHOR = {
+/**
+ * The byline on every guide and comparison: the founder as a Person when the
+ * brand names one (Google prefers a named author), else the team.
+ */
+const AUTHOR = (founderSchema() ?? {
   "@type": "Organization",
   name: `${siteConfig.name} team`,
   url: `${siteConfig.url}/about`,
   parentOrganization: { "@id": ORG_ID },
-} as any;
+}) as any;
 
 function imageFor(path: string): string {
   return `${siteConfig.url}${ogImageForPath(path) ?? siteConfig.ogImage}`;
