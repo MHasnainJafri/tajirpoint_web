@@ -18,6 +18,8 @@ import { buildMetadata } from "@/lib/seo/metadata";
 import { faqSchema, pageBreadcrumbs } from "@/lib/seo/schemas";
 import { BRAND_NAME } from "@/lib/config/brand";
 import { assertPageShown, isPageShown } from "@/lib/config/pages";
+import { RelatedGuides } from "@/components/marketing/guides/RelatedGuides";
+import { comparisonArticleSchema } from "@/lib/marketing/guide-schema";
 
 /** Only the listed comparisons exist; anything else is a 404. */
 export const dynamicParams = false;
@@ -62,6 +64,7 @@ export default async function ComparisonPage({ params }: { params: Params }) {
     <div lang={locale === "en" ? undefined : "en"} dir={locale === "en" ? undefined : "ltr"}>
       <JsonLd
         schema={[
+          comparisonArticleSchema(c, locale),
           faqSchema(c.faqs),
           pageBreadcrumbs(locale, [
             ["Compare", "/compare"],
@@ -286,6 +289,8 @@ export default async function ComparisonPage({ params }: { params: Params }) {
           </p>
         ) : null}
       </div>
+
+      <RelatedGuides path={`/compare/${slug}`} locale={locale} />
 
       {/* ── CTA ────────────────────────────────────────────────── */}
       <section className="px-[clamp(16px,3vw,24px)] pb-[110px] pt-[clamp(48px,7vw,88px)]">

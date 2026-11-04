@@ -164,6 +164,10 @@ const OURS = {
   email: "hello@tajirpoint.com",
   whatsapp: "+923446800893",
   legalName: "Tajir Point (SMC-Private) Limited",
+  // The company's registration (SECP CUIN): Organization `identifier` and
+  // the About and Contact pages.
+  companyRegistry: "SECP CUIN",
+  companyNumber: "0363771",
   legalUrl: "https://tajirpoint.com",
   city: "Islamabad",
   founded: "2025-03" as string | undefined,
@@ -190,6 +194,8 @@ function clientDefaults(brandName: string): typeof OURS {
     email: `hello@${host}`,
     whatsapp: "",
     legalName: brandName,
+    companyRegistry: "",
+    companyNumber: "",
     legalUrl: "",
     city: "",
     founded: undefined,
@@ -290,6 +296,9 @@ export const brand = {
 
   legalName: env.legalName ?? D.legalName,
   legalUrl: env.legalUrl ?? D.legalUrl,
+  /** Company register and number ("SECP CUIN", "0363771"); "" when not published. */
+  companyRegistry: D.companyRegistry,
+  companyNumber: D.companyNumber,
   city: env.city ?? D.city,
   /** Footer fine print; undefined = the catalogue's own line (footer.copyright). */
   copyright: env.copyright,

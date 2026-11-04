@@ -13,10 +13,10 @@ import { BusinessView } from "@/components/marketing/business/BusinessView";
 import { SHOWN_BUSINESS_SLUGS, getBusiness, type Business } from "@/lib/marketing/businesses";
 import { businessUi, localizeApp, localizeBusiness } from "@/content/i18n/businesses";
 import type { BusinessUiCopy } from "@/content/i18n/businesses.types";
-import { getPlans } from "@/lib/api/plans";
 import { siteConfig } from "@/lib/config/site";
 import { buildMetadata, canonicalUrl } from "@/lib/seo/metadata";
 import { breadcrumbSchema, faqSchema, verticalSoftwareSchema } from "@/lib/seo/schemas";
+import { RelatedGuides } from "@/components/marketing/guides/RelatedGuides";
 
 /** Only the catalog's slugs exist; anything else is a 404, not a render. */
 export const dynamicParams = false;
@@ -53,7 +53,6 @@ export default async function BusinessPage({ params }: { params: Params }) {
   const b = localizeBusiness(found, locale);
   const ui = businessUi(locale);
 
-  const plans = await getPlans();
   const faqs = [...b.faqs, ...ui.commonFaqs];
   const demoHref = `/book-demo?type=${b.slug}`;
   const dir = `business/${b.slug}`;
@@ -72,7 +71,7 @@ export default async function BusinessPage({ params }: { params: Params }) {
             // The localised URL, so the /ur and /ar pages describe themselves.
             path: new URL(canonicalUrl(`/business/${b.slug}`, locale)).pathname,
             features: b.features.filter((f) => f.status !== "soon").map((f) => f.title),
-            plans,
+            locale,
           }),
           faqSchema(faqs.map((f) => ({ question: f.q, answer: f.a }))),
           breadcrumbSchema([
@@ -83,12 +82,21 @@ export default async function BusinessPage({ params }: { params: Params }) {
         ]}
       />
 
-      <div className="mx-auto max-w-[1240px] px-[clamp(16px,3vw,24px)]" style={{ overflowX: "clip" }}>
+      <div
+        className="mx-auto max-w-[1240px] px-[clamp(16px,3vw,24px)]"
+        style={{ overflowX: "clip" }}
+      >
         {/* ── Breadcrumb ─────────────────────────────────────────── */}
-        <nav aria-label={ui.breadcrumbLabel} className="pt-5 text-[12.5px] text-[var(--color-muted)]">
+        <nav
+          aria-label={ui.breadcrumbLabel}
+          className="pt-5 text-[12.5px] text-[var(--color-muted)]"
+        >
           <ol className="flex flex-wrap items-center gap-2">
             <li>
-              <Link href="/business" className="max-md:inline-flex max-md:min-h-[44px] max-md:items-center hover:text-[var(--color-ink)]">
+              <Link
+                href="/business"
+                className="max-md:inline-flex max-md:min-h-[44px] max-md:items-center hover:text-[var(--color-ink)]"
+              >
                 {ui.businesses}
               </Link>
             </li>
@@ -110,13 +118,18 @@ export default async function BusinessPage({ params }: { params: Params }) {
               <span className="sr-only">: </span>
               <span className="mt-4 block">{b.hero.headline}</span>
             </h1>
-            <p className="mt-5 max-w-[56ch] text-[16.5px] leading-[1.65] text-[var(--color-body)]">{b.hero.sub}</p>
+            <p className="mt-5 max-w-[56ch] text-[16.5px] leading-[1.65] text-[var(--color-body)]">
+              {b.hero.sub}
+            </p>
             <div className="mt-7 flex flex-wrap gap-[10px]" data-track={`business_${b.slug}_hero`}>
               <Link
                 href={demoHref}
                 className="inline-flex items-center gap-2 rounded-full bg-[#0A0A0A] px-6 py-[13px] text-[15px] font-bold text-white transition-transform duration-200 hover:-translate-y-[2px]"
               >
-                {ui.bookDemo} <span aria-hidden="true" className={arrow}>→</span>
+                {ui.bookDemo}{" "}
+                <span aria-hidden="true" className={arrow}>
+                  →
+                </span>
               </Link>
               <a
                 href={siteConfig.signupUrl}
@@ -147,7 +160,10 @@ export default async function BusinessPage({ params }: { params: Params }) {
             {ui.whatYouGet}
           </h2>
           {/* Jump links */}
-          <nav aria-label={ui.onThisPage} className="mb-[clamp(28px,4vw,48px)] flex flex-wrap gap-2">
+          <nav
+            aria-label={ui.onThisPage}
+            className="mb-[clamp(28px,4vw,48px)] flex flex-wrap gap-2"
+          >
             {b.features.map((f) => (
               <a
                 key={f.id}
@@ -172,8 +188,16 @@ export default async function BusinessPage({ params }: { params: Params }) {
                     <span className="grid h-10 w-10 place-items-center rounded-[12px] bg-[var(--color-mint-soft)]">
                       <Icon name={f.icon} size={20} />
                     </span>
-                    {f.status === "soon" && <span className={`${chip} bg-[#FFF4E0] text-[#8A5A00]`}>{ui.comingSoon}</span>}
-                    {f.plan && <span className={`${chip} bg-[var(--color-surface)] text-[var(--color-ink-3)]`}>{f.plan}</span>}
+                    {f.status === "soon" && (
+                      <span className={`${chip} bg-[#FFF4E0] text-[#8A5A00]`}>{ui.comingSoon}</span>
+                    )}
+                    {f.plan && (
+                      <span
+                        className={`${chip} bg-[var(--color-surface)] text-[var(--color-ink-3)]`}
+                      >
+                        {f.plan}
+                      </span>
+                    )}
                   </div>
                   <h3
                     id={`${f.id}-title`}
@@ -181,10 +205,15 @@ export default async function BusinessPage({ params }: { params: Params }) {
                   >
                     {f.title}
                   </h3>
-                  <p className="mt-3 max-w-[52ch] text-[15.5px] leading-[1.65] text-[var(--color-body)]">{f.benefit}</p>
+                  <p className="mt-3 max-w-[52ch] text-[15.5px] leading-[1.65] text-[var(--color-body)]">
+                    {f.benefit}
+                  </p>
                   <ul className="mt-5 flex flex-col gap-[10px]">
                     {f.bullets.map((bullet) => (
-                      <li key={bullet} className="flex items-start gap-[10px] text-[14.5px] text-[var(--color-ink)]">
+                      <li
+                        key={bullet}
+                        className="flex items-start gap-[10px] text-[14.5px] text-[var(--color-ink)]"
+                      >
                         <span className="mt-[1px] text-[var(--color-mint-2)]">
                           <Tick size={17} />
                         </span>
@@ -218,8 +247,14 @@ export default async function BusinessPage({ params }: { params: Params }) {
         </div>
 
         {/* ── FAQ ────────────────────────────────────────────────── */}
-        <section aria-labelledby="faq-title" className="mx-auto mt-[clamp(64px,9vw,120px)] max-w-[860px]">
-          <h2 id="faq-title" className="text-center text-[clamp(24px,3.2vw,38px)] font-bold tracking-[-0.03em] rtl:tracking-normal">
+        <section
+          aria-labelledby="faq-title"
+          className="mx-auto mt-[clamp(64px,9vw,120px)] max-w-[860px]"
+        >
+          <h2
+            id="faq-title"
+            className="text-center text-[clamp(24px,3.2vw,38px)] font-bold tracking-[-0.03em] rtl:tracking-normal"
+          >
             {ui.faqTitle(b.name)}
           </h2>
           <div className="mt-8 flex flex-col gap-3">
@@ -230,16 +265,23 @@ export default async function BusinessPage({ params }: { params: Params }) {
               >
                 <summary className="flex min-h-[44px] cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-[15.5px] font-semibold text-[var(--color-ink)] [&::-webkit-details-marker]:hidden">
                   {faq.q}
-                  <span aria-hidden="true" className="text-[20px] leading-none text-[var(--color-muted)] transition-transform group-open:rotate-45">
+                  <span
+                    aria-hidden="true"
+                    className="text-[20px] leading-none text-[var(--color-muted)] transition-transform group-open:rotate-45"
+                  >
                     +
                   </span>
                 </summary>
-                <p className="px-5 pb-4 text-[14.5px] leading-[1.65] text-[var(--color-body)]">{faq.a}</p>
+                <p className="px-5 pb-4 text-[14.5px] leading-[1.65] text-[var(--color-body)]">
+                  {faq.a}
+                </p>
               </details>
             ))}
           </div>
         </section>
       </div>
+
+      <RelatedGuides path={`/business/${slug}`} locale={locale} />
 
       {/* ── Final CTA ────────────────────────────────────────────── */}
       <section className="px-[clamp(12px,3vw,24px)] pb-[clamp(56px,8vw,96px)] pt-[clamp(64px,9vw,120px)]">
@@ -247,8 +289,13 @@ export default async function BusinessPage({ params }: { params: Params }) {
           <h2 className="relative mx-auto max-w-[20ch] text-[clamp(26px,3.6vw,44px)] font-extrabold tracking-[-0.03em] text-balance rtl:tracking-normal">
             {b.cta.headline}
           </h2>
-          <p className="relative mx-auto mt-4 max-w-[48ch] text-[16px] leading-[1.6] text-[var(--color-on-dark-2)]">{b.cta.sub}</p>
-          <div className="relative mt-8 flex flex-wrap justify-center gap-[12px]" data-track={`business_${b.slug}_final`}>
+          <p className="relative mx-auto mt-4 max-w-[48ch] text-[16px] leading-[1.6] text-[var(--color-on-dark-2)]">
+            {b.cta.sub}
+          </p>
+          <div
+            className="relative mt-8 flex flex-wrap justify-center gap-[12px]"
+            data-track={`business_${b.slug}_final`}
+          >
             <Link
               href={demoHref}
               className="inline-flex items-center rounded-full bg-[var(--color-mint)] px-7 py-[14px] text-[15.5px] font-bold text-[#0A0A0A]"
@@ -268,9 +315,20 @@ export default async function BusinessPage({ params }: { params: Params }) {
   );
 }
 
-function AppsStrip({ business, locale, ui }: { business: Business; locale: string; ui: BusinessUiCopy }) {
+function AppsStrip({
+  business,
+  locale,
+  ui,
+}: {
+  business: Business;
+  locale: string;
+  ui: BusinessUiCopy;
+}) {
   return (
-    <section aria-labelledby="apps-title" className="rounded-[24px] border border-[var(--color-line-2)] bg-[var(--color-surface)] p-[clamp(18px,3vw,32px)]">
+    <section
+      aria-labelledby="apps-title"
+      className="rounded-[24px] border border-[var(--color-line-2)] bg-[var(--color-surface)] p-[clamp(18px,3vw,32px)]"
+    >
       <h2 id="apps-title" className="text-[18px] font-bold tracking-[-0.02em] rtl:tracking-normal">
         {ui.appsTitle}
       </h2>
@@ -278,17 +336,32 @@ function AppsStrip({ business, locale, ui }: { business: Business; locale: strin
         {business.apps.map((id) => {
           const app = localizeApp(id, locale);
           return (
-            <li key={id} className="flex items-start gap-3 rounded-[16px] bg-white p-4 shadow-[var(--shadow-card)]">
+            <li
+              key={id}
+              className="flex items-start gap-3 rounded-[16px] bg-white p-4 shadow-[var(--shadow-card)]"
+            >
               <span className="grid h-10 w-10 flex-none place-items-center rounded-[12px] bg-[var(--color-mint-soft)]">
                 <Icon name={app.icon} size={20} />
               </span>
               <span className="min-w-0">
-                <span className="block text-[14.5px] font-bold text-[var(--color-ink)]">{app.name}</span>
-                <span className="mt-1 block text-[13px] leading-[1.5] text-[var(--color-muted)]">{app.line}</span>
+                <span className="block text-[14.5px] font-bold text-[var(--color-ink)]">
+                  {app.name}
+                </span>
+                <span className="mt-1 block text-[13px] leading-[1.5] text-[var(--color-muted)]">
+                  {app.line}
+                </span>
                 {(app.status === "soon" || app.plan) && (
                   <span className="mt-2 flex flex-wrap gap-[6px]">
-                    {app.status === "soon" && <span className={`${chip} bg-[#FFF4E0] text-[#8A5A00]`}>{ui.comingSoon}</span>}
-                    {app.plan && <span className={`${chip} bg-[var(--color-surface)] text-[var(--color-ink-3)]`}>{app.plan}</span>}
+                    {app.status === "soon" && (
+                      <span className={`${chip} bg-[#FFF4E0] text-[#8A5A00]`}>{ui.comingSoon}</span>
+                    )}
+                    {app.plan && (
+                      <span
+                        className={`${chip} bg-[var(--color-surface)] text-[var(--color-ink-3)]`}
+                      >
+                        {app.plan}
+                      </span>
+                    )}
                   </span>
                 )}
               </span>

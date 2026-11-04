@@ -17,6 +17,7 @@ import { addonOgImage } from "@/lib/seo/og-addon-cards";
 import { breadcrumbSchema, faqSchema } from "@/lib/seo/schemas";
 import { BRAND_NAME } from "@/lib/config/brand";
 import { assertPageShown } from "@/lib/config/pages";
+import { RelatedGuides } from "@/components/marketing/guides/RelatedGuides";
 
 // Literal for Next's static analysis; keep equal to ADDON_REVALIDATE.
 export const revalidate = 600;
@@ -44,7 +45,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   if (!found) return {};
   const addon = localizeAddon(found, locale);
   return buildMetadata({
-    title: addon.content.seoTitle,
+    title: soonTitle(addon, addonChrome(locale)),
     description: addon.content.seoDescription,
     path: `/extensions/${addon.slug}`,
     locale,
@@ -53,6 +54,23 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     image: addonOgImage(addon.slug, addon.group.id),
     imageAlt: `${addon.name} add-on for ${BRAND_NAME}`,
   });
+}
+
+/**
+ * A Coming soon add-on says so in its <title>, so a search result never reads
+ * as a live feature: "FBR POS Integration (Coming soon): Send Every Sale…",
+ * or just "FBR POS Integration (Coming soon)" when the full line runs past
+ * 60 characters. The full promise stays in the description (SEO audit 4 Nov
+ * 2026). It flips back the day the backend marks the add-on active.
+ */
+function soonTitle(addon: Addon, ch: AddonChrome): string {
+  const title = addon.content.seoTitle;
+  if (addon.status !== "coming_soon") return title;
+  const tag = `(${ch.statusLabel.coming_soon})`;
+  const cut = title.indexOf(": ");
+  const head = cut > 0 ? title.slice(0, cut) : title;
+  const full = cut > 0 ? `${head} ${tag}${title.slice(cut)}` : `${title} ${tag}`;
+  return full.length <= 60 ? full : `${head} ${tag}`;
 }
 
 /* ── Calls to action, by status ───────────────────────────────────── */
@@ -551,6 +569,8 @@ export default async function AddonPage({ params }: { params: Params }) {
           </section>
         )}
       </div>
+
+      <RelatedGuides path={`/extensions/${slug}`} locale={locale} />
 
       {/* ── Final CTA ────────────────────────────────────────────── */}
       <section className="px-3 pb-[clamp(56px,8vw,96px)] pt-[clamp(56px,8vw,104px)] md:px-6">

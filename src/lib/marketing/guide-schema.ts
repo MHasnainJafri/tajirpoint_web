@@ -1,9 +1,10 @@
 import type { Article, CollectionPage, WithContext } from "schema-dts";
 import { siteConfig } from "@/lib/config/site";
 import { canonicalUrl } from "@/lib/seo/metadata";
-import { ORG_ID, WEBSITE_ID } from "@/lib/seo/schemas";
+import { ORG_ID, SOFTWARE_ID, WEBSITE_ID } from "@/lib/seo/schemas";
 import { ogImageForPath } from "@/lib/seo/og-cards";
 import { GUIDES, GUIDES_HUB, guideWordCount, plainText, type Guide } from "@/content/guides";
+import { CHECKED_ISO, type Comparison } from "@/content/compare";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -53,6 +54,43 @@ export function guideArticleSchema(guide: Guide, locale: string): WithContext<Ar
             name: s.label,
             url: s.url,
             publisher: { "@type": "Organization", name: s.publisher },
+          })) as any,
+        }
+      : {}),
+  };
+}
+
+/**
+ * One comparison page as an Article: same byline as the guides, dated by the
+ * day its competitor facts were checked, citing the competitor pages those
+ * facts came from (SEO audit 4 Nov 2026). English only, like the guides.
+ */
+export function comparisonArticleSchema(c: Comparison, locale: string): WithContext<Article> {
+  const path = `/compare/${c.slug}`;
+  const url = canonicalUrl(path, locale);
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${url}#article`,
+    headline: c.hero.h1,
+    description: c.seo.description,
+    url,
+    mainEntityOfPage: url,
+    image: imageFor(path),
+    inLanguage: "en",
+    datePublished: CHECKED_ISO,
+    dateModified: CHECKED_ISO,
+    author: AUTHOR,
+    publisher: { "@id": ORG_ID } as any,
+    isPartOf: { "@id": WEBSITE_ID } as any,
+    keywords: c.seo.keywords.join(", "),
+    about: { "@id": SOFTWARE_ID } as any,
+    ...(c.sources.length
+      ? {
+          citation: c.sources.map((s) => ({
+            "@type": "CreativeWork",
+            name: s.label,
+            url: s.url,
           })) as any,
         }
       : {}),
