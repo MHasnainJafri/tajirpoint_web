@@ -14,6 +14,7 @@ import { Pricing } from "@/components/marketing/landing/Pricing";
 import { Faq } from "@/components/marketing/landing/Faq";
 import { FinalCta } from "@/components/marketing/landing/FinalCta";
 import { FindYourBusiness } from "@/components/marketing/landing/FindYourBusiness";
+import { BelowFold } from "@/components/marketing/landing/BelowFold";
 import { MigrationBand } from "@/components/marketing/business/MigrationBand";
 import { CallbackSection } from "@/components/marketing/callback/CallbackSection";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -88,26 +89,60 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         style={{ overflowX: "clip" }}
       >
         <Hero />
-        <TradesMarquee />
-        <FindYourBusiness />
-        <Replaces />
-        <WhoItsFor />
-        <Signature />
-        <Solutions />
-        <Ecosystem />
-        <Pillars />
-        <Platforms />
-        <Extensions />
-        <div className="mt-[clamp(64px,9vw,120px)]">
-          <MigrationBand />
-        </div>
-        <Pricing />
-        <Faq />
-        <CallbackSection location="home" />
+        {/* Everything after the hero starts below the fold on every screen
+            (the hero alone is ~2,300px tall on a phone), so each section is
+            skipped for style/layout/paint until it nears the viewport. Sizes
+            are each section's measured height (phone, desktop). */}
+        <BelowFold size={130} sizeLg={150}>
+          <TradesMarquee />
+        </BelowFold>
+        <BelowFold size={1620} sizeLg={670}>
+          <FindYourBusiness />
+        </BelowFold>
+        <BelowFold size={330} sizeLg={230}>
+          <Replaces />
+        </BelowFold>
+        <BelowFold size={1630} sizeLg={725}>
+          <WhoItsFor />
+        </BelowFold>
+        <BelowFold size={3650} sizeLg={1990}>
+          <Signature />
+        </BelowFold>
+        <BelowFold size={960} sizeLg={890}>
+          <Solutions />
+        </BelowFold>
+        <BelowFold size={1610} sizeLg={715}>
+          <Ecosystem />
+        </BelowFold>
+        <BelowFold size={2600} sizeLg={950}>
+          <Pillars />
+        </BelowFold>
+        <BelowFold size={1110} sizeLg={700}>
+          <Platforms />
+        </BelowFold>
+        <BelowFold size={7840} sizeLg={2410}>
+          <Extensions />
+        </BelowFold>
+        <BelowFold size={680} sizeLg={465}>
+          <div className="mt-[clamp(64px,9vw,120px)]">
+            <MigrationBand />
+          </div>
+        </BelowFold>
+        <BelowFold size={2170} sizeLg={1120}>
+          <Pricing />
+        </BelowFold>
+        <BelowFold size={770} sizeLg={685}>
+          <Faq />
+        </BelowFold>
+        <BelowFold size={1250} sizeLg={770}>
+          <CallbackSection location="home" />
+        </BelowFold>
       </div>
 
       {/* Wider than the page grid on purpose — see FinalCta. */}
-      <FinalCta />
+      <BelowFold size={720} sizeLg={550}>
+        <FinalCta />
+      </BelowFold>
     </>
   );
 }

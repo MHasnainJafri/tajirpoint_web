@@ -34,8 +34,18 @@ import { usePathname } from "@/i18n/navigation";
 const STAGGER_MS = 70;
 const STAGGER_CAP = 8;
 
-/** Still entirely below the bottom of the viewport, i.e. not yet seen. */
-const belowFold = (el: Element) => el.getBoundingClientRect().top >= window.innerHeight;
+/**
+ * Still entirely below the bottom of the viewport, i.e. not yet seen.
+ *
+ * Inside a `.cv-auto` section (BelowFold.tsx) that is itself below the fold,
+ * the answer is yes without measuring the element: measuring it would make
+ * the browser lay out the section it is deliberately skipping.
+ */
+const belowFold = (el: Element) => {
+  const section = el.closest(".cv-auto");
+  if (section && section.getBoundingClientRect().top >= window.innerHeight) return true;
+  return el.getBoundingClientRect().top >= window.innerHeight;
+};
 
 export function Reveal() {
   const pathname = usePathname();

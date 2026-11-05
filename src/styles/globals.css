@@ -562,6 +562,32 @@ body {
   animation-direction: reverse;
 }
 
+/* ── Below-the-fold sections (BelowFold.tsx) ───────────────────
+   `content-visibility: auto` lets the browser skip style, layout and paint
+   for a section until it comes near the viewport. The home page is ~30,000px
+   tall on a phone; without this the whole page is laid out before the hero
+   can paint. The DOM and the text stay in the page (search, find-in-page and
+   screen readers see everything).
+
+   Until a section has rendered once it is sized by `--cv-size` (phones and
+   tablets) / `--cv-size-lg` (1024px and up); after that the browser remembers
+   its real height (`auto`). Paint containment would clip shadows, hover lifts
+   and the reveal rise at the section edges, so `overflow-clip-margin` lets
+   them paint as before — and browsers without it get no content-visibility at
+   all rather than clipped cards. */
+@supports (overflow-clip-margin: 1px) {
+  .cv-auto {
+    content-visibility: auto;
+    contain-intrinsic-height: auto var(--cv-size, 1200px);
+    overflow-clip-margin: 160px;
+  }
+  @media (min-width: 1024px) {
+    .cv-auto {
+      contain-intrinsic-height: auto var(--cv-size-lg, var(--cv-size, 800px));
+    }
+  }
+}
+
 /* ── Scroll reveal (driven by Reveal.tsx) ──────────────────────
    Progressive: nothing here applies to the server-rendered page, so the first
    paint shows every section at full opacity without waiting for JS. Reveal.tsx
