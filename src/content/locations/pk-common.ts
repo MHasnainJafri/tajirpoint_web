@@ -1,4 +1,4 @@
-import type { AddonBlock, LocationFact, LocationFaq, TaxRow } from "./types";
+import type { AddonBlock, LocationFact, LocationFaq, LocationSource, TaxRow } from "./types";
 import { BRAND_NAME } from "@/lib/config/brand";
 
 // Facts shared by every Pakistani page, checked 2 Nov 2026 against the backend:
@@ -136,3 +136,52 @@ export const PK_FAQ_URDU: LocationFaq = {
 };
 
 export const PK_COMMON_FAQS: LocationFaq[] = [PK_FAQ_FBR, PK_FAQ_WALLETS, PK_FAQ_URDU];
+
+// ── Province pages (5 Nov 2026) ─────────────────────────────────────────────
+// Tax facts on the province and new city pages come only from the authority's
+// own site, read on 5 Nov 2026, and are listed in each page's `sources`.
+
+export const PROVINCE_UPDATED = "2026-11-05";
+export const PROVINCE_CHECKED = { label: "5 Nov 2026", iso: "2026-11-05" } as const;
+
+export const SRC_PRA_HOME: LocationSource = {
+  label: "Punjab Revenue Authority: home page (e-IMS services and guide)",
+  url: "https://pra.punjab.gov.pk/",
+  publisher: "PRA",
+};
+
+export const SRC_PRA_FISCAL_DEVICE: LocationSource = {
+  label: "PRA: Technical Specification for Data Sharing through Software Fiscal Device, v1.2",
+  url: "https://e.pra.punjab.gov.pk/templates/Technical_Specification_Software_Fiscal_Device_1.2_PRA.pdf",
+  publisher: "PRA / PRAL",
+};
+
+export const SRC_PRA_EIMS: LocationSource = {
+  label: "PRA e-IMS: invoice search",
+  url: "https://e.pra.punjab.gov.pk/public/eims.xhtml",
+  publisher: "PRA",
+};
+
+export const SRC_SRB_HOME: LocationSource = {
+  label: "Sindh Revenue Board: home page (Point of Sale, lucky draw, taxable services)",
+  url: "https://www.srb.gos.pk/srb/",
+  publisher: "SRB",
+};
+
+export const SRC_KPRA_RIMS: LocationSource = {
+  label: "KPRA: Restaurant APIs (RIMS) docs for POS software providers",
+  url: "https://posregistration.kpra.gov.pk/docs",
+  publisher: "KPRA",
+};
+
+export const SRC_KPRA_PESHAWAR: LocationSource = {
+  label: "KPRA news, 4 Jan 2023: KPRA visits Peshawar restaurants to integrate their POS with RIMS",
+  url: "https://kpra.gov.pk/?p=11454",
+  publisher: "KPRA",
+};
+
+export const SRC_KPRA_RMRS: LocationSource = {
+  label: "KPRA news, 14 Apr 2023: RMRS devices handed to restaurants in Bannu",
+  url: "https://kpra.gov.pk/?p=11628",
+  publisher: "KPRA",
+};

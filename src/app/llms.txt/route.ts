@@ -127,7 +127,7 @@ ${BUSINESSES.map((b) => link(b.name, `/business/${b.slug}`, b.navLine)).join("\n
 
 ## Locations
 
-${link("Locations", LOCATIONS_HUB.path, "Pakistan and its main cities, and UK takeaways: currency, tax authority and our honest status, payments and languages for each place. Not available yet for the UAE or Saudi Arabia (no UAE e-invoicing or ZATCA)")}
+${link("Locations", LOCATIONS_HUB.path, "Pakistan by province (PRA, SRB, KPRA) and main city, and UK takeaways: currency, tax authority and our honest status, payments and languages for each place. Not available yet for the UAE or Saudi Arabia (no UAE e-invoicing or ZATCA)")}
 ${LOCATIONS.map((l) => link(l.seo.title, locationPath(l.slug), l.summary)).join("\n")}
 
 ## Add-ons

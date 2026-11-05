@@ -15,7 +15,7 @@ import { resolveFaqs } from "@/components/marketing/locations/LocationView";
 // Things a location page must never say: fake offices, addresses, customer
 // counts, reviews, or a tax link we do not have.
 const BANNED =
-  /our (lahore|karachi|islamabad|faisalabad|london|dubai) office|street address|trusted by|\d[\d,]* (shops|restaurants|businesses|customers)|rated \d|stars?\b|ZATCA[- ]ready|FBR[- ](certified|approved)|MTD[- ](compatible|recognised)/i;
+  /our (lahore|karachi|islamabad|faisalabad|peshawar|sialkot|london|dubai) office|street address|trusted by|\d[\d,]* (shops|restaurants|businesses|customers)|rated \d|stars?\b|ZATCA[- ]ready|FBR[- ](certified|approved)|MTD[- ](compatible|recognised)/i;
 
 const snapshotSlugs = new Set(
   (ADDON_SNAPSHOT as ReadonlyArray<{ slug: string }>).map((r) => r.slug)
@@ -39,7 +39,15 @@ describe("location pages", () => {
     for (const page of LOCATIONS) {
       for (const b of page.businesses.items) expect(BUSINESS_SLUGS).toContain(b.slug);
       for (const r of page.related) expect(getLocation(r)).toBeDefined();
-      if (page.parent) expect(getLocation(page.parent)?.kind).toBe("country");
+      // A city sits under its province or the country; a province under the country.
+      if (page.parent) {
+        const parent = getLocation(page.parent);
+        expect(parent).toBeDefined();
+        if (page.kind === "province") expect(parent?.kind).toBe("country");
+        else expect(["country", "province"]).toContain(parent?.kind);
+      }
+      for (const c of page.cities?.items ?? []) expect(getLocation(c.slug)?.kind).toBe("city");
+      for (const s of page.sources ?? []) expect(s.url).toMatch(/^https:\/\//);
       for (const block of page.blocks)
         for (const slug of block.addons) expect(snapshotSlugs.has(slug)).toBe(true);
       for (const row of page.tax.rows) {

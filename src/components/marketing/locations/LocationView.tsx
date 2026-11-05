@@ -76,13 +76,20 @@ export function LocationView({
 }) {
   const path = locationPath(page.slug);
   const faqs = resolveFaqs(page.faqs, statusPhrase(addons));
-  const parent = page.parent ? getLocation(page.parent) : undefined;
+  // The trail above this page: country, then province (a city sits under its province).
+  const ancestors: LocationPage[] = [];
+  for (let p = page.parent ? getLocation(page.parent) : undefined; p; ) {
+    ancestors.unshift(p);
+    p = p.parent ? getLocation(p.parent) : undefined;
+  }
+  const parent = ancestors.at(-1);
+  const country = ancestors.find((a) => a.kind === "country");
   const track = `location_${page.slug.replace(/-/g, "_")}`;
   const waText = `Hi, I'd like to know how ${BRAND_NAME} works for my business in ${page.kind === "city" ? page.name : page.slug === "uk" ? "the UK" : page.name}.`;
 
   const crumbs = [
     { label: "Locations", href: "/pos" },
-    ...(parent ? [{ label: parent.label.en, href: locationPath(parent.slug) }] : []),
+    ...ancestors.map((a) => ({ label: a.label.en, href: locationPath(a.slug) })),
     { label: page.label.en, href: path },
   ];
 
@@ -101,10 +108,17 @@ export function LocationView({
             isPartOf: { "@id": WEBSITE_ID },
             about: { "@id": `${siteConfig.url}/#software` },
             spatialCoverage: {
-              "@type": "Place",
+              "@type": page.kind === "province" ? "AdministrativeArea" : "Place",
               name: page.slug === "uk" ? "United Kingdom" : page.name,
-              ...(page.kind === "city" && {
-                containedInPlace: { "@type": "Country", name: parent?.name ?? "Pakistan" },
+              ...(page.kind !== "country" && {
+                containedInPlace:
+                  parent && parent.kind === "province"
+                    ? {
+                        "@type": "AdministrativeArea",
+                        name: parent.name,
+                        containedInPlace: { "@type": "Country", name: country?.name ?? "Pakistan" },
+                      }
+                    : { "@type": "Country", name: parent?.name ?? "Pakistan" },
               }),
             },
             dateModified: page.updated,
@@ -352,6 +366,44 @@ export function LocationView({
           </section>
         ))}
 
+        {/* ── City pages under a province ──────────────────────── */}
+        {page.cities && (
+          <section aria-labelledby="cities-title" className="mt-[clamp(56px,8vw,96px)]">
+            <h2 id="cities-title" className={h2}>
+              {page.cities.heading}
+            </h2>
+            {page.cities.intro && (
+              <p className="mt-4 max-w-[68ch] text-[15.5px] leading-[1.65] text-[var(--color-body)]">
+                {page.cities.intro}
+              </p>
+            )}
+            <ul className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] gap-3">
+              {page.cities.items.map((item) => {
+                const city = getLocation(item.slug);
+                if (!city) return null;
+                return (
+                  <li key={item.slug} className="min-w-0">
+                    <Link
+                      href={locationPath(city.slug)}
+                      className={`${card} block h-full transition-[border-color,transform] duration-200 hover:-translate-y-[2px] hover:border-[var(--color-mint-line)]`}
+                    >
+                      <span className="block text-[16px] font-bold text-[var(--color-ink)]">
+                        {city.label.en}
+                      </span>
+                      <span className="mt-2 block text-[14px] leading-[1.55] text-[var(--color-body)]">
+                        {item.why}
+                      </span>
+                      <span className="mt-3 block text-[13px] font-semibold text-[var(--color-brand)]">
+                        {city.hero.eyebrow} <span aria-hidden="true">→</span>
+                      </span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        )}
+
         {/* ── FAQ ──────────────────────────────────────────────── */}
         <section
           aria-labelledby="faq-title"
@@ -387,6 +439,43 @@ export function LocationView({
             ))}
           </div>
         </section>
+
+        {/* ── Sources for the tax facts ────────────────────────── */}
+        {page.sources && page.sources.length > 0 && (
+          <section
+            aria-labelledby="sources-title"
+            className="mx-auto mt-[clamp(48px,7vw,80px)] max-w-[860px]"
+          >
+            <h2 id="sources-title" className="text-[18px] font-bold text-[var(--color-ink)]">
+              Sources
+            </h2>
+            <p className="mt-2 text-[14px] leading-[1.6] text-[var(--color-body)]">
+              Tax facts on this page come from the tax authority&apos;s own pages
+              {page.checked ? (
+                <>
+                  , read <time dateTime={page.checked.iso}>{page.checked.label}</time>
+                </>
+              ) : null}
+              . Rules change, so check with the authority or your tax adviser before you rely on
+              them.
+            </p>
+            <ol className="mt-3 flex list-decimal flex-col gap-2 ps-5 text-[14px] leading-[1.55] text-[var(--color-body)]">
+              {page.sources.map((s) => (
+                <li key={s.url}>
+                  <a
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="break-words text-[var(--color-brand)] underline-offset-2 hover:underline"
+                  >
+                    {s.label}
+                  </a>{" "}
+                  <span className="text-[var(--color-muted)]">({s.publisher})</span>
+                </li>
+              ))}
+            </ol>
+          </section>
+        )}
 
         {/* ── Other locations ──────────────────────────────────── */}
         <nav

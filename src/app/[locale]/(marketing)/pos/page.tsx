@@ -41,7 +41,9 @@ export default async function LocationsHubPage({
   // Left out of builds for another market or business type (src/lib/config/pages.ts).
   assertPageShown("/pos");
 
-  const pakistan = LOCATIONS.filter((l) => l.countryCode === "PK");
+  // Pakistan and its provinces first (grouped by tax authority), then its cities.
+  const pakistan = LOCATIONS.filter((l) => l.countryCode === "PK" && l.kind !== "city");
+  const pakistanCities = LOCATIONS.filter((l) => l.countryCode === "PK" && l.kind === "city");
   const uk = LOCATIONS.filter((l) => l.countryCode === "GB");
 
   return (
@@ -79,7 +81,8 @@ export default async function LocationsHubPage({
           </p>
         </section>
 
-        <LocationGroup title="Pakistan" items={pakistan} />
+        <LocationGroup title="Pakistan and its provinces" items={pakistan} />
+        <LocationGroup title="Pakistani cities" items={pakistanCities} />
         <LocationGroup title="United Kingdom" items={uk} />
 
         <section aria-labelledby="gulf-title" className={`${card} mt-[clamp(40px,6vw,72px)]`}>

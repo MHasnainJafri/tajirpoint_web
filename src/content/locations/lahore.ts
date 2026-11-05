@@ -18,7 +18,7 @@ const page: LocationPage = {
   slug: "lahore",
   kind: "city",
   countryCode: "PK",
-  parent: "pakistan",
+  parent: "punjab",
   name: "Lahore",
   label: { en: "Lahore", ur: "لاہور", ar: "لاهور" },
   summary:
@@ -130,7 +130,7 @@ const page: LocationPage = {
     headline: `Run your Lahore shop or restaurant on ${BRAND_NAME}.`,
     sub: "Book a free demo, or start free for 3 months. No card needed, and we move your data for free.",
   },
-  related: ["pakistan", "islamabad-rawalpindi", "faisalabad", "karachi"],
+  related: ["punjab", "pakistan", "islamabad-rawalpindi", "faisalabad", "sialkot", "karachi"],
   updated: PK_UPDATED,
 };
 

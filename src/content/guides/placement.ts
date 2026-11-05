@@ -46,6 +46,15 @@ export const GUIDE_PLACEMENT: Readonly<Record<string, readonly string[]>> = {
     "digital-khata",
   ],
   "/pos/faisalabad": ["best-pos-software-pakistan", "fbr-pos-integration", "digital-khata"],
+  "/pos/punjab": ["fbr-pos-integration", "best-pos-software-pakistan", "choose-restaurant-pos"],
+  "/pos/sindh": ["fbr-pos-integration", "best-pos-software-pakistan", "choose-restaurant-pos"],
+  "/pos/khyber-pakhtunkhwa": [
+    "fbr-pos-integration",
+    "best-pos-software-pakistan",
+    "choose-restaurant-pos",
+  ],
+  "/pos/peshawar": ["best-pos-software-pakistan", "fbr-pos-integration", "choose-restaurant-pos"],
+  "/pos/sialkot": ["stock-counting", "digital-khata", "fbr-pos-integration"],
   "/pos/uk": ["choose-restaurant-pos", "restaurant-food-cost", "restaurant-opening-checklist"],
 
   "/compare/tajirpoint-vs-paper-khata": ["digital-khata", "excel-to-pos"],
@@ -60,6 +69,16 @@ export const GUIDE_PLACEMENT: Readonly<Record<string, readonly string[]>> = {
     "best-pos-software-pakistan",
     "fbr-pos-integration",
     "choose-restaurant-pos",
+  ],
+  "/compare/tajirpoint-vs-moneypex": [
+    "best-pos-software-pakistan",
+    "fbr-pos-integration",
+    "choose-restaurant-pos",
+  ],
+  "/compare/tajirpoint-vs-hysabone": [
+    "best-pos-software-pakistan",
+    "fbr-pos-integration",
+    "digital-khata",
   ],
   "/compare/tajirpoint-vs-foodics": ["choose-restaurant-pos", "restaurant-opening-checklist"],
   "/compare/tajirpoint-vs-loyverse": ["choose-restaurant-pos", "stock-counting"],

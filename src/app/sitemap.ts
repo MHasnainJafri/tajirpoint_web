@@ -5,7 +5,7 @@ import { isTranslated, localeUrl } from "@/lib/seo/metadata";
 import { RESOURCES } from "@/lib/docs/nav";
 import { SHOWN_BUSINESS_SLUGS } from "@/lib/marketing/businesses";
 import { getAddonCatalogue } from "@/lib/marketing/addons";
-import { COMPARE_SLUGS } from "@/content/compare";
+import { COMPARISONS } from "@/content/compare";
 import { LOCATIONS, LOCATIONS_HUB, locationPath } from "@/content/locations";
 import { GUIDES, GUIDES_HUB } from "@/content/guides";
 import { TOOL_SLUGS } from "@/content/tools/tools";
@@ -73,13 +73,14 @@ const FEATURE_PAGES: Page[] = ["khata", "offline", "accounting", "van-sales", "e
 
 /** /compare and one page per comparison (src/content/compare). */
 const COMPARE_PAGES: Page[] = [
-  { path: "/compare", priority: 0.7, changeFrequency: "monthly", updated: "2026-11-02" },
-  ...COMPARE_SLUGS.map(
-    (slug): Page => ({
-      path: `/compare/${slug}`,
+  { path: "/compare", priority: 0.7, changeFrequency: "monthly", updated: "2026-11-05" },
+  ...COMPARISONS.map(
+    (c): Page => ({
+      path: `/compare/${c.slug}`,
       priority: 0.7,
       changeFrequency: "monthly",
-      updated: "2026-11-02",
+      // A comparison re-checked later than the 2 Nov launch carries its own date.
+      updated: c.checked?.iso ?? "2026-11-02",
     })
   ),
 ];

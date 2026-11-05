@@ -483,7 +483,7 @@ const guide: Guide = {
         },
         {
           type: "p",
-          text: "Compare us directly with [CORN POS](/compare/tajirpoint-vs-corn-pos) or [Loyverse](/compare/tajirpoint-vs-loyverse), or [book a demo](/book-demo) on your own products or menu.",
+          text: "Compare us directly with [Oscar POS](/compare/tajirpoint-vs-oscar), [CORN POS](/compare/tajirpoint-vs-corn-pos), [Moneypex](/compare/tajirpoint-vs-moneypex), [HysabOne](/compare/tajirpoint-vs-hysabone) or [Loyverse](/compare/tajirpoint-vs-loyverse), or [book a demo](/book-demo) on your own products or menu.",
         },
       ],
     },
