@@ -21,10 +21,15 @@ import type { BusinessSlug } from "@/lib/marketing/businesses";
 
 export const LOCATION_SLUGS = [
   "pakistan",
+  "punjab",
+  "sindh",
+  "khyber-pakhtunkhwa",
   "lahore",
   "karachi",
   "islamabad-rawalpindi",
   "faisalabad",
+  "peshawar",
+  "sialkot",
   "uk",
 ] as const;
 
@@ -88,12 +93,31 @@ export interface LocationFaq {
   a: string | ((status: StatusPhrase) => string);
 }
 
+/** An official page a tax fact on a location page comes from. */
+export interface LocationSource {
+  label: string;
+  url: string;
+  /** Who publishes it, e.g. "PRA". */
+  publisher: string;
+}
+
+/** A city page linked from its province page, with why it has a page of its own. */
+export interface LocationCity {
+  slug: LocationSlug;
+  why: string;
+}
+
 export interface LocationPage {
   slug: LocationSlug;
-  kind: "country" | "city";
+  /**
+   * "province" pages (SEO audit 4 Nov 2026, content plan item 17) group a
+   * province's cities by the tax authority they share, so smaller cities get
+   * a section there instead of a thin page of their own.
+   */
+  kind: "country" | "province" | "city";
   /** ISO 3166-1 alpha-2. */
   countryCode: "PK" | "GB";
-  /** The country page above a city in the breadcrumb trail. */
+  /** The page above this one in the breadcrumb trail: a province or the country. */
   parent?: LocationSlug;
   /** Name in English, as used in headings: "Lahore". */
   name: string;
@@ -110,7 +134,12 @@ export interface LocationPage {
   blocks: AddonBlock[];
   businesses: { heading: string; intro?: string; items: LocationBusiness[] };
   sections: LocationSection[];
+  /** Province pages: the city pages under it. */
+  cities?: { heading: string; intro?: string; items: LocationCity[] };
   faqs: LocationFaq[];
+  /** Official pages behind the tax facts, and the day we read them. */
+  sources?: LocationSource[];
+  checked?: { label: string; iso: string };
   cta: { headline: string; sub: string };
   related: LocationSlug[];
   /** Date the page content last changed (sitemap <lastmod>). */

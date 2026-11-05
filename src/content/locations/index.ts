@@ -6,6 +6,11 @@ import lahore from "./lahore";
 import karachi from "./karachi";
 import islamabadRawalpindi from "./islamabad-rawalpindi";
 import faisalabad from "./faisalabad";
+import punjab from "./punjab";
+import sindh from "./sindh";
+import khyberPakhtunkhwa from "./khyber-pakhtunkhwa";
+import peshawar from "./peshawar";
+import sialkot from "./sialkot";
 import uk from "./uk";
 import { BRAND_NAME } from "@/lib/config/brand";
 
@@ -15,10 +20,15 @@ export { LOCATION_SLUGS } from "./types";
 /** Every location page, in the order the hub and footer list them. */
 export const LOCATIONS: readonly LocationPage[] = [
   pakistan,
+  punjab,
+  sindh,
+  khyberPakhtunkhwa,
   lahore,
   karachi,
   islamabadRawalpindi,
   faisalabad,
+  peshawar,
+  sialkot,
   uk,
 ];
 
@@ -39,16 +49,16 @@ export function locationPath(slug: LocationSlug): string {
 /** The hub page (/pos). */
 export const LOCATIONS_HUB = {
   path: "/pos",
-  updated: "2026-11-02",
+  updated: "2026-11-05",
   seo: {
     title: "POS System for Pakistan and the UK",
-    description: `Where ${BRAND_NAME} POS fits: Pakistani cities and UK takeaways. Currency, tax authority and our honest status, payments and languages for each place.`,
+    description: `Where ${BRAND_NAME} POS fits: Pakistan by province and city, and UK takeaways. Currency, tax authority and our honest status, payments and languages.`,
     keywords: ["pos system pakistan", "takeaway epos uk", "pos by city", "pos software locations"],
   },
   og: {
     eyebrow: `${BRAND_NAME} by location`,
     title: `What ${BRAND_NAME} does where you are.`,
-    sub: "Pakistan and its main cities, and UK takeaways: tax, payments and languages, honestly.",
+    sub: "Pakistan by province and city, and UK takeaways: tax, payments and languages, honestly.",
     pills: ["Pakistan", "Lahore", "Karachi", "UK"],
   },
   hero: {

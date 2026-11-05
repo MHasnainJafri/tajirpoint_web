@@ -18,7 +18,7 @@ const page: LocationPage = {
   slug: "faisalabad",
   kind: "city",
   countryCode: "PK",
-  parent: "pakistan",
+  parent: "punjab",
   name: "Faisalabad",
   label: { en: "Faisalabad", ur: "فیصل آباد", ar: "فيصل آباد" },
   summary:
@@ -134,7 +134,7 @@ const page: LocationPage = {
     headline: `Run your Faisalabad business on ${BRAND_NAME}.`,
     sub: "Book a free demo, or start free for 3 months. No card needed, and we move your data for free.",
   },
-  related: ["pakistan", "lahore", "karachi", "islamabad-rawalpindi"],
+  related: ["punjab", "pakistan", "lahore", "sialkot", "karachi", "islamabad-rawalpindi"],
   updated: PK_UPDATED,
 };
 

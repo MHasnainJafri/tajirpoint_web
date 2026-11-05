@@ -135,7 +135,17 @@ const page: LocationPage = {
     headline: `See ${BRAND_NAME} on your own shop.`,
     sub: "Book a free demo in Urdu or English, or start free for 3 months. We move your data for free.",
   },
-  related: ["lahore", "karachi", "islamabad-rawalpindi", "faisalabad"],
+  related: [
+    "punjab",
+    "sindh",
+    "khyber-pakhtunkhwa",
+    "lahore",
+    "karachi",
+    "islamabad-rawalpindi",
+    "faisalabad",
+    "peshawar",
+    "sialkot",
+  ],
   updated: PK_UPDATED,
 };
 

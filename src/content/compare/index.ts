@@ -3,6 +3,8 @@ import type { Comparison } from "./types";
 import { cashRegister, excel, paperKhata } from "./alternatives";
 import { cornPos, foodics, loyverse, square } from "./competitors";
 import { oscar } from "./oscar";
+import { moneypex } from "./moneypex";
+import { hysabone } from "./hysabone";
 import { BRAND_NAME } from "@/lib/config/brand";
 
 export { CHECKED, CHECKED_ISO, checkedOn } from "./types";
@@ -18,6 +20,8 @@ export const COMPARISONS: Comparison[] = [
   foodics,
   cornPos,
   oscar,
+  moneypex,
+  hysabone,
 ];
 
 export const COMPARE_SLUGS = COMPARISONS.map((c) => c.slug);
@@ -31,7 +35,7 @@ export { COMPARE_LABEL } from "./label";
 export const COMPARE_HUB = {
   seo: {
     title: `Compare ${BRAND_NAME} with Other POS Options`,
-    description: `Honest comparisons of ${BRAND_NAME} with paper khata, Excel, a cash register, Loyverse, Square, Foodics, CORN POS and Oscar. Sources and dates on every competitor fact.`,
+    description: `Honest comparisons of ${BRAND_NAME} with paper khata, Excel, Loyverse, Square, Foodics, CORN POS, Oscar, Moneypex and HysabOne, with sources and dates.`,
     keywords: [
       "POS comparison",
       "POS alternatives",
