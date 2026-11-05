@@ -446,7 +446,11 @@ function Till({
                       alt=""
                       fill
                       sizes="120px"
-                      loading="eager"
+                      // Lazy (the default), not eager: on a phone the till is
+                      // a screen and a half below the fold, and six eager
+                      // photos raced the stylesheet and the hero text for
+                      // the first bytes. On wide screens they are in view at
+                      // first layout, so they still load straight away.
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />
                   ) : (

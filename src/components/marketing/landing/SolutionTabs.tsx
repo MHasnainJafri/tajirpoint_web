@@ -1,19 +1,28 @@
 "use client";
 
 import { useCallback, useRef, useState } from "react";
+import { VerticalScreenMock } from "./VerticalScreenMock";
 
 /**
  * The vertical-picker shell.
  *
- * Only the selection lives here. Each panel is rendered on the server and
- * passed in as a node, so all six stay in the HTML — the inactive verticals'
- * links remain crawlable, which is the whole reason this section replaced a
- * grid of six icons.
+ * Only the selection lives here. Each panel's copy is rendered on the server
+ * and passed in as a node, so all six stay in the HTML — the inactive
+ * verticals' text and links remain crawlable, which is the whole reason this
+ * section replaced a grid of six icons. The screen mock beside the copy is
+ * fixture UI, so only the selected tab draws one; picking another tab draws
+ * its mock as the panel fades in, exactly as before.
  *
  * The rail is a horizontal scroller below 981px and a vertical list above it.
  * That is pure CSS via the `tabs:` breakpoint, so there is no matchMedia and
  * no first-paint flash of the wrong layout.
  */
+
+export interface SolutionScreen {
+  id: string;
+  screenTitle: string;
+  rows: ReadonlyArray<{ a: string; b: string; c: string }>;
+}
 
 export interface SolutionTab {
   id: string;
@@ -26,10 +35,12 @@ export function SolutionTabs({
   tabs,
   label,
   panels,
+  screens,
 }: {
   tabs: SolutionTab[];
   label: string;
   panels: React.ReactNode[];
+  screens: SolutionScreen[];
 }) {
   const [active, setActive] = useState(0);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -124,7 +135,16 @@ export function SolutionTabs({
                 : undefined
             }
           >
-            {panel}
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,260px),1fr))] items-center gap-[clamp(18px,3vw,40px)] rounded-[24px] bg-[var(--color-surface)] p-[clamp(18px,2.6vw,32px)]">
+              {panel}
+              {i === active && screens[i] && (
+                <VerticalScreenMock
+                  id={screens[i].id}
+                  screenTitle={screens[i].screenTitle}
+                  rows={screens[i].rows}
+                />
+              )}
+            </div>
           </div>
         ))}
       </div>
