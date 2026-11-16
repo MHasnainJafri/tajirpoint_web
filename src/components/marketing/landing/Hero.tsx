@@ -78,13 +78,17 @@ export function Hero() {
         </div>
 
         {/* ── Live till + invoice, rotating through business types ─ */}
-        <div className="relative mx-auto mt-2 w-full max-w-[1000px]">
+        <div className="relative mx-auto mt-2 hidden w-full max-w-[1000px] md:block">
           <div className="mb-3 text-center text-[11px] font-medium tracking-wide text-[#B5B9C2] rtl:tracking-normal">
             {t("demoCaption")}
           </div>
           {/* The mock till is English sample data (see above): on /ur and /ar
               keep it left-to-right and tell screen readers it is English. */}
-          <div lang={locale === "en" ? undefined : "en"} dir={locale === "en" ? undefined : "ltr"}>
+          <div
+            lang={locale === "en" ? undefined : "en"}
+            dir={locale === "en" ? undefined : "ltr"}
+            className="md:max-h-[440px] md:overflow-hidden md:[mask-image:linear-gradient(#000_80%,transparent)] lg:max-h-none lg:[mask-image:none]"
+          >
             <HeroShowcase />
           </div>
         </div>

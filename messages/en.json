@@ -38,7 +38,7 @@
         },
         "eInvoicing": {
           "name": "E-Invoicing",
-          "desc": "Fiscal compliance built in"
+          "desc": "Tax records and invoices"
         },
         "offline": {
           "name": "Offline POS",

@@ -9,6 +9,7 @@ import { MediaSlot } from "@/components/media/MediaSlot";
 import { Tick } from "@/components/marketing/landing/Stroke";
 import { MigrationBand } from "@/components/marketing/business/MigrationBand";
 import { PlanTeaser } from "@/components/marketing/business/PlanTeaser";
+import { RestaurantPlanGuide } from "@/components/marketing/business/RestaurantPlanGuide";
 import { BusinessView } from "@/components/marketing/business/BusinessView";
 import { SHOWN_BUSINESS_SLUGS, getBusiness, type Business } from "@/lib/marketing/businesses";
 import { businessUi, localizeApp, localizeBusiness } from "@/content/i18n/businesses";
@@ -243,6 +244,9 @@ export default async function BusinessPage({ params }: { params: Params }) {
 
         {/* ── Plans ──────────────────────────────────────────────── */}
         <div className="mt-[clamp(64px,9vw,120px)]">
+          {["restaurants", "cafes-bakeries", "cloud-kitchens"].includes(b.slug) && (
+            <RestaurantPlanGuide />
+          )}
           <PlanTeaser locale={locale} />
         </div>
 
