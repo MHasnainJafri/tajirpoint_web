@@ -2,7 +2,7 @@ import type { Guide } from "./types";
 import { BRAND_NAME } from "@/lib/config/brand";
 
 // Competitor facts come ONLY from each vendor's own public pages (see
-// `sources`), read on 5 Nov 2026. Where a vendor's pages did not say
+// `sources`), read on 5 Nov 2026 and rechecked on 16 Nov 2026. Where a vendor's pages did not say
 // something, the cell says "Not published" — we never write "No" for a
 // competitor. Prices are in the currency each vendor publishes. No ratings.
 // Notes from the check:
@@ -15,7 +15,7 @@ import { BRAND_NAME } from "@/lib/config/brand";
 // - Foodics: its site lists KSA, UAE, Egypt, Kuwait, Jordan, Oman, Qatar; no
 //   Pakistan. So it is a note, not a row.
 // TajirPoint side: plans API (api.tajirpoint.com/api/v1/public/plans/, USD,
-// 5 Nov 2026), src/content/compare/tajirpoint.ts (offline for tables and the
+// 16 Nov 2026), src/content/compare/tajirpoint.ts (offline for tables and the
 // kitchen screen not released; FBR coming soon; PRA/SRB/KPRA not built; iOS
 // coming soon) and src/lib/marketing/businesses.ts (pharmacy batches/FEFO,
 // clothing variants, grocery carton/kg/piece, van sales).
@@ -23,7 +23,7 @@ const guide: Guide = {
   slug: "best-pos-software-pakistan",
   category: "Choosing a POS",
   title: "Best POS software in Pakistan (2026): an honest comparison",
-  seoTitle: "Best POS Software in Pakistan (2026), Compared",
+  seoTitle: "Best POS Software in Pakistan 2026: 7 Compared",
   seoDescription: `An honest 2026 look at POS software in Pakistan: Oscar, CORN POS, HysabOne, Moneypex, Loyverse, Odoo and ${BRAND_NAME} on FBR, offline, Urdu, khata and price.`,
   keywords: [
     "best POS software in Pakistan",
@@ -40,7 +40,7 @@ const guide: Guide = {
   shortAnswer:
     "There is no single best POS software in Pakistan; the right one depends on your business. For restaurants that must report to FBR or a provincial authority today, CORN POS, Oscar and Moneypex list those links. For accounting-led traders, HysabOne. For a free start, Loyverse. Compare offline selling, Urdu, khata and the full yearly cost before you sign.",
   keyPoints: [
-    "Seven systems side by side, from the vendors' own pages (checked 5 Nov 2026)",
+    "Seven systems side by side, from the vendors' own pages (checked 16 Nov 2026)",
     "Which ones list FBR, PRA, SRB or KPRA links today",
     "What to look for as a restaurant, kiryana, pharmacy, distributor or clothing shop",
     "A criteria table to score each system yourself, with no made-up ratings",
@@ -65,11 +65,59 @@ const guide: Guide = {
           type: "list",
           items: [
             "Every fact about another product comes from **that company's own website**. The pages are listed under Sources.",
-            "We checked every page on **5 November 2026**. Prices and features change, so check again before you buy.",
+            "We checked every page on **16 November 2026**. Prices and features change, so check again before you buy.",
             'Where a vendor\'s pages did not say something, we wrote **"Not published"**. That does not mean the feature is missing. Ask them.',
             "Prices are shown in the currency each vendor publishes (PKR or US$). We did not convert them.",
             "No stars and no scores. You will find a criteria table further down to score systems yourself.",
           ],
+        },
+      ],
+    },
+    {
+      id: "quick-picks",
+      heading: "Quick answer: which POS software to shortlist",
+      blocks: [
+        {
+          type: "p",
+          text: "If you only read one part, read this. It is a shortlist by need, not a ranking: every line comes from the vendors' own pages, and the details are further down.",
+        },
+        {
+          type: "table",
+          caption: "Shortlist by what you need most (from the vendors' own pages)",
+          head: ["If you need…", "Look at", "Why"],
+          rows: [
+            [
+              "A restaurant POS that reports to FBR and your province today",
+              "CORN POS, Oscar POS, Moneypex",
+              "Their sites list FBR and provincial links (PRA, SRB, KPRA vary by vendor)",
+            ],
+            [
+              "To start free on a phone or tablet",
+              "Loyverse",
+              "Core POS is free; paid add-ons in US$. No FBR or khata on its pages",
+            ],
+            [
+              "Accounting first, with POS on top",
+              "HysabOne, Odoo",
+              "Books, ledgers and stock in one system; FBR IRIS posting on HysabOne",
+            ],
+            [
+              "The lowest published monthly price",
+              "Moneypex",
+              "Retail POS from PKR 1,500 a month; FBR is a paid add-on",
+            ],
+            [
+              "Khata (customer credit), stock, delivery and Urdu in one system",
+              BRAND_NAME,
+              "Our own product: credit limits, aging and reminders, own riders. FBR is coming soon, not live",
+            ],
+          ],
+        },
+        {
+          type: "note",
+          tone: "warn",
+          title: "Must report sales to FBR now?",
+          text: `Then pick a system that shows an FBR invoice number and QR code on a live receipt today. ${BRAND_NAME}'s FBR link is not live yet, so it is not the right choice for you until it is. See [FBR integration: what to ask](#fbr).`,
         },
       ],
     },
@@ -84,7 +132,7 @@ const guide: Guide = {
         {
           type: "table",
           caption:
-            "Seven POS systems sold in Pakistan: who they suit and the published price (checked 5 Nov 2026)",
+            "Seven POS systems sold in Pakistan: who they suit and the published price (checked 16 Nov 2026)",
           head: ["System", "What it is", "Who it suits", "Published price"],
           rows: [
             [
@@ -109,7 +157,7 @@ const guide: Guide = {
               "Moneypex",
               "Cloud business software with separate POS products",
               "Retail, restaurants, pharmacies, mobile shops and distributors",
-              "Retail POS PKR 1,500 a month; Restaurant POS PKR 32,400 a year; paid add-ons",
+              "Retail POS PKR 1,500 a month; Restaurant POS PKR 32,400 a year; paid add-ons; 7-day free trial",
             ],
             [
               "Loyverse",
@@ -121,7 +169,7 @@ const guide: Guide = {
               "Odoo POS",
               "POS inside a full business software suite",
               "Businesses that want POS, stock and accounts in one large system",
-              "One app free; Standard US$11.20 per user a month (first-year discount shown)",
+              "One app free; Standard from US$8.95 per user a month for the first 12 months, then US$11.20 (as shown to us)",
             ],
             [
               BRAND_NAME,
@@ -210,7 +258,7 @@ const guide: Guide = {
           type: "note",
           tone: "info",
           title: "What about Foodics?",
-          text: "Foodics is a well-known restaurant POS in the Gulf. Its website lists Saudi Arabia, the UAE, Egypt, Kuwait, Jordan, Oman and Qatar, and does not mention Pakistan (checked 5 Nov 2026). So we have left it out of the tables. If you have a branch in the Gulf, see our [comparison with Foodics](/compare/tajirpoint-vs-foodics).",
+          text: "Foodics is a well-known restaurant POS in the Gulf. Its website lists Saudi Arabia, the UAE, Egypt, Kuwait, Jordan, Oman and Qatar, and does not mention Pakistan (checked 16 Nov 2026). So we have left it out of the tables. If you have a branch in the Gulf, see our [comparison with Foodics](/compare/tajirpoint-vs-foodics).",
         },
       ],
     },
@@ -221,32 +269,32 @@ const guide: Guide = {
         { type: "h3", text: "Oscar POS" },
         {
           type: "p",
-          text: 'Oscar sells POS, inventory and payments together and covers both restaurants and shops. Its restaurant page lists a kitchen display, KOT routing, table ordering, delivery-app orders in one list, offline selling, and "FBR, SRB, PRA ready". It does not publish prices, and its pages we read do not mention Urdu. **Good for:** restaurants and retailers who want one Pakistani vendor and are happy to get a quote.',
+          text: 'Oscar sells POS, inventory and payments together and covers both restaurants and shops. Its restaurant page lists a kitchen display, KOT routing, table ordering, delivery-app orders in one list, offline selling, and "FBR, SRB, PRA ready". It does not publish prices, and its pages we read do not mention Urdu. **Good for:** restaurants and retailers who want one Pakistani vendor and are happy to get a quote. [Compare Oscar with us](/compare/tajirpoint-vs-oscar).',
         },
         { type: "h3", text: "CORN POS" },
         {
           type: "p",
-          text: "CORN POS is a Lahore-based restaurant POS. It lists FBR, PRA, SRB and KPRA links, offline mode with a local server, a kitchen display, waiter and owner apps, a rider app and a customer ordering app. It runs on browsers, Android tablets, iPads and desktops. Prices are published in $ per branch a month. **Good for:** restaurants and chains that must send sales to FBR and their province today.",
+          text: "CORN POS is a Lahore-based restaurant POS. It lists FBR, PRA, SRB and KPRA links, offline mode with a local server, a kitchen display, waiter and owner apps, a rider app and a customer ordering app. It runs on browsers, Android tablets, iPads and desktops. Prices are published in $ per branch a month. **Good for:** restaurants and chains that must send sales to FBR and their province today. [Compare CORN POS with us](/compare/tajirpoint-vs-corn-pos).",
         },
         { type: "h3", text: "HysabOne" },
         {
           type: "p",
-          text: "HysabOne is accounting software first, with inventory and POS on top. It has an Urdu interface, customer and supplier ledgers with receivables aging, and posts invoices to FBR IRIS from inside the books. Its pages do not describe restaurant tools such as tables or a kitchen display. Its POS plan lists offline mode, but its FAQ says it needs internet, so ask them. **Good for:** traders and wholesalers whose main need is the books.",
+          text: "HysabOne is accounting software first, with inventory and POS on top. It has an Urdu interface, customer and supplier ledgers with receivables aging, and posts invoices to FBR IRIS from inside the books. Its pages do not describe restaurant tools such as tables or a kitchen display. Its POS plan lists offline mode, but its FAQ says it needs internet, so ask them. **Good for:** traders and wholesalers whose main need is the books. [Compare HysabOne with us](/compare/tajirpoint-vs-hysabone).",
         },
         { type: "h3", text: "Moneypex" },
         {
           type: "p",
-          text: "Moneypex sells separate products for retail, restaurants, pharmacies, mobile shops and distribution. Its POS pages list offline billing, FBR integration as a paid add-on and a PRA link. The restaurant plan includes tables, a waiter app and delivery; the kitchen display, extra users and extra terminals are paid add-ons. **Good for:** owners who want a low published starting price and will pay only for the add-ons they use.",
+          text: "Moneypex sells separate products for retail, restaurants, pharmacies, mobile shops and distribution. Its POS pages list offline billing, FBR integration as a paid add-on and a PRA link. The restaurant plan includes tables, a waiter app and delivery; the kitchen display, extra users and extra terminals are paid add-ons (for restaurants an extra terminal is PKR 10,000 a month, against PKR 1,000 on retail). **Good for:** owners who want a low published starting price and will pay only for the add-ons they use. [Compare Moneypex with us](/compare/tajirpoint-vs-moneypex).",
         },
         { type: "h3", text: "Loyverse" },
         {
           type: "p",
-          text: "Loyverse is a free POS app for iPhone, iPad and Android, used in 170+ countries by its own count. The core POS, kitchen display, loyalty and multi-store are free; sales history, staff management and advanced stock are paid add-ons in US$. Urdu is one of the app's languages. Its pages do not list FBR integration or a customer credit ledger. **Good for:** a small shop or cafe that wants to start free and does not need FBR or khata.",
+          text: "Loyverse is a free POS app for iPhone, iPad and Android, used in 170+ countries by its own count. The core POS, kitchen display, loyalty and multi-store are free; sales history, staff management and advanced stock are paid add-ons in US$. Urdu is one of the app's languages. Its pages do not list FBR integration or a customer credit ledger. **Good for:** a small shop or cafe that wants to start free and does not need FBR or khata. [Compare Loyverse with us](/compare/tajirpoint-vs-loyverse).",
         },
         { type: "h3", text: "Odoo POS" },
         {
           type: "p",
-          text: "Odoo's POS is part of a large business suite with stock, accounting and much more. It lists offline selling, floor plans, a preparation display, kitchen printers, split bills, self-ordering and customer credit limits. Pricing is per user. Odoo's own pages do not list FBR integration. **Good for:** larger businesses with an IT person or partner to set it up.",
+          text: "Odoo's POS is part of a large business suite with stock, accounting and much more. It lists offline selling, floor plans, a preparation display, kitchen printers, split bills, self-ordering and customer credit limits. Pricing is per user. Odoo's own pages do not list FBR integration; FBR connectors sold on Odoo's app store are made by other companies, so check who supports them. **Good for:** larger businesses with an IT person or partner to set it up.",
         },
         { type: "h3", text: BRAND_NAME },
         {
@@ -425,7 +473,7 @@ const guide: Guide = {
       blocks: [
         {
           type: "p",
-          text: "Published prices on the vendors' own pages (checked 5 Nov 2026) range from a free core app to $130 per branch a month, and some vendors give prices only on request. The headline price is rarely the whole bill.",
+          text: "Published prices on the vendors' own pages (checked 16 Nov 2026) range from a free core app to $130 per branch a month, and some vendors give prices only on request. The headline price is rarely the whole bill.",
         },
         {
           type: "list",
@@ -479,7 +527,7 @@ const guide: Guide = {
         },
         {
           type: "p",
-          text: "Prices are in US dollars (checked 5 Nov 2026). The Light plan is free for 3 months with no card: one shop, two staff logins, 30 products and 100 orders a day. After that, Shop is $29 a month and Business is $79 a month; the restaurant suite and kitchen display are in Business. See [pricing](/pricing) for the current plans.",
+          text: "Prices are in US dollars (checked 16 Nov 2026). The Light plan is free for 3 months with no card: one shop, two staff logins, 30 products and 100 orders a day. After that, Shop is $29 a month and Business is $79 a month; the restaurant suite and kitchen display are in Business. See [pricing](/pricing) for the current plans.",
         },
         {
           type: "p",
@@ -495,11 +543,11 @@ const guide: Guide = {
     },
     {
       q: "Which POS software in Pakistan is FBR integrated?",
-      a: `On their own sites (checked 5 Nov 2026), CORN POS lists FBR, PRA, SRB and KPRA; Oscar says "FBR, SRB, PRA ready"; Moneypex sells FBR integration as an add-on and lists PRA; HysabOne posts invoices to FBR IRIS. ${BRAND_NAME}'s FBR integration is coming soon. Always ask to see an FBR invoice number and QR code on a live receipt.`,
+      a: `On their own sites (checked 16 Nov 2026), CORN POS lists FBR, PRA, SRB and KPRA; Oscar says "FBR, SRB, PRA ready"; Moneypex sells FBR integration as an add-on and lists PRA; HysabOne posts invoices to FBR IRIS. ${BRAND_NAME}'s FBR integration is coming soon. Always ask to see an FBR invoice number and QR code on a live receipt.`,
     },
     {
       q: "Is there a free POS software in Pakistan?",
-      a: `Loyverse lists its core POS as free, with paid add-ons. Odoo lists a free plan for one app. ${BRAND_NAME}'s Light plan is free for 3 months with no card, then you choose a paid plan. Check the limits of any free option before you rely on it.`,
+      a: `Loyverse lists its core POS as free, with paid add-ons. Odoo lists a free plan for one app. Moneypex offers a 7-day free trial, and HysabOne a 14-day one. ${BRAND_NAME}'s Light plan is free for 3 months with no card, then you choose a paid plan. Check the limits of any free option before you rely on it.`,
     },
     {
       q: "How much does POS software cost in Pakistan?",
@@ -573,6 +621,11 @@ const guide: Guide = {
       url: "https://www.odoo.com/app/point-of-sale-restaurant",
       publisher: "Odoo",
     },
+    {
+      label: "Odoo Apps: FBR POS connector by a third party",
+      url: "https://apps.odoo.com/apps/modules/19.0/fbr_pos",
+      publisher: "Odoo Apps",
+    },
     { label: "Foodics home page", url: "https://www.foodics.com/", publisher: "Foodics" },
     {
       label: "POS Integration: Frequently Asked Questions",
@@ -585,7 +638,7 @@ const guide: Guide = {
       publisher: "FBR",
     },
   ],
-  checked: "5 November 2026",
+  checked: "16 November 2026",
   links: [
     { label: "Pricing", href: "/pricing", note: "Light free for 3 months, then Shop or Business" },
     {
@@ -613,11 +666,16 @@ const guide: Guide = {
       href: "/extensions/fbr-integration",
       note: "Coming soon: what it will do",
     },
+    {
+      label: "All comparisons",
+      href: "/compare",
+      note: "Side-by-side with Oscar, CORN POS, Moneypex, HysabOne, Loyverse and more",
+    },
     { label: "Book a demo", href: "/book-demo", note: "See it run on your own products or menu" },
   ],
   related: ["fbr-pos-integration", "choose-restaurant-pos", "digital-khata"],
   datePublished: "2026-11-05",
-  dateModified: "2026-11-05",
+  dateModified: "2026-11-16",
   og: {
     eyebrow: "Guide · POS software Pakistan",
     title: "Best POS software in Pakistan, compared honestly.",

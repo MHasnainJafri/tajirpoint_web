@@ -6,6 +6,8 @@
  * weight to them from the pages people land on. Order = order on the page.
  */
 export const GUIDE_PLACEMENT: Readonly<Record<string, readonly string[]>> = {
+  "/pricing": ["choose-restaurant-pos", "best-pos-software-pakistan", "excel-to-pos"],
+
   "/business/restaurants": [
     "choose-restaurant-pos",
     "restaurant-food-cost",
