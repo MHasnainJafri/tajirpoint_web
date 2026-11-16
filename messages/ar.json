@@ -114,6 +114,24 @@
     }
   },
   "landing": {
+    "restaurantStrip": {
+      "title": "Everything a restaurant needs, in one system",
+      "link": "See the restaurant system",
+      "items": {
+        "dineIn": { "title": "Dine-in", "body": "Tables, floor plan and split bills." },
+        "takeaway": { "title": "Takeaway", "body": "Quick counter orders and pickup times." },
+        "delivery": { "title": "Delivery", "body": "Rider app with cash tracked per shift." },
+        "kitchen": {
+          "title": "Kitchen screen",
+          "body": "Orders appear on the kitchen display as they are placed."
+        },
+        "waiter": { "title": "Waiter app", "body": "Take orders at the table from a phone." },
+        "online": {
+          "title": "Online ordering",
+          "body": "Your own order page, no commission per order."
+        }
+      }
+    },
     "meta": {
       "title": "Tajir Point: نظام نقاط البيع للمتاجر والمطاعم والموزعين",
       "description": "نظام نقاط بيع ومكتب خلفي يعمل حتى دون إنترنت للمتاجر والمطاعم والموزعين: المخزون وائتمان العملاء والمحاسبة والتوصيل والمتجر الإلكتروني. مجاني لمدة 3 أشهر."
