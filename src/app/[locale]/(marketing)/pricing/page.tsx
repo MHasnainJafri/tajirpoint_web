@@ -12,6 +12,7 @@ import { TrackView } from "@/components/analytics/TrackView";
 import { getPlans, planSummary } from "@/lib/api/plans";
 import { buildMetadata, fitDescription } from "@/lib/seo/metadata";
 import { routing } from "@/i18n/routing";
+import { RelatedGuides } from "@/components/marketing/guides/RelatedGuides";
 
 export async function generateMetadata({
   params,
@@ -89,6 +90,8 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
           <CallbackSection location="pricing" />
         </div>
       </div>
+
+      <RelatedGuides path="/pricing" locale={locale} />
 
       <div className="[contain-intrinsic-size:auto_600px] [content-visibility:auto]">
         <FinalCta />

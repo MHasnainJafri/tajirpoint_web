@@ -97,6 +97,12 @@ export function Footer() {
               </FooterLink>
             ))}
             <FooterLink href="/pos">{ALL_LOCATIONS_LABEL[labelLocale(locale)]}</FooterLink>
+            {/* The guides are English only; their /ur and /ar URLs redirect. */}
+            {locale === "en" && (
+              <FooterLink href="/guides/best-pos-software-pakistan">
+                Best POS in Pakistan
+              </FooterLink>
+            )}
           </FooterColumn>
         )}
 
