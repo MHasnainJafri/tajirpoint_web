@@ -26,6 +26,7 @@
       "groupMoney": "Money",
       "groupOps": "Run & grow",
       "items": {
+        "billing": { "name": "Billing", "desc": "Receipts, invoices and tax" },
         "khata": {
           "name": "Credit ledger",
           "desc": "Real-time customer credit ledger"

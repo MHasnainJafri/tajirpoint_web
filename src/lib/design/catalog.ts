@@ -26,11 +26,12 @@ export type VerticalId = (typeof VERTICALS)[number]["id"];
 /* ── Feature deep-dives ───────────────────────────────────────────── */
 
 /**
- * The six `/features/*` pages, split the way the nav mega-menu groups them.
+ * The seven `/features/*` pages, split the way the nav mega-menu groups them.
  * `id` keys the `nav.megaFeatures.items.*` and `footer.links.*` translations,
  * so renaming one here means renaming it in all three message files.
  */
 const ALL_FEATURES = [
+  { id: "billing", icon: "pos", href: "/features/billing", group: "money" },
   { id: "khata", icon: "ledgerbook", href: "/features/khata", group: "money" },
   { id: "accounting", icon: "calculator", href: "/features/accounting", group: "money" },
   { id: "eInvoicing", icon: "receipt", href: "/features/e-invoicing", group: "money" },

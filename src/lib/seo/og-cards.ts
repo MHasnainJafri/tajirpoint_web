@@ -139,6 +139,12 @@ export const OG_CARDS: Record<string, OgCard> = {
     sub: "A double-entry ledger posted from every sale and purchase. P&L, balance sheet, bank reconciliation.",
     pills: ["Trial balance", "P&L", "Balance sheet", "Bank rec"],
   },
+  "feature-billing": {
+    eyebrow: "Billing software",
+    title: "Bill faster at the counter, with every cent in place.",
+    sub: "Barcode checkout, thermal receipts and A4 invoices, tax on every bill, split payments and returns.",
+    pills: ["Receipts", "Invoices", "Tax", "Offline"],
+  },
   "feature-inventory": {
     eyebrow: "Inventory software",
     title: "Know what is on every shelf, and in every kitchen.",
@@ -262,6 +268,7 @@ const CARD_BY_PATH: Record<string, string> = {
   "/features/khata": "feature-khata",
   "/features/offline": "feature-offline",
   "/features/accounting": "feature-accounting",
+  "/features/billing": "feature-billing",
   "/features/inventory": "feature-inventory",
   "/features/van-sales": "feature-van-sales",
   "/features/e-invoicing": "feature-e-invoicing",

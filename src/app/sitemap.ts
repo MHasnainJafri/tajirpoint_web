@@ -63,6 +63,7 @@ const BUSINESS_PAGES: Page[] = [
 ];
 
 const FEATURE_PAGES: Page[] = [
+  "billing",
   "khata",
   "inventory",
   "offline",
