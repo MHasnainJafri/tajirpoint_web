@@ -13,6 +13,7 @@ export const TRANSLATED_STATIC_PATHS: readonly string[] = [
   // Business pages: Urdu + Arabic copy in src/content/i18n/businesses.{ur,ar}.ts.
   "/business",
   // Feature + lead pages: copy in src/content/i18n/{features,lead-pages}.
+  "/features/billing",
   "/features/khata",
   "/features/inventory",
   "/features/accounting",

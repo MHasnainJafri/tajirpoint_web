@@ -271,6 +271,11 @@ const guide: Guide = {
   ],
   links: [
     {
+      label: "Billing software",
+      href: "/features/billing",
+      note: "Barcode checkout, receipts and A4 invoices, tax and split payments",
+    },
+    {
       label: "Book a demo with free migration",
       href: "/book-demo?migrate=1",
       note: 'Tick "Move my data for me"',

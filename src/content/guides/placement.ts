@@ -34,6 +34,7 @@ export const GUIDE_PLACEMENT: Readonly<Record<string, readonly string[]>> = {
   "/business/transport-delivery": ["excel-to-pos"],
 
   "/features/e-invoicing": ["fbr-pos-integration"],
+  "/features/billing": ["excel-to-pos", "choose-restaurant-pos", "best-pos-software-pakistan"],
   "/features/khata": ["digital-khata"],
   "/features/inventory": ["stock-counting", "restaurant-food-cost", "excel-to-pos"],
   "/features/accounting": ["excel-to-pos", "digital-khata"],

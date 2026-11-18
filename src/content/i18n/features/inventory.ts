@@ -50,7 +50,7 @@ export const INVENTORY_COPY: Localized<FeaturePageCopy> = {
         "Restaurants: recipes deduct ingredients as dishes sell, with prep batches and kitchen counts",
         "Stock value at cost, worked out first-in, first-out",
       ],
-      note: "Light and Shop plans have one warehouse; Business has up to five shops and warehouses, Enterprise as many as you need.",
+      note: "Light and Shop plans have one warehouse; Business has up to five shops and warehouses, plus purchase orders and goods receipt. Enterprise has as many as you need.",
     },
     panel: {
       title: "On every product",
@@ -131,7 +131,7 @@ export const INVENTORY_COPY: Localized<FeaturePageCopy> = {
         "ریسٹورنٹ: ڈش بکنے پر ریسیپی کے مطابق اجزاء کٹتے ہیں، ساتھ پریپ بیچ اور کچن کی گنتی",
         "لاگت پر اسٹاک کی قیمت، پہلے آیا پہلے گیا (FIFO) کے حساب سے",
       ],
-      note: "Light اور Shop پلان میں ایک گودام؛ Business میں پانچ دکانیں اور گودام تک، Enterprise میں جتنے چاہیں۔",
+      note: "Light اور Shop پلان میں ایک گودام؛ Business میں پانچ دکانیں اور گودام تک، ساتھ پرچیز آرڈر اور مال کی وصولی۔ Enterprise میں جتنے چاہیں۔",
     },
     panel: {
       title: "ہر پروڈکٹ پر",
@@ -212,7 +212,7 @@ export const INVENTORY_COPY: Localized<FeaturePageCopy> = {
         "المطاعم: الوصفات تخصم المكونات عند بيع الأطباق، مع دفعات التحضير وجرد المطبخ",
         "قيمة المخزون بالتكلفة، محسوبة بطريقة الوارد أولًا يُصرف أولًا",
       ],
-      note: "باقتا Light وShop تشملان مستودعًا واحدًا؛ Business حتى خمسة متاجر ومستودعات، وEnterprise بلا حد.",
+      note: "باقتا Light وShop تشملان مستودعًا واحدًا؛ Business حتى خمسة متاجر ومستودعات مع أوامر الشراء واستلام البضاعة، وEnterprise بلا حد.",
     },
     panel: {
       title: "في كل منتج",
