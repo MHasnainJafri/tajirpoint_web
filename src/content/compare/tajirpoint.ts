@@ -49,6 +49,7 @@ export const TP = {
   stock: {
     mark: "yes",
     text: "Stock per shop or warehouse, purchases from suppliers, low-stock alerts, barcodes.",
+    href: "/features/inventory",
   },
   multiBranch: {
     mark: "partial",

@@ -62,7 +62,14 @@ const BUSINESS_PAGES: Page[] = [
   ),
 ];
 
-const FEATURE_PAGES: Page[] = ["khata", "offline", "accounting", "van-sales", "e-invoicing"].map(
+const FEATURE_PAGES: Page[] = [
+  "khata",
+  "inventory",
+  "offline",
+  "accounting",
+  "van-sales",
+  "e-invoicing",
+].map(
   (slug): Page => ({
     path: `/features/${slug}`,
     priority: 0.8,

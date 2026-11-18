@@ -14,6 +14,7 @@ export const TRANSLATED_STATIC_PATHS: readonly string[] = [
   "/business",
   // Feature + lead pages: copy in src/content/i18n/{features,lead-pages}.
   "/features/khata",
+  "/features/inventory",
   "/features/accounting",
   "/features/e-invoicing",
   "/features/offline",
