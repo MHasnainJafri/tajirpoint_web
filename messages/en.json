@@ -30,6 +30,7 @@
           "name": "Credit ledger",
           "desc": "Real-time customer credit ledger"
         },
+        "inventory": { "name": "Inventory", "desc": "Stock, batches and counts" },
         "accounting": {
           "name": "Accounting",
           "desc": "Double-entry books, automatic"

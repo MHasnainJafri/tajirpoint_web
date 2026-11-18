@@ -246,6 +246,11 @@ const guide: Guide = {
   ],
   links: [
     {
+      label: "Inventory software",
+      href: "/features/inventory",
+      note: "Stock per location, batches and expiry, counts and reorder alerts",
+    },
+    {
       label: "Grocery & kiryana POS",
       href: "/business/grocery-kiryana",
       note: "Barcodes, kg and cartons, khata",

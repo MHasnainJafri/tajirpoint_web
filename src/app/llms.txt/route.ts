@@ -137,6 +137,7 @@ ${addons.map((a) => link(a.name, `/extensions/${a.slug}`, `${STATUS_LABEL[a.stat
 ## Features
 
 ${link("Khata app (credit ledger)", "/features/khata", "Running customer and supplier credit balances, the way shops actually track debt")}
+${link("Inventory", "/features/inventory", "Stock per shop and warehouse, units (cartons to pieces), batches and expiry, serial/IMEI, counts, transfers, reorder alerts and recipe-based kitchen stock")}
 ${link("Offline POS", "/features/offline", "How the POS keeps selling with no internet and syncs afterwards")}
 ${link("Accounting", "/features/accounting", "Double-entry ledger posted from POS activity (Shop plan and above)")}
 ${link("Van sales", "/features/van-sales", "Route selling and day-end reconciliation for distributors")}

@@ -139,6 +139,12 @@ export const OG_CARDS: Record<string, OgCard> = {
     sub: "A double-entry ledger posted from every sale and purchase. P&L, balance sheet, bank reconciliation.",
     pills: ["Trial balance", "P&L", "Balance sheet", "Bank rec"],
   },
+  "feature-inventory": {
+    eyebrow: "Inventory software",
+    title: "Know what is on every shelf, and in every kitchen.",
+    sub: "Stock per shop and warehouse, cartons to pieces, batches and expiry, counts and reorder alerts.",
+    pills: ["Multi-location", "Batches", "Counts", "Reorder"],
+  },
   "feature-van-sales": {
     eyebrow: "Van sales software",
     title: "Turn every truck into a mobile warehouse.",
@@ -256,6 +262,7 @@ const CARD_BY_PATH: Record<string, string> = {
   "/features/khata": "feature-khata",
   "/features/offline": "feature-offline",
   "/features/accounting": "feature-accounting",
+  "/features/inventory": "feature-inventory",
   "/features/van-sales": "feature-van-sales",
   "/features/e-invoicing": "feature-e-invoicing",
   ...Object.fromEntries(BUSINESSES.map((b) => [`/business/${b.slug}`, `business-${b.slug}`])),

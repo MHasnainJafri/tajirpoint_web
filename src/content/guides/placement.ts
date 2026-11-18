@@ -35,6 +35,7 @@ export const GUIDE_PLACEMENT: Readonly<Record<string, readonly string[]>> = {
 
   "/features/e-invoicing": ["fbr-pos-integration"],
   "/features/khata": ["digital-khata"],
+  "/features/inventory": ["stock-counting", "restaurant-food-cost", "excel-to-pos"],
   "/features/accounting": ["excel-to-pos", "digital-khata"],
   "/features/offline": ["choose-restaurant-pos"],
   "/features/van-sales": ["digital-khata", "stock-counting"],
