@@ -17,6 +17,8 @@ const PAKISTAN_ONLY = [
   "/guides",
   "/features/khata",
   "/features/e-invoicing",
+  // Khata credit, receipts in Urdu and an FBR question (written 18 Nov 2026).
+  "/features/billing",
   "/extensions/fbr-integration",
   "/extensions/jazzcash-payments",
   "/extensions/easypaisa-payments",
