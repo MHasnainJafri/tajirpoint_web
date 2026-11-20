@@ -121,7 +121,7 @@ const t: AddonTranslation = {
     },
     {
       q: "ما الخطة التي أحتاجها؟",
-      a: "تتطلب خطة Shop أو أعلى، وليست ضمن خطة Light المجانية.",
+      a: "تتطلب خطة Shop أو أعلى، وليست ضمن خطة Light.",
     },
   ],
   comingSoonNote:

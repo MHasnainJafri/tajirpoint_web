@@ -58,7 +58,7 @@ export const OFFLINE_COPY: Localized<FeaturePageCopy> = {
       },
     ],
     cta: {
-      headline: "Free for 3 months. No card needed.",
+      headline: "Get started today.",
       body: "Pull the plug on your test till and watch it keep billing — then watch it sync itself back.",
       secondary: "See pricing",
     },
@@ -117,7 +117,7 @@ export const OFFLINE_COPY: Localized<FeaturePageCopy> = {
       },
     ],
     cta: {
-      headline: "3 ماہ مفت۔ کارڈ کی ضرورت نہیں۔",
+      headline: "آج ہی شروع کریں۔",
       body: "اپنے ٹیسٹ کاؤنٹر کا انٹرنیٹ بند کریں اور دیکھیں کہ بل بنتے رہتے ہیں — پھر دیکھیں کہ یہ خود سنک ہو جاتا ہے۔",
       secondary: "قیمتیں دیکھیں",
     },
@@ -175,7 +175,7 @@ export const OFFLINE_COPY: Localized<FeaturePageCopy> = {
       },
     ],
     cta: {
-      headline: "مجانًا لمدة 3 أشهر. دون بطاقة.",
+      headline: "ابدأ اليوم.",
       body: "افصل الإنترنت عن جهاز الكاشير التجريبي وشاهده يواصل إصدار الفواتير — ثم شاهده يزامن نفسه.",
       secondary: "اطّلع على الأسعار",
     },

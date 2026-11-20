@@ -217,7 +217,7 @@ const guide: Guide = {
         },
         {
           type: "p",
-          text: "See it for your kind of business: [grocery and kiryana](/business/grocery-kiryana), [pharmacy](/business/pharmacy) or [restaurants](/business/restaurants). The Light plan is free for 3 months; see [pricing](/pricing).",
+          text: "See it for your kind of business: [grocery and kiryana](/business/grocery-kiryana), [pharmacy](/business/pharmacy) or [restaurants](/business/restaurants). See [pricing](/pricing).",
         },
       ],
     },

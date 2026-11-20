@@ -82,7 +82,7 @@ export const hysabone: Comparison = {
       feature: "POS plan",
       tajirpoint: {
         mark: "info",
-        text: "Shop $29 a month or Business $79 a month after the free 3 months.",
+        text: "Shop $29 a month or Business $79 a month.",
         href: "/pricing",
       },
       other: {
@@ -271,7 +271,7 @@ export const hysabone: Comparison = {
     },
     {
       question: `Is ${BRAND_NAME} free?`,
-      answer: `The Light plan is free for 3 months with no card. After that you choose Shop ($29 a month) or Business ($79 a month).`,
+      answer: `You choose Shop ($29 a month) or Business ($79 a month), billed in USD.`,
     },
     {
       question: `Can I move from HysabOne to ${BRAND_NAME}?`,

@@ -132,7 +132,7 @@ const page: LocationPage = {
   ],
   cta: {
     headline: `Run your Faisalabad business on ${BRAND_NAME}.`,
-    sub: "Book a free demo, or start free for 3 months. No card needed, and we move your data for free.",
+    sub: "Book a free demo, and we move your data for free.",
   },
   related: ["punjab", "pakistan", "lahore", "sialkot", "karachi", "islamabad-rawalpindi"],
   updated: PK_UPDATED,

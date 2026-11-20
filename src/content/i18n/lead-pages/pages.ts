@@ -85,7 +85,7 @@ export const BOOK_DEMO_COPY: Localized<BookDemoCopy> = {
     justTalk: "Just want to talk?",
     askCall: "Ask for a call back",
     tryYourself: "Prefer to try it yourself?",
-    startFree: "Start free — 3 months, no card",
+    startFree: "Get started",
   },
   ur: {
     meta: {
@@ -120,7 +120,7 @@ export const BOOK_DEMO_COPY: Localized<BookDemoCopy> = {
     justTalk: "صرف بات کرنا چاہتے ہیں؟",
     askCall: "کال بیک کی درخواست کریں",
     tryYourself: "خود آزمانا چاہتے ہیں؟",
-    startFree: "مفت شروع کریں — 3 ماہ، کارڈ کے بغیر",
+    startFree: "شروع کریں",
   },
   ar: {
     meta: {
@@ -155,7 +155,7 @@ export const BOOK_DEMO_COPY: Localized<BookDemoCopy> = {
     justTalk: "تريد التحدث فقط؟",
     askCall: "اطلب اتصالًا",
     tryYourself: "تفضّل التجربة بنفسك؟",
-    startFree: "ابدأ مجانًا — 3 أشهر، دون بطاقة",
+    startFree: "ابدأ الآن",
   },
 };
 
@@ -209,7 +209,7 @@ export const GET_A_CALL_COPY: Localized<GetACallCopy> = {
     seeIt: "Want to see it running?",
     bookDemo: "Book a free demo",
     or: "or",
-    startFree: "start free",
+    startFree: "get started",
   },
   ur: {
     meta: {
@@ -241,7 +241,7 @@ export const GET_A_CALL_COPY: Localized<GetACallCopy> = {
     seeIt: "اسے چلتا دیکھنا چاہتے ہیں؟",
     bookDemo: "مفت ڈیمو بک کریں",
     or: "یا",
-    startFree: "مفت شروع کریں",
+    startFree: "شروع کریں",
   },
   ar: {
     meta: {
@@ -273,7 +273,7 @@ export const GET_A_CALL_COPY: Localized<GetACallCopy> = {
     seeIt: "تريد رؤيته يعمل؟",
     bookDemo: "احجز عرضًا مجانيًا",
     or: "أو",
-    startFree: "ابدأ مجانًا",
+    startFree: "ابدأ الآن",
   },
 };
 
@@ -427,8 +427,8 @@ export const ABOUT_COPY: Localized<AboutCopy> = {
         body: "If the internet drops, the point of sale keeps recording sales and syncs them when you are back online.",
       },
       {
-        title: "Light plan free for 3 months",
-        body: "Start on the Light plan at no cost for your first 3 months, then choose the plan that fits.",
+        title: "Simple monthly plans",
+        body: "Choose Shop or Business, billed monthly in USD, and cancel any time.",
       },
       {
         title: "Help moving from your old POS",
@@ -437,9 +437,9 @@ export const ABOUT_COPY: Localized<AboutCopy> = {
     ],
     ctaTitle: (product) => `See ${product} for your business`,
     ctaBody:
-      "Book a demo and we’ll show you how it fits the way you work — or start on the Light plan, free for 3 months.",
+      "Book a demo and we’ll show you how it fits the way you work.",
     bookDemo: "Book a demo",
-    startFree: "Start free — 3 months",
+    startFree: "Get started",
   },
   ur: {
     meta: {
@@ -473,8 +473,8 @@ export const ABOUT_COPY: Localized<AboutCopy> = {
         body: "انٹرنیٹ چلا جائے تو بھی POS فروخت درج کرتا رہتا ہے اور آن لائن آتے ہی سنک کر دیتا ہے۔",
       },
       {
-        title: "لائٹ پلان 3 ماہ مفت",
-        body: "پہلے 3 ماہ لائٹ پلان بغیر کسی خرچ کے شروع کریں، پھر اپنے لیے مناسب پلان چنیں۔",
+        title: "سادہ ماہانہ پلانز",
+        body: "اپنے لیے مناسب پلان چنیں — کوئی ٹرانزیکشن فیس نہیں۔",
       },
       {
         title: "پرانے POS سے منتقلی میں مدد",
@@ -483,9 +483,9 @@ export const ABOUT_COPY: Localized<AboutCopy> = {
     ],
     ctaTitle: (product) => `اپنے کاروبار کے لیے ${product} دیکھیں`,
     ctaBody:
-      "ڈیمو بک کریں، ہم دکھائیں گے کہ یہ آپ کے کام کے طریقے میں کیسے فٹ ہوتا ہے — یا لائٹ پلان پر شروع کریں، 3 ماہ مفت۔",
+      "ڈیمو بک کریں، ہم دکھائیں گے کہ یہ آپ کے کام کے طریقے میں کیسے فٹ ہوتا ہے۔",
     bookDemo: "ڈیمو بک کریں",
-    startFree: "مفت شروع کریں — 3 ماہ",
+    startFree: "شروع کریں",
   },
   ar: {
     meta: {
@@ -519,8 +519,8 @@ export const ABOUT_COPY: Localized<AboutCopy> = {
         body: "إذا انقطع الإنترنت، تواصل نقطة البيع تسجيل المبيعات وتزامنها عند عودة الاتصال.",
       },
       {
-        title: "باقة Light مجانية لمدة 3 أشهر",
-        body: "ابدأ بباقة Light دون أي تكلفة لأول 3 أشهر، ثم اختر الباقة التي تناسبك.",
+        title: "خطط شهرية بسيطة",
+        body: "اختر الباقة التي تناسبك — دون رسوم على المعاملات.",
       },
       {
         title: "مساعدة في الانتقال من نظامك القديم",
@@ -529,9 +529,9 @@ export const ABOUT_COPY: Localized<AboutCopy> = {
     ],
     ctaTitle: (product) => `شاهد ${product} مع نشاطك`,
     ctaBody:
-      "احجز عرضًا توضيحيًا وسنريك كيف يناسب طريقة عملك — أو ابدأ بباقة Light مجانًا لمدة 3 أشهر.",
+      "احجز عرضًا توضيحيًا وسنريك كيف يناسب طريقة عملك.",
     bookDemo: "احجز عرضًا توضيحيًا",
-    startFree: "ابدأ مجانًا — 3 أشهر",
+    startFree: "ابدأ الآن",
   },
 };
 

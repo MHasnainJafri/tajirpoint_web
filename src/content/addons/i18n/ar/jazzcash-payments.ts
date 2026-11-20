@@ -114,7 +114,7 @@ const t: AddonTranslation = {
     },
     {
       q: "ما الخطة التي سأحتاجها؟",
-      a: "ستتطلب JazzCash Payments خطة Shop أو أعلى، وليست ضمن خطة Light المجانية.",
+      a: "ستتطلب JazzCash Payments خطة Shop أو أعلى، وليست ضمن خطة Light.",
     },
   ],
   comingSoonNote:

@@ -49,8 +49,8 @@ function summary(): string {
     return `> ${BRAND_NAME} is a point-of-sale and back-office system for shops, restaurants,
 > pharmacies, distributors and other small and medium businesses — POS,
 > inventory, khata (customer and supplier credit), purchasing, staff, online
-> ordering and delivery, in English, Urdu and Arabic. The Light plan is free
-> for 3 months with no card; Shop and Business are the paid plans.
+> ordering and delivery, in English, Urdu and Arabic. Shop and
+> Business are the paid plans.
 
 ${BRAND_NAME} keeps selling while offline and syncs when the connection returns.
 It runs in the browser, as a Windows desktop app and on Android. Switching from
@@ -191,8 +191,8 @@ export async function GET() {
   const [plans, catalogue] = await Promise.all([getPlans(), getAddonCatalogue()]);
   const summary = planSummary(plans);
   const pricing = summary
-    ? `Plans and prices (USD): ${summary}. Light is free for 3 months with no card; paid plans can be cancelled any time, with a 15-day refund window on payments`
-    : "Light is free for 3 months with no card; Shop and Business are paid plans, priced in USD";
+    ? `Plans and prices (USD): ${summary}. Paid plans can be cancelled any time, with a 15-day refund window on payments`
+    : "Shop and Business are paid plans, priced in USD";
   return new Response(body(pricing, catalogue.addons), {
     headers: {
       "Content-Type": "text/markdown; charset=utf-8",

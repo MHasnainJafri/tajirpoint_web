@@ -17,15 +17,15 @@ type Dict = Record<string, string>;
 
 const UR: Dict = {
   // Taglines
-  "Free for 3 months — everything to open your shop": "3 ماہ مفت — دکان کھولنے کے لیے سب کچھ",
+  "Everything to open your shop": "دکان کھولنے کے لیے سب کچھ",
   "For a shop that sells every day": "روزانہ فروخت کرنے والی دکان کے لیے",
   "For businesses with several branches": "کئی برانچوں والے کاروبار کے لیے",
   "Chains and franchises": "چینز اور فرنچائزز",
   // Price wording
-  "Free for 3 months": "3 ماہ مفت",
+  "Free for 3 months": "ابتدائی پلان",
   Custom: "آپ کی ضرورت کے مطابق",
   // Buttons
-  "Start free": "مفت شروع کریں",
+  "Start free": "شروع کریں",
   "Choose Shop": "Shop منتخب کریں",
   "Choose Business": "Business منتخب کریں",
   "Contact us": "ہم سے رابطہ کریں",
@@ -65,16 +65,16 @@ const UR: Dict = {
 
 const AR: Dict = {
   // Taglines
-  "Free for 3 months — everything to open your shop":
-    "مجاني لمدة 3 أشهر — كل ما تحتاجه لافتتاح متجرك",
+  "Everything to open your shop":
+    "كل ما تحتاجه لافتتاح متجرك",
   "For a shop that sells every day": "لمتجر يبيع كل يوم",
   "For businesses with several branches": "للأنشطة التي لديها عدة فروع",
   "Chains and franchises": "السلاسل والامتيازات التجارية",
   // Price wording
-  "Free for 3 months": "مجاني لمدة 3 أشهر",
+  "Free for 3 months": "خطة البداية",
   Custom: "حسب الطلب",
   // Buttons
-  "Start free": "ابدأ مجانًا",
+  "Start free": "ابدأ الآن",
   "Choose Shop": "اختر Shop",
   "Choose Business": "اختر Business",
   "Contact us": "تواصل معنا",

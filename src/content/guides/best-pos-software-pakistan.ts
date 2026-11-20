@@ -175,7 +175,7 @@ const guide: Guide = {
               BRAND_NAME,
               "POS with khata, stock, accounting and delivery (our own product)",
               "Restaurants first; also shops, grocery, pharmacy and distributors",
-              "Light free for 3 months; Shop $29 a month; Business $79 a month (USD)",
+              "Shop $29 a month; Business $79 a month (USD)",
             ],
           ],
         },
@@ -527,7 +527,7 @@ const guide: Guide = {
         },
         {
           type: "p",
-          text: "Prices are in US dollars (checked 16 Nov 2026). The Light plan is free for 3 months with no card: one shop, two staff logins, 30 products and 100 orders a day. After that, Shop is $29 a month and Business is $79 a month; the restaurant suite and kitchen display are in Business. See [pricing](/pricing) for the current plans.",
+          text: "Prices are in US dollars (checked 16 Nov 2026). Shop is $29 a month and Business is $79 a month; the restaurant suite and kitchen display are in Business. See [pricing](/pricing) for the current plans.",
         },
         {
           type: "p",
@@ -547,7 +547,7 @@ const guide: Guide = {
     },
     {
       q: "Is there a free POS software in Pakistan?",
-      a: `Loyverse lists its core POS as free, with paid add-ons. Odoo lists a free plan for one app. Moneypex offers a 7-day free trial, and HysabOne a 14-day one. ${BRAND_NAME}'s Light plan is free for 3 months with no card, then you choose a paid plan. Check the limits of any free option before you rely on it.`,
+      a: `Loyverse lists its core POS as free, with paid add-ons. Odoo lists a free plan for one app. Moneypex offers a 7-day free trial, and HysabOne a 14-day one. ${BRAND_NAME} has paid plans from $29 a month. Check the limits of any free option before you rely on it.`,
     },
     {
       q: "How much does POS software cost in Pakistan?",
@@ -640,7 +640,7 @@ const guide: Guide = {
   ],
   checked: "16 November 2026",
   links: [
-    { label: "Pricing", href: "/pricing", note: "Light free for 3 months, then Shop or Business" },
+    { label: "Pricing", href: "/pricing", note: "Shop or Business" },
     {
       label: "Restaurant POS",
       href: "/business/restaurants",

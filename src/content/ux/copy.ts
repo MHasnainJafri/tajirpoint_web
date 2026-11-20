@@ -45,11 +45,11 @@ const COPY: Record<UxLocale, UxCopy> = {
     whatsapp: "Chat on WhatsApp",
     callMeBack: "Call me back",
     whatsappMessage: `Hi ${BRAND_NAME}, I'm interested in your POS.`,
-    startFree: "Start free",
+    startFree: "Get started",
     bookDemo: "Book a demo",
     nextStepTitle: "Ready when you are",
     nextStepBody:
-      "Start free in a few minutes, or let our team call you and answer your questions.",
+      "Get started in a few minutes, or let our team call you and answer your questions.",
     home: "Home",
   },
   ur: {

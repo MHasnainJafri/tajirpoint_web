@@ -98,7 +98,7 @@ const t: AddonTranslation = {
     },
     {
       q: "ما الخطة التي سأحتاجها؟",
-      a: "ستتطلب Square Payments خطة Shop أو أعلى، وليست ضمن خطة Light المجانية.",
+      a: "ستتطلب Square Payments خطة Shop أو أعلى، وليست ضمن خطة Light.",
     },
   ],
   comingSoonNote: "بُنيت لكنها غير متاحة للمتاجر بعد. اسألنا وسنخبرك عندما تجهز.",

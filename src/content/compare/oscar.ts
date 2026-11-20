@@ -60,7 +60,7 @@ export const oscar: Comparison = {
   ],
   otherStrengths: [
     `Tax links today: it says every invoice is reported to FBR in real time, with SRB and PRA included and no integrator fee. ${BRAND_NAME}'s FBR connector is coming soon and provincial links are not built.`,
-    `A free POS and a free card machine for restaurants, paid for through card fees (1.2% + Rs 10 per card payment on its Free POS page). ${BRAND_NAME}'s free Light plan lasts 3 months.`,
+    `A free POS and a free card machine for restaurants, paid for through card fees (1.2% + Rs 10 per card payment on its Free POS page). ${BRAND_NAME} has paid plans from $29 a month.`,
     `Offline mode for restaurant service: orders, KOTs and billing keep going without internet. ${BRAND_NAME}'s offline mode for tables and the kitchen screen is not released yet.`,
     `Accounting and Oscar AI reports are listed as built in. ${BRAND_NAME}'s accounting is an add-on and its AI tools are coming soon.`,
     `An iPhone and iPad app today. ${BRAND_NAME}'s iOS app is coming soon.`,
@@ -252,7 +252,7 @@ export const oscar: Comparison = {
       heading: "How each one charges",
       paragraphs: [
         "Oscar's Free POS page offers restaurants free POS software, a free card machine, free online ordering and built-in accounting. You pay 1.2% + Rs 10 on each card payment. Its Payments page lists a different rate (2.6% + Rs 0.5 per transaction), so ask Oscar which one applies to you. Its website does not publish a price list for other plans or businesses.",
-        `${BRAND_NAME}'s Light plan is free for 3 months with no card. After that, Shop is $29 a month and Business is $79 a month, and ${BRAND_NAME} takes no fee on your card payments. If most of your customers pay cash, a card-fee model may cost you very little; if most pay by card, compare the monthly plan with what the card fees would add up to.`,
+        `Shop is $29 a month and Business is $79 a month, and ${BRAND_NAME} takes no fee on your card payments. If most of your customers pay cash, a card-fee model may cost you very little; if most pay by card, compare the monthly plan with what the card fees would add up to.`,
       ],
     },
     {
@@ -286,7 +286,7 @@ export const oscar: Comparison = {
     },
     {
       question: `Is ${BRAND_NAME} free?`,
-      answer: `The Light plan is free for 3 months with no card. After that you choose Shop ($29 a month) or Business ($79 a month). ${BRAND_NAME} takes no fee on your card payments.`,
+      answer: `You choose Shop ($29 a month) or Business ($79 a month). ${BRAND_NAME} takes no fee on your card payments.`,
     },
     {
       question: `Can I move from Oscar POS to ${BRAND_NAME}?`,

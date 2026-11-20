@@ -64,7 +64,7 @@ export const VAN_SALES_COPY: Localized<FeaturePageCopy> = {
       },
     ],
     cta: {
-      headline: "Free for 3 months. No card needed.",
+      headline: "Get started today.",
       body: "Load one van, run one route, and see the day balance itself at night.",
       secondary: "See pricing",
     },
@@ -102,7 +102,7 @@ export const VAN_SALES_COPY: Localized<FeaturePageCopy> = {
         "ہر چکر اور ہر روٹ کا منافع",
         "روٹ پر واپسی اور خراب مال کا اندراج",
       ],
-      note: "ہر پلان میں شامل — مفت لائٹ پلان میں بھی۔",
+      note: "ہر پلان میں شامل۔",
     },
     panel: {
       title: "دن کے آخر میں",
@@ -125,7 +125,7 @@ export const VAN_SALES_COPY: Localized<FeaturePageCopy> = {
       },
     ],
     cta: {
-      headline: "3 ماہ مفت۔ کارڈ کی ضرورت نہیں۔",
+      headline: "آج ہی شروع کریں۔",
       body: "ایک وین لوڈ کریں، ایک روٹ چلائیں، اور رات کو دیکھیں کہ دن کا حساب خود برابر ہو جاتا ہے۔",
       secondary: "قیمتیں دیکھیں",
     },
@@ -163,7 +163,7 @@ export const VAN_SALES_COPY: Localized<FeaturePageCopy> = {
         "الربح لكل رحلة ولكل مسار",
         "المرتجعات والتالف تُعالَج على المسار",
       ],
-      note: "مشمول في كل الباقات — حتى باقة Light المجانية.",
+      note: "مشمول في كل الباقات.",
     },
     panel: {
       title: "في نهاية اليوم",
@@ -186,7 +186,7 @@ export const VAN_SALES_COPY: Localized<FeaturePageCopy> = {
       },
     ],
     cta: {
-      headline: "مجانًا لمدة 3 أشهر. دون بطاقة.",
+      headline: "ابدأ اليوم.",
       body: "حمّل شاحنة واحدة، شغّل مسارًا واحدًا، وشاهد حساب اليوم يتطابق وحده في المساء.",
       secondary: "اطّلع على الأسعار",
     },

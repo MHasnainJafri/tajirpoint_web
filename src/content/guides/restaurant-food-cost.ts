@@ -326,7 +326,7 @@ const guide: Guide = {
         },
         {
           type: "p",
-          text: "See the [restaurant POS page](/business/restaurants) or [book a demo](/book-demo) with your own menu. The Light plan is free for 3 months; see [pricing](/pricing).",
+          text: "See the [restaurant POS page](/business/restaurants) or [book a demo](/book-demo) with your own menu. See [pricing](/pricing).",
         },
       ],
     },

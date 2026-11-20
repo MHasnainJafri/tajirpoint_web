@@ -132,7 +132,7 @@ const t: AddonTranslation = {
       a: "جی ہاں۔ Cloud Kitchen Pack، Restaurant ایڈ آن پر بنتا ہے، جو Light کے ساتھ بھی شامل ہے۔",
     },
     {
-      q: "کیا یہ مفت Light پلان میں شامل ہے؟",
+      q: "کیا یہ Light پلان میں شامل ہے؟",
       a: "نہیں۔ Cloud Kitchen Pack کے لیے Shop پلان یا اس سے اوپر درکار ہے۔",
     },
   ],

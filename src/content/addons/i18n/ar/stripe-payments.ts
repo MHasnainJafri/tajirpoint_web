@@ -130,7 +130,7 @@ const t: AddonTranslation = {
     },
     {
       q: "ما الخطة التي أحتاجها؟",
-      a: "تتطلب Stripe Payments خطة Shop أو أعلى، وليست ضمن خطة Light المجانية.",
+      a: "تتطلب Stripe Payments خطة Shop أو أعلى، وليست ضمن خطة Light.",
     },
   ],
 };

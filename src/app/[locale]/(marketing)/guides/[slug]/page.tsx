@@ -282,17 +282,17 @@ export default async function GuidePage({ params }: { params: Params }) {
               </nav>
               <div className={`${card} p-5`}>
                 <p className="text-[15px] font-bold leading-[1.35]">
-                  {`Try ${BRAND_NAME} free for 3 months`}
+                  {`Try ${BRAND_NAME}`}
                 </p>
                 <p className="mt-2 text-[13.5px] leading-[1.55] text-[var(--color-body)]">
-                  No card needed. We move your data from Excel or your old POS for free.
+                  We move your data from Excel or your old POS for free.
                 </p>
                 <div className="mt-4 flex flex-col gap-2">
                   <a
                     href={siteConfig.signupUrl}
                     className="inline-flex items-center justify-center rounded-full bg-[var(--color-brand)] px-4 py-[10px] text-[14px] font-semibold text-[var(--color-on-brand)]"
                   >
-                    Start free
+                    Get started
                   </a>
                   <Link
                     href="/get-a-call"
@@ -362,14 +362,14 @@ export default async function GuidePage({ params }: { params: Params }) {
       <section className="px-4 pb-[90px] pt-[clamp(48px,7vw,88px)] md:px-6">
         <CtaPanel>
           <h2 className="relative text-[clamp(26px,3.6vw,42px)] font-extrabold tracking-[-0.03em] text-balance">
-            Free for 3 months. No card needed.
+            We move your data for free.
           </h2>
           <p className="relative mx-auto mt-4 max-w-[52ch] text-[16px] leading-[1.6] opacity-85">
             Talk to a person, see a demo on your own products, or start on your own today.
           </p>
           <div className="relative mt-8 flex flex-wrap justify-center gap-[14px]">
             <MintButton href={siteConfig.signupUrl} external>
-              Start free <span aria-hidden="true">→</span>
+              Get started <span aria-hidden="true">→</span>
             </MintButton>
             <GhostButton href="/get-a-call">Get a call back</GhostButton>
           </div>

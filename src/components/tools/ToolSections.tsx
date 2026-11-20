@@ -128,7 +128,7 @@ export function ToolCta({ tool }: { tool?: ToolInfo }) {
       <p className="relative mx-auto mt-4 max-w-[52ch] text-[16px] leading-[1.6] text-[var(--color-muted)]">
         {tool?.inProduct ??
           `${BRAND_NAME} keeps your sales, stock, costs and tax in one place, so the numbers are always ready.`}{" "}
-        Free for 3 months, no card needed.
+        We move your data for free.
       </p>
       <div className="relative mt-8 flex flex-wrap justify-center gap-[14px]">
         <MintButton href={siteConfig.signupUrl} external>

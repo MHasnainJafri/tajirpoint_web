@@ -113,7 +113,7 @@ const t: AddonTranslation = {
     },
     {
       q: "مجھے کون سا پلان چاہیے؟",
-      a: "Wix Sync کے لیے Shop پلان یا اس سے اوپر درکار ہے۔ یہ مفت Light پلان میں شامل نہیں۔",
+      a: "Wix Sync کے لیے Shop پلان یا اس سے اوپر درکار ہے۔ یہ Light پلان میں شامل نہیں۔",
     },
   ],
   comingSoonNote:

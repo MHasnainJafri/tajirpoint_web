@@ -155,7 +155,7 @@ const OURS = {
   name: "Tajir Point",
   alternateNames: ["TajirPoint", "Tajir Point POS", "TajirPoint POS"],
   description:
-    "Point of sale, inventory, customer credit and accounting for stores, restaurants and distributors. Multi-currency support on web, desktop and Android. Free for 3 months.",
+    "Point of sale, inventory, customer credit and accounting for stores, restaurants and distributors. Multi-currency support on web, desktop and Android.",
   tagline: "Run your shop. Everywhere.",
   website: "https://tajirpoint.com",
   appUrl: "https://app.tajirpoint.com",

@@ -133,7 +133,7 @@ const page: LocationPage = {
   ],
   cta: {
     headline: `See ${BRAND_NAME} on your own shop.`,
-    sub: "Book a free demo in Urdu or English, or start free for 3 months. We move your data for free.",
+    sub: "Book a free demo in Urdu or English. We move your data for free.",
   },
   related: [
     "punjab",

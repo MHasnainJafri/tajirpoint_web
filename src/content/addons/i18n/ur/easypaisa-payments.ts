@@ -110,7 +110,7 @@ const t: AddonTranslation = {
     },
     {
       q: "مجھے کون سا پلان چاہیے ہو گا؟",
-      a: "Easypaisa Payments کے لیے Shop پلان یا اس سے اوپر درکار ہو گا۔ یہ مفت Light پلان میں شامل نہیں۔",
+      a: "Easypaisa Payments کے لیے Shop پلان یا اس سے اوپر درکار ہو گا۔ یہ Light پلان میں شامل نہیں۔",
     },
   ],
   comingSoonNote:

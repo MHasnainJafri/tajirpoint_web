@@ -208,7 +208,7 @@ const guide: Guide = {
         },
         {
           type: "p",
-          text: "Read more on the [khata feature page](/features/khata), or see [pricing](/pricing): the Light plan is free for 3 months with no card.",
+          text: "Read more on the [khata feature page](/features/khata), or see [pricing](/pricing).",
         },
       ],
     },
@@ -255,7 +255,7 @@ const guide: Guide = {
       href: "/business/grocery-kiryana",
       note: "Barcode, khata and kg/carton selling",
     },
-    { label: "Pricing", href: "/pricing", note: "Light is free for 3 months, no card" },
+    { label: "Pricing", href: "/pricing", note: "Shop and Business plans" },
     { label: "Get a call back", href: "/get-a-call", note: "Ask us how to move your khata over" },
   ],
   related: ["excel-to-pos", "stock-counting", "fbr-pos-integration"],

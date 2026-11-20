@@ -113,7 +113,7 @@ const t: AddonTranslation = {
     },
     {
       q: "ما الخطة التي أحتاجها؟",
-      a: "تتطلب Magento Sync خطة Shop أو أعلى، وليست ضمن خطة Light المجانية.",
+      a: "تتطلب Magento Sync خطة Shop أو أعلى، وليست ضمن خطة Light.",
     },
   ],
   comingSoonNote:

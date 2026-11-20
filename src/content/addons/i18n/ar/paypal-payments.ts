@@ -98,7 +98,7 @@ const t: AddonTranslation = {
     },
     {
       q: "ما الخطة التي سأحتاجها؟",
-      a: "ستتطلب PayPal Payments خطة Shop أو أعلى، وليست ضمن خطة Light المجانية.",
+      a: "ستتطلب PayPal Payments خطة Shop أو أعلى، وليست ضمن خطة Light.",
     },
   ],
   comingSoonNote:

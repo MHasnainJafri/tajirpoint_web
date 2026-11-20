@@ -135,7 +135,7 @@ const t: AddonTranslation = {
     },
     {
       q: "ما الخطة التي أحتاجها؟",
-      a: "تتطلب Website Builder خطة Shop أو أعلى، وليست ضمن خطة Light المجانية.",
+      a: "تتطلب Website Builder خطة Shop أو أعلى، وليست ضمن خطة Light.",
     },
   ],
 };

@@ -151,7 +151,7 @@ const page: LocationPage = {
   checked: PROVINCE_CHECKED,
   cta: {
     headline: `Run your Sindh shop or restaurant on ${BRAND_NAME}.`,
-    sub: "Book a free demo, or start free for 3 months. No card needed, and we move your data for free.",
+    sub: "Book a free demo, and we move your data for free.",
   },
   related: ["pakistan", "karachi", "punjab", "khyber-pakhtunkhwa"],
   updated: PROVINCE_UPDATED,

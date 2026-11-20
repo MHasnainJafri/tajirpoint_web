@@ -72,7 +72,7 @@
     },
     "product": "Product",
     "resources": "Resources",
-    "startFree": "Start free",
+    "startFree": "Get started",
     "chip": "Point of sale",
     "megaResources": {
       "items": {
@@ -98,7 +98,7 @@
         }
       }
     },
-    "startFreeShort": "Start free",
+    "startFreeShort": "Get started",
     "businesses": "Businesses",
     "mainLabel": "Main navigation",
     "megaBusinesses": {
@@ -110,7 +110,7 @@
       "migrateTitle": "We move your data from your old POS",
       "migrateSub": "Send us an Excel or CSV export and our team loads it for you, free.",
       "viewAll": "All businesses",
-      "startFreeNote": "Free for 3 months. No card needed."
+      "startFreeNote": "We move your data for free."
     }
   },
   "landing": {
@@ -134,23 +134,23 @@
     },
     "meta": {
       "title": "Tajir Point: POS for Shops, Restaurants & Distributors",
-      "description": "Restaurant POS with kitchen screen, waiter app and commission-free online ordering. Also shops and distributors: stock, khata credit, accounting, delivery and an online store. Free for 3 months."
+      "description": "Restaurant POS with kitchen screen, waiter app and commission-free online ordering. Also shops and distributors: stock, khata credit, accounting, delivery and an online store."
     },
     "pricingMeta": {
-      "title": "POS Pricing — Free for 3 Months, No Card",
-      "offer": "Light is free for 3 months with no card.",
+      "title": "POS Pricing — Simple Monthly Plans",
+      "offer": "Shop from $29 a month, Business from $79. Cancel any time.",
       "terms": "Cancel any time, no transaction fees.",
-      "description": "Light is free for 3 months with no card. Then pick Shop or Business, monthly plans billed in USD. Cancel any time, 15-day refund, no transaction fees."
+      "description": "Pick Shop or Business: monthly plans billed in USD. Cancel any time, 15-day refund, no transaction fees."
     },
     "hero": {
       "badge": "Restaurant POS · Kitchen screen · Online ordering",
       "headline": "Restaurant POS, kitchen screen and online ordering",
       "headlineAccent": "with no commission on your orders.",
       "sub": "Take dine-in, takeaway and delivery orders, send them to the kitchen, and track stock and sales in one system. Also built for shops, pharmacies, salons and 9 more trades.",
-      "ctaPrimary": "Start free — 3 months",
+      "ctaPrimary": "Get started",
       "ctaSecondary": "Book a demo",
       "demoCaption": "Interactive product demo · Sample data",
-      "note": "Free for 3 months · No card needed · We move your menu and data for free",
+      "note": "We move your menu and data for free",
       "cards": {
         "sales": {
           "title": "Sales today",
@@ -293,7 +293,7 @@
       "headline": "Made for your kind of business",
       "sub": "Eight trades, each with its own screens. Switch on what you need — a laptop shop never sees a kitchen display.",
       "tablistLabel": "Choose your trade",
-      "ctaStart": "Start free",
+      "ctaStart": "Get started",
       "ctaExtensions": "See extensions",
       "items": {
         "retail": {
@@ -497,15 +497,15 @@
     "pricing": {
       "eyebrow": "Pricing",
       "headline": "Simple, published POS pricing.",
-      "sub": "Start on Light, free for 3 months with no card. Then choose Shop or Business to keep selling — no transaction fees.",
+      "sub": "Choose Shop or Business, billed monthly or yearly in USD. Cancel any time, no transaction fees.",
       "basic": {
         "name": "Light",
-        "who": "Free for 3 months — everything to open your shop",
-        "badge": "No card required",
-        "price": "Free",
-        "period": "for 3 months",
-        "note": "Free for 90 days from the day you sign up, no card needed. Then choose Shop or Business to keep selling — you can always sign in, view and export your data.",
-        "cta": "Start free",
+        "who": "Everything to open your shop",
+        "badge": "Starter",
+        "price": "Plans",
+        "period": "from Shop",
+        "note": "Choose Shop or Business to start selling.",
+        "cta": "Get started",
         "includesLabel": "Included in Light",
         "includes": {
           "pos": "POS, receipts & barcode",
@@ -530,8 +530,8 @@
         "ctaEmail": "Email us"
       },
       "perMonth": "/ month",
-      "plansNote": "Light is free for 3 months from signup, no card needed. Paid plans are billed in USD and can be cancelled any time, with a 15-day refund window on payments. Add-ons marked coming soon are not yet available, regardless of plan.",
-      "freePeriod": "for 3 months",
+      "plansNote": "Paid plans are billed in USD and can be cancelled any time, with a 15-day refund window on payments. Add-ons marked coming soon are not yet available, regardless of plan.",
+      "freePeriod": "",
       "perYear": "/ year",
       "monthly": "Monthly",
       "annual": "Yearly",
@@ -621,8 +621,8 @@
           "label": "Pricing",
           "items": {
             "0": {
-              "q": "Is there a free plan?",
-              "a": "Yes. Light is free for 3 months from the day you sign up, no card needed — one shop, two staff logins, 30 products and 100 orders a day. Then choose Shop or Business to keep selling."
+              "q": "Which plans are there?",
+              "a": "Shop ($29 a month) for one restaurant or store that sells every day, Business ($79 a month) for several branches, and Enterprise for chains and franchises. Plans are billed in US dollars."
             },
             "1": {
               "q": "Can I cancel, or get a refund?",
@@ -633,8 +633,8 @@
               "a": "Plans are priced and billed in US dollars (USD). We charge no transaction fees — payment-gateway processing fees are set by the gateway, not by us."
             },
             "3": {
-              "q": "Do I need a card to start?",
-              "a": "No. Sign up and start on Light, free for 3 months. You only add a card when you choose a paid plan."
+              "q": "Is there a contract?",
+              "a": "No. Paid plans are monthly or yearly and you can cancel any time; a plan stays active until the end of the period you paid for."
             }
           }
         }
@@ -642,8 +642,8 @@
     },
     "cta": {
       "headline": "Start selling in an afternoon.",
-      "sub": "Import your products from Excel, connect a printer and ring your first sale — or send us your old POS export and we load it for you. Free for 3 months, no card.",
-      "ctaPrimary": "Start free — 3 months",
+      "sub": "Import your products from Excel, connect a printer and ring your first sale — or send us your old POS export and we load it for you.",
+      "ctaPrimary": "Get started",
       "ctaSecondary": "Book a demo",
       "steps": {
         "import": {
@@ -686,8 +686,8 @@
     "sub": "Every industry runs differently. Extensions shape Tajir Point around yours — nothing more on screen than your business needs.",
     "cta": {
       "headline": "See it shaped around your business",
-      "body": "Free for 3 months. No card needed.",
-      "primary": "Start free",
+      "body": "We move your data for free.",
+      "primary": "Get started",
       "secondary": "Browse extensions"
     },
     "industries": {

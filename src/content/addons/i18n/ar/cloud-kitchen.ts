@@ -132,7 +132,7 @@ const t: AddonTranslation = {
       a: "نعم. تُبنى Cloud Kitchen Pack على إضافة Restaurant، المضمّنة أيضًا في Light.",
     },
     {
-      q: "هل هي مضمّنة في خطة Light المجانية؟",
+      q: "هل هي مضمّنة في خطة Light؟",
       a: "لا. تتطلب Cloud Kitchen Pack خطة Shop أو أعلى.",
     },
   ],

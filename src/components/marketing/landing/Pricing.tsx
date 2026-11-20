@@ -2,7 +2,6 @@ import { getLocale, getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 import { Link } from "@/i18n/navigation";
 import { Stroke, Tick } from "./Stroke";
-import { BASIC_INCLUDES } from "@/lib/design/landing";
 import { siteConfig } from "@/lib/config/site";
 import {
   getPricing,
@@ -166,63 +165,7 @@ function CompareTable({ plans, t }: { plans: MarketingPlan[]; t: T }) {
 
 function FreePlanFallback({ t }: { t: Awaited<ReturnType<typeof getTranslations>> }) {
   return (
-    <div className="mt-[34px] grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] items-stretch gap-[14px] lg:grid-cols-[1.55fr_1fr]">
-      <div
-        data-reveal
-        className="on-dark relative flex flex-col gap-[22px] overflow-hidden rounded-[24px] bg-[#0A0A0A] p-[clamp(22px,3vw,38px)] text-white"
-      >
-        <div className="pointer-events-none absolute -right-[90px] -top-[90px] h-[300px] w-[300px] rounded-full border border-[rgba(0,210,122,.2)]" />
-        <div className="pointer-events-none absolute -bottom-[160px] -left-[120px] h-[380px] w-[380px] rounded-full border border-white/[0.06]" />
-
-        <div className="relative flex flex-wrap items-start justify-between gap-3">
-          <div>
-            <div className="text-[15px] font-bold">{t("basic.name")}</div>
-            <div className="mt-[3px] text-[12.5px] text-[#B5B9C2]">{t("basic.who")}</div>
-          </div>
-          <span className="whitespace-nowrap rounded-full bg-[var(--color-mint)] px-[10px] py-[5px] text-[11px] font-bold text-[#0A0A0A]">
-            {t("basic.badge")}
-          </span>
-        </div>
-
-        <div className="relative flex flex-wrap items-baseline gap-x-[10px] gap-y-1">
-          <span className="text-[clamp(44px,5.4vw,64px)] font-extrabold leading-none tracking-[-0.045em]">
-            {t("basic.price")}
-          </span>
-          <span className="text-[15px] font-semibold text-[var(--color-mint)]">
-            {t("basic.period")}
-          </span>
-        </div>
-        <p className="relative -mt-3 max-w-[46ch] text-[13.5px] leading-[1.6] text-[#B5B9C2]">
-          {t("basic.note")}
-        </p>
-
-        <a
-          href={siteConfig.signupUrl}
-          className="relative inline-flex items-center justify-center gap-[10px] self-start rounded-full bg-[var(--color-mint)] py-3 ps-6 pe-3 text-[14px] font-bold text-[#0A0A0A] transition-[transform,box-shadow] duration-[250ms] hover:-translate-y-[2px] hover:shadow-[0_14px_30px_rgba(0,210,122,.35)]"
-        >
-          {t("basic.cta")}
-          <span className="grid h-[26px] w-[26px] place-items-center rounded-full bg-[#0A0A0A] text-[var(--color-mint)]">
-            <Stroke name="arrowRight" size={14} width={2.2} />
-          </span>
-        </a>
-
-        <div className="relative">
-          <div className="font-[family-name:var(--font-mono)] text-[11px] uppercase tracking-[0.14em] text-[#8A8F98]">
-            {t("basic.includesLabel")}
-          </div>
-          <div className="mt-3 grid grid-cols-[repeat(auto-fit,minmax(min(100%,190px),1fr))] gap-x-5 gap-y-[10px] text-[13.5px]">
-            {BASIC_INCLUDES.map((id) => (
-              <div key={id} className="flex items-start gap-[9px]">
-                <span className="text-[var(--color-mint)]">
-                  <Tick size={17} />
-                </span>
-                {t(`basic.includes.${id}`)}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
+    <div className="mt-[34px] grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] items-stretch gap-[14px] lg:mx-auto lg:max-w-[560px]">
       <div
         data-reveal
         className="flex flex-col gap-[18px] rounded-[24px] border border-[var(--color-line-2)] p-[clamp(22px,3vw,38px)]"

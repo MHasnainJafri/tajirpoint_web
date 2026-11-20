@@ -60,7 +60,7 @@ export const loyverse: Comparison = {
     "Our team moves your data from Excel or another POS for free.",
   ],
   otherStrengths: [
-    `The core POS is free with no time limit; ${BRAND_NAME}'s free Light plan lasts 3 months.`,
+    `The core POS is free with no time limit. ${BRAND_NAME} has paid plans from $29 a month.`,
     `Works on iOS and Android; ${BRAND_NAME}'s iOS app is still coming soon.`,
     "Kitchen display, customer display, loyalty and multi-store are in the free core.",
     "Offered in 30+ languages, with help tutorials in 17.",
@@ -157,7 +157,7 @@ export const loyverse: Comparison = {
       heading: "Price: free core vs a free start",
       paragraphs: [
         "Loyverse's core POS is free, and you pay only for the add-ons you choose. That is a real advantage for a very small shop.",
-        `${BRAND_NAME}'s Light plan is free for 3 months with no card, then you move to a paid plan. In return, the paid plans include things a small shop in Pakistan or the Gulf often needs: khata, purchasing and reports, with accounting and delivery available on top.`,
+        `${BRAND_NAME} is a paid plan from $29 a month. In return, the paid plans include things a small shop in Pakistan or the Gulf often needs: khata, purchasing and reports, with accounting and delivery available on top.`,
       ],
     },
     {
@@ -183,7 +183,7 @@ export const loyverse: Comparison = {
     {
       question: `Is ${BRAND_NAME} free?`,
       answer:
-        "The Light plan is free for 3 months with no card. It covers one shop, two staff logins, 30 products and 100 orders a day. After that you choose a paid plan.",
+        "Shop is $29 a month and Business is $79 a month, billed in USD. You can cancel any time.",
     },
     {
       question: `Can I move from Loyverse to ${BRAND_NAME}?`,
@@ -394,7 +394,7 @@ export const foodics: Comparison = {
     sub: `Foodics is a leading restaurant platform in the Gulf. ${BRAND_NAME} runs restaurants and shops in one system. Here is an honest side-by-side, including where Foodics is ahead.`,
   },
   verdict: {
-    tajirpoint: `Choose ${BRAND_NAME} if you run a restaurant and a shop (or several kinds of business), deliver with your own riders, sell on credit to regular customers, or want to start free and bring your own devices.`,
+    tajirpoint: `Choose ${BRAND_NAME} if you run a restaurant and a shop (or several kinds of business), deliver with your own riders, sell on credit to regular customers, or want to bring your own devices.`,
     other:
       "Choose Foodics if you are in Saudi Arabia and need its e-invoicing (e-Fatoora) set-up today, want hardware included in a per-branch price, or want its own payments service.",
   },
@@ -402,7 +402,7 @@ export const foodics: Comparison = {
     "One system for restaurants, cafés, cloud kitchens and shops, groceries or pharmacies.",
     "Own riders with a rider app, plus your own online order page with no commission to an app (Shop plan and above).",
     "Customer credit (khata) and double-entry accounting in the same system.",
-    "Light plan free for 3 months, no card. Bring your own PC, tablet or Android device.",
+    "Shop from $29 a month. Bring your own PC, tablet or Android device.",
     "App and receipts in Arabic, Urdu and English.",
   ],
   otherStrengths: [
@@ -572,7 +572,7 @@ export const cornPos: Comparison = {
     sub: `CORN POS is a Lahore-based restaurant POS with FBR and provincial tax links. ${BRAND_NAME} runs restaurants and shops in one system. Here is where each one is stronger.`,
   },
   verdict: {
-    tajirpoint: `Choose ${BRAND_NAME} if you also run a shop, bakery counter or distribution business, want khata and double-entry accounting in the same system, or want to start free for 3 months on your own devices.`,
+    tajirpoint: `Choose ${BRAND_NAME} if you also run a shop, bakery counter or distribution business, want khata and double-entry accounting in the same system, or want to run it on your own devices.`,
     other:
       "Choose CORN POS if you must send sales to FBR, PRA, SRB or KPRA today, need full offline mode at the tables, or want an iPad-based setup.",
   },
@@ -580,7 +580,7 @@ export const cornPos: Comparison = {
     "One system for restaurants and for shops, groceries, pharmacies and distributors.",
     "Khata (customer credit) with limits, aging and reminders, plus double-entry accounting.",
     "Windows desktop app, browser and Android; app and receipts in Urdu.",
-    "Light plan free for 3 months with no card; free data move from your old system.",
+    "Shop from $29 a month; free data move from your old system.",
     "Your own online order page with no commission to an app (Shop plan and above).",
   ],
   otherStrengths: [
@@ -675,7 +675,7 @@ export const cornPos: Comparison = {
     {
       heading: "Price",
       paragraphs: [
-        `CORN POS lists Starter and Pro prices per branch per month on its pricing page. ${BRAND_NAME} starts free for 3 months with no card, then moves to a monthly plan; the Business plan covers more than one shop. See both pricing pages for current numbers.`,
+        `CORN POS lists Starter and Pro prices per branch per month on its pricing page. ${BRAND_NAME} is a monthly plan from $29; the Business plan covers more than one shop. See both pricing pages for current numbers.`,
       ],
     },
   ],
@@ -692,7 +692,7 @@ export const cornPos: Comparison = {
     {
       question: `Can I try ${BRAND_NAME} before paying?`,
       answer:
-        "Yes. The Light plan is free for 3 months with no card. You can also book a free demo with your own menu.",
+        "Yes, and you can book a free demo with your own menu first.",
     },
   ],
   sources: [

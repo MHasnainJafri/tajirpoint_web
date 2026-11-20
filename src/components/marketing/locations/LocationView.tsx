@@ -153,7 +153,7 @@ export function LocationView({
               href={siteConfig.signupUrl}
               className="inline-flex items-center rounded-full bg-[var(--color-mint)] px-6 py-[13px] text-[15px] font-bold text-[#0A0A0A] transition-[transform,box-shadow] duration-200 hover:-translate-y-[2px]"
             >
-              Start free — 3 months
+              Get started
             </a>
             <Link
               href="/get-a-call"

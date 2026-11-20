@@ -115,7 +115,7 @@ const t: AddonTranslation = {
       a: `نعم. كل طلب مقبول يصبح بيعًا عاديًا في ${BRAND_NAME}.`,
     },
     {
-      q: "هل هي مضمّنة في خطة Light المجانية؟",
+      q: "هل هي مضمّنة في خطة Light؟",
       a: "لا. ستتطلب Delivery Aggregator خطة Shop أو أعلى.",
     },
   ],
