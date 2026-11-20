@@ -7,6 +7,7 @@ import restaurantOpeningChecklist from "./restaurant-opening-checklist";
 import excelToPos from "./excel-to-pos";
 import bestPosSoftwarePakistan from "./best-pos-software-pakistan";
 import restaurantFoodCost from "./restaurant-food-cost";
+import praSrbPosIntegration from "./pra-srb-pos-integration";
 
 export type { Guide } from "./types";
 
@@ -14,6 +15,7 @@ export type { Guide } from "./types";
 export const GUIDES: readonly Guide[] = [
   bestPosSoftwarePakistan,
   fbrPosIntegration,
+  praSrbPosIntegration,
   chooseRestaurantPos,
   restaurantOpeningChecklist,
   restaurantFoodCost,
