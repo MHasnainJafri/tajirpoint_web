@@ -1,6 +1,7 @@
 import { Link } from "@/i18n/navigation";
 import { getGuide, readMinutes, type Guide } from "@/content/guides";
 import { GUIDE_PLACEMENT } from "@/content/guides/placement";
+import { isPageShown } from "@/lib/config/pages";
 
 /**
  * "Related guides": up to three guide cards for the page at `path`, from
@@ -12,7 +13,8 @@ export function RelatedGuides({ path, locale }: { path: string; locale: string }
   if (locale !== "en") return null;
   const guides = (GUIDE_PLACEMENT[path] ?? [])
     .map(getGuide)
-    .filter((g): g is Guide => Boolean(g))
+    // A build that leaves the guides out (brand layer, pages.ts) links none.
+    .filter((g): g is Guide => Boolean(g) && isPageShown(`/guides/${g!.slug}`))
     .slice(0, 3);
   if (!guides.length) return null;
 
