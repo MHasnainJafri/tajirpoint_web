@@ -416,7 +416,7 @@ export const ABOUT_COPY: Localized<AboutCopy> = {
     facts: [
       {
         title: "Web, Windows and Android",
-        body: "Use it in the browser, on a Windows desktop or on an Android phone or tablet — your data stays in sync.",
+        body: "Use it in the browser, on a Windows or Mac desktop or on an Android phone or tablet — your data stays in sync.",
       },
       {
         title: "English, Urdu and Arabic",
@@ -436,8 +436,7 @@ export const ABOUT_COPY: Localized<AboutCopy> = {
       },
     ],
     ctaTitle: (product) => `See ${product} for your business`,
-    ctaBody:
-      "Book a demo and we’ll show you how it fits the way you work.",
+    ctaBody: "Book a demo and we’ll show you how it fits the way you work.",
     bookDemo: "Book a demo",
     startFree: "Get started",
   },
@@ -482,8 +481,7 @@ export const ABOUT_COPY: Localized<AboutCopy> = {
       },
     ],
     ctaTitle: (product) => `اپنے کاروبار کے لیے ${product} دیکھیں`,
-    ctaBody:
-      "ڈیمو بک کریں، ہم دکھائیں گے کہ یہ آپ کے کام کے طریقے میں کیسے فٹ ہوتا ہے۔",
+    ctaBody: "ڈیمو بک کریں، ہم دکھائیں گے کہ یہ آپ کے کام کے طریقے میں کیسے فٹ ہوتا ہے۔",
     bookDemo: "ڈیمو بک کریں",
     startFree: "شروع کریں",
   },
@@ -528,8 +526,7 @@ export const ABOUT_COPY: Localized<AboutCopy> = {
       },
     ],
     ctaTitle: (product) => `شاهد ${product} مع نشاطك`,
-    ctaBody:
-      "احجز عرضًا توضيحيًا وسنريك كيف يناسب طريقة عملك.",
+    ctaBody: "احجز عرضًا توضيحيًا وسنريك كيف يناسب طريقة عملك.",
     bookDemo: "احجز عرضًا توضيحيًا",
     startFree: "ابدأ الآن",
   },

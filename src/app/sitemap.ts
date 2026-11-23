@@ -142,6 +142,7 @@ const PAGES: Page[] = [
   { path: "/book-demo", priority: 0.8, changeFrequency: "monthly", updated: "2026-11-02" },
   { path: "/get-a-call", priority: 0.8, changeFrequency: "monthly", updated: "2026-11-02" },
   ...BUSINESS_PAGES,
+  { path: "/downloads", priority: 0.8, changeFrequency: "monthly", updated: "2026-11-23" },
   { path: "/extensions", priority: 0.8, changeFrequency: "monthly", updated: "2026-09-10" },
   ...FEATURE_PAGES,
   ...COMPARE_PAGES,

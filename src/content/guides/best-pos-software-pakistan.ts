@@ -504,7 +504,7 @@ const guide: Guide = {
             "Pharmacy batches and expiry with oldest-first selling; clothing sizes and colours as variants; grocery by carton, kg or piece; van sales for distributors",
             "Double-entry accounting posted from sales and purchases (Accounting add-on)",
             "App and receipts in English, Urdu and Arabic",
-            "Runs in any browser, as a Windows desktop app and on Android",
+            "Runs in any browser, as a Windows and Mac desktop app and on Android",
             "Free data move: send us your Excel or old POS export and we load it",
           ],
         },

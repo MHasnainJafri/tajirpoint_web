@@ -2,6 +2,9 @@ import { useTranslations } from "next-intl";
 import { Stroke } from "./Stroke";
 import { ReceiptDemo } from "./ReceiptDemo";
 import { APP_LINKS, PLATFORMS } from "@/lib/design/landing";
+import { SiteLink as Link } from "@/components/marketing/SiteLink";
+import { isPageShown } from "@/lib/config/pages";
+import { DOWNLOADS_PATH } from "@/lib/marketing/downloads";
 
 /**
  * "Runs on what you own" — one card per surface, plus the store link.
@@ -50,6 +53,31 @@ export function Platforms() {
 
         {/* App access — the store link the previous site carried. */}
         <div className="mt-[14px] flex flex-wrap items-center gap-[10px]">
+          {isPageShown(DOWNLOADS_PATH) && (
+            <Link
+              href={DOWNLOADS_PATH}
+              className="inline-flex items-center gap-[11px] rounded-[14px] bg-[var(--color-brand)] px-[18px] py-[10px] text-[var(--color-on-brand)] transition-transform duration-200 hover:-translate-y-[2px]"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                className="h-[19px] w-[19px]"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2.2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14" />
+              </svg>
+              <span>
+                <span className="block text-[15.5px] font-extrabold">{t("app.download")}</span>
+                <span className="mt-px block text-[11px] font-semibold opacity-80">
+                  {t("app.downloadSub")}
+                </span>
+              </span>
+            </Link>
+          )}
           {APP_LINKS.android && (
             <a
               href={APP_LINKS.android}

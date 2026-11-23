@@ -35,6 +35,15 @@ export const EN_BUSINESS_UI: BusinessUiCopy = {
   whatYouGet: "What you get",
   onThisPage: "On this page",
   appsTitle: "The apps your team will use",
+  appsIntro: `One account runs every app. Install ${BRAND_NAME} POS on the counter computer (Windows or Mac) or an Android till; the rest works in any browser.`,
+  appsIntroRestaurant:
+    "Restaurants get a separate app for each job — the counter, the front desk, the kitchen, the waiters, packing, the customer screen and the riders — all working on the same orders. The POS also comes as a desktop app for the counter PC or laptop, on Windows and Mac.",
+  platforms: { windows: "Windows", mac: "Mac", android: "Android", web: "Browser" },
+  appsDownload: {
+    title: "Install the apps",
+    sub: "Desktop POS for Windows and Mac, and the Android apps for phones and tablets.",
+    cta: "Go to downloads",
+  },
   faqTitle: (name) => `Questions from ${name.toLowerCase()}`,
   illustration: (title) => `${title} — feature illustration`,
   index: {

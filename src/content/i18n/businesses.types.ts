@@ -46,6 +46,14 @@ export interface BusinessUiCopy {
   whatYouGet: string;
   onThisPage: string;
   appsTitle: string;
+  /** Under the apps title: shops. */
+  appsIntro: string;
+  /** Under the apps title: restaurants, cafés and cloud kitchens (separate apps per job). */
+  appsIntroRestaurant: string;
+  /** Platform chip words. */
+  platforms: { windows: string; mac: string; android: string; web: string };
+  /** The apps block's download row. */
+  appsDownload: { title: string; sub: string; cta: string };
   /** FAQ heading for one business, given its (localised) name. */
   faqTitle: (name: string) => string;
   /** Screen-reader label of the placeholder artwork shown until a photo exists. */

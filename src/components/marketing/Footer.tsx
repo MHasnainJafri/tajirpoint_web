@@ -6,6 +6,7 @@ import { BUSINESSES, businessLabel } from "@/lib/marketing/businesses";
 import { legal } from "@/lib/config/site";
 import { brand } from "@/lib/config/brand";
 import { isPageShown } from "@/lib/config/pages";
+import { DOWNLOADS_PATH } from "@/lib/marketing/downloads";
 import { uxCopy } from "@/content/ux/copy";
 import { COMPARE_LABEL } from "@/content/compare/label";
 import {
@@ -84,6 +85,7 @@ export function Footer() {
           ))}
           <FooterLink href="/extensions">{ux.addOns}</FooterLink>
           <FooterLink href="/pricing">{t("links.pricing")}</FooterLink>
+          <FooterLink href={DOWNLOADS_PATH}>{ux.download}</FooterLink>
           <FooterLink href="/compare">{COMPARE_LABEL[locale] ?? COMPARE_LABEL.en}</FooterLink>
           <FooterLink href="/guides">{guidesNavLabel(locale).title}</FooterLink>
           <FooterLink href="/tools">{FREE_TOOLS_LABEL[locale] ?? FREE_TOOLS_LABEL.en}</FooterLink>

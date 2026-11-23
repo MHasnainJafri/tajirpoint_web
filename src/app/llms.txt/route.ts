@@ -53,7 +53,7 @@ function summary(): string {
 > Business are the paid plans.
 
 ${BRAND_NAME} keeps selling while offline and syncs when the connection returns.
-It runs in the browser, as a Windows desktop app and on Android. Switching from
+It runs in the browser, as a Windows and Mac desktop app and on Android. Switching from
 another POS is free: the team loads your products, customers, suppliers and
 khata balances for you. Operated by ${operated}.
 ${contact}`;
@@ -64,7 +64,7 @@ ${contact}`;
 > inventory, purchasing, staff, online ordering and delivery, in ${languages}.
 
 ${BRAND_NAME} keeps selling while offline and syncs when the connection returns.
-It runs in the browser, as a Windows desktop app and on Android. Operated by
+It runs in the browser, as a Windows and Mac desktop app and on Android. Operated by
 ${operated}. ${contact}`;
 }
 
@@ -106,6 +106,7 @@ ${link("Home", "/", `Product overview — what ${BRAND_NAME} does and who it is 
 ${link("Pricing", "/pricing", pricing)}
 ${link("Book a demo", "/book-demo", "Book a free demo; optional free data migration from your old POS")}
 ${link("Get a call back", "/get-a-call", "Leave a business name and phone number; the team calls within one working day")}
+${link("Download", "/downloads", `The ${BRAND_NAME} POS desktop app for Windows and Mac, and the Android apps (POS, Business, Order Desk, Kitchen, Waiter, Packer, Order Board, Rider)`)}
 ${link("Businesses", "/business", `Every business type ${BRAND_NAME} is set up for`)}
 ${link("Add-ons", "/extensions", "Optional add-ons (extensions) that add features per shop, with status and price")}
 ${link("About", "/about", `Who builds ${BRAND_NAME}`)}

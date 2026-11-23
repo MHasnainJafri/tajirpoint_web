@@ -91,7 +91,7 @@ export default async function TermsPage({ params }: { params: Promise<{ locale: 
       <LegalSection {...S.acceptance}>
         <p>
           By creating an account, signing in, or otherwise using {legal.product}
-          {` (including our web app at ${BRAND_APP_HOST}, our Windows desktop app, our Android apps, and the order pages and shop websites we host for you), you agree to these Terms on behalf of yourself and the business you represent (“you”). If you do not agree, do not use `}
+          {` (including our web app at ${BRAND_APP_HOST}, our Windows and Mac desktop apps, our Android apps, and the order pages and shop websites we host for you), you agree to these Terms on behalf of yourself and the business you represent (“you”). If you do not agree, do not use `}
           {legal.product}.
         </p>
       </LegalSection>
@@ -139,7 +139,7 @@ export default async function TermsPage({ params }: { params: Promise<{ locale: 
           the extensions you switch on, it includes tools for sales (POS), inventory, khata (credit)
           ledgers, purchases, accounting, restaurants (including a kitchen display), online order
           pages and shop websites, delivery and rider management, route and van sales, and reports.
-          It is available on the web, on Windows desktop and on Android.
+          It is available on the web, on Windows and Mac desktops and on Android.
         </p>
         <p>
           We improve {legal.product} continuously, so features may be added, changed or removed. If
