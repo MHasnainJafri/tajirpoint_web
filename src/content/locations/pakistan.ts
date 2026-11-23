@@ -91,7 +91,7 @@ const page: LocationPage = {
         "The device itself still needs power. A laptop, an Android phone or tablet, or a PC on a UPS keeps the counter going through a power cut.",
       ],
       bullets: [
-        "Works in the browser, as a Windows desktop app and on Android",
+        "Works in the browser, as a Windows and Mac desktop app and on Android",
         "No time limit offline",
         "Staff see clearly when they are offline and when sales have synced",
       ],
@@ -128,7 +128,7 @@ const page: LocationPage = {
     },
     {
       q: "Which devices do I need?",
-      a: "Any computer with a browser, the Windows desktop app, or an Android phone or tablet. You can start on the device you already have.",
+      a: "Any computer with a browser, the Windows or Mac desktop app, or an Android phone or tablet. You can start on the device you already have.",
     },
   ],
   cta: {

@@ -15,6 +15,8 @@ import { SHOWN_BUSINESS_SLUGS, getBusiness, type Business } from "@/lib/marketin
 import { businessUi, localizeApp, localizeBusiness } from "@/content/i18n/businesses";
 import type { BusinessUiCopy } from "@/content/i18n/businesses.types";
 import { siteConfig } from "@/lib/config/site";
+import { isPageShown } from "@/lib/config/pages";
+import { DESKTOP, DOWNLOADS_PATH } from "@/lib/marketing/downloads";
 import { buildMetadata, canonicalUrl } from "@/lib/seo/metadata";
 import { breadcrumbSchema, faqSchema, verticalSoftwareSchema } from "@/lib/seo/schemas";
 import { RelatedGuides } from "@/components/marketing/guides/RelatedGuides";
@@ -41,6 +43,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     ...(b.seo.keywords.length && { keywords: b.seo.keywords }),
   });
 }
+
+/** Businesses whose apps block explains the separate restaurant apps. */
+const RESTAURANT_TYPES = new Set(["restaurants", "cafes-bakeries", "cloud-kitchens"]);
 
 const chip = "inline-flex items-center rounded-full px-[9px] py-[3px] text-[11.5px] font-semibold";
 /** Points the way the page reads: → in English, ← in Urdu and Arabic. */
@@ -336,6 +341,9 @@ function AppsStrip({
       <h2 id="apps-title" className="text-[18px] font-bold tracking-[-0.02em] rtl:tracking-normal">
         {ui.appsTitle}
       </h2>
+      <p className="mt-2 max-w-[80ch] text-[14.5px] leading-[1.6] text-[var(--color-body)]">
+        {RESTAURANT_TYPES.has(business.slug) ? ui.appsIntroRestaurant : ui.appsIntro}
+      </p>
       <ul className="mt-5 grid grid-cols-[repeat(auto-fill,minmax(min(100%,230px),1fr))] gap-3">
         {business.apps.map((id) => {
           const app = localizeApp(id, locale);
@@ -354,6 +362,18 @@ function AppsStrip({
                 <span className="mt-1 block text-[13px] leading-[1.5] text-[var(--color-muted)]">
                   {app.line}
                 </span>
+                {app.platforms && app.status !== "soon" && (
+                  <span className="mt-2 flex flex-wrap gap-[5px]">
+                    {app.platforms.map((p) => (
+                      <span
+                        key={p}
+                        className="rounded-[6px] border border-[var(--color-line-2)] px-[7px] py-[2px] text-[11px] font-semibold text-[var(--color-ink-3)]"
+                      >
+                        {ui.platforms[p]}
+                      </span>
+                    ))}
+                  </span>
+                )}
                 {(app.status === "soon" || app.plan) && (
                   <span className="mt-2 flex flex-wrap gap-[6px]">
                     {app.status === "soon" && (
@@ -373,6 +393,40 @@ function AppsStrip({
           );
         })}
       </ul>
+      {isPageShown(DOWNLOADS_PATH) && (
+        <div className="mt-4 flex flex-col gap-4 rounded-[16px] bg-white p-4 shadow-[var(--shadow-card)] sm:flex-row sm:items-center sm:justify-between sm:p-5">
+          <span>
+            <span className="block text-[15px] font-bold text-[var(--color-ink)]">
+              {ui.appsDownload.title}
+            </span>
+            <span className="mt-1 block text-[13px] leading-[1.5] text-[var(--color-muted)]">
+              {ui.appsDownload.sub}
+            </span>
+          </span>
+          <span className="flex flex-wrap gap-2">
+            {DESKTOP.files.map((f) => (
+              <a
+                key={f.os}
+                href={f.href}
+                download
+                dir="ltr"
+                className="inline-flex min-h-[44px] items-center rounded-full bg-[var(--color-brand)] px-4 py-[10px] text-[13.5px] font-semibold text-[var(--color-on-brand)]"
+              >
+                <span aria-hidden="true" className="me-[6px]">
+                  ↓
+                </span>
+                {ui.platforms[f.os]}
+              </a>
+            ))}
+            <Link
+              href={DOWNLOADS_PATH}
+              className="inline-flex min-h-[44px] items-center rounded-full border border-[var(--color-line-2)] px-4 py-[10px] text-[13.5px] font-semibold text-[var(--color-ink)]"
+            >
+              {ui.appsDownload.cta}
+            </Link>
+          </span>
+        </div>
+      )}
     </section>
   );
 }

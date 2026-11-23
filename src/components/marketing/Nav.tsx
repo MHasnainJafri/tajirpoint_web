@@ -19,6 +19,7 @@ import {
 import type { Business } from "@/lib/marketing/businesses";
 import { siteConfig } from "@/lib/config/site";
 import { isPageShown } from "@/lib/config/pages";
+import { DOWNLOADS_PATH } from "@/lib/marketing/downloads";
 import { uxCopy } from "@/content/ux/copy";
 import { guidesNavLabel } from "@/content/guides/labels";
 
@@ -382,6 +383,11 @@ export function Nav({ businesses }: { businesses: NavBusiness[] }) {
           <Link href="/pricing" className={linkBase} onMouseEnter={() => setMega(null)}>
             {t("pricing")}
           </Link>
+          {isPageShown(DOWNLOADS_PATH) && (
+            <Link href={DOWNLOADS_PATH} className={linkBase} onMouseEnter={() => setMega(null)}>
+              {ux.download}
+            </Link>
+          )}
           {trigger("resources", t("resources"))}
           {resourcesPanel}
         </nav>
@@ -476,6 +482,11 @@ export function Nav({ businesses }: { businesses: NavBusiness[] }) {
           <MobileLink href="/pricing" onNavigate={closeAll}>
             {t("pricing")}
           </MobileLink>
+          {isPageShown(DOWNLOADS_PATH) && (
+            <MobileLink href={DOWNLOADS_PATH} onNavigate={closeAll}>
+              {ux.download}
+            </MobileLink>
+          )}
           <MobileLink href="/get-a-call" onNavigate={closeAll}>
             {ux.getACall}
           </MobileLink>

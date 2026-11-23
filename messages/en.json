@@ -452,7 +452,7 @@
         },
         "desktop": {
           "name": "Desktop",
-          "sub": "Windows app; printers & drawers"
+          "sub": "Windows & Mac apps; printers & drawers"
         },
         "android": {
           "name": "Android",
@@ -466,7 +466,9 @@
       "app": {
         "getItOn": "GET IT ON",
         "googlePlay": "Google Play",
-        "note": "Scan, print and sell from a phone or tablet."
+        "note": "Scan, print and sell from a phone or tablet.",
+        "download": "Download the apps",
+        "downloadSub": "Windows, Mac and Android"
       },
       "hardware": "Works with thermal receipt printers, barcode scanners and cash drawers.",
       "receiptCaption": "Receipts, screens and kitchen tickets follow the chosen language — layout flips right-to-left automatically.",

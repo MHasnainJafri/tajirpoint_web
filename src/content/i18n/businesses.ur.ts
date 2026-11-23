@@ -24,6 +24,15 @@ const ur: BusinessesTranslation = {
     whatYouGet: "آپ کو کیا ملتا ہے",
     onThisPage: "اس صفحے پر",
     appsTitle: "وہ ایپس جو آپ کی ٹیم استعمال کرے گی",
+    appsIntro: `ایک اکاؤنٹ سے سب ایپس چلتی ہیں۔ کاؤنٹر کمپیوٹر (Windows یا Mac) یا Android ٹِل پر ${BRAND_NAME} POS انسٹال کریں؛ باقی سب کسی بھی براؤزر میں چلتا ہے۔`,
+    appsIntroRestaurant:
+      "ریسٹورنٹ کے ہر کام کے لیے الگ ایپ ہے — کاؤنٹر، فرنٹ ڈیسک، کچن، ویٹر، پیکنگ، کسٹمر اسکرین اور رائیڈرز — سب ایک ہی آرڈرز پر کام کرتی ہیں۔ POS کاؤنٹر کے PC یا لیپ ٹاپ کے لیے Windows اور Mac ڈیسک ٹاپ ایپ کے طور پر بھی ملتا ہے۔",
+    platforms: { windows: "Windows", mac: "Mac", android: "Android", web: "براؤزر" },
+    appsDownload: {
+      title: "ایپس انسٹال کریں",
+      sub: "Windows اور Mac کے لیے ڈیسک ٹاپ POS، اور فون و ٹیبلٹ کے لیے Android ایپس۔",
+      cta: "ڈاؤن لوڈز پر جائیں",
+    },
     faqTitle: (name) => `${name} کے عام سوالات`,
     illustration: (title) => `${title} — فیچر کی تصویر`,
     index: {
@@ -39,8 +48,7 @@ const ur: BusinessesTranslation = {
       eyebrow: "قیمتیں",
       headline: "شروع کریں۔ کاروبار بڑھے تو پلان بڑھائیں۔",
       fallbackTitle: "Light پلان",
-      fallbackBody:
-        "ایک دکان، عملے کے دو لاگ اِن، 30 پروڈکٹس اور روزانہ 100 آرڈرز۔",
+      fallbackBody: "ایک دکان، عملے کے دو لاگ اِن، 30 پروڈکٹس اور روزانہ 100 آرڈرز۔",
       compare: "تمام پلانز کا موازنہ کریں",
     },
     migration: {
@@ -66,7 +74,7 @@ const ur: BusinessesTranslation = {
       },
       {
         q: "یہ کن ڈیوائسز پر چلتا ہے؟",
-        a: "کسی بھی جدید براؤزر پر، Windows ڈیسک ٹاپ ایپ پر اور Android پر — بشمول بلٹ اِن پرنٹر والے Android POS ٹرمینلز۔ رسید پرنٹر USB، Bluetooth یا نیٹ ورک سے جڑتے ہیں۔",
+        a: "کسی بھی جدید براؤزر پر، Windows اور Mac ڈیسک ٹاپ ایپ پر اور Android پر — بشمول بلٹ اِن پرنٹر والے Android POS ٹرمینلز۔ رسید پرنٹر USB، Bluetooth یا نیٹ ورک سے جڑتے ہیں۔",
       },
       {
         q: "کیا یہ اردو اور عربی میں دستیاب ہے؟",
@@ -111,6 +119,10 @@ const ur: BusinessesTranslation = {
       customerApp: {
         name: "آپ کے برانڈ کی کسٹمر ایپ",
         line: "آپ کے مستقل گاہکوں کے لیے آپ کی اپنی آرڈرنگ ایپ۔",
+      },
+      orderBoard: {
+        name: "آرڈر بورڈ",
+        line: "گاہکوں کے سامنے TV یا ٹیبلٹ دکھاتا ہے کون سے آرڈر بن رہے ہیں اور کون سے تیار ہیں۔",
       },
       riderApp: {
         name: "رائیڈر ایپ",

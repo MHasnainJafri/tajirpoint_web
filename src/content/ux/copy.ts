@@ -34,10 +34,13 @@ export interface UxCopy {
   nextStepBody: string;
   /** Home link in the footer. */
   home: string;
+  /** Menu / footer link to /downloads. */
+  download: string;
 }
 
 const COPY: Record<UxLocale, UxCopy> = {
   en: {
+    download: "Download",
     addOns: "Add-ons",
     getACall: "Get a call",
     getACallSub: "Leave your number. We call you within one working day.",
@@ -53,6 +56,7 @@ const COPY: Record<UxLocale, UxCopy> = {
     home: "Home",
   },
   ur: {
+    download: "ڈاؤن لوڈ",
     addOns: "ایڈ آنز",
     getACall: "کال حاصل کریں",
     getACallSub: "اپنا نمبر دیں۔ ہم ایک کاروباری دن میں کال کریں گے۔",
@@ -67,6 +71,7 @@ const COPY: Record<UxLocale, UxCopy> = {
     home: "ہوم",
   },
   ar: {
+    download: "التنزيل",
     addOns: "الإضافات",
     getACall: "اطلب اتصالًا",
     getACallSub: "اترك رقمك وسنتصل بك خلال يوم عمل واحد.",
