@@ -49,7 +49,7 @@ const FAQS = [
   },
   {
     q: "Which computer do I need for the desktop app?",
-    a: "Any Windows 10 or 11 PC (64-bit) or any Mac on macOS 11 or later, Apple Silicon or Intel. A normal laptop or a till PC is enough.",
+    a: "Any Windows 10 or 11 PC (64-bit) or any Mac on macOS 10.15 Catalina or later, Apple Silicon or Intel. A normal laptop or a till PC is enough.",
   },
   {
     q: "Windows or macOS warns me before opening the app. Is it safe?",
@@ -98,7 +98,7 @@ export default async function DownloadsPage({ params }: { params: Promise<{ loca
             "@type": "SoftwareApplication",
             name: DESKTOP.name,
             applicationCategory: "BusinessApplication",
-            operatingSystem: "Windows 10, Windows 11, macOS 11+",
+            operatingSystem: "Windows 10, Windows 11, macOS 10.15+",
             softwareVersion: DESKTOP.version,
             datePublished: DESKTOP.released,
             downloadUrl: DESKTOP.files.map((f) => f.href),
