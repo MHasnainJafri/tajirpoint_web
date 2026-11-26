@@ -157,7 +157,7 @@ export const paperKhata: Comparison = {
     {
       question: "How much does it cost?",
       answer:
-        "The Light plan is free for 3 months with no card. After that you choose a paid plan. See the pricing page for current prices.",
+        "Shop is $29 a month and Business is $79 a month. See the pricing page for current prices.",
     },
   ],
   sources: [],

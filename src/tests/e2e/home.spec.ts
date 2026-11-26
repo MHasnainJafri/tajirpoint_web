@@ -13,7 +13,7 @@ test("home page renders the hero and its two CTAs", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
   const hero = page.locator('[data-track="hero"]');
-  await expect(hero.getByRole("link", { name: /Start free — 3 months/ })).toHaveAttribute(
+  await expect(hero.getByRole("link", { name: /Get started/ })).toHaveAttribute(
     "href",
     "https://app.tajirpoint.com/register"
   );

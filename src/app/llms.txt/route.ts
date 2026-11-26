@@ -49,11 +49,11 @@ function summary(): string {
     return `> ${BRAND_NAME} is a point-of-sale and back-office system for shops, restaurants,
 > pharmacies, distributors and other small and medium businesses — POS,
 > inventory, khata (customer and supplier credit), purchasing, staff, online
-> ordering and delivery, in English, Urdu and Arabic. The Light plan is free
-> for 3 months with no card; Shop and Business are the paid plans.
+> ordering and delivery, in English, Urdu and Arabic. Shop and
+> Business are the paid plans.
 
 ${BRAND_NAME} keeps selling while offline and syncs when the connection returns.
-It runs in the browser, as a Windows desktop app and on Android. Switching from
+It runs in the browser, as a Windows and Mac desktop app and on Android. Switching from
 another POS is free: the team loads your products, customers, suppliers and
 khata balances for you. Operated by ${operated}.
 ${contact}`;
@@ -64,7 +64,7 @@ ${contact}`;
 > inventory, purchasing, staff, online ordering and delivery, in ${languages}.
 
 ${BRAND_NAME} keeps selling while offline and syncs when the connection returns.
-It runs in the browser, as a Windows desktop app and on Android. Operated by
+It runs in the browser, as a Windows and Mac desktop app and on Android. Operated by
 ${operated}. ${contact}`;
 }
 
@@ -106,6 +106,7 @@ ${link("Home", "/", `Product overview — what ${BRAND_NAME} does and who it is 
 ${link("Pricing", "/pricing", pricing)}
 ${link("Book a demo", "/book-demo", "Book a free demo; optional free data migration from your old POS")}
 ${link("Get a call back", "/get-a-call", "Leave a business name and phone number; the team calls within one working day")}
+${link("Download", "/downloads", `The ${BRAND_NAME} POS desktop app for Windows and Mac, and the Android apps (POS, Business, Order Desk, Kitchen, Waiter, Packer, Order Board, Rider)`)}
 ${link("Businesses", "/business", `Every business type ${BRAND_NAME} is set up for`)}
 ${link("Add-ons", "/extensions", "Optional add-ons (extensions) that add features per shop, with status and price")}
 ${link("About", "/about", `Who builds ${BRAND_NAME}`)}
@@ -191,8 +192,8 @@ export async function GET() {
   const [plans, catalogue] = await Promise.all([getPlans(), getAddonCatalogue()]);
   const summary = planSummary(plans);
   const pricing = summary
-    ? `Plans and prices (USD): ${summary}. Light is free for 3 months with no card; paid plans can be cancelled any time, with a 15-day refund window on payments`
-    : "Light is free for 3 months with no card; Shop and Business are paid plans, priced in USD";
+    ? `Plans and prices (USD): ${summary}. Paid plans can be cancelled any time, with a 15-day refund window on payments`
+    : "Shop and Business are paid plans, priced in USD";
   return new Response(body(pricing, catalogue.addons), {
     headers: {
       "Content-Type": "text/markdown; charset=utf-8",

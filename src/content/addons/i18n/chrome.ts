@@ -33,7 +33,7 @@ const en: AddonChrome = {
   seePlans: ["See all plans on the ", "pricing page", "."],
   faqTitle: (name) => `Questions about ${name}`,
   cta: {
-    startTrial: "Start free trial",
+    startTrial: "Get started",
     askQuestion: "Ask us a question",
     askSetup: "Ask us to set it up",
     tellMeWhenReady: "Tell me when it's ready",
@@ -105,7 +105,7 @@ const ur: AddonChrome = {
   seePlans: ["تمام پلان ", "قیمتوں کے صفحے", " پر دیکھیں۔"],
   faqTitle: (name) => `${name} کے بارے میں سوالات`,
   cta: {
-    startTrial: "مفت آزمائش شروع کریں",
+    startTrial: "شروع کریں",
     askQuestion: "ہم سے سوال پوچھیں",
     askSetup: "ہم سے سیٹ اپ کروائیں",
     tellMeWhenReady: "تیار ہونے پر مجھے بتائیں",
@@ -114,7 +114,7 @@ const ur: AddonChrome = {
   },
   whatsappMessage: (product, name) => `السلام علیکم ${product}، مجھے ${name} ایڈ آن میں دلچسپی ہے۔`,
   finalTitle: {
-    active: (name) => `${name} مفت آزمائیں`,
+    active: (name) => `${name} آزمائیں`,
     coming_soon: (name) => `${name} تیار ہونے پر چاہیے؟`,
     other: (name) => `${name} کے بارے میں ہم سے بات کریں`,
   },
@@ -136,7 +136,7 @@ const ur: AddonChrome = {
   askUs: "ہم سے پوچھیں",
   perMonth: (money) => `${money} ماہانہ`,
   oneTime: (money) => `${money} ایک بار`,
-  planLight: "مفت Light پلان میں شامل",
+  planLight: "Light پلان میں شامل",
   planShop: "Shop پلان یا اس سے اوپر درکار",
   groups: {
     business: "کاروباری پیک",
@@ -177,7 +177,7 @@ const ar: AddonChrome = {
   seePlans: ["اطّلع على جميع الخطط في ", "صفحة الأسعار", "."],
   faqTitle: (name) => `أسئلة حول ${name}`,
   cta: {
-    startTrial: "ابدأ التجربة المجانية",
+    startTrial: "ابدأ الآن",
     askQuestion: "اسألنا سؤالًا",
     askSetup: "اطلب منّا إعدادها",
     tellMeWhenReady: "أخبرني عندما تجهز",
@@ -186,7 +186,7 @@ const ar: AddonChrome = {
   },
   whatsappMessage: (product, name) => `مرحبًا ${product}، أنا مهتم بإضافة ${name}.`,
   finalTitle: {
-    active: (name) => `جرّب ${name} مجانًا`,
+    active: (name) => `جرّب ${name}`,
     coming_soon: (name) => `تريد ${name} عندما تجهز؟`,
     other: (name) => `تحدّث معنا عن ${name}`,
   },
@@ -206,7 +206,7 @@ const ar: AddonChrome = {
   askUs: "اسألنا",
   perMonth: (money) => `${money} شهريًا`,
   oneTime: (money) => `${money} لمرة واحدة`,
-  planLight: "مضمّنة في خطة Light المجانية",
+  planLight: "مضمّنة في خطة Light",
   planShop: "تتطلب خطة Shop أو أعلى",
   groups: {
     business: "حزم الأنشطة",

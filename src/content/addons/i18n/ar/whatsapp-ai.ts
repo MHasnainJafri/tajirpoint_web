@@ -136,7 +136,7 @@ const t: AddonTranslation = {
     },
     {
       q: "ما الخطة التي أحتاجها؟",
-      a: "تتطلب WhatsApp AI Assistant خطة Shop أو أعلى، وليست ضمن خطة Light المجانية.",
+      a: "تتطلب WhatsApp AI Assistant خطة Shop أو أعلى، وليست ضمن خطة Light.",
     },
   ],
   comingSoonNote: "بُنيت وهي قيد الاختبار؛ غير متاحة للمتاجر بعد. اسألنا وسنخبرك عندما تجهز.",

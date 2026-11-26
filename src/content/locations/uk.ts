@@ -192,7 +192,7 @@ const page: LocationPage = {
   ],
   cta: {
     headline: `See ${BRAND_NAME} run your takeaway.`,
-    sub: "Book a free demo, or start free for 3 months. No card needed, and we move your menu for free.",
+    sub: "Book a free demo, and we move your menu for free.",
   },
   related: ["pakistan"],
   updated: "2026-11-02",

@@ -263,7 +263,7 @@ export function HeroShowcase() {
         </div>
 
         {/* ── devices ───────────────────────────────────────────── */}
-        <div className="gap-3 @[640px]:flex @[640px]:items-stretch">
+        <div className="gap-3 @[640px]:flex @[640px]:items-start">
           <div
             className={`min-w-0 @[640px]:flex-1 ${switchAnim} ${
               view === "till" ? "" : "hidden @[640px]:block"

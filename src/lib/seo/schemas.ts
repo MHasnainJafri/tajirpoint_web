@@ -195,9 +195,7 @@ function planOffer(plan: MarketingPlan) {
     "@type": "Offer",
     name: plan.name,
     description:
-      isFree && plan.free_period_days
-        ? `${plan.tagline} (free for ${plan.free_period_days} days from signup)`
-        : plan.tagline,
+      plan.tagline,
     availability: "https://schema.org/InStock",
     // A contact-sales tier is a conversation; everything else is on the
     // pricing page, which is the page this markup describes.

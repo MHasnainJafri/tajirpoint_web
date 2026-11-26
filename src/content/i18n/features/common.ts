@@ -5,7 +5,7 @@ import { BRAND_NAME } from "@/lib/config/brand";
 export const FEATURE_COMMON: Localized<FeatureCommonCopy> = {
   en: {
     allBusinesses: "All businesses",
-    startFree: "Start free — 3 months",
+    startFree: "Get started",
     bookDemo: "Book a demo",
     problemEyebrow: "THE PROBLEM",
     solutionEyebrow: `HOW ${BRAND_NAME.toUpperCase()} SOLVES IT`,
@@ -14,7 +14,7 @@ export const FEATURE_COMMON: Localized<FeatureCommonCopy> = {
   },
   ur: {
     allBusinesses: "تمام کاروبار",
-    startFree: "مفت شروع کریں — 3 ماہ",
+    startFree: "شروع کریں",
     bookDemo: "ڈیمو بک کریں",
     problemEyebrow: "مسئلہ",
     solutionEyebrow: `${BRAND_NAME} اسے کیسے حل کرتا ہے`,
@@ -23,7 +23,7 @@ export const FEATURE_COMMON: Localized<FeatureCommonCopy> = {
   },
   ar: {
     allBusinesses: "كل الأنشطة",
-    startFree: "ابدأ مجانًا — 3 أشهر",
+    startFree: "ابدأ الآن",
     bookDemo: "احجز عرضًا توضيحيًا",
     problemEyebrow: "المشكلة",
     solutionEyebrow: `كيف يحلّها ${BRAND_NAME}`,

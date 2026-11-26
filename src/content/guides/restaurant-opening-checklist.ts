@@ -196,7 +196,7 @@ const guide: Guide = {
         },
         {
           type: "p",
-          text: "The Light plan is free for 3 months with no card, so you can set everything up before you open. See the [restaurant POS](/business/restaurants), the [cloud kitchen](/business/cloud-kitchens) set-up, or [ask for a call back](/get-a-call) and we will help you plan it.",
+          text: "See the [restaurant POS](/business/restaurants), the [cloud kitchen](/business/cloud-kitchens) set-up, or [ask for a call back](/get-a-call) and we will help you plan it.",
         },
       ],
     },
@@ -259,7 +259,7 @@ const guide: Guide = {
       note: "Several brands from one kitchen",
     },
     { label: "Add-ons", href: "/extensions", note: "Payments, accounting, delivery and more" },
-    { label: "Pricing", href: "/pricing", note: "Light is free for 3 months, no card" },
+    { label: "Pricing", href: "/pricing", note: "Shop and Business plans" },
     { label: "Get a call back", href: "/get-a-call", note: "We help you plan your set-up" },
   ],
   related: [

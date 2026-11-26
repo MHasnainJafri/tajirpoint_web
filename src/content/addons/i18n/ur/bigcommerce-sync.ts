@@ -116,7 +116,7 @@ const t: AddonTranslation = {
     },
     {
       q: "مجھے کون سا پلان چاہیے؟",
-      a: "BigCommerce Sync کے لیے Shop پلان یا اس سے اوپر درکار ہے۔ یہ مفت Light پلان میں شامل نہیں۔",
+      a: "BigCommerce Sync کے لیے Shop پلان یا اس سے اوپر درکار ہے۔ یہ Light پلان میں شامل نہیں۔",
     },
   ],
   comingSoonNote:

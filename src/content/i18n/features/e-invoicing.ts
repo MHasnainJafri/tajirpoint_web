@@ -63,7 +63,7 @@ export const E_INVOICING_COPY: Localized<FeaturePageCopy> = {
       },
     ],
     cta: {
-      headline: "Free for 3 months. No card needed.",
+      headline: "Get started today.",
       secondary: "See pricing",
     },
   },
@@ -124,7 +124,7 @@ export const E_INVOICING_COPY: Localized<FeaturePageCopy> = {
       },
     ],
     cta: {
-      headline: "3 ماہ مفت۔ کارڈ کی ضرورت نہیں۔",
+      headline: "آج ہی شروع کریں۔",
       secondary: "قیمتیں دیکھیں",
     },
   },
@@ -185,7 +185,7 @@ export const E_INVOICING_COPY: Localized<FeaturePageCopy> = {
       },
     ],
     cta: {
-      headline: "مجانًا لمدة 3 أشهر. دون بطاقة.",
+      headline: "ابدأ اليوم.",
       secondary: "اطّلع على الأسعار",
     },
   },

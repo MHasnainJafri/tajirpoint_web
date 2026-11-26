@@ -114,7 +114,7 @@ const t: AddonTranslation = {
       a: `نعم، يمكنك إلغاء الشحنة من ${BRAND_NAME} قبل تسليمها.`,
     },
     {
-      q: "هل هي مضمّنة في خطة Light المجانية؟",
+      q: "هل هي مضمّنة في خطة Light؟",
       a: "لا. ستتطلب إضافة Leopards Courier خطة Shop أو أعلى.",
     },
   ],

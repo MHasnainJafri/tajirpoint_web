@@ -17,6 +17,8 @@ const PAKISTAN_ONLY = [
   "/guides",
   "/features/khata",
   "/features/e-invoicing",
+  // Khata credit, receipts in Urdu and an FBR question (written 18 Nov 2026).
+  "/features/billing",
   "/extensions/fbr-integration",
   "/extensions/jazzcash-payments",
   "/extensions/easypaisa-payments",
@@ -36,6 +38,9 @@ const FOR_BUSINESS_TYPES: Record<string, readonly string[]> = {
   "/extensions/route-dispatch": ["distribution", "wholesale"],
 };
 
+/** Pages only our own build has (the installers are ours: src/lib/marketing/downloads.ts). */
+const OWN_BRAND_ONLY = ["/downloads"];
+
 function under(path: string, prefix: string): boolean {
   return path === prefix || path.startsWith(`${prefix}/`);
 }
@@ -48,6 +53,7 @@ function servesAny(types: readonly string[]): boolean {
 export function isPageHidden(path: string): boolean {
   const p = path.split(/[?#]/)[0]!.replace(/\/+$/, "") || "/";
   if (!brand.isPakistan && PAKISTAN_ONLY.some((prefix) => under(p, prefix))) return true;
+  if (!brand.isOwnBrand && OWN_BRAND_ONLY.some((prefix) => under(p, prefix))) return true;
   for (const [prefix, types] of Object.entries(FOR_BUSINESS_TYPES)) {
     if (under(p, prefix) && !servesAny(types)) return true;
   }

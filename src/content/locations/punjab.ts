@@ -175,7 +175,7 @@ const page: LocationPage = {
   checked: PROVINCE_CHECKED,
   cta: {
     headline: `Run your Punjab shop or restaurant on ${BRAND_NAME}.`,
-    sub: "Book a free demo, or start free for 3 months. No card needed, and we move your data for free.",
+    sub: "Book a free demo, and we move your data for free.",
   },
   related: ["pakistan", "lahore", "faisalabad", "sialkot", "islamabad-rawalpindi", "sindh"],
   updated: PROVINCE_UPDATED,

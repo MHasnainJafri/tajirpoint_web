@@ -113,11 +113,11 @@ export default async function ChangelogPage({ params }: { params: Promise<{ loca
             Want to see it for your business?
           </h2>
           <p className="relative mx-auto mt-4 max-w-[500px] text-[16px] leading-[1.6] text-[var(--color-muted)]">
-            Start on the Light plan, free for 3 months, or ask us for a call back.
+            Choose Shop or Business, or ask us for a call back.
           </p>
           <div className="relative mt-8 flex flex-wrap justify-center gap-[14px]">
             <MintButton href={siteConfig.signupUrl} external>
-              Start free <span aria-hidden>→</span>
+              Get started <span aria-hidden>→</span>
             </MintButton>
             <GhostButton href="/get-a-call">Get a call back</GhostButton>
           </div>

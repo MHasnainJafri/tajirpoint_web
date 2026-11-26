@@ -212,7 +212,7 @@ const guide: Guide = {
         },
         {
           type: "p",
-          text: "The Light plan is free for 3 months with no card, and we move your menu and data for you, free. See the [restaurant POS page](/business/restaurants), [pricing](/pricing), or [book a demo](/book-demo) on your own menu.",
+          text: "We move your menu and data for you, free. See the [restaurant POS page](/business/restaurants), [pricing](/pricing), or [book a demo](/book-demo) on your own menu.",
         },
       ],
     },

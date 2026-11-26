@@ -34,10 +34,13 @@ export interface UxCopy {
   nextStepBody: string;
   /** Home link in the footer. */
   home: string;
+  /** Menu / footer link to /downloads. */
+  download: string;
 }
 
 const COPY: Record<UxLocale, UxCopy> = {
   en: {
+    download: "Download",
     addOns: "Add-ons",
     getACall: "Get a call",
     getACallSub: "Leave your number. We call you within one working day.",
@@ -45,14 +48,15 @@ const COPY: Record<UxLocale, UxCopy> = {
     whatsapp: "Chat on WhatsApp",
     callMeBack: "Call me back",
     whatsappMessage: `Hi ${BRAND_NAME}, I'm interested in your POS.`,
-    startFree: "Start free",
+    startFree: "Get started",
     bookDemo: "Book a demo",
     nextStepTitle: "Ready when you are",
     nextStepBody:
-      "Start free in a few minutes, or let our team call you and answer your questions.",
+      "Get started in a few minutes, or let our team call you and answer your questions.",
     home: "Home",
   },
   ur: {
+    download: "ڈاؤن لوڈ",
     addOns: "ایڈ آنز",
     getACall: "کال حاصل کریں",
     getACallSub: "اپنا نمبر دیں۔ ہم ایک کاروباری دن میں کال کریں گے۔",
@@ -67,6 +71,7 @@ const COPY: Record<UxLocale, UxCopy> = {
     home: "ہوم",
   },
   ar: {
+    download: "التنزيل",
     addOns: "الإضافات",
     getACall: "اطلب اتصالًا",
     getACallSub: "اترك رقمك وسنتصل بك خلال يوم عمل واحد.",

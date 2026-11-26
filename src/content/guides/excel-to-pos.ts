@@ -238,7 +238,7 @@ const guide: Guide = {
         },
         {
           type: "p",
-          text: 'Ask for it when you [book a free demo](/book-demo?migrate=1) (tick "Move my data for me"), or [ask for a call back](/get-a-call). The Light plan is free for 3 months with no card; see [pricing](/pricing).',
+          text: 'Ask for it when you [book a free demo](/book-demo?migrate=1) (tick "Move my data for me"), or [ask for a call back](/get-a-call). See [pricing](/pricing).',
         },
       ],
     },
@@ -295,7 +295,7 @@ const guide: Guide = {
       href: "/business",
       note: "Set-ups for shops, restaurants and distributors",
     },
-    { label: "Pricing", href: "/pricing", note: "Light is free for 3 months, no card" },
+    { label: "Pricing", href: "/pricing", note: "Shop and Business plans" },
   ],
   related: ["digital-khata", "stock-counting", "choose-restaurant-pos"],
   datePublished: "2026-11-02",

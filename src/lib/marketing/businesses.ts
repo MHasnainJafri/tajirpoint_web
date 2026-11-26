@@ -40,7 +40,11 @@ export type AppId =
   | "website"
   | "customerApp"
   | "riderApp"
+  | "orderBoard"
   | "vanSales";
+
+/** Where an app runs; "web" = in the browser, nothing to install. */
+export type AppPlatform = "windows" | "mac" | "android" | "web";
 
 export interface AppInfo {
   id: AppId;
@@ -51,6 +55,8 @@ export interface AppInfo {
   status: "live" | "soon";
   /** Shown as a small note when the app needs a paid plan. */
   plan?: string;
+  /** Where staff run it (chips on the business pages); none for customer-facing pages. */
+  platforms?: AppPlatform[];
 }
 
 export const SHOP_PLAN_NOTE = "Shop plan and above";
@@ -62,6 +68,7 @@ export const APPS: Record<AppId, AppInfo> = {
     line: "Sell, take payment and print receipts on a PC, tablet or Android till.",
     icon: "pos",
     status: "live",
+    platforms: ["windows", "mac", "android", "web"],
   },
   backOffice: {
     id: "backOffice",
@@ -69,6 +76,7 @@ export const APPS: Record<AppId, AppInfo> = {
     line: "Stock, purchases, credit, staff and reports in your browser.",
     icon: "chart",
     status: "live",
+    platforms: ["web", "windows", "mac"],
   },
   ownerApp: {
     id: "ownerApp",
@@ -76,6 +84,7 @@ export const APPS: Record<AppId, AppInfo> = {
     line: "Today's sales, stock and dues from your phone.",
     icon: "phone",
     status: "live",
+    platforms: ["android", "web"],
   },
   kds: {
     id: "kds",
@@ -83,6 +92,7 @@ export const APPS: Record<AppId, AppInfo> = {
     line: "Orders appear on a kitchen screen by station — no shouting, no lost slips.",
     icon: "restaurant",
     status: "live",
+    platforms: ["android", "web"],
   },
   waiter: {
     id: "waiter",
@@ -90,6 +100,7 @@ export const APPS: Record<AppId, AppInfo> = {
     line: "Take orders at the table on a phone and send them straight to the kitchen.",
     icon: "users",
     status: "live",
+    platforms: ["android"],
   },
   receiver: {
     id: "receiver",
@@ -98,6 +109,7 @@ export const APPS: Record<AppId, AppInfo> = {
     icon: "alarmpct",
     status: "live",
     plan: SHOP_PLAN_NOTE,
+    platforms: ["android", "web"],
   },
   packer: {
     id: "packer",
@@ -105,6 +117,7 @@ export const APPS: Record<AppId, AppInfo> = {
     line: "Check and pack takeaway and delivery orders before they leave.",
     icon: "package",
     status: "live",
+    platforms: ["android", "web"],
   },
   customerDisplay: {
     id: "customerDisplay",
@@ -142,6 +155,15 @@ export const APPS: Record<AppId, AppInfo> = {
     line: "Riders get jobs, navigate, collect cash and confirm delivery on Android.",
     icon: "scooter",
     status: "live",
+    platforms: ["android"],
+  },
+  orderBoard: {
+    id: "orderBoard",
+    name: "Order Board",
+    line: "A TV or tablet facing customers shows which orders are being made and which are ready.",
+    icon: "monitor",
+    status: "live",
+    platforms: ["android"],
   },
   vanSales: {
     id: "vanSales",
@@ -238,7 +260,7 @@ export interface Business {
 
 /* ── Shared copy ──────────────────────────────────────────────────── */
 
-export const OFFER_LINE = "Free for 3 months, then choose Shop or Business. No card required.";
+export const OFFER_LINE = "Choose Shop or Business. We move your data for free.";
 
 export const MIGRATION = {
   eyebrow: "Switching is free",
@@ -255,8 +277,8 @@ export const MIGRATION = {
 
 export const COMMON_FAQS: Faq[] = [
   {
-    q: `Is ${BRAND_NAME} really free for 3 months?`,
-    a: "Yes. The Light plan is free for 90 days from the day you sign up, with no card required. It covers one shop, two staff logins, 30 products and 100 orders a day. When the 90 days end, choose Shop or Business to keep selling — your data stays safe and you can still sign in, view and export it.",
+    q: `How much does ${BRAND_NAME} cost?`,
+    a: "Shop is $29 a month for one shop and Business is $79 a month for several branches, billed in USD. You can cancel any time, and we move your data for free.",
   },
   {
     q: "Can you move my data from my old POS?",
@@ -264,7 +286,7 @@ export const COMMON_FAQS: Faq[] = [
   },
   {
     q: "Which devices does it run on?",
-    a: "Any modern browser, a Windows desktop app and Android — including Android POS terminals with a built-in printer. Receipt printers connect over USB, Bluetooth or the network.",
+    a: "Any modern browser, the Windows and Mac desktop app and Android — including Android POS terminals with a built-in printer. Receipt printers connect over USB, Bluetooth or the network.",
   },
   // Only where the site itself is in Urdu (NEXT_PUBLIC_LOCALES; read here,
   // not from brand.ts, because this file has no runtime imports).
@@ -296,7 +318,7 @@ const restaurants: Business = {
   seo: {
     title: "Restaurant POS with KDS, Waiter App & Delivery",
     description:
-      "Restaurant POS for dine-in, takeaway and delivery: tables, kitchen display (KDS), a waiter app, your own online order page and a rider app. Free for 3 months.",
+      "Restaurant POS for dine-in, takeaway and delivery: tables, kitchen display (KDS), a waiter app, your own online order page and a rider app.",
     keywords: [
       "restaurant POS",
       "restaurant POS system",
@@ -322,14 +344,16 @@ const restaurants: Business = {
   },
   apps: [
     "pos",
+    "receiver",
     "kds",
     "waiter",
-    "receiver",
     "packer",
-    "orderPage",
+    "orderBoard",
     "riderApp",
-    "customerApp",
+    "ownerApp",
     "backOffice",
+    "orderPage",
+    "customerApp",
   ],
   features: [
     {
@@ -699,7 +723,7 @@ const cloudKitchens: Business = {
   seo: {
     title: "Cloud Kitchen POS: Many Brands, One Kitchen",
     description:
-      "Cloud kitchen POS: online ordering for each delivery brand, one order board, kitchen display, packer screen, rider app and reports per brand. Free for 3 months.",
+      "Cloud kitchen POS: online ordering for each delivery brand, one order board, kitchen display, packer screen, rider app and reports per brand.",
     keywords: [
       "cloud kitchen POS",
       "ghost kitchen software",
@@ -1194,7 +1218,7 @@ const pharmacy: Business = {
   faqs: [
     {
       q: "Is the pharmacy pack included in the free plan?",
-      a: "Yes. The pharmacy pack is one of the extensions included in the free Light plan, within its limits (one shop, two users, 30 products, 100 orders a day). Most pharmacies move to Shop for more products.",
+      a: "Yes. The pharmacy pack is one of the add-ons you can use on the Shop plan.",
     },
   ],
   cta: {
@@ -1520,7 +1544,7 @@ const distributorsWholesale: Business = {
   faqs: [
     {
       q: "Is route dispatch included in the free plan?",
-      a: "Yes. Route dispatch is one of the extensions included in the free Light plan, within its limits (one shop, two users, 30 products, 100 orders a day). Most distributors move to Shop or Business for more users and products.",
+      a: "Yes. Route dispatch and van sales are part of the Business plan.",
     },
   ],
   cta: {

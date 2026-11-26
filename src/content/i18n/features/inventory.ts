@@ -89,7 +89,7 @@ export const INVENTORY_COPY: Localized<FeaturePageCopy> = {
       },
     ],
     cta: {
-      headline: "Free for 3 months. No card needed.",
+      headline: "Get started today.",
       body: "Put every carton, batch and ingredient on one live stock list.",
       secondary: "See pricing",
     },
@@ -170,7 +170,7 @@ export const INVENTORY_COPY: Localized<FeaturePageCopy> = {
       },
     ],
     cta: {
-      headline: "3 ماہ مفت۔ کارڈ کی ضرورت نہیں۔",
+      headline: "آج ہی شروع کریں۔",
       body: "ہر کارٹن، بیچ اور جزو ایک ہی تازہ اسٹاک لسٹ پر۔",
       secondary: "قیمتیں دیکھیں",
     },
@@ -250,7 +250,7 @@ export const INVENTORY_COPY: Localized<FeaturePageCopy> = {
       },
     ],
     cta: {
-      headline: "مجانًا لمدة 3 أشهر. دون بطاقة.",
+      headline: "ابدأ اليوم.",
       body: "ضع كل كرتونة ودفعة ومكوّن في قائمة مخزون حية واحدة.",
       secondary: "اطّلع على الأسعار",
     },

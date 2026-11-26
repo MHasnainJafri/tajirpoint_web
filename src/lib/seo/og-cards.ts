@@ -52,7 +52,7 @@ const BUSINESS_PILLS: Record<string, string[]> = {
   "furniture-home": ["Quotations", "Variants", "Credit", "Delivery"],
 };
 
-const FREE_LINE = "Free for 3 months · No card needed · We move your data for free";
+const FREE_LINE = "We move your data for free · Cancel any time";
 
 export const OG_CARDS: Record<string, OgCard> = {
   home: {
@@ -63,9 +63,9 @@ export const OG_CARDS: Record<string, OgCard> = {
   },
   pricing: {
     eyebrow: "Pricing",
-    title: "Free for 3 months. Simple monthly plans after.",
-    sub: "No card to start. Cancel any time. No transaction fees.",
-    pills: ["Light: free 3 months", "Shop", "Business"],
+    title: "Simple monthly plans.",
+    sub: "Cancel any time. No transaction fees.",
+    pills: ["Shop", "Business", "Enterprise"],
   },
   business: {
     eyebrow: "POS for every business",

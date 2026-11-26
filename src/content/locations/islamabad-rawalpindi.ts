@@ -144,7 +144,7 @@ const page: LocationPage = {
   ],
   cta: {
     headline: `Run your twin-city business on ${BRAND_NAME}.`,
-    sub: "Book a free demo, or start free for 3 months. No card needed, and we move your data for free.",
+    sub: "Book a free demo, and we move your data for free.",
   },
   related: ["pakistan", "punjab", "lahore", "karachi", "peshawar", "faisalabad"],
   updated: PK_UPDATED,

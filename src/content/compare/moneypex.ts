@@ -82,7 +82,7 @@ export const moneypex: Comparison = {
       feature: "Restaurant plan",
       tajirpoint: {
         mark: "info",
-        text: "Shop $29 a month or Business $79 a month after the free 3 months.",
+        text: "Shop $29 a month or Business $79 a month.",
         href: "/pricing",
       },
       other: {
@@ -269,7 +269,7 @@ export const moneypex: Comparison = {
       heading: "How each one charges",
       paragraphs: [
         "Moneypex publishes its prices in rupees. Retail POS starts at PKR 1,500 a month (10% less paid yearly) and its restaurant POS is PKR 32,400 a year. Many things are monthly add-ons: on the restaurant plan, a kitchen display is PKR 700, each extra waiter PKR 500, each extra shop PKR 1,500, each extra terminal PKR 10,000 and web ordering PKR 1,000. Each POS plan has a 7-day free trial.",
-        `${BRAND_NAME}'s Light plan is free for 3 months with no card. After that, Shop is $29 a month and Business is $79 a month. Some ${BRAND_NAME} add-ons are paid too, and each add-on page shows its price. For a fair comparison, add up the plan and every add-on you would actually use for a full year on both sides.`,
+        `Shop is $29 a month and Business is $79 a month. Some ${BRAND_NAME} add-ons are paid too, and each add-on page shows its price. For a fair comparison, add up the plan and every add-on you would actually use for a full year on both sides.`,
       ],
     },
     {
@@ -303,7 +303,7 @@ export const moneypex: Comparison = {
     },
     {
       question: `Is ${BRAND_NAME} free?`,
-      answer: `The Light plan is free for 3 months with no card. After that you choose Shop ($29 a month) or Business ($79 a month).`,
+      answer: `You choose Shop ($29 a month) or Business ($79 a month), billed in USD.`,
     },
     {
       question: `Can I move from Moneypex to ${BRAND_NAME}?`,

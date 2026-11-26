@@ -93,7 +93,7 @@ export const BILLING_COPY: Localized<FeaturePageCopy> = {
       },
     ],
     cta: {
-      headline: "Free for 3 months. No card needed.",
+      headline: "Get started today.",
       body: "Start billing today on the computer, tablet or phone you already have.",
       secondary: "See pricing",
     },
@@ -176,7 +176,7 @@ export const BILLING_COPY: Localized<FeaturePageCopy> = {
       },
     ],
     cta: {
-      headline: "3 ماہ مفت۔ کارڈ کی ضرورت نہیں۔",
+      headline: "آج ہی شروع کریں۔",
       body: "آج ہی اپنے موجودہ کمپیوٹر، ٹیبلٹ یا فون پر بلنگ شروع کریں۔",
       secondary: "قیمتیں دیکھیں",
     },
@@ -258,7 +258,7 @@ export const BILLING_COPY: Localized<FeaturePageCopy> = {
       },
     ],
     cta: {
-      headline: "مجانًا لمدة 3 أشهر. دون بطاقة.",
+      headline: "ابدأ اليوم.",
       body: "ابدأ الفوترة اليوم على الحاسوب أو الجهاز اللوحي أو الهاتف الذي لديك.",
       secondary: "اطّلع على الأسعار",
     },

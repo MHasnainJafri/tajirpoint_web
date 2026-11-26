@@ -66,7 +66,7 @@ const FAQS: Array<{ q: string; a: string }> = [
   },
   {
     q: "What do the shops I bring get?",
-    a: "The same offer as everyone: the Light plan is free for 3 months with no card, and our team helps move their data from their old POS for free.",
+    a: "The same plans as everyone, and our team helps move their data from their old POS for free.",
   },
 ];
 

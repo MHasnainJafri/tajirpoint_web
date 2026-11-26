@@ -141,11 +141,11 @@ export default async function CompareHubPage({ params }: { params: Promise<{ loc
             The best comparison is your own shop.
           </h2>
           <p className="relative mx-auto mt-4 max-w-[460px] text-[16px] leading-[1.6] text-[var(--color-muted)]">
-            Free for 3 months, no card needed. Or book a demo with your own products.
+            Book a demo with your own products.
           </p>
           <div className="relative mt-8 flex flex-wrap justify-center gap-[14px]">
             <MintButton href={siteConfig.signupUrl} external>
-              Start free <span aria-hidden="true">→</span>
+              Get started <span aria-hidden="true">→</span>
             </MintButton>
             <GhostButton href="/book-demo">Book a free demo</GhostButton>
           </div>

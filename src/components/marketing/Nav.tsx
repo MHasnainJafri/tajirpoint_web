@@ -19,6 +19,7 @@ import {
 import type { Business } from "@/lib/marketing/businesses";
 import { siteConfig } from "@/lib/config/site";
 import { isPageShown } from "@/lib/config/pages";
+import { DOWNLOADS_PATH } from "@/lib/marketing/downloads";
 import { uxCopy } from "@/content/ux/copy";
 import { guidesNavLabel } from "@/content/guides/labels";
 
@@ -382,6 +383,11 @@ export function Nav({ businesses }: { businesses: NavBusiness[] }) {
           <Link href="/pricing" className={linkBase} onMouseEnter={() => setMega(null)}>
             {t("pricing")}
           </Link>
+          {isPageShown(DOWNLOADS_PATH) && (
+            <Link href={DOWNLOADS_PATH} className={linkBase} onMouseEnter={() => setMega(null)}>
+              {ux.download}
+            </Link>
+          )}
           {trigger("resources", t("resources"))}
           {resourcesPanel}
         </nav>
@@ -396,13 +402,6 @@ export function Nav({ businesses }: { businesses: NavBusiness[] }) {
           >
             {t("signIn")}
           </a>
-
-          <Link
-            href="/book-demo"
-            className="hidden whitespace-nowrap rounded-full border border-[var(--color-line-3)] px-4 py-[9px] text-[13.5px] font-semibold text-[var(--color-ink)] transition-colors hover:bg-[var(--color-surface)] min-[1320px]:inline-flex"
-          >
-            {t("bookDemo")}
-          </Link>
 
           {/* Compact label below the desktop breakpoint: at 320px the full
               label pushes the burger past the right edge. */}
@@ -483,6 +482,11 @@ export function Nav({ businesses }: { businesses: NavBusiness[] }) {
           <MobileLink href="/pricing" onNavigate={closeAll}>
             {t("pricing")}
           </MobileLink>
+          {isPageShown(DOWNLOADS_PATH) && (
+            <MobileLink href={DOWNLOADS_PATH} onNavigate={closeAll}>
+              {ux.download}
+            </MobileLink>
+          )}
           <MobileLink href="/get-a-call" onNavigate={closeAll}>
             {ux.getACall}
           </MobileLink>

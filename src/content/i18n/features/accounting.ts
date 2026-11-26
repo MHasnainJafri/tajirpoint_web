@@ -64,7 +64,7 @@ export const ACCOUNTING_COPY: Localized<FeaturePageCopy> = {
       },
     ],
     cta: {
-      headline: "Free for 3 months. No card needed.",
+      headline: "Get started today.",
       body: "Run a week of real sales and watch the trial balance, P&L and cash position build themselves.",
       secondary: "Browse extensions",
     },
@@ -120,7 +120,7 @@ export const ACCOUNTING_COPY: Localized<FeaturePageCopy> = {
           "نہیں۔ آپ دکان چلائیں، کھاتے خود بنتے ہیں۔ آپ کے اکاؤنٹنٹ کو صاف اور تیار لیجر ملتے ہیں۔",
       },
       {
-        question: "کیا اکاؤنٹنگ مفت لائٹ پلان میں شامل ہے؟",
+        question: "کیا اکاؤنٹنگ لائٹ پلان میں شامل ہے؟",
         answer:
           "نہیں۔ لائٹ پلان میں POS، اسٹاک اور کھاتہ شامل ہیں۔ اکاؤنٹنگ ایڈ آن (جنرل لیجر، نفع و نقصان، بیلنس شیٹ) شاپ پلان اور اس سے اوپر دستیاب ہے۔",
       },
@@ -130,7 +130,7 @@ export const ACCOUNTING_COPY: Localized<FeaturePageCopy> = {
       },
     ],
     cta: {
-      headline: "3 ماہ مفت۔ کارڈ کی ضرورت نہیں۔",
+      headline: "آج ہی شروع کریں۔",
       body: "ایک ہفتہ اصل فروخت کریں اور دیکھیں کہ ٹرائل بیلنس، نفع و نقصان اور کیش کی صورتحال خود کیسے بنتی ہے۔",
       secondary: "ایکسٹینشنز دیکھیں",
     },
@@ -185,7 +185,7 @@ export const ACCOUNTING_COPY: Localized<FeaturePageCopy> = {
         answer: "لا. أنت تدير متجرك، والدفاتر تُرحِّل نفسها. ويحصل محاسبك على دفاتر نظيفة وجاهزة.",
       },
       {
-        question: "هل المحاسبة مشمولة في باقة Light المجانية؟",
+        question: "هل المحاسبة مشمولة في باقة Light؟",
         answer:
           "لا. باقة Light تشمل نقطة البيع والمخزون ودفتر الآجل. إضافة المحاسبة (دفتر الأستاذ العام، الأرباح والخسائر، الميزانية العمومية) متاحة في باقة Shop وما فوقها.",
       },
@@ -195,7 +195,7 @@ export const ACCOUNTING_COPY: Localized<FeaturePageCopy> = {
       },
     ],
     cta: {
-      headline: "مجانًا لمدة 3 أشهر. دون بطاقة.",
+      headline: "ابدأ اليوم.",
       body: "شغّل أسبوعًا من المبيعات الحقيقية وشاهد ميزان المراجعة والأرباح والخسائر ووضع النقد تُبنى تلقائيًا.",
       secondary: "تصفّح الإضافات",
     },

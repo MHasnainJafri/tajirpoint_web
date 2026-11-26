@@ -59,7 +59,7 @@ export const KHATA_COPY: Localized<FeaturePageCopy> = {
       },
     ],
     cta: {
-      headline: "Free for 3 months. No card needed.",
+      headline: "Get started today.",
       body: "Move your credit register onto a ledger both sides can trust.",
       secondary: "See pricing",
     },
@@ -121,7 +121,7 @@ export const KHATA_COPY: Localized<FeaturePageCopy> = {
       },
     ],
     cta: {
-      headline: "3 ماہ مفت۔ کارڈ کی ضرورت نہیں۔",
+      headline: "آج ہی شروع کریں۔",
       body: "اپنا اُدھار رجسٹر ایسے کھاتے پر لائیں جس پر دونوں طرف بھروسہ ہو۔",
       secondary: "قیمتیں دیکھیں",
     },
@@ -183,7 +183,7 @@ export const KHATA_COPY: Localized<FeaturePageCopy> = {
       },
     ],
     cta: {
-      headline: "مجانًا لمدة 3 أشهر. دون بطاقة.",
+      headline: "ابدأ اليوم.",
       body: "انقل دفتر الآجل إلى كشف حساب يثق به الطرفان.",
       secondary: "اطّلع على الأسعار",
     },

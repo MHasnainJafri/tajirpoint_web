@@ -149,7 +149,7 @@ const page: LocationPage = {
   checked: PROVINCE_CHECKED,
   cta: {
     headline: `Run your Sialkot business on ${BRAND_NAME}.`,
-    sub: "Book a free demo, or start free for 3 months. No card needed, and we move your data for free.",
+    sub: "Book a free demo, and we move your data for free.",
   },
   related: ["punjab", "faisalabad", "lahore", "pakistan"],
   updated: PROVINCE_UPDATED,

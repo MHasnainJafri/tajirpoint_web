@@ -122,7 +122,7 @@ export default async function ComparisonPage({ params }: { params: Params }) {
           </p>
           <div className="mt-7 flex flex-wrap gap-[10px]">
             <MintButton href={siteConfig.signupUrl} external>
-              Start free — 3 months <span aria-hidden="true">→</span>
+              Get started <span aria-hidden="true">→</span>
             </MintButton>
             <GhostButton href="/book-demo">Book a free demo</GhostButton>
           </div>
@@ -298,14 +298,14 @@ export default async function ComparisonPage({ params }: { params: Params }) {
       <section className="px-[clamp(16px,3vw,24px)] pb-[110px] pt-[clamp(48px,7vw,88px)]">
         <CtaPanel>
           <h2 className="relative text-[clamp(26px,3.6vw,44px)] font-extrabold tracking-[-0.03em]">
-            {`Try ${BRAND_NAME} free for 3 months.`}
+            {`Try ${BRAND_NAME}.`}
           </h2>
           <p className="relative mx-auto mt-4 max-w-[460px] text-[16px] leading-[1.6] text-[var(--color-muted)]">
-            No card needed. We move your data for free.
+            We move your data for free.
           </p>
           <div className="relative mt-8 flex flex-wrap justify-center gap-[14px]">
             <MintButton href={siteConfig.signupUrl} external>
-              Start free <span aria-hidden="true">→</span>
+              Get started <span aria-hidden="true">→</span>
             </MintButton>
             <GhostButton href="/get-a-call">Get a call back</GhostButton>
           </div>

@@ -155,7 +155,7 @@ const OURS = {
   name: "Tajir Point",
   alternateNames: ["TajirPoint", "Tajir Point POS", "TajirPoint POS"],
   description:
-    "Point of sale, inventory, customer credit and accounting for stores, restaurants and distributors. Multi-currency support on web, desktop and Android. Free for 3 months.",
+    "Point of sale, inventory, customer credit and accounting for stores, restaurants and distributors. Multi-currency support on web, desktop and Android.",
   tagline: "Run your shop. Everywhere.",
   website: "https://tajirpoint.com",
   appUrl: "https://app.tajirpoint.com",
@@ -313,6 +313,8 @@ export const brand = {
   copyright: env.copyright,
   /** Organization `foundingDate` (a year). */
   founded: env.founded ?? D.founded,
+  /** Our own build (Tajir Point), not a client brand: it alone has /downloads. */
+  isOwnBrand: D === OURS,
   /** Play Store listing of the POS app; "" = no store button. */
   androidAppUrl: env.androidApp ?? D.androidAppUrl,
   /** Prefix of the environment variables in the API docs' examples ("TAJIR" -> $TAJIR_TOKEN). */

@@ -179,7 +179,7 @@ export default async function LocationsHubPage({
               href={siteConfig.signupUrl}
               className="inline-flex items-center rounded-full border border-white/30 px-7 py-[14px] text-[15.5px] font-semibold text-white transition-colors hover:bg-white/10"
             >
-              Start free — 3 months
+              Get started
             </a>
           </div>
         </CtaPanel>

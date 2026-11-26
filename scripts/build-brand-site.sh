@@ -54,8 +54,12 @@ trap cleanup ERR
 if [[ -n "${BRAND_ASSETS_DIR:-}" ]]; then
   [[ -d "$BRAND_ASSETS_DIR" ]] || die "BRAND_ASSETS_DIR $BRAND_ASSETS_DIR does not exist"
   rm -rf "$ASSETS_OUT"; mkdir -p "$ASSETS_OUT"
-  # Files only (no sub-folders such as old-stand-in/), and no notes.
-  find "$BRAND_ASSETS_DIR" -maxdepth 1 -type f ! -name '*.md' -exec cp {} "$ASSETS_OUT"/ \;
+  # Web files only: images, icons and fonts at the top level. No sub-folders
+  # (old-stand-in/, app-icons/), notes or the icon-making scripts that live
+  # next to them, which would be served from public/ and name us.
+  find "$BRAND_ASSETS_DIR" -maxdepth 1 -type f \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' \
+    -o -iname '*.webp' -o -iname '*.svg' -o -iname '*.ico' -o -iname '*.avif' -o -iname '*.woff2' \
+    -o -iname '*.webmanifest' \) -exec cp {} "$ASSETS_OUT"/ \;
 fi
 for var in NEXT_PUBLIC_BRAND_LOGO NEXT_PUBLIC_BRAND_LOGO_ON_DARK NEXT_PUBLIC_BRAND_FAVICON NEXT_PUBLIC_BRAND_ICON; do
   val="${!var:-}"

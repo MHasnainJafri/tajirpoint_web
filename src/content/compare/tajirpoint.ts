@@ -11,7 +11,7 @@ import { BRAND_NAME } from "@/lib/config/brand";
 export const TP = {
   freeStart: {
     mark: "partial",
-    text: "Light plan free for 3 months, no card. Then a paid plan (Shop or Business).",
+    text: "Paid plans: Shop or Business, billed monthly in USD.",
     href: "/pricing",
   },
   offlineRetail: {

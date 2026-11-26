@@ -110,7 +110,7 @@ const t: AddonTranslation = {
       a: `نعم، يمكنك إلغاء طلب PostEx من ${BRAND_NAME} قبل تسليمه.`,
     },
     {
-      q: "هل هي مضمّنة في خطة Light المجانية؟",
+      q: "هل هي مضمّنة في خطة Light؟",
       a: "لا. ستتطلب إضافة PostEx خطة Shop أو أعلى.",
     },
   ],

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Hero } from "@/components/marketing/landing/Hero";
+import { RestaurantStrip } from "@/components/marketing/landing/RestaurantStrip";
 import { TradesMarquee } from "@/components/marketing/landing/TradesMarquee";
 import { Replaces } from "@/components/marketing/landing/Replaces";
 import { WhoItsFor } from "@/components/marketing/landing/WhoItsFor";
@@ -89,6 +90,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         style={{ overflowX: "clip" }}
       >
         <Hero />
+        <RestaurantStrip />
         {/* Everything after the hero starts below the fold on every screen
             (the hero alone is ~2,300px tall on a phone), so each section is
             skipped for style/layout/paint until it nears the viewport. Sizes

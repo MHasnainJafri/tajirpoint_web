@@ -183,9 +183,17 @@ export async function getPricing(): Promise<MarketingPricing | null> {
 
     const parsed = ResponseSchema.safeParse(await res.json());
     // An empty catalogue is a misconfiguration, not a valid pricing page.
-    if (!parsed.success || parsed.data.plans.length === 0) return null;
+    if (!parsed.success) return null;
 
-    return { plans: parsed.data.plans };
+    // The free trial is gone: never show the free (Light) plan, even while the
+    // backend still sends it.
+    const plans = parsed.data.plans
+      .filter((p) => !isFreePlan(p))
+      // "Everything in Light, no time limit" points at the hidden plan.
+      .map((p) => ({ ...p, bullets: p.bullets.filter((b) => !/\bLight\b/i.test(b)) }));
+    if (plans.length === 0) return null;
+
+    return { plans };
   } catch {
     return null;
   }
