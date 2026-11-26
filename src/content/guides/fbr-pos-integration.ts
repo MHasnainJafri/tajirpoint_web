@@ -340,6 +340,7 @@ const guide: Guide = {
     },
   ],
   related: [
+    "pra-srb-pos-integration",
     "best-pos-software-pakistan",
     "choose-restaurant-pos",
     "restaurant-opening-checklist",

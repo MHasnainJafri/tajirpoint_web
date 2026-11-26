@@ -673,7 +673,12 @@ const guide: Guide = {
     },
     { label: "Book a demo", href: "/book-demo", note: "See it run on your own products or menu" },
   ],
-  related: ["fbr-pos-integration", "choose-restaurant-pos", "digital-khata"],
+  related: [
+    "pra-srb-pos-integration",
+    "fbr-pos-integration",
+    "choose-restaurant-pos",
+    "digital-khata",
+  ],
   datePublished: "2026-11-05",
   dateModified: "2026-11-16",
   og: {

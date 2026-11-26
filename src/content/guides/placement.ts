@@ -11,7 +11,7 @@ export const GUIDE_PLACEMENT: Readonly<Record<string, readonly string[]>> = {
   "/business/restaurants": [
     "choose-restaurant-pos",
     "restaurant-food-cost",
-    "restaurant-opening-checklist",
+    "pra-srb-pos-integration",
   ],
   "/business/cafes-bakeries": [
     "restaurant-food-cost",
@@ -42,16 +42,20 @@ export const GUIDE_PLACEMENT: Readonly<Record<string, readonly string[]>> = {
   "/features/van-sales": ["digital-khata", "stock-counting"],
 
   "/pos/pakistan": ["best-pos-software-pakistan", "fbr-pos-integration", "digital-khata"],
-  "/pos/lahore": ["best-pos-software-pakistan", "fbr-pos-integration", "digital-khata"],
-  "/pos/karachi": ["best-pos-software-pakistan", "fbr-pos-integration", "digital-khata"],
+  "/pos/lahore": ["best-pos-software-pakistan", "pra-srb-pos-integration", "fbr-pos-integration"],
+  "/pos/karachi": ["best-pos-software-pakistan", "pra-srb-pos-integration", "fbr-pos-integration"],
   "/pos/islamabad-rawalpindi": [
     "best-pos-software-pakistan",
+    "pra-srb-pos-integration",
     "fbr-pos-integration",
-    "digital-khata",
   ],
-  "/pos/faisalabad": ["best-pos-software-pakistan", "fbr-pos-integration", "digital-khata"],
-  "/pos/punjab": ["fbr-pos-integration", "best-pos-software-pakistan", "choose-restaurant-pos"],
-  "/pos/sindh": ["fbr-pos-integration", "best-pos-software-pakistan", "choose-restaurant-pos"],
+  "/pos/faisalabad": [
+    "best-pos-software-pakistan",
+    "pra-srb-pos-integration",
+    "fbr-pos-integration",
+  ],
+  "/pos/punjab": ["pra-srb-pos-integration", "fbr-pos-integration", "best-pos-software-pakistan"],
+  "/pos/sindh": ["pra-srb-pos-integration", "fbr-pos-integration", "best-pos-software-pakistan"],
   "/pos/khyber-pakhtunkhwa": [
     "fbr-pos-integration",
     "best-pos-software-pakistan",
@@ -66,13 +70,13 @@ export const GUIDE_PLACEMENT: Readonly<Record<string, readonly string[]>> = {
   "/compare/tajirpoint-vs-cash-register": ["excel-to-pos", "stock-counting"],
   "/compare/tajirpoint-vs-corn-pos": [
     "best-pos-software-pakistan",
+    "pra-srb-pos-integration",
     "fbr-pos-integration",
-    "choose-restaurant-pos",
   ],
   "/compare/tajirpoint-vs-oscar": [
     "best-pos-software-pakistan",
+    "pra-srb-pos-integration",
     "fbr-pos-integration",
-    "choose-restaurant-pos",
   ],
   "/compare/tajirpoint-vs-moneypex": [
     "best-pos-software-pakistan",
