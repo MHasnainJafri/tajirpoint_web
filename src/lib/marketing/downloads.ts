@@ -43,19 +43,19 @@ export const DESKTOP: {
   files: readonly DesktopFile[];
 } = {
   name: "Tajir Point POS",
-  version: "1.0.22",
+  version: "1.0.23",
   /** ISO date of the build. */
-  released: "2026-11-23",
+  released: "2026-11-28",
   files: [
     {
       os: "windows",
       label: "Download for Windows",
       detail: "Installer (.exe), 64-bit",
-      href: `${FILES}/Tajir-Point-POS-1.0.22-Windows-Setup.exe`,
+      href: `${FILES}/Tajir-Point-POS-1.0.23-Windows-Setup.exe`,
       size: "10 MB",
       requires: "Windows 10 or 11, 64-bit",
       steps: [
-        "Open the downloaded file Tajir-Point-POS-1.0.22-Windows-Setup.exe.",
+        "Open the downloaded file Tajir-Point-POS-1.0.23-Windows-Setup.exe.",
         "If Windows shows “Windows protected your PC”, click More info, then Run anyway.",
         "Follow the installer (no administrator password needed). The app is added to the Start menu.",
         "Open it and sign in with your Tajir Point login.",
@@ -65,11 +65,11 @@ export const DESKTOP: {
       os: "mac",
       label: "Download for Mac",
       detail: "Disk image (.dmg), Apple Silicon and Intel",
-      href: `${FILES}/Tajir-Point-POS-1.0.22-Mac.dmg`,
+      href: `${FILES}/Tajir-Point-POS-1.0.23-Mac.dmg`,
       size: "24 MB",
       requires: "macOS 10.15 Catalina or later",
       steps: [
-        "Open the downloaded file Tajir-Point-POS-1.0.22-Mac.dmg.",
+        "Open the downloaded file Tajir-Point-POS-1.0.23-Mac.dmg.",
         "Drag Tajir Point POS into the Applications folder.",
         "The first time, right-click the app in Applications and choose Open. If macOS still blocks it, open System Settings → Privacy & Security and click Open Anyway.",
         "Sign in with your Tajir Point login.",
